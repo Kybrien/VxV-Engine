@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include "Debug.h"
 
 
 int main()
@@ -7,7 +8,8 @@ int main()
 
 	test.name = "test";
 
-	std::cout << test.name;
+	Debug::Log(test.name);
+
 
 	return 0;
 }
