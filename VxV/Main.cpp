@@ -1,6 +1,13 @@
-#include "Main.h"
+#include "GameObject.h"
 
-int Main()
+
+int main()
 {
+	GameObject test;
+
+	test.name = "test";
+
+	std::cout << test.name;
+
 	return 0;
 }

@@ -13,9 +13,9 @@ class GameObject
 public:
 	std::string name;
 
-	virtual void Init();
-	virtual void Start();
-	virtual void Update();
+	virtual void Init() {};
+	virtual void Start() {};
+	virtual void Update() {};
 
 	int GetId() { return id; }
 
