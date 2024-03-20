@@ -18,7 +18,7 @@ public:
 	virtual void Update() {};
 
 	int GetId() { return id; }
-
+	
 	GameObject* GetChildByName(std::string name);
 
 	template<typename T>
