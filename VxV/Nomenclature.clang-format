@@ -7,15 +7,15 @@
 # AfterStruct; AfterUnion
 
 AccessModifierOffset: -4
-AlignAfterOpenBracket: DontAlign
-AllowShortBlocksOnASingleLine: true
+AlignAfterOpenBracket: Align
+AllowShortBlocksOnASingleLine: false
 AllowShortFunctionsOnASingleLine: All
 BasedOnStyle: LLVM
 BraceWrapping:
   AfterClass: false    # TODO: vérifier
   AfterControlStatement: false    # TODO: vérifier
   AfterEnum: false    # TODO: vérifier
-  AfterFunction: false    # TODO: vérifier
+  AfterFunction: true    # TODO: vérifier
   AfterNamespace: false    # TODO: vérifier
   AfterStruct: false    # TODO: vérifier
   AfterUnion: false    # TODO: vérifier
@@ -45,3 +45,11 @@ SpacesInParentheses: false
 SpacesInSquareBrackets: false
 TabWidth: 4
 UseTab: true
+PrivateMemberPrefix: m_
+PrivateMemberCase: camelBack
+PrivateMethodPrefix: M_
+VariableNameCase: camelBack
+FunctionCase : CamelCase
+VirtualMethodPrefix: V
+
+
