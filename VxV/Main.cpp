@@ -6,7 +6,7 @@
 #include <GLFW/glfw3.h>
 #include <GLM/glm.hpp>
 
-#include <../../../loadShader.hpp>
+#include <loadShader.hpp>
 
 using namespace glm;
 
@@ -46,9 +46,9 @@ int main() {
 	glBindVertexArray(VertexArrayID);
 
 	static const GLfloat g_vertex_buffer_data[] = {
-	   -1.0f, -1.0f, 1.0f,
-	   1.0f, -1.0f, 1.0f,
-	   0.0f,  1.0f, 1.0f,
+	   -0.2f, -1.0f, 0.0f,
+	   0.0f, 1.0f, 0.0f,
+	   0.2f, -1.0f, 0.0f,
 	};
 	GLuint vertexbuffer;
 	glGenBuffers(1, &vertexbuffer);
@@ -57,7 +57,7 @@ int main() {
 
 	// Create and compile our GLSL program from the shaders
 	GLuint programID = LoadShaders("SimpleVertexShader.MIKU", "SimpleFragmentShader.VALORANT");
-	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 	do {
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
