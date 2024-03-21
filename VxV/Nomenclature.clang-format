@@ -1,0 +1,55 @@
+# Fichier au format .clang généré par Visual Studio
+
+# Les options de style de ce fichier sont une tentative de réplication de
+# la configuration de mise en forme IDE actuelle via Outils > Options. Toutefois, les
+# options de style suivantes doivent être vérifiées :
+# AfterClass; AfterControlStatement; AfterEnum; AfterFunction; AfterNamespace; 
+# AfterStruct; AfterUnion
+
+AccessModifierOffset: -4
+AlignAfterOpenBracket: Align
+AllowShortBlocksOnASingleLine: false
+AllowShortFunctionsOnASingleLine: All
+BasedOnStyle: LLVM
+BraceWrapping:
+  AfterClass: false    # TODO: vérifier
+  AfterControlStatement: false    # TODO: vérifier
+  AfterEnum: false    # TODO: vérifier
+  AfterFunction: true    # TODO: vérifier
+  AfterNamespace: false    # TODO: vérifier
+  AfterStruct: false    # TODO: vérifier
+  AfterUnion: false    # TODO: vérifier
+  BeforeCatch: true
+  BeforeElse: true
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+BreakBeforeBraces: Custom
+ColumnLimit: 0
+Cpp11BracedListStyle: false
+FixNamespaceComments: false
+IndentCaseLabels: false
+IndentPPDirectives: None
+IndentWidth: 4
+MaxEmptyLinesToKeep: 10
+NamespaceIndentation: All
+PointerAlignment: Left
+SortIncludes: false
+SortUsingDeclarations: false
+SpaceAfterCStyleCast: false
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: false
+SpacesInCStyleCastParentheses: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+TabWidth: 4
+UseTab: true
+PrivateMemberPrefix: m_
+PrivateMemberCase: camelBack
+PrivateMethodPrefix: M_
+VariableNameCase: camelBack
+FunctionCase : CamelCase
+VirtualMethodPrefix: V
+
+
