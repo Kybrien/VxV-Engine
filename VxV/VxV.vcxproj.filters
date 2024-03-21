@@ -15,7 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Open.cpp">
+    <ClInclude Include="Components.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Components.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
