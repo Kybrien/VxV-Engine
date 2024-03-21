@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include "Debug.h"
 
 
 GameObject* GameObject::GetChildByName(std::string name) {
@@ -24,4 +25,14 @@ T* GameObject::GetComponent() {
     }
 
     return nullptr; // Aucun composant de type T trouvé
+}
+
+
+template<typename T>
+void GameObject::AddComponent() {
+
+    static_assert(std::is_base_of<Component, T>::value, "T doit être un descendant de Component");
+
+    // Ajoute un nouveau composant de type T
+    components.push_back(new T(this));
 }

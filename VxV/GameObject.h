@@ -17,12 +17,15 @@ public:
 	virtual void Start() {}; // Est appelé à la première frame
 	virtual void Update() {}; // Est appelé à chaque frame
 
-	int GetId() { return id; } // Renvoie l'Id du GameObject
+	const int GetId() { return id; } // Renvoie l'Id du GameObject
 	
 	GameObject* GetChildByName(std::string name); // Rechercher un GameObject enfant du GameObject
 
 	template<typename T>
 	T* GetComponent(); // Rechercher un component
+
+	template<typename T>
+	void AddComponent();
 
 
 private:
