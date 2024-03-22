@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Components.cpp" />
     <ClCompile Include="loadShader.cpp" />
     <ClCompile Include="loadShader.hpp" />
     <ClCompile Include="Main.cpp" />
@@ -152,6 +153,14 @@
   <ItemGroup>
     <Text Include="SimpleFragmentShader.VALORANT" />
     <Text Include="SimpleVertexShader.MIKU" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Components.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Transform.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Nomenclature.clang-format" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
