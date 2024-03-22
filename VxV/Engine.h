@@ -20,6 +20,10 @@ private:
 	static Engine* instance;
 	EngineState state = Off;
 
+
+
+
+
 public:
 	static Engine* GetInstance()
 	{
@@ -31,6 +35,7 @@ public:
 	Engine() { 
 		instance = this; 	
 	}
+
 	
 	void Init() { state = Initializing; }
 	

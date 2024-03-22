@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Transform.h"
 
 class GameObject;
 
@@ -12,6 +12,9 @@ public:
 	explicit Component(GameObject* go) {
 		linkedGameObject = go;
 	};
+
+	virtual void Save() = 0;
+	virtual void Load() = 0;
 
 protected:
 	GameObject* linkedGameObject;

@@ -11,7 +11,13 @@ GameObject* GameObject::GetChildByName(std::string name) {
 	return nullptr;
 }
 
+void GameObject::AddChild(GameObject* go)
+{
+    go->GetComponent<Transform>()->position -= GetComponent<Transform>()->position;
+    go->origin = origin;
 
+    childObjects.push_back(go);
+}
 
 // Implémentation de GetComponent pour d'autres types de composants
 template<typename T>

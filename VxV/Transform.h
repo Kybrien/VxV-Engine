@@ -5,12 +5,20 @@
 
 using namespace glm;
 
-class Transform : Component {
+class Transform : public Component {
 public:
 	Transform(GameObject * gameObject) : Component(gameObject) {
 
 	}
 
+
+	void Load() override {
+
+	}
+
+	void Save() override {
+
+	}
 
 	glm::vec3 position;
 	glm::vec3 rotation;
