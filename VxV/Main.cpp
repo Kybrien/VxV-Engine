@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "GameObject.h"
-#include "Transform.h"
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -9,9 +7,38 @@
 
 #include <loadShader.hpp>
 
+
+
+#include "Engine.h"
+
+
 using namespace glm;
 
 int main() {
+	
+
+	// ---------------------------------- Autres Tests ------------------------- //
+	Engine* engine = new Engine();
+	engine->Init();
+
+	std::cout << engine->GetState() << std::endl;
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// ---------------------------------- Fenetre ------------------------- //
+	
+	
 	if (!glfwInit()) {
 		fprintf(stderr, "Failed to initialize GLFW\n");
 		return -1;
@@ -86,9 +113,13 @@ int main() {
 		glfwPollEvents();
 	} while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
 
-	// Création d'un GameObject
-	//auto gameObject = std::make_shared<GameObject>();
-	//gameObject->AddComponent(std::make_shared<Transform>());
+
+
+
+
+
+	
+
 
 	return 0;
 }	

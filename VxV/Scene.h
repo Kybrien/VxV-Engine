@@ -1,16 +1,19 @@
 #pragma once
 #include "GameObject.h"
 
+class SceneManager;
+
+
 class Scene {
 private:
 	std::list<GameObject*> gameObjects;
+	SceneManager* sceneManager;
 
 public:
-	Scene() {
+	Scene(std::string name_ = "SampleScene");
 
-	}
-
-	glm::vec3 origin = glm::vec3(0, 0, 0);
+	std::string name;
+	glm::vec3 origin;
 
 	std::list<GameObject*> GetGameObjects() {
 		return gameObjects;
