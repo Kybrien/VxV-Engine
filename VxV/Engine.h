@@ -1,4 +1,5 @@
 #pragma once
+#include "SceneManager.h"
 
 class Engine {
 private:
@@ -24,6 +25,9 @@ private:
 
 
 public:
+
+	SceneManager* sceneManager;
+
 	static Engine* GetInstance()
 	{
 		if (!instance)
@@ -31,21 +35,31 @@ public:
 		return instance;
 	}
 
+	EngineState GetState() {
+		return state;
+	}
+
 	Engine() {
 		instance = this;
 	}
 
 
-	void Init() { state = Initializing; }
+	void Init() { 
+		state = Initializing; 
+
+		state = Ready;
+		Start();
+	}
 
 	void Start() {
 		state = Starting;
 
 
+		sceneManager = new SceneManager();
 		// init les managers
+
+		Update();
 	}
 	void Update() { state = Running; }
-
-
 
 };

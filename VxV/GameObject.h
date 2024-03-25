@@ -1,5 +1,4 @@
 #pragma once
-#include <vector>
 #include <memory>
 #include "Component.h"  // Assurez-vous de définir une classe ou une structure de base Component
 #include "Transform.h"
@@ -32,6 +31,9 @@ public:
 
 
     void AddChild(GameObject* go);
+
+
+    // Mettre des enable if
     template<typename T>
     T* GetComponent(); // Rechercher un component
 

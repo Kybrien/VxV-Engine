@@ -1,17 +1,40 @@
 #pragma once
+#include <iostream>
+#include <list>
+#include <string>
+
 #include "Scene.h"
 
 class SceneManager {
 private:
-	std::list<Scene> scenes;
+	std::list<Scene*> scenes;
+	static SceneManager* instance;
 
-	Scene currentScene;
+	Scene* currentScene;
 
-	SceneManager() {
 
-		//Rechercher les scenes
-		//Les foutre dans la liste
-		//Si la liste est vide, en creer une initiale
+public:
 
+	SceneManager();
+
+	static SceneManager* GetInstance()
+	{
+		if (!instance)
+			instance = new SceneManager();
+		return instance;
+	}
+
+	void AddScene(Scene* scene) {
+		scenes.push_back(scene);
+	}
+
+	std::list<Scene*> GetScenes() {
+		return scenes;
+	}
+
+	void SaveScene();
+
+	Scene* GetCurrentScene() {
+		return currentScene;
 	}
 };
