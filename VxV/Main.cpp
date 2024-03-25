@@ -87,8 +87,8 @@ int main() {
 	} while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
 
 	// Création d'un GameObject
-	auto gameObject = std::make_shared<GameObject>();
-	gameObject->AddComponent(std::make_shared<Transform>());
+	//auto gameObject = std::make_shared<GameObject>();
+	//gameObject->AddComponent(std::make_shared<Transform>());
 
 	return 0;
 }	
