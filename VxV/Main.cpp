@@ -10,6 +10,8 @@
 
 using namespace glm;
 
+#include <controls.hpp>
+
 int main() {
 	if (!glfwInit()) {
 		fprintf(stderr, "Failed to initialize GLFW\n");
@@ -40,11 +42,20 @@ int main() {
 
 	// Ensure we can capture the escape key being pressed below
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
+	// Hide the mouse and enable unlimited movement
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+	// Set the mouse at the center of the screen
+	glfwPollEvents();
+	glfwSetCursorPos(window, 1024 / 2, 768 / 2);
 
 	// Enable depth test
 	glEnable(GL_DEPTH_TEST);
 	// Accept fragment if it closer to the camera than the former one
 	glDepthFunc(GL_LESS);
+
+	// Cull triangles which normal is not towards the camera
+	//glEnable(GL_CULL_FACE);
 
 	GLuint VertexArrayID;
 	glGenVertexArrays(1, &VertexArrayID);
@@ -219,6 +230,12 @@ int main() {
 		// Use our shader
 		glUseProgram(programID);
 		
+		// Compute the MVP matrix from keyboard and mouse input
+		computeMatricesFromInputs(window);
+		glm::mat4 ProjectionMatrix = getProjectionMatrix();
+		glm::mat4 ViewMatrix = getViewMatrix();
+		glm::mat4 ModelMatrix = glm::mat4(1.0);
+		glm::mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
 		
 		glBindVertexArray(VertexArrayID);
 		// Send our transformation to the currently bound shader, 

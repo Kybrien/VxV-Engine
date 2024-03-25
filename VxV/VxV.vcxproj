@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="controls.cpp" />
     <ClCompile Include="loadShader.cpp" />
     <ClCompile Include="loadShader.hpp" />
     <ClCompile Include="Main.cpp" />
@@ -152,6 +153,9 @@
   <ItemGroup>
     <Text Include="SimpleFragmentShader.VALORANT" />
     <Text Include="SimpleVertexShader.MIKU" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="controls.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
