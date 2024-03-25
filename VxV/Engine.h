@@ -21,11 +21,13 @@ private:
 	EngineState state = Off;
 
 
-	SceneManager* sceneManager;
 
 
 
 public:
+
+	SceneManager* sceneManager;
+
 	static Engine* GetInstance()
 	{
 		if (!instance)

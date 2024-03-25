@@ -31,4 +31,10 @@ public:
 	std::list<Scene*> GetScenes() {
 		return scenes;
 	}
+
+	void SaveScene();
+
+	Scene* GetCurrentScene() {
+		return currentScene;
+	}
 };

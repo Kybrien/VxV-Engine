@@ -1,4 +1,6 @@
 #include "SceneManager.h"
+#include "json.h"
+
 
 
 SceneManager* SceneManager::instance = nullptr;
@@ -24,5 +26,9 @@ SceneManager::SceneManager() {
 		std::string str = sc->name;
 		std::cout << str << std::endl;
 	}
+
+}
+
+void SceneManager::SaveScene() {
 
 }
