@@ -23,8 +23,19 @@ int main() {
 
 	std::cout << engine->GetState() << std::endl;
 	
+	SceneManager* sc = engine->sceneManager;
 
-	
+	Scene* currentScene = sc->GetCurrentScene();
+
+	GameObject* cube = new GameObject();
+	GameObject* child = new GameObject();
+
+	cube->AddChild(child);
+
+	currentScene->AddGameObject(cube);
+
+
+	sc->SaveScene();
 	
 	
 	

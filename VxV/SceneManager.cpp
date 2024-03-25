@@ -30,5 +30,5 @@ SceneManager::SceneManager() {
 }
 
 void SceneManager::SaveScene() {
-
+	std::list<GameObject*> go = currentScene->GetGameObjects();
 }
