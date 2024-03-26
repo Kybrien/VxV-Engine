@@ -93,3 +93,20 @@ void GameObject::AddComponent() {
     // Ajoute un nouveau composant de type T
     components.push_back(new T(this));
 }
+
+void GameObject::LoadComponent(Json::Value compJson) {
+
+    Component::Type type ;
+    std::string typeStr = compJson["Type"].asString();
+
+    if (typeStr == "0") {
+        type = Component::Type::Transform;
+    }
+
+
+    switch (type) {
+    case Component::Type::Transform:
+        GetComponent<Transform>()->Load(compJson);
+        break;
+    }
+}

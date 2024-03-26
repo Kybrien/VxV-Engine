@@ -29,6 +29,7 @@ public:
     virtual void Update() {}; // Est appelé à chaque frame
 
     const int GetId() { return id; } // Renvoie l'Id du GameObject
+    void SetId(int id_) { id = id_; }
 
     GameObject* GetChildByName(std::string name); // Rechercher un GameObject enfant du GameObject
     std::vector<Component*> GetComponents();
@@ -44,6 +45,8 @@ public:
 
     template<typename T>
     void AddComponent();
+
+    void LoadComponent(Json::Value compJson);
 
 
 private:

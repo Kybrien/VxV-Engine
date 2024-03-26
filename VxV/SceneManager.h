@@ -34,7 +34,7 @@ public:
 	}
 
 	void SaveScene();
-	void LoadScene(std::string fileDirection);
+	void LoadScene(std::wstring wFileDirection);
 
 	Scene* GetCurrentScene() {
 		return currentScene;

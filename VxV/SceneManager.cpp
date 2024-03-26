@@ -4,10 +4,6 @@
 #include <Windows.h>
 
 
-
-#include <filesystem>
-
-
 #include <fstream>
 
 
@@ -19,31 +15,22 @@ SceneManager* SceneManager::instance = nullptr;
 SceneManager::SceneManager() {
 	instance = this;
 
-
 	//Rechercher les scenes
-	//std::string folderPath = "Saves/Scenes/"; // Spécifiez le chemin du dossier que vous souhaitez parcourir
-
-	//WIN32_FIND_DATA FindFileData;
-	//HANDLE hFind = FindFirstFile((folderPath + "\\*.json").c_str(), &FindFileData);
-
-	//if (hFind != INVALID_HANDLE_VALUE) {
-	//	do {
-	//		if (!(FindFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
-
-	//			wchar_t* wideFileName = FindFileData.cFileName;
-	//			int len = wcslen(wideFileName) + 1;
-	//			char* fileName = new char[len];
-	//			wcstombs(fileName, wideFileName, len);
-
-	//			LoadScene(folderPath + fileName);
-	//		}
-	//	} while (FindNextFile(hFind, &FindFileData) != 0);
-	//	FindClose(hFind);
-	//}
-	//else {
-	//	std::cerr << "Impossible d'ouvrir le dossier." << std::endl;
-	//}
-
+	const wchar_t* directoryPath = L"Saves/Scenes"; // Spécifiez le chemin du dossier que vous souhaitez parcourir 
+	WIN32_FIND_DATA findFileData; 
+	HANDLE hFind = INVALID_HANDLE_VALUE; 
+	std::wstring wildcard = std::wstring(directoryPath) + L"\\*.json";
+	
+	hFind = FindFirstFile(wildcard.c_str(), &findFileData);
+	if (hFind != INVALID_HANDLE_VALUE) { 
+		do {
+			if (!(findFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) { 
+				std::wstring filePath = std::wstring(directoryPath) + L"\\" + findFileData.cFileName;
+				LoadScene(filePath);
+			} 
+		} while (FindNextFile(hFind, &findFileData) != 0); 
+		FindClose(hFind); 
+	}
 
 	
 	// Ajouter une scene s'il n'en existe pas déjà
@@ -70,6 +57,8 @@ void SceneManager::SaveScene() {
 
 	if (outputFile.is_open())
 	{
+		outputFile << "SceneSaveFile" << std::endl;
+
 		Json::Value sceneJson;
 		sceneJson["Name"] = currentScene->name;
 		sceneJson["GameObjects"] = Json::Value(Json::arrayValue);
@@ -85,6 +74,7 @@ void SceneManager::SaveScene() {
 			for (int goChild : go->GetChilds()) {
 				gameObjectJson["Child Ids"].append(goChild);
 			}
+
 
 			gameObjectJson["Components"] = Json::Value(Json::arrayValue);
 
@@ -119,6 +109,77 @@ void SceneManager::SaveScene() {
 
 }
 
-void SceneManager::LoadScene(std::string fileDirection) {
+void SceneManager::LoadScene(std::wstring wFileDirection) {
+
+	// Conversion de wstring en string
+	std::string fileDirection;
+	for (wchar_t wc : wFileDirection) {
+		fileDirection.push_back(static_cast<char>(wc));
+	}
+
+	std::ifstream file(fileDirection);
+
+
+
+	if (file.is_open()) {
+
+		// Vérification que le fichier est bien une save de scene
+		std::string line;
+		std::getline(file, line);
+
+		if (line == "SceneSaveFile") {
+
+			// Lecture du contenu du fichier dans une chaîne de caractères
+			std::string jsonString((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+
+			// Fermeture du fichier
+			file.close();
+
+			// Analyse de la chaîne JSON
+			Json::Value sceneJson;
+			Json::Reader reader;
+			if (!reader.parse(jsonString, sceneJson)) {
+				std::cerr << "Erreur lors de l'analyse du JSON : " << reader.getFormattedErrorMessages() << std::endl;
+			}
+
+
+
+			// Accéder aux données JSON
+			try {
+
+				// Création de la scene
+				Scene* scene = new Scene;
+				currentScene = scene;
+
+				// Recupération des données de la scene
+				scene->name = sceneJson["Name"].asString();
+
+				// Récupération des données des GameObjects
+				for (const Json::Value gameObjectJson : sceneJson["GameObjects"])
+				{
+					GameObject* go = new GameObject();
+					go->SetId(gameObjectJson["Id"].asInt());
+					go->name = gameObjectJson["Name"].asString();
+					go->isChild = gameObjectJson["Is Child"].asBool();
+					
+					// On skip les child pour le moment, le temps que tous les gameObject soient créés
+
+					for (const Json::Value compJson : gameObjectJson["Components"]) {
+						go->LoadComponent(compJson);
+					}
+				}
+				
+			} 
+			catch (const std::exception& e) {
+				std::cerr << "Erreur lors du chargement du fichier " + fileDirection << std::endl;
+			}
+
+
+			
+		}
+	}
+	else {
+		std::cerr << "Erreur lors de l'ouverture du fichier ! : " + fileDirection << std::endl;
+	}
 
 }

@@ -15,9 +15,16 @@ public:
 	};
 
 	virtual void Save(Json::Value &compJson) = 0;
-	virtual void Load() = 0;
+	virtual void Load(Json::Value& compJson) = 0;
 
-	std::string name;
+	
+
+	// Enumeration de tous les types de Components
+	enum Type {
+		Transform,
+	};
+
+	Type type;
 
 protected:
 	GameObject* linkedGameObject;
