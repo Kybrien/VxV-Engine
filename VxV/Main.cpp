@@ -55,7 +55,7 @@ int main() {
 	glDepthFunc(GL_LESS);
 
 	// Cull triangles which normal is not towards the camera
-	//glEnable(GL_CULL_FACE);
+	glEnable(GL_CULL_FACE);
 
 	GLuint VertexArrayID;
 	glGenVertexArrays(1, &VertexArrayID);
@@ -206,12 +206,12 @@ int main() {
 		-1.0f,-1.0f, 1.0f,
 		1.0f, -1.0f,1.0f,
 		-1.0f,-1.0f,-1.0f,
+		-1.0f,1.0f, 1.0f,
+		-1.0f,-1.0f, 1.0f,
 		-1.0f,-1.0f,-1.0f,
 		-1.0f,-1.0f, 1.0f,
-		-1.0f,1.0f, 1.0f,
-		-1.0f,1.0f, 1.0f,
 		1.0f, -1.0f,1.0f,
-		-1.0f,-1.0f, 1.0f
+		-1.0f,1.0f, 1.0f,
 
 	};
 
