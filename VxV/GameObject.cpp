@@ -21,10 +21,26 @@ GameObject::GameObject(std::string name_) {
     sceneManager = SceneManager::GetInstance();
     currentScene = sceneManager->GetCurrentScene();
 
-    id = currentScene->GetGameObjects().size();
 
-    for (int i; i < currentScene->GetGameObjects().size(); i++) {
 
+    currentScene->OrganizeGameObjects();
+    std::vector<GameObject*> goList = currentScene->GetGameObjects();
+
+
+    id = -1;
+
+    for (int i = 0; i < goList.size(); i++) {
+        if (goList[i]->GetId() != i) {
+            id = i;
+            break;
+        }
+    }
+
+    if (goList.empty()) {
+        id = 0;
+    }
+    else if (id == -1) {
+        id = goList.size();
     }
 
 
@@ -40,6 +56,8 @@ void GameObject::AddChild(GameObject* go)
     go->GetComponent<Transform>()->position.y -= GetComponent<Transform>()->position.y;
     go->GetComponent<Transform>()->position.z -= GetComponent<Transform>()->position.z;
     go->origin = origin;
+
+    go->isChild = true;
 
     childObjects.push_back(go->GetId());
 }

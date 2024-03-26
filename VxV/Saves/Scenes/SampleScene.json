@@ -31,6 +31,7 @@
 				}
 			],
 			"Id" : 0,
+			"Is Child" : false,
 			"Name" : "cube"
 		},
 		{
@@ -60,6 +61,7 @@
 				}
 			],
 			"Id" : 1,
+			"Is Child" : true,
 			"Name" : "cercle"
 		},
 		{
@@ -92,6 +94,7 @@
 				}
 			],
 			"Id" : 2,
+			"Is Child" : true,
 			"Name" : "child"
 		}
 	],

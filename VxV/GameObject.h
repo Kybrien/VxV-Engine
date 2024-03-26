@@ -20,6 +20,7 @@ public:
     GameObject(std::string name_ = "GO");
 
     glm::vec3 origin;
+    bool isChild = false;
 
 
     std::string name; // Nom du GO

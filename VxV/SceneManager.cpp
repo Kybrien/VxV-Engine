@@ -1,6 +1,13 @@
 #include "SceneManager.h"
 #include <json.h>
 
+#include <Windows.h>
+
+
+
+#include <filesystem>
+
+
 #include <fstream>
 
 
@@ -8,13 +15,35 @@
 SceneManager* SceneManager::instance = nullptr;
 
 
+
 SceneManager::SceneManager() {
 	instance = this;
 
 
 	//Rechercher les scenes
-	//Les foutre dans la liste
-	// 
+	//std::string folderPath = "Saves/Scenes/"; // Spécifiez le chemin du dossier que vous souhaitez parcourir
+
+	//WIN32_FIND_DATA FindFileData;
+	//HANDLE hFind = FindFirstFile((folderPath + "\\*.json").c_str(), &FindFileData);
+
+	//if (hFind != INVALID_HANDLE_VALUE) {
+	//	do {
+	//		if (!(FindFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
+
+	//			wchar_t* wideFileName = FindFileData.cFileName;
+	//			int len = wcslen(wideFileName) + 1;
+	//			char* fileName = new char[len];
+	//			wcstombs(fileName, wideFileName, len);
+
+	//			LoadScene(folderPath + fileName);
+	//		}
+	//	} while (FindNextFile(hFind, &FindFileData) != 0);
+	//	FindClose(hFind);
+	//}
+	//else {
+	//	std::cerr << "Impossible d'ouvrir le dossier." << std::endl;
+	//}
+
 
 	
 	// Ajouter une scene s'il n'en existe pas déjà
@@ -35,6 +64,7 @@ void SceneManager::SaveScene() {
 	
 	std::ofstream outputFile("Saves/Scenes/" + currentScene->name + ".json");
 	Json::StreamWriterBuilder builder;
+	currentScene->OrganizeGameObjects();
 
 
 
@@ -49,6 +79,7 @@ void SceneManager::SaveScene() {
 
 			gameObjectJson["Id"] = go->GetId();
 			gameObjectJson["Name"] = go->name;
+			gameObjectJson["Is Child"] = go->isChild;
 			gameObjectJson["Child Ids"] = Json::Value(Json::arrayValue);
 
 			for (int goChild : go->GetChilds()) {
@@ -85,5 +116,9 @@ void SceneManager::SaveScene() {
 	else {
 		std::cerr << "Erreur lors de l'ouverture du fichier." << std::endl;
 	}
+
+}
+
+void SceneManager::LoadScene(std::string fileDirection) {
 
 }
