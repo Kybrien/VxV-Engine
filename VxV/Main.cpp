@@ -47,7 +47,11 @@ int main() {
 
 	// Set the mouse at the center of the screen
 	glfwPollEvents();
-	glfwSetCursorPos(window, 1024 / 2, 768 / 2);
+	// Reset mouse position for next frame
+	int width, height;
+	glfwGetWindowSize(window, &width, &height);
+	glfwSetCursorPos(window, width / 2, height / 2);
+	glfwSetCursorPos(window, width / 2, height / 2);
 
 	// Enable depth test
 	glEnable(GL_DEPTH_TEST);
@@ -171,7 +175,7 @@ int main() {
 		1.0f, 0.737f, 0.85f,
 		1.0f, 0.737f, 0.85f,
 		1.0f, 0.737f, 0.85f,
-		1.0f, 1.f, 1.f,
+		0.0f, 0.0f, 0.0f,
 		0.0f, 0.0f, 0.0f,
 	};
 
@@ -203,15 +207,15 @@ int main() {
 		-1.0f, 1.0f, 1.0f,
 		1.0f, -1.0f,1.0f,
 		-1.0f,-1.0f,-1.0f,
-		-1.0f,-1.0f, 1.0f,
-		1.0f, -1.0f,1.0f,
 		-1.0f,-1.0f,-1.0f,
-		-1.0f,1.0f, 1.0f,
+		1.0f, -1.0f,1.0f,
 		-1.0f,-1.0f, 1.0f,
 		-1.0f,-1.0f,-1.0f,
 		-1.0f,-1.0f, 1.0f,
+		-1.0f,1.0f, 1.0f,
 		1.0f, -1.0f,1.0f,
 		-1.0f,1.0f, 1.0f,
+		-1.0f,-1.0f, 1.0f,
 
 	};
 
@@ -290,6 +294,12 @@ int main() {
 		glDisableVertexAttribArray(1);
 		glBindVertexArray(0);
 
+		// Compute the MVP matrix from keyboard and mouse input
+		computeMatricesFromInputs(window);
+		glm::mat4 ProjectionMatrix2 = getProjectionMatrix();
+		glm::mat4 ViewMatrix2 = getViewMatrix();
+		glm::mat4 ModelMatrix2 = model2;
+		glm::mat4 MVP2 = ProjectionMatrix2 * ViewMatrix2 * ModelMatrix2;
 
 		glBindVertexArray(VAO);
 
