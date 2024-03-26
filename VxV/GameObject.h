@@ -3,19 +3,21 @@
 #include "Component.h"  // Assurez-vous de définir une classe ou une structure de base Component
 #include "Transform.h"
 #include <iostream>
-#include <list>
+#include <vector>
 #include <string>
+
+class SceneManager;
+class Scene;
+
 
 class GameObject {
 public:
 
-    std::list<Component*> components;
+    std::vector<Component*> components;
+    SceneManager* sceneManager;
+    Scene* currentScene;
 
-    GameObject() {
-        //components.push_back(new Transform(this));
-        // Reucp scene avec manager
-        // origin = scene.origin 
-    }
+    GameObject(std::string name_ = "GO");
 
     glm::vec3 origin;
 
@@ -28,6 +30,8 @@ public:
     const int GetId() { return id; } // Renvoie l'Id du GameObject
 
     GameObject* GetChildByName(std::string name); // Rechercher un GameObject enfant du GameObject
+    std::vector<Component*> GetComponents();
+    std::vector<int> GetChilds();
 
 
     void AddChild(GameObject* go);
@@ -43,6 +47,5 @@ public:
 
 private:
     int id; // ID du GO
-
-    std::list<GameObject*> childObjects; // Liste des enfants
+    std::vector<int> childObjects; // Liste des enfants
 };

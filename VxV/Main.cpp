@@ -5,7 +5,7 @@
 #include <GLFW/glfw3.h>
 #include <GLM/glm.hpp>
 
-#include <loadShader.hpp>
+#include "loadShader.hpp"
 
 
 
@@ -27,13 +27,14 @@ int main() {
 
 	Scene* currentScene = sc->GetCurrentScene();
 
-	GameObject* cube = new GameObject();
-	GameObject* child = new GameObject();
+	GameObject* cube = new GameObject("cube");
+	GameObject* cercle = new GameObject("cercle");
+	cercle->GetComponent<Transform>()->position = glm::vec3(10, 0, 0);
+
+	GameObject* child = new GameObject("child");
 
 	cube->AddChild(child);
-
-	currentScene->AddGameObject(cube);
-
+	child->AddChild(cercle);
 
 	sc->SaveScene();
 	
@@ -93,6 +94,8 @@ int main() {
 	glGenBuffers(1, &vertexbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+
+
 
 	// Create and compile our GLSL program from the shaders
 	GLuint programID = LoadShaders("SimpleVertexShader.MIKU", "SimpleFragmentShader.VALORANT");

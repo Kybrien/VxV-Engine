@@ -1,4 +1,5 @@
 #pragma once
+#include "string"
 
 class GameObject;
 
@@ -12,8 +13,10 @@ public:
 		linkedGameObject = go;
 	};
 
-	virtual void Save() = 0;
+	virtual std::string Save() = 0;
 	virtual void Load() = 0;
+
+	std::string name;
 
 protected:
 	GameObject* linkedGameObject;

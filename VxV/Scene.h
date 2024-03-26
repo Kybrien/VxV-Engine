@@ -6,7 +6,8 @@ class SceneManager;
 
 class Scene {
 private:
-	std::list<GameObject*> gameObjects;
+	std::vector<GameObject*> gameObjects;
+	std::vector<GameObject*> allGameObjects;
 	SceneManager* sceneManager;
 
 public:
@@ -15,7 +16,7 @@ public:
 	std::string name;
 	glm::vec3 origin;
 
-	std::list<GameObject*> GetGameObjects() {
+	std::vector<GameObject*> GetGameObjects() {
 		return gameObjects;
 	}
 

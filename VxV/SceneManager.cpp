@@ -1,6 +1,8 @@
 #include "SceneManager.h"
 #include <json.h>
 
+#include <fstream>
+
 
 
 SceneManager* SceneManager::instance = nullptr;
@@ -14,7 +16,7 @@ SceneManager::SceneManager() {
 	//Les foutre dans la liste
 	// 
 
-
+	
 	// Ajouter une scene s'il n'en existe pas déjà
 	if (scenes.empty()) {
 		new Scene;
@@ -30,5 +32,34 @@ SceneManager::SceneManager() {
 }
 
 void SceneManager::SaveScene() {
-	std::list<GameObject*> go = currentScene->GetGameObjects();
+
+	Json::Value root;
+
+	
+
+
+	std::ofstream outputFile("output.json");
+	if (outputFile.is_open())
+	{
+		std::vector<GameObject*> listGO = currentScene->GetGameObjects();
+		outputFile << currentScene->name << std::endl;
+
+		for (GameObject* go : currentScene->GetGameObjects()) {
+			outputFile << go->name << std::endl;
+			outputFile << go->GetId() << std::endl;
+
+			for (Component* comp : go->GetComponents()) {
+				outputFile << comp->Save();
+			}
+		}
+
+	
+		outputFile.close();
+		std::cout << "Les données ont été écrites dans le fichier output.json avec succès." << std::endl;
+	}
+	else {
+		std::cerr << "Erreur lors de l'ouverture du fichier." << std::endl;
+	}
+
+
 }

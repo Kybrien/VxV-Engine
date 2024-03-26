@@ -1,13 +1,14 @@
 #pragma once
 #include <iostream>
-#include <list>
+#include <vector>
 #include <string>
 
 #include "Scene.h"
+#include <fstream>
 
 class SceneManager {
 private:
-	std::list<Scene*> scenes;
+	std::vector<Scene*> scenes;
 	static SceneManager* instance;
 
 	Scene* currentScene;
@@ -28,7 +29,7 @@ public:
 		scenes.push_back(scene);
 	}
 
-	std::list<Scene*> GetScenes() {
+	std::vector<Scene*> GetScenes() {
 		return scenes;
 	}
 

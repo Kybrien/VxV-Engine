@@ -1,22 +1,40 @@
 #include "GameObject.h"
 #include "Debug.h"
+#include "SceneManager.h"
 
 
 GameObject* GameObject::GetChildByName(std::string name) {
-    for (GameObject* go : childObjects)
+    for (int goID : childObjects)
     {
-        if (go && go->name == name) return go;
+        for (GameObject* go : currentScene->GetGameObjects()) {
+            if (go->GetId() == goID) return go;
+        }
     }
 
     return nullptr;
 }
 
+GameObject::GameObject(std::string name_) {
+    name = name_;
+    components.push_back(new Transform(this));
+
+    sceneManager = SceneManager::GetInstance();
+    currentScene = sceneManager->GetCurrentScene();
+
+    id = currentScene->GetGameObjects().size();
+    currentScene->AddGameObject(this);
+    // Reucp scene avec manager
+    // origin = scene.origin 
+}
+
 void GameObject::AddChild(GameObject* go)
 {
-    go->GetComponent<Transform>()->position -= GetComponent<Transform>()->position;
+    go->GetComponent<Transform>()->position.x -= GetComponent<Transform>()->position.x;
+    go->GetComponent<Transform>()->position.y -= GetComponent<Transform>()->position.y;
+    go->GetComponent<Transform>()->position.z -= GetComponent<Transform>()->position.z;
     go->origin = origin;
 
-    childObjects.push_back(go);
+    childObjects.push_back(go->GetId());
 }
 
 // Implémentation de GetComponent pour d'autres types de composants
@@ -31,6 +49,14 @@ T* GameObject::GetComponent() {
     }
 
     return nullptr; // Aucun composant de type T trouvé
+}
+
+std::vector<Component*> GameObject::GetComponents() {
+    return components;
+}
+
+std::vector<int> GameObject::GetChilds() {
+    return childObjects;
 }
 
 
