@@ -22,6 +22,13 @@ GameObject::GameObject(std::string name_) {
     currentScene = sceneManager->GetCurrentScene();
 
     id = currentScene->GetGameObjects().size();
+
+    for (int i; i < currentScene->GetGameObjects().size(); i++) {
+
+    }
+
+
+
     currentScene->AddGameObject(this);
     // Reucp scene avec manager
     // origin = scene.origin 

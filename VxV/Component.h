@@ -1,5 +1,6 @@
 #pragma once
 #include "string"
+#include "json.h"
 
 class GameObject;
 
@@ -13,7 +14,7 @@ public:
 		linkedGameObject = go;
 	};
 
-	virtual std::string Save() = 0;
+	virtual void Save(Json::Value &compJson) = 0;
 	virtual void Load() = 0;
 
 	std::string name;

@@ -1,12 +1,13 @@
 #pragma once
 #include "Component.h"
 #include <glm/glm.hpp>
+
 using namespace glm;
 class Transform : public Component {
 public:
-    glm::vec3 position;
-    glm::vec3 rotation;
-    glm::vec3 scale;
+	glm::vec3 position;
+	glm::vec3 rotation;
+	glm::vec3 scale;
 
 
 
@@ -17,26 +18,27 @@ public:
 
 
 	void Load() override {
-	
-	}
-	
-	std::string Save() override {
 
-		std::string str = "	" +  name + "\n";
-		str += "	Position : {" + ReturnVec(position) + "}\n";
-		str += "	Rotation : {" + ReturnVec(rotation) + "}\n";
-		str += "	Scale : {" + ReturnVec(scale) + "}\n";
-		
-
-
-		return str;
-
-		
 	}
 
-	std::string ReturnVec(glm::vec3 vec) {
-		std::string string = std::to_string(vec.x) + " ," + std::to_string(vec.y) + " ," + std::to_string(vec.z);
+	void Save(Json::Value& compJson) override {
+		compJson["Name"] = name;
 
-		return string;
+		compJson["Position"] = Json::Value(Json::arrayValue);
+		SaveVec3(compJson["Position"], position);
+
+		compJson["Rotation"] = Json::Value(Json::arrayValue);
+		SaveVec3(compJson["Rotation"], rotation);
+
+		compJson["Scale"] = Json::Value(Json::arrayValue);
+		SaveVec3(compJson["Scale"], scale);
+	}
+
+
+private:
+	void SaveVec3(Json::Value& compJson, glm::vec3 vec) {
+		compJson.append(vec.x);
+		compJson.append(vec.y);
+		compJson.append(vec.z);
 	}
 };

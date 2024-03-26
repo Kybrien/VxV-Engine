@@ -32,34 +32,58 @@ SceneManager::SceneManager() {
 }
 
 void SceneManager::SaveScene() {
-
-	Json::Value root;
-
 	
+	std::ofstream outputFile("Saves/Scenes/" + currentScene->name + ".json");
+	Json::StreamWriterBuilder builder;
 
 
-	std::ofstream outputFile("output.json");
+
 	if (outputFile.is_open())
 	{
-		std::vector<GameObject*> listGO = currentScene->GetGameObjects();
-		outputFile << currentScene->name << std::endl;
+		Json::Value sceneJson;
+		sceneJson["Name"] = currentScene->name;
+		sceneJson["GameObjects"] = Json::Value(Json::arrayValue);
 
 		for (GameObject* go : currentScene->GetGameObjects()) {
-			outputFile << go->name << std::endl;
-			outputFile << go->GetId() << std::endl;
+			Json::Value gameObjectJson;
 
-			for (Component* comp : go->GetComponents()) {
-				outputFile << comp->Save();
+			gameObjectJson["Id"] = go->GetId();
+			gameObjectJson["Name"] = go->name;
+			gameObjectJson["Child Ids"] = Json::Value(Json::arrayValue);
+
+			for (int goChild : go->GetChilds()) {
+				gameObjectJson["Child Ids"].append(goChild);
 			}
-		}
 
+			gameObjectJson["Components"] = Json::Value(Json::arrayValue);
+
+			for (Component* comp : go->GetComponents())
+			{
+				Json::Value compJson;
+				comp->Save(compJson);
+				gameObjectJson["Components"].append(compJson);
+			}
+
+
+
+			sceneJson["GameObjects"].append(gameObjectJson);
+		}
 	
+
+
+		// Conversion de l'objet JSON en une chaîne JSON formatée
+		std::string jsonString = Json::writeString(builder, sceneJson);
+
+		outputFile << jsonString << std::endl << std::endl;
+
+
+
+
 		outputFile.close();
 		std::cout << "Les données ont été écrites dans le fichier output.json avec succès." << std::endl;
 	}
 	else {
 		std::cerr << "Erreur lors de l'ouverture du fichier." << std::endl;
 	}
-
 
 }
