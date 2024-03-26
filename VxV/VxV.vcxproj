@@ -149,6 +149,7 @@
     <ClCompile Include="loadShader.cpp" />
     <ClCompile Include="loadShader.hpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="SimpleFragmentShader.VALORANT" />
@@ -156,6 +157,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controls.hpp" />
+    <ClInclude Include="texture.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Downloads\uvtemplate.DDS" />
+    <Image Include="uvtemplate.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

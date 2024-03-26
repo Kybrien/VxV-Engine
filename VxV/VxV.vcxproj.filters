@@ -24,9 +24,31 @@
     <ClCompile Include="loadShader.hpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="controls.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="SimpleVertexShader.MIKU" />
     <Text Include="SimpleFragmentShader.VALORANT" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="controls.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="uvtemplate.bmp">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\uvtemplate.DDS">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
   </ItemGroup>
 </Project>
