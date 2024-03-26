@@ -72,7 +72,7 @@ int main() {
 
 	// Camera matrix
 	glm::mat4 View = glm::lookAt(
-		glm::vec3(4, 5, 10), // Camera is at (4,3,3), in World Space
+		glm::vec3(9, 5, 10), // Camera is at (4,3,3), in World Space
 		glm::vec3(0, 0, 0), // and looks at the origin
 		glm::vec3(0, 1, 0)  // Head is up (set to 0,-1,0 to look upside-down)
 	);
@@ -194,19 +194,38 @@ int main() {
 	glBindVertexArray(VAO);
 
 	glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(3.f, 0.0f, 0.0f));
-	glm::mat4 myRotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(90.f), glm::vec3(1.0f, 0.0f, 0.0));
-	glm::mat4 model2 = translationMatrix * myRotationMatrix;
+	//glm::mat4 myRotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(90.f), glm::vec3(1.0f, 0.0f, 0.0));
+	glm::mat4 model2 = translationMatrix ;
 	glm::mat4 MVP2 = Projection * View * model2;
 
 	static const GLfloat g_vertex_buffer_data2[] = {
 		// Positions        
-		-2.0f,-2.0f,-2.0f,
-		-2.0f,-2.0f, 2.0f,
-		-2.0f, 2.0f, 2.0f
+		-1.0f, 1.0f, 1.0f,
+		1.0f, -1.0f,1.0f,
+		-1.0f,-1.0f,-1.0f,
+		-1.0f,-1.0f, 1.0f,
+		1.0f, -1.0f,1.0f,
+		-1.0f,-1.0f,-1.0f,
+		-1.0f,-1.0f,-1.0f,
+		-1.0f,-1.0f, 1.0f,
+		-1.0f,1.0f, 1.0f,
+		-1.0f,1.0f, 1.0f,
+		1.0f, -1.0f,1.0f,
+		-1.0f,-1.0f, 1.0f
+
 	};
 
 	static const GLfloat g_color_buffer_data2[] = {
 		// Positions        
+		1.0f, 0.0f, 0.0f,
+		0.0f, 1.0f, 0.0f,
+		0.0f, 0.0f, 1.0f,
+		1.0f, 0.0f, 0.0f,
+		0.0f, 1.0f, 0.0f,
+		0.0f, 0.0f, 1.0f,
+		1.0f, 0.0f, 0.0f,
+		0.0f, 1.0f, 0.0f,
+		0.0f, 0.0f, 1.0f,
 		1.0f, 0.0f, 0.0f,
 		0.0f, 1.0f, 0.0f,
 		0.0f, 0.0f, 1.0f
@@ -299,7 +318,7 @@ int main() {
 		);
 
 		// Draw the triangle !
-		glDrawArrays(GL_TRIANGLES, 0, 1 * 3); // 12*3 indices starting at 0 -> 12 triangles
+		glDrawArrays(GL_TRIANGLES, 0, 4 * 3); // 12*3 indices starting at 0 -> 12 triangles
 
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
