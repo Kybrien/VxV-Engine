@@ -8,23 +8,35 @@ class ObjectPool
 private:
 	std::vector<T*> m_pool;
 	std::vector<T*> m_activeObjects;
+	typedef memory_pool<ObjectPool, mempool_malloc<ObjectPool>> MemoryPool;
+	static m_MemoryPool memP;
 
 public:
 	ObjectPool(int poolSize)
 	{
-		for (int i = 0; i < poolSize; i++) {
+		for (int i = 0; i < poolSize; i++) 
+		{
 			m_pool.push_back(new T());
 		}
 	}
 	~ObjectPool()
 	{
-		for (T* obj : m_pool) {
+		for (T* obj : m_pool) 
+		{
 			delete obj;
 		}
 		m_pool.clear();
 	}
 
-	T* GetObjectFromPool() {
+
+	//Get an object from the pool
+	T* GetObject() {
+		for (T* obj : m_activeObjects) {
+			// définir une méthode de comparaison appropriée pour les objets
+			if (/* Condition pour vérifier si l'objet est déjà actif */) {
+				return obj;
+			}
+		}
 		if (m_pool.empty()) {
 			// Si la pool est vide, créer un nouvel objet
 			T* newObj = new T();
