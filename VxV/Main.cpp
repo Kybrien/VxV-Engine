@@ -12,6 +12,7 @@ using namespace glm;
 
 #include <controls.hpp>
 #include <texture.hpp>
+#include <objloader.hpp>
 
 int main() {
 	if (!glfwInit()) {
@@ -98,7 +99,7 @@ int main() {
 
 	// Load the texture using any two methods
 	//GLuint Texture = loadBMP_custom("uvtemplate.bmp");
-	GLuint Texture = loadDDS("uvtemplate.DDS");
+	GLuint Texture = loadDDS("uvmap.DDS");
 
 	// Get a handle for our "myTextureSampler" uniform
 	GLuint TextureID = glGetUniformLocation(programID, "myTextureSampler");
@@ -107,46 +108,51 @@ int main() {
 	//// This is done in the main loop since each model will have a different MVP matrix (At least for the M part)
 	//glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
 
-	// Our vertices. Tree consecutive floats give a 3D vertex; Three consecutive vertices give a triangle.
-	// A cube has 6 faces with 2 triangles each, so this makes 6*2=12 triangles, and 12*3 vertices
-	static const GLfloat g_vertex_buffer_data[] = {
-		-1.0f,-1.0f,-1.0f,
-		-1.0f,-1.0f, 1.0f,
-		-1.0f, 1.0f, 1.0f,
-		 1.0f, 1.0f,-1.0f,
-		-1.0f,-1.0f,-1.0f,
-		-1.0f, 1.0f,-1.0f,
-		 1.0f,-1.0f, 1.0f,
-		-1.0f,-1.0f,-1.0f,
-		 1.0f,-1.0f,-1.0f,
-		 1.0f, 1.0f,-1.0f,
-		 1.0f,-1.0f,-1.0f,
-		-1.0f,-1.0f,-1.0f,
-		-1.0f,-1.0f,-1.0f,
-		-1.0f, 1.0f, 1.0f,
-		-1.0f, 1.0f,-1.0f,
-		 1.0f,-1.0f, 1.0f,
-		-1.0f,-1.0f, 1.0f,
-		-1.0f,-1.0f,-1.0f,
-		-1.0f, 1.0f, 1.0f,
-		-1.0f,-1.0f, 1.0f,
-		 1.0f,-1.0f, 1.0f,
-		 1.0f, 1.0f, 1.0f,
-		 1.0f,-1.0f,-1.0f,
-		 1.0f, 1.0f,-1.0f,
-		 1.0f,-1.0f,-1.0f,
-		 1.0f, 1.0f, 1.0f,
-		 1.0f,-1.0f, 1.0f,
-		 1.0f, 1.0f, 1.0f,
-		 1.0f, 1.0f,-1.0f,
-		-1.0f, 1.0f,-1.0f,
-		 1.0f, 1.0f, 1.0f,
-		-1.0f, 1.0f,-1.0f,
-		-1.0f, 1.0f, 1.0f,
-		 1.0f, 1.0f, 1.0f,
-		-1.0f, 1.0f, 1.0f,
-		 1.0f,-1.0f, 1.0f
-	};
+	//// Our vertices. Tree consecutive floats give a 3D vertex; Three consecutive vertices give a triangle.
+	//// A cube has 6 faces with 2 triangles each, so this makes 6*2=12 triangles, and 12*3 vertices
+	//static const GLfloat g_vertex_buffer_data[] = {
+	//	-1.0f,-1.0f,-1.0f,
+	//	-1.0f,-1.0f, 1.0f,
+	//	-1.0f, 1.0f, 1.0f,
+	//	 1.0f, 1.0f,-1.0f,
+	//	-1.0f,-1.0f,-1.0f,
+	//	-1.0f, 1.0f,-1.0f,
+	//	 1.0f,-1.0f, 1.0f,
+	//	-1.0f,-1.0f,-1.0f,
+	//	 1.0f,-1.0f,-1.0f,
+	//	 1.0f, 1.0f,-1.0f,
+	//	 1.0f,-1.0f,-1.0f,
+	//	-1.0f,-1.0f,-1.0f,
+	//	-1.0f,-1.0f,-1.0f,
+	//	-1.0f, 1.0f, 1.0f,
+	//	-1.0f, 1.0f,-1.0f,
+	//	 1.0f,-1.0f, 1.0f,
+	//	-1.0f,-1.0f, 1.0f,
+	//	-1.0f,-1.0f,-1.0f,
+	//	-1.0f, 1.0f, 1.0f,
+	//	-1.0f,-1.0f, 1.0f,
+	//	 1.0f,-1.0f, 1.0f,
+	//	 1.0f, 1.0f, 1.0f,
+	//	 1.0f,-1.0f,-1.0f,
+	//	 1.0f, 1.0f,-1.0f,
+	//	 1.0f,-1.0f,-1.0f,
+	//	 1.0f, 1.0f, 1.0f,
+	//	 1.0f,-1.0f, 1.0f,
+	//	 1.0f, 1.0f, 1.0f,
+	//	 1.0f, 1.0f,-1.0f,
+	//	-1.0f, 1.0f,-1.0f,
+	//	 1.0f, 1.0f, 1.0f,
+	//	-1.0f, 1.0f,-1.0f,
+	//	-1.0f, 1.0f, 1.0f,
+	//	 1.0f, 1.0f, 1.0f,
+	//	-1.0f, 1.0f, 1.0f,
+	//	 1.0f,-1.0f, 1.0f
+	//};
+	// Read our .obj file
+	std::vector< glm::vec3 > vertices;
+	std::vector< glm::vec2 > uvs;
+	std::vector< glm::vec3 > normals; // Won't be used at the moment.
+	bool res = loadOBJ("untitled.obj", vertices, uvs, normals);
 	//// One color for each vertex. They were generated randomly.
 	//static const GLfloat g_color_buffer_data[] = {
 	//	1.0f, 0.737f, 0.85f,
@@ -188,7 +194,7 @@ int main() {
 	//};
 
 	// Two UV coordinatesfor each vertex. They were created with Blender.
-	static const GLfloat g_uv_buffer_data[] = {
+	/*static const GLfloat g_uv_buffer_data[] = {
 		0.000059f, 1.0f - 0.000004f,
 		0.000103f, 1.0f - 0.336048f,
 		0.335973f, 1.0f - 0.335903f,
@@ -225,16 +231,17 @@ int main() {
 		0.667969f, 1.0f - 0.671889f,
 		1.000004f, 1.0f - 0.671847f,
 		0.667979f, 1.0f - 0.335851f
-	};
+	};*/
 	GLuint vertexbuffer;
 	glGenBuffers(1, &vertexbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
 
 	GLuint uvbuffer;
 	glGenBuffers(1, &uvbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(g_uv_buffer_data), g_uv_buffer_data, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec2), &uvs[0], GL_STATIC_DRAW);
 
 	//GLuint colorbuffer;
 	//glGenBuffers(1, &colorbuffer);

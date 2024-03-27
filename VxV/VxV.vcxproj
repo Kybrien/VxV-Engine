@@ -149,6 +149,7 @@
     <ClCompile Include="loadShader.cpp" />
     <ClCompile Include="loadShader.hpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="objloader.cpp" />
     <ClCompile Include="texture.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -157,9 +158,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controls.hpp" />
+    <ClInclude Include="objloader.hpp" />
     <ClInclude Include="texture.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\..\Downloads\uvmap.DDS" />
     <Image Include="..\..\..\..\Downloads\uvtemplate.DDS" />
     <Image Include="uvtemplate.bmp" />
   </ItemGroup>
