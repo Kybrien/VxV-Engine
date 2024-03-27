@@ -1,29 +1,23 @@
 #pragma once
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 
+#include "Manager.h"
 #include "Scene.h"
-#include <fstream>
 
-class SceneManager {
+class SceneManager : public Manager {
 private:
 	std::vector<Scene*> scenes;
-	static SceneManager* instance;
 
 	Scene* currentScene;
 
 
 public:
 
-	SceneManager();
+	SceneManager(Manager* manager);
 
-	static SceneManager* GetInstance()
-	{
-		if (!instance)
-			instance = new SceneManager();
-		return instance;
-	}
+	
 
 	void AddScene(Scene* scene) {
 		scenes.push_back(scene);
@@ -33,8 +27,8 @@ public:
 		return scenes;
 	}
 
-	void SaveScene();
-	void LoadScene(std::wstring wFileDirection);
+	void Save() override;
+	void Load(std::wstring wFileDirection) override;
 
 	Scene* GetCurrentScene() {
 		return currentScene;

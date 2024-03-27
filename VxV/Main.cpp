@@ -9,6 +9,12 @@
 
 
 
+
+
+
+
+
+
 #include "Engine.h"
 
 
@@ -20,10 +26,11 @@ int main() {
 	// ---------------------------------- Autres Tests ------------------------- //
 	Engine* engine = new Engine();
 	engine->Init();
-
-	std::cout << engine->GetState() << std::endl;
 	
-	SceneManager* sc = engine->sceneManager;
+	
+	std::cout << engine->GetState() << std::endl;
+
+	SceneManager* sc = engine->manager->GetManager<SceneManager>();
 
 	Scene* currentScene = sc->GetCurrentScene();
 
@@ -38,11 +45,7 @@ int main() {
 	cube->AddChild(child);
 	child->AddChild(cercle);
 
-	sc->SaveScene();
-	
-	
-	
-	
+	sc->Save();
 	
 	
 	
