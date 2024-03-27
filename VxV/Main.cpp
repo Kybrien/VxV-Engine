@@ -256,7 +256,7 @@ int main() {
 	glGenVertexArrays(1, &VAO);
 	glBindVertexArray(VAO);
 
-	glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(3.f, 0.0f, 0.0f));
+	glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.f, 0.0f, -5.0f));
 	//glm::mat4 myRotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(90.f), glm::vec3(1.0f, 0.0f, 0.0));
 	glm::mat4 model2 = translationMatrix ;
 	glm::mat4 MVP2 = Projection * View * model2;
@@ -320,7 +320,7 @@ int main() {
 		computeMatricesFromInputs(window);
 		glm::mat4 ProjectionMatrix = getProjectionMatrix();
 		glm::mat4 ViewMatrix = getViewMatrix();
-		glm::mat4 ModelMatrix = glm::mat4(1.0);
+		glm::mat4 ModelMatrix = translationMatrix;
 		glm::mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
 		
 		glBindVertexArray(VertexArrayID);
@@ -329,6 +329,10 @@ int main() {
 		glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
 		glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &ModelMatrix[0][0]);
 		glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &ViewMatrix[0][0]);
+
+		glm::vec3 lightPos = glm::vec3(4, 4, 4);
+		glUniform3f(LightID, lightPos.x, lightPos.y, lightPos.z);
+
 		// 1st attribute buffer : vertices
 		// Bind our texture in Texture Unit 0
 		glActiveTexture(GL_TEXTURE0);
