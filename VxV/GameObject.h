@@ -2,6 +2,7 @@
 #include <memory>
 #include "Component.h"  // Assurez-vous de définir une classe ou une structure de base Component
 #include "Transform.h"
+#include "Script.h"
 #include <iostream>
 #include <vector>
 #include <string>

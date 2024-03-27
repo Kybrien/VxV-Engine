@@ -17,6 +17,7 @@ GameObject* GameObject::GetChildByName(std::string name) {
 GameObject::GameObject(std::string name_) {
     name = name_;
     components.push_back(new Transform(this));
+    components.push_back(new Script(this));
 
     sceneManager = SceneManager::GetInstance();
     currentScene = sceneManager->GetCurrentScene();
@@ -102,11 +103,20 @@ void GameObject::LoadComponent(Json::Value compJson) {
     if (typeStr == "0") {
         type = Component::Type::Transform;
     }
+    else if (typeStr == "1") {
+        type = Component::Type::Mesh_renderer;
+    }
+    else if (typeStr == "2") {
+        type = Component::Type::Script;
+    }
 
 
     switch (type) {
     case Component::Type::Transform:
         GetComponent<Transform>()->Load(compJson);
+        break;
+    case Component::Type::Script:
+        GetComponent<Script>()->Load(compJson);
         break;
     }
 }

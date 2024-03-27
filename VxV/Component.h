@@ -22,6 +22,8 @@ public:
 	// Enumeration de tous les types de Components
 	enum Type {
 		Transform,
+		Mesh_renderer,
+		Script
 	};
 
 	Type type;
