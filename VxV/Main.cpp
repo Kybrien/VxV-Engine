@@ -152,7 +152,7 @@ int main() {
 	std::vector< glm::vec3 > vertices;
 	std::vector< glm::vec2 > uvs;
 	std::vector< glm::vec3 > normals; // Won't be used at the moment.
-	bool res = loadOBJ("untitled.obj", vertices, uvs, normals);
+	bool res = loadOBJ("cube.obj", vertices, uvs, normals);
 	//// One color for each vertex. They were generated randomly.
 	//static const GLfloat g_color_buffer_data[] = {
 	//	1.0f, 0.737f, 0.85f,
