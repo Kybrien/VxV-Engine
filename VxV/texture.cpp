@@ -1,4 +1,5 @@
 #include <texture.hpp>;
+#include "Externes/stb/stb_image.h";
 
 GLuint loadBMP_custom(const char* imagepath) {
 
@@ -118,6 +119,37 @@ GLuint loadBMP_custom(const char* imagepath) {
 //	return textureID;
 //}
 
+
+GLuint loadTexture(const char* imagepath) {
+	int width, height, channels;
+	unsigned char* data = stbi_load(imagepath, &width, &height, &channels, 0);
+	if (!data) {
+		fprintf(stderr, "Failed to load texture file %s\n", imagepath);
+		return 0;
+	}
+
+	GLuint textureID;
+	glGenTextures(1, &textureID);
+	glBindTexture(GL_TEXTURE_2D, textureID);
+
+	// Sélectionnez le format en fonction du nombre de canaux de l'image
+	GLenum format = GL_RGB; // Format par défaut
+	if (channels == 4) {
+		format = GL_RGBA;
+	}
+	else if (channels == 1) {
+		format = GL_RED;
+	}
+
+	glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+	glGenerateMipmap(GL_TEXTURE_2D);
+
+	stbi_image_free(data);
+
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+	return textureID;
+}
 
 
 #define FOURCC_DXT1 0x31545844 // Equivalent to "DXT1" in ASCII
