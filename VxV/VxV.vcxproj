@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="controls.cpp" />
+    <ClCompile Include="stb.cpp" />
     <ClCompile Include="loadShader.cpp" />
     <ClCompile Include="loadShader.hpp" />
     <ClCompile Include="Main.cpp" />
@@ -158,12 +159,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controls.hpp" />
+    <ClInclude Include="Externes\stb\stb_image.h" />
+    <ClInclude Include="Externes\stb\stb_image_write.h" />
     <ClInclude Include="objloader.hpp" />
     <ClInclude Include="texture.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\uvmap.DDS" />
     <Image Include="..\..\..\..\Downloads\uvtemplate.DDS" />
+    <Image Include="..\..\Texture.jpg" />
     <Image Include="uvtemplate.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
