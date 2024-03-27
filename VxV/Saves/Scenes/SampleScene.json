@@ -30,7 +30,10 @@ SceneSaveFile
 					],
 					"Type" : 0
 				},
-				null
+				{
+					"Script" : "script",
+					"Type" : 2
+				}
 			],
 			"Id" : 0,
 			"Is Child" : false,
@@ -61,7 +64,10 @@ SceneSaveFile
 					],
 					"Type" : 0
 				},
-				null
+				{
+					"Script" : "script",
+					"Type" : 2
+				}
 			],
 			"Id" : 1,
 			"Is Child" : true,
@@ -95,14 +101,20 @@ SceneSaveFile
 					],
 					"Type" : 0
 				},
-				null
+				{
+					"Script" : "script",
+					"Type" : 2
+				}
 			],
 			"Id" : 2,
 			"Is Child" : true,
 			"Name" : "child"
 		},
 		{
-			"Child Ids" : [],
+			"Child Ids" : 
+			[
+				5
+			],
 			"Components" : 
 			[
 				{
@@ -126,7 +138,10 @@ SceneSaveFile
 					],
 					"Type" : 0
 				},
-				null
+				{
+					"Script" : "script",
+					"Type" : 2
+				}
 			],
 			"Id" : 3,
 			"Is Child" : false,
@@ -157,14 +172,20 @@ SceneSaveFile
 					],
 					"Type" : 0
 				},
-				null
+				{
+					"Script" : "script",
+					"Type" : 2
+				}
 			],
 			"Id" : 4,
 			"Is Child" : true,
 			"Name" : "cercle"
 		},
 		{
-			"Child Ids" : [],
+			"Child Ids" : 
+			[
+				4
+			],
 			"Components" : 
 			[
 				{
@@ -188,201 +209,12 @@ SceneSaveFile
 					],
 					"Type" : 0
 				},
-				null
+				{
+					"Script" : "script",
+					"Type" : 2
+				}
 			],
 			"Id" : 5,
-			"Is Child" : true,
-			"Name" : "child"
-		},
-		{
-			"Child Ids" : [],
-			"Components" : 
-			[
-				{
-					"Position" : 
-					[
-						10.0,
-						0.0,
-						0.0
-					],
-					"Rotation" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Scale" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Type" : 0
-				},
-				null
-			],
-			"Id" : 6,
-			"Is Child" : false,
-			"Name" : "cube"
-		},
-		{
-			"Child Ids" : [],
-			"Components" : 
-			[
-				{
-					"Position" : 
-					[
-						10.0,
-						0.0,
-						0.0
-					],
-					"Rotation" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Scale" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Type" : 0
-				},
-				null
-			],
-			"Id" : 7,
-			"Is Child" : true,
-			"Name" : "cercle"
-		},
-		{
-			"Child Ids" : [],
-			"Components" : 
-			[
-				{
-					"Position" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Rotation" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Scale" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Type" : 0
-				},
-				null
-			],
-			"Id" : 8,
-			"Is Child" : true,
-			"Name" : "child"
-		},
-		{
-			"Child Ids" : 
-			[
-				11
-			],
-			"Components" : 
-			[
-				{
-					"Position" : 
-					[
-						10.0,
-						0.0,
-						0.0
-					],
-					"Rotation" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Scale" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Type" : 0
-				},
-				null
-			],
-			"Id" : 9,
-			"Is Child" : false,
-			"Name" : "cube"
-		},
-		{
-			"Child Ids" : [],
-			"Components" : 
-			[
-				{
-					"Position" : 
-					[
-						10.0,
-						0.0,
-						0.0
-					],
-					"Rotation" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Scale" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Type" : 0
-				},
-				null
-			],
-			"Id" : 10,
-			"Is Child" : true,
-			"Name" : "cercle"
-		},
-		{
-			"Child Ids" : 
-			[
-				10
-			],
-			"Components" : 
-			[
-				{
-					"Position" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Rotation" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Scale" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Type" : 0
-				},
-				null
-			],
-			"Id" : 11,
 			"Is Child" : true,
 			"Name" : "child"
 		}

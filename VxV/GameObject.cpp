@@ -17,7 +17,7 @@ GameObject* GameObject::GetChildByName(std::string name) {
 GameObject::GameObject(std::string name_) {
     name = name_;
     components.push_back(new Transform(this));
-    components.push_back(new Script(this));
+    components.push_back(new Script(this, "script"));
 
 
     Manager* manager = Manager::GetInstance();

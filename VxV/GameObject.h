@@ -6,6 +6,7 @@
 #include <GLM/glm.hpp>
 
 #include "Transform.h"
+#include "Script.h"
 
 class Scene;
 
