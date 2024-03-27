@@ -1,4 +1,5 @@
 #pragma once
+
 #include "SceneManager.h"
 
 class Engine {
@@ -25,8 +26,7 @@ private:
 
 
 public:
-
-	SceneManager* sceneManager;
+	Manager* manager;
 
 	static Engine* GetInstance()
 	{
@@ -55,7 +55,8 @@ public:
 		state = Starting;
 
 
-		sceneManager = new SceneManager();
+		manager = Manager::GetInstance();
+		manager->Init();
 		// init les managers
 
 		Update();

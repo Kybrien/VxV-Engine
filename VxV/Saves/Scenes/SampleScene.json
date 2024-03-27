@@ -3,7 +3,10 @@ SceneSaveFile
 	"GameObjects" : 
 	[
 		{
-			"Child Ids" : [],
+			"Child Ids" : 
+			[
+				2
+			],
 			"Components" : 
 			[
 				{
@@ -39,7 +42,7 @@ SceneSaveFile
 				{
 					"Position" : 
 					[
-						10.0,
+						20.0,
 						0.0,
 						0.0
 					],
@@ -63,13 +66,16 @@ SceneSaveFile
 			"Name" : "cercle"
 		},
 		{
-			"Child Ids" : [],
+			"Child Ids" : 
+			[
+				1
+			],
 			"Components" : 
 			[
 				{
 					"Position" : 
 					[
-						0.0,
+						-10.0,
 						0.0,
 						0.0
 					],

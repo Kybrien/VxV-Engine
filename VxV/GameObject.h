@@ -1,21 +1,20 @@
 #pragma once
-#include <memory>
-#include "Component.h"  // Assurez-vous de définir une classe ou une structure de base Component
-#include "Transform.h"
 #include <iostream>
 #include <vector>
 #include <string>
+#include <json.h>
+#include <GLM/glm.hpp>
 
-class SceneManager;
+#include "Transform.h"
+
 class Scene;
-
 
 class GameObject {
 public:
+    Scene* currentScene;
+
 
     std::vector<Component*> components;
-    SceneManager* sceneManager;
-    Scene* currentScene;
 
     GameObject(std::string name_ = "GO");
 

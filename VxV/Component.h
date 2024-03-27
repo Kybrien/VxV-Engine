@@ -2,7 +2,9 @@
 #include "string"
 #include "json.h"
 
+
 class GameObject;
+class Transform;
 
 
 class Component {

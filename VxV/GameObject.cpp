@@ -1,7 +1,7 @@
 #include "GameObject.h"
-#include "Debug.h"
-#include "SceneManager.h"
 
+#include "SceneManager.h"
+#include "Transform.h"
 
 GameObject* GameObject::GetChildByName(std::string name) {
     for (int goID : childObjects)
@@ -18,7 +18,9 @@ GameObject::GameObject(std::string name_) {
     name = name_;
     components.push_back(new Transform(this));
 
-    sceneManager = SceneManager::GetInstance();
+
+    Manager* manager = Manager::GetInstance();
+    SceneManager* sceneManager = manager->GetManager<SceneManager>();
     currentScene = sceneManager->GetCurrentScene();
 
 

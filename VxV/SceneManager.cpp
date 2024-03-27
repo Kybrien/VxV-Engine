@@ -4,16 +4,15 @@
 #include <Windows.h>
 
 
-#include <fstream>
 
 
 
-SceneManager* SceneManager::instance = nullptr;
 
 
+SceneManager::SceneManager(Manager* manager) {
 
-SceneManager::SceneManager() {
-	instance = this;
+	manager->AddManager<SceneManager>(this);
+
 
 	//Rechercher les scenes
 	const wchar_t* directoryPath = L"Saves/Scenes"; // Spécifiez le chemin du dossier que vous souhaitez parcourir 
@@ -26,7 +25,7 @@ SceneManager::SceneManager() {
 		do {
 			if (!(findFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) { 
 				std::wstring filePath = std::wstring(directoryPath) + L"\\" + findFileData.cFileName;
-				LoadScene(filePath);
+				Load(filePath);
 			} 
 		} while (FindNextFile(hFind, &findFileData) != 0); 
 		FindClose(hFind); 
@@ -35,19 +34,15 @@ SceneManager::SceneManager() {
 	
 	// Ajouter une scene s'il n'en existe pas déjà
 	if (scenes.empty()) {
-		new Scene;
+		new Scene();
 	}
 
 	currentScene = scenes.front();
 
-	for (Scene* sc : scenes) {
-		std::string str = sc->name;
-		std::cout << str << std::endl;
-	}
 
 }
 
-void SceneManager::SaveScene() {
+void SceneManager::Save() {
 	
 	std::ofstream outputFile("Saves/Scenes/" + currentScene->name + ".json");
 	Json::StreamWriterBuilder builder;
@@ -109,7 +104,7 @@ void SceneManager::SaveScene() {
 
 }
 
-void SceneManager::LoadScene(std::wstring wFileDirection) {
+void SceneManager::Load(std::wstring wFileDirection) {
 
 	// Conversion de wstring en string
 	std::string fileDirection;
@@ -145,7 +140,8 @@ void SceneManager::LoadScene(std::wstring wFileDirection) {
 
 
 			// Accéder aux données JSON
-			try {
+
+			if (sceneJson.isMember("Name")) {
 
 				// Création de la scene
 				Scene* scene = new Scene;
@@ -168,10 +164,37 @@ void SceneManager::LoadScene(std::wstring wFileDirection) {
 						go->LoadComponent(compJson);
 					}
 				}
+
+
+				std::vector<GameObject*> goList = scene->GetGameObjects();
+
+
+				// Gestion des childs
+				for (const Json::Value gameObjectJson : sceneJson["GameObjects"])
+				{
+
+					// Vérifier si le GO qu'on check sur le json est le go dans la liste de tous les GO
+					for (GameObject* go : goList) {
+						if (gameObjectJson["Id"].asInt() == go->GetId()) {
+
+							// Parcours de la liste des ids des enfants
+							for (const auto& i : gameObjectJson["Child Ids"]) {
+
+								// Verifier si le GO qu'on check fais partie de la liste des childs sur le json
+								for (GameObject* goCheckChild : goList) {
+									if (i.asInt() == goCheckChild->GetId()) {
+										go->AddChild(goCheckChild);
+									}
+								}
+
+							}
+						}
+					}
+				}
 				
 			} 
-			catch (const std::exception& e) {
-				std::cerr << "Erreur lors du chargement du fichier " + fileDirection << std::endl;
+			else {
+				std::cerr << "Erreur lors du chargement de " + fileDirection + " (Manque un élément)" << std::endl;
 			}
 
 
