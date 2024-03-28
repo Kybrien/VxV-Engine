@@ -34,7 +34,7 @@ public:
 
 	template<typename T>
 	void AddManager(T* manager) {
-		static_assert(std::is_base_of<Manager, T>::value, "T doit être un descendant de Component");
+		static_assert(std::is_base_of<Manager, T>::value, "T doit être un descendant de Manager");
 
 		// Ajoute un nouveau composant de type T
 		listManager.push_back(manager);

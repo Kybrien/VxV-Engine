@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SceneManager.h"
+#include "Script.h"
 
 class Engine {
 private:
@@ -27,7 +28,7 @@ private:
 
 public:
 	Manager* manager;
-
+	Script* script;
 	static Engine* GetInstance()
 	{
 		if (!instance)
@@ -47,20 +48,28 @@ public:
 	void Init() { 
 		state = Initializing; 
 
+		manager = Manager::GetInstance();
+		manager->Init();
+		script->Init();
+		// init les managers
 		state = Ready;
+
+		//init go
 		Start();
 	}
 
 	void Start() {
 		state = Starting;
+		// start go
+		script->Start();
 
-
-		manager = Manager::GetInstance();
-		manager->Init();
-		// init les managers
 
 		Update();
 	}
-	void Update() { state = Running; }
+	void Update() 
+	{ 
+		state = Running; 
+		script->Update();
+	}
 
 };

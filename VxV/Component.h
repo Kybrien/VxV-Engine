@@ -14,6 +14,7 @@ public:
 
 	explicit Component(GameObject* go) {
 		linkedGameObject = go;
+		type = Unknown;
 	};
 
 	virtual void Save(Json::Value &compJson) = 0;
@@ -25,7 +26,8 @@ public:
 	enum Type {
 		Transform,
 		Mesh_renderer,
-		Script
+		Script,
+		Unknown
 	};
 
 	Type type;
