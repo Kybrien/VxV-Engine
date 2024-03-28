@@ -6,13 +6,15 @@
 #include <GLFW/glfw3.h>
 #include <GLM/glm.hpp>
 #include <GLM/gtc/matrix_transform.hpp>
-#include <loadShader.hpp>
 
 using namespace glm;
 
-#include <controls.hpp>
-#include <texture.hpp>
-#include <objloader.hpp>
+#include "loadShader.hpp"
+#include "controls.hpp"
+#include "texture.hpp"
+#include "objloader.hpp"
+#include "vboindexer.hpp"
+
 
 int main() {
 	if (!glfwInit()) {
@@ -99,34 +101,37 @@ int main() {
 	// Read our .obj file
 	std::vector< glm::vec3 > vertices;
 	std::vector< glm::vec2 > uvs;
-	std::vector< glm::vec3 > normals; // Won't be used at the moment.
-
-	////TEST
-	//std::vector<unsigned int> indices;
+	std::vector< glm::vec3 > normals;
 
 	bool res = loadOBJ("suzanne.obj", vertices, uvs, normals);
+	
+	std::vector<unsigned short> indices;
+	std::vector<glm::vec3> indexed_vertices;
+	std::vector<glm::vec2> indexed_uvs;
+	std::vector<glm::vec3> indexed_normals;
+	indexVBO(vertices, uvs, normals, indices, indexed_vertices, indexed_uvs, indexed_normals);
+
 
 	GLuint vertexbuffer;
 	glGenBuffers(1, &vertexbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 	//glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
-	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &indexed_vertices[0], GL_STATIC_DRAW);
 
 	GLuint uvbuffer;
 	glGenBuffers(1, &uvbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
-	glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec2), &uvs[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec2), &indexed_uvs[0], GL_STATIC_DRAW);
 
 	GLuint normalbuffer;
 	glGenBuffers(1, &normalbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, normalbuffer);
-	glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(glm::vec3), &normals[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(glm::vec3), &indexed_normals[0], GL_STATIC_DRAW);
 
-	////TEST
-	//GLuint elementbuffer;
-	//glGenBuffers(1, &elementbuffer);
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
-	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
+	GLuint elementbuffer;
+	glGenBuffers(1, &elementbuffer);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned short), &indices[0], GL_STATIC_DRAW);
 
 
 	// Get a handle for our "LightPosition" uniform
@@ -135,8 +140,9 @@ int main() {
 
 	glBindVertexArray(0);
 	// glfwGetTime is called only once, the first time this function is called
-	static double lastTime = glfwGetTime();
-
+	double lastTime = glfwGetTime();
+	double lastTimeFPS = lastTime;
+	int nbFrames = 0;
 	//update be  like
 	do {
 		// Clear the screen
@@ -147,6 +153,14 @@ int main() {
 
 		// Compute time difference between current and last frame
 		double currentTime = glfwGetTime();
+		nbFrames++;
+		if (currentTime - lastTimeFPS >= 1.0) { // If last prinf() was more than 1 sec ago
+			// printf and reset timer
+			printf("%f ms/frame\n", 1000.0 / double(nbFrames));
+			nbFrames = 0;
+			lastTimeFPS += 1.0;
+		}
+
 		float deltaTime = float(currentTime - lastTime);
 		float angle = deltaTime *25.0f;
 
@@ -211,18 +225,17 @@ int main() {
 		);
 
 
-		// Draw the triangle !
-		glDrawArrays(GL_TRIANGLES, 0, vertices.size()); // 12*3 indices starting at 0 -> 12 triangles
+		//// Draw the triangle !
+		//glDrawArrays(GL_TRIANGLES, 0, vertices.size()); // 12*3 indices starting at 0 -> 12 triangles
 
-		////TEST
-		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
-		////TEST // Draw the triangles !
-		//glDrawElements(
-		//	GL_TRIANGLES,      // mode
-		//	indices.size(),    // count
-		//	GL_UNSIGNED_INT,   // type
-		//	(void*)0           // element array buffer offset
-		//);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
+		//TEST // Draw the triangles !
+		glDrawElements(
+			GL_TRIANGLES,      // mode
+			indices.size(),    // count
+			GL_UNSIGNED_SHORT,   // type
+			(void*)0           // element array buffer offset
+		);
 
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
@@ -238,6 +251,7 @@ int main() {
 	glDeleteBuffers(1, &vertexbuffer);
 	glDeleteBuffers(1, &uvbuffer);
 	glDeleteBuffers(1, &normalbuffer);
+	glDeleteBuffers(1, &elementbuffer);
 	glDeleteProgram(programID);
 	glDeleteTextures(1, &Texture);
 	glDeleteVertexArrays(1, &VertexArrayID);
