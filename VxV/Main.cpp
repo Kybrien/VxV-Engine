@@ -34,18 +34,21 @@ int main() {
 
 	Scene* currentScene = sc->GetCurrentScene();
 
-	GameObject* cube = new GameObject("cube");
-	cube->GetComponent<Transform>()->position = glm::vec3(10, 0, 0);
-	GameObject* cercle = new GameObject("cercle");
-	cercle->GetComponent<Transform>()->position = glm::vec3(10, 0, 0);
+	if (currentScene->GetAllGameObjects().empty()) {
+		GameObject* cube = new GameObject("cube");
+		cube->GetComponent<Transform>()->position = glm::vec3(10, 0, 0);
+		GameObject* cercle = new GameObject("cercle");
+		cercle->GetComponent<Transform>()->position = glm::vec3(10, 0, 0);
 
-	GameObject* child = new GameObject("child");
-	child->GetComponent<Transform>()->position = glm::vec3(10, 0, 0);
+		GameObject* child = new GameObject("child");
+		child->GetComponent<Transform>()->position = glm::vec3(10, 0, 0);
 
-	cube->AddChild(child);
-	child->AddChild(cercle);
+		cube->AddChild(child);
+		child->AddChild(cercle);
 
-	sc->Save();
+		sc->Save();
+	}
+	
 	
 	
 	

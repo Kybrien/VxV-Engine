@@ -30,46 +30,19 @@ void SceneManager::Save() {
 	
 	std::ofstream outputFile(fileDirection + "/" + currentScene->name + extention);
 	Json::StreamWriterBuilder builder;
-	currentScene->OrganizeGameObjects();
-
 
 
 	if (outputFile.is_open())
 	{
-		outputFile << "PrefabSaveFile" << std::endl;
+		outputFile << "SceneSaveFile" << std::endl;
 
 		Json::Value sceneJson;
 		sceneJson["Name"] = currentScene->name;
 		sceneJson["GameObjects"] = Json::Value(Json::arrayValue);
 
 		for (GameObject* go : currentScene->GetGameObjects()) {
-			Json::Value gameObjectJson;
-
-			gameObjectJson["Id"] = go->GetId();
-			gameObjectJson["Name"] = go->name;
-			gameObjectJson["Is Child"] = go->isChild;
-			gameObjectJson["Child Ids"] = Json::Value(Json::arrayValue);
-
-			for (int goChild : go->GetChilds()) {
-				gameObjectJson["Child Ids"].append(goChild);
-			}
-
-
-			gameObjectJson["Components"] = Json::Value(Json::arrayValue);
-
-			for (Component* comp : go->GetComponents())
-			{
-				Json::Value compJson;
-				comp->Save(compJson);
-				gameObjectJson["Components"].append(compJson);
-			}
-
-
-
-			sceneJson["GameObjects"].append(gameObjectJson);
+			go->Save(sceneJson);
 		}
-	
-
 
 		// Conversion de l'objet JSON en une chaîne JSON formatée
 		std::string jsonString = Json::writeString(builder, sceneJson);
@@ -80,13 +53,14 @@ void SceneManager::Save() {
 
 
 		outputFile.close();
-		std::cout << "Les données ont été écrites dans le fichier output.json avec succès." << std::endl;
+		std::cout << "Les données ont été écrites dans le fichier " + fileDirection + " avec succès." << std::endl;
 	}
 	else {
 		std::cerr << "Erreur lors de l'ouverture du fichier." << std::endl;
 	}
 
 }
+
 
 
 
@@ -131,10 +105,8 @@ void SceneManager::Load(std::wstring wFileDirection) {
 				if (!reader.parse(jsonString, sceneJson)) {
 					std::cerr << "Erreur lors de l'analyse du JSON : " << reader.getFormattedErrorMessages() << std::endl;
 				}
-
-
-
-				// Accéder aux données JSON
+				else {
+					// Accéder aux données JSON
 					// Création de la scene
 					Scene* scene = new Scene;
 					currentScene = scene;
@@ -145,48 +117,9 @@ void SceneManager::Load(std::wstring wFileDirection) {
 					// Récupération des données des GameObjects
 					for (const Json::Value gameObjectJson : sceneJson["GameObjects"])
 					{
-						GameObject* go = new GameObject();
-						go->SetId(gameObjectJson["Id"].asInt());
-						go->name = gameObjectJson["Name"].asString();
-						go->isChild = gameObjectJson["Is Child"].asBool();
-					
-						// On skip les child pour le moment, le temps que tous les gameObject soient créés
-
-						for (const Json::Value compJson : gameObjectJson["Components"]) {
-							go->LoadComponent(compJson);
-						}
+						GameObject::Load(gameObjectJson);
 					}
-
-
-					std::vector<GameObject*> goList = scene->GetGameObjects();
-
-
-					// Gestion des childs
-					for (const Json::Value gameObjectJson : sceneJson["GameObjects"])
-					{
-
-						// Vérifier si le GO qu'on check sur le json est le go dans la liste de tous les GO
-						for (GameObject* go : goList) {
-							if (gameObjectJson["Id"].asInt() == go->GetId()) {
-
-								// Parcours de la liste des ids des enfants
-								for (const auto& i : gameObjectJson["Child Ids"]) {
-
-									// Verifier si le GO qu'on check fais partie de la liste des childs sur le json
-									for (GameObject* goCheckChild : goList) {
-										if (i.asInt() == goCheckChild->GetId()) {
-											go->AddChild(goCheckChild);
-										}
-									}
-
-								}
-							}
-						}
-				
-				} 
-
-
-			
+				}
 			}
 		}
 		catch (const std::exception e) {
@@ -199,3 +132,4 @@ void SceneManager::Load(std::wstring wFileDirection) {
 	}
 
 }
+

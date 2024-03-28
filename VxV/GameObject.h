@@ -35,14 +35,21 @@ public:
     std::vector<Component*> GetComponents();
 
     std::vector<GameObject*> GetChilds();
-    GameObject* GetParent();
+    GameObject* GetParent() {
+        return parent;
+    }
 
+
+    void static Load(Json::Value root, GameObject* goParent = nullptr);
+    void Save(Json::Value& root);
 
 
     void AddChild(GameObject* go);
-    void AddParent(GameObject* go);
+    void AddParent(GameObject* go) {
+        parent = go;
+    }
 
-    void RemoveChild(std::string name);
+    void RemoveChild(GameObject* goChild);
 
     // Mettre des enable if
     template<typename T>

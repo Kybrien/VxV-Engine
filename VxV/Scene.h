@@ -20,7 +20,7 @@ public:
 	std::string name;
 	glm::vec3 origin;
 
-	std::vector<GameObject*> GetGameObjects() {
+	std::vector<GameObject*>& GetGameObjects() {
 		return gameObjects;
 	}
 

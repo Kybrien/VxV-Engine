@@ -3,10 +3,6 @@ SceneSaveFile
 	"GameObjects" : 
 	[
 		{
-			"Child Ids" : 
-			[
-				2
-			],
 			"Components" : 
 			[
 				{
@@ -33,190 +29,83 @@ SceneSaveFile
 				{
 					"Script" : "script",
 					"Type" : 2
+				}
+			],
+			"GameObjectsChild" : 
+			[
+				{
+					"Components" : 
+					[
+						{
+							"Position" : 
+							[
+								0.0,
+								0.0,
+								0.0
+							],
+							"Rotation" : 
+							[
+								0.0,
+								0.0,
+								0.0
+							],
+							"Scale" : 
+							[
+								0.0,
+								0.0,
+								0.0
+							],
+							"Type" : 0
+						},
+						{
+							"Script" : "script",
+							"Type" : 2
+						}
+					],
+					"GameObjectsChild" : 
+					[
+						{
+							"Components" : 
+							[
+								{
+									"Position" : 
+									[
+										10.0,
+										0.0,
+										0.0
+									],
+									"Rotation" : 
+									[
+										0.0,
+										0.0,
+										0.0
+									],
+									"Scale" : 
+									[
+										0.0,
+										0.0,
+										0.0
+									],
+									"Type" : 0
+								},
+								{
+									"Script" : "script",
+									"Type" : 2
+								}
+							],
+							"Id" : 1,
+							"Is Child" : true,
+							"Name" : "cercle"
+						}
+					],
+					"Id" : 2,
+					"Is Child" : true,
+					"Name" : "child"
 				}
 			],
 			"Id" : 0,
 			"Is Child" : false,
 			"Name" : "cube"
-		},
-		{
-			"Child Ids" : [],
-			"Components" : 
-			[
-				{
-					"Position" : 
-					[
-						20.0,
-						0.0,
-						0.0
-					],
-					"Rotation" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Scale" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Type" : 0
-				},
-				{
-					"Script" : "script",
-					"Type" : 2
-				}
-			],
-			"Id" : 1,
-			"Is Child" : true,
-			"Name" : "cercle"
-		},
-		{
-			"Child Ids" : 
-			[
-				1
-			],
-			"Components" : 
-			[
-				{
-					"Position" : 
-					[
-						-10.0,
-						0.0,
-						0.0
-					],
-					"Rotation" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Scale" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Type" : 0
-				},
-				{
-					"Script" : "script",
-					"Type" : 2
-				}
-			],
-			"Id" : 2,
-			"Is Child" : true,
-			"Name" : "child"
-		},
-		{
-			"Child Ids" : 
-			[
-				5
-			],
-			"Components" : 
-			[
-				{
-					"Position" : 
-					[
-						10.0,
-						0.0,
-						0.0
-					],
-					"Rotation" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Scale" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Type" : 0
-				},
-				{
-					"Script" : "script",
-					"Type" : 2
-				}
-			],
-			"Id" : 3,
-			"Is Child" : false,
-			"Name" : "cube"
-		},
-		{
-			"Child Ids" : [],
-			"Components" : 
-			[
-				{
-					"Position" : 
-					[
-						10.0,
-						0.0,
-						0.0
-					],
-					"Rotation" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Scale" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Type" : 0
-				},
-				{
-					"Script" : "script",
-					"Type" : 2
-				}
-			],
-			"Id" : 4,
-			"Is Child" : true,
-			"Name" : "cercle"
-		},
-		{
-			"Child Ids" : 
-			[
-				4
-			],
-			"Components" : 
-			[
-				{
-					"Position" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Rotation" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Scale" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Type" : 0
-				},
-				{
-					"Script" : "script",
-					"Type" : 2
-				}
-			],
-			"Id" : 5,
-			"Is Child" : true,
-			"Name" : "child"
 		}
 	],
 	"Name" : "SampleScene"

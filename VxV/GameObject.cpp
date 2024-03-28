@@ -1,18 +1,9 @@
 #include "GameObject.h"
 
 #include "SceneManager.h"
-#include "Transform.h"
 
-GameObject* GameObject::GetChildByName(std::string name) {
-    for (GameObject* go : childObjects)
-    {
-        for (GameObject* go : currentScene->GetGameObjects()) {
-            if (go->name == name) return go;
-        }
-    }
 
-    return nullptr;
-}
+
 
 GameObject::GameObject(std::string name_) {
     name = name_;
@@ -28,9 +19,9 @@ GameObject::GameObject(std::string name_) {
     std::vector<GameObject*> goList = currentScene->GetAllGameObjects();
 
 
-    
-    
-    
+    parent = nullptr;
+
+
     bool idFound = false;
     int i = 0;
 
@@ -41,10 +32,12 @@ GameObject::GameObject(std::string name_) {
                 idFree = false;
                 break;
             }
-
-            if (idFree) id = i;
-            else i++;
         }
+        if (idFree) {
+            id = i;
+            idFound = true;
+        }
+        else i++;
 
     }
 
@@ -53,6 +46,74 @@ GameObject::GameObject(std::string name_) {
 
     currentScene->AddGameObject(this);
 }
+
+void GameObject::Load(Json::Value root, GameObject* goParent) {
+
+
+    GameObject* go = new GameObject();
+    go->SetId(root["Id"].asInt());
+    go->name = root["Name"].asString();
+    go->isChild = root["Is Child"].asBool();
+
+    for (const Json::Value compJson : root["Components"]) {
+        go->LoadComponent(compJson);
+    }
+
+    if (root.isMember("GameObjectsChild")) {
+        for (const Json::Value gameObjectJson : root["GameObjectsChild"]) {
+            Load(gameObjectJson, go);
+        }
+    }
+
+    if (go->isChild) {
+        goParent->AddChild(go);
+    }
+}
+
+void GameObject::Save(Json::Value& root) {
+    Json::Value gameObjectJson;
+
+    gameObjectJson["Id"] = id;
+    gameObjectJson["Name"] = name;
+    gameObjectJson["Is Child"] = isChild;
+
+
+    gameObjectJson["Components"] = Json::Value(Json::arrayValue);
+
+    for (Component* comp : components)
+    {
+        Json::Value compJson;
+        comp->Save(compJson);
+        gameObjectJson["Components"].append(compJson);
+    }
+
+    if (!childObjects.empty()) {
+        gameObjectJson["GameObjectsChild"] = Json::Value(Json::arrayValue);
+
+        for (GameObject* goChild : childObjects) {
+            goChild->Save(gameObjectJson);
+        }
+    }
+
+
+    if (isChild) {
+        root["GameObjectsChild"].append(gameObjectJson);
+    }
+    else {
+        root["GameObjects"].append(gameObjectJson);
+    }
+
+
+}
+
+void GameObject::Delete(GameObject* go) {
+    if (go->isChild) {
+        go->GetParent()->GetChildByName(go->name);
+
+    }
+}
+
+
 
 void GameObject::AddChild(GameObject* go)
 {
@@ -65,40 +126,47 @@ void GameObject::AddChild(GameObject* go)
     go->AddParent(this);
 
 
-    childObjects.push_back(go);
-}
-
-
-void GameObject::Delete(GameObject* go) {
-    if (go->isChild) {
-        go->GetParent()->GetChildByName(go->name);
-        
-    }
-}
-
-
-
-// Implémentation de GetComponent pour d'autres types de composants
-template<typename T>
-T* GameObject::GetComponent() {
-
-    for (Component* comp : components) {
-        T* typedComp = dynamic_cast<T*>(comp);
-        if (typedComp != nullptr) {
-            return typedComp; // Retourner le composant du type T s'il est trouvé
+    // Enlever de la liste des gameObjects (only parents)
+    for (int i = currentScene->GetGameObjects().size() - 1; i >= 0; --i)
+    {
+        GameObject* goList = currentScene->GetGameObjects()[i];
+        if (goList == go) {
+            auto item = currentScene->GetGameObjects().begin() + i;
+            currentScene->GetGameObjects().erase(item);
+            break;
         }
     }
 
-    return nullptr; // Aucun composant de type T trouvé
-}
-
-std::vector<Component*> GameObject::GetComponents() {
-    return components;
+    childObjects.push_back(go);
 }
 
 std::vector<GameObject*> GameObject::GetChilds() {
     return childObjects;
 }
+
+GameObject* GameObject::GetChildByName(std::string name) {
+    for (GameObject* go : childObjects)
+    {
+        if (go->name == name) {
+            return go;
+        }
+    }
+
+    return nullptr;
+}
+
+void GameObject::RemoveChild(GameObject* goChild) {
+    for (int i = 0; i < childObjects.size(); i ++)
+    {
+        GameObject* go = childObjects[i];
+        if (go == goChild) {
+            go->parent = nullptr;
+            childObjects.erase(childObjects.begin() + i);
+            break;
+        }
+    }
+}
+
 
 
 template<typename T>
@@ -112,7 +180,7 @@ void GameObject::AddComponent() {
 
 void GameObject::LoadComponent(Json::Value compJson) {
 
-    Component::Type type ;
+    Component::Type type;
     std::string typeStr = compJson["Type"].asString();
 
     if (typeStr == "0") {
@@ -135,3 +203,22 @@ void GameObject::LoadComponent(Json::Value compJson) {
         break;
     }
 }
+
+std::vector<Component*> GameObject::GetComponents() {
+    return components;
+}
+
+template<typename T>
+T* GameObject::GetComponent() {
+
+    for (Component* comp : components) {
+        T* typedComp = dynamic_cast<T*>(comp);
+        if (typedComp != nullptr) {
+            return typedComp; // Retourner le composant du type T s'il est trouvé
+        }
+    }
+
+    return nullptr; // Aucun composant de type T trouvé
+}
+
+
