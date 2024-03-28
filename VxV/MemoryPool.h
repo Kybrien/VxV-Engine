@@ -24,6 +24,7 @@ public:
 	{
 		m_strategy.Deallocate(p);
 	}
+
 };
 
 
@@ -36,6 +37,7 @@ public:
 	{
 		return malloc(sizeof(T));
 	}
+
 	void Deallocate(void* p)
 	{
 		free(p);
@@ -88,6 +90,11 @@ public:
 			}
 		}
 	}
+
+    void ResizePool(size_type newSize)
+    {
+        for
+    }
 };
 
 template <typename T, unsigned int N> class mempool_heap
