@@ -12,6 +12,8 @@ private:
 
 	Scene* currentScene;
 
+	std::string fileDirection = "Saves/Scenes";
+	std::string extention = ".scene"
 
 public:
 
@@ -26,6 +28,7 @@ public:
 	std::vector<Scene*> GetScenes() {
 		return scenes;
 	}
+
 
 	void Save() override;
 	void Load(std::wstring wFileDirection) override;

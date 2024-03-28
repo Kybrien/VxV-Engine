@@ -3,8 +3,6 @@
 #include <fstream>
 
 
-class SceneManager;
-
 class Manager {
 protected:
 
@@ -47,9 +45,14 @@ private:
 
 protected:
 
+	template<typename T>
+	void SearchFile(std::string fileDirection, std::string extension, T* manager);
+
 	virtual void Save() {}; 
 	virtual void Load(std::wstring wFileDirection) {};
 
 
 
 };
+
+#include "Manager.inl"
