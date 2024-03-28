@@ -4,10 +4,10 @@
 #include "Transform.h"
 
 GameObject* GameObject::GetChildByName(std::string name) {
-    for (int goID : childObjects)
+    for (GameObject* go : childObjects)
     {
         for (GameObject* go : currentScene->GetGameObjects()) {
-            if (go->GetId() == goID) return go;
+            if (go->name == name) return go;
         }
     }
 
@@ -25,32 +25,33 @@ GameObject::GameObject(std::string name_) {
     currentScene = sceneManager->GetCurrentScene();
 
 
-
-    currentScene->OrganizeGameObjects();
-    std::vector<GameObject*> goList = currentScene->GetGameObjects();
+    std::vector<GameObject*> goList = currentScene->GetAllGameObjects();
 
 
-    id = -1;
+    
+    
+    
+    bool idFound = false;
+    int i = 0;
 
-    for (int i = 0; i < goList.size(); i++) {
-        if (goList[i]->GetId() != i) {
-            id = i;
-            break;
+    while (!idFound) {
+        bool idFree = true;
+        for (GameObject* go : goList) {
+            if (go->GetId() == i) {
+                idFree = false;
+                break;
+            }
+
+            if (idFree) id = i;
+            else i++;
         }
+
     }
 
-    if (goList.empty()) {
-        id = 0;
-    }
-    else if (id == -1) {
-        id = goList.size();
-    }
 
 
 
     currentScene->AddGameObject(this);
-    // Reucp scene avec manager
-    // origin = scene.origin 
 }
 
 void GameObject::AddChild(GameObject* go)
@@ -61,9 +62,21 @@ void GameObject::AddChild(GameObject* go)
     go->origin = origin;
 
     go->isChild = true;
+    go->AddParent(this);
 
-    childObjects.push_back(go->GetId());
+
+    childObjects.push_back(go);
 }
+
+
+void GameObject::Delete(GameObject* go) {
+    if (go->isChild) {
+        go->GetParent()->GetChildByName(go->name);
+        
+    }
+}
+
+
 
 // Implémentation de GetComponent pour d'autres types de composants
 template<typename T>
@@ -83,7 +96,7 @@ std::vector<Component*> GameObject::GetComponents() {
     return components;
 }
 
-std::vector<int> GameObject::GetChilds() {
+std::vector<GameObject*> GameObject::GetChilds() {
     return childObjects;
 }
 

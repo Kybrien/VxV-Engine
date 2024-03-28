@@ -14,7 +14,7 @@ SceneManager::SceneManager(Manager* manager) {
 
 
 	//Rechercher les scenes
-	SearchFile<SceneManager>("Saves/Scenes", ".scene", this);
+	SearchFile<SceneManager>(fileDirection, extention, this);
 
 	
 	// Ajouter une scene s'il n'en existe pas déjà
@@ -28,7 +28,7 @@ SceneManager::SceneManager(Manager* manager) {
 
 void SceneManager::Save() {
 	
-	std::ofstream outputFile("Saves/Scenes/" + currentScene->name + ".scene");
+	std::ofstream outputFile(fileDirection + "/" + currentScene->name + extention);
 	Json::StreamWriterBuilder builder;
 	currentScene->OrganizeGameObjects();
 
@@ -36,7 +36,7 @@ void SceneManager::Save() {
 
 	if (outputFile.is_open())
 	{
-		outputFile << "SceneSaveFile" << std::endl;
+		outputFile << "PrefabSaveFile" << std::endl;
 
 		Json::Value sceneJson;
 		sceneJson["Name"] = currentScene->name;
@@ -87,6 +87,11 @@ void SceneManager::Save() {
 	}
 
 }
+
+
+
+
+
 
 void SceneManager::Load(std::wstring wFileDirection) {
 

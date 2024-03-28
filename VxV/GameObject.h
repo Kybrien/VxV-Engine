@@ -33,11 +33,16 @@ public:
 
     GameObject* GetChildByName(std::string name); // Rechercher un GameObject enfant du GameObject
     std::vector<Component*> GetComponents();
-    std::vector<int> GetChilds();
+
+    std::vector<GameObject*> GetChilds();
+    GameObject* GetParent();
+
 
 
     void AddChild(GameObject* go);
+    void AddParent(GameObject* go);
 
+    void RemoveChild(std::string name);
 
     // Mettre des enable if
     template<typename T>
@@ -49,7 +54,11 @@ public:
     void LoadComponent(Json::Value compJson);
 
 
+    static void Delete(GameObject* go);
+
+
 private:
     int id; // ID du GO
-    std::vector<int> childObjects; // Liste des enfants
+    std::vector<GameObject*> childObjects; // Liste des enfants
+    GameObject* parent;
 };
