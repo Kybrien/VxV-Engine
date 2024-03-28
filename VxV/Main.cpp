@@ -257,7 +257,7 @@ int main() {
 	glBindVertexArray(VAO);
 
 	glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.f, 0.0f, -5.0f));
-	//glm::mat4 myRotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(90.f), glm::vec3(1.0f, 0.0f, 0.0));
+	glm::mat4 myRotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(1.f), glm::vec3(0.0f, 1.0f, 0.0));
 	glm::mat4 model2 = translationMatrix ;
 	glm::mat4 MVP2 = Projection * View * model2;
 
@@ -309,18 +309,29 @@ int main() {
 	GLuint LightID = glGetUniformLocation(programID, "LightPosition_worldspace");
 
 	glBindVertexArray(0);
+	// glfwGetTime is called only once, the first time this function is called
+	static double lastTime = glfwGetTime();
+
 	do {
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		// Use our shader
 		glUseProgram(programID);
+
+		// Compute time difference between current and last frame
+		double currentTime = glfwGetTime();
+		float deltaTime = float(currentTime - lastTime);
+		float angle = deltaTime *50.0f;
+
+		glm::mat4 myRotationMatrix2 = glm::rotate(glm::mat4(1.0f), glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0));
 		
 		// Compute the MVP matrix from keyboard and mouse input
 		computeMatricesFromInputs(window);
 		glm::mat4 ProjectionMatrix = getProjectionMatrix();
 		glm::mat4 ViewMatrix = getViewMatrix();
-		glm::mat4 ModelMatrix = translationMatrix;
+		glm::mat4 ModelMatrix = glm::mat4(1.0f);
+		ModelMatrix = myRotationMatrix2 * ModelMatrix;
 		glm::mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
 		
 		glBindVertexArray(VertexArrayID);
