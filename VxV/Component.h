@@ -12,8 +12,9 @@ public:
 	virtual void JaiBesoinDunVirtual() {};
 
 
-	explicit Component(GameObject* go) {
+	Component(GameObject* go) {
 		linkedGameObject = go;
+		type = Unknown;
 	};
 
 	virtual void Save(Json::Value &compJson) = 0;
@@ -23,9 +24,10 @@ public:
 
 	// Enumeration de tous les types de Components
 	enum Type {
+		Unknown,
 		Transform,
 		Mesh_renderer,
-		Script
+		Script,
 	};
 
 	Type type;

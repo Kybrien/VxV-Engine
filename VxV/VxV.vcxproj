@@ -149,6 +149,9 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="loadShader.cpp" />
+    <ClCompile Include="Script.cpp" />
+    <ClCompile Include="ScriptManager.cpp" />
+    <ClCompile Include="ScriptUser.cpp" />
     <ClInclude Include="loadShader.hpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Manager.cpp" />
@@ -172,6 +175,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Script.h" />
+    <ClInclude Include="ScriptManager.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
