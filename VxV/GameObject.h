@@ -1,37 +1,71 @@
 #pragma once
-
 #include <iostream>
-#include <list>
+#include <vector>
 #include <string>
+#include <json.h>
+#include <GLM/glm.hpp>
 
+#include "Transform.h"
+#include "Script.h"
 
-#include "Component.h"
+class Scene;
 
-
-class GameObject 
-{
+class GameObject {
 public:
-	std::string name; // Nom du GO
+    Scene* currentScene;
 
-	virtual void Init() {}; // Est appelé au début 
-	virtual void Start() {}; // Est appelé à la première frame
-	virtual void Update() {}; // Est appelé à chaque frame
 
-	const int GetId() { return id; } // Renvoie l'Id du GameObject
-	
-	GameObject* GetChildByName(std::string name); // Rechercher un GameObject enfant du GameObject
+    std::vector<Component*> components;
 
-	template<typename T>
-	T* GetComponent(); // Rechercher un component
+    GameObject(std::string name_ = "GO");
 
-	template<typename T>
-	void AddComponent();
+    glm::vec3 origin;
+    bool isChild = false;
+
+
+    std::string name; // Nom du GO
+    virtual void Init() {}; // Est appelé au début 
+    virtual void Start() {}; // Est appelé à la première frame
+    virtual void Update() {}; // Est appelé à chaque frame
+
+    const int GetId() { return id; } // Renvoie l'Id du GameObject
+    void SetId(int id_) { id = id_; }
+
+    GameObject* GetChildByName(std::string name); // Rechercher un GameObject enfant du GameObject
+    std::vector<Component*> GetComponents();
+
+    std::vector<GameObject*> GetChilds();
+    GameObject* GetParent() {
+        return parent;
+    }
+
+
+    void static Load(Json::Value root, GameObject* goParent = nullptr);
+    void Save(Json::Value& root);
+
+
+    void AddChild(GameObject* go);
+    void AddParent(GameObject* go) {
+        parent = go;
+    }
+
+    void RemoveChild(GameObject* goChild);
+
+    // Mettre des enable if
+    template<typename T>
+    T* GetComponent(); // Rechercher un component
+
+    template<typename T>
+    void AddComponent();
+
+    void LoadComponent(Json::Value compJson);
+
+
+    static void Delete(GameObject* go);
 
 
 private:
-	int id; // ID du GO
-
-
-	std::list<Component*> components; // Liste des components
-	std::list<GameObject*> childObjects; // Liste des enfants
+    int id; // ID du GO
+    std::vector<GameObject*> childObjects; // Liste des enfants
+    GameObject* parent;
 };

@@ -1,0 +1,113 @@
+SceneSaveFile
+{
+	"GameObjects" : 
+	[
+		{
+			"Components" : 
+			[
+				{
+					"Position" : 
+					[
+						10.0,
+						0.0,
+						0.0
+					],
+					"Rotation" : 
+					[
+						0.0,
+						0.0,
+						0.0
+					],
+					"Scale" : 
+					[
+						0.0,
+						0.0,
+						0.0
+					],
+					"Type" : 0
+				},
+				{
+					"Script" : "script",
+					"Type" : 2
+				}
+			],
+			"GameObjectsChild" : 
+			[
+				{
+					"Components" : 
+					[
+						{
+							"Position" : 
+							[
+								0.0,
+								0.0,
+								0.0
+							],
+							"Rotation" : 
+							[
+								0.0,
+								0.0,
+								0.0
+							],
+							"Scale" : 
+							[
+								0.0,
+								0.0,
+								0.0
+							],
+							"Type" : 0
+						},
+						{
+							"Script" : "script",
+							"Type" : 2
+						}
+					],
+					"GameObjectsChild" : 
+					[
+						{
+							"Components" : 
+							[
+								{
+									"Position" : 
+									[
+										10.0,
+										0.0,
+										0.0
+									],
+									"Rotation" : 
+									[
+										0.0,
+										0.0,
+										0.0
+									],
+									"Scale" : 
+									[
+										0.0,
+										0.0,
+										0.0
+									],
+									"Type" : 0
+								},
+								{
+									"Script" : "script",
+									"Type" : 2
+								}
+							],
+							"Id" : 1,
+							"Is Child" : true,
+							"Name" : "cercle"
+						}
+					],
+					"Id" : 2,
+					"Is Child" : true,
+					"Name" : "child"
+				}
+			],
+			"Id" : 0,
+			"Is Child" : false,
+			"Name" : "cube"
+		}
+	],
+	"Name" : "SampleScene"
+}
+
