@@ -3,7 +3,7 @@
 
 class Prefab {
 private: 
-	GameObject* gameObject;
+	GameObject gameObject;
 
 public:
 	std::string name;
@@ -11,6 +11,6 @@ public:
 	Prefab(GameObject &go, std::string name = "PrefabSample");
 
 	GameObject getGameObject() {
-		return *gameObject;
+		return gameObject;
 	}
 };

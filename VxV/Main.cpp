@@ -36,11 +36,11 @@ int main() {
 
 	if (currentScene->GetAllGameObjects().empty()) {
 
-		GameObject* cube = new GameObject("cube");
+		GameObject* cube = new GameObject("cube", false);
 		cube->GetComponent<Transform>()->position.x = 10;
 
 		Prefab* prefabCube = new Prefab(*cube);
-		GameObject* cercle = new GameObject("", prefabCube);
+		GameObject* cercle = new GameObject("", false, prefabCube);
 
 
 
@@ -49,7 +49,7 @@ int main() {
 
 
 
-		GameObject* child = new GameObject("child");
+		GameObject* child = new GameObject("child", false);
 		child->GetComponent<Transform>()->position = glm::vec3(10, 0, 0);
 
 		cube->AddChild(child);

@@ -46,7 +46,7 @@ void PrefabManager::Load(std::wstring wFileDirection) {
 					std::cerr << "Erreur lors de l'analyse du JSON : " << reader.getFormattedErrorMessages() << std::endl;
 				}
 				else {
-					GameObject* go = new GameObject("GO", true, nullptr);
+					GameObject* go = new GameObject();
 
 					go->Load(PrefabJson, nullptr, true);
 

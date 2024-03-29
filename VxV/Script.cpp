@@ -2,12 +2,15 @@
 #include "ScriptManager.h"
 #include <iostream>
 
-Script::Script(GameObject* gameObject, std::string _name) : Component(gameObject) {
+Script::Script(GameObject* gameObject, bool prefabLoading, std::string _name) : Component(gameObject) {
 	type = Component::Type::Script;
 	name = _name;
 
-	ScriptManager* scriptManager = Manager::GetInstance()->GetManager<ScriptManager>();
-	scriptManager->AddScript(this);
+	if (!prefabLoading) {
+
+		ScriptManager* scriptManager = Manager::GetInstance()->GetManager<ScriptManager>();
+		scriptManager->AddScript(this);
+	}
 }
 
 void Script::Start()

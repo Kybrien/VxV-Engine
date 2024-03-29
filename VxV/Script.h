@@ -9,7 +9,7 @@ using namespace glm;
 class Script : public Component {
 public:
 	std::string name;
-	Script(GameObject* gameObject, std::string _name = "scriptSample");
+	Script(GameObject* gameObject, bool PrefabLoading = false , std::string _name = "scriptSample");
 
 	void Load(Json::Value& compJson) override {
 		name = compJson["Script"].asString();
