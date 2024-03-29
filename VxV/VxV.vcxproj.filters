@@ -30,9 +30,6 @@
     <ClCompile Include="Engine.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectPool.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="MemoryPool.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -51,9 +48,6 @@
       <Filter>Fichiers d%27en-tête\Components</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectPool.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="MemoryPool.h">
