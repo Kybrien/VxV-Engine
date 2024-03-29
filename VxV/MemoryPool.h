@@ -7,9 +7,9 @@ template<typename T, class Strategy> class MemoryPool
 private:
 	Strategy m_strategy;
 public:
-	MemoryPool()
+	MemoryPool(int size = 0) : m_strategy(size)
 	{
-		m_strategy();
+
 	}
 
 	void* Alloc(unsigned int n)
@@ -53,7 +53,7 @@ private:
 	size_type N;// number of memory chunks
 
 public:
-	MemPool_Linear(unsigned int size = 1) : m_buffer(sizeof(T)* N), m_state(N), N(size)
+	MemPool_Linear(unsigned int size) : m_buffer(sizeof(T)* size), m_state(size), N(size)
 	{
 		// initially all memory chunks are free
 		for (size_type i = 0; i < N; i++)

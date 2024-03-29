@@ -6,7 +6,7 @@
 #include <GLM/glm.hpp>
 
 #include "loadShader.hpp"
-
+#include "MemoryPool.h"
 
 
 
@@ -21,7 +21,20 @@
 using namespace glm;
 
 int main() {
-	
+	// ---------------------------------- Memory Pool Test ------------------------- //
+	MemoryPool<GameObject, MemPool_Linear<GameObject>> pool(10);
+
+	try 
+	{
+		//Trying to allocate elements
+		GameObject* test = static_cast<GameObject*>(pool.Alloc(sizeof(GameObject)));
+		*test = GameObject("sushi");
+		pool.Free(test);
+	}
+	catch (const std::bad_alloc& e)
+	{
+		std::cerr <<"Memory Alloc Failed" << e.what() << std::endl;
+	}
 
 	// ---------------------------------- Autres Tests ------------------------- //
 	Engine* engine = new Engine();
