@@ -14,7 +14,7 @@ public:
 
 	ScriptManager(Manager* manager);
 
-	void AddScript(Script* script, GameObject* linkedGameObject);
+	void AddScript(Script* script);
 
 	std::vector<Script*> GetScripts() {
 		return scripts;

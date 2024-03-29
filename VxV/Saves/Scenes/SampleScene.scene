@@ -93,12 +93,12 @@ SceneSaveFile
 									"Type" : 3
 								}
 							],
-							"Id" : 1,
+							"Id" : 0,
 							"Is Child" : true,
-							"Name" : "cercle"
+							"Name" : "cube"
 						}
 					],
-					"Id" : 2,
+					"Id" : 1,
 					"Is Child" : true,
 					"Name" : "child"
 				}

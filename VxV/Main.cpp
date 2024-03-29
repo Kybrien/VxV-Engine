@@ -35,12 +35,21 @@ int main() {
 	Scene* currentScene = sc->GetCurrentScene();
 
 	if (currentScene->GetAllGameObjects().empty()) {
-		GameObject* cube = new GameObject("cube");
-		cube->GetComponent<Transform>()->position = glm::vec3(10, 0, 0);
-		GameObject* cercle = new GameObject("cercle");
-		cercle->GetComponent<Transform>()->position = glm::vec3(10, 0, 0);
 
-		GameObject* child = new GameObject("child");
+		GameObject* cube = new GameObject("cube", false);
+		cube->GetComponent<Transform>()->position.x = 10;
+
+		Prefab* prefabCube = new Prefab(*cube);
+		GameObject* cercle = new GameObject("", false, prefabCube);
+
+
+
+
+
+
+
+
+		GameObject* child = new GameObject("child", false);
 		child->GetComponent<Transform>()->position = glm::vec3(10, 0, 0);
 
 		cube->AddChild(child);
@@ -48,6 +57,8 @@ int main() {
 
 		sc->Save();
 	}
+
+	engine->manager->GetManager<PrefabManager>()->Save();
 	
 	
 	

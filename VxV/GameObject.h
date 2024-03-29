@@ -9,6 +9,7 @@
 #include "Script.h"
 
 class Scene;
+class Prefab;
 
 class GameObject {
 public:
@@ -17,7 +18,7 @@ public:
 
     std::vector<Component*> components;
 
-    GameObject(std::string name_ = "GO");
+    GameObject(std::string name_ = "GO", bool PrefabLoading = true, Prefab* prefab = nullptr);
 
     glm::vec3 origin;
     bool isChild = false;
@@ -39,8 +40,10 @@ public:
         return parent;
     }
 
+    
 
-    void static Load(Json::Value root, GameObject* goParent = nullptr);
+
+    void static Load(Json::Value root, GameObject* goParent = nullptr, bool PrefabLoading = false);
     void Save(Json::Value& root);
 
 
@@ -58,7 +61,7 @@ public:
     template<typename T>
     void AddComponent();
 
-    void LoadComponent(Json::Value compJson);
+    void LoadComponent(Json::Value compJson, GameObject* parentGo);
 
 
     static void Delete(GameObject* go);
@@ -68,4 +71,5 @@ private:
     int id; // ID du GO
     std::vector<GameObject*> childObjects; // Liste des enfants
     GameObject* parent;
+    Prefab* prefab;
 };

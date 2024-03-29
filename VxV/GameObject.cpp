@@ -1,58 +1,80 @@
 #include "GameObject.h"
+
 #include "SceneManager.h"
-
-GameObject::GameObject(std::string name_) {
-    name = name_;
+#include "PrefabManager.h"
 
 
-    Manager* manager = Manager::GetInstance();
-    SceneManager* sceneManager = manager->GetManager<SceneManager>();
-    currentScene = sceneManager->GetCurrentScene();
 
 
-    std::vector<GameObject*> goList = currentScene->GetAllGameObjects();
+GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_) {
+
 
 
     parent = nullptr;
+    prefab = prefab_;
 
 
-    bool idFound = false;
-    int i = 0;
+    if (!PrefabLoading) {
+        Manager* manager = Manager::GetInstance();
+        SceneManager* sceneManager = manager->GetManager<SceneManager>();
+        currentScene = sceneManager->GetCurrentScene();
+        std::vector<GameObject*> goList = currentScene->GetAllGameObjects();
 
-    while (!idFound) {
-        bool idFree = true;
-        for (GameObject* go : goList) {
-            if (go->GetId() == i) {
-                idFree = false;
-                break;
+
+
+        bool idFound = false;
+        int i = 0;
+
+        while (!idFound) {
+            bool idFree = true;
+            for (GameObject* go : goList) {
+                if (go->GetId() == i) {
+                    idFree = false;
+                    break;
+                }
             }
-        }
-        if (idFree) {
-            id = i;
-            idFound = true;
-        }
-        else i++;
+            if (idFree) {
+                id = i;
+                idFound = true;
+            }
+            else i++;
 
+        }
+
+        currentScene->AddGameObject(this);
     }
 
 
 
-    components.push_back(new Transform(this));
-    components.push_back(new Script(this, "script"));
+    if (prefab == nullptr) {
 
-    currentScene->AddGameObject(this);
+        name = name_;
+        components.push_back(new Transform(this));
+        components.push_back(new Script(this, PrefabLoading, "script"));
+    }
+
+    else {
+        *this = prefab->getGameObject();
+    }
 }
 
-void GameObject::Load(Json::Value root, GameObject* goParent) {
+void GameObject::Load(Json::Value root, GameObject* goParent, bool PrefabLoading) {
 
-
-    GameObject* go = new GameObject();
+    GameObject* go = new GameObject("", PrefabLoading);
     go->SetId(root["Id"].asInt());
     go->name = root["Name"].asString();
     go->isChild = root["Is Child"].asBool();
 
+    if (root.isMember("PrefabName")) {
+        for (Prefab* prefab_ : Manager::GetInstance()->GetManager<PrefabManager>()->GetPrefabs()) {
+            if (prefab_->name == root["PrefabName"].asString()) {
+                go->prefab = prefab_;
+            }
+        }
+    }
+
     for (const Json::Value compJson : root["Components"]) {
-        go->LoadComponent(compJson);
+        go->LoadComponent(compJson, go);
     }
 
     if (root.isMember("GameObjectsChild")) {
@@ -72,6 +94,11 @@ void GameObject::Save(Json::Value& root) {
     gameObjectJson["Id"] = id;
     gameObjectJson["Name"] = name;
     gameObjectJson["Is Child"] = isChild;
+
+
+    if (prefab != nullptr) {
+        gameObjectJson["PrefabName"] = prefab->name;
+    }
 
 
     gameObjectJson["Components"] = Json::Value(Json::arrayValue);
@@ -174,21 +201,20 @@ void GameObject::AddComponent() {
     components.push_back(new T(this));
 }
 
-
-    void GameObject::LoadComponent(Json::Value compJson) {
-        switch (compJson["Type"].asInt()) {
-        case 0:
-            break;
-        case 1:
-            GetComponent<Transform>()->Load(compJson);
-            break;
-        case 2:
-            break;
-        case 3:
-            GetComponent<Script>()->Load(compJson);
-            break;
-        }
+void GameObject::LoadComponent(Json::Value compJson, GameObject* parentGo) {
+    switch (compJson["Type"].asInt()) {
+    case 0:
+        break;
+    case 1:
+        GetComponent<Transform>()->Load(compJson, parentGo);
+        break;
+    case 2:
+        break;
+    case 3:
+        GetComponent<Script>()->Load(compJson, parentGo);
+        break;
     }
+}
 
 std::vector<Component*> GameObject::GetComponents() {
     return components;

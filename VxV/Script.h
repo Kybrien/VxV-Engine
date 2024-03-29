@@ -9,10 +9,12 @@ using namespace glm;
 class Script : public Component {
 public:
 	std::string name;
-	Script(GameObject* gameObject, std::string _name = "scriptSample");
+	Script(GameObject* gameObject, bool PrefabLoading = false , std::string _name = "scriptSample");
+
 	void GenerateScript(const std::string& className, const std::string& templateFileName = "ScriptUser.cpp");
-	void Load(Json::Value& compJson) override {
+	void Load(Json::Value& compJson, GameObject* parentGO) override {
 		name = compJson["Script"].asString();
+		linkedGameObject = parentGO;
 	}
 
 	void Save(Json::Value& compJson) override {

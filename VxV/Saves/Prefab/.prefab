@@ -1,0 +1,41 @@
+PrefabSaveFile
+{
+	"GameObjects" : 
+	[
+		{
+			"Components" : 
+			[
+				{
+					"Position" : 
+					[
+						0.0,
+						0.0,
+						0.0
+					],
+					"Rotation" : 
+					[
+						0.0,
+						0.0,
+						0.0
+					],
+					"Scale" : 
+					[
+						0.0,
+						0.0,
+						0.0
+					],
+					"Type" : 1
+				},
+				{
+					"Script" : "script",
+					"Type" : 3
+				}
+			],
+			"Id" : 0,
+			"Is Child" : false,
+			"Name" : "GO"
+		}
+	],
+	"Name" : ""
+}
+
