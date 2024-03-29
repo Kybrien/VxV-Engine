@@ -9,6 +9,8 @@
 #include <GLM/gtc/matrix_transform.hpp>
 #define STB_IMAGE_IMPLEMENTATION
 #include "Externes/stb/stb_image.h"
+#define TINYOBJLOADER_IMPLEMENTATION
+#include "Externes/tiny_obj_loader.h"
 
 using namespace glm;
 
@@ -18,6 +20,12 @@ using namespace glm;
 #include "objloader.hpp"
 #include "vboindexer.hpp"
 
+class Vertex {
+public:
+	glm::vec3 position;
+	glm::vec3 normal;
+	glm::vec2 texCoord;
+};
 
 int main() {
 	if (!glfwInit()) {
@@ -123,27 +131,74 @@ int main() {
 	// Get a handle for our "myTextureSampler" uniform
 	GLuint TextureID = glGetUniformLocation(programID, "myTextureSampler");
 
-	// Read our .obj file
-	std::vector< glm::vec3 > vertices;
-	std::vector< glm::vec2 > uvs;
-	std::vector< glm::vec3 > normals;
-	
-	bool res = loadOBJ("miku.obj", vertices, uvs, normals);
+	//// Read our .obj file
+	//std::vector< glm::vec3 > vertices;
+	//std::vector< glm::vec2 > uvs;
+	//std::vector< glm::vec3 > normals;
+	//
+	/*bool res = loadOBJ("miku.obj", vertices, uvs, normals);
 	
 	std::vector<unsigned short> indices;
 	std::vector<glm::vec3> indexed_vertices;
 	std::vector<glm::vec2> indexed_uvs;
 	std::vector<glm::vec3> indexed_normals;
 	indexVBO(vertices, uvs, normals, indices, indexed_vertices, indexed_uvs, indexed_normals);
+*/
 
+	tinyobj::attrib_t attributes;
+	std::vector<tinyobj::shape_t> shapes;
+	std::vector<tinyobj::material_t> materials;
+	std::string warnings;
+	std::string errors;
+
+	tinyobj::LoadObj(&attributes, &shapes, &materials, &warnings, &errors, "miku.obj", "");
+
+	std::vector<Vertex> vertices;
+	for (int i = 0; i < shapes.size(); i++) {
+		tinyobj::shape_t& shape = shapes[i];
+		tinyobj::mesh_t& mesh = shape.mesh;
+		for (int j = 0; j < mesh.indices.size(); j++) {
+			tinyobj::index_t i = mesh.indices[j];
+			glm::vec3 position = {
+				attributes.vertices[i.vertex_index * 3],
+				attributes.vertices[i.vertex_index * 3 + 1],
+				attributes.vertices[i.vertex_index * 3 + 2]
+			};
+			glm::vec3 normal = {
+				attributes.normals[i.normal_index * 3],
+				attributes.normals[i.normal_index * 3 + 1],
+				attributes.normals[i.normal_index * 3 + 2]
+			};
+			glm::vec2 texCoord = {
+				attributes.texcoords[i.texcoord_index * 2],
+				attributes.texcoords[i.texcoord_index * 2 + 1],
+			};
+			Vertex vert = { position, normal, texCoord };
+			vertices.push_back(vert);
+		}
+	}
+	std::string mtlFilePath = "miku.mtl";
+
+	std::ifstream mtlFile(mtlFilePath.c_str());
+	if (!mtlFile) {
+		std::cerr << "Failed to open .mtl file: " << mtlFilePath << std::endl;
+		return 1;
+	}
+
+	std::map<std::string, int> matMap; // This map will be filled by LoadMtl
+
+
+	tinyobj::LoadMtl(&matMap, &materials, &mtlFile ,&warnings ,&errors);
+
+	mtlFile.close();
 
 	GLuint vertexbuffer;
 	glGenBuffers(1, &vertexbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 	//glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
-	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &indexed_vertices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
 
-	GLuint uvbuffer;
+	/*GLuint uvbuffer;
 	glGenBuffers(1, &uvbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
 	glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec2), &indexed_uvs[0], GL_STATIC_DRAW);
@@ -157,7 +212,7 @@ int main() {
 	glGenBuffers(1, &elementbuffer);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned short), &indices[0], GL_STATIC_DRAW);
-
+*/
 
 	// Get a handle for our "LightPosition" uniform
 	glUseProgram(programID);
@@ -216,51 +271,58 @@ int main() {
 		// Set our "myTextureSampler" sampler to use Texture Unit 0
 		glUniform1i(TextureID, 0);
 		glEnableVertexAttribArray(0);
-		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-		glVertexAttribPointer(
-			0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
-			3,                  // size
-			GL_FLOAT,           // type
-			GL_FALSE,           // normalized?
-			0,                  // stride
-			(void*)0            // array buffer offset
-		);
-		// 2nd attribute buffer : colors
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, nullptr);
 		glEnableVertexAttribArray(1);
-		glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
-		glVertexAttribPointer(
-			1,                                // attribute. No particular reason for 1, but must match the layout in the shader.
-			2,                                // size
-			GL_FLOAT,                         // type
-			GL_FALSE,                         // normalized?
-			0,                                // stride
-			(void*)0                          // array buffer offset
-		);
-
-		// 3rd attribute buffer : normals
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 3));
 		glEnableVertexAttribArray(2);
-		glBindBuffer(GL_ARRAY_BUFFER, normalbuffer);
-		glVertexAttribPointer(
-			2,                                // attribute
-			3,                                // size
-			GL_FLOAT,                         // type
-			GL_FALSE,                         // normalized?
-			0,                                // stride
-			(void*)0                          // array buffer offset
-		);
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 6));
+
+		glDrawArrays(GL_TRIANGLES, 0, vertices.size());
+		//glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+		//glVertexAttribPointer(
+		//	0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
+		//	3,                  // size
+		//	GL_FLOAT,           // type
+		//	GL_FALSE,           // normalized?
+		//	0,                  // stride
+		//	(void*)0            // array buffer offset
+		//);
+		//// 2nd attribute buffer : colors
+		//glEnableVertexAttribArray(1);
+		//glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
+		//glVertexAttribPointer(
+		//	1,                                // attribute. No particular reason for 1, but must match the layout in the shader.
+		//	2,                                // size
+		//	GL_FLOAT,                         // type
+		//	GL_FALSE,                         // normalized?
+		//	0,                                // stride
+		//	(void*)0                          // array buffer offset
+		//);
+
+		//// 3rd attribute buffer : normals
+		//glEnableVertexAttribArray(2);
+		//glBindBuffer(GL_ARRAY_BUFFER, normalbuffer);
+		//glVertexAttribPointer(
+		//	2,                                // attribute
+		//	3,                                // size
+		//	GL_FLOAT,                         // type
+		//	GL_FALSE,                         // normalized?
+		//	0,                                // stride
+		//	(void*)0                          // array buffer offset
+		//);
 
 
-		//// Draw the triangle !
-		//glDrawArrays(GL_TRIANGLES, 0, vertices.size()); // 12*3 indices starting at 0 -> 12 triangles
+		////// Draw the triangle !
+		////glDrawArrays(GL_TRIANGLES, 0, vertices.size()); // 12*3 indices starting at 0 -> 12 triangles
 
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
-		//TEST // Draw the triangles !
-		glDrawElements(
-			GL_TRIANGLES,      // mode
-			indices.size(),    // count
-			GL_UNSIGNED_SHORT,   // type
-			(void*)0           // element array buffer offset
-		);
+		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
+		////TEST // Draw the triangles !
+		//glDrawElements(
+		//	GL_TRIANGLES,      // mode
+		//	indices.size(),    // count
+		//	GL_UNSIGNED_SHORT,   // type
+		//	(void*)0           // element array buffer offset
+		//);
 
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
@@ -274,9 +336,9 @@ int main() {
 
 	// Cleanup VBO and shader
 	glDeleteBuffers(1, &vertexbuffer);
-	glDeleteBuffers(1, &uvbuffer);
-	glDeleteBuffers(1, &normalbuffer);
-	glDeleteBuffers(1, &elementbuffer);
+	//glDeleteBuffers(1, &uvbuffer);
+	//glDeleteBuffers(1, &normalbuffer);
+	//glDeleteBuffers(1, &elementbuffer);
 	glDeleteProgram(programID);
 	glDeleteTextures(1, &Texture);
 	glDeleteVertexArrays(1, &VertexArrayID);
