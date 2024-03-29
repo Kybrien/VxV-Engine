@@ -2,6 +2,7 @@
 
 #include "SceneManager.h"
 #include "ScriptManager.h"
+#include "PrefabManager.h"
 
 class Engine {
 private:

@@ -67,7 +67,7 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="ScriptManager.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Managers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +110,9 @@
     </ClInclude>
     <ClInclude Include="Prefab.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptManager.h">
+      <Filter>Fichiers d%27en-tête\Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

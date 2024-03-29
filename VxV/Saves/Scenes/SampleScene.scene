@@ -24,11 +24,11 @@ SceneSaveFile
 						0.0,
 						0.0
 					],
-					"Type" : 0
+					"Type" : 1
 				},
 				{
 					"Script" : "script",
-					"Type" : 2
+					"Type" : 3
 				}
 			],
 			"GameObjectsChild" : 
@@ -55,11 +55,11 @@ SceneSaveFile
 								0.0,
 								0.0
 							],
-							"Type" : 0
+							"Type" : 1
 						},
 						{
 							"Script" : "script",
-							"Type" : 2
+							"Type" : 3
 						}
 					],
 					"GameObjectsChild" : 
@@ -70,7 +70,7 @@ SceneSaveFile
 								{
 									"Position" : 
 									[
-										10.0,
+										0.0,
 										0.0,
 										0.0
 									],
@@ -86,21 +86,54 @@ SceneSaveFile
 										0.0,
 										0.0
 									],
-									"Type" : 0
+									"Type" : 1
 								},
 								{
 									"Script" : "script",
-									"Type" : 2
+									"Type" : 3
 								}
 							],
-							"Id" : 1,
+							"Id" : 0,
 							"Is Child" : true,
-							"Name" : "cercle"
+							"Name" : ""
 						}
 					],
-					"Id" : 2,
+					"Id" : 1,
 					"Is Child" : true,
 					"Name" : "child"
+				}
+			],
+			"Id" : 0,
+			"Is Child" : false,
+			"Name" : "cube"
+		},
+		{
+			"Components" : 
+			[
+				{
+					"Position" : 
+					[
+						10.0,
+						0.0,
+						0.0
+					],
+					"Rotation" : 
+					[
+						0.0,
+						0.0,
+						0.0
+					],
+					"Scale" : 
+					[
+						0.0,
+						0.0,
+						0.0
+					],
+					"Type" : 1
+				},
+				{
+					"Script" : "script",
+					"Type" : 3
 				}
 			],
 			"Id" : 0,

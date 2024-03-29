@@ -1,59 +1,73 @@
 #include "GameObject.h"
 
 #include "SceneManager.h"
+#include "PrefabManager.h"
 
 
 
 
-GameObject::GameObject(std::string name_) {
-    name = name_;
-    components.push_back(new Transform(this));
-    components.push_back(new Script(this, "script"));
+GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_) {
 
+    if (prefab == nullptr) {
 
-    Manager* manager = Manager::GetInstance();
-    SceneManager* sceneManager = manager->GetManager<SceneManager>();
-    currentScene = sceneManager->GetCurrentScene();
-
-
-    std::vector<GameObject*> goList = currentScene->GetAllGameObjects();
-
-
-    parent = nullptr;
-
-
-    bool idFound = false;
-    int i = 0;
-
-    while (!idFound) {
-        bool idFree = true;
-        for (GameObject* go : goList) {
-            if (go->GetId() == i) {
-                idFree = false;
-                break;
-            }
-        }
-        if (idFree) {
-            id = i;
-            idFound = true;
-        }
-        else i++;
-
+        name = name_;
+        components.push_back(new Transform(this));
+        components.push_back(new Script(this, "script"));
     }
 
+    else {
+        *this = prefab->getGameObject();
+    }
+
+    parent = nullptr;
+    prefab = prefab_;
+
+
+    if (!PrefabLoading) {
+        Manager* manager = Manager::GetInstance();
+        SceneManager* sceneManager = manager->GetManager<SceneManager>();
+        currentScene = sceneManager->GetCurrentScene();
+        std::vector<GameObject*> goList = currentScene->GetAllGameObjects();
 
 
 
-    currentScene->AddGameObject(this);
+        bool idFound = false;
+        int i = 0;
+
+        while (!idFound) {
+            bool idFree = true;
+            for (GameObject* go : goList) {
+                if (go->GetId() == i) {
+                    idFree = false;
+                    break;
+                }
+            }
+            if (idFree) {
+                id = i;
+                idFound = true;
+            }
+            else i++;
+
+        }
+
+        currentScene->AddGameObject(this);
+    }
 }
 
-void GameObject::Load(Json::Value root, GameObject* goParent) {
+void GameObject::Load(Json::Value root, GameObject* goParent, bool PrefabLoading) {
 
-
-    GameObject* go = new GameObject();
+    GameObject* go = new GameObject("", PrefabLoading);
     go->SetId(root["Id"].asInt());
     go->name = root["Name"].asString();
     go->isChild = root["Is Child"].asBool();
+
+    if (root.isMember("PrefabName")) {
+        for (Prefab* prefab_ : Manager::GetInstance()->GetManager<PrefabManager>()->GetPrefabs()) {
+            if (prefab_->name == root["PrefabName"].asString()) {
+                go->prefab = prefab_;
+            }
+        }
+    }
 
     for (const Json::Value compJson : root["Components"]) {
         go->LoadComponent(compJson);
@@ -76,6 +90,11 @@ void GameObject::Save(Json::Value& root) {
     gameObjectJson["Id"] = id;
     gameObjectJson["Name"] = name;
     gameObjectJson["Is Child"] = isChild;
+
+
+    if (prefab != nullptr) {
+        gameObjectJson["PrefabName"] = prefab->name;
+    }
 
 
     gameObjectJson["Components"] = Json::Value(Json::arrayValue);
@@ -179,26 +198,15 @@ void GameObject::AddComponent() {
 }
 
 void GameObject::LoadComponent(Json::Value compJson) {
-
-    Component::Type type;
-    std::string typeStr = compJson["Type"].asString();
-
-    if (typeStr == "0") {
-        type = Component::Type::Transform;
-    }
-    else if (typeStr == "1") {
-        type = Component::Type::Mesh_renderer;
-    }
-    else if (typeStr == "2") {
-        type = Component::Type::Script;
-    }
-
-
-    switch (type) {
-    case Component::Type::Transform:
+    switch (compJson["Type"].asInt()) {
+    case 0:
+        break;
+    case 1:
         GetComponent<Transform>()->Load(compJson);
         break;
-    case Component::Type::Script:
+    case 2:
+        break;
+    case 3:
         GetComponent<Script>()->Load(compJson);
         break;
     }

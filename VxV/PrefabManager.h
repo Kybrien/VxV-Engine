@@ -4,7 +4,7 @@
 
 class PrefabManager : public Manager {
 private:
-	std::vector<Prefab> prefabs;
+	std::vector<Prefab*> prefabs;
 
 	std::string fileDirection = "Saves/Prefab";
 	std::string extention = ".prefab";
@@ -12,6 +12,14 @@ private:
 
 public:
 	PrefabManager(Manager* manager);
+
+	std::vector<Prefab*> GetPrefabs() {
+		return prefabs;
+	}
+
+	void AddPrefab(Prefab* prefab) {
+		prefabs.push_back(prefab);
+	}
 
 	void Save() override;
 	void Load(std::wstring wFileDirection) override; 
