@@ -4,6 +4,7 @@
 class UserScript : public Script {
 public:
     void Start() {
+        //code custom
         Script::Start();
         std::cout << "User-defined Start() function called." << std::endl;
     }
