@@ -14,9 +14,7 @@ public:
 
 	ScriptManager(Manager* manager);
 
-	void AddScript(Script* script) {
-		scripts.push_back(script);
-	}
+	void AddScript(Script* script, GameObject* linkedGameObject);
 
 	std::vector<Script*> GetScripts() {
 		return scripts;
@@ -24,4 +22,5 @@ public:
 
 	void Save() override;
 	void Load(std::wstring wFileDirection) override;
+	static std::string fileDirection;
 };

@@ -1,14 +1,8 @@
 #include "GameObject.h"
-
 #include "SceneManager.h"
-
-
-
 
 GameObject::GameObject(std::string name_) {
     name = name_;
-    components.push_back(new Transform(this));
-    components.push_back(new Script(this, "script"));
 
 
     Manager* manager = Manager::GetInstance();
@@ -43,6 +37,8 @@ GameObject::GameObject(std::string name_) {
 
 
 
+    components.push_back(new Transform(this));
+    components.push_back(new Script(this, "script"));
 
     currentScene->AddGameObject(this);
 }
@@ -178,31 +174,21 @@ void GameObject::AddComponent() {
     components.push_back(new T(this));
 }
 
-void GameObject::LoadComponent(Json::Value compJson) {
 
-    Component::Type type;
-    std::string typeStr = compJson["Type"].asString();
-
-    if (typeStr == "0") {
-        type = Component::Type::Transform;
+    void GameObject::LoadComponent(Json::Value compJson) {
+        switch (compJson["Type"].asInt()) {
+        case 0:
+            break;
+        case 1:
+            GetComponent<Transform>()->Load(compJson);
+            break;
+        case 2:
+            break;
+        case 3:
+            GetComponent<Script>()->Load(compJson);
+            break;
+        }
     }
-    else if (typeStr == "1") {
-        type = Component::Type::Mesh_renderer;
-    }
-    else if (typeStr == "2") {
-        type = Component::Type::Script;
-    }
-
-
-    switch (type) {
-    case Component::Type::Transform:
-        GetComponent<Transform>()->Load(compJson);
-        break;
-    case Component::Type::Script:
-        GetComponent<Script>()->Load(compJson);
-        break;
-    }
-}
 
 std::vector<Component*> GameObject::GetComponents() {
     return components;

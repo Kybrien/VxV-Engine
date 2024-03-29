@@ -32,6 +32,10 @@ public:
 
 	Type type;
 
+	GameObject* GetLinkedGameObject() const {
+		return linkedGameObject;
+	}
+
 protected:
 	GameObject* linkedGameObject;
 };
