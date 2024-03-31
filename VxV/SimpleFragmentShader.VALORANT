@@ -12,7 +12,7 @@ out vec3 color;
 
 // Values that stay constant for the whole mesh.
 uniform sampler2D myTextureSampler;
-uniform mat4 MV;
+uniform mat4 MVP;
 uniform vec3 LightPosition_worldspace;
 
 // Material properties as uniforms
@@ -29,8 +29,9 @@ void main(){
     float LightPower = 50.0f;
     
     // Material properties from texture
-    vec3 MaterialAmbientColor2 = vec3(1.0,1.0,1.0) * MaterialDiffuseColor;
+    vec3 MaterialAmbientColor2 = vec3(0.5,0.5,0.5) * MaterialDiffuseColor;
     vec3 textureColor = texture( myTextureSampler, UV ).rgb;
+    //MaterialAmbientColor2 = mix(MaterialAmbientColor2, texture( myTextureSampler, UV ).rgb, 0.9);
 
     // Distance to the light
     float distance = length( LightPosition_worldspace - Position_worldspace );
@@ -55,12 +56,11 @@ void main(){
     //  - Looking into the reflection -> 1
     //  - Looking elsewhere -> < 1
     float cosAlpha = clamp( dot( E,R ), 0,1 );
-    
- color = 
+     color = 
         // Ambient : simulates indirect lighting
         MaterialAmbientColor2 +
         // Diffuse : "color" of the object
-        textureColor * MaterialDiffuseColor * LightColor * LightPower * cosTheta / (distance*distance) +
+        textureColor  * LightColor * LightPower * cosTheta / (distance*distance) ;
         // Specular : reflective highlight, like a mirror
         MaterialSpecularColor * LightColor * LightPower * pow(cosAlpha,5) / (distance*distance);
 

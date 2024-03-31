@@ -29,19 +29,24 @@ public:
 
 GLuint loadTexture(const char* filename) {
 	int width, height, numComponents;
+	stbi_set_flip_vertically_on_load(true);
 	unsigned char* data = stbi_load(filename, &width, &height, &numComponents, 4);
 	if (data == NULL) {
 		std::cerr << "Failed to load texture: " << filename << std::endl;
 		return 0;
 	}
-
+	std::cout << "Loaded texture: " << filename << " (" << width << "x" << height << ")" << std::endl;
 	GLuint texID;
 	glGenTextures(1, &texID);
 	glBindTexture(GL_TEXTURE_2D, texID);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+	//glGenerateMipmap(GL_TEXTURE_2D);
+
+	glGenerateMipmap(GL_TEXTURE_2D);
 
 	stbi_image_free(data);
 
@@ -194,8 +199,10 @@ int main() {
 			textureIDs.push_back(0);  // No texture for this material
 		}
 	}
+
+
 	// Get a handle for our "myTextureSampler" uniform
-	GLuint TextureID = glGetUniformLocation(programID, "myTextureSampler");
+	
 
 	/*GLuint uvbuffer;
 	glGenBuffers(1, &uvbuffer);
@@ -215,6 +222,7 @@ int main() {
 
 	// Get a handle for our "LightPosition" uniform
 	glUseProgram(programID);
+	GLuint TextureID = glGetUniformLocation(programID, "myTextureSampler");
 	GLuint LightID = glGetUniformLocation(programID, "LightPosition_worldspace");
 	GLuint MaterialAmbientColorID = glGetUniformLocation(programID, "MaterialAmbientColor");
 	GLuint MaterialDiffuseColorID = glGetUniformLocation(programID, "MaterialDiffuseColor");
@@ -271,18 +279,15 @@ int main() {
 		// Bind our texture in Texture Unit 0
 
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, nullptr);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, nullptr);  // Position attribute
 		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 3));
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 3));  // Normal attribute
 		glEnableVertexAttribArray(2);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 6));
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 6));  // Texture coordinate attribute
 
 		size_t totalVertexCount = 0;
 
 		for (size_t s = 0; s < shapes.size(); s++) {
-			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, textureIDs[s]);
-			glUniform1i(TextureID, 0);
 
 			tinyobj::mesh_t& mesh = shapes[s].mesh;
 			for (size_t f = 0; f < mesh.indices.size(); f += 3) {
@@ -294,10 +299,26 @@ int main() {
 					glUniform3fv(MaterialAmbientColorID, 1, ambient);
 					glUniform3fv(MaterialDiffuseColorID, 1, diffuse);
 					glUniform3fv(MaterialSpecularColorID, 1, specular);
+					//std::cout << "name: " <<  material.name << std::endl;
+					GLuint texID = textureIDs[mesh.material_ids[f / 3]];
+					if (texID != 0) {  // Check if a texture exists for this material
+						//std::cout << "texture ID: " << texID << std::endl;
+						glActiveTexture(GL_TEXTURE0);
+						glBindTexture(GL_TEXTURE_2D, texID);
+						glUniform1i(TextureID, 0);
+					}
+
 				}
 
 				// Draw the face
 				glDrawArrays(GL_TRIANGLES, totalVertexCount + f, 3);
+				// Deactivate the texture
+				if (mesh.material_ids[f / 3] >= 0) {
+					GLuint texID = textureIDs[mesh.material_ids[f / 3]];
+					if (texID != 0) {  // Check if a texture exists for this material
+						glBindTexture(GL_TEXTURE_2D, 0);
+					}
+				}
 			}
 
 			totalVertexCount += mesh.indices.size();
@@ -364,7 +385,7 @@ int main() {
 	//glDeleteBuffers(1, &normalbuffer);
 	//glDeleteBuffers(1, &elementbuffer);
 	glDeleteProgram(programID);
-	glDeleteTextures(1, &TextureID);
+	//glDeleteTextures(1, &TextureID);
 	glDeleteVertexArrays(1, &VertexArrayID);
 	
 
