@@ -27,6 +27,27 @@ public:
 	glm::vec2 texCoord;
 };
 
+GLuint loadTexture(const char* filename) {
+	int width, height, numComponents;
+	unsigned char* data = stbi_load(filename, &width, &height, &numComponents, 4);
+	if (data == NULL) {
+		std::cerr << "Failed to load texture: " << filename << std::endl;
+		return 0;
+	}
+
+	GLuint texID;
+	glGenTextures(1, &texID);
+	glBindTexture(GL_TEXTURE_2D, texID);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	stbi_image_free(data);
+
+	return texID;
+}
+
 int main() {
 	if (!glfwInit()) {
 		fprintf(stderr, "Failed to initialize GLFW\n");
@@ -106,31 +127,6 @@ int main() {
 	//GLuint Texture = loadBMP_custom("uvtemplate.bmp");
 	//GLuint Texture = loadDDS("uvmap.DDS");
 
-	unsigned int Texture;
-	glGenTextures(1, &Texture);
-	glBindTexture(GL_TEXTURE_2D, Texture);
-	// set the texture wrapping/filtering options (on the currently bound texture object)
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	// load and generate the texture
-	int widthText, heightText, nrChannels;
-	unsigned char* data = stbi_load("image001.jpg", &widthText, &heightText, &nrChannels, 0);
-	if (data)
-	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, widthText, heightText, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-	}
-	else
-	{
-		std::cout << "Failed to load texture" << std::endl;
-	}
-	stbi_image_free(data);
-
-	// Get a handle for our "myTextureSampler" uniform
-	GLuint TextureID = glGetUniformLocation(programID, "myTextureSampler");
-
 	//// Read our .obj file
 	//std::vector< glm::vec3 > vertices;
 	//std::vector< glm::vec2 > uvs;
@@ -154,9 +150,11 @@ int main() {
 	tinyobj::LoadObj(&attributes, &shapes, &materials, &warnings, &errors, "miku.obj", "");
 
 	std::vector<Vertex> vertices;
+	std::vector<std::pair<size_t, size_t>> shapeVertexRanges;
 	for (int i = 0; i < shapes.size(); i++) {
 		tinyobj::shape_t& shape = shapes[i];
 		tinyobj::mesh_t& mesh = shape.mesh;
+		size_t startIndex = vertices.size();
 		for (int j = 0; j < mesh.indices.size(); j++) {
 			tinyobj::index_t i = mesh.indices[j];
 			glm::vec3 position = {
@@ -176,27 +174,28 @@ int main() {
 			Vertex vert = { position, normal, texCoord };
 			vertices.push_back(vert);
 		}
+		size_t count = vertices.size() - startIndex;  // Count of vertices for this shape
+		shapeVertexRanges.push_back(std::make_pair(startIndex, count));  // Store start index and count
 	}
-	std::string mtlFilePath = "miku.mtl";
-
-	std::ifstream mtlFile(mtlFilePath.c_str());
-	if (!mtlFile) {
-		std::cerr << "Failed to open .mtl file: " << mtlFilePath << std::endl;
-		return 1;
-	}
-
-	std::map<std::string, int> matMap; // This map will be filled by LoadMtl
-
-
-	tinyobj::LoadMtl(&matMap, &materials, &mtlFile ,&warnings ,&errors);
-
-	mtlFile.close();
 
 	GLuint vertexbuffer;
 	glGenBuffers(1, &vertexbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 	//glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
+	
+	std::vector<GLuint> textureIDs;
+	for (const auto& material : materials) {
+		if (!material.diffuse_texname.empty()) {
+			GLuint texID = loadTexture(material.diffuse_texname.c_str());
+			textureIDs.push_back(texID);
+		}
+		else {
+			textureIDs.push_back(0);  // No texture for this material
+		}
+	}
+	// Get a handle for our "myTextureSampler" uniform
+	GLuint TextureID = glGetUniformLocation(programID, "myTextureSampler");
 
 	/*GLuint uvbuffer;
 	glGenBuffers(1, &uvbuffer);
@@ -217,6 +216,9 @@ int main() {
 	// Get a handle for our "LightPosition" uniform
 	glUseProgram(programID);
 	GLuint LightID = glGetUniformLocation(programID, "LightPosition_worldspace");
+	GLuint MaterialAmbientColorID = glGetUniformLocation(programID, "MaterialAmbientColor");
+	GLuint MaterialDiffuseColorID = glGetUniformLocation(programID, "MaterialDiffuseColor");
+	GLuint MaterialSpecularColorID = glGetUniformLocation(programID, "MaterialSpecularColor");
 
 	glBindVertexArray(0);
 	// glfwGetTime is called only once, the first time this function is called
@@ -224,6 +226,7 @@ int main() {
 	double lastTimeFPS = lastTime;
 	int nbFrames = 0;
 	//update be  like
+
 	do {
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -266,18 +269,39 @@ int main() {
 
 		// 1st attribute buffer : vertices
 		// Bind our texture in Texture Unit 0
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, Texture);
-		// Set our "myTextureSampler" sampler to use Texture Unit 0
-		glUniform1i(TextureID, 0);
+
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, nullptr);
 		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 3));
+		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 3));
 		glEnableVertexAttribArray(2);
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 6));
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 6));
 
-		glDrawArrays(GL_TRIANGLES, 0, vertices.size());
+		size_t totalVertexCount = 0;
+
+		for (size_t s = 0; s < shapes.size(); s++) {
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, textureIDs[s]);
+			glUniform1i(TextureID, 0);
+
+			tinyobj::mesh_t& mesh = shapes[s].mesh;
+			for (size_t f = 0; f < mesh.indices.size(); f += 3) {
+				if (mesh.material_ids[f / 3] >= 0) {
+					tinyobj::material_t& material = materials[mesh.material_ids[f / 3]];
+					GLfloat ambient[3] = { material.ambient[0], material.ambient[1], material.ambient[2] };
+					GLfloat diffuse[3] = { material.diffuse[0], material.diffuse[1], material.diffuse[2] };
+					GLfloat specular[3] = { material.specular[0], material.specular[1], material.specular[2] };
+					glUniform3fv(MaterialAmbientColorID, 1, ambient);
+					glUniform3fv(MaterialDiffuseColorID, 1, diffuse);
+					glUniform3fv(MaterialSpecularColorID, 1, specular);
+				}
+
+				// Draw the face
+				glDrawArrays(GL_TRIANGLES, totalVertexCount + f, 3);
+			}
+
+			totalVertexCount += mesh.indices.size();
+		}
 		//glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 		//glVertexAttribPointer(
 		//	0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
@@ -340,7 +364,7 @@ int main() {
 	//glDeleteBuffers(1, &normalbuffer);
 	//glDeleteBuffers(1, &elementbuffer);
 	glDeleteProgram(programID);
-	glDeleteTextures(1, &Texture);
+	glDeleteTextures(1, &TextureID);
 	glDeleteVertexArrays(1, &VertexArrayID);
 	
 

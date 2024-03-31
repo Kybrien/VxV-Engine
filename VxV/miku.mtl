@@ -28,8 +28,8 @@ Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 illum 2
-map_Kd C:/Users/htran/Documents/GitHub/engine-vxv/VxV/MikuFaceUV.png
-map_d C:/Users/htran/Documents/GitHub/engine-vxv/VxV/MikuFaceUV.png
+map_Kd D:\Godot\Projects\engine-vxv\VxV\MikuFaceUV.png
+map_d D:\Godot\Projects\engine-vxv\VxV\MikuFaceUV.png
 
 newmtl Grey
 Ns 250.000000
@@ -68,8 +68,8 @@ Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 illum 2
-map_Kd C:/Users/htran/Documents/GitHub/engine-vxv/VxV/SkinDecalUV.png
-map_d C:/Users/htran/Documents/GitHub/engine-vxv/VxV/SkinDecalUV.png
+map_Kd D:\Godot\Projects\engine-vxv\VxV\SkinDecalUV.png
+map_d D:\Godot\Projects\engine-vxv\VxV\SkinDecalUV.png
 
 newmtl Yellow
 Ns 250.000000
