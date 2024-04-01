@@ -30,8 +30,9 @@ void main(){
     
     // Material properties from texture
     vec3 MaterialAmbientColor2 = vec3(0.5,0.5,0.5) * MaterialDiffuseColor;
-    vec3 textureColor = texture( myTextureSampler, UV ).rgb;
-    //MaterialAmbientColor2 = mix(MaterialAmbientColor2, texture( myTextureSampler, UV ).rgb, 0.9);
+    vec3 textureColor = vec3(0.3,0.3,0.3) * texture( myTextureSampler, UV ).rgb;
+    vec3 MaterialDiffuseColor2 = mix(texture( myTextureSampler, UV ).rgb , MaterialDiffuseColor , 0.5);
+    //MaterialAmbientColor2 = mix(MaterialAmbientColor2, texture( myTextureSampler, UV ).rgb, 0.1);
 
     // Distance to the light
     float distance = length( LightPosition_worldspace - Position_worldspace );
@@ -58,9 +59,9 @@ void main(){
     float cosAlpha = clamp( dot( E,R ), 0,1 );
      color = 
         // Ambient : simulates indirect lighting
-        MaterialAmbientColor2 +
+        MaterialAmbientColor2 + textureColor +
         // Diffuse : "color" of the object
-        textureColor  * LightColor * LightPower * cosTheta / (distance*distance) ;
+        MaterialDiffuseColor2 * LightColor * LightPower * cosTheta / (distance*distance);
         // Specular : reflective highlight, like a mirror
         MaterialSpecularColor * LightColor * LightPower * pow(cosAlpha,5) / (distance*distance);
 
