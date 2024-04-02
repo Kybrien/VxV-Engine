@@ -5,17 +5,21 @@
 #include "json.h"
 
 
+class ScriptManager;
+
 using namespace glm;
 class Script : public Component {
+
+private:
+	ScriptManager* scriptManager;
+
+
 public:
 	std::string name;
-	Script(GameObject* gameObject, bool PrefabLoading = false , std::string _name = "scriptSample");
+	Script(GameObject* gameObject, bool prefabLoading = false , std::string _name = "Script", bool alrExisting = false);
 
-	void GenerateScript(const std::string& className, const std::string& templateFileName = "ScriptUser.cpp");
-	void Load(Json::Value& compJson, GameObject* parentGO) override {
-		name = compJson["Script"].asString();
-		linkedGameObject = parentGO;
-	}
+
+	void Load(Json::Value& compJson, GameObject* parentGO) override;
 
 	void Save(Json::Value& compJson) override {
 		compJson["Type"] = type;
@@ -26,4 +30,5 @@ public:
 	virtual void Update();
 
 	void Init();
+
 };

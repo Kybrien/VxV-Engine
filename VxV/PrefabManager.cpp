@@ -10,7 +10,7 @@ PrefabManager::PrefabManager(Manager* manager) {
 }
 
 
-void PrefabManager::Load(std::wstring wFileDirection) {
+void PrefabManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
 	std::string fileDirection;
 	for (wchar_t wc : wFileDirection) {
 		fileDirection.push_back(static_cast<char>(wc));
@@ -51,6 +51,7 @@ void PrefabManager::Load(std::wstring wFileDirection) {
 					go->Load(PrefabJson, nullptr, true);
 
 					Prefab* prefab = new Prefab(*go);
+					prefab->name = PrefabJson["Name"].asString();
 				}
 
 			}

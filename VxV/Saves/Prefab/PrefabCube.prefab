@@ -27,7 +27,7 @@ PrefabSaveFile
 					"Type" : 1
 				},
 				{
-					"Script" : "script",
+					"Script" : "Script(2)",
 					"Type" : 3
 				}
 			],
@@ -36,6 +36,6 @@ PrefabSaveFile
 			"Name" : "GO"
 		}
 	],
-	"Name" : ""
+	"Name" : "PrefabCube"
 }
 

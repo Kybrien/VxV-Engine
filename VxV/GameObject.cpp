@@ -50,7 +50,7 @@ GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_) {
 
         name = name_;
         components.push_back(new Transform(this));
-        components.push_back(new Script(this, PrefabLoading, "script"));
+        components.push_back(new Script(this, PrefabLoading));
     }
 
     else {

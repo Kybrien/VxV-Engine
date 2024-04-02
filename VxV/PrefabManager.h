@@ -22,5 +22,5 @@ public:
 	}
 
 	void Save() override;
-	void Load(std::wstring wFileDirection) override; 
+	void Load(std::wstring wFileDirection, std::wstring wFileName) override;
 };

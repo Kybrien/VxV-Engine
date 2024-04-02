@@ -67,7 +67,7 @@ void SceneManager::Save() {
 
 
 
-void SceneManager::Load(std::wstring wFileDirection) {
+void SceneManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
 
 	// Conversion de wstring en string
 	std::string fileDirection;

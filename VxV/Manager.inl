@@ -22,8 +22,9 @@ void Manager::SearchFile(std::string fileDirection, std::string extension, T* ma
     if (hFind != INVALID_HANDLE_VALUE) {
         do {
             if (!(findFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
-                std::wstring filePath = directoryPathW + L"\\" + findFileData.cFileName;
-                manager->Load(filePath);
+                std::wstring fileName = findFileData.cFileName;
+                std::wstring filePath = directoryPathW + L"\\" + fileName;
+                manager->Load(filePath, fileName);
             }
         } while (FindNextFile(hFind, &findFileData) != 0);
         FindClose(hFind);

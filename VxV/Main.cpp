@@ -14,6 +14,7 @@
 
 
 
+#include "Debug.h"
 
 #include "Engine.h"
 
@@ -39,7 +40,7 @@ int main() {
 		GameObject* cube = new GameObject("cube", false);
 		cube->GetComponent<Transform>()->position.x = 10;
 
-		Prefab* prefabCube = new Prefab(*cube);
+		Prefab* prefabCube = new Prefab(*cube, "PrefabCube");
 		GameObject* cercle = new GameObject("", false, prefabCube);
 
 
@@ -56,6 +57,16 @@ int main() {
 		child->AddChild(cercle);
 
 		sc->Save();
+	}
+
+	
+	for (GameObject* go : currentScene->GetAllGameObjects()) {
+		Debug::Log(go->name + " : " + go->GetComponent<Script>()->name + "\n");
+	}
+
+	for (Prefab* prefab : engine->manager->GetManager<PrefabManager>()->GetPrefabs()) {
+
+		Debug::Log(prefab->name + " (Prefab) : " + prefab->getGameObject().GetComponent<Script>()->name + "\n");
 	}
 
 	engine->manager->GetManager<PrefabManager>()->Save();
