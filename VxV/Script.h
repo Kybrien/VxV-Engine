@@ -5,15 +5,21 @@
 #include "json.h"
 
 
+class ScriptManager;
+
 using namespace glm;
 class Script : public Component {
+
+private:
+	ScriptManager* scriptManager;
+
+
 public:
 	std::string name;
-	Script(GameObject* gameObject, std::string _name = "scriptSample");
+	Script(GameObject* gameObject, bool alrExisting = false , std::string _name = "Script");
 
-	void Load(Json::Value& compJson) override {
-		name = compJson["Script"].asString();
-	}
+
+	void Load(Json::Value& compJson, GameObject* parentGO) override;
 
 	void Save(Json::Value& compJson) override {
 		compJson["Type"] = type;
@@ -24,4 +30,5 @@ public:
 	virtual void Update();
 
 	void Init();
+
 };

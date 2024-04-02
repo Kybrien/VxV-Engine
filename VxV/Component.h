@@ -18,7 +18,7 @@ public:
 	};
 
 	virtual void Save(Json::Value &compJson) = 0;
-	virtual void Load(Json::Value& compJson) = 0;
+	virtual void Load(Json::Value& compJson, GameObject* ParentGO) = 0;
 
 	
 
@@ -31,6 +31,10 @@ public:
 	};
 
 	Type type;
+
+	GameObject* GetLinkedGameObject() const {
+		return linkedGameObject;
+	}
 
 protected:
 	GameObject* linkedGameObject;

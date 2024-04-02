@@ -20,11 +20,13 @@ public:
 	}
 
 
-	void Load(Json::Value& compJson) override {
+	void Load(Json::Value& compJson, GameObject* ParentGO) override {
 
 		LoadVec3(compJson["Position"], position);
 		LoadVec3(compJson["Rotation"], rotation);
 		LoadVec3(compJson["Scale"], scale);
+
+		linkedGameObject = ParentGO;
 	}
 
 	void Save(Json::Value& compJson) override {

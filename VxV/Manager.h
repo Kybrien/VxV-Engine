@@ -49,7 +49,7 @@ protected:
 	void SearchFile(std::string fileDirection, std::string extension, T* manager);
 
 	virtual void Save() {}; 
-	virtual void Load(std::wstring wFileDirection) {};
+	virtual void Load(std::wstring wFileDirection, std::wstring wFileName) {};
 
 
 

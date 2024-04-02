@@ -14,14 +14,18 @@ public:
 
 	ScriptManager(Manager* manager);
 
-	void AddScript(Script* script) {
-		scripts.push_back(script);
-	}
+	void AddScript(Script* script, bool loading = false);
+
+
+	void GenerateScript(const std::string& className, const std::string& templateFileName = "ScriptUser.cpp");
 
 	std::vector<Script*> GetScripts() {
 		return scripts;
 	}
 
 	void Save() override;
-	void Load(std::wstring wFileDirection) override;
+	void Load(std::wstring wFileDirection, std::wstring wFileName) override;
+
+	std::string fileDirection = "Scripts";
+	std::string extention = ".cpp";
 };
