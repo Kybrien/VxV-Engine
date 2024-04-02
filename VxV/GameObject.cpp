@@ -6,7 +6,7 @@
 
 
 
-GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_) {
+GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, bool loading) {
 
 
 
@@ -50,7 +50,7 @@ GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_) {
 
         name = name_;
         components.push_back(new Transform(this));
-        components.push_back(new Script(this, PrefabLoading));
+        components.push_back(new Script(this, loading));
     }
 
     else {
@@ -60,7 +60,7 @@ GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_) {
 
 void GameObject::Load(Json::Value root, GameObject* goParent, bool PrefabLoading) {
 
-    GameObject* go = new GameObject("", PrefabLoading);
+    GameObject* go = new GameObject("", PrefabLoading, nullptr, true);
     go->SetId(root["Id"].asInt());
     go->name = root["Name"].asString();
     go->isChild = root["Is Child"].asBool();

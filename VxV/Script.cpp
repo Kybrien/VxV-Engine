@@ -3,7 +3,7 @@
 #include "Debug.h"
 #include <iostream>
 
-Script::Script(GameObject* gameObject, bool Prefabloading, std::string _name, bool alrExisting) : Component(gameObject) {
+Script::Script(GameObject* gameObject, bool alrExisting, std::string _name) : Component(gameObject) {
 
     scriptManager = Manager::GetInstance()->GetManager<ScriptManager>();
     linkedGameObject = gameObject;
@@ -40,7 +40,7 @@ Script::Script(GameObject* gameObject, bool Prefabloading, std::string _name, bo
     name = nameChecking;
 
 
-    if (!Prefabloading) {
+    if (!alrExisting) {
 
         scriptManager->AddScript(this, alrExisting);
     }
@@ -75,7 +75,7 @@ void Script::Load(Json::Value& compJson, GameObject* parentGO) {
 
         if (!scriptFound) {
             Debug::Log("Impossible de trouver le script " + compJson["Script"].asString() + "\n");
-            scriptManager->AddScript(new Script(parentGO, false, compJson["Script"].asString(), false));
+            scriptManager->AddScript(new Script(parentGO, false, compJson["Script"].asString()));
         }
     }
 

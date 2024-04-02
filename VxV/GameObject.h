@@ -18,7 +18,7 @@ public:
 
     std::vector<Component*> components;
 
-    GameObject(std::string name_ = "GO", bool PrefabLoading = true, Prefab* prefab = nullptr);
+    GameObject(std::string name_ = "GO", bool PrefabLoading = true, Prefab* prefab = nullptr, bool loading = false);
 
     glm::vec3 origin;
     bool isChild = false;

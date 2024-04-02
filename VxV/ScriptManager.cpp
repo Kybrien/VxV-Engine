@@ -41,7 +41,7 @@ void ScriptManager::Load(std::wstring wFileDirection, std::wstring wFileName)
 
 
 
-    Script* script = new Script(nullptr, false, fileName, true);
+    Script* script = new Script(nullptr, true, fileName);
 }
 
 
