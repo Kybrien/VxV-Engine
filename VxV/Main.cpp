@@ -9,6 +9,8 @@
 
 
 
+#include "EngineGUI.h"
+
 
 
 
@@ -23,6 +25,7 @@ using namespace glm;
 
 int main() {
 	
+	EngineGUI gui;
 
 	// ---------------------------------- Autres Tests ------------------------- //
 	Engine* engine = new Engine();
@@ -125,7 +128,11 @@ int main() {
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
 
-
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	ImGui_ImplGlfw_InitForOpenGL(window, true);
+	ImGui_ImplOpenGL3_Init("#version 330");
 
 	// Create and compile our GLSL program from the shaders
 	GLuint programID = LoadShaders("SimpleVertexShader.MIKU", "SimpleFragmentShader.VALORANT");
@@ -133,6 +140,10 @@ int main() {
 	do {
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
 
 		// Use our shader
 		glUseProgram(programID);
@@ -151,6 +162,10 @@ int main() {
 		// Draw the triangle !
 		glDrawArrays(GL_TRIANGLES, 0, 3); // Starting from vertex 0; 3 vertices total -> 1 triangle
 		glDisableVertexAttribArray(0);
+
+		gui.UpdateGui();
+		gui.RenderGui();
+
 
 		// Swap buffers
 		glfwSwapBuffers(window);
