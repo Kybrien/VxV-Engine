@@ -16,7 +16,7 @@ private:
 
 public:
 	std::string name;
-	Script(GameObject* gameObject, std::string _name = "Script");
+	Script(GameObject* gameObject, bool alrExisting, std::string _name = "Script");
 
 
 	void Load(Json::Value& compJson, GameObject* parentGO) override;
