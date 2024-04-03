@@ -38,7 +38,6 @@ void ScriptingComponent::Save(Json::Value& compJson) {
 
 
 	if (script != nullptr) {
-	compJson["Script"] = script->name;
-
+		compJson["Script"] = script->name;
 	}
 }
