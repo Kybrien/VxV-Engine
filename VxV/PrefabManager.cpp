@@ -2,6 +2,10 @@
 #include <json.h>
 
 
+std::string PrefabManager::fileDirection = "Saves/Prefab";
+std::string PrefabManager::extention = ".prefab";
+
+
 PrefabManager::PrefabManager(Manager* manager) {
 	manager->AddManager<PrefabManager>(this);
 

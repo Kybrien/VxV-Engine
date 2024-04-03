@@ -4,28 +4,35 @@
 #include <vector>
 
 #include "Manager.h"
+#include "ScriptingComponent.h"
 #include "Script.h"
 
 class ScriptManager : public Manager {
 private:
 	std::vector<Script*> scripts;
 
+
+	static void GenerateScript(const std::string& className, const std::string& templateFileName = "ScriptUser.cpp");
+
 public:
 
 	ScriptManager(Manager* manager);
 
-	void AddScript(Script* script, bool loading = false);
-
-
-	void GenerateScript(const std::string& className, const std::string& templateFileName = "ScriptUser.cpp");
-
-	std::vector<Script*> GetScripts() {
+	std::vector<Script*> GetAllScripts() {
 		return scripts;
 	}
+
+
+
+
+
 
 	void Save() override;
 	void Load(std::wstring wFileDirection, std::wstring wFileName) override;
 
-	std::string fileDirection = "Scripts";
-	std::string extention = ".cpp";
+	static std::string fileDirection;
+	static std::string extention;
+
+
+	static void NewScript(std::string name);
 };

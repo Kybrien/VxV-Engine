@@ -27,7 +27,7 @@ public:
 		Unknown,
 		Transform,
 		Mesh_renderer,
-		Script,
+		ScriptComponent,
 	};
 
 	Type type;

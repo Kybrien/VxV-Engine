@@ -6,7 +6,7 @@
 #include <GLM/glm.hpp>
 
 #include "Transform.h"
-#include "Script.h"
+#include "ScriptingComponent.h"
 
 class Scene;
 class Prefab;

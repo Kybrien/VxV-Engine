@@ -1,34 +1,26 @@
 #pragma once
-#include "Component.h"
-#include <glm/glm.hpp>
-
-#include "json.h"
+#include "iostream"
 
 
-class ScriptManager;
-
-using namespace glm;
-class Script : public Component {
-
+class Script {
 private:
-	ScriptManager* scriptManager;
-
+	std::string fileDirection;
 
 public:
 	std::string name;
-	Script(GameObject* gameObject, bool alrExisting = false , std::string _name = "Script");
 
+	Script();
 
-	void Load(Json::Value& compJson, GameObject* parentGO) override;
-
-	void Save(Json::Value& compJson) override {
-		compJson["Type"] = type;
-		compJson["Script"] = name;
+	std::string getFile() {
+		return fileDirection;
 	}
 
-	virtual void Start(); 
-	virtual void Update();
+	void SetFile(std::string fileDirection_) {
+		fileDirection = fileDirection_;
+	}
 
-	void Init();
+	void Load(std::string _fileDirection, std::string _name);
 
+	void Start() {}
+	void Update() {}
 };

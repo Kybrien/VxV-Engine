@@ -12,8 +12,8 @@ private:
 
 	Scene* currentScene;
 
-	std::string fileDirection = "Saves/Scenes";
-	std::string extention = ".scene";
+	static std::string fileDirection;
+	static std::string extention;
 
 public:
 

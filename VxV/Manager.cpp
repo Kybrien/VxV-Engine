@@ -11,8 +11,3 @@ void Manager::Init() {
 	new PrefabManager(this);
 	new SceneManager(this);
 }
-
-
-
-
-

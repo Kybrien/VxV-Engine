@@ -30,6 +30,8 @@ public:
 
 	void Init();
 
+	void Stop(); // Supprimer tous les pointeurs
+
 	template<typename T>
 	void AddManager(T* manager) {
 		static_assert(std::is_base_of<Manager, T>::value, "T doit être un descendant de Manager");

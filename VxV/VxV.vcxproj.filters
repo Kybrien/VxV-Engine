@@ -24,6 +24,9 @@
     <Filter Include="Fichiers sources\Managers">
       <UniqueIdentifier>{708adff9-8501-4e14-ab30-8956e8c688e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Component">
+      <UniqueIdentifier>{741c6c82-49fc-4da9-b852-9d7ff7f8d762}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -47,9 +50,6 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Manager.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>Fichiers sources\Managers</Filter>
     </ClCompile>
@@ -65,13 +65,25 @@
     <ClCompile Include="PrefabManager.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Script.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="ScriptUser.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="ScriptManager.cpp">
+      <Filter>Fichiers sources\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptingComponent.cpp">
+      <Filter>Fichiers sources\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Fichiers sources\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Script.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Fichiers sources\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager.cpp">
       <Filter>Fichiers sources\Managers</Filter>
     </ClCompile>
   </ItemGroup>
@@ -113,7 +125,7 @@
     <ClInclude Include="loadShader.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Script.h">
+    <ClInclude Include="ScriptingComponent.h">
       <Filter>Fichiers d%27en-tête\Component</Filter>
     </ClInclude>
     <ClInclude Include="Manager.h">
@@ -130,6 +142,9 @@
     </ClInclude>
     <ClInclude Include="ScriptManager.h">
       <Filter>Fichiers d%27en-tête\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Script.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
