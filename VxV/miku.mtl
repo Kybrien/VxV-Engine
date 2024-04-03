@@ -39,7 +39,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-map_Kd D:/Godot/Projects/engine-vxv/VxV/MikuFaceUV.png
+map_Kd C:\Users\apatte\Downloads\engine-vxv\VxV\MikuFaceUV.png
 
 newmtl Grey.001
 Ns 250.000000
@@ -79,7 +79,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-map_Kd D:/Godot/Projects/engine-vxv/VxV/SkinDecalUV.png
+map_Kd C:\Users\apatte\Downloads\engine-vxv\VxV\SkinDecalUV.png
 
 newmtl Yellow.001
 Ns 250.000000

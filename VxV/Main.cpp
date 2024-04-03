@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define GLEW_STATIC
-
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <GLM/glm.hpp>
@@ -149,7 +148,7 @@ int main() {
 	// Ensure we can capture the escape key being pressed below
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 	// Hide the mouse and enable unlimited movement
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	// Set the mouse at the center of the screen
 	glfwPollEvents();
@@ -193,31 +192,13 @@ int main() {
 	GLuint ViewMatrixID = glGetUniformLocation(programID, "V");
 	GLuint ModelMatrixID = glGetUniformLocation(programID, "M");
 
-	// Load the texture using any two methods
-	//GLuint Texture = loadBMP_custom("uvtemplate.bmp");
-	//GLuint Texture = loadDDS("uvmap.DDS");
-
-	//// Read our .obj file
-	//std::vector< glm::vec3 > vertices;
-	//std::vector< glm::vec2 > uvs;
-	//std::vector< glm::vec3 > normals;
-	//
-	/*bool res = loadOBJ("miku.obj", vertices, uvs, normals);
-	
-	std::vector<unsigned short> indices;
-	std::vector<glm::vec3> indexed_vertices;
-	std::vector<glm::vec2> indexed_uvs;
-	std::vector<glm::vec3> indexed_normals;
-	indexVBO(vertices, uvs, normals, indices, indexed_vertices, indexed_uvs, indexed_normals);
-*/
-
 	tinyobj::attrib_t attributes;
 	std::vector<tinyobj::shape_t> shapes;
 	std::vector<tinyobj::material_t> materials;
 	std::string warnings;
 	std::string errors;
 
-	tinyobj::LoadObj(&attributes, &shapes, &materials, &warnings, &errors, "miku.obj", "");
+	tinyobj::LoadObj(&attributes, &shapes, &materials, &warnings, &errors, "911.obj", "");
 
 	std::vector<Vertex> vertices;
 	std::vector<std::pair<size_t, size_t>> shapeVertexRanges;
@@ -268,26 +249,7 @@ int main() {
 	//	GLuint texID = loadTexture("image001.png");
 	//	textureIDs.push_back(texID);
 	//}
-
-
-	// Get a handle for our "myTextureSampler" uniform
 	
-
-	/*GLuint uvbuffer;
-	glGenBuffers(1, &uvbuffer);
-	glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
-	glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec2), &indexed_uvs[0], GL_STATIC_DRAW);
-
-	GLuint normalbuffer;
-	glGenBuffers(1, &normalbuffer);
-	glBindBuffer(GL_ARRAY_BUFFER, normalbuffer);
-	glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(glm::vec3), &indexed_normals[0], GL_STATIC_DRAW);
-
-	GLuint elementbuffer;
-	glGenBuffers(1, &elementbuffer);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned short), &indices[0], GL_STATIC_DRAW);
-*/
 
 	// Get a handle for our "LightPosition" uniform
 	glUseProgram(programID);
@@ -389,9 +351,7 @@ int main() {
 						glBindTexture(GL_TEXTURE_2D, texID);
 						glUniform1i(TextureID, 0);
 					}
-
 				}
-
 				// Draw the face
 				glDrawArrays(GL_TRIANGLES, totalVertexCount + f, 3);
 				// Deactivate the texture
@@ -402,54 +362,8 @@ int main() {
 					}
 				}
 			}
-
 			totalVertexCount += mesh.indices.size();
 		}
-		//glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-		//glVertexAttribPointer(
-		//	0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
-		//	3,                  // size
-		//	GL_FLOAT,           // type
-		//	GL_FALSE,           // normalized?
-		//	0,                  // stride
-		//	(void*)0            // array buffer offset
-		//);
-		//// 2nd attribute buffer : colors
-		//glEnableVertexAttribArray(1);
-		//glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
-		//glVertexAttribPointer(
-		//	1,                                // attribute. No particular reason for 1, but must match the layout in the shader.
-		//	2,                                // size
-		//	GL_FLOAT,                         // type
-		//	GL_FALSE,                         // normalized?
-		//	0,                                // stride
-		//	(void*)0                          // array buffer offset
-		//);
-
-		//// 3rd attribute buffer : normals
-		//glEnableVertexAttribArray(2);
-		//glBindBuffer(GL_ARRAY_BUFFER, normalbuffer);
-		//glVertexAttribPointer(
-		//	2,                                // attribute
-		//	3,                                // size
-		//	GL_FLOAT,                         // type
-		//	GL_FALSE,                         // normalized?
-		//	0,                                // stride
-		//	(void*)0                          // array buffer offset
-		//);
-
-
-		////// Draw the triangle !
-		////glDrawArrays(GL_TRIANGLES, 0, vertices.size()); // 12*3 indices starting at 0 -> 12 triangles
-
-		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
-		////TEST // Draw the triangles !
-		//glDrawElements(
-		//	GL_TRIANGLES,      // mode
-		//	indices.size(),    // count
-		//	GL_UNSIGNED_SHORT,   // type
-		//	(void*)0           // element array buffer offset
-		//);
 
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
