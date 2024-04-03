@@ -27,7 +27,7 @@ PrefabSaveFile
 					"Type" : 1
 				},
 				{
-					"Script" : "ScriptComponent",
+					"Name" : "ScriptComponent",
 					"Type" : 3
 				}
 			],

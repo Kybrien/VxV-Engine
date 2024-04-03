@@ -15,9 +15,13 @@ ScriptingComponent::ScriptingComponent(GameObject* gameObject) : Component(gameO
 
 
 void ScriptingComponent::Load(Json::Value& compJson, GameObject* parentGO) {
-	std::string temp = compJson["Script"].asString();
+
 	name = compJson["Name"].asString();
 	linkedGameObject = parentGO;
+
+	if (compJson.isMember("Script")) {
+
+	std::string temp = compJson["Script"].asString();
 
 	for (Script* script : scriptManager->GetAllScripts()) {
 		if (script->name == temp) {
@@ -25,10 +29,16 @@ void ScriptingComponent::Load(Json::Value& compJson, GameObject* parentGO) {
 			break;
 		}
 	}
+	}
 }
 
 void ScriptingComponent::Save(Json::Value& compJson) {
 	compJson["Type"] = type;
 	compJson["Name"] = name;
+
+
+	if (script != nullptr) {
 	compJson["Script"] = script->name;
+
+	}
 }
