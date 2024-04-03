@@ -41,10 +41,11 @@ int main() {
 		cube->GetComponent<Transform>()->position.x = 10;
 
 		Prefab* prefabCube = new Prefab(*cube, "PrefabCube");
-		GameObject* cercle = new GameObject("", false, prefabCube);
+		GameObject* cercle = new GameObject("", false);
 
 
-
+		Script* escript = ScriptManager::NewScript("CercleScript");
+		cercle->GetComponent<ScriptingComponent>()->AddScript(escript);
 
 
 

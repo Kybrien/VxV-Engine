@@ -70,7 +70,7 @@ SceneSaveFile
 								{
 									"Position" : 
 									[
-										10.0,
+										0.0,
 										0.0,
 										0.0
 									],
@@ -90,15 +90,16 @@ SceneSaveFile
 								},
 								{
 									"Name" : "ScriptComponent",
+									"Script" : "CercleScript",
 									"Type" : 3
 								}
 							],
-							"Id" : 0,
+							"Id" : 1,
 							"Is Child" : true,
-							"Name" : "cube"
+							"Name" : ""
 						}
 					],
-					"Id" : 1,
+					"Id" : 2,
 					"Is Child" : true,
 					"Name" : "child"
 				}

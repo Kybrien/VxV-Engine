@@ -54,7 +54,11 @@ GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, b
     }
 
     else {
-        *this = prefab->getGameObject();
+        GameObject prefabGo = prefab->getGameObject();
+
+        for (auto comp : prefabGo.GetComponents()) {
+            //components.push_back(new decltype(*comp)(this));
+        }
     }
 }
 

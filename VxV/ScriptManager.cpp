@@ -33,7 +33,7 @@ void ScriptManager::Load(std::wstring wFileDirection, std::wstring wFileName)
     // Conversion de wstring en string
     std::string FileName;
     for (wchar_t wc : wFileName) {
-        wFileName.push_back(static_cast<char>(wc));
+        FileName.push_back(static_cast<char>(wc));
     }
 
     Script* script = new Script();
@@ -70,9 +70,37 @@ void ScriptManager::GenerateScript(const std::string& className, const std::stri
     std::cout << "Fichier " << className << ".cpp créé avec succès." << std::endl;
 }
 
-void ScriptManager::NewScript(std::string name) {
+Script* ScriptManager::NewScript(std::string _name) {
     Script* script = new Script();
-    script->name = name;
 
-    GenerateScript(name);
+    bool nameFound = false;
+    int i = 1;
+    std::string nameChecking = _name;
+
+    while (!nameFound) {
+
+        bool nameTaken = false;
+        for (Script* scr : Manager::GetInstance()->GetManager<ScriptManager>()->GetAllScripts()) {
+            if (scr->name == nameChecking) {
+                nameTaken = true;
+                break;
+            }
+        }
+
+        if (nameTaken) {
+            nameChecking = _name + "(" + std::to_string(i) + ")";
+        }
+        else {
+            nameFound = true;
+        }
+
+        i++;
+
+    }
+
+    script->name = nameChecking;
+
+    GenerateScript(_name);
+
+    return script;
 }

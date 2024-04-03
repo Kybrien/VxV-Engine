@@ -34,5 +34,5 @@ public:
 	static std::string extention;
 
 
-	static void NewScript(std::string name);
+	static Script* NewScript(std::string name);
 };
