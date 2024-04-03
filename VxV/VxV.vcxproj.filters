@@ -42,9 +42,6 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Manager.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>Fichiers sources\Managers</Filter>
     </ClCompile>
@@ -67,6 +64,12 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="ScriptManager.cpp">
+      <Filter>Fichiers sources\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Fichiers sources\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager.cpp">
       <Filter>Fichiers sources\Managers</Filter>
     </ClCompile>
   </ItemGroup>
@@ -112,6 +115,9 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="ScriptManager.h">
+      <Filter>Fichiers d%27en-tête\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
       <Filter>Fichiers d%27en-tête\Managers</Filter>
     </ClInclude>
   </ItemGroup>

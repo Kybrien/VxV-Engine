@@ -3,6 +3,7 @@
 #include "SceneManager.h"
 #include "ScriptManager.h"
 #include "PrefabManager.h"
+#include "InputManager.h"
 
 class Engine {
 private:
@@ -71,7 +72,9 @@ public:
 	void Update() 
 	{ 
 		state = Running; 
-
+		manager = Manager::GetInstance();
+		//std::vector<bool> inputState= manager->GetManager<InputManager>()->GetInputState(window);
+		//manager->GetManager<InputManager>()->Update(inputState);
 		for (Script* script : manager->GetManager<ScriptManager>()->GetScripts()) {
 
 			script->Update();
