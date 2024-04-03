@@ -12,18 +12,8 @@
 #include "Externes/tiny_obj_loader.h"
 
 #include "loadShader.hpp"
-
-
-
 #include "EngineGUI.h"
-
-
-
-
-
-
 #include "Debug.h"
-
 #include "Engine.h"
 
 
@@ -321,8 +311,8 @@ int main() {
 	ImGui_ImplOpenGL3_Init("#version 330");
 
 	// Create and compile our GLSL program from the shaders
-	GLuint programID = LoadShaders("SimpleVertexShader.MIKU", "SimpleFragmentShader.VALORANT");
 	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
+    programID = LoadShaders("SimpleVertexShader.MIKU", "SimpleFragmentShader.VALORANT");
 	do {
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

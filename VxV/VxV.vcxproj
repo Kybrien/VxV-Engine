@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="controls.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EngineGUI.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -161,9 +162,12 @@
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="loadShader.cpp" />
+    <ClCompile Include="objloader.cpp" />
     <ClCompile Include="Script.cpp" />
     <ClCompile Include="ScriptManager.cpp" />
     <ClCompile Include="ScriptUser.cpp" />
+    <ClCompile Include="texture.cpp" />
+    <ClInclude Include="controls.hpp" />
     <ClInclude Include="EngineGUI.h" />
     <ClInclude Include="FileExplorer.h" />
     <ClInclude Include="imgui\imconfig.h" />
@@ -193,12 +197,14 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Manager.h" />
+    <ClInclude Include="objloader.hpp" />
     <ClInclude Include="Prefab.h" />
     <ClInclude Include="PrefabManager.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Script.h" />
     <ClInclude Include="ScriptManager.h" />
+    <ClInclude Include="texture.hpp" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
