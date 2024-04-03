@@ -10,7 +10,6 @@ glm::mat4 getProjectionMatrix() {
 	return ProjectionMatrix;
 }
 
-
 // Initial position : on +Z
 glm::vec3 position = glm::vec3(0, 0, 5);
 // Initial horizontal angle : toward -Z
@@ -22,7 +21,6 @@ float initialFoV = 45.0f;
 
 float speed = 3.0f; // 3 units / second
 float mouseSpeed = 0.0025f;
-
 
 
 void computeMatricesFromInputs(GLFWwindow* window) {
@@ -38,15 +36,23 @@ void computeMatricesFromInputs(GLFWwindow* window) {
 	double xpos, ypos;
 	glfwGetCursorPos(window, &xpos, &ypos);
 
-	// Reset mouse position for next frame
-	int width, height;
-	glfwGetWindowSize(window, &width, &height);
-	glfwSetCursorPos(window, width / 2, height / 2);
 
-	// Compute new orientation
-	horizontalAngle += mouseSpeed * float(width / 2 - xpos);
-	verticalAngle += mouseSpeed * float(height / 2 - ypos);
+	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS) {
+		// Reset mouse position for next frame
+		int width, height;
+		glfwGetWindowSize(window, &width, &height);
+		glfwSetCursorPos(window, width / 2, height / 2);
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
+		// Compute new orientation only if right mouse button is pressed
+		// Compute new orientation
+		horizontalAngle += mouseSpeed * float(width / 2 - xpos);
+		verticalAngle += mouseSpeed * float(height / 2 - ypos);
+	}
+	else {
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+	}
+	
 	// Limit the vertical angle to[-pi / 2, pi / 2]
 	verticalAngle = glm::clamp(verticalAngle, -glm::pi<float>() / 2.0f, glm::pi<float>() / 2.0f);
 	// Direction : Spherical coordinates to Cartesian coordinates conversion
