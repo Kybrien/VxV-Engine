@@ -22,29 +22,6 @@
 using namespace glm;
 
 int main() {
-	// ---------------------------------- Memory Pool Test ------------------------- //
-	static MemoryPool<GameObject, MemPool_Linear<GameObject>> GameObjectPool(10);
-	MemoryPool<int, MemPool_Linear<int>> intpool(10);
-	MemoryPool<GameObject, MemPool_Linear<GameObject>> GOpool(10);
-
-	try 
-	{
-		//Trying to allocate elements
-		int* test = static_cast<int*>(intpool.Alloc(sizeof(int)));
-
-		*test = 10;
-		intpool.Free(test);
-		GameObject* test1 = new GameObject("test");
-		GOpool.Alloc();
-		GameObject* gOtest = static_cast<GameObject*>(GOpool.Alloc();
-		gOtest = new GameObject("sushi");
-		GOpool.Free(test);
-	}
-	catch (const std::bad_alloc& e)
-	{
-		std::cerr <<"Memory Alloc Failed" << e.what() << std::endl;
-	}
-
 	// ---------------------------------- Autres Tests ------------------------- //
 	Engine* engine = new Engine();
 	engine->Init();

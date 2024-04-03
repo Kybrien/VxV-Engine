@@ -5,18 +5,18 @@
 
 #include "Manager.h"
 #include "Scene.h"
+#include "MemoryPool.h"
 
 class SceneManager : public Manager {
 private:
 	std::vector<Scene*> scenes;
-
 	Scene* currentScene;
 
 	static std::string fileDirection;
 	static std::string extention;
 
 public:
-
+	MemoryPool<GameObject, MemPool_Linear<GameObject>> m_gameObjectPool;
 	SceneManager(Manager* manager);
 
 	
