@@ -12,6 +12,7 @@ public:
 
 	}
 
+
 	void* Alloc(unsigned int n)
 	{
 		if (sizeof(T) != n) {

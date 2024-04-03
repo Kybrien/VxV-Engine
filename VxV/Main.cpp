@@ -23,14 +23,20 @@ using namespace glm;
 
 int main() {
 	// ---------------------------------- Memory Pool Test ------------------------- //
-	MemoryPool<GameObject, MemPool_Linear<GameObject>> pool(10);
+	MemoryPool<int, MemPool_Linear<int>> intpool(10);
+	MemoryPool<GameObject, MemPool_Linear<GameObject>> GOpool(10);
 
 	try 
 	{
 		//Trying to allocate elements
-		GameObject* test = static_cast<GameObject*>(pool.Alloc(sizeof(GameObject)));
-		*test = GameObject("sushi");
-		pool.Free(test);
+		int* test = static_cast<int*>(intpool.Alloc(sizeof(int)));
+
+		*test = 10;
+		intpool.Free(test);
+
+		GameObject* gOtest = static_cast<GameObject*>(GOpool.Alloc(sizeof(GameObject)));
+		gOtest = new GameObject("sushi");
+		GOpool.Free(test);
 	}
 	catch (const std::bad_alloc& e)
 	{
