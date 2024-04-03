@@ -1,7 +1,8 @@
 #include "SceneManager.h"
 #include <json.h>
 
-
+std::string SceneManager::fileDirection = "Saves/Scenes";
+std::string SceneManager::extention = ".scene";
 
 
 

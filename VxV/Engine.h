@@ -60,10 +60,6 @@ public:
 	void Start() {
 		state = Starting;
 		// start go
-		for (Script* script : manager->GetManager<ScriptManager>()->GetScripts()) {
-
-		script->Start();
-		}
 
 
 		Update();
@@ -71,11 +67,8 @@ public:
 	void Update() 
 	{ 
 		state = Running; 
-
-		for (Script* script : manager->GetManager<ScriptManager>()->GetScripts()) {
-
-			script->Update();
-		}
 	}
+
+
 
 };

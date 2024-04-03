@@ -50,7 +50,7 @@ GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, b
 
         name = name_;
         components.push_back(new Transform(this));
-        components.push_back(new Script(this, loading));
+        components.push_back(new ScriptingComponent(this));
     }
 
     else {
@@ -211,7 +211,7 @@ void GameObject::LoadComponent(Json::Value compJson, GameObject* parentGo) {
     case 2:
         break;
     case 3:
-        GetComponent<Script>()->Load(compJson, parentGo);
+        GetComponent<ScriptingComponent>()->Load(compJson, parentGo);
         break;
     }
 }

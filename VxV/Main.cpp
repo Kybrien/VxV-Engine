@@ -49,7 +49,6 @@ int main() {
 
 
 
-
 		GameObject* child = new GameObject("child", false);
 		child->GetComponent<Transform>()->position = glm::vec3(10, 0, 0);
 
@@ -61,12 +60,12 @@ int main() {
 
 	
 	for (GameObject* go : currentScene->GetAllGameObjects()) {
-		Debug::Log(go->name + " : " + go->GetComponent<Script>()->name + "\n");
+		Debug::Log(go->name + " : " + go->GetComponent<ScriptingComponent>()->name + "\n");
 	}
 
 	for (Prefab* prefab : engine->manager->GetManager<PrefabManager>()->GetPrefabs()) {
 
-		Debug::Log(prefab->name + " (Prefab) : " + prefab->getGameObject().GetComponent<Script>()->name + "\n");
+		Debug::Log(prefab->name + " (Prefab) : " + prefab->getGameObject().GetComponent<ScriptingComponent>()->name + "\n");
 	}
 
 	engine->manager->GetManager<PrefabManager>()->Save();

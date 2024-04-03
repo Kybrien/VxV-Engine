@@ -27,7 +27,7 @@ SceneSaveFile
 					"Type" : 1
 				},
 				{
-					"Script" : "Script",
+					"Script" : "ScriptComponent",
 					"Type" : 3
 				}
 			],
@@ -58,7 +58,7 @@ SceneSaveFile
 							"Type" : 1
 						},
 						{
-							"Script" : "Script(2)",
+							"Script" : "ScriptComponent",
 							"Type" : 3
 						}
 					],
@@ -89,7 +89,7 @@ SceneSaveFile
 									"Type" : 1
 								},
 								{
-									"Script" : "Script",
+									"Script" : "ScriptComponent",
 									"Type" : 3
 								}
 							],

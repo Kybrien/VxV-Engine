@@ -6,8 +6,8 @@ class PrefabManager : public Manager {
 private:
 	std::vector<Prefab*> prefabs;
 
-	std::string fileDirection = "Saves/Prefab";
-	std::string extention = ".prefab";
+	static std::string fileDirection;
+	static std::string extention;
 
 
 public:
@@ -23,4 +23,5 @@ public:
 
 	void Save() override;
 	void Load(std::wstring wFileDirection, std::wstring wFileName) override;
+
 };
