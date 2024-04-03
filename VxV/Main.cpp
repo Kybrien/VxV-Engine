@@ -23,6 +23,7 @@ using namespace glm;
 
 int main() {
 	// ---------------------------------- Memory Pool Test ------------------------- //
+	static MemoryPool<GameObject, MemPool_Linear<GameObject>> GameObjectPool(10);
 	MemoryPool<int, MemPool_Linear<int>> intpool(10);
 	MemoryPool<GameObject, MemPool_Linear<GameObject>> GOpool(10);
 
@@ -33,8 +34,9 @@ int main() {
 
 		*test = 10;
 		intpool.Free(test);
-
-		GameObject* gOtest = static_cast<GameObject*>(GOpool.Alloc(sizeof(GameObject)));
+		GameObject* test1 = new GameObject("test");
+		GOpool.Alloc();
+		GameObject* gOtest = static_cast<GameObject*>(GOpool.Alloc();
 		gOtest = new GameObject("sushi");
 		GOpool.Free(test);
 	}

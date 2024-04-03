@@ -7,7 +7,7 @@
 
 
 GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, bool loading) {
-
+    
 
 
     parent = nullptr;

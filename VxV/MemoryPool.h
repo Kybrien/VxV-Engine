@@ -13,9 +13,9 @@ public:
 	}
 
 
-	void* Alloc(unsigned int n)
+	void* Alloc(T* type)
 	{
-		if (sizeof(T) != n) {
+		if (sizeof(T) != type) {
 			throw std::bad_alloc();
 		}
 		return m_strategy.Allocate();
@@ -96,8 +96,10 @@ public:
 
 	void ResizePool()
 	{
+		std::cout << "Resizing Pool" << std::endl;
 		size_type i = m_buffer.size() * 2;
 		m_buffer.resize(i);
+		m_state.resize(m_state.size() * 2);
 	}
 };
 
