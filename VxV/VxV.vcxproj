@@ -117,6 +117,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)/VxV/Externes/jsoncpp/include/json;$(SolutionDir)/VxV/Externes/glew-2.1.0/include;$(SolutionDir)/VxV/Externes/glfw-3.4.bin.WIN64/include;$(SolutionDir)/VxV/Externes/glm-1.0.1;%(AdditionalIncludeDirectories);imgui</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,6 +135,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)/VxV/Externes/jsoncpp/include/json;$(SolutionDir)/VxV/Externes/glew-2.1.0/include;$(SolutionDir)/VxV/Externes/glfw-3.4.bin.WIN64/include;%(AdditionalIncludeDirectories);imgui</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -161,6 +163,7 @@
     <ClCompile Include="ScriptManager.cpp" />
     <ClCompile Include="ScriptUser.cpp" />
     <ClInclude Include="EngineGUI.h" />
+    <ClInclude Include="FileExplorer.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_glfw.h" />
