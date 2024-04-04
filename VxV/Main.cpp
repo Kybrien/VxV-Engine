@@ -9,9 +9,7 @@
 #include "Externes/stb/stb_image.h"
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "Externes/tiny_obj_loader.h"
-
 using namespace glm;
-
 #include "loadShader.hpp"
 #include "controls.hpp"
 #include "texture.hpp"
@@ -50,29 +48,51 @@ GLuint loadTexture(const char* filename) {
 
 	return texID;
 }
+void init(GLFWwindow** window) {
 
-int main() {
+	// Initialise GLFW
 	if (!glfwInit()) {
 		fprintf(stderr, "Failed to initialize GLFW\n");
-		return -1;
+		exit(EXIT_FAILURE);
 	}
 
+	// Prepare the settings for the window
 	glfwWindowHint(GLFW_SAMPLES, 4); // 4x antialiasing
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // We want OpenGL 3.3
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // We don't want the old OpenGL
-
+	
 	// Open a window and create its OpenGL context
-	GLFWwindow* window;
-	window = glfwCreateWindow(1280, 720, "VxV", NULL, NULL);
-	if (window == NULL) {
+	*window = glfwCreateWindow(1280, 720, "VxV", NULL, NULL);
+	if (*window == NULL) {
 		fprintf(stderr, "Failed to open GLFW window\n");
 		glfwTerminate();
-		return -1;
+		exit(EXIT_FAILURE);
 	}
-	
-	glfwMakeContextCurrent(window);// Initialize GLEW
 
+	// Initialize GLEW
+	glfwMakeContextCurrent(*window);
+	glewExperimental = true;
+	if (glewInit() != GLEW_OK) {
+		fprintf(stderr, "Failed to initialize GLEW\n");
+		exit(EXIT_FAILURE);
+	}
+}
+
+void updateMVP(GLFWwindow* window, glm::mat4& MVP, glm::mat4& ModelMatrix) {
+
+}
+
+int main() {
+
+	//On initialise tout ce qu'il faut
+	GLFWwindow* window;
+	init(&window);
+
+	// Initialize GLEW
+	glfwMakeContextCurrent(window);
+
+	// Initialize GLEW
 	glewExperimental = true;
 	if (glewInit() != GLEW_OK) {
 		fprintf(stderr, "Failed to initialize GLEW\n");
@@ -81,8 +101,6 @@ int main() {
 
 	// Ensure we can capture the escape key being pressed below
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-	// Hide the mouse and enable unlimited movement
-	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	// Set the mouse at the center of the screen
 	glfwPollEvents();
@@ -304,7 +322,6 @@ int main() {
 	glDeleteProgram(programID);
 	//glDeleteTextures(1, &TextureID);
 	glDeleteVertexArrays(1, &VertexArrayID);
-	
 
 	// Close OpenGL window and terminate GLFW
 	glfwTerminate();
