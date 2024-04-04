@@ -4,7 +4,6 @@
 #include <string>
 #include <json.h>
 #include <GLM/glm.hpp>
-
 #include "Transform.h"
 #include "ScriptingComponent.h"
 

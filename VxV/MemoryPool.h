@@ -15,9 +15,9 @@ public:
 
 	void* Alloc(T* type)
 	{
-		if (sizeof(T) != type) {
-			throw std::bad_alloc();
-		}
+		//if (sizeof(T) != *type) {
+		//	throw std::bad_alloc();
+		//}
 		return m_strategy.Allocate();
 	}
 

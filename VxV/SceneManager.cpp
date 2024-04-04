@@ -10,7 +10,7 @@ std::string SceneManager::extention = ".scene";
 
 
 SceneManager::SceneManager(Manager* manager) {
-	m_gameObjectPool(100);
+	SceneManager::gameObjectPool = MemoryPool<GameObject, MemPool_Linear<GameObject>>(1000);
 	manager->AddManager<SceneManager>(this);
 
 

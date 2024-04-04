@@ -16,7 +16,7 @@ private:
 	static std::string extention;
 
 public:
-	MemoryPool<GameObject, MemPool_Linear<GameObject>> m_gameObjectPool;
+	MemoryPool<GameObject, MemPool_Linear<GameObject>> gameObjectPool;
 	SceneManager(Manager* manager);
 
 	

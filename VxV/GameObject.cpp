@@ -1,5 +1,4 @@
 #include "GameObject.h"
-
 #include "SceneManager.h"
 #include "PrefabManager.h"
 
@@ -8,7 +7,7 @@
 
 GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, bool loading) {
     
-
+    
 
     parent = nullptr;
     prefab = prefab_;
@@ -19,7 +18,7 @@ GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, b
         SceneManager* sceneManager = manager->GetManager<SceneManager>();
         currentScene = sceneManager->GetCurrentScene();
         std::vector<GameObject*> goList = currentScene->GetAllGameObjects();
-
+        sceneManager->gameObjectPool.Alloc(this);
 
 
         bool idFound = false;
