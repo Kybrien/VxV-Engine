@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unordered_map>
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -23,7 +24,74 @@ public:
 	glm::vec3 position;
 	glm::vec3 normal;
 	glm::vec2 texCoord;
+
+	bool operator==(const Vertex& other) const {
+		return position == other.position && normal == other.normal && texCoord == other.texCoord;
+	}
 };
+
+namespace std {
+	template<> struct hash<glm::vec3> {
+		size_t operator()(glm::vec3 const& vec) const {
+			return ((hash<float>()(vec.x) ^ (hash<float>()(vec.y) << 1)) >> 1) ^ (hash<float>()(vec.z) << 1);
+		}
+	};
+
+	template<> struct hash<glm::vec2> {
+		size_t operator()(glm::vec2 const& vec) const {
+			return hash<float>()(vec.x) ^ (hash<float>()(vec.y) << 1);
+		}
+	};
+
+	template<> struct hash<Vertex> {
+		size_t operator()(Vertex const& vertex) const {
+			return ((hash<glm::vec3>()(vertex.position) ^ (hash<glm::vec3>()(vertex.normal) << 1)) >> 1) ^ (hash<glm::vec2>()(vertex.texCoord) << 1);
+		}
+	};
+}
+
+struct Vec3Hash {
+	size_t operator()(const glm::vec3& vec) const {
+		return ((hash<float>()(vec.x) ^ (hash<float>()(vec.y) << 1)) >> 1) ^ (hash<float>()(vec.z) << 1);
+	}
+};
+
+struct Vec2Hash {
+	size_t operator()(const glm::vec2& vec) const {
+		return hash<float>()(vec.x) ^ (hash<float>()(vec.y) << 1);
+	}
+};
+
+struct VertexHash {
+	size_t operator()(const Vertex& vertex) const {
+		return ((Vec3Hash()(vertex.position) ^ (Vec3Hash()(vertex.normal) << 1)) >> 1) ^ (Vec2Hash()(vertex.texCoord) << 1);
+	}
+};
+
+Vertex createVertexFromIndex(const tinyobj::attrib_t& attrib, const tinyobj::index_t& index) {
+	Vertex vertex;
+
+	// Position
+	vertex.position.x = attrib.vertices[3 * index.vertex_index + 0];
+	vertex.position.y = attrib.vertices[3 * index.vertex_index + 1];
+	vertex.position.z = attrib.vertices[3 * index.vertex_index + 2];
+
+	// Normal
+	vertex.normal.x = attrib.normals[3 * index.normal_index + 0];
+	vertex.normal.y = attrib.normals[3 * index.normal_index + 1];
+	vertex.normal.z = attrib.normals[3 * index.normal_index + 2];
+
+	// Texture Coordinate
+	if (index.texcoord_index != -1) {
+		vertex.texCoord.x = attrib.texcoords[2 * index.texcoord_index + 0];
+		vertex.texCoord.y = 1.0f - attrib.texcoords[2 * index.texcoord_index + 1]; // Flip Y coordinate because OBJ's coordinate system is different from OpenGL's
+	}
+	else {
+		vertex.texCoord = glm::vec2(0.0f, 0.0f);
+	}
+
+	return vertex;
+}
 
 GLuint loadTexture(const char* filename) {
 	int width, height, numComponents;
@@ -132,43 +200,58 @@ int main() {
 	std::string warnings;
 	std::string errors;
 
-	tinyobj::LoadObj(&attributes, &shapes, &materials, &warnings, &errors, "911.obj", "");
-
+	tinyobj::LoadObj(&attributes, &shapes, &materials, &warnings, &errors, "miku.obj", "");
+	// Before indexing
+	size_t totalIndices = 0;
+	for (const auto& shape : shapes) {
+		totalIndices += shape.mesh.indices.size();
+	}
+	std::cout << "Before indexing - Total vertices: " << totalIndices / 3 << ", Total triangles: " << totalIndices / 3 << std::endl;
+	
 	std::vector<Vertex> vertices;
-	std::vector<std::pair<size_t, size_t>> shapeVertexRanges;
-	for (int i = 0; i < shapes.size(); i++) {
-		tinyobj::shape_t& shape = shapes[i];
-		tinyobj::mesh_t& mesh = shape.mesh;
-		size_t startIndex = vertices.size();
-		for (int j = 0; j < mesh.indices.size(); j++) {
-			tinyobj::index_t i = mesh.indices[j];
-			glm::vec3 position = {
-				attributes.vertices[i.vertex_index * 3],
-				attributes.vertices[i.vertex_index * 3 + 1],
-				attributes.vertices[i.vertex_index * 3 + 2]
+	std::vector<unsigned int> indices;
+	std::unordered_map<Vertex, unsigned int> uniqueVertices;
+
+	for (size_t s = 0; s < shapes.size(); s++) {
+		tinyobj::mesh_t& mesh = shapes[s].mesh;
+		for (size_t f = 0; f < mesh.indices.size(); f++) {
+			tinyobj::index_t index = mesh.indices[f];
+
+			Vertex vertex = {};
+			vertex.position = {
+				attributes.vertices[3 * index.vertex_index + 0],
+				attributes.vertices[3 * index.vertex_index + 1],
+				attributes.vertices[3 * index.vertex_index + 2]
 			};
-			glm::vec3 normal = {
-				attributes.normals[i.normal_index * 3],
-				attributes.normals[i.normal_index * 3 + 1],
-				attributes.normals[i.normal_index * 3 + 2]
+			vertex.normal = {
+				attributes.normals[3 * index.normal_index + 0],
+				attributes.normals[3 * index.normal_index + 1],
+				attributes.normals[3 * index.normal_index + 2]
 			};
-			glm::vec2 texCoord = {
-				attributes.texcoords[i.texcoord_index * 2],
-				attributes.texcoords[i.texcoord_index * 2 + 1],
+			vertex.texCoord = {
+				attributes.texcoords[2 * index.texcoord_index + 0],
+				attributes.texcoords[2 * index.texcoord_index + 1]
 			};
-			Vertex vert = { position, normal, texCoord };
-			vertices.push_back(vert);
+
+			if (uniqueVertices.count(vertex) == 0) {
+				uniqueVertices[vertex] = static_cast<unsigned int>(vertices.size());
+				vertices.push_back(vertex);
+			}
+
+			indices.push_back(uniqueVertices[vertex]);
 		}
-		size_t count = vertices.size() - startIndex;  // Count of vertices for this shape
-		shapeVertexRanges.push_back(std::make_pair(startIndex, count));  // Store start index and count
 	}
 
 	GLuint vertexbuffer;
 	glGenBuffers(1, &vertexbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-	//glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
-	
+
+	GLuint indexbuffer;
+	glGenBuffers(1, &indexbuffer);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexbuffer);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
+
 	std::vector<GLuint> textureIDs;
 	for (const auto& material : materials) {
 		if (!material.diffuse_texname.empty()) {
@@ -183,7 +266,7 @@ int main() {
 	//	GLuint texID = loadTexture("image001.png");
 	//	textureIDs.push_back(texID);
 	//}
-	
+	std::cout << "After indexing - Total vertices: " << uniqueVertices.size() << ", Total triangles: " << indices.size() / 3 << std::endl;
 
 	// Get a handle for our "LightPosition" uniform
 	glUseProgram(programID);
@@ -250,10 +333,8 @@ int main() {
 		glEnableVertexAttribArray(2);
 		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 6));  // Texture coordinate attribute
 
-		size_t totalVertexCount = 0;
-
+		size_t totalIndexCount = 0;
 		for (size_t s = 0; s < shapes.size(); s++) {
-
 			tinyobj::mesh_t& mesh = shapes[s].mesh;
 			for (size_t f = 0; f < mesh.indices.size(); f += 3) {
 				if (mesh.material_ids[f / 3] >= 0) {
@@ -264,17 +345,18 @@ int main() {
 					glUniform3fv(MaterialAmbientColorID, 1, ambient);
 					glUniform3fv(MaterialDiffuseColorID, 1, diffuse);
 					glUniform3fv(MaterialSpecularColorID, 1, specular);
-					//std::cout << "name: " <<  material.name << std::endl;
 					GLuint texID = textureIDs[mesh.material_ids[f / 3]];
 					if (texID != 0) {  // Check if a texture exists for this material
-						//std::cout << "texture ID: " << texID << std::endl;
 						glActiveTexture(GL_TEXTURE0);
 						glBindTexture(GL_TEXTURE_2D, texID);
 						glUniform1i(TextureID, 0);
 					}
 				}
 				// Draw the face
-				glDrawArrays(GL_TRIANGLES, totalVertexCount + f, 3);
+				glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexbuffer);
+				glDrawElements(GL_TRIANGLES, shapes[s].mesh.indices.size(), GL_UNSIGNED_INT, (void*)(totalIndexCount * sizeof(unsigned int)));
+				totalIndexCount += shapes[s].mesh.indices.size();
+
 				// Deactivate the texture
 				if (mesh.material_ids[f / 3] >= 0) {
 					GLuint texID = textureIDs[mesh.material_ids[f / 3]];
@@ -283,7 +365,6 @@ int main() {
 					}
 				}
 			}
-			totalVertexCount += mesh.indices.size();
 		}
 
 		glDisableVertexAttribArray(0);
