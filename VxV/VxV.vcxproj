@@ -186,6 +186,7 @@
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="GameObject.inl" />
     <None Include="Manager.inl" />
     <None Include="Nomenclature.clang-format" />
   </ItemGroup>

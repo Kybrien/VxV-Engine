@@ -19,6 +19,7 @@ public:
 
 	void Save(Json::Value& compJson) override;
 
+	void Copy(GameObject* goToFill) override;
 
 private:
 	void SaveVec3(Json::Value& compJson, glm::vec3 vec);

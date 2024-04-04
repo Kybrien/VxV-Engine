@@ -78,6 +78,9 @@
     <ClCompile Include="Script.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="SimpleVertexShader.MIKU" />
@@ -126,11 +129,17 @@
     <ClInclude Include="Script.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Nomenclature.clang-format" />
     <None Include="Manager.inl">
       <Filter>Fichiers d%27en-tête\Managers</Filter>
+    </None>
+    <None Include="GameObject.inl">
+      <Filter>Fichiers d%27en-tête</Filter>
     </None>
   </ItemGroup>
 </Project>

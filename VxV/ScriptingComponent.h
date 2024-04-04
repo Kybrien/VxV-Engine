@@ -29,4 +29,6 @@ public:
 	void Load(Json::Value& compJson, GameObject* parentGO) override;
 
 	void Save(Json::Value& compJson) override;
+
+	void Copy(GameObject* goToFill) override;
 };

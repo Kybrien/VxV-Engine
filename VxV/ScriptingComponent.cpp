@@ -1,6 +1,7 @@
 #include "ScriptingComponent.h"
 #include "ScriptManager.h"
 #include "Debug.h"
+#include "GameObject.h"
 #include <iostream>
 
 ScriptingComponent::ScriptingComponent(GameObject* gameObject) : Component(gameObject) {
@@ -34,10 +35,18 @@ void ScriptingComponent::Load(Json::Value& compJson, GameObject* parentGO) {
 
 void ScriptingComponent::Save(Json::Value& compJson) {
 	compJson["Type"] = type;
-	compJson["Name"] = name;
-
 
 	if (script != nullptr) {
 		compJson["Script"] = script->name;
 	}
+}
+
+void ScriptingComponent::Copy(GameObject* goToFill) {
+
+	goToFill->AddComponent<ScriptingComponent>();
+
+	ScriptingComponent* newScriptComp = goToFill->GetComponent<ScriptingComponent>();
+
+	newScriptComp->script = script;
+
 }

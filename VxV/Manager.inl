@@ -30,3 +30,25 @@ void Manager::SearchFile(std::string fileDirection, std::string extension, T* ma
         FindClose(hFind);
     }
 }
+
+
+template<typename T>
+T* Manager::GetManager() {
+    for (Manager* manager : listManager) {
+        T* typedManager = dynamic_cast<T*>(manager);
+        if (typedManager != nullptr) {
+            return typedManager; // Retourner le composant du type T s'il est trouvé
+        }
+    }
+
+    return nullptr; // Aucun composant de type T trouvé
+}
+
+
+template<typename T>
+void Manager::AddManager(T* manager) {
+    static_assert(std::is_base_of<Manager, T>::value, "T doit être un descendant de Manager");
+
+    // Ajoute un nouveau composant de type T
+    listManager.push_back(manager);
+}

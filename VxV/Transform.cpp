@@ -1,4 +1,5 @@
 #include "Transform.h"
+#include "GameObject.h"
 
 
 
@@ -32,6 +33,16 @@ void Transform::Save(Json::Value& compJson) {
 
 	compJson["Scale"] = Json::Value(Json::arrayValue);
 	SaveVec3(compJson["Scale"], scale);
+}
+
+void Transform::Copy(GameObject* goToFill) {
+
+	goToFill->AddComponent<Transform>();
+
+	Transform* newTrans = goToFill->GetComponent<Transform>();
+	newTrans->position = glm::vec3(position.x, position.y, position.z);
+	newTrans->rotation = glm::vec3(rotation.x, rotation.y, rotation.z);
+	newTrans->scale = glm::vec3(scale.x, scale.y, scale.z);
 }
 
 
