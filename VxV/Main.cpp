@@ -80,7 +80,21 @@ void init(GLFWwindow** window) {
 }
 
 void updateMVP(GLFWwindow* window, glm::mat4& MVP, glm::mat4& ModelMatrix) {
+	// Mise à jour de la matrice Model avec une rotation
+	double currentTime = glfwGetTime();
+	float deltaTime = float(currentTime); // Adaptez selon votre logique de temps
+	float angle = deltaTime * 25.0f; // Exemple d'angle de rotation
+	ModelMatrix = glm::rotate(ModelMatrix, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
 
+	// Mise à jour de la matrice View basée sur les entrées utilisateur
+	computeMatricesFromInputs(window);
+	glm::mat4 ViewMatrix = getViewMatrix();
+
+	// La matrice Projection reste constante ici, mais vous pouvez l'adapter si nécessaire
+	glm::mat4 ProjectionMatrix = getProjectionMatrix();
+
+	// Calcul de la matrice MVP
+	MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
 }
 
 int main() {
