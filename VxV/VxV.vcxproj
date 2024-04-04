@@ -186,6 +186,7 @@
     <ClCompile Include="PrefabManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClInclude Include="WindowGui.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="SimpleFragmentShader.VALORANT" />
