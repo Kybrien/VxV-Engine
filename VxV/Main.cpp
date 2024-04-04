@@ -354,8 +354,8 @@ int main() {
 				}
 				// Draw the face
 				glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexbuffer);
-				glDrawElements(GL_TRIANGLES, shapes[s].mesh.indices.size(), GL_UNSIGNED_INT, (void*)(totalIndexCount * sizeof(unsigned int)));
-				totalIndexCount += shapes[s].mesh.indices.size();
+				glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, (void*)(totalIndexCount * sizeof(unsigned int)));
+				totalIndexCount += 3;
 
 				// Deactivate the texture
 				if (mesh.material_ids[f / 3] >= 0) {
