@@ -198,7 +198,7 @@ int main() {
 	std::string warnings;
 	std::string errors;
 
-	tinyobj::LoadObj(&attributes, &shapes, &materials, &warnings, &errors, "911.obj", "");
+	tinyobj::LoadObj(&attributes, &shapes, &materials, &warnings, &errors, "miku.obj", "");
 
 	std::vector<Vertex> vertices;
 	std::vector<std::pair<size_t, size_t>> shapeVertexRanges;
