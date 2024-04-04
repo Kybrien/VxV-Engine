@@ -293,9 +293,9 @@ int main() {
 		// Compute time difference between current and last frame
 		double currentTime = glfwGetTime();
 		nbFrames++;
-		if (currentTime - lastTimeFPS >= 1.0) { // If last prinf() was more than 1 sec ago
+		if (currentTime - lastTimeFPS >= 1.0) { // If last printf() was more than 1 sec ago
 			// printf and reset timer
-			printf("%f ms/frame\n", 1000.0 / double(nbFrames));
+			printf("%f ms/frame, FPS: %d\n", 1000.0 / double(nbFrames), nbFrames);
 			nbFrames = 0;
 			lastTimeFPS += 1.0;
 		}
@@ -334,36 +334,34 @@ int main() {
 		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 6));  // Texture coordinate attribute
 
 		size_t totalIndexCount = 0;
+		GLuint lastUsedTexID = 0; // Keep track of the last used texture ID
+		int lastUsedMaterialID = -1;// Keep track of the last used material ID
 		for (size_t s = 0; s < shapes.size(); s++) {
 			tinyobj::mesh_t& mesh = shapes[s].mesh;
 			for (size_t f = 0; f < mesh.indices.size(); f += 3) {
 				if (mesh.material_ids[f / 3] >= 0) {
-					tinyobj::material_t& material = materials[mesh.material_ids[f / 3]];
-					GLfloat ambient[3] = { material.ambient[0], material.ambient[1], material.ambient[2] };
-					GLfloat diffuse[3] = { material.diffuse[0], material.diffuse[1], material.diffuse[2] };
-					GLfloat specular[3] = { material.specular[0], material.specular[1], material.specular[2] };
-					glUniform3fv(MaterialAmbientColorID, 1, ambient);
-					glUniform3fv(MaterialDiffuseColorID, 1, diffuse);
-					glUniform3fv(MaterialSpecularColorID, 1, specular);
+					// Only update the uniforms if the material ID has changed
+					if (mesh.material_ids[f / 3] != lastUsedMaterialID) {
+						tinyobj::material_t& material = materials[mesh.material_ids[f / 3]];
+						GLfloat ambient[3] = { material.ambient[0], material.ambient[1], material.ambient[2] };
+						GLfloat diffuse[3] = { material.diffuse[0], material.diffuse[1], material.diffuse[2] };
+						GLfloat specular[3] = { material.specular[0], material.specular[1], material.specular[2] };
+						glUniform3fv(MaterialAmbientColorID, 1, ambient);
+						glUniform3fv(MaterialDiffuseColorID, 1, diffuse);
+						glUniform3fv(MaterialSpecularColorID, 1, specular);
+						lastUsedMaterialID = mesh.material_ids[f / 3]; // Update the last used material ID
+					}
 					GLuint texID = textureIDs[mesh.material_ids[f / 3]];
-					if (texID != 0) {  // Check if a texture exists for this material
+					if (texID != 0 && texID != lastUsedTexID) {  // Only bind the texture if it's different from the currently bound one
 						glActiveTexture(GL_TEXTURE0);
 						glBindTexture(GL_TEXTURE_2D, texID);
 						glUniform1i(TextureID, 0);
+						lastUsedTexID = texID; // Update the last used texture ID
 					}
 				}
 				// Draw the face
-				glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexbuffer);
 				glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, (void*)(totalIndexCount * sizeof(unsigned int)));
 				totalIndexCount += 3;
-
-				// Deactivate the texture
-				if (mesh.material_ids[f / 3] >= 0) {
-					GLuint texID = textureIDs[mesh.material_ids[f / 3]];
-					if (texID != 0) {  // Check if a texture exists for this material
-						glBindTexture(GL_TEXTURE_2D, 0);
-					}
-				}
 			}
 		}
 
@@ -385,6 +383,16 @@ int main() {
 	glDeleteProgram(programID);
 	//glDeleteTextures(1, &TextureID);
 	glDeleteVertexArrays(1, &VertexArrayID);
+	glDeleteVertexArrays(1, &TextureID);
+	glDeleteVertexArrays(1, &LightID);
+	glDeleteVertexArrays(1, &MaterialAmbientColorID);
+	glDeleteVertexArrays(1, &MaterialDiffuseColorID);
+	glDeleteVertexArrays(1, &MaterialSpecularColorID);
+	glDeleteVertexArrays(1, &MatrixID);
+	glDeleteVertexArrays(1, &ViewMatrixID);
+	glDeleteVertexArrays(1, &ModelMatrixID);
+	glDeleteVertexArrays(1, &indexbuffer);
+	glDeleteVertexArrays(1, textureIDs.data());
 	
 
 	// Close OpenGL window and terminate GLFW
