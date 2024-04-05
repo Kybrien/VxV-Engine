@@ -90,6 +90,20 @@ void setupInput(GLFWwindow* window) {
 	glfwSetCursorPos(window, width / 2, height / 2);
 }
 
+void initOpenGLSettings() {
+	// Enable depth test
+	glEnable(GL_DEPTH_TEST);
+	// Accept fragment if it closer to the camera than the former one
+	glDepthFunc(GL_LESS);
+	// Cull triangles which normal is not towards the camera
+	glEnable(GL_CULL_FACE);
+}
+
+void initializeVertexArrayObject(GLuint& VertexArrayID) {
+	glGenVertexArrays(1, &VertexArrayID);
+	glBindVertexArray(VertexArrayID);
+}
+
 glm::mat4 initializeProjectionMatrix() {
 	// Projection matrix: 45° Field of View, 4:3 ratio, display range: 0.1 unit <-> 100 units
 	return glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
@@ -146,15 +160,6 @@ void setupVertexAttributes() {
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 6));  // Texture coordinate attribute
 }
 
-void initOpenGLSettings() {
-	// Enable depth test
-	glEnable(GL_DEPTH_TEST);
-	// Accept fragment if it closer to the camera than the former one
-	glDepthFunc(GL_LESS);
-	// Cull triangles which normal is not towards the camera
-	glEnable(GL_CULL_FACE);
-}
-
 void setupMatricesAndUniforms(GLuint programID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID) {
 	MatrixID = glGetUniformLocation(programID, "MVP");
 	ViewMatrixID = glGetUniformLocation(programID, "V");
@@ -186,20 +191,17 @@ int main() {
 	init(&window);
 	setupInput(window);
 	initOpenGLSettings();
-
 	GLuint VertexArrayID;
-	glGenVertexArrays(1, &VertexArrayID);
-	glBindVertexArray(VertexArrayID);
+	initializeVertexArrayObject(VertexArrayID);
 
 	// Create and compile our GLSL program from the shaders
 	GLuint programID = LoadShaders("SimpleVertexShader.MIKU", "SimpleFragmentShader.VALORANT");
 
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
 
-	glm::mat4 Projection = initializeProjectionMatrix();
 	// Ortho camera:
 	//glm::mat4 Projection = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,6.0f,100.0f); // In world coordinates
-
+	glm::mat4 Projection = initializeProjectionMatrix();
 	glm::mat4 View = initializeViewMatrix();
 
 	GLuint MatrixID, ViewMatrixID, ModelMatrixID;
