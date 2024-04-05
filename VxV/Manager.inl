@@ -2,7 +2,6 @@
 #include <Windows.h>
 #include <codecvt>
 
-
 template<typename T>
 void Manager::SearchFile(std::string fileDirection, std::string extension, T* manager) {
 
