@@ -100,45 +100,51 @@ glm::mat4 initializeViewMatrix() {
 	return glm::lookAt(glm::vec3(9, 5, 10), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 }
 
-//void loadModelAndCreateBuffers(const std::string& filename, std::vector<Vertex>& vertices, std::vector<std::pair<size_t, size_t>>& shapeVertexRanges, GLuint& vertexbuffer) {
-//	tinyobj::attrib_t attributes;
-//	std::vector<tinyobj::shape_t> shapes;
-//	std::vector<tinyobj::material_t> materials;
-//	std::string warnings, errors;
-//
-//	if (!tinyobj::LoadObj(&attributes, &shapes, &materials, &warnings, &errors, filename.c_str())) {
-//		std::cerr << "Could not load OBJ file: " << filename << std::endl;
-//		return;
-//	}
-//
-//	for (const auto& shape : shapes) {
-//		const auto& mesh = shape.mesh;
-//		size_t startIndex = vertices.size();
-//		for (const auto& index : mesh.indices) {
-//			glm::vec3 position = {
-//				attributes.vertices[3 * index.vertex_index + 0],
-//				attributes.vertices[3 * index.vertex_index + 1],
-//				attributes.vertices[3 * index.vertex_index + 2],
-//			};
-//			glm::vec3 normal = {
-//				attributes.normals[3 * index.normal_index + 0],
-//				attributes.normals[3 * index.normal_index + 1],
-//				attributes.normals[3 * index.normal_index + 2],
-//			};
-//			glm::vec2 texCoord = {
-//				attributes.texcoords[2 * index.texcoord_index + 0],
-//				attributes.texcoords[2 * index.texcoord_index + 1],
-//			};
-//			vertices.emplace_back(Vertex{ position, normal, texCoord });
-//		}
-//		size_t count = vertices.size() - startIndex;
-//		shapeVertexRanges.emplace_back(startIndex, count);
-//	}
-//
-//	glGenBuffers(1, &vertexbuffer);
-//	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-//	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), vertices.data(), GL_STATIC_DRAW);
-//}
+void loadModelAndCreateBuffers(const std::string& filename, std::vector<Vertex>& vertices, std::vector<std::pair<size_t, size_t>>& shapeVertexRanges, GLuint& vertexbuffer) {
+	tinyobj::attrib_t attributes;
+	std::vector<tinyobj::shape_t> shapes;
+	std::vector<tinyobj::material_t> materials;
+	std::string warnings, errors;
+
+	if (!tinyobj::LoadObj(&attributes, &shapes, &materials, &warnings, &errors, filename.c_str())) {
+		std::cerr << "Could not load OBJ file: " << filename << std::endl;
+		return;
+	}
+
+	for (const auto& shape : shapes) {
+		const auto& mesh = shape.mesh;
+		size_t startIndex = vertices.size();
+		for (const auto& index : mesh.indices) {
+			glm::vec3 position = {
+				attributes.vertices[3 * index.vertex_index + 0],
+				attributes.vertices[3 * index.vertex_index + 1],
+				attributes.vertices[3 * index.vertex_index + 2],
+			};
+			glm::vec3 normal = {
+				attributes.normals[3 * index.normal_index + 0],
+				attributes.normals[3 * index.normal_index + 1],
+				attributes.normals[3 * index.normal_index + 2],
+			};
+			glm::vec2 texCoord = {
+				attributes.texcoords[2 * index.texcoord_index + 0],
+				attributes.texcoords[2 * index.texcoord_index + 1],
+			};
+			vertices.emplace_back(Vertex{ position, normal, texCoord });
+		}
+		size_t count = vertices.size() - startIndex;
+		shapeVertexRanges.emplace_back(startIndex, count);
+	}
+	/*setupBuffers(vertexbuffer, vertices);*/
+}
+
+void setupVertexAttributes() {
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, nullptr);  // Position attribute
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 3));  // Normal attribute
+	glEnableVertexAttribArray(2);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 6));  // Texture coordinate attribute
+}
 
 void initOpenGLSettings() {
 	// Enable depth test
@@ -312,12 +318,7 @@ int main() {
 		// 1st attribute buffer : vertices
 		// Bind our texture in Texture Unit 0
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, nullptr);  // Position attribute
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 3));  // Normal attribute
-		glEnableVertexAttribArray(2);
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 6));  // Texture coordinate attribute
+		setupVertexAttributes();
 		size_t totalVertexCount = 0;
 		for (size_t s = 0; s < shapes.size(); s++) {
 
