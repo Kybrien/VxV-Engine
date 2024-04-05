@@ -12,13 +12,14 @@ public:
 
 	}
 
-
-	void* Alloc(T* type)
+	template<typename... Args>
+	T* Alloc(Args... args)
 	{
-		//if (sizeof(T) != *type) {
+		//if (sizeof(T) != sizeof(type)) {
 		//	throw std::bad_alloc();
 		//}
-		return m_strategy.Allocate();
+		m_strategy.Allocate();
+		return new T(args);
 	}
 
 	void Free(void* p)
@@ -60,6 +61,7 @@ public:
 		for (size_type i = 0; i < N; i++)
 		{
 			m_state[i] = false;
+			std::cout<< "Memory Chunk " << i << " is free" << std::endl;
 		}
 	}
 

@@ -20,7 +20,6 @@ GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, b
         std::vector<GameObject*> goList = currentScene->GetAllGameObjects();
         sceneManager->gameObjectPool.Alloc(this);
 
-
         bool idFound = false;
         int i = 0;
 
