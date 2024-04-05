@@ -358,10 +358,14 @@ int main() {
 						glUniform1i(TextureID, 0);
 						lastUsedTexID = texID; // Update the last used texture ID
 					}
+					else if (texID != lastUsedTexID) {
+						glBindTexture(GL_TEXTURE_2D, 0);
+					}
 				}
 				// Draw the face
 				glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, (void*)(totalIndexCount * sizeof(unsigned int)));
 				totalIndexCount += 3;
+
 			}
 		}
 
