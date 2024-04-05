@@ -48,6 +48,7 @@ GLuint loadTexture(const char* filename) {
 
 	return texID;
 }
+
 void init(GLFWwindow** window) {
 
 	// Initialise GLFW
@@ -79,58 +80,106 @@ void init(GLFWwindow** window) {
 	}
 }
 
-void updateMVP(GLFWwindow* window, glm::mat4& MVP, glm::mat4& ModelMatrix) {
-	// Mise à jour de la matrice Model avec une rotation
-	double currentTime = glfwGetTime();
-	float deltaTime = float(currentTime); // Adaptez selon votre logique de temps
-	float angle = deltaTime * 25.0f; // Exemple d'angle de rotation
-	ModelMatrix = glm::rotate(ModelMatrix, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
-
-	// Mise à jour de la matrice View basée sur les entrées utilisateur
-	computeMatricesFromInputs(window);
-	glm::mat4 ViewMatrix = getViewMatrix();
-
-	// La matrice Projection reste constante ici, mais vous pouvez l'adapter si nécessaire
-	glm::mat4 ProjectionMatrix = getProjectionMatrix();
-
-	// Calcul de la matrice MVP
-	MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
-}
-
-int main() {
-
-	//On initialise tout ce qu'il faut
-	GLFWwindow* window;
-	init(&window);
-
-	// Initialize GLEW
-	glfwMakeContextCurrent(window);
-
-	// Initialize GLEW
-	glewExperimental = true;
-	if (glewInit() != GLEW_OK) {
-		fprintf(stderr, "Failed to initialize GLEW\n");
-		return -1;
-	}
-
+void setupInput(GLFWwindow* window) {
 	// Ensure we can capture the escape key being pressed below
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-
 	// Set the mouse at the center of the screen
 	glfwPollEvents();
-	// Reset mouse position for next frame
 	int width, height;
 	glfwGetWindowSize(window, &width, &height);
 	glfwSetCursorPos(window, width / 2, height / 2);
-	glfwSetCursorPos(window, width / 2, height / 2);
+}
 
+glm::mat4 initializeProjectionMatrix() {
+	// Projection matrix: 45° Field of View, 4:3 ratio, display range: 0.1 unit <-> 100 units
+	return glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
+}
+
+glm::mat4 initializeViewMatrix() {
+	// Camera matrix
+	return glm::lookAt(glm::vec3(9, 5, 10), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+}
+
+//void loadModelAndCreateBuffers(const std::string& filename, std::vector<Vertex>& vertices, std::vector<std::pair<size_t, size_t>>& shapeVertexRanges, GLuint& vertexbuffer) {
+//	tinyobj::attrib_t attributes;
+//	std::vector<tinyobj::shape_t> shapes;
+//	std::vector<tinyobj::material_t> materials;
+//	std::string warnings, errors;
+//
+//	if (!tinyobj::LoadObj(&attributes, &shapes, &materials, &warnings, &errors, filename.c_str())) {
+//		std::cerr << "Could not load OBJ file: " << filename << std::endl;
+//		return;
+//	}
+//
+//	for (const auto& shape : shapes) {
+//		const auto& mesh = shape.mesh;
+//		size_t startIndex = vertices.size();
+//		for (const auto& index : mesh.indices) {
+//			glm::vec3 position = {
+//				attributes.vertices[3 * index.vertex_index + 0],
+//				attributes.vertices[3 * index.vertex_index + 1],
+//				attributes.vertices[3 * index.vertex_index + 2],
+//			};
+//			glm::vec3 normal = {
+//				attributes.normals[3 * index.normal_index + 0],
+//				attributes.normals[3 * index.normal_index + 1],
+//				attributes.normals[3 * index.normal_index + 2],
+//			};
+//			glm::vec2 texCoord = {
+//				attributes.texcoords[2 * index.texcoord_index + 0],
+//				attributes.texcoords[2 * index.texcoord_index + 1],
+//			};
+//			vertices.emplace_back(Vertex{ position, normal, texCoord });
+//		}
+//		size_t count = vertices.size() - startIndex;
+//		shapeVertexRanges.emplace_back(startIndex, count);
+//	}
+//
+//	glGenBuffers(1, &vertexbuffer);
+//	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+//	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), vertices.data(), GL_STATIC_DRAW);
+//}
+
+void initOpenGLSettings() {
 	// Enable depth test
 	glEnable(GL_DEPTH_TEST);
 	// Accept fragment if it closer to the camera than the former one
 	glDepthFunc(GL_LESS);
-
 	// Cull triangles which normal is not towards the camera
 	glEnable(GL_CULL_FACE);
+}
+
+void setupMatricesAndUniforms(GLuint programID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID) {
+	MatrixID = glGetUniformLocation(programID, "MVP");
+	ViewMatrixID = glGetUniformLocation(programID, "V");
+	ModelMatrixID = glGetUniformLocation(programID, "M");
+}
+
+void setupBuffers(GLuint& vertexbuffer, const std::vector<Vertex>& vertices) {
+	glGenBuffers(1, &vertexbuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
+}
+
+void setupLighting(GLuint programID, GLuint& LightID) {
+	LightID = glGetUniformLocation(programID, "LightPosition_worldspace");
+}
+
+void cleanup(GLFWwindow* window, GLuint vertexbuffer, GLuint programID, GLuint VertexArrayID) {
+	// Cleanup VBO and shader
+	glDeleteBuffers(1, &vertexbuffer);
+	glDeleteProgram(programID);
+	glDeleteVertexArrays(1, &VertexArrayID);
+	// Close OpenGL window and terminate GLFW
+	glfwTerminate();
+}
+
+int main() {
+	//On initialise tout
+	GLFWwindow* window;
+	init(&window);
+	setupInput(window);
+	initOpenGLSettings();
 
 	GLuint VertexArrayID;
 	glGenVertexArrays(1, &VertexArrayID);
@@ -138,25 +187,17 @@ int main() {
 
 	// Create and compile our GLSL program from the shaders
 	GLuint programID = LoadShaders("SimpleVertexShader.MIKU", "SimpleFragmentShader.VALORANT");
-	glClearColor(0.0f, 0.0f, 0.5f, 0.0f);
 
-	// Projection matrix: 45° Field of View, 4:3 ratio, display range: 0.1 unit <-> 100 units
-	glm::mat4 Projection = glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
-	// Or, for an ortho camera:
+	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
+
+	glm::mat4 Projection = initializeProjectionMatrix();
+	// Ortho camera:
 	//glm::mat4 Projection = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,6.0f,100.0f); // In world coordinates
 
-	// Camera matrix
-	glm::mat4 View = glm::lookAt(
-		glm::vec3(9, 5, 10), // Camera is at (4,3,3), in World Space
-		glm::vec3(0, 0, 0), // and looks at the origin
-		glm::vec3(0, 1, 0)  // Head is up (set to 0,-1,0 to look upside-down)
-	);
+	glm::mat4 View = initializeViewMatrix();
 
-	// Get a handle for our "MVP" uniform
-	// Only during the initialisation
-	GLuint MatrixID = glGetUniformLocation(programID, "MVP");
-	GLuint ViewMatrixID = glGetUniformLocation(programID, "V");
-	GLuint ModelMatrixID = glGetUniformLocation(programID, "M");
+	GLuint MatrixID, ViewMatrixID, ModelMatrixID;
+	setupMatricesAndUniforms(programID, MatrixID, ViewMatrixID, ModelMatrixID);
 
 	tinyobj::attrib_t attributes;
 	std::vector<tinyobj::shape_t> shapes;
@@ -196,10 +237,7 @@ int main() {
 	}
 
 	GLuint vertexbuffer;
-	glGenBuffers(1, &vertexbuffer);
-	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-	//glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
+	setupBuffers(vertexbuffer, vertices);
 	
 	std::vector<GLuint> textureIDs;
 	for (const auto& material : materials) {
@@ -215,12 +253,12 @@ int main() {
 	//	GLuint texID = loadTexture("image001.png");
 	//	textureIDs.push_back(texID);
 	//}
-	
 
 	// Get a handle for our "LightPosition" uniform
 	glUseProgram(programID);
 	GLuint TextureID = glGetUniformLocation(programID, "myTextureSampler");
-	GLuint LightID = glGetUniformLocation(programID, "LightPosition_worldspace");
+	GLuint LightID;
+	setupLighting(programID, LightID);
 	GLuint MaterialAmbientColorID = glGetUniformLocation(programID, "MaterialAmbientColor");
 	GLuint MaterialDiffuseColorID = glGetUniformLocation(programID, "MaterialDiffuseColor");
 	GLuint MaterialSpecularColorID = glGetUniformLocation(programID, "MaterialSpecularColor");
@@ -248,7 +286,6 @@ int main() {
 			nbFrames = 0;
 			lastTimeFPS += 1.0;
 		}
-
 		float deltaTime = float(currentTime - lastTime);
 		float angle = deltaTime *25.0f;
 
@@ -281,9 +318,7 @@ int main() {
 		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 3));  // Normal attribute
 		glEnableVertexAttribArray(2);
 		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 6));  // Texture coordinate attribute
-
 		size_t totalVertexCount = 0;
-
 		for (size_t s = 0; s < shapes.size(); s++) {
 
 			tinyobj::mesh_t& mesh = shapes[s].mesh;
@@ -317,7 +352,6 @@ int main() {
 			}
 			totalVertexCount += mesh.indices.size();
 		}
-
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
 		glDisableVertexAttribArray(2);
@@ -328,17 +362,6 @@ int main() {
 		glfwPollEvents();
 	} while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
 
-	// Cleanup VBO and shader
-	glDeleteBuffers(1, &vertexbuffer);
-	//glDeleteBuffers(1, &uvbuffer);
-	//glDeleteBuffers(1, &normalbuffer);
-	//glDeleteBuffers(1, &elementbuffer);
-	glDeleteProgram(programID);
-	//glDeleteTextures(1, &TextureID);
-	glDeleteVertexArrays(1, &VertexArrayID);
-
-	// Close OpenGL window and terminate GLFW
-	glfwTerminate();
-
+	cleanup(window, vertexbuffer, programID, VertexArrayID);
 	return 0;
 }	
