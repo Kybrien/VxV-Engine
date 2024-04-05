@@ -6,7 +6,7 @@
 
 
 
-GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, bool loading) {
+GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, bool copying) {
 
 
 
@@ -45,16 +45,17 @@ GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, b
     }
 
 
-
     if (prefab == nullptr) {
 
         name = name_;
-        components.push_back(new Transform(this));
-        components.push_back(new Script(this, loading));
+        AddComponent<Transform>();
     }
 
-    else {
-        *this = prefab->getGameObject();
+    else if(!copying) {
+
+
+        AddComponent<Transform>();
+        Prefab::Copy(this, (prefab_->getGameObject()));
     }
 }
 
@@ -192,14 +193,7 @@ void GameObject::RemoveChild(GameObject* goChild) {
 
 
 
-template<typename T>
-void GameObject::AddComponent() {
 
-    static_assert(std::is_base_of<Component, T>::value, "T doit être un descendant de Component");
-
-    // Ajoute un nouveau composant de type T
-    components.push_back(new T(this));
-}
 
 void GameObject::LoadComponent(Json::Value compJson, GameObject* parentGo) {
     switch (compJson["Type"].asInt()) {
@@ -211,7 +205,8 @@ void GameObject::LoadComponent(Json::Value compJson, GameObject* parentGo) {
     case 2:
         break;
     case 3:
-        GetComponent<Script>()->Load(compJson, parentGo);
+        AddComponent<ScriptingComponent>();
+        GetComponent<ScriptingComponent>()->Load(compJson, parentGo);
         break;
     }
 }
@@ -220,17 +215,5 @@ std::vector<Component*> GameObject::GetComponents() {
     return components;
 }
 
-template<typename T>
-T* GameObject::GetComponent() {
-
-    for (Component* comp : components) {
-        T* typedComp = dynamic_cast<T*>(comp);
-        if (typedComp != nullptr) {
-            return typedComp; // Retourner le composant du type T s'il est trouvé
-        }
-    }
-
-    return nullptr; // Aucun composant de type T trouvé
-}
 
 

@@ -9,9 +9,6 @@ class Transform;
 
 class Component {
 public:
-	virtual void JaiBesoinDunVirtual() {};
-
-
 	Component(GameObject* go) {
 		linkedGameObject = go;
 		type = Unknown;
@@ -20,6 +17,8 @@ public:
 	virtual void Save(Json::Value &compJson) = 0;
 	virtual void Load(Json::Value& compJson, GameObject* ParentGO) = 0;
 
+	virtual void Copy(GameObject* goToFill) = 0;
+
 	
 
 	// Enumeration de tous les types de Components
@@ -27,7 +26,7 @@ public:
 		Unknown,
 		Transform,
 		Mesh_renderer,
-		Script,
+		ScriptComponent,
 	};
 
 	Type type;

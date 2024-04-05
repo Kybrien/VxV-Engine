@@ -2,6 +2,10 @@
 #include <json.h>
 
 
+std::string PrefabManager::fileDirection = "Saves/Prefab";
+std::string PrefabManager::extention = ".prefab";
+
+
 PrefabManager::PrefabManager(Manager* manager) {
 	manager->AddManager<PrefabManager>(this);
 
@@ -46,11 +50,11 @@ void PrefabManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
 					std::cerr << "Erreur lors de l'analyse du JSON : " << reader.getFormattedErrorMessages() << std::endl;
 				}
 				else {
-					GameObject* go = new GameObject();
+					GameObject* go = new GameObject("", true);
 
 					go->Load(PrefabJson, nullptr, true);
 
-					Prefab* prefab = new Prefab(*go);
+					Prefab* prefab = new Prefab(go);
 					prefab->name = PrefabJson["Name"].asString();
 				}
 
@@ -77,7 +81,7 @@ void PrefabManager::Save() {
 			PrefabJson["Name"] = prefab->name;
 			PrefabJson["GameObjects"] = Json::Value(Json::arrayValue);
 
-			prefab->getGameObject().Save(PrefabJson);
+			prefab->getGameObject()->Save(PrefabJson);
 
 			// Conversion de l'objet JSON en une chaîne JSON formatée
 			std::string jsonString = Json::writeString(builder, PrefabJson);

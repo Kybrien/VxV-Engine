@@ -74,15 +74,16 @@ int main() {
 
 	if (currentScene->GetAllGameObjects().empty()) {
 
-		GameObject* cube = new GameObject("cube", false);
+		GameObject* cube = new GameObject("cube");
 		cube->GetComponent<Transform>()->position.x = 10;
 
-		Prefab* prefabCube = new Prefab(*cube, "PrefabCube");
-		GameObject* cercle = new GameObject("", false, prefabCube);
+		Prefab* prefabCube = new Prefab(cube, "PrefabCube");
+		GameObject* cercle = new GameObject("cercle", false, prefabCube);
+		cercle->GetComponent<Transform>()->position.x = 1000;
 
-
-
-
+		Script* escript = ScriptManager::NewScript("CercleScript");
+		cercle->AddComponent<ScriptingComponent>();
+		cercle->GetComponent<ScriptingComponent>()->AddScript(escript);
 
 
 
@@ -98,12 +99,18 @@ int main() {
 
 	
 	for (GameObject* go : currentScene->GetAllGameObjects()) {
-		Debug::Log(go->name + " : " + go->GetComponent<Script>()->name + "\n");
+		if (go->GetComponent<ScriptingComponent>() != nullptr) {
+
+		Debug::Log(go->name + " : " + go->GetComponent<ScriptingComponent>()->GetScript()->name + "\n");
+		}
 	}
 
 	for (Prefab* prefab : engine->manager->GetManager<PrefabManager>()->GetPrefabs()) {
+		if (prefab->getGameObject()->GetComponent<ScriptingComponent>() != nullptr) {
 
-		Debug::Log(prefab->name + " (Prefab) : " + prefab->getGameObject().GetComponent<Script>()->name + "\n");
+
+			Debug::Log(prefab->name + " (Prefab) : " + prefab->getGameObject()->GetComponent<ScriptingComponent>()->GetScript()->name + "\n");
+		}
 	}
 
 	engine->manager->GetManager<PrefabManager>()->Save();
