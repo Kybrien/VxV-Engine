@@ -18,7 +18,6 @@ GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, b
         SceneManager* sceneManager = manager->GetManager<SceneManager>();
         currentScene = sceneManager->GetCurrentScene();
         std::vector<GameObject*> goList = currentScene->GetAllGameObjects();
-        sceneManager->gameObjectPool.Alloc(this);
 
         bool idFound = false;
         int i = 0;

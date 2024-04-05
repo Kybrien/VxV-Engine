@@ -19,7 +19,7 @@ public:
 		//	throw std::bad_alloc();
 		//}
 		m_strategy.Allocate();
-		return new T(args);
+		return new T(args...);
 	}
 
 	void Free(void* p)
@@ -28,7 +28,10 @@ public:
 	}
 };
 
+template<typename T, class Strategy> class MemoryPool<GameObject, MemPool_Linear<GameObject>>
+{
 
+};
 //template <typename T> class MemPool_Malloc
 //{
 //public:
