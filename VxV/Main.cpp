@@ -276,6 +276,14 @@ int main() {
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	// Chargez la police qui supporte les caractères accentués
+	ImFont* font = io.Fonts->AddFontFromFileTTF("chemin_vers_votre_police.ttf", 12);
+
+	// Vérifiez si la police a été chargée correctement
+	if (font == nullptr)
+	{
+		std::cerr << "Erreur lors du chargement de la police." << std::endl;
+	}
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init("#version 330");
 
