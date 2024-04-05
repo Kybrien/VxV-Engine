@@ -22,6 +22,10 @@ public:
 		return scripts;
 	}
 
+	void AddScript(Script* script) {
+		scripts.push_back(script);
+	}
+
 
 
 

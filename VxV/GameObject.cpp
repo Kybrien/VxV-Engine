@@ -52,7 +52,10 @@ GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, b
     }
 
     else if(!copying) {
-        Prefab::Copy(this, &(prefab_->getGameObject()));
+
+
+        AddComponent<Transform>();
+        Prefab::Copy(this, (prefab_->getGameObject()));
     }
 }
 

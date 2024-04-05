@@ -8,27 +8,6 @@ PrefabSaveFile
 				{
 					"Position" : 
 					[
-						10.0,
-						0.0,
-						0.0
-					],
-					"Rotation" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Scale" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Type" : 1
-				},
-				{
-					"Position" : 
-					[
 						0.0,
 						0.0,
 						0.0
@@ -48,9 +27,9 @@ PrefabSaveFile
 					"Type" : 1
 				}
 			],
-			"Id" : 1,
+			"Id" : 0,
 			"Is Child" : false,
-			"Name" : "cube"
+			"Name" : ""
 		}
 	],
 	"Name" : "PrefabCube"

@@ -81,7 +81,7 @@ void PrefabManager::Save() {
 			PrefabJson["Name"] = prefab->name;
 			PrefabJson["GameObjects"] = Json::Value(Json::arrayValue);
 
-			prefab->getGameObject().Save(PrefabJson);
+			prefab->getGameObject()->Save(PrefabJson);
 
 			// Conversion de l'objet JSON en une chaîne JSON formatée
 			std::string jsonString = Json::writeString(builder, PrefabJson);

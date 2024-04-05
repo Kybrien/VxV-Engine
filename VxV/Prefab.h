@@ -3,14 +3,14 @@
 
 class Prefab {
 private: 
-	GameObject gameObject;
+	GameObject* gameObject;
 
 public:
 	std::string name;
 
 	Prefab(GameObject* go, std::string name = "PrefabSample");
 
-	GameObject getGameObject() {
+	GameObject* getGameObject() {
 		return gameObject;
 	}
 

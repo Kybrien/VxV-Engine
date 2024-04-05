@@ -24,6 +24,10 @@ public:
 	void AddScript(Script* script) {
 		this->script = script;
 	}
+	
+	Script* GetScript() {
+		return script;
+	}
 
 
 	void Load(Json::Value& compJson, GameObject* parentGO) override;

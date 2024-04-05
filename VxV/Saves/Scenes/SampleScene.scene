@@ -62,7 +62,7 @@ SceneSaveFile
 								{
 									"Position" : 
 									[
-										0.0,
+										1000.0,
 										0.0,
 										0.0
 									],
@@ -85,67 +85,18 @@ SceneSaveFile
 									"Type" : 3
 								}
 							],
-							"Id" : 2,
+							"Id" : 1,
 							"Is Child" : true,
-							"Name" : ""
+							"Name" : "cube",
+							"PrefabName" : "PrefabCube"
 						}
 					],
-					"Id" : 3,
+					"Id" : 2,
 					"Is Child" : true,
 					"Name" : "child"
 				}
 			],
 			"Id" : 0,
-			"Is Child" : false,
-			"Name" : "cube"
-		},
-		{
-			"Components" : 
-			[
-				{
-					"Position" : 
-					[
-						10.0,
-						0.0,
-						0.0
-					],
-					"Rotation" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Scale" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Type" : 1
-				},
-				{
-					"Position" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Rotation" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Scale" : 
-					[
-						0.0,
-						0.0,
-						0.0
-					],
-					"Type" : 1
-				}
-			],
-			"Id" : 1,
 			"Is Child" : false,
 			"Name" : "cube"
 		}

@@ -37,8 +37,6 @@ void Transform::Save(Json::Value& compJson) {
 
 void Transform::Copy(GameObject* goToFill) {
 
-	goToFill->AddComponent<Transform>();
-
 	Transform* newTrans = goToFill->GetComponent<Transform>();
 	newTrans->position = glm::vec3(position.x, position.y, position.z);
 	newTrans->rotation = glm::vec3(rotation.x, rotation.y, rotation.z);
