@@ -3,14 +3,17 @@
 #include "WindowGui.h"
 #include <imgui.h>
 
+
 void EngineGUI::UpdateGui()
 {
 	ImGui::ShowDemoWindow();
 
+	MainMenuBar();
+
  // Fenêtre pour l'accès aux fichiers
     ShowFileExplorer(); 
-	ShowMenuBar();
-
+	//ShowMenuBar();
+	ShowInfo();
 }
 
 void EngineGUI::RenderGui()
