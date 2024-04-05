@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unordered_map>
+#include <filesystem>
+
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -27,6 +29,18 @@ public:
 
 	bool operator==(const Vertex& other) const {
 		return position == other.position && normal == other.normal && texCoord == other.texCoord;
+	}
+};
+
+struct pair_hash {
+	template <class T1, class T2>
+	std::size_t operator () (const std::pair<T1, T2>& p) const {
+		auto h1 = std::hash<T1>{}(p.first);
+		auto h2 = std::hash<T2>{}(p.second);
+
+		// Mainly for demonstration purposes, i.e. works but is overly simple
+		// In the real world, use sth. like boost.hash_combine
+		return h1 ^ h2;
 	}
 };
 
@@ -95,7 +109,7 @@ Vertex createVertexFromIndex(const tinyobj::attrib_t& attrib, const tinyobj::ind
 
 GLuint loadTexture(const char* filename) {
 	int width, height, numComponents;
-	stbi_set_flip_vertically_on_load(true);
+	//stbi_set_flip_vertically_on_load(true);
 	unsigned char* data = stbi_load(filename, &width, &height, &numComponents, 4);
 	if (data == NULL) {
 		std::cerr << "Failed to load texture: " << filename << std::endl;
@@ -262,6 +276,8 @@ int main() {
 			textureIDs.push_back(0);  // No texture for this material
 		}
 	}
+
+
 	//if (textureIDs.size() == 0) {
 	//	GLuint texID = loadTexture("image001.png");
 	//	textureIDs.push_back(texID);
@@ -283,6 +299,21 @@ int main() {
 	int nbFrames = 0;
 	//update be  like
 
+	std::unordered_map<std::pair<GLuint, int>, std::vector<Vertex>, pair_hash> vertexBuffers;
+
+	for (size_t s = 0; s < shapes.size(); s++) {
+		tinyobj::mesh_t& mesh = shapes[s].mesh;
+		for (size_t f = 0; f < mesh.indices.size(); f += 3) {
+			GLuint texID = textureIDs[mesh.material_ids[f / 3]];
+			int matID = mesh.material_ids[f / 3];
+			Vertex v1 = createVertexFromIndex(attributes, mesh.indices[f]);
+			Vertex v2 = createVertexFromIndex(attributes, mesh.indices[f + 1]);
+			Vertex v3 = createVertexFromIndex(attributes, mesh.indices[f + 2]);
+			vertexBuffers[std::make_pair(texID, matID)].push_back(v1);
+			vertexBuffers[std::make_pair(texID, matID)].push_back(v2);
+			vertexBuffers[std::make_pair(texID, matID)].push_back(v3);
+		}
+	}
 	do {
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -326,48 +357,48 @@ int main() {
 		// 1st attribute buffer : vertices
 		// Bind our texture in Texture Unit 0
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, nullptr);  // Position attribute
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 3));  // Normal attribute
-		glEnableVertexAttribArray(2);
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 6));  // Texture coordinate attribute
+		for (const auto& pair : vertexBuffers) {
+			GLuint texID = pair.first.first;
+			int matID = pair.first.second;
+			const std::vector<Vertex>& vertices = pair.second;
 
-		size_t totalIndexCount = 0;
-		GLuint lastUsedTexID = 0; // Keep track of the last used texture ID
-		int lastUsedMaterialID = -1;// Keep track of the last used material ID
-		for (size_t s = 0; s < shapes.size(); s++) {
-			tinyobj::mesh_t& mesh = shapes[s].mesh;
-			for (size_t f = 0; f < mesh.indices.size(); f += 3) {
-				if (mesh.material_ids[f / 3] >= 0) {
-					// Only update the uniforms if the material ID has changed
-					if (mesh.material_ids[f / 3] != lastUsedMaterialID) {
-						tinyobj::material_t& material = materials[mesh.material_ids[f / 3]];
-						GLfloat ambient[3] = { material.ambient[0], material.ambient[1], material.ambient[2] };
-						GLfloat diffuse[3] = { material.diffuse[0], material.diffuse[1], material.diffuse[2] };
-						GLfloat specular[3] = { material.specular[0], material.specular[1], material.specular[2] };
-						glUniform3fv(MaterialAmbientColorID, 1, ambient);
-						glUniform3fv(MaterialDiffuseColorID, 1, diffuse);
-						glUniform3fv(MaterialSpecularColorID, 1, specular);
-						lastUsedMaterialID = mesh.material_ids[f / 3]; // Update the last used material ID
-					}
-					GLuint texID = textureIDs[mesh.material_ids[f / 3]];
-					if (texID != 0 && texID != lastUsedTexID) {  // Only bind the texture if it's different from the currently bound one
-						glActiveTexture(GL_TEXTURE0);
-						glBindTexture(GL_TEXTURE_2D, texID);
-						glUniform1i(TextureID, 0);
-						lastUsedTexID = texID; // Update the last used texture ID
-					}
-					else if (texID != lastUsedTexID) {
-						glBindTexture(GL_TEXTURE_2D, 0);
-					}
-				}
-				// Draw the face
-				glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, (void*)(totalIndexCount * sizeof(unsigned int)));
-				totalIndexCount += 3;
+			// Bind the texture
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, texID);
+			glUniform1i(TextureID, 0);
 
-			}
+			// Set the material properties
+			tinyobj::material_t& material = materials[matID];
+			GLfloat ambient[3] = { material.ambient[0], material.ambient[1], material.ambient[2] };
+			GLfloat diffuse[3] = { material.diffuse[0], material.diffuse[1], material.diffuse[2] };
+			GLfloat specular[3] = { material.specular[0], material.specular[1], material.specular[2] };
+			glUniform3fv(MaterialAmbientColorID, 1, ambient);
+			glUniform3fv(MaterialDiffuseColorID, 1, diffuse);
+			glUniform3fv(MaterialSpecularColorID, 1, specular);
+
+			// Create and bind the vertex buffer
+			GLuint vertexbuffer;
+			glGenBuffers(1, &vertexbuffer);
+			glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
+
+			// Draw the vertices
+			glEnableVertexAttribArray(0);
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
+			glEnableVertexAttribArray(1);
+			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(sizeof(glm::vec3)));
+			glEnableVertexAttribArray(2);
+			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(2 * sizeof(glm::vec3)));
+
+			glDrawArrays(GL_TRIANGLES, 0, vertices.size());
+
+			glDisableVertexAttribArray(0);
+			glDisableVertexAttribArray(1);
+			glDisableVertexAttribArray(2);
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+			glDeleteBuffers(1, &vertexbuffer);
 		}
+
 
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
