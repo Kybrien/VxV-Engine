@@ -154,6 +154,7 @@ int main() {
 	}
 	
 	glfwMakeContextCurrent(window);// Initialize GLEW
+	glfwSwapInterval(0);
 
 	glewExperimental = true;
 	if (glewInit() != GLEW_OK) {
@@ -178,6 +179,10 @@ int main() {
 	glEnable(GL_DEPTH_TEST);
 	// Accept fragment if it closer to the camera than the former one
 	glDepthFunc(GL_LESS);
+
+	// Enable blending
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	// Cull triangles which normal is not towards the camera
 	glEnable(GL_CULL_FACE);
@@ -284,7 +289,7 @@ int main() {
 	//}
 	std::cout << "After indexing - Total vertices: " << uniqueVertices.size() << ", Total triangles: " << indices.size() / 3 << std::endl;
 
-	// Get a handle for our "LightPosition" uniform
+	// Get a handle for our uniforms
 	glUseProgram(programID);
 	GLuint TextureID = glGetUniformLocation(programID, "myTextureSampler");
 	GLuint LightID = glGetUniformLocation(programID, "LightPosition_worldspace");
@@ -314,6 +319,18 @@ int main() {
 			vertexBuffers[std::make_pair(texID, matID)].push_back(v3);
 		}
 	}
+
+	std::unordered_map<std::pair<GLuint, int>, GLuint, pair_hash> vertexBufferIDs;
+
+	for (const auto& pair : vertexBuffers) {
+		GLuint vertexbuffer;
+		glGenBuffers(1, &vertexbuffer);
+		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * pair.second.size(), &pair.second[0], GL_STATIC_DRAW);
+		vertexBufferIDs[pair.first] = vertexbuffer;
+	}
+
+
 	do {
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -376,11 +393,8 @@ int main() {
 			glUniform3fv(MaterialDiffuseColorID, 1, diffuse);
 			glUniform3fv(MaterialSpecularColorID, 1, specular);
 
-			// Create and bind the vertex buffer
-			GLuint vertexbuffer;
-			glGenBuffers(1, &vertexbuffer);
-			glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
+			// Bind the vertex buffer
+			glBindBuffer(GL_ARRAY_BUFFER, vertexBufferIDs[pair.first]);
 
 			// Draw the vertices
 			glEnableVertexAttribArray(0);
@@ -391,12 +405,6 @@ int main() {
 			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(2 * sizeof(glm::vec3)));
 
 			glDrawArrays(GL_TRIANGLES, 0, vertices.size());
-
-			glDisableVertexAttribArray(0);
-			glDisableVertexAttribArray(1);
-			glDisableVertexAttribArray(2);
-			glBindBuffer(GL_ARRAY_BUFFER, 0);
-			glDeleteBuffers(1, &vertexbuffer);
 		}
 
 
@@ -411,12 +419,7 @@ int main() {
 	} while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
 
 	// Cleanup VBO and shader
-	glDeleteBuffers(1, &vertexbuffer);
-	//glDeleteBuffers(1, &uvbuffer);
-	//glDeleteBuffers(1, &normalbuffer);
-	//glDeleteBuffers(1, &elementbuffer);
 	glDeleteProgram(programID);
-	//glDeleteTextures(1, &TextureID);
 	glDeleteVertexArrays(1, &VertexArrayID);
 	glDeleteVertexArrays(1, &TextureID);
 	glDeleteVertexArrays(1, &LightID);
@@ -428,6 +431,11 @@ int main() {
 	glDeleteVertexArrays(1, &ModelMatrixID);
 	glDeleteVertexArrays(1, &indexbuffer);
 	glDeleteVertexArrays(1, textureIDs.data());
+
+	for (const auto& pair : vertexBufferIDs) {
+		glDeleteBuffers(1, &pair.second);
+	}
+
 	
 
 	// Close OpenGL window and terminate GLFW
