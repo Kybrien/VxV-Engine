@@ -499,13 +499,11 @@ int main() {
 		}
 
 		float deltaTime = float(currentTime - lastTime);
-		//float angle = deltaTime * 50.0f;
 
-		//glm::mat4 myRotationMatrix2 = glm::rotate(glm::mat4(1.0f), glm::radians(angle), glm::vec3(0.0f, 0.0f, -1.0));
-		float angle = deltaTime * 50.0f;  // Rotate by 45 degrees
+		float angle = deltaTime * 50.0f;  // Rotate by 60 degrees
 		glm::vec3 axis(0.0f, 0.0f, -1.0f);  // Rotate around the z-axis
 
-		glm::vec3 lightPos = glm::vec3(0, 0, 20);
+		glm::vec3 lightPos = glm::vec3(0, 0, 8);
 		glUniform3f(LightID, lightPos.x, lightPos.y, lightPos.z);
 
 		// Compute the MVP matrix from keyboard and mouse input
@@ -513,7 +511,6 @@ int main() {
 		glm::mat4 ProjectionMatrix = getProjectionMatrix();
 		for (auto& object : objects) {
 			sendMVPData(object, angle, axis, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
-
 			drawObjects(objects, TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
 		}
 
