@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unordered_map>
+
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -21,11 +23,103 @@ public:
 	glm::vec3 position;
 	glm::vec3 normal;
 	glm::vec2 texCoord;
+
+	bool operator==(const Vertex& other) const {
+		return position == other.position && normal == other.normal && texCoord == other.texCoord;
+	}
 };
+
+struct pair_hash {
+	template <class T1, class T2>
+	std::size_t operator () (const std::pair<T1, T2>& p) const {
+		auto h1 = std::hash<T1>{}(p.first);
+		auto h2 = std::hash<T2>{}(p.second);
+
+		// Mainly for demonstration purposes, i.e. works but is overly simple
+		// In the real world, use sth. like boost.hash_combine
+		return h1 ^ h2;
+	}
+};
+
+namespace std {
+	template<> struct hash<glm::vec3> {
+		size_t operator()(glm::vec3 const& vec) const {
+			return ((hash<float>()(vec.x) ^ (hash<float>()(vec.y) << 1)) >> 1) ^ (hash<float>()(vec.z) << 1);
+		}
+	};
+
+	template<> struct hash<glm::vec2> {
+		size_t operator()(glm::vec2 const& vec) const {
+			return hash<float>()(vec.x) ^ (hash<float>()(vec.y) << 1);
+		}
+	};
+
+	template<> struct hash<Vertex> {
+		size_t operator()(Vertex const& vertex) const {
+			return ((hash<glm::vec3>()(vertex.position) ^ (hash<glm::vec3>()(vertex.normal) << 1)) >> 1) ^ (hash<glm::vec2>()(vertex.texCoord) << 1);
+		}
+	};
+}
+
+struct Vec3Hash {
+	size_t operator()(const glm::vec3& vec) const {
+		return ((hash<float>()(vec.x) ^ (hash<float>()(vec.y) << 1)) >> 1) ^ (hash<float>()(vec.z) << 1);
+	}
+};
+
+struct Vec2Hash {
+	size_t operator()(const glm::vec2& vec) const {
+		return hash<float>()(vec.x) ^ (hash<float>()(vec.y) << 1);
+	}
+};
+
+struct VertexHash {
+	size_t operator()(const Vertex& vertex) const {
+		return ((Vec3Hash()(vertex.position) ^ (Vec3Hash()(vertex.normal) << 1)) >> 1) ^ (Vec2Hash()(vertex.texCoord) << 1);
+	}
+};
+
+class Object {
+public:
+	tinyobj::attrib_t attributes;
+	std::vector<tinyobj::shape_t> shapes;
+	std::vector<tinyobj::material_t> materials;
+	GLuint vertexbuffer, indexbuffer;
+	std::vector<GLuint> textureIDs;
+	std::unordered_map<std::pair<GLuint, int>, std::vector<Vertex>, pair_hash> vertexBuffers;
+	std::unordered_map<std::pair<GLuint, int>, GLuint, pair_hash> vertexBufferIDs;
+	glm::mat4 transform;
+};
+
+
+Vertex createVertexFromIndex(const tinyobj::attrib_t& attrib, const tinyobj::index_t& index) {
+	Vertex vertex;
+
+	// Position
+	vertex.position.x = attrib.vertices[3 * index.vertex_index + 0];
+	vertex.position.y = attrib.vertices[3 * index.vertex_index + 1];
+	vertex.position.z = attrib.vertices[3 * index.vertex_index + 2];
+
+	// Normal
+	vertex.normal.x = attrib.normals[3 * index.normal_index + 0];
+	vertex.normal.y = attrib.normals[3 * index.normal_index + 1];
+	vertex.normal.z = attrib.normals[3 * index.normal_index + 2];
+
+	// Texture Coordinate
+	if (index.texcoord_index != -1) {
+		vertex.texCoord.x = attrib.texcoords[2 * index.texcoord_index + 0];
+		vertex.texCoord.y = 1.0f - attrib.texcoords[2 * index.texcoord_index + 1]; // Flip Y coordinate because OBJ's coordinate system is different from OpenGL's
+	}
+	else {
+		vertex.texCoord = glm::vec2(0.0f, 0.0f);
+	}
+
+	return vertex;
+}
 
 GLuint loadTexture(const char* filename) {
 	int width, height, numComponents;
-	stbi_set_flip_vertically_on_load(true);
+	//stbi_set_flip_vertically_on_load(true);
 	unsigned char* data = stbi_load(filename, &width, &height, &numComponents, 4);
 	if (data == NULL) {
 		std::cerr << "Failed to load texture: " << filename << std::endl;
@@ -62,7 +156,7 @@ void init(GLFWwindow** window) {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // We want OpenGL 3.3
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // We don't want the old OpenGL
-	
+
 	// Open a window and create its OpenGL context
 	*window = glfwCreateWindow(1280, 720, "VxV", NULL, NULL);
 	if (*window == NULL) {
@@ -111,44 +205,7 @@ glm::mat4 initializeProjectionMatrix() {
 
 glm::mat4 initializeViewMatrix() {
 	// Camera matrix
-	return glm::lookAt(glm::vec3(9, 5, 10), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
-}
-
-void loadModelAndCreateBuffers(const std::string& filename, std::vector<Vertex>& vertices, std::vector<std::pair<size_t, size_t>>& shapeVertexRanges, GLuint& vertexbuffer) {
-	tinyobj::attrib_t attributes;
-	std::vector<tinyobj::shape_t> shapes;
-	std::vector<tinyobj::material_t> materials;
-	std::string warnings, errors;
-
-	if (!tinyobj::LoadObj(&attributes, &shapes, &materials, &warnings, &errors, filename.c_str())) {
-		std::cerr << "Could not load OBJ file: " << filename << std::endl;
-		return;
-	}
-
-	for (const auto& shape : shapes) {
-		const auto& mesh = shape.mesh;
-		size_t startIndex = vertices.size();
-		for (const auto& index : mesh.indices) {
-			glm::vec3 position = {
-				attributes.vertices[3 * index.vertex_index + 0],
-				attributes.vertices[3 * index.vertex_index + 1],
-				attributes.vertices[3 * index.vertex_index + 2],
-			};
-			glm::vec3 normal = {
-				attributes.normals[3 * index.normal_index + 0],
-				attributes.normals[3 * index.normal_index + 1],
-				attributes.normals[3 * index.normal_index + 2],
-			};
-			glm::vec2 texCoord = {
-				attributes.texcoords[2 * index.texcoord_index + 0],
-				attributes.texcoords[2 * index.texcoord_index + 1],
-			};
-			vertices.emplace_back(Vertex{ position, normal, texCoord });
-		}
-		size_t count = vertices.size() - startIndex;
-		shapeVertexRanges.emplace_back(startIndex, count);
-	}
-	/*setupBuffers(vertexbuffer, vertices);*/
+	return glm::lookAt(glm::vec3(9, 5, 1), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 }
 
 void setupVertexAttributes() {
@@ -160,20 +217,16 @@ void setupVertexAttributes() {
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float) * 6));  // Texture coordinate attribute
 }
 
-void setupMatricesAndUniforms(GLuint programID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID) {
-	MatrixID = glGetUniformLocation(programID, "MVP");
-	ViewMatrixID = glGetUniformLocation(programID, "V");
-	ModelMatrixID = glGetUniformLocation(programID, "M");
-}
 
-void setupBuffers(GLuint& vertexbuffer, const std::vector<Vertex>& vertices) {
+void setupBuffers(GLuint& vertexbuffer, const std::vector<Vertex>& vertices, GLuint& indexbuffer, const std::vector<unsigned int>& indices) {
 	glGenBuffers(1, &vertexbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
-}
 
-void setupLighting(GLuint programID, GLuint& LightID) {
-	LightID = glGetUniformLocation(programID, "LightPosition_worldspace");
+	glGenBuffers(1, &indexbuffer);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexbuffer);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
+
 }
 
 void cleanup(GLFWwindow* window, GLuint vertexbuffer, GLuint programID, GLuint VertexArrayID) {
@@ -184,6 +237,170 @@ void cleanup(GLFWwindow* window, GLuint vertexbuffer, GLuint programID, GLuint V
 	// Close OpenGL window and terminate GLFW
 	glfwTerminate();
 }
+
+void loadingObject(const std::string& filename, tinyobj::attrib_t& attributes, std::vector<tinyobj::shape_t>& shapes,
+	std::vector<tinyobj::material_t>& materials, GLuint& vertexbuffer, GLuint& indexbuffer)
+{
+	std::string warnings;
+	std::string errors;
+	tinyobj::LoadObj(&attributes, &shapes, &materials, &warnings, &errors, filename.c_str(), "");
+	// Before indexing
+	size_t totalIndices = 0;
+	for (const auto& shape : shapes) {
+		totalIndices += shape.mesh.indices.size();
+	}
+	std::cout << "Before indexing - Total vertices: " << totalIndices / 3 << ", Total triangles: " << totalIndices / 3 << std::endl;
+
+	std::vector<Vertex> vertices;
+	std::vector<unsigned int> indices;
+	std::unordered_map<Vertex, unsigned int> uniqueVertices;
+
+	for (size_t s = 0; s < shapes.size(); s++) {
+		tinyobj::mesh_t& mesh = shapes[s].mesh;
+		for (size_t f = 0; f < mesh.indices.size(); f++) {
+			tinyobj::index_t index = mesh.indices[f];
+
+			Vertex vertex = {};
+			vertex.position = {
+				attributes.vertices[3 * index.vertex_index + 0],
+				attributes.vertices[3 * index.vertex_index + 1],
+				attributes.vertices[3 * index.vertex_index + 2]
+			};
+			vertex.normal = {
+				attributes.normals[3 * index.normal_index + 0],
+				attributes.normals[3 * index.normal_index + 1],
+				attributes.normals[3 * index.normal_index + 2]
+			};
+			vertex.texCoord = {
+				attributes.texcoords[2 * index.texcoord_index + 0],
+				attributes.texcoords[2 * index.texcoord_index + 1]
+			};
+
+			if (uniqueVertices.count(vertex) == 0) {
+				uniqueVertices[vertex] = static_cast<unsigned int>(vertices.size());
+				vertices.push_back(vertex);
+			}
+
+			indices.push_back(uniqueVertices[vertex]);
+		}
+	}
+	std::cout << "After indexing - Total vertices: " << uniqueVertices.size() << ", Total triangles: " << indices.size() / 3 << std::endl;
+	setupBuffers(vertexbuffer, vertices, indexbuffer, indices);
+}
+
+void loadTextures(const std::vector<tinyobj::material_t>& materials, std::vector<GLuint>& textureIDs) {
+	for (const auto& material : materials) {
+		if (!material.diffuse_texname.empty()) {
+			GLuint texID = loadTexture(material.diffuse_texname.c_str());
+			textureIDs.push_back(texID);
+		}
+		else {
+			textureIDs.push_back(0);  // No texture for this material
+		}
+	}
+	//if (textureIDs.size() == 0) {
+	//	GLuint texID = loadTexture("image001.png");
+	//	textureIDs.push_back(texID);
+	//}
+}
+
+void loadObjAndTextures(const std::string& filename, tinyobj::attrib_t& attributes, std::vector<tinyobj::shape_t>& shapes,
+	std::vector<tinyobj::material_t>& materials, GLuint& vertexbuffer, GLuint& indexbuffer, std::vector<GLuint>& textureIDs)
+{
+	loadingObject(filename, attributes, shapes, materials, vertexbuffer, indexbuffer);
+	loadTextures(materials, textureIDs);
+}
+
+void batchingObj(std::vector<tinyobj::shape_t>& shapes, tinyobj::attrib_t& attributes, std::vector<GLuint>& textureIDs,
+	std::unordered_map<std::pair<GLuint, int>, std::vector<Vertex>, pair_hash>& vertexBuffers,
+	std::unordered_map<std::pair<GLuint, int>, GLuint, pair_hash>& vertexBufferIDs)
+{
+	for (size_t s = 0; s < shapes.size(); s++) {
+		tinyobj::mesh_t& mesh = shapes[s].mesh;
+		for (size_t f = 0; f < mesh.indices.size(); f += 3) {
+			GLuint texID = textureIDs[mesh.material_ids[f / 3]];
+			int matID = mesh.material_ids[f / 3];
+			Vertex v1 = createVertexFromIndex(attributes, mesh.indices[f]);
+			Vertex v2 = createVertexFromIndex(attributes, mesh.indices[f + 1]);
+			Vertex v3 = createVertexFromIndex(attributes, mesh.indices[f + 2]);
+			vertexBuffers[std::make_pair(texID, matID)].push_back(v1);
+			vertexBuffers[std::make_pair(texID, matID)].push_back(v2);
+			vertexBuffers[std::make_pair(texID, matID)].push_back(v3);
+		}
+	}
+
+	for (const auto& pair : vertexBuffers) {
+		GLuint vertexbuffer;
+		glGenBuffers(1, &vertexbuffer);
+		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * pair.second.size(), &pair.second[0], GL_STATIC_DRAW);
+		vertexBufferIDs[pair.first] = vertexbuffer;
+	}
+}
+
+void loadObjAndBatching(const std::string& filename, tinyobj::attrib_t& attributes, std::vector<tinyobj::shape_t>& shapes,
+	std::vector<tinyobj::material_t>& materials, GLuint& vertexbuffer, GLuint& indexbuffer, std::vector<GLuint>& textureIDs,
+	std::unordered_map<std::pair<GLuint, int>, std::vector<Vertex>, pair_hash>& vertexBuffers,
+	std::unordered_map<std::pair<GLuint, int>, GLuint, pair_hash>& vertexBufferIDs)
+{
+	loadObjAndTextures(filename, attributes, shapes, materials, vertexbuffer, indexbuffer, textureIDs);
+	batchingObj(shapes, attributes, textureIDs, vertexBuffers, vertexBufferIDs);
+}
+
+
+void addNewObject(const std::string& filename, std::vector<Object>& objects)
+{
+	Object obj;
+	obj.transform = glm::mat4(1.0f);
+	loadObjAndBatching(filename, obj.attributes, obj.shapes, obj.materials, obj.vertexbuffer, obj.indexbuffer, obj.textureIDs, obj.vertexBuffers, obj.vertexBufferIDs);
+	objects.push_back(obj);
+}
+
+void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& LightID, GLuint& MaterialAmbientColorID,
+	GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID) {
+	glUseProgram(programID);
+	TextureID = glGetUniformLocation(programID, "myTextureSampler");
+	LightID = glGetUniformLocation(programID, "LightPosition_worldspace");
+	MaterialAmbientColorID = glGetUniformLocation(programID, "MaterialAmbientColor");
+	MaterialDiffuseColorID = glGetUniformLocation(programID, "MaterialDiffuseColor");
+	MaterialSpecularColorID = glGetUniformLocation(programID, "MaterialSpecularColor");
+	MatrixID = glGetUniformLocation(programID, "MVP");
+	ViewMatrixID = glGetUniformLocation(programID, "V");
+	ModelMatrixID = glGetUniformLocation(programID, "M");
+}
+
+void drawObjects(std::vector<Object>& objects, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID,
+	GLuint MaterialSpecularColorID) {
+	for (auto& object : objects) {
+		for (const auto& pair : objects[0].vertexBuffers) {
+			GLuint texID = pair.first.first;
+			int matID = pair.first.second;
+			const std::vector<Vertex>& vertices = pair.second;
+
+			// Bind the texture
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, texID);
+			glUniform1i(TextureID, 0);
+
+			// Set the material properties
+			tinyobj::material_t& material = objects[0].materials[matID];
+			GLfloat ambient[3] = { material.ambient[0], material.ambient[1], material.ambient[2] };
+			GLfloat diffuse[3] = { material.diffuse[0], material.diffuse[1], material.diffuse[2] };
+			GLfloat specular[3] = { material.specular[0], material.specular[1], material.specular[2] };
+			glUniform3fv(MaterialAmbientColorID, 1, ambient);
+			glUniform3fv(MaterialDiffuseColorID, 1, diffuse);
+			glUniform3fv(MaterialSpecularColorID, 1, specular);
+
+			// Bind the vertex buffer
+			glBindBuffer(GL_ARRAY_BUFFER, objects[0].vertexBufferIDs[pair.first]);
+
+			// Draw the vertices
+			setupVertexAttributes();
+			glDrawArrays(GL_TRIANGLES, 0, vertices.size());
+		}
+	}
+}
+
 
 int main() {
 	//On initialise tout
@@ -204,72 +421,13 @@ int main() {
 	glm::mat4 Projection = initializeProjectionMatrix();
 	glm::mat4 View = initializeViewMatrix();
 
-	GLuint MatrixID, ViewMatrixID, ModelMatrixID;
-	setupMatricesAndUniforms(programID, MatrixID, ViewMatrixID, ModelMatrixID);
+	std::vector<Object> objects;
+	addNewObject("miku.obj", objects);
 
-	tinyobj::attrib_t attributes;
-	std::vector<tinyobj::shape_t> shapes;
-	std::vector<tinyobj::material_t> materials;
-	std::string warnings;
-	std::string errors;
-
-	tinyobj::LoadObj(&attributes, &shapes, &materials, &warnings, &errors, "911.obj", "");
-
-	std::vector<Vertex> vertices;
-	std::vector<std::pair<size_t, size_t>> shapeVertexRanges;
-	for (int i = 0; i < shapes.size(); i++) {
-		tinyobj::shape_t& shape = shapes[i];
-		tinyobj::mesh_t& mesh = shape.mesh;
-		size_t startIndex = vertices.size();
-		for (int j = 0; j < mesh.indices.size(); j++) {
-			tinyobj::index_t i = mesh.indices[j];
-			glm::vec3 position = {
-				attributes.vertices[i.vertex_index * 3],
-				attributes.vertices[i.vertex_index * 3 + 1],
-				attributes.vertices[i.vertex_index * 3 + 2]
-			};
-			glm::vec3 normal = {
-				attributes.normals[i.normal_index * 3],
-				attributes.normals[i.normal_index * 3 + 1],
-				attributes.normals[i.normal_index * 3 + 2]
-			};
-			glm::vec2 texCoord = {
-				attributes.texcoords[i.texcoord_index * 2],
-				attributes.texcoords[i.texcoord_index * 2 + 1],
-			};
-			Vertex vert = { position, normal, texCoord };
-			vertices.push_back(vert);
-		}
-		size_t count = vertices.size() - startIndex;  // Count of vertices for this shape
-		shapeVertexRanges.push_back(std::make_pair(startIndex, count));  // Store start index and count
-	}
-
-	GLuint vertexbuffer;
-	setupBuffers(vertexbuffer, vertices);
-	
-	std::vector<GLuint> textureIDs;
-	for (const auto& material : materials) {
-		if (!material.diffuse_texname.empty()) {
-			GLuint texID = loadTexture(material.diffuse_texname.c_str());
-			textureIDs.push_back(texID);
-		}
-		else {
-			textureIDs.push_back(0);  // No texture for this material
-		}
-	}
-	//if (textureIDs.size() == 0) {
-	//	GLuint texID = loadTexture("image001.png");
-	//	textureIDs.push_back(texID);
-	//}
-
-	// Get a handle for our "LightPosition" uniform
-	glUseProgram(programID);
-	GLuint TextureID = glGetUniformLocation(programID, "myTextureSampler");
-	GLuint LightID;
-	setupLighting(programID, LightID);
-	GLuint MaterialAmbientColorID = glGetUniformLocation(programID, "MaterialAmbientColor");
-	GLuint MaterialDiffuseColorID = glGetUniformLocation(programID, "MaterialDiffuseColor");
-	GLuint MaterialSpecularColorID = glGetUniformLocation(programID, "MaterialSpecularColor");
+	// Get a handle for our uniforms
+	GLuint TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID;
+	setupHandlesForUniforms(programID, TextureID, LightID, MaterialAmbientColorID, 
+		MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
 
 	glBindVertexArray(0);
 	// glfwGetTime is called only once, the first time this function is called
@@ -288,73 +446,44 @@ int main() {
 		// Compute time difference between current and last frame
 		double currentTime = glfwGetTime();
 		nbFrames++;
-		if (currentTime - lastTimeFPS >= 1.0) { // If last prinf() was more than 1 sec ago
+		if (currentTime - lastTimeFPS >= 1.0) { // If last printf() was more than 1 sec ago
 			// printf and reset timer
-			printf("%f ms/frame\n", 1000.0 / double(nbFrames));
+			printf("%f ms/frame, FPS: %d\n", 1000.0 / double(nbFrames), nbFrames);
 			nbFrames = 0;
 			lastTimeFPS += 1.0;
 		}
-		float deltaTime = float(currentTime - lastTime);
-		float angle = deltaTime *25.0f;
 
-		glm::mat4 myRotationMatrix2 = glm::rotate(glm::mat4(1.0f), glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0));
-		
-		// Compute the MVP matrix from keyboard and mouse input
-		computeMatricesFromInputs(window);
-		glm::mat4 ProjectionMatrix = getProjectionMatrix();
-		glm::mat4 ViewMatrix = getViewMatrix();
-		glm::mat4 ModelMatrix = glm::mat4(1.0f);
-		ModelMatrix = myRotationMatrix2 * ModelMatrix;
-		glm::mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
-		
-		glBindVertexArray(VertexArrayID);
-		// Send our transformation to the currently bound shader, 
-		// in the "MVP" uniform
-		glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
-		glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &ModelMatrix[0][0]);
-		glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &ViewMatrix[0][0]);
+		float deltaTime = float(currentTime - lastTime);
+		//float angle = deltaTime * 50.0f;
+
+		//glm::mat4 myRotationMatrix2 = glm::rotate(glm::mat4(1.0f), glm::radians(angle), glm::vec3(0.0f, 0.0f, -1.0));
+		float angle = deltaTime * 50.0f;  // Rotate by 45 degrees
+		glm::vec3 axis(0.0f, 0.0f, -1.0f);  // Rotate around the z-axis
+		objects[0].transform = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis);
+
 
 		glm::vec3 lightPos = glm::vec3(4, 4, 4);
 		glUniform3f(LightID, lightPos.x, lightPos.y, lightPos.z);
 
-		// 1st attribute buffer : vertices
-		// Bind our texture in Texture Unit 0
+		// Compute the MVP matrix from keyboard and mouse input
+		computeMatricesFromInputs(window);
+		glm::mat4 ProjectionMatrix = getProjectionMatrix();
+		glm::mat4 ViewMatrix = getViewMatrix();
+		for (const auto& object : objects) {
+			glm::mat4 ModelMatrix = glm::mat4(1.0f) * object.transform;
+			glm::mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
 
-		setupVertexAttributes();
-		size_t totalVertexCount = 0;
-		for (size_t s = 0; s < shapes.size(); s++) {
+			glBindVertexArray(VertexArrayID);
+			// Send our transformation to the currently bound shader, 
+			// in the "MVP" uniform
+			glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
+			glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &ModelMatrix[0][0]);
+			glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &ViewMatrix[0][0]);
 
-			tinyobj::mesh_t& mesh = shapes[s].mesh;
-			for (size_t f = 0; f < mesh.indices.size(); f += 3) {
-				if (mesh.material_ids[f / 3] >= 0) {
-					tinyobj::material_t& material = materials[mesh.material_ids[f / 3]];
-					GLfloat ambient[3] = { material.ambient[0], material.ambient[1], material.ambient[2] };
-					GLfloat diffuse[3] = { material.diffuse[0], material.diffuse[1], material.diffuse[2] };
-					GLfloat specular[3] = { material.specular[0], material.specular[1], material.specular[2] };
-					glUniform3fv(MaterialAmbientColorID, 1, ambient);
-					glUniform3fv(MaterialDiffuseColorID, 1, diffuse);
-					glUniform3fv(MaterialSpecularColorID, 1, specular);
-					//std::cout << "name: " <<  material.name << std::endl;
-					GLuint texID = textureIDs[mesh.material_ids[f / 3]];
-					if (texID != 0) {  // Check if a texture exists for this material
-						//std::cout << "texture ID: " << texID << std::endl;
-						glActiveTexture(GL_TEXTURE0);
-						glBindTexture(GL_TEXTURE_2D, texID);
-						glUniform1i(TextureID, 0);
-					}
-				}
-				// Draw the face
-				glDrawArrays(GL_TRIANGLES, totalVertexCount + f, 3);
-				// Deactivate the texture
-				if (mesh.material_ids[f / 3] >= 0) {
-					GLuint texID = textureIDs[mesh.material_ids[f / 3]];
-					if (texID != 0) {  // Check if a texture exists for this material
-						glBindTexture(GL_TEXTURE_2D, 0);
-					}
-				}
-			}
-			totalVertexCount += mesh.indices.size();
+			drawObjects(objects, TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
 		}
+
+
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
 		glDisableVertexAttribArray(2);
@@ -365,6 +494,8 @@ int main() {
 		glfwPollEvents();
 	} while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
 
-	cleanup(window, vertexbuffer, programID, VertexArrayID);
+	for (auto& object : objects) {
+		cleanup(window, object.vertexbuffer, programID, VertexArrayID);
+	}
 	return 0;
-}	
+}
