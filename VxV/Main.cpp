@@ -356,6 +356,18 @@ void addNewObject(const std::string& filename, std::vector<Object>& objects)
 	objects.push_back(obj);
 }
 
+void copyObjectAndAdd(const Object& obj, std::vector<Object>& objects) {
+	Object newObj;
+	newObj.attributes = obj.attributes;
+	newObj.shapes = obj.shapes;
+	newObj.materials = obj.materials;
+	newObj.textureIDs = obj.textureIDs;
+	newObj.vertexBuffers = obj.vertexBuffers;
+	newObj.vertexBufferIDs = obj.vertexBufferIDs;
+	newObj.transform = obj.transform;
+	objects.push_back(newObj);
+}
+
 void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& LightID, GLuint& MaterialAmbientColorID,
 	GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID) {
 	glUseProgram(programID);
@@ -401,6 +413,39 @@ void drawObjects(std::vector<Object>& objects, GLuint TextureID, GLuint Material
 	}
 }
 
+void translateObject(Object& object,const glm::vec3& translation) {
+	object.transform = glm::translate(object.transform, translation);
+}
+
+void rotateObject(Object& object, float angle, const glm::vec3& axis) {
+	object.transform = glm::rotate(object.transform, glm::radians(angle), axis);
+}
+
+void scaleObject(Object& object, const glm::vec3& scale) {
+	object.transform = glm::scale(object.transform, scale);
+}
+
+void sendMVPData(Object& object, float angle, const glm::vec3& axis, GLuint VertexArrayID, GLuint MatrixID, 
+	GLuint ModelMatrixID, GLuint ViewMatrixID)
+{
+	glm::vec3 position = glm::vec3(object.transform[3].x, object.transform[3].y, object.transform[3].z);
+	glm::vec3 scale = glm::vec3(glm::length(object.transform[0]), glm::length(object.transform[1]), glm::length(object.transform[2]));
+	object.transform = glm::mat4(1.0f);
+	object.transform = glm::scale(object.transform, scale);
+	object.transform = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis) * object.transform;
+	object.transform = glm::translate(glm::mat4(1.0f), position) * object.transform;
+
+	glm::mat4 ModelMatrix = glm::mat4(1.0f) * object.transform;
+	glm::mat4 ViewMatrix = getViewMatrix();
+	glm::mat4 MVP = getProjectionMatrix() * ViewMatrix * ModelMatrix;
+
+	glBindVertexArray(VertexArrayID);
+	// Send our transformation to the currently bound shader, 
+	// in the "MVP" uniform
+	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
+	glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &ModelMatrix[0][0]);
+	glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &ViewMatrix[0][0]);
+}
 
 int main() {
 	//On initialise tout
@@ -459,26 +504,15 @@ int main() {
 		//glm::mat4 myRotationMatrix2 = glm::rotate(glm::mat4(1.0f), glm::radians(angle), glm::vec3(0.0f, 0.0f, -1.0));
 		float angle = deltaTime * 50.0f;  // Rotate by 45 degrees
 		glm::vec3 axis(0.0f, 0.0f, -1.0f);  // Rotate around the z-axis
-		objects[0].transform = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis);
 
-
-		glm::vec3 lightPos = glm::vec3(4, 4, 4);
+		glm::vec3 lightPos = glm::vec3(0, 0, 20);
 		glUniform3f(LightID, lightPos.x, lightPos.y, lightPos.z);
 
 		// Compute the MVP matrix from keyboard and mouse input
 		computeMatricesFromInputs(window);
 		glm::mat4 ProjectionMatrix = getProjectionMatrix();
-		glm::mat4 ViewMatrix = getViewMatrix();
-		for (const auto& object : objects) {
-			glm::mat4 ModelMatrix = glm::mat4(1.0f) * object.transform;
-			glm::mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
-
-			glBindVertexArray(VertexArrayID);
-			// Send our transformation to the currently bound shader, 
-			// in the "MVP" uniform
-			glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
-			glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &ModelMatrix[0][0]);
-			glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &ViewMatrix[0][0]);
+		for (auto& object : objects) {
+			sendMVPData(object, angle, axis, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
 
 			drawObjects(objects, TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
 		}
