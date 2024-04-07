@@ -68,13 +68,13 @@ namespace std {
 
 struct Vec3Hash {
 	size_t operator()(const glm::vec3& vec) const {
-		return ((hash<float>()(vec.x) ^ (hash<float>()(vec.y) << 1)) >> 1) ^ (hash<float>()(vec.z) << 1);
+		return ((std::hash<float>()(vec.x) ^ (std::hash<float>()(vec.y) << 1)) >> 1) ^ (std::hash<float>()(vec.z) << 1);
 	}
 };
 
 struct Vec2Hash {
 	size_t operator()(const glm::vec2& vec) const {
-		return hash<float>()(vec.x) ^ (hash<float>()(vec.y) << 1);
+		return std::hash<float>()(vec.x) ^ (std::hash<float>()(vec.y) << 1);
 	}
 };
 
