@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "EngineGUI.h"
 #define STB_IMAGE_IMPLEMENTATION
 #define TINYOBJLOADER_IMPLEMENTATION
 
 #include "object.hpp"
 
 int main() {
+	EngineGUI gui;
 	//On initialise tout
 	GLFWwindow* window;
 	init(window);
@@ -40,9 +41,47 @@ int main() {
 	int nbFrames = 0;
 	//update be  like
 
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	ImGui_ImplGlfw_InitForOpenGL(window, true);
+	ImGui_ImplOpenGL3_Init("#version 330");
+
+
+	std::unordered_map<std::pair<GLuint, int>, std::vector<Vertex>, pair_hash> vertexBuffers;
+
+	for (size_t s = 0; s < shapes.size(); s++) {
+		tinyobj::mesh_t& mesh = shapes[s].mesh;
+		for (size_t f = 0; f < mesh.indices.size(); f += 3) {
+			GLuint texID = textureIDs[mesh.material_ids[f / 3]];
+			int matID = mesh.material_ids[f / 3];
+			Vertex v1 = createVertexFromIndex(attributes, mesh.indices[f]);
+			Vertex v2 = createVertexFromIndex(attributes, mesh.indices[f + 1]);
+			Vertex v3 = createVertexFromIndex(attributes, mesh.indices[f + 2]);
+			vertexBuffers[std::make_pair(texID, matID)].push_back(v1);
+			vertexBuffers[std::make_pair(texID, matID)].push_back(v2);
+			vertexBuffers[std::make_pair(texID, matID)].push_back(v3);
+		}
+	}
+
+	std::unordered_map<std::pair<GLuint, int>, GLuint, pair_hash> vertexBufferIDs;
+
+	for (const auto& pair : vertexBuffers) {
+		GLuint vertexbuffer;
+		glGenBuffers(1, &vertexbuffer);
+		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * pair.second.size(), &pair.second[0], GL_STATIC_DRAW);
+		vertexBufferIDs[pair.first] = vertexbuffer;
+	}
+
+
 	do {
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
 
 		// Use our shader
 		glUseProgram(programID);
@@ -78,6 +117,10 @@ int main() {
 		glDisableVertexAttribArray(1);
 		glDisableVertexAttribArray(2);
 		glBindVertexArray(0);
+
+		gui.UpdateGui();
+		gui.RenderGui();
+
 
 		// Swap buffers
 		glfwSwapBuffers(window);
