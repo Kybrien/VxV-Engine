@@ -8,27 +8,13 @@
 #include <stdlib.h>
 #include <fstream>
 #include <string>
-#include "nfd.h"
 
 
 static void ShowExampleMenuFile()
 {
 	if (ImGui::MenuItem("New")) {}
 	if (ImGui::MenuItem("Open", "Ctrl+O")) {
-		/*nfdchar_t* outPath = NULL;
-		nfdresult_t result = NFD_OpenDialog(NULL, NULL, &outPath);
 
-		if (result == NFD_OKAY) {
-			// Faites quelque chose avec le chemin du fichier
-			std::cout << "Fichier ouvert : " << outPath << std::endl;
-			free(outPath);
-		}
-		else if (result == NFD_CANCEL) {
-			std::cout << "L'utilisateur a annulé." << std::endl;
-		}
-		else {
-			std::cout << "Erreur : " << NFD_GetError() << std::endl;
-		}*/
 	}
 	if (ImGui::BeginMenu("Open Recent"))
 	{
