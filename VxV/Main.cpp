@@ -113,8 +113,7 @@ int main() {
 		glfwPollEvents();
 	} while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
 
-	for (auto& object : objects) {
-		cleanup(window, object.vertexbuffer, programID, VertexArrayID);
-	}
+	cleanup(window, objects, programID, VertexArrayID, TextureID, LightID,
+		MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
 	return 0;
 }

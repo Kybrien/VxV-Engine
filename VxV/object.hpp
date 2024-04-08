@@ -94,7 +94,9 @@ glm::mat4 initializeProjectionMatrix();
 glm::mat4 initializeViewMatrix();
 void setupVertexAttributes();
 void setupBuffers(GLuint& vertexbuffer, const std::vector<Vertex>& vertices, GLuint& indexbuffer, const std::vector<unsigned int>& indices);
-void cleanup(GLFWwindow* window, GLuint vertexbuffer, GLuint programID, GLuint VertexArrayID);
+void cleanup(GLFWwindow* window, std::vector<Object>& objects, GLuint programID, GLuint VertexArrayID, GLuint& TextureID, GLuint& LightID,
+	GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID,
+	GLuint& ModelMatrixID);
 void loadingObject(const std::string& filename, Object& obj);
 void loadTextures(Object& obj);
 void loadObjAndTextures(const std::string& filename, Object& obj);
