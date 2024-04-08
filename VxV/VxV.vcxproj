@@ -166,13 +166,11 @@
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="loadShader.cpp" />
-    <ClCompile Include="objloader.cpp" />
+
     <ClCompile Include="Script.cpp" />
     <ClCompile Include="ScriptingComponent.cpp" />
     <ClCompile Include="ScriptManager.cpp" />
     <ClCompile Include="ScriptUser.cpp" />
-    <ClCompile Include="texture.cpp" />
     <ClInclude Include="controls.hpp" />
     <ClInclude Include="EngineGUI.h" />
     <ClInclude Include="FileExplorer.h" />
@@ -187,8 +185,6 @@
     <ClInclude Include="imgui\imstb_truetype.h" />
     <ClCompile Include="Transform.cpp" />
     <ClInclude Include="InputManager.h" />
-    <ClInclude Include="loadShader.hpp" />
-    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Prefab.cpp" />
     <ClCompile Include="PrefabManager.cpp" />
@@ -201,7 +197,6 @@
     <Text Include="SimpleVertexShader.MIKU" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="controls.hpp" />
     <ClInclude Include="loadingShader.hpp" />
     <ClInclude Include="object.hpp" />
     <ClInclude Include="Component.h" />
@@ -209,7 +204,6 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Manager.h" />
-    <ClInclude Include="objloader.hpp" />
     <ClInclude Include="Prefab.h" />
     <ClInclude Include="PrefabManager.h" />
     <ClInclude Include="Scene.h" />
@@ -217,7 +211,6 @@
     <ClInclude Include="Script.h" />
     <ClInclude Include="ScriptingComponent.h" />
     <ClInclude Include="ScriptManager.h" />
-    <ClInclude Include="texture.hpp" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
