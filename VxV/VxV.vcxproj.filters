@@ -36,6 +36,9 @@
     <ClCompile Include="loadShader.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClCompile>
+    <ClCompile Include="TRS.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="SimpleVertexShader.MIKU" />

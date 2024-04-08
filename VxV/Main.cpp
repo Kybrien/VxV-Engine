@@ -355,6 +355,10 @@ int main() {
 			}
 			totalVertexCount += mesh.indices.size();
 		}
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
 		glDisableVertexAttribArray(2);
