@@ -137,47 +137,23 @@ void setupBuffers(GLuint& vertexbuffer, const std::vector<Vertex>& vertices, GLu
 
 }
 
-void cleanup(GLFWwindow* window, std::vector<Object>& objects, GLuint programID, GLuint VertexArrayID, GLuint& TextureID, GLuint& LightID, GLuint& MaterialAmbientColorID,
-	GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID) {
+void cleanup(GLFWwindow* window, GLuint vertexbuffer, GLuint programID, GLuint VertexArrayID) {
 	// Cleanup VBO and shader
-	for (auto& object : objects) {
-		glDeleteBuffers(1, &object.vertexbuffer);
-		glDeleteBuffers(1, &object.indexbuffer);
-		for (const auto& texID : object.textureIDs) {
-			glDeleteTextures(1, &texID);
-		}
-		for (const auto& pair : object.vertexBufferIDs) {
-			glDeleteBuffers(1, &pair.second);
-			glDeleteBuffers(1, &pair.first.first);
-		}
-		for (const auto& pair : object.vertexBuffers) {
-			glDeleteBuffers(1, &pair.first.first);
-		}
-	}
+	glDeleteBuffers(1, &vertexbuffer);
 	glDeleteProgram(programID);
 	glDeleteVertexArrays(1, &VertexArrayID);
-	glDeleteVertexArrays(1, &TextureID);
-	glDeleteVertexArrays(1, &LightID);
-	glDeleteVertexArrays(1, &MaterialAmbientColorID);
-	glDeleteVertexArrays(1, &MaterialDiffuseColorID);
-	glDeleteVertexArrays(1, &MaterialSpecularColorID);
-	glDeleteVertexArrays(1, &MatrixID);
-	glDeleteVertexArrays(1, &ViewMatrixID);
-	glDeleteVertexArrays(1, &ModelMatrixID);
-
 	// Close OpenGL window and terminate GLFW
 	glfwTerminate();
 }
 
-void loadingObject(const std::string& filename, tinyobj::attrib_t& attributes, std::vector<tinyobj::shape_t>& shapes,
-	std::vector<tinyobj::material_t>& materials, GLuint& vertexbuffer, GLuint& indexbuffer)
+void loadingObject(const std::string& filename, Object& obj)
 {
 	std::string warnings;
 	std::string errors;
-	tinyobj::LoadObj(&attributes, &shapes, &materials, &warnings, &errors, filename.c_str(), "");
+	tinyobj::LoadObj(&obj.attributes, &obj.shapes, &obj.materials, &warnings, &errors, filename.c_str(), "");
 	// Before indexing
 	size_t totalIndices = 0;
-	for (const auto& shape : shapes) {
+	for (const auto& shape : obj.shapes) {
 		totalIndices += shape.mesh.indices.size();
 	}
 	std::cout << "Before indexing - Total vertices: " << totalIndices / 3 << ", Total triangles: " << totalIndices / 3 << std::endl;
@@ -186,25 +162,25 @@ void loadingObject(const std::string& filename, tinyobj::attrib_t& attributes, s
 	std::vector<unsigned int> indices;
 	std::unordered_map<Vertex, unsigned int> uniqueVertices;
 
-	for (size_t s = 0; s < shapes.size(); s++) {
-		tinyobj::mesh_t& mesh = shapes[s].mesh;
+	for (size_t s = 0; s < obj.shapes.size(); s++) {
+		tinyobj::mesh_t& mesh = obj.shapes[s].mesh;
 		for (size_t f = 0; f < mesh.indices.size(); f++) {
 			tinyobj::index_t index = mesh.indices[f];
 
 			Vertex vertex = {};
 			vertex.position = {
-				attributes.vertices[3 * index.vertex_index + 0],
-				attributes.vertices[3 * index.vertex_index + 1],
-				attributes.vertices[3 * index.vertex_index + 2]
+				obj.attributes.vertices[3 * index.vertex_index + 0],
+				obj.attributes.vertices[3 * index.vertex_index + 1],
+				obj.attributes.vertices[3 * index.vertex_index + 2]
 			};
 			vertex.normal = {
-				attributes.normals[3 * index.normal_index + 0],
-				attributes.normals[3 * index.normal_index + 1],
-				attributes.normals[3 * index.normal_index + 2]
+				obj.attributes.normals[3 * index.normal_index + 0],
+				obj.attributes.normals[3 * index.normal_index + 1],
+				obj.attributes.normals[3 * index.normal_index + 2]
 			};
 			vertex.texCoord = {
-				attributes.texcoords[2 * index.texcoord_index + 0],
-				attributes.texcoords[2 * index.texcoord_index + 1]
+				obj.attributes.texcoords[2 * index.texcoord_index + 0],
+				obj.attributes.texcoords[2 * index.texcoord_index + 1]
 			};
 
 			if (uniqueVertices.count(vertex) == 0) {
@@ -216,17 +192,17 @@ void loadingObject(const std::string& filename, tinyobj::attrib_t& attributes, s
 		}
 	}
 	std::cout << "After indexing - Total vertices: " << uniqueVertices.size() << ", Total triangles: " << indices.size() / 3 << std::endl;
-	setupBuffers(vertexbuffer, vertices, indexbuffer, indices);
+	setupBuffers(obj.vertexbuffer, vertices, obj.indexbuffer, indices);
 }
 
-void loadTextures(const std::vector<tinyobj::material_t>& materials, std::vector<GLuint>& textureIDs) {
-	for (const auto& material : materials) {
+void loadTextures(Object& obj) {
+	for (const auto& material : obj.materials) {
 		if (!material.diffuse_texname.empty()) {
 			GLuint texID = loadTexture(material.diffuse_texname.c_str());
-			textureIDs.push_back(texID);
+			obj.textureIDs.push_back(texID);
 		}
 		else {
-			textureIDs.push_back(0);  // No texture for this material
+			obj.textureIDs.push_back(0);  // No texture for this material
 		}
 	}
 	//if (textureIDs.size() == 0) {
@@ -235,47 +211,41 @@ void loadTextures(const std::vector<tinyobj::material_t>& materials, std::vector
 	//}
 }
 
-void loadObjAndTextures(const std::string& filename, tinyobj::attrib_t& attributes, std::vector<tinyobj::shape_t>& shapes,
-	std::vector<tinyobj::material_t>& materials, GLuint& vertexbuffer, GLuint& indexbuffer, std::vector<GLuint>& textureIDs)
+void loadObjAndTextures(const std::string& filename, Object& obj)
 {
-	loadingObject(filename, attributes, shapes, materials, vertexbuffer, indexbuffer);
-	loadTextures(materials, textureIDs);
+	loadingObject(filename, obj);
+	loadTextures(obj);
 }
 
-void batchingObj(std::vector<tinyobj::shape_t>& shapes, tinyobj::attrib_t& attributes, std::vector<GLuint>& textureIDs,
-	std::unordered_map<std::pair<GLuint, int>, std::vector<Vertex>, pair_hash>& vertexBuffers,
-	std::unordered_map<std::pair<GLuint, int>, GLuint, pair_hash>& vertexBufferIDs)
+void batchingObj(Object& obj)
 {
-	for (size_t s = 0; s < shapes.size(); s++) {
-		tinyobj::mesh_t& mesh = shapes[s].mesh;
+	for (size_t s = 0; s < obj.shapes.size(); s++) {
+		tinyobj::mesh_t& mesh = obj.shapes[s].mesh;
 		for (size_t f = 0; f < mesh.indices.size(); f += 3) {
-			GLuint texID = textureIDs[mesh.material_ids[f / 3]];
+			GLuint texID = obj.textureIDs[mesh.material_ids[f / 3]];
 			int matID = mesh.material_ids[f / 3];
-			Vertex v1 = createVertexFromIndex(attributes, mesh.indices[f]);
-			Vertex v2 = createVertexFromIndex(attributes, mesh.indices[f + 1]);
-			Vertex v3 = createVertexFromIndex(attributes, mesh.indices[f + 2]);
-			vertexBuffers[std::make_pair(texID, matID)].push_back(v1);
-			vertexBuffers[std::make_pair(texID, matID)].push_back(v2);
-			vertexBuffers[std::make_pair(texID, matID)].push_back(v3);
+			Vertex v1 = createVertexFromIndex(obj.attributes, mesh.indices[f]);
+			Vertex v2 = createVertexFromIndex(obj.attributes, mesh.indices[f + 1]);
+			Vertex v3 = createVertexFromIndex(obj.attributes, mesh.indices[f + 2]);
+			obj.vertexBuffers[std::make_pair(texID, matID)].push_back(v1);
+			obj.vertexBuffers[std::make_pair(texID, matID)].push_back(v2);
+			obj.vertexBuffers[std::make_pair(texID, matID)].push_back(v3);
 		}
 	}
 
-	for (const auto& pair : vertexBuffers) {
+	for (const auto& pair : obj.vertexBuffers) {
 		GLuint vertexbuffer;
 		glGenBuffers(1, &vertexbuffer);
 		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * pair.second.size(), &pair.second[0], GL_STATIC_DRAW);
-		vertexBufferIDs[pair.first] = vertexbuffer;
+		obj.vertexBufferIDs[pair.first] = vertexbuffer;
 	}
 }
 
-void loadObjAndBatching(const std::string& filename, tinyobj::attrib_t& attributes, std::vector<tinyobj::shape_t>& shapes,
-	std::vector<tinyobj::material_t>& materials, GLuint& vertexbuffer, GLuint& indexbuffer, std::vector<GLuint>& textureIDs,
-	std::unordered_map<std::pair<GLuint, int>, std::vector<Vertex>, pair_hash>& vertexBuffers,
-	std::unordered_map<std::pair<GLuint, int>, GLuint, pair_hash>& vertexBufferIDs)
+void loadObjAndBatching(const std::string& filename, Object& obj)
 {
-	loadObjAndTextures(filename, attributes, shapes, materials, vertexbuffer, indexbuffer, textureIDs);
-	batchingObj(shapes, attributes, textureIDs, vertexBuffers, vertexBufferIDs);
+	loadObjAndTextures(filename, obj);
+	batchingObj(obj);
 }
 
 
@@ -283,7 +253,7 @@ void addNewObject(const std::string& filename, std::vector<Object>& objects)
 {
 	Object obj;
 	obj.transform = glm::mat4(1.0f);
-	loadObjAndBatching(filename, obj.attributes, obj.shapes, obj.materials, obj.vertexbuffer, obj.indexbuffer, obj.textureIDs, obj.vertexBuffers, obj.vertexBufferIDs);
+	loadObjAndBatching(filename, obj);
 	objects.push_back(obj);
 }
 
