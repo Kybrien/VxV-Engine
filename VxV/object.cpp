@@ -137,11 +137,33 @@ void setupBuffers(GLuint& vertexbuffer, const std::vector<Vertex>& vertices, GLu
 
 }
 
-void cleanup(GLFWwindow* window, GLuint vertexbuffer, GLuint programID, GLuint VertexArrayID) {
+void cleanup(GLFWwindow* window, std::vector<Object>& objects, GLuint programID, GLuint VertexArrayID, GLuint& TextureID, GLuint& LightID, GLuint& MaterialAmbientColorID,
+	GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID) {
 	// Cleanup VBO and shader
-	glDeleteBuffers(1, &vertexbuffer);
+	for (auto& object : objects) {
+		glDeleteBuffers(1, &object.vertexbuffer);
+		glDeleteBuffers(1, &object.indexbuffer);
+		for (const auto& texID : object.textureIDs) {
+			glDeleteTextures(1, &texID);
+		}
+		for (const auto& pair : object.vertexBufferIDs) {
+			glDeleteBuffers(1, &pair.second);
+		}
+		for (const auto& pair : object.vertexBuffers) {
+			object.vertexBuffers.erase(pair.first);
+		}
+	}
 	glDeleteProgram(programID);
 	glDeleteVertexArrays(1, &VertexArrayID);
+	glDeleteVertexArrays(1, &TextureID);
+	glDeleteVertexArrays(1, &LightID);
+	glDeleteVertexArrays(1, &MaterialAmbientColorID);
+	glDeleteVertexArrays(1, &MaterialDiffuseColorID);
+	glDeleteVertexArrays(1, &MaterialSpecularColorID);
+	glDeleteVertexArrays(1, &MatrixID);
+	glDeleteVertexArrays(1, &ViewMatrixID);
+	glDeleteVertexArrays(1, &ModelMatrixID);
+
 	// Close OpenGL window and terminate GLFW
 	glfwTerminate();
 }
