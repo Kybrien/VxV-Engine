@@ -8,12 +8,28 @@
 #include <stdlib.h>
 #include <fstream>
 #include <string>
+#include "nfd.h"
 
 
 static void ShowExampleMenuFile()
 {
 	if (ImGui::MenuItem("New")) {}
-	if (ImGui::MenuItem("Open", "Ctrl+O")) {}
+	if (ImGui::MenuItem("Open", "Ctrl+O")) {
+		/*nfdchar_t* outPath = NULL;
+		nfdresult_t result = NFD_OpenDialog(NULL, NULL, &outPath);
+
+		if (result == NFD_OKAY) {
+			// Faites quelque chose avec le chemin du fichier
+			std::cout << "Fichier ouvert : " << outPath << std::endl;
+			free(outPath);
+		}
+		else if (result == NFD_CANCEL) {
+			std::cout << "L'utilisateur a annulé." << std::endl;
+		}
+		else {
+			std::cout << "Erreur : " << NFD_GetError() << std::endl;
+		}*/
+	}
 	if (ImGui::BeginMenu("Open Recent"))
 	{
 		ImGui::MenuItem("test");
@@ -59,7 +75,7 @@ static void ShowExampleMenuFile()
 
 	if (ImGui::MenuItem("Checked", NULL, true)) {}
 	ImGui::Separator();
-	if (ImGui::MenuItem("Quit", "Alt+F4")) {}
+	if (ImGui::MenuItem("Quit", "Alt+F4")) { exit(0); }
 }
 static void MainMenuBar()
 {
@@ -85,16 +101,16 @@ static void MainMenuBar()
 			if (ImGui::BeginMenu("Controls"))
 			{
 				// Affichez le texte d'aide
-				ImGui::Text("Utilisez ZQSD et EA pour déplacer la cam.");
-				ImGui::Text("Utilisez Shift pour déplacer plus vite");
+				ImGui::Text("Utilisez ZQSD et EA pour deplacer la cam.");
+				ImGui::Text("Utilisez Shift pour deplacer plus vite");
 				ImGui::EndMenu();
 
 			}
 
 			if (ImGui::BeginMenu("About")) { 
 				// Affichez le texte d'information
-				ImGui::Text("Ce Moteur a été créé par:");
-				ImGui::Text("  - Hugo");
+				ImGui::Text("This engine was created by:");
+				ImGui::Text(" VxV Group");
 				ImGui::EndMenu();
 
 			}
