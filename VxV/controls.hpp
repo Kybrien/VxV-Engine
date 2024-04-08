@@ -8,7 +8,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 using namespace glm;
 
-#include "controls.hpp"
 
 void computeMatricesFromInputs(GLFWwindow* window);
 glm::mat4 getViewMatrix();
