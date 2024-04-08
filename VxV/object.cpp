@@ -237,6 +237,26 @@ void loadTextures(Object& obj) {
 void loadObjAndTextures(const std::string& filename, Object& obj)
 {
 	loadingObject(filename, obj);
+
+	if (obj.materials.empty()) {
+		// Create a default material
+		tinyobj::material_t defaultMaterial;
+		defaultMaterial.name = "default";
+		defaultMaterial.ambient[0] = 1.0f;
+		defaultMaterial.ambient[1] = 1.0f;
+		defaultMaterial.ambient[2] = 1.0f;
+
+		defaultMaterial.diffuse[0] = 0.5f;
+		defaultMaterial.diffuse[1] = 0.5f;
+		defaultMaterial.diffuse[2] = 0.5f;
+
+		defaultMaterial.specular[0] = 1.0f;
+		defaultMaterial.specular[1] = 1.0f;
+		defaultMaterial.specular[2] = 1.0f;
+
+		// Add the default material to the materials vector
+		obj.materials.push_back(defaultMaterial);
+	}
 	loadTextures(obj);
 }
 
@@ -245,8 +265,16 @@ void batchingObj(Object& obj)
 	for (size_t s = 0; s < obj.shapes.size(); s++) {
 		tinyobj::mesh_t& mesh = obj.shapes[s].mesh;
 		for (size_t f = 0; f < mesh.indices.size(); f += 3) {
-			GLuint texID = obj.textureIDs[mesh.material_ids[f / 3]];
 			int matID = mesh.material_ids[f / 3];
+			GLuint texID;
+			if (matID == -1) {
+				// Use default material and texture
+				texID = obj.textureIDs.back();
+				matID = obj.materials.size() - 1;
+			}
+			else {
+				texID = obj.textureIDs[matID];
+			}
 			Vertex v1 = createVertexFromIndex(obj.attributes, mesh.indices[f]);
 			Vertex v2 = createVertexFromIndex(obj.attributes, mesh.indices[f + 1]);
 			Vertex v3 = createVertexFromIndex(obj.attributes, mesh.indices[f + 2]);
@@ -264,6 +292,7 @@ void batchingObj(Object& obj)
 		obj.vertexBufferIDs[pair.first] = vertexbuffer;
 	}
 }
+
 
 void loadObjAndBatching(const std::string& filename, Object& obj)
 {
