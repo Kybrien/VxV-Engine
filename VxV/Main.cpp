@@ -82,7 +82,7 @@ int main() {
 
 	if (currentScene->GetAllGameObjects().empty()) {
 
-		GameObject* cube = sc->gameObjectPool.Alloc("Cube", false);
+		GameObject* cube = sc->gameObjectPool.CreateGameObject("Cube", false);
 		cube->GetComponent<Transform>()->position.x = 10;
 
 		Prefab* prefabCube = new Prefab(*cube, "PrefabCube");

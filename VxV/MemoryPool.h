@@ -1,6 +1,7 @@
 #pragma once
 #include <new>
 #include <vector>
+#include "GameObject.h"
 
 template<typename T, class Strategy> class MemoryPool
 {
@@ -18,19 +19,47 @@ public:
 		//if (sizeof(T) != sizeof(type)) {
 		//	throw std::bad_alloc();
 		//}
-		m_strategy.Allocate();
-		return new T(args...);
+		T* temp = reinterpret_cast<T*>(m_strategy.Allocate());
+		return new (temp) T(args...);
 	}
 
 	void Free(void* p)
 	{
 		m_strategy.Deallocate(p);
 	}
+
+	void FreeAll()
+	{
+		m_strategy.DeallocateAll();
+	}
 };
 
-template<typename T, class Strategy> class MemoryPool<GameObject, MemPool_Linear<GameObject>>
+template<class Strategy> class MemoryPool<GameObject, Strategy>
 {
+private:
+	Strategy m_strategy;
+public:
+	MemoryPool(int size = 0) : m_strategy(size)
+	{
 
+	}
+
+	// Create a GameObject from the memory pool
+	GameObject* CreateGameObject(std::string name = "GO", bool PrefabLoading = true, Prefab* prefab = nullptr, bool loading = false)
+	{
+		GameObject* temp = reinterpret_cast<GameObject*>(m_strategy.Allocate());
+		return new (temp) GameObject(name, PrefabLoading, prefab, loading);
+	}
+
+	void Free(void* p)
+	{
+		m_strategy.Deallocate(p);
+	}
+
+	void FreeAll()
+	{
+		m_strategy.DeallocateAll();
+	}
 };
 //template <typename T> class MemPool_Malloc
 //{
@@ -96,6 +125,14 @@ public:
 				m_state[i] = false;
 				break;
 			}
+		}
+	}
+
+	void DeallocateAll()
+	{
+		for (size_type i = 0; i < N; i++)
+		{
+			m_state[i] = false;
 		}
 	}
 
