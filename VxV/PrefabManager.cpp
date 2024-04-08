@@ -26,7 +26,7 @@ void PrefabManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
 
 	if (file.is_open()) {
 
-		// Vérification que le fichier est bien une save de scene
+		// Vï¿½rification que le fichier est bien une save de scene
 		std::string line;
 		std::getline(file, line);
 
@@ -37,7 +37,7 @@ void PrefabManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
 		try {
 
 			if (line == "PrefabSaveFile") {
-				// Lecture du contenu du fichier dans une chaîne de caractères
+				// Lecture du contenu du fichier dans une chaï¿½ne de caractï¿½res
 				std::string jsonString((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
 
 				// Fermeture du fichier
@@ -50,12 +50,11 @@ void PrefabManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
 					std::cerr << "Erreur lors de l'analyse du JSON : " << reader.getFormattedErrorMessages() << std::endl;
 				}
 				else {
-
-					GameObject* go = new GameObject();
+					GameObject* go = new GameObject("", true);
 
 					go->Load(PrefabJson, nullptr, true);
 
-					Prefab* prefab = new Prefab(*go);
+					Prefab* prefab = new Prefab(go);
 					prefab->name = PrefabJson["Name"].asString();
 				}
 
@@ -82,9 +81,9 @@ void PrefabManager::Save() {
 			PrefabJson["Name"] = prefab->name;
 			PrefabJson["GameObjects"] = Json::Value(Json::arrayValue);
 
-			prefab->getGameObject().Save(PrefabJson);
+			prefab->getGameObject()->Save(PrefabJson);
 
-			// Conversion de l'objet JSON en une chaîne JSON formatée
+			// Conversion de l'objet JSON en une chaï¿½ne JSON formatï¿½e
 			std::string jsonString = Json::writeString(builder, PrefabJson);
 
 			outputFile << jsonString << std::endl << std::endl;
@@ -93,7 +92,7 @@ void PrefabManager::Save() {
 
 
 			outputFile.close();
-			std::cout << "Les données ont été écrites dans le fichier " + fileDirection + " avec succès." << std::endl;
+			std::cout << "Les donnï¿½es ont ï¿½tï¿½ ï¿½crites dans le fichier " + fileDirection + " avec succï¿½s." << std::endl;
 		}
 		else {
 			std::cerr << "Erreur lors de l'ouverture du fichier." << std::endl;

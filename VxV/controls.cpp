@@ -11,7 +11,7 @@ glm::mat4 getProjectionMatrix() {
 }
 
 // Initial position : on +Z
-glm::vec3 position = glm::vec3(0, 0, 5);
+glm::vec3 position = glm::vec3(0, 0, 15);
 // Initial horizontal angle : toward -Z
 float horizontalAngle = 3.14f;
 // Initial vertical angle : none
@@ -37,22 +37,6 @@ void computeMatricesFromInputs(GLFWwindow* window) {
 	glfwGetCursorPos(window, &xpos, &ypos);
 
 
-	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS) {
-		// Reset mouse position for next frame
-		int width, height;
-		glfwGetWindowSize(window, &width, &height);
-		glfwSetCursorPos(window, width / 2, height / 2);
-		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
-		// Compute new orientation only if right mouse button is pressed
-		// Compute new orientation
-		horizontalAngle += mouseSpeed * float(width / 2 - xpos);
-		verticalAngle += mouseSpeed * float(height / 2 - ypos);
-	}
-	else {
-		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-	}
-	
 	// Limit the vertical angle to[-pi / 2, pi / 2]
 	verticalAngle = glm::clamp(verticalAngle, -glm::pi<float>() / 2.0f, glm::pi<float>() / 2.0f);
 	// Direction : Spherical coordinates to Cartesian coordinates conversion
@@ -72,39 +56,55 @@ void computeMatricesFromInputs(GLFWwindow* window) {
 	// Up vector
 	glm::vec3 up = glm::cross(right, direction);
 
-	// Move forward
-	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-		position += direction * deltaTime * speed;
+	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS) {
+		// Reset mouse position for next frame
+		int width, height;
+		glfwGetWindowSize(window, &width, &height);
+		glfwSetCursorPos(window, width / 2, height / 2);
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+		// Compute new orientation only if right mouse button is pressed
+		// Compute new orientation
+		horizontalAngle += mouseSpeed * float(width / 2 - xpos);
+		verticalAngle += mouseSpeed * float(height / 2 - ypos);
+
+		// Move forward
+		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+			position += direction * deltaTime * speed;
+		}
+		// Move backward
+		if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+			position -= direction * deltaTime * speed;
+		}
+		// Strafe right
+		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+			position += right * deltaTime * speed;
+		}
+		// Strafe left
+		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+			position -= right * deltaTime * speed;
+		}
+		if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
+			position += up * deltaTime * speed;
+		}
+		if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
+			position -= up * deltaTime * speed;
+		}
+		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS && glfwGetKey(window, GLFW_KEY_LEFT_SHIFT)) {
+			position += direction * deltaTime * speed * 1.5f;
+		}
+		if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS && glfwGetKey(window, GLFW_KEY_LEFT_SHIFT)) {
+			position -= direction * deltaTime * speed * 1.5f;
+		}
+		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS && glfwGetKey(window, GLFW_KEY_LEFT_SHIFT)) {
+			position += right * deltaTime * speed * 1.5f;
+		}
+		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS && glfwGetKey(window, GLFW_KEY_LEFT_SHIFT)) {
+			position -= right * deltaTime * speed * 1.5f;
+		}
 	}
-	// Move backward
-	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-		position -= direction * deltaTime * speed;
-	}
-	// Strafe right
-	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-		position += right * deltaTime * speed;
-	}
-	// Strafe left
-	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-		position -= right * deltaTime * speed;
-	}
-	if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
-		position += up * deltaTime * speed;
-	}
-	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
-		position -= up * deltaTime * speed;
-	}
-	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS && glfwGetKey(window, GLFW_KEY_LEFT_SHIFT)) {
-		position += direction * deltaTime * speed * 1.5f;
-	}
-	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS && glfwGetKey(window, GLFW_KEY_LEFT_SHIFT)) {
-		position -= direction * deltaTime * speed * 1.5f;
-	}
-	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS && glfwGetKey(window, GLFW_KEY_LEFT_SHIFT)) {
-		position += right * deltaTime * speed * 1.5f;
-	}
-	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS && glfwGetKey(window, GLFW_KEY_LEFT_SHIFT)) {
-		position -= right * deltaTime * speed * 1.5f;
+	else {
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 	}
 
 	float FoV = initialFoV;// - 5 * glfwGetMouseWheel(); // Now GLFW 3 requires setting up a callback for this. It's a bit too complicated for this beginner's tutorial, so it's disabled instead.

@@ -20,6 +20,8 @@ public:
 	virtual void Save(Json::Value &compJson) = 0;
 	virtual void Load(Json::Value& compJson, GameObject* ParentGO) = 0;
 
+	virtual void Copy(GameObject* goToFill) = 0;
+
 	
 
 	// Enumeration de tous les types de Components

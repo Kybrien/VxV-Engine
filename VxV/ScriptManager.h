@@ -22,6 +22,10 @@ public:
 		return scripts;
 	}
 
+	void AddScript(Script* script) {
+		scripts.push_back(script);
+	}
+
 
 
 
@@ -34,5 +38,5 @@ public:
 	static std::string extention;
 
 
-	static void NewScript(std::string name);
+	static Script* NewScript(std::string name);
 };

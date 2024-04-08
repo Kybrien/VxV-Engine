@@ -25,10 +25,6 @@ SceneSaveFile
 						0.0
 					],
 					"Type" : 1
-				},
-				{
-					"Name" : "ScriptComponent",
-					"Type" : 3
 				}
 			],
 			"GameObjectsChild" : 
@@ -56,10 +52,6 @@ SceneSaveFile
 								0.0
 							],
 							"Type" : 1
-						},
-						{
-							"Name" : "ScriptComponent",
-							"Type" : 3
 						}
 					],
 					"GameObjectsChild" : 
@@ -70,7 +62,7 @@ SceneSaveFile
 								{
 									"Position" : 
 									[
-										10.0,
+										1000.0,
 										0.0,
 										0.0
 									],
@@ -89,16 +81,17 @@ SceneSaveFile
 									"Type" : 1
 								},
 								{
-									"Name" : "ScriptComponent",
+									"Script" : "CercleScript",
 									"Type" : 3
 								}
 							],
-							"Id" : 0,
+							"Id" : 1,
 							"Is Child" : true,
-							"Name" : "cube"
+							"Name" : "cube",
+							"PrefabName" : "PrefabCube"
 						}
 					],
-					"Id" : 1,
+					"Id" : 2,
 					"Is Child" : true,
 					"Name" : "child"
 				}

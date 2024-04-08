@@ -1,6 +1,7 @@
 #include "ScriptingComponent.h"
 #include "ScriptManager.h"
 #include "Debug.h"
+#include "GameObject.h"
 #include <iostream>
 
 ScriptingComponent::ScriptingComponent(GameObject* gameObject) : Component(gameObject) {
@@ -15,8 +16,6 @@ ScriptingComponent::ScriptingComponent(GameObject* gameObject) : Component(gameO
 
 
 void ScriptingComponent::Load(Json::Value& compJson, GameObject* parentGO) {
-
-	name = compJson["Name"].asString();
 	linkedGameObject = parentGO;
 
 	if (compJson.isMember("Script")) {
@@ -24,7 +23,7 @@ void ScriptingComponent::Load(Json::Value& compJson, GameObject* parentGO) {
 	std::string temp = compJson["Script"].asString();
 
 	for (Script* script : scriptManager->GetAllScripts()) {
-		if (script->name == temp) {
+		if (script->name == temp + ".cpp") {
 			this->script = script;
 			break;
 		}
@@ -34,11 +33,18 @@ void ScriptingComponent::Load(Json::Value& compJson, GameObject* parentGO) {
 
 void ScriptingComponent::Save(Json::Value& compJson) {
 	compJson["Type"] = type;
-	compJson["Name"] = name;
-
 
 	if (script != nullptr) {
-	compJson["Script"] = script->name;
-
+		compJson["Script"] = script->name;
 	}
+}
+
+void ScriptingComponent::Copy(GameObject* goToFill) {
+
+	goToFill->AddComponent<ScriptingComponent>();
+
+	ScriptingComponent* newScriptComp = goToFill->GetComponent<ScriptingComponent>();
+
+	newScriptComp->script = script;
+
 }

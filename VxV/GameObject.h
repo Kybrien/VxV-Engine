@@ -17,16 +17,16 @@ public:
 
     std::vector<Component*> components;
 
-    GameObject(std::string name_ = "GO", bool PrefabLoading = true, Prefab* prefab = nullptr, bool loading = false);
+    GameObject(std::string name_ = "GO", bool PrefabLoading = false, Prefab* prefab = nullptr, bool copying = false);
 
     glm::vec3 origin;
     bool isChild = false;
 
 
     std::string name; // Nom du GO
-    virtual void Init() {}; // Est appelé au début 
-    virtual void Start() {}; // Est appelé à la première frame
-    virtual void Update() {}; // Est appelé à chaque frame
+    virtual void Init() {}; // Est appelï¿½ au dï¿½but 
+    virtual void Start() {}; // Est appelï¿½ ï¿½ la premiï¿½re frame
+    virtual void Update() {}; // Est appelï¿½ ï¿½ chaque frame
 
     const int GetId() { return id; } // Renvoie l'Id du GameObject
     void SetId(int id_) { id = id_; }
@@ -72,3 +72,6 @@ private:
     GameObject* parent;
     Prefab* prefab;
 };
+
+
+#include "GameObject.inl"

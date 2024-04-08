@@ -8,12 +8,28 @@
 #include <stdlib.h>
 #include <fstream>
 #include <string>
+#include "nfd.h"
 
 
 static void ShowExampleMenuFile()
 {
 	if (ImGui::MenuItem("New")) {}
-	if (ImGui::MenuItem("Open", "Ctrl+O")) {}
+	if (ImGui::MenuItem("Open", "Ctrl+O")) {
+		/*nfdchar_t* outPath = NULL;
+		nfdresult_t result = NFD_OpenDialog(NULL, NULL, &outPath);
+
+		if (result == NFD_OKAY) {
+			// Faites quelque chose avec le chemin du fichier
+			std::cout << "Fichier ouvert : " << outPath << std::endl;
+			free(outPath);
+		}
+		else if (result == NFD_CANCEL) {
+			std::cout << "L'utilisateur a annulé." << std::endl;
+		}
+		else {
+			std::cout << "Erreur : " << NFD_GetError() << std::endl;
+		}*/
+	}
 	if (ImGui::BeginMenu("Open Recent"))
 	{
 		ImGui::MenuItem("test");
@@ -36,16 +52,12 @@ static void ShowExampleMenuFile()
 	if (ImGui::BeginMenu("Options"))
 	{
 		static bool enabled = true;
-		ImGui::MenuItem("Enabled", "", &enabled);
-		ImGui::BeginChild("child", ImVec2(0, 60), ImGuiChildFlags_Border);
-		for (int i = 0; i < 10; i++)
-			ImGui::Text("Scrolling Text %d", i);
-		ImGui::EndChild();
+		ImGui::MenuItem("Enabled optio,", "", &enabled);
 		static float f = 0.5f;
 		static int n = 0;
-		ImGui::SliderFloat("Value", &f, 0.0f, 1.0f);
-		ImGui::InputInt("Input", &n, 1);
-		ImGui::Combo("Combo", &n, "Yes\0No\0Maybe\0\0");
+		ImGui::SliderFloat("Value slider", &f, 0.0f, 1.0f);
+		ImGui::InputInt("value Input", &n, 1);
+		ImGui::Combo("Choice", &n, "Yes\0No\0Maybe\0\0");
 		ImGui::EndMenu();
 	}
 
@@ -57,17 +69,13 @@ static void ShowExampleMenuFile()
 	if (ImGui::BeginMenu("Options")) // <-- Append!
 	{
 		static bool b = true;
-		ImGui::Checkbox("Checked option", &b);
+		ImGui::Checkbox("Checkbox option", &b);
 		ImGui::EndMenu();
 	}
 
-	if (ImGui::BeginMenu("Disabled", false)) // Disabled
-	{
-		IM_ASSERT(0);
-	}
 	if (ImGui::MenuItem("Checked", NULL, true)) {}
 	ImGui::Separator();
-	if (ImGui::MenuItem("Quit", "Alt+F4")) {}
+	if (ImGui::MenuItem("Quit", "Alt+F4")) { exit(0); }
 }
 static void MainMenuBar()
 {
@@ -88,10 +96,32 @@ static void MainMenuBar()
 			if (ImGui::MenuItem("Paste", "CTRL+V")) {}
 			ImGui::EndMenu();
 		}
+		if (ImGui::BeginMenu("Help"))
+		{
+			if (ImGui::BeginMenu("Controls"))
+			{
+				// Affichez le texte d'aide
+				ImGui::Text("Utilisez ZQSD et EA pour deplacer la cam.");
+				ImGui::Text("Utilisez Shift pour deplacer plus vite");
+				ImGui::EndMenu();
+
+			}
+
+			if (ImGui::BeginMenu("About")) { 
+				// Affichez le texte d'information
+				ImGui::Text("This engine was created by:");
+				ImGui::Text(" VxV Group");
+				ImGui::EndMenu();
+
+			}
+
+			ImGui::EndMenu();
+		}
+
 		ImGui::EndMainMenuBar();
 	}
 }
-void ShowInfo() {
+static void ShowInfo() {
 	// Créez une nouvelle fenêtre ImGui
 	ImGui::Begin("Informations", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 
@@ -106,57 +136,6 @@ void ShowInfo() {
 
 	// Affichez la position de la souris
 	ImGui::Text("Position de la souris: (%.1f, %.1f)", mousePos.x, mousePos.y);
-
-	// Terminez la fenêtre
-	ImGui::End();
-}
-
-void ShowHelp() {
-	// Créez une nouvelle fenêtre ImGui
-	ImGui::Begin("Aide", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Affichez le texte d'aide
-	ImGui::Text("Utilisez les touches fléchées pour déplacer la caméra.");
-	ImGui::Text("Utilisez la molette de la souris pour zoomer.");
-	ImGui::Text("Utilisez la touche 'R' pour réinitialiser la caméra.");
-	ImGui::Text("Utilisez la touche 'H' pour afficher/cacher cette fenêtre.");
-
-	// Terminez la fenêtre
-	ImGui::End();
-}
-
-void ShowAbout() {
-	// Créez une nouvelle fenêtre ImGui
-	ImGui::Begin("À propos", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Affichez le texte d'information
-	ImGui::Text("Ce programme a été créé par:");
-	ImGui::Text("  - Alexandre Boucher");
-	ImGui::Text("  - Gabriel Lemyre");
-	ImGui::Text("  - Samuel Lavoie");
-
-	// Terminez la fenêtre
-	ImGui::End();
-}
-
-void ShowMenu() {
-	// Créez une nouvelle fenêtre ImGui
-	ImGui::Begin("Menu", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Ajoutez un bouton pour afficher les informations
-	if (ImGui::Button("Informations")) {
-		ShowInfo();
-	}
-
-	// Ajoutez un bouton pour afficher l'aide
-	if (ImGui::Button("Aide")) {
-		ShowHelp();
-	}
-
-	// Ajoutez un bouton pour afficher les informations
-	if (ImGui::Button("À propos")) {
-		ShowAbout();
-	}
 
 	// Terminez la fenêtre
 	ImGui::End();
@@ -410,33 +389,4 @@ void ShowInputBool(const std::string& message, bool& input, bool& show) {
 
 	// Terminez la fenêtre
 	ImGui::End();
-}
-
-void ShowMenuBar() {
-	// Créez une nouvelle barre de menu ImGui
-	if (ImGui::BeginMainMenuBar()) {
-		// Ajoutez un menu pour les options
-		if (ImGui::BeginMenu("Options")) {
-			// Ajoutez un élément pour afficher les informations
-			if (ImGui::MenuItem("Informations")) {
-				ShowInfo();
-			}
-
-			// Ajoutez un élément pour afficher l'aide
-			if (ImGui::MenuItem("Aide")) {
-				ShowHelp();
-			}
-
-			// Ajoutez un élément pour afficher les informations
-			if (ImGui::MenuItem("À propos")) {
-				ShowAbout();
-			}
-
-			// Terminez le menu
-			ImGui::EndMenu();
-		}
-
-		// Terminez la barre de menu
-		ImGui::EndMainMenuBar();
-	}
 }
