@@ -1,47 +1,78 @@
 #pragma once
-
 #include <iostream>
-#include <list>
+#include <vector>
 #include <string>
+#include <json.h>
+#include <GLM/glm.hpp>
 
-#include "Component.h"
+#include "Transform.h"
+#include "ScriptingComponent.h"
 
+class Scene;
+class Prefab;
 
-class GameObject 
-{
+class GameObject {
 public:
-	GameObject() {
-		components.push_back(new Transform(this));
-		// Reucp scene avec manager
-		// origin = scene.origin 
-	}
-
-	glm::vec3 origin;
+    Scene* currentScene;
 
 
-	std::string name; // Nom du GO
-	virtual void Init() {}; // Est appelé au début 
-	virtual void Start() {}; // Est appelé à la première frame
-	virtual void Update() {}; // Est appelé à chaque frame
+    std::vector<Component*> components;
 
-	const int GetId() { return id; } // Renvoie l'Id du GameObject
-	
-	GameObject* GetChildByName(std::string name); // Rechercher un GameObject enfant du GameObject
+    GameObject(std::string name_ = "GO", bool PrefabLoading = false, Prefab* prefab = nullptr, bool copying = false);
+
+    glm::vec3 origin;
+    bool isChild = false;
 
 
-	void AddChild(GameObject* go);
+    std::string name; // Nom du GO
+    virtual void Init() {}; // Est appelé au début 
+    virtual void Start() {}; // Est appelé à la première frame
+    virtual void Update() {}; // Est appelé à chaque frame
 
-	template<typename T>
-	T* GetComponent(); // Rechercher un component
+    const int GetId() { return id; } // Renvoie l'Id du GameObject
+    void SetId(int id_) { id = id_; }
 
-	template<typename T>
-	void AddComponent();
+    GameObject* GetChildByName(std::string name); // Rechercher un GameObject enfant du GameObject
+    std::vector<Component*> GetComponents();
+
+    std::vector<GameObject*> GetChilds();
+    GameObject* GetParent() {
+        return parent;
+    }
+
+    
+
+
+    void static Load(Json::Value root, GameObject* goParent = nullptr, bool PrefabLoading = false);
+    void Save(Json::Value& root);
+
+
+    void AddChild(GameObject* go);
+    void AddParent(GameObject* go) {
+        parent = go;
+    }
+
+    void RemoveChild(GameObject* goChild);
+
+    // Mettre des enable if
+    template<typename T>
+    T* GetComponent(); // Rechercher un component
+
+    template<typename T>
+    void AddComponent();
+
+    void LoadComponent(Json::Value compJson, GameObject* parentGo);
+
+
+    static void Delete(GameObject* go);
 
 
 private:
-	int id; // ID du GO
-
-
-	std::list<Component*> components; // Liste des components
-	std::list<GameObject*> childObjects; // Liste des enfants
+    int id; // ID du GO
+    std::vector<GameObject*> childObjects; // Liste des enfants
+    GameObject* parent;
+    Prefab* prefab;
 };
+
+
+#include "GameObject.inl"

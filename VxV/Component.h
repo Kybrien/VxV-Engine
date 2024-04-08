@@ -1,20 +1,39 @@
 #pragma once
-#include "Transform.h"
+#include "string"
+#include "json.h"
+
 
 class GameObject;
+class Transform;
 
 
 class Component {
 public:
-	virtual void JaiBesoinDunVirtual() {};
-
-
-	explicit Component(GameObject* go) {
+	Component(GameObject* go) {
 		linkedGameObject = go;
+		type = Unknown;
 	};
 
-	virtual void Save() = 0;
-	virtual void Load() = 0;
+	virtual void Save(Json::Value &compJson) = 0;
+	virtual void Load(Json::Value& compJson, GameObject* ParentGO) = 0;
+
+	virtual void Copy(GameObject* goToFill) = 0;
+
+	
+
+	// Enumeration de tous les types de Components
+	enum Type {
+		Unknown,
+		Transform,
+		Mesh_renderer,
+		ScriptComponent,
+	};
+
+	Type type;
+
+	GameObject* GetLinkedGameObject() const {
+		return linkedGameObject;
+	}
 
 protected:
 	GameObject* linkedGameObject;

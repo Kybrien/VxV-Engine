@@ -1,5 +1,9 @@
 #pragma once
 
+#include "SceneManager.h"
+#include "ScriptManager.h"
+#include "PrefabManager.h"
+#include "InputManager.h"
 
 class Engine {
 private:
@@ -25,6 +29,7 @@ private:
 
 
 public:
+	Manager* manager;
 	static Engine* GetInstance()
 	{
 		if (!instance)
@@ -32,21 +37,39 @@ public:
 		return instance;
 	}
 
-	Engine() { 
-		instance = this; 	
+	EngineState GetState() {
+		return state;
 	}
 
-	
-	void Init() { state = Initializing; }
-	
-	void Start() { 
-		state = Starting; 
-	
+	Engine() {
+		instance = this;
+	}
 
+
+	void Init() { 
+		state = Initializing; 
+
+		manager = Manager::GetInstance();
+		manager->Init();
 		// init les managers
+		state = Ready;
+
+		//init go
+		Start();
 	}
-	void Update() { state = Running; }
+
+	void Start() {
+		state = Starting;
+		// start go
 
 
-	
+		Update();
+	}
+	void Update() 
+	{ 
+		state = Running; 
+	}
+
+
+
 };
