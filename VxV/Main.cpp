@@ -5,7 +5,9 @@
 #include "MemoryPool.h"
 
 #include "object.hpp"
-#include "EngineGUI.h"
+#include "EngineGUI.h"#include "WindowGui.h"
+
+#include "imfilebrowser.h"
 
 int main() {
 	EngineGUI gui;
@@ -64,7 +66,7 @@ int main() {
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
-
+		
 		// Use our shader
 		glUseProgram(programID);
 
@@ -95,6 +97,7 @@ int main() {
 		}
 
 		gui.UpdateGui();
+
 		gui.RenderGui();
 
 		glDisableVertexAttribArray(0);

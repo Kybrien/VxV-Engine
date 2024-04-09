@@ -1,18 +1,14 @@
 #include "EngineGUI.h"
 #include "FileExplorer.h"
-#include "WindowGui.h"
 #include <imgui.h>
+#include "WindowGui.h"
 
 
 void EngineGUI::UpdateGui()
 {
-	ImGui::ShowDemoWindow();
+	//ImGui::ShowDemoWindow();
 
 	MainMenuBar();
-
- // Fenêtre pour l'accès aux fichiers
-    ShowFileExplorer(); 
-	//ShowMenuBar();
 	ShowInfo();
 }
 

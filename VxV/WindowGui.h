@@ -8,27 +8,33 @@
 #include <stdlib.h>
 #include <fstream>
 #include <string>
-#include "nfd.h"
+#include "imfilebrowser.h"
 
+static bool showExplorer = false;
+
+static void openFileExplorer() {
+	// Créez une nouvelle fenêtre ImGui
+	static ImGui::FileBrowser fileDialog;
+	fileDialog.SetTypeFilters({ ".obj" });
+	if (ImGui::Begin("dummy window"))
+	{
+			fileDialog.Open();
+	}
+	ImGui::End();
+	fileDialog.Display();
+	if (fileDialog.HasSelected()) {
+		std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
+		fileDialog.ClearSelected();
+	}
+
+
+}
 
 static void ShowExampleMenuFile()
 {
-	if (ImGui::MenuItem("New")) {}
-	if (ImGui::MenuItem("Open", "Ctrl+O")) {
-		/*nfdchar_t* outPath = NULL;
-		nfdresult_t result = NFD_OpenDialog(NULL, NULL, &outPath);
 
-		if (result == NFD_OKAY) {
-			// Faites quelque chose avec le chemin du fichier
-			std::cout << "Fichier ouvert : " << outPath << std::endl;
-			free(outPath);
-		}
-		else if (result == NFD_CANCEL) {
-			std::cout << "L'utilisateur a annulé." << std::endl;
-		}
-		else {
-			std::cout << "Erreur : " << NFD_GetError() << std::endl;
-		}*/
+	if (ImGui::MenuItem("New")) {}
+	if (ImGui::MenuItem("Open", "Ctrl+O")) { openFileExplorer(); std::cout << "open file" << std::endl;
 	}
 	if (ImGui::BeginMenu("Open Recent"))
 	{
@@ -73,10 +79,10 @@ static void ShowExampleMenuFile()
 		ImGui::EndMenu();
 	}
 
-	if (ImGui::MenuItem("Checked", NULL, true)) {}
 	ImGui::Separator();
 	if (ImGui::MenuItem("Quit", "Alt+F4")) { exit(0); }
 }
+
 static void MainMenuBar()
 {
 	if (ImGui::BeginMainMenuBar())
@@ -121,6 +127,7 @@ static void MainMenuBar()
 		ImGui::EndMainMenuBar();
 	}
 }
+
 static void ShowInfo() {
 	// Créez une nouvelle fenêtre ImGui
 	ImGui::Begin("Informations", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
@@ -385,6 +392,41 @@ void ShowInputBool(const std::string& message, bool& input, bool& show) {
 	// Ajoutez un bouton pour annuler
 	if (ImGui::Button("Annuler")) {
 		show = false;
+	}
+
+	// Terminez la fenêtre
+	ImGui::End();
+}
+
+void ShowGameObjects(std::vector<std::string>& gameObjects, bool& show) {
+	// Créez une nouvelle fenêtre ImGui
+	ImGui::Begin("GameObjects", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
+
+	// Parcourez tous les GameObjects
+	for (int i = 0; i < gameObjects.size(); i++) {
+		// Affichez le GameObject
+		ImGui::Text(gameObjects[i].c_str());
+	}
+
+	// Terminez la fenêtre
+	ImGui::End();
+}
+
+void CreateGameObject(std::vector<std::string>& gameObjects, bool& show) {
+	// Créez une nouvelle fenêtre ImGui
+	ImGui::Begin("Créer un GameObject", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
+
+	// Ajoutez un champ de texte pour le nom du GameObject
+	static char gameObjectName[128];
+	ImGui::InputText("Nom", gameObjectName, IM_ARRAYSIZE(gameObjectName));
+
+	// Ajoutez un bouton pour créer le GameObject
+	if (ImGui::Button("Créer")) {
+		// Ajoutez le GameObject à la liste
+		gameObjects.push_back(gameObjectName);
+
+		// Effacez le champ de texte
+		memset(gameObjectName, 0, sizeof(gameObjectName));
 	}
 
 	// Terminez la fenêtre
