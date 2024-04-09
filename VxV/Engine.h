@@ -1,16 +1,13 @@
 #pragma once
 
-#include "SceneManager.h"
-#include "ScriptManager.h"
-#include "PrefabManager.h"
-#include "InputManager.h"
 #include "MeshManager.h"
+#include "PrefabManager.h"
 
-class Engine {
+class Engine
+{
 private:
-
-
-	enum EngineState {
+	enum EngineState
+	{
 		Off = 0,
 		Initializing,
 		Ready,
@@ -21,16 +18,12 @@ private:
 		Stopped
 	};
 
-
 	static Engine* instance;
 	EngineState state = Off;
 
-
-
-
-
 public:
 	Manager* manager;
+
 	static Engine* GetInstance()
 	{
 		if (!instance)
@@ -38,17 +31,19 @@ public:
 		return instance;
 	}
 
-	EngineState GetState() {
+	EngineState GetState()
+	{
 		return state;
 	}
 
-	Engine() {
+	Engine()
+	{
 		instance = this;
 	}
 
-
-	void Init() { 
-		state = Initializing; 
+	void Init()
+	{
+		state = Initializing;
 
 		manager = Manager::GetInstance();
 		manager->Init();
@@ -59,18 +54,16 @@ public:
 		Start();
 	}
 
-	void Start() {
+	void Start()
+	{
 		state = Starting;
 		// start go
 
-
 		Update();
 	}
-	void Update() 
-	{ 
-		state = Running; 
+
+	void Update()
+	{
+		state = Running;
 	}
-
-
-
 };

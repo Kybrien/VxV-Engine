@@ -1,12 +1,19 @@
-#include <stdio.h>
-#include <stdlib.h>
-#define STB_IMAGE_IMPLEMENTATION
-#define TINYOBJLOADER_IMPLEMENTATION
-#include "object.hpp"
-#include "EngineGUI.h"
-#include "Engine.h"
+#include "loadingShader.hpp"
 
-int main() {
+#define TINYOBJLOADER_IMPLEMENTATION
+
+#include <imgui.h>
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
+#include <iostream>
+
+#include "Engine.h"
+#include "EngineGUI.h"
+#include "object.hpp"
+#include "SceneManager.h"
+
+int main()
+{
 	EngineGUI gui;
 	//On initialise tout
 	GLFWwindow* window;
@@ -26,11 +33,9 @@ int main() {
 	glm::mat4 Projection = initializeProjectionMatrix();
 	glm::mat4 View = initializeViewMatrix();
 
-
 	// Get a handle for our uniforms
 	GLuint TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID;
-	setupHandlesForUniforms(programID, TextureID, LightID, MaterialAmbientColorID,
-		MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
+	setupHandlesForUniforms(programID, TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
 
 	glBindVertexArray(0);
 	// glfwGetTime is called only once, the first time this function is called
@@ -41,7 +46,8 @@ int main() {
 
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	ImGuiIO& io = ImGui::GetIO();
+	(void)io;
 	// Chargez la police qui supporte les caractères accentués
 	ImFont* font = io.Fonts->AddFontFromFileTTF("monocraft.ttf", 17);
 
@@ -53,7 +59,8 @@ int main() {
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init("#version 330");
 
-	do {
+	do
+	{
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -68,7 +75,9 @@ int main() {
 		// Compute time difference between current and last frame
 		double currentTime = glfwGetTime();
 		nbFrames++;
-		if (currentTime - lastTimeFPS >= 1.0) { // If last printf() was more than 1 sec ago
+		if (currentTime - lastTimeFPS >= 1.0)
+		{
+			// If last printf() was more than 1 sec ago
 			// printf and reset timer
 			printf("%f ms/frame, FPS: %d\n", 1000.0 / double(nbFrames), nbFrames);
 			nbFrames = 0;
@@ -77,8 +86,8 @@ int main() {
 
 		float deltaTime = float(currentTime - lastTime);
 
-		float angle = deltaTime * 50.0f;  // Rotate by 60 degrees
-		glm::vec3 axis(0.0f, 0.0f, -1.0f);  // Rotate around the z-axis
+		float angle = deltaTime * 50.0f; // Rotate by 60 degrees
+		glm::vec3 axis(0.0f, 0.0f, -1.0f); // Rotate around the z-axis
 
 		glm::vec3 lightPos = glm::vec3(0, 0, 8);
 		glUniform3f(LightID, lightPos.x, lightPos.y, lightPos.z);
@@ -86,10 +95,11 @@ int main() {
 		// Compute the MVP matrix from keyboard and mouse input
 		computeMatricesFromInputs(window);
 		glm::mat4 ProjectionMatrix = getProjectionMatrix();
-		for (GameObject* go : Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects()) {
-
+		for (GameObject* go : Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects())
+		{
 			Mesh* meshComp = go->GetComponent<Mesh>();
-			if(meshComp != nullptr) {
+			if (meshComp != nullptr)
+			{
 				auto& object = *(meshComp->GetMesh());
 				std::vector<Object> objects = Manager::GetInstance()->GetManager<MeshManager>()->GetMeshs();
 
@@ -109,12 +119,14 @@ int main() {
 		// Swap buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();
-	} while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
+	}
+	while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
 
-	for (GameObject* go : Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects()) {
-
+	for (GameObject* go : Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects())
+	{
 		Mesh* meshComp = go->GetComponent<Mesh>();
-		if (meshComp != nullptr) {
+		if (meshComp != nullptr)
+		{
 			auto& object = *(meshComp->GetMesh());
 
 			cleanup(window, object.vertexbuffer, programID, VertexArrayID);

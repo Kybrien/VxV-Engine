@@ -1,8 +1,9 @@
 #include "EngineGUI.h"
+#include <imgui.h>
 #include "FileExplorer.h"
 #include "WindowGui.h"
-#include <imgui.h>
 
+#include "imgui_impl_opengl3.h"
 
 void EngineGUI::UpdateGui()
 {
@@ -10,15 +11,14 @@ void EngineGUI::UpdateGui()
 
 	MainMenuBar();
 
- // Fenêtre pour l'accès aux fichiers
-    ShowFileExplorer(); 
+	// Fenêtre pour l'accès aux fichiers
+	ShowFileExplorer();
 	//ShowMenuBar();
 	ShowInfo();
 }
 
 void EngineGUI::RenderGui()
 {
-		ImGui::Render();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
+	ImGui::Render();
+	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }

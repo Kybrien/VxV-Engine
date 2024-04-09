@@ -1,28 +1,26 @@
 #pragma once
-#include "string"
 #include "json.h"
-
 
 class GameObject;
 class Transform;
 
-
-class Component {
+class Component
+{
 public:
-	Component(GameObject* go) {
+	Component(GameObject* go)
+	{
 		linkedGameObject = go;
 		type = Unknown;
 	};
 
-	virtual void Save(Json::Value &compJson) = 0;
+	virtual void Save(Json::Value& compJson) = 0;
 	virtual void Load(Json::Value& compJson, GameObject* ParentGO) = 0;
 
 	virtual void Copy(GameObject* goToFill) = 0;
 
-	
-
 	// Enumeration de tous les types de Components
-	enum Type {
+	enum Type
+	{
 		Unknown,
 		Transform,
 		Mesh,
@@ -31,7 +29,8 @@ public:
 
 	Type type;
 
-	GameObject* GetLinkedGameObject() const {
+	GameObject* GetLinkedGameObject() const
+	{
 		return linkedGameObject;
 	}
 
