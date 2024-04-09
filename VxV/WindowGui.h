@@ -8,14 +8,25 @@
 #include <stdlib.h>
 #include <fstream>
 #include <string>
+#include "imfilebrowser.h"
 
+void openFile() {
+	// Créez une nouvelle fenêtre ImGui
+	static ImGui::FileBrowser fileDialog;
+	fileDialog.SetTypeFilters({ ".obj" });
+	fileDialog.Open();
+
+	if (fileDialog.HasSelected()) {
+		std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
+		fileDialog.ClearSelected();
+	}
+}
 
 static void ShowExampleMenuFile()
 {
-	if (ImGui::MenuItem("New")) {}
-	if (ImGui::MenuItem("Open", "Ctrl+O")) {
 
-	}
+	if (ImGui::MenuItem("New")) {}
+	if (ImGui::MenuItem("Open", "Ctrl+O")) { openFile(); }
 	if (ImGui::BeginMenu("Open Recent"))
 	{
 		ImGui::MenuItem("test");
@@ -107,6 +118,7 @@ static void MainMenuBar()
 		ImGui::EndMainMenuBar();
 	}
 }
+
 static void ShowInfo() {
 	// Créez une nouvelle fenêtre ImGui
 	ImGui::Begin("Informations", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);

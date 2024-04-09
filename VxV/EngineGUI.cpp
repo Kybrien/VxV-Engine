@@ -11,7 +11,6 @@ void EngineGUI::UpdateGui()
 	MainMenuBar();
 
  // Fenêtre pour l'accès aux fichiers
-    ShowFileExplorer(); 
 	//ShowMenuBar();
 	ShowInfo();
 }

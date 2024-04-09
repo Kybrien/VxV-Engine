@@ -3,15 +3,10 @@
 #define STB_IMAGE_IMPLEMENTATION
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "MemoryPool.h"
-
-
-
-
-
-
-
 #include "object.hpp"
 #include "EngineGUI.h"
+#include "imfilebrowser.h"
+
 
 int main() {
 	EngineGUI gui;
@@ -70,7 +65,7 @@ int main() {
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
-
+		
 		// Use our shader
 		glUseProgram(programID);
 
