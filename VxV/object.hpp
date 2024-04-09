@@ -106,7 +106,7 @@ void addNewObject(const std::string& filename, std::vector<Object>& objects);
 void copyObjectAndAdd(const Object& obj, std::vector<Object>& objects);
 void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& LightID, GLuint& MaterialAmbientColorID,
 	GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID);
-void drawObjects(std::vector<Object>& objects, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID,
+void drawObject(Object& object, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID,
 	GLuint MaterialSpecularColorID);
 void translateObject(Object& object, const glm::vec3& translation);
 void rotateObject(Object& object, float angle, const glm::vec3& axis);

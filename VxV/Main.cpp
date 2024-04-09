@@ -91,7 +91,7 @@ int main() {
 		glm::mat4 ProjectionMatrix = getProjectionMatrix();
 		for (auto& object : objects) {
 			sendMVPData(object, angle, axis, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
-			drawObjects(objects, TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
+			drawObject(object, TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
 		}
 
 		gui.UpdateGui();

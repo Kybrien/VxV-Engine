@@ -237,7 +237,7 @@ void loadTextures(Object& obj) {
 void loadObjAndTextures(const std::string& filename, Object& obj)
 {
 	loadingObject(filename, obj);
-
+	printf("File name : %s\n", filename.c_str());
 	if (obj.materials.empty()) {
 		// Create a default material
 		tinyobj::material_t defaultMaterial;
@@ -335,35 +335,34 @@ void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& Light
 	ModelMatrixID = glGetUniformLocation(programID, "M");
 }
 
-void drawObjects(std::vector<Object>& objects, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID,
-	GLuint MaterialSpecularColorID) {
-	for (auto& object : objects) {
-		for (const auto& pair : objects[0].vertexBuffers) {
-			GLuint texID = pair.first.first;
-			int matID = pair.first.second;
-			const std::vector<Vertex>& vertices = pair.second;
+void drawObject(Object& object, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID,
+	GLuint MaterialSpecularColorID) 
+{
+	for (const auto& pair : object.vertexBuffers) {
+		GLuint texID = pair.first.first;
+		int matID = pair.first.second;
+		const std::vector<Vertex>& vertices = pair.second;
 
-			// Bind the texture
-			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, texID);
-			glUniform1i(TextureID, 0);
+		// Bind the texture
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, texID);
+		glUniform1i(TextureID, 0);
 
-			// Set the material properties
-			tinyobj::material_t& material = objects[0].materials[matID];
-			GLfloat ambient[3] = { material.ambient[0], material.ambient[1], material.ambient[2] };
-			GLfloat diffuse[3] = { material.diffuse[0], material.diffuse[1], material.diffuse[2] };
-			GLfloat specular[3] = { material.specular[0], material.specular[1], material.specular[2] };
-			glUniform3fv(MaterialAmbientColorID, 1, ambient);
-			glUniform3fv(MaterialDiffuseColorID, 1, diffuse);
-			glUniform3fv(MaterialSpecularColorID, 1, specular);
+		// Set the material properties
+		tinyobj::material_t& material = object.materials[matID];
+		GLfloat ambient[3] = { material.ambient[0], material.ambient[1], material.ambient[2] };
+		GLfloat diffuse[3] = { material.diffuse[0], material.diffuse[1], material.diffuse[2] };
+		GLfloat specular[3] = { material.specular[0], material.specular[1], material.specular[2] };
+		glUniform3fv(MaterialAmbientColorID, 1, ambient);
+		glUniform3fv(MaterialDiffuseColorID, 1, diffuse);
+		glUniform3fv(MaterialSpecularColorID, 1, specular);
 
-			// Bind the vertex buffer
-			glBindBuffer(GL_ARRAY_BUFFER, objects[0].vertexBufferIDs[pair.first]);
+		// Bind the vertex buffer
+		glBindBuffer(GL_ARRAY_BUFFER, object.vertexBufferIDs[pair.first]);
 
-			// Draw the vertices
-			setupVertexAttributes();
-			glDrawArrays(GL_TRIANGLES, 0, vertices.size());
-		}
+		// Draw the vertices
+		setupVertexAttributes();
+		glDrawArrays(GL_TRIANGLES, 0, vertices.size());
 	}
 }
 
