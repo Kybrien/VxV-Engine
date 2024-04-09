@@ -4,6 +4,7 @@
 #include "ScriptManager.h"
 #include "PrefabManager.h"
 #include "InputManager.h"
+#include "MeshManager.h"
 
 class Engine {
 private:

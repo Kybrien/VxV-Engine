@@ -259,6 +259,7 @@ void loadObjAndBatching(const std::string& filename, tinyobj::attrib_t& attribut
 void addNewObject(const std::string& filename, std::vector<Object>& objects)
 {
 	Object obj;
+	obj.fileName = filename;
 	obj.transform = glm::mat4(1.0f);
 	loadObjAndBatching(filename, obj.attributes, obj.shapes, obj.materials, obj.vertexbuffer, obj.indexbuffer, obj.textureIDs, obj.vertexBuffers, obj.vertexBufferIDs);
 	objects.push_back(obj);

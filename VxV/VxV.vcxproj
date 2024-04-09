@@ -120,7 +120,6 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)/VxV/Externes/jsoncpp/include/json;$(SolutionDir)/VxV/Externes/glew-2.1.0/include;$(SolutionDir)/VxV/Externes/glfw-3.4.bin.WIN64/include;$(SolutionDir)/VxV/Externes/glm-1.0.1;%(AdditionalIncludeDirectories);imgui</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
-
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -154,6 +153,8 @@
     <ClCompile Include="controls.cpp" />
     <ClCompile Include="loadingShader.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="MeshManager.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EngineGUI.cpp" />
@@ -166,7 +167,6 @@
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="InputManager.cpp" />
-
     <ClCompile Include="Script.cpp" />
     <ClCompile Include="ScriptingComponent.cpp" />
     <ClCompile Include="ScriptManager.cpp" />
@@ -190,6 +190,8 @@
     <ClCompile Include="PrefabManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MeshManager.h" />
     <ClInclude Include="WindowGui.h" />
   </ItemGroup>
   <ItemGroup>

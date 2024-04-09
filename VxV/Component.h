@@ -25,7 +25,7 @@ public:
 	enum Type {
 		Unknown,
 		Transform,
-		Mesh_renderer,
+		Mesh,
 		ScriptComponent,
 	};
 

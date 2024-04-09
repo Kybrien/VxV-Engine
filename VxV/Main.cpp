@@ -4,6 +4,7 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "object.hpp"
 #include "EngineGUI.h"
+#include "Engine.h"
 
 int main() {
 	EngineGUI gui;
@@ -25,8 +26,6 @@ int main() {
 	glm::mat4 Projection = initializeProjectionMatrix();
 	glm::mat4 View = initializeViewMatrix();
 
-	std::vector<Object> objects;
-	addNewObject("miku.obj", objects);
 
 	// Get a handle for our uniforms
 	GLuint TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID;
@@ -87,9 +86,16 @@ int main() {
 		// Compute the MVP matrix from keyboard and mouse input
 		computeMatricesFromInputs(window);
 		glm::mat4 ProjectionMatrix = getProjectionMatrix();
-		for (auto& object : objects) {
-			sendMVPData(object, angle, axis, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
-			drawObjects(objects, TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
+		for (GameObject* go : Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects()) {
+
+			Mesh* meshComp = go->GetComponent<Mesh>();
+			if(meshComp != nullptr) {
+				auto& object = *(meshComp->GetMesh());
+				std::vector<Object> objects = Manager::GetInstance()->GetManager<MeshManager>()->GetMeshs();
+
+				sendMVPData(object, angle, axis, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
+				drawObjects(objects, TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
+			}
 		}
 
 		gui.UpdateGui();
@@ -105,8 +111,14 @@ int main() {
 		glfwPollEvents();
 	} while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
 
-	for (auto& object : objects) {
-		cleanup(window, object.vertexbuffer, programID, VertexArrayID);
+	for (GameObject* go : Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects()) {
+
+		Mesh* meshComp = go->GetComponent<Mesh>();
+		if (meshComp != nullptr) {
+			auto& object = *(meshComp->GetMesh());
+
+			cleanup(window, object.vertexbuffer, programID, VertexArrayID);
+		}
 	}
 	return 0;
 }

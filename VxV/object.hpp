@@ -74,6 +74,8 @@ namespace std {
 
 class Object {
 public:
+	std::string fileName;
+
 	tinyobj::attrib_t attributes;
 	std::vector<tinyobj::shape_t> shapes;
 	std::vector<tinyobj::material_t> materials;
