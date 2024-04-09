@@ -3,7 +3,6 @@
 #include "WindowGui.h"
 #include <imgui.h>
 
-
 void EngineGUI::UpdateGui()
 {
 	ImGui::ShowDemoWindow();

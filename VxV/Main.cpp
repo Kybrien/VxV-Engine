@@ -26,7 +26,7 @@ int main() {
 	glm::mat4 View = initializeViewMatrix();
 
 	std::vector<Object> objects;
-	addNewObject("miku.obj", objects);
+	addNewObject("evil.obj", objects);
 
 	// Get a handle for our uniforms
 	GLuint TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID;
