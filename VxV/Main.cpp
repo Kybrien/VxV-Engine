@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #define STB_IMAGE_IMPLEMENTATION
 #define TINYOBJLOADER_IMPLEMENTATION
-#include "MemoryPool.h"
+//#include "MemoryPool.h"
 
 #include "object.hpp"
-#include "EngineGUI.h"#include "WindowGui.h"
+#include "EngineGUI.h"
 
 #include "imfilebrowser.h"
 
