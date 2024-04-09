@@ -127,6 +127,14 @@
       <AdditionalLibraryDirectories>$(ProjectDir)/VxV/Externes/jsoncpp/lib;$(SolutionDir)\VxV\Externes\jsoncpp\lib;$(SolutionDir)\VxV\Externes\glew-2.1.0\lib\Release\x64;$(SolutionDir)\VxV\Externes\glfw-3.4.bin.WIN64\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;jsoncpp.lib;jsoncpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /E /I /Y "$(ProjectDir)Files" "$(TargetDir)Files"
+
+copy $(ProjectDir)SimpleFragmentShader.VALORANT $(TargetDir)
+
+copy $(ProjectDir)SimpleVertexShader.MIKU $(TargetDir)
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -147,6 +155,14 @@
       <AdditionalLibraryDirectories>$(ProjectDir)/VxV/Externes/jsoncpp/lib;$(SolutionDir)\VxV\Externes\glew-2.1.0\lib\Release\x64;$(SolutionDir)\VxV\Externes\glfw-3.4.bin.WIN64\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;jsoncpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /E /I /Y "$(ProjectDir)Files" "$(TargetDir)Files"
+
+copy $(ProjectDir)SimpleFragmentShader.VALORANT $(TargetDir)
+
+copy $(ProjectDir)SimpleVertexShader.MIKU $(TargetDir)
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Component.cpp" />
@@ -165,7 +181,6 @@
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="InputManager.cpp" />
-
     <ClCompile Include="Script.cpp" />
     <ClCompile Include="ScriptingComponent.cpp" />
     <ClCompile Include="ScriptManager.cpp" />
@@ -192,8 +207,12 @@
     <ClInclude Include="WindowGui.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="SimpleFragmentShader.VALORANT" />
-    <Text Include="SimpleVertexShader.MIKU" />
+    <Text Include="SimpleFragmentShader.VALORANT">
+      <FileType>Document</FileType>
+    </Text>
+    <Text Include="SimpleVertexShader.MIKU">
+      <FileType>Document</FileType>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="loadingShader.hpp" />

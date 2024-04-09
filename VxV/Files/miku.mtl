@@ -39,7 +39,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-map_Kd MikuFaceUV.png
+map_Kd Files/MikuFaceUV.png
 
 newmtl Grey.001
 Ns 250.000000
@@ -79,7 +79,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-map_Kd SkinDecalUV.png
+map_Kd Files/SkinDecalUV.png
 
 newmtl Yellow.001
 Ns 250.000000

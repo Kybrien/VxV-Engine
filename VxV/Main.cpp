@@ -4,12 +4,6 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "MemoryPool.h"
 
-
-
-
-
-
-
 #include "object.hpp"
 #include "EngineGUI.h"
 
@@ -34,7 +28,7 @@ int main() {
 	glm::mat4 View = initializeViewMatrix();
 
 	std::vector<Object> objects;
-	addNewObject("miku.obj", objects);
+	addNewObject("Files/miku.obj", objects);
 
 	// Get a handle for our uniforms
 	GLuint TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID;
@@ -52,7 +46,7 @@ int main() {
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 	// Chargez la police qui supporte les caract�res accentu�s
-	ImFont* font = io.Fonts->AddFontFromFileTTF("monocraft.ttf", 17);
+	ImFont* font = io.Fonts->AddFontFromFileTTF("Files/monocraft.ttf", 17);
 
 	// V�rifiez si la police a �t� charg�e correctement
 	if (font == nullptr)

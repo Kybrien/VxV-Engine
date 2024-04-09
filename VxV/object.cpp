@@ -173,7 +173,7 @@ void loadingObject(const std::string& filename, Object& obj)
 {
 	std::string warnings;
 	std::string errors;
-	tinyobj::LoadObj(&obj.attributes, &obj.shapes, &obj.materials, &warnings, &errors, filename.c_str(), "");
+	tinyobj::LoadObj(&obj.attributes, &obj.shapes, &obj.materials, &warnings, &errors, filename.c_str(), "Files/");
 	// Before indexing
 	size_t totalIndices = 0;
 	for (const auto& shape : obj.shapes) {
