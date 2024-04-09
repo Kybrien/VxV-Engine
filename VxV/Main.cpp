@@ -4,9 +4,9 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "MemoryPool.h"
 #include "object.hpp"
-#include "EngineGUI.h"
-#include "imfilebrowser.h"
+#include "EngineGUI.h"#include "WindowGui.h"
 
+#include "imfilebrowser.h"
 
 int main() {
 	EngineGUI gui;
@@ -96,6 +96,7 @@ int main() {
 		}
 
 		gui.UpdateGui();
+
 		gui.RenderGui();
 
 		glDisableVertexAttribArray(0);
