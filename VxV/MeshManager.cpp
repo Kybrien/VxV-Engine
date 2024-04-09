@@ -23,5 +23,5 @@ void MeshManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
         FileName.push_back(static_cast<char>(wc));
     }
 
-    addNewObject(FileName, meshVector);
+    addNewObject("Mesh/" + FileName, meshVector);
 }

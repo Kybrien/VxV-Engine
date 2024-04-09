@@ -171,7 +171,7 @@ void loadingObject(const std::string& filename, tinyobj::attrib_t& attributes, s
 {
 	std::string warnings;
 	std::string errors;
-	tinyobj::LoadObj(&attributes, &shapes, &materials, &warnings, &errors, filename.c_str(), "");
+	tinyobj::LoadObj(&attributes, &shapes, &materials, &warnings, &errors, filename.c_str(), "Mesh/");
 	// Before indexing
 	size_t totalIndices = 0;
 	for (const auto& shape : shapes)

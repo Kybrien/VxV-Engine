@@ -14,6 +14,14 @@
 
 int main()
 {
+	Engine* engine = new Engine();
+	engine->Init();
+
+	GameObject* go = new GameObject();
+	go->AddComponent<Mesh>();
+	go->GetComponent<Mesh>()->SetMesh(&(engine->manager->GetManager<MeshManager>()->GetMeshs()[0]));
+
+
 	EngineGUI gui;
 	//On initialise tout
 	GLFWwindow* window;
