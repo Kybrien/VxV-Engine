@@ -18,11 +18,9 @@ public:
 
 	void Copy(GameObject* goToFill) override;
 
-	void SetMesh(Object* mesh) {
-		this->mesh = mesh;
-	}
+	void SetMesh(std::string meshName);
 
-	Object* GetMesh() {
+	Object*& GetMesh() {
 		return mesh;
 	}
 };

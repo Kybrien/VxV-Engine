@@ -90,6 +90,7 @@ class Object
 {
 public:
 	std::string fileName;
+	int numberUsed = 0;
 
 	tinyobj::attrib_t attributes;
 	std::vector<tinyobj::shape_t> shapes;
@@ -119,7 +120,7 @@ void loadTextures(Object& obj);
 void loadObjAndTextures(const std::string& filename, Object& obj);
 void batchingObj(Object& obj);
 void loadObjAndBatching(const std::string& filename, Object& obj);
-void addNewObject(const std::string& filename, std::vector<Object*>& objects);
+void addNewObject(const std::string& filename, std::string& fileDirection, std::vector<Object*>& objects);
 void copyObjectAndAdd(const Object& obj, std::vector<Object>& objects);
 void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& LightID, GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID);
 void drawObjects(Object* objects, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID, GLuint MaterialSpecularColorID);

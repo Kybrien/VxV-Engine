@@ -67,8 +67,16 @@ int main()
 	engine->Init();
 
 	GameObject* go = new GameObject();
+	GameObject* go2 = new GameObject();
+	GameObject* go3 = new GameObject();
 	go->AddComponent<Mesh>();
-	go->GetComponent<Mesh>()->SetMesh(engine->manager->GetManager<MeshManager>()->GetMesh("miku.obj"));
+	go2->AddComponent<Mesh>();
+	go3->AddComponent<Mesh>();
+	go->GetComponent<Mesh>()->SetMesh("miku");
+
+	go2->GetComponent<Mesh>()->SetMesh("hahacaca.obj");
+
+	go3->GetComponent<Mesh>()->SetMesh("cube.obj");
 
 	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
 

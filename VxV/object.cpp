@@ -323,12 +323,12 @@ void loadObjAndBatching(const std::string& filename, Object& obj)
 	batchingObj(obj);
 }
 
-void addNewObject(const std::string& filename, std::vector<Object*>& objects)
+void addNewObject(const std::string& filename, std::string& fileDirection, std::vector<Object*>& objects)
 {
 	Object* obj = new Object();
 	obj->fileName = filename;
 	obj->transform = glm::mat4(1.0f);
-	loadObjAndBatching(filename, *obj);
+	loadObjAndBatching(fileDirection, *obj);
 	objects.push_back(obj);
 }
 
