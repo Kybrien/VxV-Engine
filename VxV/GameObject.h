@@ -6,14 +6,13 @@
 #include <GLM/glm.hpp>
 #include "Transform.h"
 #include "ScriptingComponent.h"
-#include "Scene.h"
+
 
 class Scene;
 class Prefab;
 
 class GameObject {
-    void UIGameObject()
-        ;
+
 
 public:
     Scene* currentScene;
