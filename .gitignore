@@ -102,6 +102,10 @@ StyleCopReport.xml
 *.svclog
 *.scc
 
+
+# Ne pas ignorer les fichiers .obj dans le répertoire VXV/Files
+!VxV/Files/*.obj
+
 # Chutzpah Test files
 _Chutzpah*
 
