@@ -1,0 +1,147 @@
+\doxysection{Component Class Reference}
+\hypertarget{class_component}{}\label{class_component}\index{Component@{Component}}
+
+
+{\ttfamily \#include $<$Component.\+h$>$}
+
+Inheritance diagram for Component\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_component}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Type}} \{ \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94}{Unknown}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059}{Transform}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4acbf24d847fc02f14b8b7bba654ff05f4}{Mesh\+\_\+renderer}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51}{Script\+Component}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_component_aca4f3bf8d7148444f750714ca8e58bfe}{Jai\+Besoin\+Dun\+Virtual}} ()
+\item 
+\mbox{\hyperlink{class_component_ae527ef1a4d1be744d50e2676a6c4f5f6}{Component}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go)
+\item 
+virtual void \mbox{\hyperlink{class_component_a78f3311bb53ce9b6d095e95021df681a}{Save}} (Json\+::\+Value \&comp\+Json)=0
+\item 
+virtual void \mbox{\hyperlink{class_component_ac6833433134e649053b0fe16f60dfd98}{Load}} (Json\+::\+Value \&comp\+Json, \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}Parent\+GO)=0
+\item 
+virtual void \mbox{\hyperlink{class_component_ad70a279b1453b27839c0fc6e9f3a0b08}{Copy}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go\+To\+Fill)=0
+\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_component_ae26f4d08f6a55499e30a1f700a4c08b7}{Get\+Linked\+Game\+Object}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Type}} \mbox{\hyperlink{class_component_a18de93d5a176aa3cd6dc6724788dfacb}{type}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_component_ae82678b1f50e36ccba0a8775f12036c3}{linked\+Game\+Object}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}\label{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4} 
+\index{Component@{Component}!Type@{Type}}
+\index{Type@{Type}!Component@{Component}}
+\doxysubsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Component\+::\+Type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Unknown@{Unknown}!Component@{Component}}\index{Component@{Component}!Unknown@{Unknown}}}\Hypertarget{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94}\label{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94} 
+Unknown&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Transform@{Transform}!Component@{Component}}\index{Component@{Component}!Transform@{Transform}}}\Hypertarget{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059}\label{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059} 
+Transform&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Mesh\_renderer@{Mesh\_renderer}!Component@{Component}}\index{Component@{Component}!Mesh\_renderer@{Mesh\_renderer}}}\Hypertarget{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4acbf24d847fc02f14b8b7bba654ff05f4}\label{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4acbf24d847fc02f14b8b7bba654ff05f4} 
+Mesh\+\_\+renderer&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ScriptComponent@{ScriptComponent}!Component@{Component}}\index{Component@{Component}!ScriptComponent@{ScriptComponent}}}\Hypertarget{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51}\label{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51} 
+Script\+Component&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_component_ae527ef1a4d1be744d50e2676a6c4f5f6}\label{class_component_ae527ef1a4d1be744d50e2676a6c4f5f6} 
+\index{Component@{Component}!Component@{Component}}
+\index{Component@{Component}!Component@{Component}}
+\doxysubsubsection{\texorpdfstring{Component()}{Component()}}
+{\footnotesize\ttfamily Component\+::\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_component_ad70a279b1453b27839c0fc6e9f3a0b08}\label{class_component_ad70a279b1453b27839c0fc6e9f3a0b08} 
+\index{Component@{Component}!Copy@{Copy}}
+\index{Copy@{Copy}!Component@{Component}}
+\doxysubsubsection{\texorpdfstring{Copy()}{Copy()}}
+{\footnotesize\ttfamily virtual void Component\+::\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go\+To\+Fill }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_scripting_component_a7d595c437bbb1d55e8be730e8149dabc}{Scripting\+Component}}, and \mbox{\hyperlink{class_transform_a238e8b69aab0b8f29597a2eba53eef59}{Transform}}.
+
+\Hypertarget{class_component_ae26f4d08f6a55499e30a1f700a4c08b7}\label{class_component_ae26f4d08f6a55499e30a1f700a4c08b7} 
+\index{Component@{Component}!GetLinkedGameObject@{GetLinkedGameObject}}
+\index{GetLinkedGameObject@{GetLinkedGameObject}!Component@{Component}}
+\doxysubsubsection{\texorpdfstring{GetLinkedGameObject()}{GetLinkedGameObject()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} Component\+::\+Get\+Linked\+Game\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_component_aca4f3bf8d7148444f750714ca8e58bfe}\label{class_component_aca4f3bf8d7148444f750714ca8e58bfe} 
+\index{Component@{Component}!JaiBesoinDunVirtual@{JaiBesoinDunVirtual}}
+\index{JaiBesoinDunVirtual@{JaiBesoinDunVirtual}!Component@{Component}}
+\doxysubsubsection{\texorpdfstring{JaiBesoinDunVirtual()}{JaiBesoinDunVirtual()}}
+{\footnotesize\ttfamily virtual void Component\+::\+Jai\+Besoin\+Dun\+Virtual (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_component_ac6833433134e649053b0fe16f60dfd98}\label{class_component_ac6833433134e649053b0fe16f60dfd98} 
+\index{Component@{Component}!Load@{Load}}
+\index{Load@{Load}!Component@{Component}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily virtual void Component\+::\+Load (\begin{DoxyParamCaption}\item[{Json\+::\+Value \&}]{comp\+Json,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{Parent\+GO }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_scripting_component_a039125336f48a34ba45e1e3989e61d4d}{Scripting\+Component}}, and \mbox{\hyperlink{class_transform_a6fefaab8dad405393d413a05742b23db}{Transform}}.
+
+\Hypertarget{class_component_a78f3311bb53ce9b6d095e95021df681a}\label{class_component_a78f3311bb53ce9b6d095e95021df681a} 
+\index{Component@{Component}!Save@{Save}}
+\index{Save@{Save}!Component@{Component}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily virtual void Component\+::\+Save (\begin{DoxyParamCaption}\item[{Json\+::\+Value \&}]{comp\+Json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_scripting_component_a2a726d11eab8a8446e38e14ed06703fc}{Scripting\+Component}}, and \mbox{\hyperlink{class_transform_a3e44e2c5961d89008e845ed14dc8c0e3}{Transform}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_component_ae82678b1f50e36ccba0a8775f12036c3}\label{class_component_ae82678b1f50e36ccba0a8775f12036c3} 
+\index{Component@{Component}!linkedGameObject@{linkedGameObject}}
+\index{linkedGameObject@{linkedGameObject}!Component@{Component}}
+\doxysubsubsection{\texorpdfstring{linkedGameObject}{linkedGameObject}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} Component\+::linked\+Game\+Object\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_component_a18de93d5a176aa3cd6dc6724788dfacb}\label{class_component_a18de93d5a176aa3cd6dc6724788dfacb} 
+\index{Component@{Component}!type@{type}}
+\index{type@{type}!Component@{Component}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Type}} Component\+::type}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_component_8h}{Component.\+h}}\end{DoxyCompactItemize}

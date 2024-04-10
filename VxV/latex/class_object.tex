@@ -1,0 +1,89 @@
+\doxysection{Object Class Reference}
+\hypertarget{class_object}{}\label{class_object}\index{Object@{Object}}
+
+
+{\ttfamily \#include $<$object.\+hpp$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+tinyobj\+::attrib\+\_\+t \mbox{\hyperlink{class_object_a34b86a3a05dfd61a1cb1dcb87134e786}{attributes}}
+\item 
+std\+::vector$<$ tinyobj\+::shape\+\_\+t $>$ \mbox{\hyperlink{class_object_aaa04d9d25497299c7ff4feda8f73202d}{shapes}}
+\item 
+std\+::vector$<$ tinyobj\+::material\+\_\+t $>$ \mbox{\hyperlink{class_object_a3461f82aeb4e5520ac7f58025e9ad613}{materials}}
+\item 
+GLuint \mbox{\hyperlink{class_object_af3c7c45308a764d1f92333c8f72c7e13}{vertexbuffer}}
+\item 
+GLuint \mbox{\hyperlink{class_object_a9b5466febed669c348099976edc4ed42}{indexbuffer}}
+\item 
+std\+::vector$<$ GLuint $>$ \mbox{\hyperlink{class_object_a07e69d9859d8fee333c9769497ec34b3}{texture\+IDs}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::pair$<$ GLuint, int $>$, std\+::vector$<$ \mbox{\hyperlink{class_vertex}{Vertex}} $>$, \mbox{\hyperlink{structpair__hash}{pair\+\_\+hash}} $>$ \mbox{\hyperlink{class_object_a6323486c0a18a159d144b29cc273675a}{vertex\+Buffers}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::pair$<$ GLuint, int $>$, GLuint, \mbox{\hyperlink{structpair__hash}{pair\+\_\+hash}} $>$ \mbox{\hyperlink{class_object_a2b6e298d8d37e5e8fe47ff9980a20f08}{vertex\+Buffer\+IDs}}
+\item 
+glm\+::mat4 \mbox{\hyperlink{class_object_a6b9e1c5f1dad7c7622cd5523d1a76de3}{transform}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_object_a34b86a3a05dfd61a1cb1dcb87134e786}\label{class_object_a34b86a3a05dfd61a1cb1dcb87134e786} 
+\index{Object@{Object}!attributes@{attributes}}
+\index{attributes@{attributes}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{attributes}{attributes}}
+{\footnotesize\ttfamily tinyobj\+::attrib\+\_\+t Object\+::attributes}
+
+\Hypertarget{class_object_a9b5466febed669c348099976edc4ed42}\label{class_object_a9b5466febed669c348099976edc4ed42} 
+\index{Object@{Object}!indexbuffer@{indexbuffer}}
+\index{indexbuffer@{indexbuffer}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{indexbuffer}{indexbuffer}}
+{\footnotesize\ttfamily GLuint Object\+::indexbuffer}
+
+\Hypertarget{class_object_a3461f82aeb4e5520ac7f58025e9ad613}\label{class_object_a3461f82aeb4e5520ac7f58025e9ad613} 
+\index{Object@{Object}!materials@{materials}}
+\index{materials@{materials}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{materials}{materials}}
+{\footnotesize\ttfamily std\+::vector$<$tinyobj\+::material\+\_\+t$>$ Object\+::materials}
+
+\Hypertarget{class_object_aaa04d9d25497299c7ff4feda8f73202d}\label{class_object_aaa04d9d25497299c7ff4feda8f73202d} 
+\index{Object@{Object}!shapes@{shapes}}
+\index{shapes@{shapes}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{shapes}{shapes}}
+{\footnotesize\ttfamily std\+::vector$<$tinyobj\+::shape\+\_\+t$>$ Object\+::shapes}
+
+\Hypertarget{class_object_a07e69d9859d8fee333c9769497ec34b3}\label{class_object_a07e69d9859d8fee333c9769497ec34b3} 
+\index{Object@{Object}!textureIDs@{textureIDs}}
+\index{textureIDs@{textureIDs}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{textureIDs}{textureIDs}}
+{\footnotesize\ttfamily std\+::vector$<$GLuint$>$ Object\+::texture\+IDs}
+
+\Hypertarget{class_object_a6b9e1c5f1dad7c7622cd5523d1a76de3}\label{class_object_a6b9e1c5f1dad7c7622cd5523d1a76de3} 
+\index{Object@{Object}!transform@{transform}}
+\index{transform@{transform}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{transform}{transform}}
+{\footnotesize\ttfamily glm\+::mat4 Object\+::transform}
+
+\Hypertarget{class_object_af3c7c45308a764d1f92333c8f72c7e13}\label{class_object_af3c7c45308a764d1f92333c8f72c7e13} 
+\index{Object@{Object}!vertexbuffer@{vertexbuffer}}
+\index{vertexbuffer@{vertexbuffer}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{vertexbuffer}{vertexbuffer}}
+{\footnotesize\ttfamily GLuint Object\+::vertexbuffer}
+
+\Hypertarget{class_object_a2b6e298d8d37e5e8fe47ff9980a20f08}\label{class_object_a2b6e298d8d37e5e8fe47ff9980a20f08} 
+\index{Object@{Object}!vertexBufferIDs@{vertexBufferIDs}}
+\index{vertexBufferIDs@{vertexBufferIDs}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{vertexBufferIDs}{vertexBufferIDs}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::pair$<$GLuint, int$>$, GLuint, \mbox{\hyperlink{structpair__hash}{pair\+\_\+hash}}$>$ Object\+::vertex\+Buffer\+IDs}
+
+\Hypertarget{class_object_a6323486c0a18a159d144b29cc273675a}\label{class_object_a6323486c0a18a159d144b29cc273675a} 
+\index{Object@{Object}!vertexBuffers@{vertexBuffers}}
+\index{vertexBuffers@{vertexBuffers}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{vertexBuffers}{vertexBuffers}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::pair$<$GLuint, int$>$, std\+::vector$<$\mbox{\hyperlink{class_vertex}{Vertex}}$>$, \mbox{\hyperlink{structpair__hash}{pair\+\_\+hash}}$>$ Object\+::vertex\+Buffers}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{object_8hpp}{object.\+hpp}}\end{DoxyCompactItemize}

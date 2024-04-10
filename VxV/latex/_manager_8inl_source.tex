@@ -1,0 +1,58 @@
+\doxysection{Manager.\+inl}
+\hypertarget{_manager_8inl_source}{}\label{_manager_8inl_source}\mbox{\hyperlink{_manager_8inl}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <Windows.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <codecvt>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00006\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_manager_a066ee0e0faa861515f582e510a722804}{Manager::SearchFile}}(std::string\ fileDirection,\ std::string\ extension,\ T*\ manager)\ \{}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{comment}{//\ Convertir\ les\ chaînes\ std::string\ en\ std::wstring}}
+\DoxyCodeLine{00009\ \ \ \ \ std::wstring\_convert<std::codecvt\_utf8\_utf16<wchar\_t>>\ converter;}
+\DoxyCodeLine{00010\ \ \ \ \ std::wstring\ fileDirectionW\ =\ converter.from\_bytes(fileDirection);}
+\DoxyCodeLine{00011\ \ \ \ \ std::wstring\ extensionW\ =\ converter.from\_bytes(extension);}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{comment}{//\ Former\ le\ chemin\ du\ dossier\ avec\ l'extension}}
+\DoxyCodeLine{00014\ \ \ \ \ std::wstring\ directoryPathW\ =\ fileDirectionW;}
+\DoxyCodeLine{00015\ \ \ \ \ std::wstring\ wildcard\ =\ directoryPathW\ +\ L\textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)*"{}}\ +\ extensionW;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ Utiliser\ wildcard\ pour\ rechercher\ les\ fichiers}}
+\DoxyCodeLine{00018\ \ \ \ \ WIN32\_FIND\_DATA\ findFileData;}
+\DoxyCodeLine{00019\ \ \ \ \ HANDLE\ hFind\ =\ FindFirstFile(wildcard.c\_str(),\ \&findFileData);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{if}\ (hFind\ !=\ INVALID\_HANDLE\_VALUE)\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(findFileData.dwFileAttributes\ \&\ FILE\_ATTRIBUTE\_DIRECTORY))\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::wstring\ fileName\ =\ findFileData.cFileName;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::wstring\ filePath\ =\ directoryPathW\ +\ L\textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)"{}}\ +\ fileName;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ manager-\/>Load(filePath,\ fileName);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (FindNextFile(hFind,\ \&findFileData)\ !=\ 0);}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ FindClose(hFind);}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
+\DoxyCodeLine{00031\ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00035\ T*\ \mbox{\hyperlink{class_manager_a2569efa6dd78f87cc0b64086043cc4ca}{Manager::GetManager}}()\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_manager}{Manager}}*\ manager\ :\ listManager)\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ T*\ typedManager\ =\ \textcolor{keyword}{dynamic\_cast<}T*\textcolor{keyword}{>}(manager);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (typedManager\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ typedManager;\ \textcolor{comment}{//\ Retourner\ le\ composant\ du\ type\ T\ s'il\ est\ trouvé}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ \textcolor{comment}{//\ Aucun\ composant\ de\ type\ T\ trouvé}}
+\DoxyCodeLine{00044\ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_manager_ab6bfbb7862710ba6c42634f7ea521994}{Manager::AddManager}}(T*\ manager)\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_base\_of<Manager,\ T>::value,\ \textcolor{stringliteral}{"{}T\ doit\ être\ un\ descendant\ de\ Manager"{}});}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ Ajoute\ un\ nouveau\ composant\ de\ type\ T}}
+\DoxyCodeLine{00052\ \ \ \ \ listManager.push\_back(manager);}
+\DoxyCodeLine{00053\ \}}
+
+\end{DoxyCode}

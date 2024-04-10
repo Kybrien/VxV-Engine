@@ -1,0 +1,371 @@
+\doxysection{object.\+cpp File Reference}
+\hypertarget{object_8cpp}{}\label{object_8cpp}\index{object.cpp@{object.cpp}}
+{\ttfamily \#include "{}object.\+hpp"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_vertex}{Vertex}} \mbox{\hyperlink{object_8cpp_a9f9b1e415eb80126ec987fcf9006d7f7}{create\+Vertex\+From\+Index}} (const tinyobj\+::attrib\+\_\+t \&attrib, const tinyobj\+::index\+\_\+t \&index)
+\begin{DoxyCompactList}\small\item\em Create a \doxylink{class_vertex}{Vertex} object from the given index. \end{DoxyCompactList}\item 
+GLuint \mbox{\hyperlink{object_8cpp_ada2dfa2a2473899e0ec39b3ee9695cf1}{load\+Texture}} (const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Load the texture from the given filename. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{object_8cpp_a8f490ee67f22023cf637d93730514863}{init}} (GLFWwindow \texorpdfstring{$\ast$}{*}\&window)
+\begin{DoxyCompactList}\small\item\em Initialize the window and Open\+GL settings for the program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{object_8cpp_a0d19ebac03a8c658fecf491ec7d7fefb}{setup\+Input}} (GLFWwindow \texorpdfstring{$\ast$}{*}window)
+\begin{DoxyCompactList}\small\item\em Setup the user inputs for the window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{object_8cpp_a6e31672d5229034125de7c14588fd963}{init\+Open\+GLSettings}} ()
+\begin{DoxyCompactList}\small\item\em Initialize the Open\+GL settings and culling. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{object_8cpp_a6271f9c23852dede80128644794fbc4c}{initialize\+Vertex\+Array\+Object}} (GLuint \&Vertex\+Array\+ID)
+\begin{DoxyCompactList}\small\item\em Initialize and bind the vertex array object to the open\+GL context. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{object_8cpp_a27bf9558ecaf7d4f22d1d02a77462ead}{initialize\+Projection\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em Initialize the projection matrix that corresponds to the camera space. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{object_8cpp_a818cec7d86c467bdd2bbcb06a5abc722}{initialize\+View\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em Initialize the view matrix that corresponds to the camera position and where it is looking. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{object_8cpp_ac3e4d4cfe635daf76270ee3492fe30e4}{setup\+Vertex\+Attributes}} ()
+\begin{DoxyCompactList}\small\item\em Setup the vertex attributes for the object for the shader program to use. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{object_8cpp_ae97479b18d4aa965bfede8e68520f9bd}{setup\+Buffers}} (GLuint \&vertexbuffer, const std\+::vector$<$ \mbox{\hyperlink{class_vertex}{Vertex}} $>$ \&vertices, GLuint \&indexbuffer, const std\+::vector$<$ unsigned int $>$ \&indices)
+\begin{DoxyCompactList}\small\item\em Setup the buffers for the object to be drawn. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{object_8cpp_a15ab9bea9e8686fbe8e2a6815f414503}{cleanup}} (GLFWwindow \texorpdfstring{$\ast$}{*}window, std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} $>$ \&objects, GLuint program\+ID, GLuint Vertex\+Array\+ID, GLuint \&Texture\+ID, GLuint \&Light\+ID, GLuint \&Material\+Ambient\+Color\+ID, GLuint \&Material\+Diffuse\+Color\+ID, GLuint \&Material\+Specular\+Color\+ID, GLuint \&Matrix\+ID, GLuint \&View\+Matrix\+ID, GLuint \&Model\+Matrix\+ID)
+\item 
+void \mbox{\hyperlink{object_8cpp_abb14214ff67e919f55a92b86a0ec79d1}{loading\+Object}} (const std\+::string \&filename, \mbox{\hyperlink{class_object}{Object}} \&obj)
+\item 
+void \mbox{\hyperlink{object_8cpp_a3bf8fed1fb5996ae7047f4821514d29b}{load\+Textures}} (\mbox{\hyperlink{class_object}{Object}} \&obj)
+\item 
+void \mbox{\hyperlink{object_8cpp_a21dc407bf79c7ab357937beb739158fd}{load\+Obj\+And\+Textures}} (const std\+::string \&filename, \mbox{\hyperlink{class_object}{Object}} \&obj)
+\item 
+void \mbox{\hyperlink{object_8cpp_a4fff386bd0495e094e84aa3f2333811c}{batching\+Obj}} (\mbox{\hyperlink{class_object}{Object}} \&obj)
+\item 
+void \mbox{\hyperlink{object_8cpp_a53821b06fa0fc9ee4d459706b4e2a231}{load\+Obj\+And\+Batching}} (const std\+::string \&filename, \mbox{\hyperlink{class_object}{Object}} \&obj)
+\item 
+void \mbox{\hyperlink{object_8cpp_a93f4bd652857b99283eb669be62320c3}{add\+New\+Object}} (const std\+::string \&filename, std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} $>$ \&objects)
+\item 
+void \mbox{\hyperlink{object_8cpp_a05939fd662d197f395fd5fad460cf1a5}{copy\+Object\+And\+Add}} (const \mbox{\hyperlink{class_object}{Object}} \&obj, std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} $>$ \&objects)
+\item 
+void \mbox{\hyperlink{object_8cpp_ada42dad34b781b6b47fda1b31360b777}{setup\+Handles\+For\+Uniforms}} (GLuint \&program\+ID, GLuint \&Texture\+ID, GLuint \&Light\+ID, GLuint \&Material\+Ambient\+Color\+ID, GLuint \&Material\+Diffuse\+Color\+ID, GLuint \&Material\+Specular\+Color\+ID, GLuint \&Matrix\+ID, GLuint \&View\+Matrix\+ID, GLuint \&Model\+Matrix\+ID)
+\item 
+void \mbox{\hyperlink{object_8cpp_a1b8747f6a19bea1095596b0d6c0e0462}{draw\+Object}} (\mbox{\hyperlink{class_object}{Object}} \&object, GLuint Texture\+ID, GLuint Material\+Ambient\+Color\+ID, GLuint Material\+Diffuse\+Color\+ID, GLuint Material\+Specular\+Color\+ID)
+\item 
+void \mbox{\hyperlink{object_8cpp_a2f532028382f0b1215e3240d9546659e}{translate\+Object}} (\mbox{\hyperlink{class_object}{Object}} \&object, const glm\+::vec3 \&translation)
+\item 
+void \mbox{\hyperlink{object_8cpp_aff1f96c88383a04b810b5ad9a47bd4c1}{rotate\+Object}} (\mbox{\hyperlink{class_object}{Object}} \&object, float angle, const glm\+::vec3 \&axis)
+\item 
+void \mbox{\hyperlink{object_8cpp_a79acbdc63ceb9cc4675f200d57b03586}{scale\+Object}} (\mbox{\hyperlink{class_object}{Object}} \&object, const glm\+::vec3 \&scale)
+\item 
+void \mbox{\hyperlink{object_8cpp_ac97e52ddf4b9d85af238aa36dcbaa683}{send\+MVPData}} (\mbox{\hyperlink{class_object}{Object}} \&object, float angle, const glm\+::vec3 \&axis, GLuint Vertex\+Array\+ID, GLuint Matrix\+ID, GLuint Model\+Matrix\+ID, GLuint View\+Matrix\+ID)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{object_8cpp_a93f4bd652857b99283eb669be62320c3}\label{object_8cpp_a93f4bd652857b99283eb669be62320c3} 
+\index{object.cpp@{object.cpp}!addNewObject@{addNewObject}}
+\index{addNewObject@{addNewObject}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{addNewObject()}{addNewObject()}}
+{\footnotesize\ttfamily void add\+New\+Object (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} $>$ \&}]{objects }\end{DoxyParamCaption})}
+
+\Hypertarget{object_8cpp_a4fff386bd0495e094e84aa3f2333811c}\label{object_8cpp_a4fff386bd0495e094e84aa3f2333811c} 
+\index{object.cpp@{object.cpp}!batchingObj@{batchingObj}}
+\index{batchingObj@{batchingObj}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{batchingObj()}{batchingObj()}}
+{\footnotesize\ttfamily void batching\+Obj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_object}{Object}} \&}]{obj }\end{DoxyParamCaption})}
+
+\Hypertarget{object_8cpp_a15ab9bea9e8686fbe8e2a6815f414503}\label{object_8cpp_a15ab9bea9e8686fbe8e2a6815f414503} 
+\index{object.cpp@{object.cpp}!cleanup@{cleanup}}
+\index{cleanup@{cleanup}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{cleanup()}{cleanup()}}
+{\footnotesize\ttfamily void cleanup (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} $>$ \&}]{objects,  }\item[{GLuint}]{program\+ID,  }\item[{GLuint}]{Vertex\+Array\+ID,  }\item[{GLuint \&}]{Texture\+ID,  }\item[{GLuint \&}]{Light\+ID,  }\item[{GLuint \&}]{Material\+Ambient\+Color\+ID,  }\item[{GLuint \&}]{Material\+Diffuse\+Color\+ID,  }\item[{GLuint \&}]{Material\+Specular\+Color\+ID,  }\item[{GLuint \&}]{Matrix\+ID,  }\item[{GLuint \&}]{View\+Matrix\+ID,  }\item[{GLuint \&}]{Model\+Matrix\+ID }\end{DoxyParamCaption})}
+
+\Hypertarget{object_8cpp_a05939fd662d197f395fd5fad460cf1a5}\label{object_8cpp_a05939fd662d197f395fd5fad460cf1a5} 
+\index{object.cpp@{object.cpp}!copyObjectAndAdd@{copyObjectAndAdd}}
+\index{copyObjectAndAdd@{copyObjectAndAdd}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{copyObjectAndAdd()}{copyObjectAndAdd()}}
+{\footnotesize\ttfamily void copy\+Object\+And\+Add (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_object}{Object}} \&}]{obj,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} $>$ \&}]{objects }\end{DoxyParamCaption})}
+
+\Hypertarget{object_8cpp_a9f9b1e415eb80126ec987fcf9006d7f7}\label{object_8cpp_a9f9b1e415eb80126ec987fcf9006d7f7} 
+\index{object.cpp@{object.cpp}!createVertexFromIndex@{createVertexFromIndex}}
+\index{createVertexFromIndex@{createVertexFromIndex}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{createVertexFromIndex()}{createVertexFromIndex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vertex}{Vertex}} create\+Vertex\+From\+Index (\begin{DoxyParamCaption}\item[{const tinyobj\+::attrib\+\_\+t \&}]{attrib,  }\item[{const tinyobj\+::index\+\_\+t \&}]{index }\end{DoxyParamCaption})}
+
+
+
+Create a \doxylink{class_vertex}{Vertex} object from the given index. 
+
+
+\begin{DoxyItemize}
+\item 
+\item 
+\begin{DoxyParams}{Parameters}
+{\em attrib} & \\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em index} & \\
+\hline
+\end{DoxyParams}
+
+\item \begin{DoxyReturn}{Returns}
+\doxylink{class_vertex}{Vertex} 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{object_8cpp_a1b8747f6a19bea1095596b0d6c0e0462}\label{object_8cpp_a1b8747f6a19bea1095596b0d6c0e0462} 
+\index{object.cpp@{object.cpp}!drawObject@{drawObject}}
+\index{drawObject@{drawObject}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{drawObject()}{drawObject()}}
+{\footnotesize\ttfamily void draw\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_object}{Object}} \&}]{object,  }\item[{GLuint}]{Texture\+ID,  }\item[{GLuint}]{Material\+Ambient\+Color\+ID,  }\item[{GLuint}]{Material\+Diffuse\+Color\+ID,  }\item[{GLuint}]{Material\+Specular\+Color\+ID }\end{DoxyParamCaption})}
+
+\Hypertarget{object_8cpp_a8f490ee67f22023cf637d93730514863}\label{object_8cpp_a8f490ee67f22023cf637d93730514863} 
+\index{object.cpp@{object.cpp}!init@{init}}
+\index{init@{init}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void init (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}\&}]{window }\end{DoxyParamCaption})}
+
+
+
+Initialize the window and Open\+GL settings for the program. 
+
+
+\begin{DoxyItemize}
+\item 
+\item 
+\begin{DoxyParams}{Parameters}
+{\em GLFWwindow\texorpdfstring{$\ast$}{*}\&} & reference to the pointer of the window\\
+\hline
+\end{DoxyParams}
+
+\item \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{object_8cpp_a27bf9558ecaf7d4f22d1d02a77462ead}\label{object_8cpp_a27bf9558ecaf7d4f22d1d02a77462ead} 
+\index{object.cpp@{object.cpp}!initializeProjectionMatrix@{initializeProjectionMatrix}}
+\index{initializeProjectionMatrix@{initializeProjectionMatrix}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{initializeProjectionMatrix()}{initializeProjectionMatrix()}}
+{\footnotesize\ttfamily glm\+::mat4 initialize\+Projection\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialize the projection matrix that corresponds to the camera space. 
+
+
+\begin{DoxyItemize}
+\item 
+\item \begin{DoxyReturn}{Returns}
+glm\+::mat4 returns the projection matrix 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{object_8cpp_a6271f9c23852dede80128644794fbc4c}\label{object_8cpp_a6271f9c23852dede80128644794fbc4c} 
+\index{object.cpp@{object.cpp}!initializeVertexArrayObject@{initializeVertexArrayObject}}
+\index{initializeVertexArrayObject@{initializeVertexArrayObject}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{initializeVertexArrayObject()}{initializeVertexArrayObject()}}
+{\footnotesize\ttfamily void initialize\+Vertex\+Array\+Object (\begin{DoxyParamCaption}\item[{GLuint \&}]{Vertex\+Array\+ID }\end{DoxyParamCaption})}
+
+
+
+Initialize and bind the vertex array object to the open\+GL context. 
+
+
+\begin{DoxyItemize}
+\item 
+\item 
+\begin{DoxyParams}{Parameters}
+{\em GLuint\&} & reference to the vertex array object\\
+\hline
+\end{DoxyParams}
+
+\item \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{object_8cpp_a818cec7d86c467bdd2bbcb06a5abc722}\label{object_8cpp_a818cec7d86c467bdd2bbcb06a5abc722} 
+\index{object.cpp@{object.cpp}!initializeViewMatrix@{initializeViewMatrix}}
+\index{initializeViewMatrix@{initializeViewMatrix}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{initializeViewMatrix()}{initializeViewMatrix()}}
+{\footnotesize\ttfamily glm\+::mat4 initialize\+View\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialize the view matrix that corresponds to the camera position and where it is looking. 
+
+
+\begin{DoxyItemize}
+\item 
+\item \begin{DoxyReturn}{Returns}
+glm\+::mat4 returns the view matrix 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{object_8cpp_a6e31672d5229034125de7c14588fd963}\label{object_8cpp_a6e31672d5229034125de7c14588fd963} 
+\index{object.cpp@{object.cpp}!initOpenGLSettings@{initOpenGLSettings}}
+\index{initOpenGLSettings@{initOpenGLSettings}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{initOpenGLSettings()}{initOpenGLSettings()}}
+{\footnotesize\ttfamily void init\+Open\+GLSettings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialize the Open\+GL settings and culling. 
+
+
+\begin{DoxyItemize}
+\item 
+\item \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{object_8cpp_abb14214ff67e919f55a92b86a0ec79d1}\label{object_8cpp_abb14214ff67e919f55a92b86a0ec79d1} 
+\index{object.cpp@{object.cpp}!loadingObject@{loadingObject}}
+\index{loadingObject@{loadingObject}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{loadingObject()}{loadingObject()}}
+{\footnotesize\ttfamily void loading\+Object (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{\mbox{\hyperlink{class_object}{Object}} \&}]{obj }\end{DoxyParamCaption})}
+
+\Hypertarget{object_8cpp_a53821b06fa0fc9ee4d459706b4e2a231}\label{object_8cpp_a53821b06fa0fc9ee4d459706b4e2a231} 
+\index{object.cpp@{object.cpp}!loadObjAndBatching@{loadObjAndBatching}}
+\index{loadObjAndBatching@{loadObjAndBatching}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{loadObjAndBatching()}{loadObjAndBatching()}}
+{\footnotesize\ttfamily void load\+Obj\+And\+Batching (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{\mbox{\hyperlink{class_object}{Object}} \&}]{obj }\end{DoxyParamCaption})}
+
+\Hypertarget{object_8cpp_a21dc407bf79c7ab357937beb739158fd}\label{object_8cpp_a21dc407bf79c7ab357937beb739158fd} 
+\index{object.cpp@{object.cpp}!loadObjAndTextures@{loadObjAndTextures}}
+\index{loadObjAndTextures@{loadObjAndTextures}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{loadObjAndTextures()}{loadObjAndTextures()}}
+{\footnotesize\ttfamily void load\+Obj\+And\+Textures (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{\mbox{\hyperlink{class_object}{Object}} \&}]{obj }\end{DoxyParamCaption})}
+
+\Hypertarget{object_8cpp_ada2dfa2a2473899e0ec39b3ee9695cf1}\label{object_8cpp_ada2dfa2a2473899e0ec39b3ee9695cf1} 
+\index{object.cpp@{object.cpp}!loadTexture@{loadTexture}}
+\index{loadTexture@{loadTexture}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{loadTexture()}{loadTexture()}}
+{\footnotesize\ttfamily GLuint load\+Texture (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Load the texture from the given filename. 
+
+
+\begin{DoxyItemize}
+\item 
+\item 
+\begin{DoxyParams}{Parameters}
+{\em filename} & name of the file\\
+\hline
+\end{DoxyParams}
+
+\item \begin{DoxyReturn}{Returns}
+GLuint returns the texture ID 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{object_8cpp_a3bf8fed1fb5996ae7047f4821514d29b}\label{object_8cpp_a3bf8fed1fb5996ae7047f4821514d29b} 
+\index{object.cpp@{object.cpp}!loadTextures@{loadTextures}}
+\index{loadTextures@{loadTextures}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{loadTextures()}{loadTextures()}}
+{\footnotesize\ttfamily void load\+Textures (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_object}{Object}} \&}]{obj }\end{DoxyParamCaption})}
+
+\Hypertarget{object_8cpp_aff1f96c88383a04b810b5ad9a47bd4c1}\label{object_8cpp_aff1f96c88383a04b810b5ad9a47bd4c1} 
+\index{object.cpp@{object.cpp}!rotateObject@{rotateObject}}
+\index{rotateObject@{rotateObject}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{rotateObject()}{rotateObject()}}
+{\footnotesize\ttfamily void rotate\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_object}{Object}} \&}]{object,  }\item[{float}]{angle,  }\item[{const glm\+::vec3 \&}]{axis }\end{DoxyParamCaption})}
+
+\Hypertarget{object_8cpp_a79acbdc63ceb9cc4675f200d57b03586}\label{object_8cpp_a79acbdc63ceb9cc4675f200d57b03586} 
+\index{object.cpp@{object.cpp}!scaleObject@{scaleObject}}
+\index{scaleObject@{scaleObject}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{scaleObject()}{scaleObject()}}
+{\footnotesize\ttfamily void scale\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_object}{Object}} \&}]{object,  }\item[{const glm\+::vec3 \&}]{scale }\end{DoxyParamCaption})}
+
+\Hypertarget{object_8cpp_ac97e52ddf4b9d85af238aa36dcbaa683}\label{object_8cpp_ac97e52ddf4b9d85af238aa36dcbaa683} 
+\index{object.cpp@{object.cpp}!sendMVPData@{sendMVPData}}
+\index{sendMVPData@{sendMVPData}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{sendMVPData()}{sendMVPData()}}
+{\footnotesize\ttfamily void send\+MVPData (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_object}{Object}} \&}]{object,  }\item[{float}]{angle,  }\item[{const glm\+::vec3 \&}]{axis,  }\item[{GLuint}]{Vertex\+Array\+ID,  }\item[{GLuint}]{Matrix\+ID,  }\item[{GLuint}]{Model\+Matrix\+ID,  }\item[{GLuint}]{View\+Matrix\+ID }\end{DoxyParamCaption})}
+
+\Hypertarget{object_8cpp_ae97479b18d4aa965bfede8e68520f9bd}\label{object_8cpp_ae97479b18d4aa965bfede8e68520f9bd} 
+\index{object.cpp@{object.cpp}!setupBuffers@{setupBuffers}}
+\index{setupBuffers@{setupBuffers}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{setupBuffers()}{setupBuffers()}}
+{\footnotesize\ttfamily void setup\+Buffers (\begin{DoxyParamCaption}\item[{GLuint \&}]{vertexbuffer,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{class_vertex}{Vertex}} $>$ \&}]{vertices,  }\item[{GLuint \&}]{indexbuffer,  }\item[{const std\+::vector$<$ unsigned int $>$ \&}]{indices }\end{DoxyParamCaption})}
+
+
+
+Setup the buffers for the object to be drawn. 
+
+
+\begin{DoxyItemize}
+\item 
+\item 
+\begin{DoxyParams}{Parameters}
+{\em GLuint\&} & reference to the vertex buffer\\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em std\+::vector$<$\+Vertex$>$} & vertices\\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em GLuint\&} & reference to the index buffer\\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em std\+::vector$<$unsigned} & int\texorpdfstring{$>$}{>} indices\\
+\hline
+\end{DoxyParams}
+
+\item \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{object_8cpp_ada42dad34b781b6b47fda1b31360b777}\label{object_8cpp_ada42dad34b781b6b47fda1b31360b777} 
+\index{object.cpp@{object.cpp}!setupHandlesForUniforms@{setupHandlesForUniforms}}
+\index{setupHandlesForUniforms@{setupHandlesForUniforms}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{setupHandlesForUniforms()}{setupHandlesForUniforms()}}
+{\footnotesize\ttfamily void setup\+Handles\+For\+Uniforms (\begin{DoxyParamCaption}\item[{GLuint \&}]{program\+ID,  }\item[{GLuint \&}]{Texture\+ID,  }\item[{GLuint \&}]{Light\+ID,  }\item[{GLuint \&}]{Material\+Ambient\+Color\+ID,  }\item[{GLuint \&}]{Material\+Diffuse\+Color\+ID,  }\item[{GLuint \&}]{Material\+Specular\+Color\+ID,  }\item[{GLuint \&}]{Matrix\+ID,  }\item[{GLuint \&}]{View\+Matrix\+ID,  }\item[{GLuint \&}]{Model\+Matrix\+ID }\end{DoxyParamCaption})}
+
+\Hypertarget{object_8cpp_a0d19ebac03a8c658fecf491ec7d7fefb}\label{object_8cpp_a0d19ebac03a8c658fecf491ec7d7fefb} 
+\index{object.cpp@{object.cpp}!setupInput@{setupInput}}
+\index{setupInput@{setupInput}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{setupInput()}{setupInput()}}
+{\footnotesize\ttfamily void setup\+Input (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
+
+
+
+Setup the user inputs for the window. 
+
+
+\begin{DoxyItemize}
+\item 
+\item 
+\begin{DoxyParams}{Parameters}
+{\em GLFWwindow\texorpdfstring{$\ast$}{*}} & window\\
+\hline
+\end{DoxyParams}
+
+\item \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{object_8cpp_ac3e4d4cfe635daf76270ee3492fe30e4}\label{object_8cpp_ac3e4d4cfe635daf76270ee3492fe30e4} 
+\index{object.cpp@{object.cpp}!setupVertexAttributes@{setupVertexAttributes}}
+\index{setupVertexAttributes@{setupVertexAttributes}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{setupVertexAttributes()}{setupVertexAttributes()}}
+{\footnotesize\ttfamily void setup\+Vertex\+Attributes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Setup the vertex attributes for the object for the shader program to use. 
+
+
+\begin{DoxyItemize}
+\item 
+\item \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{object_8cpp_a2f532028382f0b1215e3240d9546659e}\label{object_8cpp_a2f532028382f0b1215e3240d9546659e} 
+\index{object.cpp@{object.cpp}!translateObject@{translateObject}}
+\index{translateObject@{translateObject}!object.cpp@{object.cpp}}
+\doxysubsubsection{\texorpdfstring{translateObject()}{translateObject()}}
+{\footnotesize\ttfamily void translate\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_object}{Object}} \&}]{object,  }\item[{const glm\+::vec3 \&}]{translation }\end{DoxyParamCaption})}
+

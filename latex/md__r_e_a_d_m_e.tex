@@ -1,0 +1,29 @@
+\chapter{Welcome on VxV}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{Welcome on VxV@{Welcome on VxV}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+{\itshape An Open\+GL engine made by VxV Industries} ~\newline
+ \href{https://github.com/46Yuu}{\texttt{ Henri T.}} \texorpdfstring{$\vert$}{|} \href{https://github.com/Hroycode}{\texttt{ Hugo R.}} \texorpdfstring{$\vert$}{|} \href{https://github.com/Draknut}{\texttt{ Victor L.}} \texorpdfstring{$\vert$}{|} \href{https://github.com/Dranemo}{\texttt{ Yanaël C.}} \texorpdfstring{$\vert$}{|} \href{https://github.com/Mguellaff}{\texttt{ Melvin G.}} \texorpdfstring{$\vert$}{|} \href{https://github.com/LiLPray}{\texttt{ Gwendal A.}} \texorpdfstring{$\vert$}{|} \href{https://github.com/Kybrien}{\texttt{ Adrien P.}} \DoxyHorRuler{0}
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysubsubsection{\texorpdfstring{❓ What is VxV ?}{❓ What is VxV ?}}\label{md__r_e_a_d_m_e_autotoc_md1}
+VxV is a homemade Open\+GL engine we\textquotesingle{}ve been working on since almost 4 weeks. ~\newline
+ It only has an educational purpose (for now at least) and it\textquotesingle{}s the best way for us to understand properly HOW does a game engine work. ~\newline
+ \DoxyHorRuler{0}
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysubsubsection{\texorpdfstring{💬 How to use ?}{💬 How to use ?}}\label{md__r_e_a_d_m_e_autotoc_md2}
+It is actually pretty simple, just download the Alpha release, compile it in your Visual Studio and the .exe should appear in the Debug folder. Simple. \DoxyHorRuler{0}
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysubsubsection{\texorpdfstring{⚠️ Note}{⚠️ Note}}\label{md__r_e_a_d_m_e_autotoc_md3}
+We are still working on this project so the releases are not perfect and you may encounter issues or bugs while using it \+:) ~\newline
+ 👇🏼 If you are interested in the extern libraries we used it\textquotesingle{}s just down below ~\newline
+ \DoxyHorRuler{0}
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysubsection{\texorpdfstring{External Libraries \+:}{External Libraries \+:}}\label{md__r_e_a_d_m_e_autotoc_md4}
+We first used \href{https://www.glfw.org/}{\texttt{ GLFW}} \+: \begin{quote}
+It provided us a simple API for creating windows, contexts and surfaces, receiving input and events. ~\newline
+ \end{quote}
+We then imported \href{https://glew.sourceforge.net/}{\texttt{ GLEW}} and \href{https://github.com/g-truc/glm}{\texttt{ GLM}} \+: \begin{quote}
+GLEW helped us loading and managing Open\+GL the "{}easy"{} way. It\textquotesingle{}s in some way a portal between us and Open\+GL, and it makes Open\+GL convenient to use. ~\newline
+ GLM is a header only C++ mathematics library for graphic software based on the Open\+GL Shading Language (GLSL) specifications. It provides classes and functions designed and implemented with the same naming conventions and functionality than GLSL. \end{quote}
+Considering the problems we got while trying to import images and textures ourselves with a "{}homemade"{} program... we imported \href{https://github.com/nothings/stb}{\texttt{ stb\+Image}} \+: \begin{quote}
+Stb helps us with all the image loading and decoding from file and memory (it supports JPG, PNG, TGA, BMP, PSD, GIF, HDR, PIC files). \end{quote}
+For the 3D objects importation we chose \href{https://github.com/tinyobjloader/tinyobjloader}{\texttt{ tiny\+Obj}} since it\textquotesingle{}s easy as pie to use \+: \begin{quote}
+tiny\+Obj is a single file wavefront obj loader that can parse over 10M polygons with moderate memory and time. It is perfect for embedding .obj loader to our (global illumination) renderer. \end{quote}
+We then needed a Json reader/writer for managing our saves. Thanks to \href{https://github.com/open-source-parsers/jsoncpp}{\texttt{ json\+CPP}} we got all of that quite easily \+: \begin{quote}
+Json\+Cpp is a C++ library that allows manipulating JSON values, including serialization and deserialization to and from strings. It can also preserve existing comment in unserialization/serialization steps, making it a convenient format to store user input files. \end{quote}

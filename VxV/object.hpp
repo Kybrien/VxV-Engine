@@ -83,16 +83,85 @@ public:
 	std::unordered_map<std::pair<GLuint, int>, GLuint, pair_hash> vertexBufferIDs;
 	glm::mat4 transform;
 };
-
+/**
+ * @brief Create a Vertex object from the given index.
+ * * 
+ * * @param attrib 
+ * * @param index 
+ * * @return Vertex 
+ * 
+*/
 Vertex createVertexFromIndex(const tinyobj::attrib_t& attrib, const tinyobj::index_t& index);
+/**
+ * @brief Load the texture from the given filename.
+ * * 
+ * * @param filename name of the file
+ * * @return GLuint returns the texture ID
+ * 
+ */
 GLuint loadTexture(const char* filename);
+/**
+ * @brief Initialize the window and OpenGL settings for the program.
+ * * 
+ * * @param GLFWwindow*& reference to the pointer of the window
+ * * @return void
+ * 
+ */
 void init(GLFWwindow*& window);
+/**
+ * @brief Setup the user inputs for the window.
+ * * 
+ * * @param GLFWwindow* window
+ * * @return void
+ * 
+ */
 void setupInput(GLFWwindow* window);
+/**
+ * @brief Initialize the OpenGL settings and culling.
+ * * 
+ * * @return void
+ * 
+ */
 void initOpenGLSettings();
+/**
+ * @brief Initialize and bind the vertex array object to the openGL context.
+ * * 
+ * * @param GLuint& reference to the vertex array object
+ * * @return void
+ * 
+ */
 void initializeVertexArrayObject(GLuint& VertexArrayID);
+/**
+ * @brief Initialize the projection matrix that corresponds to the camera space.
+ * * 
+ * * @return glm::mat4 returns the projection matrix
+ * 
+ */
 glm::mat4 initializeProjectionMatrix();
+/**
+ * @brief Initialize the view matrix that corresponds to the camera position and where it is looking.
+ * * 
+ * * @return glm::mat4 returns the view matrix
+ * 
+ */
 glm::mat4 initializeViewMatrix();
+/**
+ * @brief Setup the vertex attributes for the object for the shader program to use.
+ * * 
+ * * @return void
+ * 
+ */
 void setupVertexAttributes();
+/**
+ * @brief Setup the buffers for the object to be drawn.
+ * * 
+ * * @param GLuint& reference to the vertex buffer
+ * * @param std::vector<Vertex> vertices
+ * * @param GLuint& reference to the index buffer
+ * * @param std::vector<unsigned int> indices
+ * * @return void
+ * 
+ */
 void setupBuffers(GLuint& vertexbuffer, const std::vector<Vertex>& vertices, GLuint& indexbuffer, const std::vector<unsigned int>& indices);
 void cleanup(GLFWwindow* window, std::vector<Object>& objects, GLuint programID, GLuint VertexArrayID, GLuint& TextureID, GLuint& LightID,
 	GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID,
