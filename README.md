@@ -2,9 +2,12 @@
 *An OpenGL engine made by VxV Industries*   
 [Henri T.](https://github.com/46Yuu) | [Hugo R.](https://github.com/Hroycode) | [Victor L.](https://github.com/Draknut) | [Yanaël C.](https://github.com/Dranemo) | [Melvin G.](https://github.com/Mguellaff) | [Gwendal A.](https://github.com/LiLPray) | [Adrien P.](https://github.com/Kybrien)
 ***
-#### What is VxV ?
+#### ❓ What is VxV ?
 VxV is a homemade OpenGL engine we've been working on since almost 4 weeks.   
 It only has an educational purpose (for now at least) and it's the best way for us to understand properly HOW does a game engine work.   
+***
+#### 💬 How to use ?
+It is actually pretty simple, just download the Alpha release, compile it in your Visual Studio and the .exe should appear. Simple.
 ***
 #### ⚠️ Note
 We are still working on this project so the releases are not perfect and you may encounter issues or bugs while using it :)   
