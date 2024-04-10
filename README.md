@@ -18,11 +18,11 @@ We first used [GLFW](https://www.glfw.org/) :
 > It provided us a simple API for creating windows, contexts and surfaces, receiving input and events.   
 
 We then imported [GLEW](https://glew.sourceforge.net/) and [GLM](https://github.com/g-truc/glm) :
-> GLEW helped us loading and managing OpenGL the "easy" way. It's in some way a portal between us and OpenGL, and it makes OpenGL convenient to use for us.   
+> GLEW helped us loading and managing OpenGL the "easy" way. It's in some way a portal between us and OpenGL, and it makes OpenGL convenient to use.   
 > GLM is a header only C++ mathematics library for graphic software based on the OpenGL Shading Language (GLSL) specifications. It provides classes and functions designed and implemented with the same naming conventions and functionality than GLSL.
 
 Considering the problems we got while trying to import images and textures ourselves with a "homemade" program... we imported [stbImage](https://github.com/nothings/stb) :
-> Stb helps us with all the image loading and decoding from file and memory  (it supports JPG, PNG, TGA, BMP, PSD, GIF, HDR, PIC files)
+> Stb helps us with all the image loading and decoding from file and memory (it supports JPG, PNG, TGA, BMP, PSD, GIF, HDR, PIC files).
 
 For the 3D objects importation we chose [tinyObj](https://github.com/tinyobjloader/tinyobjloader) since it's easy as pie to use :
 > tinyObj is a single file wavefront obj loader that can parse over 10M polygons with moderate memory and time. It is perfect for embedding .obj loader to our (global illumination) renderer.
