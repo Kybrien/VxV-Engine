@@ -2,11 +2,14 @@
 #include "Mesh.h"
 #include "GameObject.h"
 
+#include "MeshManager.h"
+
 Mesh::Mesh(GameObject* go) : Component(go) {
+	MeshManager* meshManager = Manager::GetInstance()->GetManager<MeshManager>();
 	linkedGameObject = go;
 	type = Component::Mesh;
 
-	mesh = nullptr;
+	mesh = meshManager->GetMesh("cube.obj");
 }
 
 void Mesh::Load(Json::Value& compJson, GameObject* parentGO) {

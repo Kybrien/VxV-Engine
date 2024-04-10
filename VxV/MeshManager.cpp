@@ -1,7 +1,7 @@
 #include "MeshManager.h"
 
 
-std::string MeshManager::fileDirection = "Mesh";
+std::string MeshManager::fileDirection = "Files";
 std::string MeshManager::extention = ".obj";
 
 MeshManager::MeshManager(Manager* manager) {
@@ -23,5 +23,5 @@ void MeshManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
         FileName.push_back(static_cast<char>(wc));
     }
 
-    addNewObject("Mesh/" + FileName, meshVector);
+    addNewObject(fileDirection, meshVector);
 }

@@ -14,12 +14,6 @@
 
 int main()
 {
-	Engine* engine = new Engine();
-	engine->Init();
-
-	GameObject* go = new GameObject();
-	go->AddComponent<Mesh>();
-	go->GetComponent<Mesh>()->SetMesh(&(engine->manager->GetManager<MeshManager>()->GetMeshs()[0]));
 
 
 	EngineGUI gui;
@@ -67,6 +61,17 @@ int main()
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init("#version 330");
 
+
+
+	Engine* engine = new Engine();
+	engine->Init();
+
+	GameObject* go = new GameObject();
+	go->AddComponent<Mesh>();
+	go->GetComponent<Mesh>()->SetMesh(engine->manager->GetManager<MeshManager>()->GetMesh("miku.obj"));
+
+	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
+
 	do
 	{
 		// Clear the screen
@@ -103,16 +108,15 @@ int main()
 		// Compute the MVP matrix from keyboard and mouse input
 		computeMatricesFromInputs(window);
 		glm::mat4 ProjectionMatrix = getProjectionMatrix();
-		for (GameObject* go : Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects())
+		for (GameObject* go : goList)
 		{
 			Mesh* meshComp = go->GetComponent<Mesh>();
 			if (meshComp != nullptr)
 			{
 				auto& object = *(meshComp->GetMesh());
-				std::vector<Object> objects = Manager::GetInstance()->GetManager<MeshManager>()->GetMeshs();
 
 				sendMVPData(object, angle, axis, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
-				drawObjects(objects, TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
+				drawObjects(meshComp->GetMesh(), TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
 			}
 		}
 
@@ -137,8 +141,9 @@ int main()
 		{
 			auto& object = *(meshComp->GetMesh());
 
-			cleanup(window, object.vertexbuffer, programID, VertexArrayID);
+			cleanup(window, object);
 		}
 	}
+	finishProgram(programID, VertexArrayID, TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
 	return 0;
 }
