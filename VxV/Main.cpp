@@ -1,18 +1,13 @@
 #include "loadingShader.hpp"
 
-#include <iostream>
-
-#include "Engine.h"
-#include "EngineGUI.h"
-
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
-
+#include "object.hpp"
+#include "EngineGUI.h"#include "WindowGui.h"
+#include "EngineState.h"
 #include "imfilebrowser.h"
 
-int main()
-{
+
+int main() {
+	EngineState* state = EngineState::GetInstance();
 	EngineGUI gui;
 	//On initialise tout
 	GLFWwindow* window;
