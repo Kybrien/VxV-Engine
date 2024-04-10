@@ -4,11 +4,15 @@
 #include "ScriptManager.h"
 #include "PrefabManager.h"
 #include "InputManager.h"
-
+/**
+ * Define the state of the engine.
+ */
 class Engine {
 private:
 
-
+	/**
+	* Define the states of the engine.
+	*/
 	enum EngineState {
 		Off = 0,
 		Initializing,
@@ -37,6 +41,9 @@ public:
 		return instance;
 	}
 
+	/**  
+	* @param none
+	*/
 	EngineState GetState() {
 		return state;
 	}
@@ -45,7 +52,9 @@ public:
 		instance = this;
 	}
 
-
+	/**
+	 * Initialize all the managers and the engine.
+	 */
 	void Init() { 
 		state = Initializing; 
 

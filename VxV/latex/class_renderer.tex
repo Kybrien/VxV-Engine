@@ -1,0 +1,115 @@
+\doxysection{Renderer Class Reference}
+\hypertarget{class_renderer}{}\label{class_renderer}\index{Renderer@{Renderer}}
+
+
+{\ttfamily \#include $<$Renderer.\+h$>$}
+
+Inheritance diagram for Renderer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_renderer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_renderer_a1e671ea244f46da03c2d7c3c31a2f170}{Renderer}} (GLuint \mbox{\hyperlink{class_renderer_a2e641fb7e174aa98002ba249e081d0af}{shader\+Program}})
+\item 
+void \mbox{\hyperlink{class_renderer_adde94d3402b015b1fcd23c9a283cae2e}{Render}} ()
+\item 
+\mbox{\hyperlink{class_renderer_afeee408862d5bd6255a6882d47e6d5cd}{\texorpdfstring{$\sim$}{\string~}\+Renderer}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_component_aca4f3bf8d7148444f750714ca8e58bfe}{Jai\+Besoin\+Dun\+Virtual}} ()
+\item 
+\mbox{\hyperlink{class_component_ae527ef1a4d1be744d50e2676a6c4f5f6}{Component}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go)
+\item 
+virtual void \mbox{\hyperlink{class_component_a78f3311bb53ce9b6d095e95021df681a}{Save}} (Json\+::\+Value \&comp\+Json)=0
+\item 
+virtual void \mbox{\hyperlink{class_component_ac6833433134e649053b0fe16f60dfd98}{Load}} (Json\+::\+Value \&comp\+Json, \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}Parent\+GO)=0
+\item 
+virtual void \mbox{\hyperlink{class_component_ad70a279b1453b27839c0fc6e9f3a0b08}{Copy}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go\+To\+Fill)=0
+\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_component_ae26f4d08f6a55499e30a1f700a4c08b7}{Get\+Linked\+Game\+Object}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+GLuint \mbox{\hyperlink{class_renderer_a3abdaea4bec387e7ca61c5fced91fa80}{VAO}}
+\item 
+GLuint \mbox{\hyperlink{class_renderer_aa0a3629b47335a860d84c20bf934cbd9}{VBO}}
+\item 
+GLuint \mbox{\hyperlink{class_renderer_a2e641fb7e174aa98002ba249e081d0af}{shader\+Program}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Type}} \mbox{\hyperlink{class_component_a18de93d5a176aa3cd6dc6724788dfacb}{type}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Type}} \{ \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94}{Unknown}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059}{Transform}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4acbf24d847fc02f14b8b7bba654ff05f4}{Mesh\+\_\+renderer}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51}{Script\+Component}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_component_ae82678b1f50e36ccba0a8775f12036c3}{linked\+Game\+Object}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_renderer_a1e671ea244f46da03c2d7c3c31a2f170}\label{class_renderer_a1e671ea244f46da03c2d7c3c31a2f170} 
+\index{Renderer@{Renderer}!Renderer@{Renderer}}
+\index{Renderer@{Renderer}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{Renderer()}{Renderer()}}
+{\footnotesize\ttfamily Renderer\+::\+Renderer (\begin{DoxyParamCaption}\item[{GLuint}]{shader\+Program }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_renderer_afeee408862d5bd6255a6882d47e6d5cd}\label{class_renderer_afeee408862d5bd6255a6882d47e6d5cd} 
+\index{Renderer@{Renderer}!````~Renderer@{\texorpdfstring{$\sim$}{\string~}Renderer}}
+\index{````~Renderer@{\texorpdfstring{$\sim$}{\string~}Renderer}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Renderer()}{\string~Renderer()}}
+{\footnotesize\ttfamily Renderer\+::\texorpdfstring{$\sim$}{\string~}\+Renderer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_renderer_adde94d3402b015b1fcd23c9a283cae2e}\label{class_renderer_adde94d3402b015b1fcd23c9a283cae2e} 
+\index{Renderer@{Renderer}!Render@{Render}}
+\index{Render@{Render}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily void Renderer\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_renderer_a2e641fb7e174aa98002ba249e081d0af}\label{class_renderer_a2e641fb7e174aa98002ba249e081d0af} 
+\index{Renderer@{Renderer}!shaderProgram@{shaderProgram}}
+\index{shaderProgram@{shaderProgram}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{shaderProgram}{shaderProgram}}
+{\footnotesize\ttfamily GLuint Renderer\+::shader\+Program}
+
+\Hypertarget{class_renderer_a3abdaea4bec387e7ca61c5fced91fa80}\label{class_renderer_a3abdaea4bec387e7ca61c5fced91fa80} 
+\index{Renderer@{Renderer}!VAO@{VAO}}
+\index{VAO@{VAO}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{VAO}{VAO}}
+{\footnotesize\ttfamily GLuint Renderer\+::\+VAO}
+
+\Hypertarget{class_renderer_aa0a3629b47335a860d84c20bf934cbd9}\label{class_renderer_aa0a3629b47335a860d84c20bf934cbd9} 
+\index{Renderer@{Renderer}!VBO@{VBO}}
+\index{VBO@{VBO}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{VBO}{VBO}}
+{\footnotesize\ttfamily GLuint Renderer\+::\+VBO}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_renderer_8h}{Renderer.\+h}}\end{DoxyCompactItemize}

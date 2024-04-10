@@ -1,0 +1,77 @@
+\doxysection{Engine.\+h}
+\hypertarget{_engine_8h_source}{}\label{_engine_8h_source}\mbox{\hyperlink{_engine_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_scene_manager_8h}{SceneManager.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_script_manager_8h}{ScriptManager.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_prefab_manager_8h}{PrefabManager.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_input_manager_8h}{InputManager.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_engine}{Engine}}\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{enum}\ EngineState\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ Off\ =\ 0,}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ Initializing,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ Ready,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ Starting,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ Running,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ AsktoStop,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ Stopping,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ Stopped}
+\DoxyCodeLine{00025\ \ \ \ \ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_engine}{Engine}}*\ instance;}
+\DoxyCodeLine{00029\ \ \ \ \ EngineState\ state\ =\ Off;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_manager}{Manager}}*\ \mbox{\hyperlink{class_engine_a31bdbb12d7926d71dcaeb0fedcc7a9d5}{manager}};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_engine}{Engine}}*\ \mbox{\hyperlink{class_engine_a2146785b1df88f59838cab30aabc8d37}{GetInstance}}()}
+\DoxyCodeLine{00038\ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!instance)}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ instance\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}{Engine}}();}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ instance;}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00047\ \ \ \ \ EngineState\ \mbox{\hyperlink{class_engine_a755f703d22ba6f1b3612f0b9136808ae}{GetState}}()\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ state;}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}{Engine}}()\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ instance\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_aa425192c63c4e258588db980ddf18d0d}{Init}}()\ \{\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ state\ =\ Initializing;\ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_engine_a31bdbb12d7926d71dcaeb0fedcc7a9d5}{manager}}\ =\ \mbox{\hyperlink{class_manager_abf52d7d532c05607cc23c687f23e6b67}{Manager::GetInstance}}();}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_engine_a31bdbb12d7926d71dcaeb0fedcc7a9d5}{manager}}-\/>\mbox{\hyperlink{class_manager_a200a7092507e1769240452e88996127b}{Init}}();}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ init\ les\ managers}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ state\ =\ Ready;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//init\ go}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_engine_a1fbe9f5cb4abc3572e432cae1f154817}{Start}}();}
+\DoxyCodeLine{00068\ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_a1fbe9f5cb4abc3572e432cae1f154817}{Start}}()\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ state\ =\ Starting;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ start\ go}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_engine_ac84eefe06226f430a2448306e6fd2579}{Update}}();}
+\DoxyCodeLine{00076\ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_ac84eefe06226f430a2448306e6fd2579}{Update}}()\ }
+\DoxyCodeLine{00078\ \ \ \ \ \{\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ state\ =\ Running;\ }
+\DoxyCodeLine{00080\ \ \ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \};}
+
+\end{DoxyCode}

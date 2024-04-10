@@ -1,3 +1,4 @@
+@mainpage
 # Welcome on VxV
 *An OpenGL engine made by VxV Industries*   
 [Henri T.](https://github.com/46Yuu) | [Hugo R.](https://github.com/Hroycode) | [Victor L.](https://github.com/Draknut) | [Yanaël C.](https://github.com/Dranemo) | [Melvin G.](https://github.com/Mguellaff) | [Gwendal A.](https://github.com/LiLPray) | [Adrien P.](https://github.com/Kybrien)

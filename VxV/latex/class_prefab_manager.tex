@@ -1,0 +1,102 @@
+\doxysection{Prefab\+Manager Class Reference}
+\hypertarget{class_prefab_manager}{}\label{class_prefab_manager}\index{PrefabManager@{PrefabManager}}
+
+
+{\ttfamily \#include $<$Prefab\+Manager.\+h$>$}
+
+Inheritance diagram for Prefab\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_prefab_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_prefab_manager_af169e044812573aa3496b9ea78c8a0a1}{Prefab\+Manager}} (\mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*}manager)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_prefab}{Prefab}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_prefab_manager_a20932f2cbdfcc5824166235b0e4f29c9}{Get\+Prefabs}} ()
+\item 
+void \mbox{\hyperlink{class_prefab_manager_ab3bbbe5b237178aa106ba259b6733839}{Add\+Prefab}} (\mbox{\hyperlink{class_prefab}{Prefab}} \texorpdfstring{$\ast$}{*}prefab)
+\item 
+void \mbox{\hyperlink{class_prefab_manager_ae30095617801209b09aee5b57abd76a7}{Save}} () override
+\item 
+void \mbox{\hyperlink{class_prefab_manager_a5a30d1ed492b07435cbd55cfc2b6eebd}{Load}} (std\+::wstring w\+File\+Direction, std\+::wstring w\+File\+Name) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_manager}{Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_a2569efa6dd78f87cc0b64086043cc4ca}{Get\+Manager}} ()
+\item 
+void \mbox{\hyperlink{class_manager_a200a7092507e1769240452e88996127b}{Init}} ()
+\item 
+void \mbox{\hyperlink{class_manager_a037a7066aa1ba886bafe691ef3f6f98c}{Stop}} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_manager_ab6bfbb7862710ba6c42634f7ea521994}{Add\+Manager}} (T \texorpdfstring{$\ast$}{*}manager)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_manager}{Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_abf52d7d532c05607cc23c687f23e6b67}{Get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_manager}{Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_manager_a066ee0e0faa861515f582e510a722804}{Search\+File}} (std\+::string file\+Direction, std\+::string extension, T \texorpdfstring{$\ast$}{*}manager)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_manager}{Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_ac80f5ee151565f111593921bac645ad7}{instance}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_prefab_manager_af169e044812573aa3496b9ea78c8a0a1}\label{class_prefab_manager_af169e044812573aa3496b9ea78c8a0a1} 
+\index{PrefabManager@{PrefabManager}!PrefabManager@{PrefabManager}}
+\index{PrefabManager@{PrefabManager}!PrefabManager@{PrefabManager}}
+\doxysubsubsection{\texorpdfstring{PrefabManager()}{PrefabManager()}}
+{\footnotesize\ttfamily Prefab\+Manager\+::\+Prefab\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*}}]{manager }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_prefab_manager_ab3bbbe5b237178aa106ba259b6733839}\label{class_prefab_manager_ab3bbbe5b237178aa106ba259b6733839} 
+\index{PrefabManager@{PrefabManager}!AddPrefab@{AddPrefab}}
+\index{AddPrefab@{AddPrefab}!PrefabManager@{PrefabManager}}
+\doxysubsubsection{\texorpdfstring{AddPrefab()}{AddPrefab()}}
+{\footnotesize\ttfamily void Prefab\+Manager\+::\+Add\+Prefab (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_prefab}{Prefab}} \texorpdfstring{$\ast$}{*}}]{prefab }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_prefab_manager_a20932f2cbdfcc5824166235b0e4f29c9}\label{class_prefab_manager_a20932f2cbdfcc5824166235b0e4f29c9} 
+\index{PrefabManager@{PrefabManager}!GetPrefabs@{GetPrefabs}}
+\index{GetPrefabs@{GetPrefabs}!PrefabManager@{PrefabManager}}
+\doxysubsubsection{\texorpdfstring{GetPrefabs()}{GetPrefabs()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_prefab}{Prefab}} \texorpdfstring{$\ast$}{*} $>$ Prefab\+Manager\+::\+Get\+Prefabs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_prefab_manager_a5a30d1ed492b07435cbd55cfc2b6eebd}\label{class_prefab_manager_a5a30d1ed492b07435cbd55cfc2b6eebd} 
+\index{PrefabManager@{PrefabManager}!Load@{Load}}
+\index{Load@{Load}!PrefabManager@{PrefabManager}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily void Prefab\+Manager\+::\+Load (\begin{DoxyParamCaption}\item[{std\+::wstring}]{w\+File\+Direction,  }\item[{std\+::wstring}]{w\+File\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_manager_a1ca627323200c3ac1c6da0d3c510f0c7}{Manager}}.
+
+\Hypertarget{class_prefab_manager_ae30095617801209b09aee5b57abd76a7}\label{class_prefab_manager_ae30095617801209b09aee5b57abd76a7} 
+\index{PrefabManager@{PrefabManager}!Save@{Save}}
+\index{Save@{Save}!PrefabManager@{PrefabManager}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily void Prefab\+Manager\+::\+Save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_manager_aa66c5cc0be93116d3901ce317b2332fb}{Manager}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_prefab_manager_8h}{Prefab\+Manager.\+h}}\item 
+\mbox{\hyperlink{_prefab_manager_8cpp}{Prefab\+Manager.\+cpp}}\end{DoxyCompactItemize}

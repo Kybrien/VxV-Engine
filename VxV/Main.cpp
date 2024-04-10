@@ -8,7 +8,6 @@
 #include "EngineGUI.h"
 
 #include "imfilebrowser.h"
-
 int main() {
 	EngineGUI gui;
 	//On initialise tout
