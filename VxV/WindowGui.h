@@ -9,14 +9,13 @@
 #include <fstream>
 #include <string>
 #include "imfilebrowser.h"
-
-static bool showExplorer = false;
+#include "GameObject.h"
 
 static void openFileExplorer() {
 	// Créez une nouvelle fenêtre ImGui
 	static ImGui::FileBrowser fileDialog;
 	fileDialog.SetTypeFilters({ ".obj" });
-	if (ImGui::Begin("dummy window"))
+	if (ImGui::Begin("File Explorer"))
 	{
 			fileDialog.Open();
 	}
@@ -34,8 +33,8 @@ static void ShowExampleMenuFile()
 {
 
 	if (ImGui::MenuItem("New")) {}
-	if (ImGui::MenuItem("Open", "Ctrl+O")) { openFileExplorer(); std::cout << "open file" << std::endl;
-	}
+	if (ImGui::MenuItem("Open", "Ctrl+O")) { openFileExplorer(); }
+	
 	if (ImGui::BeginMenu("Open Recent"))
 	{
 		ImGui::MenuItem("test");
@@ -398,19 +397,31 @@ void ShowInputBool(const std::string& message, bool& input, bool& show) {
 	ImGui::End();
 }
 
-void ShowGameObjects(std::vector<std::string>& gameObjects, bool& show) {
-	// Créez une nouvelle fenêtre ImGui
-	ImGui::Begin("GameObjects", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
+/*void ModifyGameObjects()
+{
+	// Structure pour représenter un GameObject
+	struct GameObject {
+		std::string name;
+		float position[3] = { 0.0f, 0.0f, 0.0f };
+		float rotation[3] = { 0.0f, 0.0f, 0.0f };
+	};
+	// Commencer une nouvelle fenêtre ImGui
+	ImGui::Begin("GameObjects");
 
-	// Parcourez tous les GameObjects
-	for (int i = 0; i < gameObjects.size(); i++) {
-		// Affichez le GameObject
-		ImGui::Text(gameObjects[i].c_str());
+	// Parcourir la liste de GameObjects
+	for (GameObject& gameObject : gameObjects)
+	{
+		if (ImGui::TreeNode(gameObject.name.c_str()))
+		{
+			ImGui::SliderFloat3("Position", gameObject.position, -100.0f, 100.0f);
+			ImGui::SliderFloat3("Rotation", gameObject.rotation, -180.0f, 180.0f);
+			ImGui::TreePop();
+		}
 	}
 
-	// Terminez la fenêtre
+	// Terminer la fenêtre ImGui
 	ImGui::End();
-}
+}*/
 
 void CreateGameObject(std::vector<std::string>& gameObjects, bool& show) {
 	// Créez une nouvelle fenêtre ImGui

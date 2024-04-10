@@ -6,17 +6,21 @@
 #include <GLM/glm.hpp>
 #include "Transform.h"
 #include "ScriptingComponent.h"
+#include "Scene.h"
 
 class Scene;
 class Prefab;
 
 class GameObject {
+    void UIGameObject()
+        ;
+
 public:
     Scene* currentScene;
 
 
     std::vector<Component*> components;
-
+    std::vector<GameObject> gameObjects;
     GameObject(std::string name_ = "GO", bool PrefabLoading = false, Prefab* prefab = nullptr, bool copying = false);
 
     glm::vec3 origin;
