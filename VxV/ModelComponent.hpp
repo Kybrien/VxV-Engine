@@ -72,7 +72,7 @@ namespace std {
 	};
 }
 
-class Object {
+class ModelComponent {
 public:
 	tinyobj::attrib_t attributes;
 	std::vector<tinyobj::shape_t> shapes;
@@ -83,14 +83,16 @@ public:
 	std::unordered_map<std::pair<GLuint, int>, GLuint, pair_hash> vertexBufferIDs;
 	glm::mat4 transform;
 };
+
 /**
- * @brief Create a Vertex object from the given index.
+ * @brief Create a Vertex from the given index.
  * * @param attrib 
  * * @param index 
  * * @return Vertex 
  * 
 */
 Vertex createVertexFromIndex(const tinyobj::attrib_t& attrib, const tinyobj::index_t& index);
+
 /**
  * @brief Load the texture from the given filename.
  * * @param filename name of the file
@@ -98,6 +100,7 @@ Vertex createVertexFromIndex(const tinyobj::attrib_t& attrib, const tinyobj::ind
  * 
  */
 GLuint loadTexture(const char* filename);
+
 /**
  * @brief Initialize the window and OpenGL settings for the program.
  * * @param GLFWwindow*& reference to the pointer of the window
@@ -105,6 +108,7 @@ GLuint loadTexture(const char* filename);
  * 
  */
 void init(GLFWwindow*& window);
+
 /**
  * @brief Setup the user inputs for the window.
  * * @param GLFWwindow* window
@@ -112,12 +116,14 @@ void init(GLFWwindow*& window);
  * 
  */
 void setupInput(GLFWwindow* window);
+
 /**
  * @brief Initialize the OpenGL settings and culling.
  * * @return void
  * 
  */
 void initOpenGLSettings();
+
 /**
  * @brief Initialize and bind the vertex array object to the openGL context.
  * * @param GLuint& reference to the vertex array object
@@ -125,26 +131,30 @@ void initOpenGLSettings();
  * 
  */
 void initializeVertexArrayObject(GLuint& VertexArrayID);
+
 /**
  * @brief Initialize the projection matrix that corresponds to the camera space.
  * * @return glm::mat4 returns the projection matrix
  * 
  */
 glm::mat4 initializeProjectionMatrix();
+
 /**
  * @brief Initialize the view matrix that corresponds to the camera position and where it is looking.
  * * @return glm::mat4 returns the view matrix
  * 
  */
 glm::mat4 initializeViewMatrix();
+
 /**
- * @brief Setup the vertex attributes for the object for the shader program to use.
+ * @brief Setup the vertex attributes of the Model for the shader program to use.
  * * @return void
  * 
  */
 void setupVertexAttributes();
+
 /**
- * @brief Setup the buffers for the object to be drawn.
+ * @brief Setup the buffers for the Model to be drawn.
  * * @param GLuint& reference to the vertex buffer
  * * @param std::vector<Vertex> vertices
  * * @param GLuint& reference to the index buffer
@@ -153,10 +163,11 @@ void setupVertexAttributes();
  * 
  */
 void setupBuffers(GLuint& vertexbuffer, const std::vector<Vertex>& vertices, GLuint& indexbuffer, const std::vector<unsigned int>& indices);
+
 /**
  * @brief Delete and clean all the handles of our render program.
  * * @param GLFWwindow* window
- * * @param std::vector<Object>& reference to the objects
+ * * @param std::vector<ModelComponent>& reference to the models
  * * @param GLuint& program ID
  * * @param GLuint& vertex array ID
  * * @param GLuint& texture ID
@@ -170,56 +181,64 @@ void setupBuffers(GLuint& vertexbuffer, const std::vector<Vertex>& vertices, GLu
  * * @return void
  * 
  */
-void cleanup(GLFWwindow* window, std::vector<Object>& objects, GLuint programID, GLuint VertexArrayID, GLuint& TextureID, GLuint& LightID,
+void cleanup(GLFWwindow* window, std::vector<ModelComponent>& models, GLuint programID, GLuint VertexArrayID, GLuint& TextureID, GLuint& LightID,
 	GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID,
 	GLuint& ModelMatrixID);
+
 /**
-* @brief Load the object from the given filename and store the data in obj.
+* @brief Load the Model from the given filename and store the data in the model.
 * @param filename name of the file
-* @param obj reference to the object
+* @param ModelComponent reference to the model to store the data in
 * @return void
 */
-void loadingObject(const std::string& filename, Object& obj);
+void loadingModel(const std::string& filename, ModelComponent& model);
+
 /**
-* @brief Load the textures from the object.
-* @param obj reference to the object
+* @brief Load the textures from the Model.
+* @param ModelComponent reference to the Model to store the data in
 * @return void
 */
-void loadTextures(Object& obj);
+void loadTextures(ModelComponent& model);
+
 /**
-* @brief Load the object and textures from the given filename and store the data in obj.
+* @brief Load the mesh and textures from the given filename and store the data in obj.
 * @param filename name of the file
-* @param obj reference to the object
+* @param ModelComponent reference to the model
 * @return void
 */
-void loadObjAndTextures(const std::string& filename, Object& obj);
+void loadObjAndTextures(const std::string& filename, ModelComponent& model);
+
 /**
-* @brief Apply batching to the object to regroup all faces using the same material for less draw calls.
-* @param obj reference to the object
+* @brief Apply batching to the model to regroup all faces using the same material for less draw calls.
+* @param ModelComponent reference to the model
 * @return void
 */ 
-void batchingObj(Object& obj);
+void batchingObj(ModelComponent& model);
+
 /**
-* @brief Load the object and apply batching to the object.
+* @brief Load the obj and apply batching to the model.
 * @param filename name of the file
-* @param obj reference to the object
+* @param ModelComponent reference to the model
 * @return void
 */ 
-void loadObjAndBatching(const std::string& filename, Object& obj);
+void loadObjAndBatching(const std::string& filename, ModelComponent& model);
+
 /**
-* @brief Add the new object to the objects vector storing all the objects to render.
+* @brief Add the new model to the models vector storing all the models to render.
 * @param filename name of the file
-* @param objects reference to the objects vector
+* @param ModelComponent reference to the models vector
 * @return void
 */ 
-void addNewObject(const std::string& filename, std::vector<Object>& objects);
+void addNewModel(const std::string& filename, std::vector<ModelComponent>& models);
+
 /**
-* @brief Copy the object and add it to the objects vector storing all the objects to render.
-* @param obj reference to the object
-* @param objects reference to the objects vector
+* @brief Copy the model and add it to the models vector storing all the models to render.
+* @param ModelComponent reference to the model
+* @param models reference to the models vector
 * @return void
 */
-void copyObjectAndAdd(const Object& obj, std::vector<Object>& objects);
+void copyModelAndAdd(const ModelComponent& model, std::vector<ModelComponent>& models);
+
 /**
 * @brief Setup the handles for the uniforms of the shader program.
 * @param programID reference to the program ID
@@ -235,42 +254,47 @@ void copyObjectAndAdd(const Object& obj, std::vector<Object>& objects);
 */ 
 void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& LightID, GLuint& MaterialAmbientColorID,
 	GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID);
+
 /**
-* @brief Draw the object to the screen.
-* @param object reference to the object
+* @brief Draw the model to the screen.
+* @param ModelComponent reference to the model
 * @param TextureID reference to the texture ID
 * @param MaterialAmbientColorID reference to the material ambient color ID
 * @param MaterialDiffuseColorID reference to the material diffuse color ID
 * @param MaterialSpecularColorID reference to the material specular color ID
 * @return void
 */
-void drawObject(Object& object, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID,
+void drawModel(ModelComponent& model, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID,
 	GLuint MaterialSpecularColorID);
+
 /**
-* @brief Translate the object by the given translation vector.
-* @param object reference to the object
+* @brief Translate the model by the given translation vector.
+* @param model reference to the model
 * @param translation translation vector
 * @return void
 */
-void translateObject(Object& object, const glm::vec3& translation);
+void translateModel(ModelComponent& model, const glm::vec3& translation);
+
 /**
-* @brief Rotate the object by the given angle and axis.
-* @param object reference to the object
+* @brief Rotate the model by the given angle and axis.
+* @param ModelComponent reference to the model
 * @param angle angle to rotate
 * @param axis axis to rotate
 * @return void
 */
-void rotateObject(Object& object, float angle, const glm::vec3& axis);
+void rotateModel(ModelComponent& model, float angle, const glm::vec3& axis);
+
 /**
-* @brief Scale the object by the given scale vector.
-* @param object reference to the object
+* @brief Scale the model by the given scale vector.
+* @param ModelComponent reference to the model
 * @param scale scale vector
 * @return void
 */
-void scaleObject(Object& object, const glm::vec3& scale);
+void scaleModel(ModelComponent& model, const glm::vec3& scale);
+
 /**
 * @brief Send the MVP data to the shader program.
-* @param object reference to the object
+* @param ModelComponent reference to the model
 * @param angle angle to rotate
 * @param axis axis to rotate
 * @param VertexArrayID reference to the vertex array ID
@@ -279,7 +303,7 @@ void scaleObject(Object& object, const glm::vec3& scale);
 * @param ViewMatrixID reference to the view matrix ID
 * @return void
 */
-void sendMVPData(Object& object, float angle, const glm::vec3& axis, GLuint VertexArrayID, GLuint MatrixID,
+void sendMVPData(ModelComponent& model, float angle, const glm::vec3& axis, GLuint VertexArrayID, GLuint MatrixID,
 	GLuint ModelMatrixID, GLuint ViewMatrixID);
 
 #endif

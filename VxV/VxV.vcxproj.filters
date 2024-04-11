@@ -84,7 +84,7 @@
     <ClCompile Include="loadingShader.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="object.cpp">
+    <ClCompile Include="ModelComponent.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="EngineGUI.cpp">
@@ -197,7 +197,7 @@
     <ClInclude Include="loadingShader.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="object.hpp">
+    <ClInclude Include="ModelComponent.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

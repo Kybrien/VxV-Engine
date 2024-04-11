@@ -4,7 +4,7 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "MemoryPool.h"
 
-#include "object.hpp"
+#include "ModelComponent.hpp"
 #include "EngineGUI.h"#include "WindowGui.h"
 
 #include "imfilebrowser.h"
@@ -29,8 +29,8 @@ int main() {
 	glm::mat4 Projection = initializeProjectionMatrix();
 	glm::mat4 View = initializeViewMatrix();
 
-	std::vector<Object> objects;
-	addNewObject("Files/miku.obj", objects);
+	std::vector<ModelComponent> models;
+	addNewModel("Files/miku.obj", models);
 
 	// Get a handle for our uniforms
 	GLuint TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID;
@@ -91,9 +91,9 @@ int main() {
 		// Compute the MVP matrix from keyboard and mouse input
 		computeMatricesFromInputs(window);
 		glm::mat4 ProjectionMatrix = getProjectionMatrix();
-		for (auto& object : objects) {
-			sendMVPData(object, angle, axis, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
-			drawObject(object, TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
+		for (auto& model : models) {
+			sendMVPData(model, angle, axis, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
+			drawModel(model, TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
 		}
 
 		gui.UpdateGui();
@@ -110,7 +110,7 @@ int main() {
 		glfwPollEvents();
 	} while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
 
-	cleanup(window, objects, programID, VertexArrayID, TextureID, LightID,
+	cleanup(window, models, programID, VertexArrayID, TextureID, LightID,
 		MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
 	return 0;
 }
