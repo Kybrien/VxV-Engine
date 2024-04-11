@@ -2,25 +2,25 @@
 
 
 #include "Component.h"
-#include "object.hpp"
+#include "ModelComponent.hpp"
 
 
-class Mesh : public Component
+class Model : public Component
 {
 private:
-	Object* mesh;
+	ModelComponent* model;
 
 public:
-	Mesh(GameObject* go);
+	Model(GameObject* go);
 
 	void Save(Json::Value& compJson) override;
 	void Load(Json::Value& compJson, GameObject* ParentGO) override;
 
 	void Copy(GameObject* goToFill) override;
 
-	void SetMesh(std::string meshName);
+	void SetModel(std::string modelName);
 
-	Object*& GetMesh() {
-		return mesh;
+	ModelComponent*& GetModel() {
+		return model;
 	}
 };
