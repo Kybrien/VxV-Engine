@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['windowgui_2eh_0',['WindowGui.h',['../_window_gui_8h.html',1,'']]]
+  ['_7erenderer_0',['~Renderer',['../class_renderer.html#afeee408862d5bd6255a6882d47e6d5cd',1,'Renderer']]]
 ];

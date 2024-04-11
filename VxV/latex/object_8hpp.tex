@@ -57,7 +57,7 @@ void \mbox{\hyperlink{object_8hpp_ac3e4d4cfe635daf76270ee3492fe30e4}{setup\+Vert
 void \mbox{\hyperlink{object_8hpp_ae97479b18d4aa965bfede8e68520f9bd}{setup\+Buffers}} (GLuint \&vertexbuffer, const std\+::vector$<$ \mbox{\hyperlink{class_vertex}{Vertex}} $>$ \&vertices, GLuint \&indexbuffer, const std\+::vector$<$ unsigned int $>$ \&indices)
 \begin{DoxyCompactList}\small\item\em Setup the buffers for the object to be drawn. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{object_8hpp_a15ab9bea9e8686fbe8e2a6815f414503}{cleanup}} (GLFWwindow \texorpdfstring{$\ast$}{*}window, std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} $>$ \&objects, GLuint program\+ID, GLuint Vertex\+Array\+ID, GLuint \&Texture\+ID, GLuint \&Light\+ID, GLuint \&Material\+Ambient\+Color\+ID, GLuint \&Material\+Diffuse\+Color\+ID, GLuint \&Material\+Specular\+Color\+ID, GLuint \&Matrix\+ID, GLuint \&View\+Matrix\+ID, GLuint \&Model\+Matrix\+ID)
-\item 
+\begin{DoxyCompactList}\small\item\em Delete and clean all the handles of our render program. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{object_8hpp_abb14214ff67e919f55a92b86a0ec79d1}{loading\+Object}} (const std\+::string \&filename, \mbox{\hyperlink{class_object}{Object}} \&obj)
 \item 
 void \mbox{\hyperlink{object_8hpp_a3bf8fed1fb5996ae7047f4821514d29b}{load\+Textures}} (\mbox{\hyperlink{class_object}{Object}} \&obj)
@@ -105,7 +105,90 @@ void \mbox{\hyperlink{object_8hpp_ac97e52ddf4b9d85af238aa36dcbaa683}{send\+MVPDa
 \doxysubsubsection{\texorpdfstring{cleanup()}{cleanup()}}
 {\footnotesize\ttfamily void cleanup (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} $>$ \&}]{objects,  }\item[{GLuint}]{program\+ID,  }\item[{GLuint}]{Vertex\+Array\+ID,  }\item[{GLuint \&}]{Texture\+ID,  }\item[{GLuint \&}]{Light\+ID,  }\item[{GLuint \&}]{Material\+Ambient\+Color\+ID,  }\item[{GLuint \&}]{Material\+Diffuse\+Color\+ID,  }\item[{GLuint \&}]{Material\+Specular\+Color\+ID,  }\item[{GLuint \&}]{Matrix\+ID,  }\item[{GLuint \&}]{View\+Matrix\+ID,  }\item[{GLuint \&}]{Model\+Matrix\+ID }\end{DoxyParamCaption})}
 
-\Hypertarget{object_8hpp_a05939fd662d197f395fd5fad460cf1a5}\label{object_8hpp_a05939fd662d197f395fd5fad460cf1a5} 
+
+
+Delete and clean all the handles of our render program. 
+
+
+\begin{DoxyItemize}
+\item 
+\item 
+\begin{DoxyParams}{Parameters}
+{\em GLFWwindow\texorpdfstring{$\ast$}{*}} & window\\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em std\+::vector$<$\+Object$>$\&} & reference to the objects\\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em GLuint\&} & program ID\\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em GLuint\&} & vertex array ID\\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em GLuint\&} & texture ID\\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em GLuint\&} & light ID\\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em GLuint\&} & reference to the material ambient color ID\\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em GLuint\&} & reference to the material diffuse color ID\\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em GLuint\&} & reference to the material specular color ID\\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em GLuint\&} & reference to the matrix ID\\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em GLuint\&} & reference to the view matrix ID\\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em GLuint\&} & reference to the model matrix ID\\
+\hline
+\end{DoxyParams}
+
+\item \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{object_8hpp_a05939fd662d197f395fd5fad460cf1a5}\label{object_8hpp_a05939fd662d197f395fd5fad460cf1a5} 
 \index{object.hpp@{object.hpp}!copyObjectAndAdd@{copyObjectAndAdd}}
 \index{copyObjectAndAdd@{copyObjectAndAdd}!object.hpp@{object.hpp}}
 \doxysubsubsection{\texorpdfstring{copyObjectAndAdd()}{copyObjectAndAdd()}}

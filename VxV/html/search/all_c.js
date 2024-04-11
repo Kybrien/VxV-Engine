@@ -1,16 +1,20 @@
 var searchData=
 [
-  ['left_0',['Left',['../class_input_manager.html#a1a4a2a196e96e61cd81a8c26dc32fcc2a506388d1bc03b598e3d31a37c14e71a9',1,'InputManager']]],
-  ['linkedgameobject_1',['linkedGameObject',['../class_component.html#ae82678b1f50e36ccba0a8775f12036c3',1,'Component']]],
-  ['load_2',['Load',['../class_component.html#ac6833433134e649053b0fe16f60dfd98',1,'Component::Load()'],['../class_game_object.html#a623d7145313610b8623d62ba9afb4e7f',1,'GameObject::Load()'],['../class_manager.html#a1ca627323200c3ac1c6da0d3c510f0c7',1,'Manager::Load()'],['../class_prefab_manager.html#a5a30d1ed492b07435cbd55cfc2b6eebd',1,'PrefabManager::Load()'],['../class_scene_manager.html#aa3b2dea2aa6baab258cbb1348846ee08',1,'SceneManager::Load()'],['../class_script.html#a5d3f82c959b4faba268cf3f546d66129',1,'Script::Load()'],['../class_scripting_component.html#a039125336f48a34ba45e1e3989e61d4d',1,'ScriptingComponent::Load()'],['../class_script_manager.html#a665862e0d165a750ddb7d387b9563df8',1,'ScriptManager::Load()'],['../class_transform.html#a6fefaab8dad405393d413a05742b23db',1,'Transform::Load()']]],
-  ['loadcomponent_3',['LoadComponent',['../class_game_object.html#a2efa82d6c00842f432826bd9769ffc17',1,'GameObject']]],
-  ['loadingobject_4',['loadingObject',['../object_8cpp.html#abb14214ff67e919f55a92b86a0ec79d1',1,'loadingObject(const std::string &amp;filename, Object &amp;obj):&#160;object.cpp'],['../object_8hpp.html#abb14214ff67e919f55a92b86a0ec79d1',1,'loadingObject(const std::string &amp;filename, Object &amp;obj):&#160;object.cpp']]],
-  ['loadingshader_2ecpp_5',['loadingShader.cpp',['../loading_shader_8cpp.html',1,'']]],
-  ['loadingshader_2ehpp_6',['loadingShader.hpp',['../loading_shader_8hpp.html',1,'']]],
-  ['loadobjandbatching_7',['loadObjAndBatching',['../object_8cpp.html#a53821b06fa0fc9ee4d459706b4e2a231',1,'loadObjAndBatching(const std::string &amp;filename, Object &amp;obj):&#160;object.cpp'],['../object_8hpp.html#a53821b06fa0fc9ee4d459706b4e2a231',1,'loadObjAndBatching(const std::string &amp;filename, Object &amp;obj):&#160;object.cpp']]],
-  ['loadobjandtextures_8',['loadObjAndTextures',['../object_8cpp.html#a21dc407bf79c7ab357937beb739158fd',1,'loadObjAndTextures(const std::string &amp;filename, Object &amp;obj):&#160;object.cpp'],['../object_8hpp.html#a21dc407bf79c7ab357937beb739158fd',1,'loadObjAndTextures(const std::string &amp;filename, Object &amp;obj):&#160;object.cpp']]],
-  ['loadshaders_9',['LoadShaders',['../loading_shader_8cpp.html#a833f10cca6a76fe34ae9efa23ac5e73c',1,'LoadShaders(const char *vertex_file_path, const char *fragment_file_path):&#160;loadingShader.cpp'],['../loading_shader_8hpp.html#a833f10cca6a76fe34ae9efa23ac5e73c',1,'LoadShaders(const char *vertex_file_path, const char *fragment_file_path):&#160;loadingShader.cpp']]],
-  ['loadtexture_10',['loadTexture',['../object_8cpp.html#ada2dfa2a2473899e0ec39b3ee9695cf1',1,'loadTexture(const char *filename):&#160;object.cpp'],['../object_8hpp.html#ada2dfa2a2473899e0ec39b3ee9695cf1',1,'loadTexture(const char *filename):&#160;object.cpp']]],
-  ['loadtextures_11',['loadTextures',['../object_8cpp.html#a3bf8fed1fb5996ae7047f4821514d29b',1,'loadTextures(Object &amp;obj):&#160;object.cpp'],['../object_8hpp.html#a3bf8fed1fb5996ae7047f4821514d29b',1,'loadTextures(Object &amp;obj):&#160;object.cpp']]],
-  ['log_12',['Log',['../class_debug.html#a3a3a8c096d9abd1425e2d64e8e02b100',1,'Debug']]]
+  ['main_0',['main',['../_main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'Main.cpp']]],
+  ['main_2ecpp_1',['Main.cpp',['../_main_8cpp.html',1,'']]],
+  ['manager_2',['Manager',['../class_manager.html',1,'']]],
+  ['manager_3',['manager',['../class_engine.html#a31bdbb12d7926d71dcaeb0fedcc7a9d5',1,'Engine']]],
+  ['manager_2ecpp_4',['Manager.cpp',['../_manager_8cpp.html',1,'']]],
+  ['manager_2eh_5',['Manager.h',['../_manager_8h.html',1,'']]],
+  ['manager_2einl_6',['Manager.inl',['../_manager_8inl.html',1,'']]],
+  ['materials_7',['materials',['../class_object.html#a3461f82aeb4e5520ac7f58025e9ad613',1,'Object']]],
+  ['memorypool_8',['MemoryPool',['../class_memory_pool.html',1,'MemoryPool&lt; T, Strategy &gt;'],['../class_memory_pool.html#a81562e65d5b85a7615f60b44d4461252',1,'MemoryPool::MemoryPool()'],['../class_memory_pool_3_01_game_object_00_01_strategy_01_4.html#a98fe2f8327a2a030351f512be74cf965',1,'MemoryPool&lt; GameObject, Strategy &gt;::MemoryPool()']]],
+  ['memorypool_2ecpp_9',['MemoryPool.cpp',['../_memory_pool_8cpp.html',1,'']]],
+  ['memorypool_2eh_10',['MemoryPool.h',['../_memory_pool_8h.html',1,'']]],
+  ['memorypool_3c_20gameobject_2c_20mempool_5flinear_3c_20gameobject_20_3e_20_3e_11',['MemoryPool&lt; GameObject, MemPool_Linear&lt; GameObject &gt; &gt;',['../class_memory_pool.html',1,'']]],
+  ['memorypool_3c_20gameobject_2c_20strategy_20_3e_12',['MemoryPool&lt; GameObject, Strategy &gt;',['../class_memory_pool_3_01_game_object_00_01_strategy_01_4.html',1,'']]],
+  ['mempool_5flinear_13',['MemPool_Linear',['../class_mem_pool___linear.html',1,'MemPool_Linear&lt; T &gt;'],['../class_mem_pool___linear.html#a746247aa76fe63d6a57e0685cdf294b0',1,'MemPool_Linear::MemPool_Linear()']]],
+  ['mempool_5flinear_3c_20gameobject_20_3e_14',['MemPool_Linear&lt; GameObject &gt;',['../class_mem_pool___linear.html',1,'']]],
+  ['mesh_5frenderer_15',['Mesh_renderer',['../class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4acbf24d847fc02f14b8b7bba654ff05f4',1,'Component']]],
+  ['mousespeed_16',['mouseSpeed',['../controls_8cpp.html#ad86cf88b1bfa45799e65ca2a0ec9f24c',1,'controls.cpp']]]
 ];
