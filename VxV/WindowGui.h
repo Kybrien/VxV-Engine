@@ -10,6 +10,8 @@
 #include <string>
 #include "imfilebrowser.h"
 #include "GameObject.h"
+#include "ConsoleRecup.h"
+static bool enabled = true;
 
 static void openFileExplorer() {
 	// Créez une nouvelle fenêtre ImGui
@@ -56,8 +58,7 @@ static void ShowExampleMenuFile()
 	ImGui::Separator();
 	if (ImGui::BeginMenu("Options"))
 	{
-		static bool enabled = true;
-		ImGui::MenuItem("Enabled optio,", "", &enabled);
+		ImGui::MenuItem("show fps & mouse position,", "", &enabled);
 		static float f = 0.5f;
 		static int n = 0;
 		ImGui::SliderFloat("Value slider", &f, 0.0f, 1.0f);
@@ -441,5 +442,28 @@ void CreateGameObject(std::vector<std::string>& gameObjects, bool& show) {
 	}
 
 	// Terminez la fenêtre
+	ImGui::End();
+}
+
+void ShowAddGameObject() {
+	if (ImGui::Button("Add GameObject")) {
+		openFileExplorer();
+	}
+};
+
+
+void ShowConsoleWindow()
+{
+	// Commencer une nouvelle fenêtre ImGui
+	ImGui::Begin("Console");
+
+	// Parcourir la liste des messages de la console
+	for (const std::string& message : consoleMessages)
+	{
+		// Afficher le message
+		ImGui::TextUnformatted(message.c_str());
+	}
+
+	// Terminer la fenêtre ImGui
 	ImGui::End();
 }

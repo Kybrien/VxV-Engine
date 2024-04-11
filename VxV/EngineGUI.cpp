@@ -10,6 +10,8 @@ void EngineGUI::UpdateGui()
 
 	MainMenuBar();
 	ShowInfo();
+	ShowConsole();
+	ShowAddGameObject();
 }
 
 void EngineGUI::RenderGui()

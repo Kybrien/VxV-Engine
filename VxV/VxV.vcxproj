@@ -165,11 +165,11 @@
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="InputManager.cpp" />
-
     <ClCompile Include="Script.cpp" />
     <ClCompile Include="ScriptingComponent.cpp" />
     <ClCompile Include="ScriptManager.cpp" />
     <ClCompile Include="ScriptUser.cpp" />
+    <ClInclude Include="ConsoleRecup.h" />
     <ClInclude Include="controls.hpp" />
     <ClInclude Include="EngineGUI.h" />
     <ClInclude Include="FileExplorer.h" />
