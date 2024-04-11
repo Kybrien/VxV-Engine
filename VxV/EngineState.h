@@ -2,15 +2,17 @@
 class EngineState
 {
 private :
+	static EngineState* m_instance;
+public :
 	enum class State
 	{
 		Edition,
 		RunTime,
 		Pause,
 	};
+private:
 	State m_state;
-	static EngineState* m_instance;
-public :
+public:
 	static EngineState* GetInstance() {
 		if (m_instance == nullptr) {
 			m_instance = new EngineState();

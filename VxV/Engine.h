@@ -16,7 +16,7 @@ private:
 	* Define the states of the engine.
 	*/
 	enum EngineState {
-		Off = 0,
+		Edition = 0,
 		Initializing,
 		Ready,
 		Starting,
@@ -27,7 +27,7 @@ private:
 	};
 
 	static Engine* instance;
-	EngineState state = Off;
+	EngineState state = Edition;
 
 public:
 	Manager* manager;

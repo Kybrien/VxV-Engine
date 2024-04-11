@@ -1,7 +1,8 @@
 #include "loadingShader.hpp"
 
 #include "object.hpp"
-#include "EngineGUI.h"#include "WindowGui.h"
+#include "EngineGUI.h"
+#include "WindowGui.h"
 #include "EngineState.h"
 #include "imfilebrowser.h"
 
