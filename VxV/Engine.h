@@ -1,7 +1,6 @@
 #pragma once
 
-#include "SceneManager.h"
-#include "ScriptManager.h"
+#include "MeshManager.h"
 #include "PrefabManager.h"
 #include "InputManager.h"
 /**
@@ -24,16 +23,12 @@ private:
 		Stopped
 	};
 
-
 	static Engine* instance;
 	EngineState state = Off;
 
-
-
-
-
 public:
 	Manager* manager;
+
 	static Engine* GetInstance()
 	{
 		if (!instance)
@@ -48,7 +43,8 @@ public:
 		return state;
 	}
 
-	Engine() {
+	Engine()
+	{
 		instance = this;
 	}
 
@@ -67,18 +63,16 @@ public:
 		Start();
 	}
 
-	void Start() {
+	void Start()
+	{
 		state = Starting;
 		// start go
 
-
 		Update();
 	}
-	void Update() 
-	{ 
-		state = Running; 
+
+	void Update()
+	{
+		state = Running;
 	}
-
-
-
 };

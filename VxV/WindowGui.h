@@ -1,14 +1,10 @@
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
-#include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
-#include <vector>
-#include <iostream>
+#pragma once
+
 #include <stdlib.h>
-#include <fstream>
 #include <string>
 #include "imfilebrowser.h"
+#include "Debug.h"
+#include"glm/glm.hpp"
 
 static bool showExplorer = false;
 
@@ -22,8 +18,8 @@ static void openFileExplorer() {
 	}
 	ImGui::End();
 	fileDialog.Display();
-	if (fileDialog.HasSelected()) {
-		std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
+	if (fileDialog.HasSelected()) { 
+		Debug::Log("Selected filename " + fileDialog.GetSelected().string());
 		fileDialog.ClearSelected();
 	}
 
@@ -34,7 +30,7 @@ static void ShowExampleMenuFile()
 {
 
 	if (ImGui::MenuItem("New")) {}
-	if (ImGui::MenuItem("Open", "Ctrl+O")) { openFileExplorer(); std::cout << "open file" << std::endl;
+	if (ImGui::MenuItem("Open", "Ctrl+O")) { openFileExplorer(); Debug::Log("open file");
 	}
 	if (ImGui::BeginMenu("Open Recent"))
 	{
@@ -67,8 +63,6 @@ static void ShowExampleMenuFile()
 		ImGui::EndMenu();
 	}
 
-
-
 	// Here we demonstrate appending again to the "Options" menu (which we already created above)
 	// Of course in this demo it is a little bit silly that this function calls BeginMenu("Options") twice.
 	// In a real code-base using it would make senses to use this feature from very different code locations.
@@ -95,7 +89,7 @@ static void MainMenuBar()
 		if (ImGui::BeginMenu("Edit"))
 		{
 			if (ImGui::MenuItem("Undo", "CTRL+Z")) {}
-			if (ImGui::MenuItem("Redo", "CTRL+Y", false, false)) {}  // Disabled item
+			if (ImGui::MenuItem("Redo", "CTRL+Y", false, false)) {} // Disabled item
 			ImGui::Separator();
 			if (ImGui::MenuItem("Cut", "CTRL+X")) {}
 			if (ImGui::MenuItem("Copy", "CTRL+C")) {}
@@ -110,15 +104,14 @@ static void MainMenuBar()
 				ImGui::Text("Utilisez ZQSD et EA pour deplacer la cam.");
 				ImGui::Text("Utilisez Shift pour deplacer plus vite");
 				ImGui::EndMenu();
-
 			}
 
-			if (ImGui::BeginMenu("About")) { 
+			if (ImGui::BeginMenu("About"))
+			{
 				// Affichez le texte d'information
 				ImGui::Text("This engine was created by:");
 				ImGui::Text(" VxV Group");
 				ImGui::EndMenu();
-
 			}
 
 			ImGui::EndMenu();
@@ -148,7 +141,8 @@ static void ShowInfo() {
 	ImGui::End();
 }
 
-void ShowError(const std::string& message) {
+void ShowError(const std::string& message)
+{
 	// Créez une nouvelle fenêtre ImGui
 	ImGui::Begin("Erreur", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 
@@ -159,7 +153,8 @@ void ShowError(const std::string& message) {
 	ImGui::End();
 }
 
-void ShowSuccess(const std::string& message) {
+void ShowSuccess(const std::string& message)
+{
 	// Créez une nouvelle fenêtre ImGui
 	ImGui::Begin("Succès", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 
@@ -170,8 +165,8 @@ void ShowSuccess(const std::string& message) {
 	ImGui::End();
 }
 
-
-void ShowWarning(const std::string& message) {
+void ShowWarning(const std::string& message)
+{
 	// Créez une nouvelle fenêtre ImGui
 	ImGui::Begin("Avertissement", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 
@@ -182,8 +177,8 @@ void ShowWarning(const std::string& message) {
 	ImGui::End();
 }
 
-
-void ShowConfirmation(const std::string& message, bool& show) {
+void ShowConfirmation(const std::string& message, bool& show)
+{
 	// Créez une nouvelle fenêtre ImGui
 	ImGui::Begin("Confirmation", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 
@@ -191,12 +186,14 @@ void ShowConfirmation(const std::string& message, bool& show) {
 	ImGui::Text(message.c_str());
 
 	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer")) {
+	if (ImGui::Button("Confirmer"))
+	{
 		show = false;
 	}
 
 	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler")) {
+	if (ImGui::Button("Annuler"))
+	{
 		show = false;
 	}
 
@@ -204,9 +201,8 @@ void ShowConfirmation(const std::string& message, bool& show) {
 	ImGui::End();
 }
 
-
-
-void ShowInputInt(const std::string& message, int& input, bool& show) {
+void ShowInputInt(const std::string& message, int& input, bool& show)
+{
 	// Créez une nouvelle fenêtre ImGui
 	ImGui::Begin("Entrée", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 
@@ -217,12 +213,14 @@ void ShowInputInt(const std::string& message, int& input, bool& show) {
 	ImGui::InputInt("", &input);
 
 	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer")) {
+	if (ImGui::Button("Confirmer"))
+	{
 		show = false;
 	}
 
 	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler")) {
+	if (ImGui::Button("Annuler"))
+	{
 		show = false;
 	}
 
@@ -230,7 +228,8 @@ void ShowInputInt(const std::string& message, int& input, bool& show) {
 	ImGui::End();
 }
 
-void ShowInputFloat(const std::string& message, float& input, bool& show) {
+void ShowInputFloat(const std::string& message, float& input, bool& show)
+{
 	// Créez une nouvelle fenêtre ImGui
 	ImGui::Begin("Entrée", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 
@@ -241,12 +240,14 @@ void ShowInputFloat(const std::string& message, float& input, bool& show) {
 	ImGui::InputFloat("", &input);
 
 	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer")) {
+	if (ImGui::Button("Confirmer"))
+	{
 		show = false;
 	}
 
 	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler")) {
+	if (ImGui::Button("Annuler"))
+	{
 		show = false;
 	}
 
@@ -254,7 +255,8 @@ void ShowInputFloat(const std::string& message, float& input, bool& show) {
 	ImGui::End();
 }
 
-void ShowInputDouble(const std::string& message, double& input, bool& show) {
+void ShowInputDouble(const std::string& message, double& input, bool& show)
+{
 	// Créez une nouvelle fenêtre ImGui
 	ImGui::Begin("Entrée", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 
@@ -265,12 +267,14 @@ void ShowInputDouble(const std::string& message, double& input, bool& show) {
 	ImGui::InputDouble("", &input);
 
 	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer")) {
+	if (ImGui::Button("Confirmer"))
+	{
 		show = false;
 	}
 
 	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler")) {
+	if (ImGui::Button("Annuler"))
+	{
 		show = false;
 	}
 
@@ -278,7 +282,8 @@ void ShowInputDouble(const std::string& message, double& input, bool& show) {
 	ImGui::End();
 }
 
-void ShowInputVec2(const std::string& message, glm::vec2& input, bool& show) {
+void ShowInputVec2(const std::string& message, glm::vec2& input, bool& show)
+{
 	// Créez une nouvelle fenêtre ImGui
 	ImGui::Begin("Entrée", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 
@@ -289,12 +294,14 @@ void ShowInputVec2(const std::string& message, glm::vec2& input, bool& show) {
 	ImGui::InputFloat2("", &input.x);
 
 	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer")) {
+	if (ImGui::Button("Confirmer"))
+	{
 		show = false;
 	}
 
 	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler")) {
+	if (ImGui::Button("Annuler"))
+	{
 		show = false;
 	}
 
@@ -302,7 +309,8 @@ void ShowInputVec2(const std::string& message, glm::vec2& input, bool& show) {
 	ImGui::End();
 }
 
-void ShowInputVec3(const std::string& message, glm::vec3& input, bool& show) {
+void ShowInputVec3(const std::string& message, glm::vec3& input, bool& show)
+{
 	// Créez une nouvelle fenêtre ImGui
 	ImGui::Begin("Entrée", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 
@@ -313,12 +321,14 @@ void ShowInputVec3(const std::string& message, glm::vec3& input, bool& show) {
 	ImGui::InputFloat3("", &input.x);
 
 	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer")) {
+	if (ImGui::Button("Confirmer"))
+	{
 		show = false;
 	}
 
 	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler")) {
+	if (ImGui::Button("Annuler"))
+	{
 		show = false;
 	}
 
@@ -326,7 +336,8 @@ void ShowInputVec3(const std::string& message, glm::vec3& input, bool& show) {
 	ImGui::End();
 }
 
-void ShowInputVec4(const std::string& message, glm::vec4& input, bool& show) {
+void ShowInputVec4(const std::string& message, glm::vec4& input, bool& show)
+{
 	// Créez une nouvelle fenêtre ImGui
 	ImGui::Begin("Entrée", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 
@@ -337,12 +348,14 @@ void ShowInputVec4(const std::string& message, glm::vec4& input, bool& show) {
 	ImGui::InputFloat4("", &input.x);
 
 	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer")) {
+	if (ImGui::Button("Confirmer"))
+	{
 		show = false;
 	}
 
 	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler")) {
+	if (ImGui::Button("Annuler"))
+	{
 		show = false;
 	}
 
@@ -350,7 +363,8 @@ void ShowInputVec4(const std::string& message, glm::vec4& input, bool& show) {
 	ImGui::End();
 }
 
-void ShowInputColor(const std::string& message, glm::vec4& input, bool& show) {
+void ShowInputColor(const std::string& message, glm::vec4& input, bool& show)
+{
 	// Créez une nouvelle fenêtre ImGui
 	ImGui::Begin("Entrée", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 
@@ -361,12 +375,14 @@ void ShowInputColor(const std::string& message, glm::vec4& input, bool& show) {
 	ImGui::ColorEdit4("", &input.x);
 
 	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer")) {
+	if (ImGui::Button("Confirmer"))
+	{
 		show = false;
 	}
 
 	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler")) {
+	if (ImGui::Button("Annuler"))
+	{
 		show = false;
 	}
 
@@ -374,7 +390,8 @@ void ShowInputColor(const std::string& message, glm::vec4& input, bool& show) {
 	ImGui::End();
 }
 
-void ShowInputBool(const std::string& message, bool& input, bool& show) {
+void ShowInputBool(const std::string& message, bool& input, bool& show)
+{
 	// Créez une nouvelle fenêtre ImGui
 	ImGui::Begin("Entrée", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 
@@ -385,12 +402,14 @@ void ShowInputBool(const std::string& message, bool& input, bool& show) {
 	ImGui::Checkbox("", &input);
 
 	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer")) {
+	if (ImGui::Button("Confirmer"))
+	{
 		show = false;
 	}
 
 	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler")) {
+	if (ImGui::Button("Annuler"))
+	{
 		show = false;
 	}
 

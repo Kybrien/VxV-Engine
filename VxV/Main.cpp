@@ -1,11 +1,17 @@
-#include <stdio.h>
-#include <stdlib.h>
-#define STB_IMAGE_IMPLEMENTATION
-#define TINYOBJLOADER_IMPLEMENTATION
-//#include "MemoryPool.h"
+#include "loadingShader.hpp"
 
-#include "object.hpp"
+#define TINYOBJLOADER_IMPLEMENTATION
+
+#include <imgui.h>
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
+#include <iostream>
+
+#include "Engine.h"
 #include "EngineGUI.h"
+#include "object.hpp"
+#include "SceneManager.h"
+
 
 #include "imfilebrowser.h"
 int main() {
@@ -28,13 +34,9 @@ int main() {
 	glm::mat4 Projection = initializeProjectionMatrix();
 	glm::mat4 View = initializeViewMatrix();
 
-	std::vector<Object> objects;
-	addNewObject("Files/miku.obj", objects);
-
 	// Get a handle for our uniforms
 	GLuint TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID;
-	setupHandlesForUniforms(programID, TextureID, LightID, MaterialAmbientColorID,
-		MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
+	setupHandlesForUniforms(programID, TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
 
 	glBindVertexArray(0);
 	// glfwGetTime is called only once, the first time this function is called
@@ -45,9 +47,10 @@ int main() {
 
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO(); (void)io;
-	// Chargez la police qui supporte les caract�res accentu�s
-	ImFont* font = io.Fonts->AddFontFromFileTTF("Files/monocraft.ttf", 17);
+	ImGuiIO& io = ImGui::GetIO();
+	(void)io;
+	// Chargez la police qui supporte les caractères accentués
+	ImFont* font = io.Fonts->AddFontFromFileTTF("monocraft.ttf", 17);
 
 	// V�rifiez si la police a �t� charg�e correctement
 	if (font == nullptr)
@@ -57,7 +60,25 @@ int main() {
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init("#version 330");
 
-	do {
+
+
+	Engine* engine = new Engine();
+	engine->Init();
+
+	Manager* manager = Manager::GetInstance();
+	SceneManager* sceneManager = manager->GetManager<SceneManager>();
+
+	GameObject* go = sceneManager->gameObjectPool.CreateGameObject();
+
+	//GameObject* go = new GameObject("miku");
+
+	go->AddComponent<Mesh>();
+	go->GetComponent<Mesh>()->SetMesh("miku");
+
+	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
+
+	do
+	{
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -72,7 +93,9 @@ int main() {
 		// Compute time difference between current and last frame
 		double currentTime = glfwGetTime();
 		nbFrames++;
-		if (currentTime - lastTimeFPS >= 1.0) { // If last printf() was more than 1 sec ago
+		if (currentTime - lastTimeFPS >= 1.0)
+		{
+			// If last printf() was more than 1 sec ago
 			// printf and reset timer
 			printf("%f ms/frame, FPS: %d\n", 1000.0 / double(nbFrames), nbFrames);
 			nbFrames = 0;
@@ -81,8 +104,8 @@ int main() {
 
 		float deltaTime = float(currentTime - lastTime);
 
-		float angle = deltaTime * 50.0f;  // Rotate by 60 degrees
-		glm::vec3 axis(0.0f, 0.0f, -1.0f);  // Rotate around the z-axis
+		float angle = deltaTime * 50.0f; // Rotate by 60 degrees
+		glm::vec3 axis(0.0f, 0.0f, -1.0f); // Rotate around the z-axis
 
 		glm::vec3 lightPos = glm::vec3(0, 0, 8);
 		glUniform3f(LightID, lightPos.x, lightPos.y, lightPos.z);
@@ -90,9 +113,16 @@ int main() {
 		// Compute the MVP matrix from keyboard and mouse input
 		computeMatricesFromInputs(window);
 		glm::mat4 ProjectionMatrix = getProjectionMatrix();
-		for (auto& object : objects) {
-			sendMVPData(object, angle, axis, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
-			drawObject(object, TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
+		for (GameObject* go : goList)
+		{
+			Mesh* meshComp = go->GetComponent<Mesh>();
+			if (meshComp != nullptr)
+			{
+				auto& object = *(meshComp->GetMesh());
+
+				sendMVPData(object, angle, axis, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
+				drawObjects(meshComp->GetMesh(), TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
+			}
 		}
 
 		gui.UpdateGui();
@@ -107,9 +137,19 @@ int main() {
 		// Swap buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();
-	} while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
+	}
+	while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
 
-	cleanup(window, objects, programID, VertexArrayID, TextureID, LightID,
-		MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
+	for (GameObject* go : Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects())
+	{
+		Mesh* meshComp = go->GetComponent<Mesh>();
+		if (meshComp != nullptr)
+		{
+			auto& object = *(meshComp->GetMesh());
+
+			cleanup(window, object);
+		}
+	}
+	finishProgram(programID, VertexArrayID, TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
 	return 0;
 }
