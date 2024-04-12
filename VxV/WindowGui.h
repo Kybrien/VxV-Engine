@@ -12,30 +12,15 @@
 #include "GameObject.h"
 #include "ConsoleRecup.h"
 static bool enabled = true;
-
-static void openFileExplorer() {
-	// Créez une nouvelle fenêtre ImGui
-	static ImGui::FileBrowser fileDialog;
-	fileDialog.SetTypeFilters({ ".obj" });
-	if (ImGui::Begin("File Explorer"))
-	{
-			fileDialog.Open();
-	}
-	ImGui::End();
-	fileDialog.Display();
-	if (fileDialog.HasSelected()) {
-		std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
-		fileDialog.ClearSelected();
-	}
+static ImGui::FileBrowser fileDialog;
 
 
-}
 
 static void ShowExampleMenuFile()
 {
 
 	if (ImGui::MenuItem("New")) {}
-	if (ImGui::MenuItem("Open", "Ctrl+O")) { openFileExplorer(); }
+	if (ImGui::MenuItem("Open", "Ctrl+O")) { }
 	
 	if (ImGui::BeginMenu("Open Recent"))
 	{
@@ -446,10 +431,24 @@ void CreateGameObject(std::vector<std::string>& gameObjects, bool& show) {
 }
 
 void ShowAddGameObject() {
-	if (ImGui::Button("Add GameObject")) {
-		openFileExplorer();
+	if (ImGui::Begin("Create Game Object"))
+	{
+		// open file dialog when user clicks this button
+		if (ImGui::Button("open file dialog"))
+			fileDialog.Open();
 	}
-};
+	ImGui::End();
+
+	fileDialog.Display();
+
+	if (fileDialog.HasSelected())
+	{
+		std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
+		fileDialog.ClearSelected();
+	}
+	
+	}
+
 
 
 void ShowConsoleWindow()

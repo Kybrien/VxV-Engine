@@ -4,9 +4,7 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "MemoryPool.h"
 #include "object.hpp"
-#include "EngineGUI.h"#include "WindowGui.h"
-
-#include "imfilebrowser.h"
+#include "EngineGUI.h"
 
 int main() {
 	EngineGUI gui;
@@ -42,29 +40,13 @@ int main() {
 	double lastTimeFPS = lastTime;
 	int nbFrames = 0;
 	//update be  like
-
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO(); (void)io;
-	// Chargez la police qui supporte les caract�res accentu�s
-	ImFont* font = io.Fonts->AddFontFromFileTTF("monocraft.ttf", 17);
-
-	// V�rifiez si la police a �t� charg�e correctement
-	if (font == nullptr)
-	{
-		std::cerr << "Erreur lors du chargement de la police." << std::endl;
-	}
-	ImGui_ImplGlfw_InitForOpenGL(window, true);
-	ImGui_ImplOpenGL3_Init("#version 330");
-
+	gui.initImgui(window);
+	// Main loop
 	do {
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		// Start the Dear ImGui frame
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
-		ImGui::NewFrame();
+
 		
 		// Use our shader
 		glUseProgram(programID);
