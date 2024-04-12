@@ -66,10 +66,8 @@ int main()
 
 	GameObject* go = sceneManager->gameObjectPool.CreateGameObject();
 
-	//GameObject* go = new GameObject("miku");
-
 	go->AddComponent<Model>();
-	go->GetComponent<Model>()->SetModel("miku");
+	go->GetComponent<Model>()->SetModel("sphere");
 
 	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
 

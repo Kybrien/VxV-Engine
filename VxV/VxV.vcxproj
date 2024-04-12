@@ -158,9 +158,9 @@ copy $(ProjectDir)SimpleVertexShader.MIKU $(TargetDir)
     <PostBuildEvent>
       <Command>xcopy /E /I /Y "$(ProjectDir)Files" "$(TargetDir)Files"
 
-copy $(ProjectDir)SimpleFragmentShader.VALORANT $(TargetDir)
+copy "$(ProjectDir)SimpleFragmentShader.VALORANT" "$(TargetDir)"
 
-copy $(ProjectDir)SimpleVertexShader.MIKU $(TargetDir)
+copy "$(ProjectDir)SimpleVertexShader.MIKU" "$(TargetDir)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
