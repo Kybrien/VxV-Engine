@@ -1,6 +1,6 @@
 #include "loadingShader.hpp"
 
-#include "object.hpp"
+#include "ModelComponent.hpp"
 #include "EngineGUI.h"
 #include "WindowGui.h"
 #include "Engine.h"
