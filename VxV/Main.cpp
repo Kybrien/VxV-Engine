@@ -4,16 +4,32 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "object.hpp"
 #include "EngineGUI.h"
+#include "Thread.h"
 
 int main() {
+	GLFWwindow* window;
+
 	EngineGUI gui;
 	//On initialise tout
-	GLFWwindow* window;
+	
 	init(window);
 	setupInput(window);
 	initOpenGLSettings();
 	GLuint VertexArrayID;
 	initializeVertexArrayObject(VertexArrayID);
+
+	Thread::Atomic<bool> keepRunning(true);
+
+	Thread::createThread([&gui, &keepRunning]() {
+		while (keepRunning.get()) {
+			gui.UpdateGui();
+			gui.RenderGui();
+		}
+		}, { ThreadCategory::UI, 0 });
+
+
+	Thread::createThread([]() { /* code du thread réseau */ }, { ThreadCategory::Network, 0 });
+	Thread::createThread([]() { /* code du thread graphique */ }, { ThreadCategory::Graphics, 0 });
 
 	// Create and compile our GLSL program from the shaders
 	GLuint programID = LoadShaders("SimpleVertexShader.MIKU", "SimpleFragmentShader.VALORANT");
@@ -26,7 +42,6 @@ int main() {
 	glm::mat4 View = initializeViewMatrix();
 
 	std::vector<Object> objects;
-	addNewObject("evil.obj", objects);
 
 	// Get a handle for our uniforms
 	GLuint TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID;
@@ -108,5 +123,8 @@ int main() {
 	for (auto& object : objects) {
 		cleanup(window, object.vertexbuffer, programID, VertexArrayID);
 	}
+
+	keepRunning.set(false);
+	Thread::joinAll();
 	return 0;
 }

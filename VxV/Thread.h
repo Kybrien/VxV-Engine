@@ -2,11 +2,26 @@
 #include <thread>
 #include <mutex>
 #include <functional>
+#include <atomic>
+
+enum class ThreadCategory {
+    UI,
+    Network,
+    Graphics
+};
+
+struct ThreadId {
+    ThreadCategory category;
+    int subThreadId;
+};
 
 class Thread {
+
+private:
+    static std::vector<std::thread> threads;
 public:
-public:
-    static void createThread(std::function<void()> func, int id);
+    static void createThread(std::function<void()> func, ThreadId id);
+    static void joinAll();
 
     class Mutex {
     public:
@@ -17,6 +32,9 @@ public:
     private:
         std::mutex mutex;
     };
+    const std::vector<std::thread>& getThreads() {
+        return threads;
+    }
 
     class LockGuard {
     public:
@@ -38,5 +56,22 @@ public:
 
     private:
         std::condition_variable conditionVariable;
+    };
+
+    template<typename T>
+    class Atomic {
+    public:
+        Atomic(T value) : atomicValue(value) {}
+
+        void set(T value) {
+            atomicValue.store(value);
+        }
+
+        T get() {
+            return atomicValue.load();
+        }
+
+    private:
+        std::atomic<T> atomicValue;
     };
 };

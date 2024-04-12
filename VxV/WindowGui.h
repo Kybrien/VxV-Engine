@@ -9,8 +9,28 @@
 #include <fstream>
 #include <string>
 #include "nfd.h"
+#include "Thread.h"
+void ThreadWindowGui(const std::string& message, int& Intinput, float& floatInput, double& doubleInput, bool& boolInput, bool& show, glm::vec2& input2,glm::vec3& input3,glm::vec4& input4) {
 
+	Thread::createThread([&]() {											 
+		ShowExampleMenuFile();
+	MainMenuBar();													 
+		ShowInfo();
+		ShowError(message);
+		ShowSuccess(message);
+		ShowWarning(message);
+		ShowConfirmation(message, show);
+		ShowInputInt(message, Intinput, show);
+		ShowInputFloat(message, floatInput, show);
+		ShowInputDouble(message, doubleInput, show);
+		ShowInputVec2(message, input2, show);
+		ShowInputVec3(message, input3, show);
+		ShowInputVec4(message, input4, show);
+		ShowInputColor(message, input4, show);
+		ShowInputBool(message, boolInput, show);
 
+		}, { ThreadCategory::UI, 1 });
+}
 static void ShowExampleMenuFile()
 {
 	if (ImGui::MenuItem("New")) {}
