@@ -39,7 +39,7 @@ public:
 	}
 
 
-	State GetState() {
+	State const GetState() {
 		return m_state;
 	}
 };

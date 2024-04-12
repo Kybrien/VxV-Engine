@@ -3,12 +3,12 @@
 #include "object.hpp"
 #include "EngineGUI.h"
 #include "WindowGui.h"
-#include "EngineState.h"
+#include "Engine.h"
 #include "imfilebrowser.h"
 
 
 int main() {
-	EngineState* state = EngineState::GetInstance();
+	Engine* state = Engine::GetInstance();
 	EngineGUI gui;
 	//On initialise tout
 	GLFWwindow* window;
@@ -127,8 +127,7 @@ int main() {
 		// Swap buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();
-	}
-	while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
+	} while (state->GetState() == Engine::EngineState::Running);
 
 	for (GameObject* go : Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects())
 	{

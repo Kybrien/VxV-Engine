@@ -11,10 +11,9 @@
  */
 class Engine {
 private:
+	static Engine* instance;
 
-	/**
-	* Define the states of the engine.
-	*/
+public:
 	enum EngineState {
 		Edition = 0,
 		Initializing,
@@ -25,10 +24,8 @@ private:
 		Stopping,
 		Stopped
 	};
-
-	static Engine* instance;
+private:
 	EngineState state = Edition;
-
 public:
 	Manager* manager;
 
@@ -39,16 +36,12 @@ public:
 		return instance;
 	}
 
-	/**  
-	* @param none
-	*/
-	EngineState GetState() {
+	EngineState const GetState() {
 		return state;
 	}
 
-	Engine()
-	{
-		instance = this;
+	Engine() {
+		instance = new Engine();
 	}
 
 	/**
