@@ -245,7 +245,7 @@ void loadObjAndBatching(const std::string& filename, ModelComponent& model);
 * @param ModelComponent reference to the models vector
 * @return void
 */ 
-void addNewModel(const std::string& filename, std::vector<ModelComponent>& models);
+void addNewModel(const std::string& filename, std::string& fileDirection, std::vector<ModelComponent*>& models);
 
 /**
 * @brief Copy the model and add it to the models vector storing all the models to render.
@@ -280,7 +280,7 @@ void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& Light
 * @param MaterialSpecularColorID reference to the material specular color ID
 * @return void
 */
-void drawModel(ModelComponent& model, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID,
+void drawModel(ModelComponent* model, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID,
 	GLuint MaterialSpecularColorID);
 
 /**

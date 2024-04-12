@@ -1,21 +1,21 @@
-#include "MeshManager.h"
+#include "ModelManager.h"
 #include "GameObject.h"
 #include "Debug.h"
 
 
-std::string MeshManager::fileDirection = "Files";
-std::string MeshManager::extention = ".obj";
+std::string ModelManager::fileDirection = "Files";
+std::string ModelManager::extention = ".obj";
 
-MeshManager::MeshManager(Manager* manager) {
-	manager->AddManager<MeshManager>(this);
+ModelManager::ModelManager(Manager* manager) {
+	manager->AddManager<ModelManager>(this);
 
-	SearchFile<MeshManager>(fileDirection, extention, this);
+	SearchFile<ModelManager>(fileDirection, extention, this);
 
-    LoadMesh("cube.obj");
+    LoadModel("cube.obj");
 }
 
 
-void MeshManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
+void ModelManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
     // Conversion de wstring en string
     std::string fileDirection;
     for (wchar_t wc : wFileDirection) {
@@ -32,16 +32,16 @@ void MeshManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
     temp.push_back(fileDirection);
     temp.push_back(fileName);
 
-    allMeshProperties.push_back(temp);
+    allModelProperties.push_back(temp);
 }
 
 
-void MeshManager::LoadMesh(std::string fileName) {
+void ModelManager::LoadModel(std::string fileName) {
 
     bool foundMesh = false;
-    for (std::vector<std::string> strVec : allMeshProperties) {
+    for (std::vector<std::string> strVec : allModelProperties) {
         if (strVec[1] == fileName) {
-            addNewObject(strVec[1], strVec[0], meshVector);
+            addNewModel(strVec[1], strVec[0], modelVector);
             foundMesh = true;
             break;
         }
@@ -53,41 +53,41 @@ void MeshManager::LoadMesh(std::string fileName) {
 }
 
 
-void MeshManager::SetMesh(std::string meshName, GameObject* go) {
-	Object* meshToAssign = GetMesh(meshName);
-	Object* meshGO = go->GetComponent<Mesh>()->GetMesh();
+void ModelManager::SetModel(std::string modelName, GameObject* go) {
+	ModelComponent* modelToAssign = GetModel(modelName);
+	ModelComponent* modelGO = go->GetComponent<Model>()->GetModel();
 
 	// Vérifier si c'est loadé
-	if (meshToAssign != nullptr) {
-		Object* tempMesh = meshGO;
+	if (modelToAssign != nullptr) {
+		ModelComponent* tempModel = modelGO;
 
-		meshToAssign->numberUsed++;
-		if(meshGO != nullptr)
-			meshGO->numberUsed--;
+		modelToAssign->numberUsed++;
+		if(modelGO != nullptr)
+			modelGO->numberUsed--;
 		
-		go->GetComponent<Mesh>()->GetMesh() = meshToAssign;
+		go->GetComponent<Model>()->GetModel() = modelToAssign;
 
 		// Supprimer l'élément s'il n'est plus utilisé
-		if (tempMesh->numberUsed == 0) {
-			auto it = std::find(meshVector.begin(), meshVector.end(), tempMesh);
-			if (it != meshVector.end()) {
-				meshVector.erase(it);
+		if (tempModel->numberUsed == 0) {
+			auto it = std::find(modelVector.begin(), modelVector.end(), tempModel);
+			if (it != modelVector.end()) {
+				modelVector.erase(it);
 			}
-			delete tempMesh;
+			delete tempModel;
 		}
 	}
 	else {
-		bool meshFound = false;
-		for (std::vector<std::string> strVec : allMeshProperties) {
-			if (strVec[1] == meshName) {
-				addNewObject(strVec[1], strVec[0], meshVector);
-				SetMesh(meshName, go);
-				meshFound = true;
+		bool modelFound = false;
+		for (std::vector<std::string> strVec : allModelProperties) {
+			if (strVec[1] == modelName) {
+				addNewModel(strVec[1], strVec[0], modelVector);
+				SetModel(modelName, go);
+				modelFound = true;
 				break;
 			}
 		}
 
-		if (meshFound == false)
-			Debug::Log("Mesh " + meshName + " not found");
+		if (modelFound == false)
+			Debug::Log("Model " + modelName + " not found");
 	}
 }

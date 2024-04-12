@@ -4,14 +4,14 @@
 
 #include "Debug.h"
 
-#include "MeshManager.h"
+#include "ModelManager.h"
 
 Model::Model(GameObject* go) : Component(go) { 
-	MeshManager* meshManager = Manager::GetInstance()->GetManager<MeshManager>();
+	ModelManager* modelManager = Manager::GetInstance()->GetManager<ModelManager>();
 	linkedGameObject = go;
 	type = Component::Mesh;
 
-	model = meshManager->GetMesh("cube.obj");
+	model = modelManager->GetModel("cube.obj");
 	model->numberUsed++;
 }
 
@@ -37,7 +37,7 @@ void Model::Copy(GameObject* goToFill) {
 
 
 void Model::SetModel(std::string modelName) {
-	MeshManager* meshManager = Manager::GetInstance()->GetManager<MeshManager>();
+	ModelManager* modelManager = Manager::GetInstance()->GetManager<ModelManager>();
 
 	//Check s'il y a l'extention .obj
 	std::string extentionCheck;
@@ -48,5 +48,5 @@ void Model::SetModel(std::string modelName) {
 	if(extentionCheck != ".obj")
 		modelName += ".obj";
 
-	meshManager->SetModel(modelName, linkedGameObject);
+	modelManager->SetModel(modelName, linkedGameObject);
 }

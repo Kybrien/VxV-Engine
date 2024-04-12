@@ -9,7 +9,7 @@
 
 #include "Engine.h"
 #include "EngineGUI.h"
-#include "object.hpp"
+#include "ModelComponent.hpp"
 #include "SceneManager.h"
 
 
@@ -72,8 +72,8 @@ int main() {
 
 	//GameObject* go = new GameObject("miku");
 
-	go->AddComponent<Mesh>();
-	go->GetComponent<Mesh>()->SetMesh("miku");
+	go->AddComponent<Model>();
+	go->GetComponent<Model>()->SetModel("miku");
 
 	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
 
@@ -115,13 +115,13 @@ int main() {
 		glm::mat4 ProjectionMatrix = getProjectionMatrix();
 		for (GameObject* go : goList)
 		{
-			Mesh* meshComp = go->GetComponent<Mesh>();
-			if (meshComp != nullptr)
+			Model* modelComp = go->GetComponent<Model>();
+			if (modelComp != nullptr)
 			{
-				auto& object = *(meshComp->GetMesh());
+				auto& model = *(modelComp->GetModel());
 
-				sendMVPData(object, angle, axis, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
-				drawObjects(meshComp->GetMesh(), TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
+				sendMVPData(model, angle, axis, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
+				drawModel(modelComp->GetModel(), TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
 			}
 		}
 
@@ -142,10 +142,10 @@ int main() {
 
 	for (GameObject* go : Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects())
 	{
-		Mesh* meshComp = go->GetComponent<Mesh>();
-		if (meshComp != nullptr)
+		Model* modelComp = go->GetComponent<Model>();
+		if (modelComp != nullptr)
 		{
-			auto& object = *(meshComp->GetMesh());
+			auto& object = *(modelComp->GetModel());
 
 			cleanup(window, object);
 		}

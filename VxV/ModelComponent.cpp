@@ -312,11 +312,13 @@ void loadObjAndBatching(const std::string& filename, ModelComponent& model)
 }
 
 
-void addNewModel(const std::string& filename, std::vector<ModelComponent>& models)
+void addNewModel(const std::string& filename, std::string& fileDirection, std::vector<ModelComponent*>& models)
 {
-	ModelComponent model;
-	model.transform = glm::mat4(1.0f);
-	loadObjAndBatching(filename, model);
+	ModelComponent* model = new ModelComponent();
+	model->fileName = filename;
+
+	model->transform = glm::mat4(1.0f);
+	loadObjAndBatching(fileDirection, *model);
 	models.push_back(model);
 }
 
@@ -346,10 +348,10 @@ void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& Light
 	ModelMatrixID = glGetUniformLocation(programID, "M");
 }
 
-void drawModel(ModelComponent& model, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID,
+void drawModel(ModelComponent* model, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID,
 	GLuint MaterialSpecularColorID) 
 {
-	for (const auto& pair : model.vertexBuffers) {
+	for (const auto& pair : model->vertexBuffers) {
 		GLuint texID = pair.first.first;
 		int matID = pair.first.second;
 		const std::vector<Vertex>& vertices = pair.second;
@@ -360,7 +362,7 @@ void drawModel(ModelComponent& model, GLuint TextureID, GLuint MaterialAmbientCo
 		glUniform1i(TextureID, 0);
 
 		// Set the material properties
-		tinyobj::material_t& material = model.materials[matID];
+		tinyobj::material_t& material = model->materials[matID];
 		GLfloat ambient[3] = { material.ambient[0], material.ambient[1], material.ambient[2] };
 		GLfloat diffuse[3] = { material.diffuse[0], material.diffuse[1], material.diffuse[2] };
 		GLfloat specular[3] = { material.specular[0], material.specular[1], material.specular[2] };
@@ -369,7 +371,7 @@ void drawModel(ModelComponent& model, GLuint TextureID, GLuint MaterialAmbientCo
 		glUniform3fv(MaterialSpecularColorID, 1, specular);
 
 		// Bind the vertex buffer
-		glBindBuffer(GL_ARRAY_BUFFER, model.vertexBufferIDs[pair.first]);
+		glBindBuffer(GL_ARRAY_BUFFER, model->vertexBufferIDs[pair.first]);
 
 		// Draw the vertices
 		setupVertexAttributes();

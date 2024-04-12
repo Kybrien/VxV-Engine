@@ -137,6 +137,7 @@
 // GL includes
 #if defined(IMGUI_IMPL_OPENGL_ES2)
 #if (defined(__APPLE__) && (TARGET_OS_IOS || TARGET_OS_TV))
+#include <GL/glew.h>
 #include <OpenGLES/ES2/gl.h>    // Use GL ES 2
 #else
 #include <GLES2/gl2.h>          // Use GL ES 2
@@ -149,6 +150,7 @@
 #endif
 #elif defined(IMGUI_IMPL_OPENGL_ES3)
 #if (defined(__APPLE__) && (TARGET_OS_IOS || TARGET_OS_TV))
+#include <GL/glew.h>
 #include <OpenGLES/ES3/gl.h>    // Use GL ES 3
 #else
 #include <GLES3/gl3.h>          // Use GL ES 3
