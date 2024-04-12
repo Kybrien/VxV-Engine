@@ -1,6 +1,7 @@
 #pragma once
 #include <new>
 #include <vector>
+#include <iostream>
 #include "GameObject.h"
 
 template<typename T, class Strategy> class MemoryPool

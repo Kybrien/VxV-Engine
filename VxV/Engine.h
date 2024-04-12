@@ -3,6 +3,9 @@
 #include "ModelManager.h"
 #include "PrefabManager.h"
 #include "InputManager.h"
+#include "SceneManager.h"
+
+
 /**
  * Define the state of the engine.
  */

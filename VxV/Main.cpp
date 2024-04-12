@@ -2,18 +2,14 @@
 
 #define TINYOBJLOADER_IMPLEMENTATION
 
-#include <imgui.h>
-#include <imgui_impl_glfw.h>
-#include <imgui_impl_opengl3.h>
 #include <iostream>
 
 #include "Engine.h"
 #include "EngineGUI.h"
-#include "ModelComponent.hpp"
-#include "SceneManager.h"
-
 
 #include "imfilebrowser.h"
+
+
 int main() {
 	EngineGUI gui;
 	//On initialise tout

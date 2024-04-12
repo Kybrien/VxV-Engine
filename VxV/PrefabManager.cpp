@@ -1,5 +1,6 @@
 #include "PrefabManager.h"
 #include <json.h>
+#include <iostream>
 
 
 std::string PrefabManager::fileDirection = "Saves/Prefab";

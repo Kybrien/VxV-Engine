@@ -3,8 +3,7 @@
 #include <string>
 #include <vector>
 #include <GLM/glm.hpp>
-
-#include "ScriptingComponent.h"
+#include "Component.h"
 
 class Scene;
 class Prefab;

@@ -172,7 +172,7 @@ copy $(ProjectDir)SimpleVertexShader.MIKU $(TargetDir)
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MemoryPool.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="MeshManager.cpp" />
+    <ClCompile Include="ModelManager.cpp" />
     <ClCompile Include="ModelComponent.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EngineGUI.cpp" />
@@ -184,7 +184,6 @@ copy $(ProjectDir)SimpleVertexShader.MIKU $(TargetDir)
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Script.cpp" />
     <ClCompile Include="ScriptingComponent.cpp" />
@@ -216,7 +215,6 @@ copy $(ProjectDir)SimpleVertexShader.MIKU $(TargetDir)
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelManager.h" />
     <ClInclude Include="ModelComponent.hpp" />
-    <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Prefab.h" />
     <ClInclude Include="PrefabManager.h" />
     <ClInclude Include="Renderer.h" />

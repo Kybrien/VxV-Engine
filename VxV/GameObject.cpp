@@ -3,6 +3,10 @@
 #include "PrefabManager.h"
 #include "SceneManager.h"
 #include "Transform.h"
+#include "ScriptingComponent.h"
+#include "Model.h"
+
+#include <vector>
 
 GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, bool copying)
 {
@@ -210,7 +214,10 @@ void GameObject::LoadComponent(Json::Value compJson, GameObject* parentGo)
 	case 0: break;
 	case 1: GetComponent<Transform>()->Load(compJson, parentGo);
 		break;
-	case 2: break;
+	case 2: 
+		AddComponent<Model>();
+		GetComponent<Model>()->Load(compJson, parentGo);
+		break;
 	case 3: AddComponent<ScriptingComponent>();
 		GetComponent<ScriptingComponent>()->Load(compJson, parentGo);
 		break;
