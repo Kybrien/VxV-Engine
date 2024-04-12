@@ -156,11 +156,11 @@ copy $(ProjectDir)SimpleVertexShader.MIKU $(TargetDir)
       <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;jsoncpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /E /I /Y "$(ProjectDir)Files" "$(TargetDir)Files"
+      <Command>xcopy /E /I /Y "\"$(ProjectDir)Files\"" "\"$(TargetDir)Files\""
 
-copy "$(ProjectDir)SimpleFragmentShader.VALORANT" "$(TargetDir)"
+copy "\"$(ProjectDir)SimpleFragmentShader.VALORANT\"" "\"$(TargetDir)\""
 
-copy "$(ProjectDir)SimpleVertexShader.MIKU" "$(TargetDir)"
+copy "\"$(ProjectDir)SimpleVertexShader.MIKU\"" "\"$(TargetDir)\""
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
