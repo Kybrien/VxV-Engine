@@ -1,16 +1,18 @@
 #include "loadingShader.hpp"
 
-#define TINYOBJLOADER_IMPLEMENTATION
-
 #include <iostream>
 
 #include "Engine.h"
 #include "EngineGUI.h"
 
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+
 #include "imfilebrowser.h"
 
-
-int main() {
+int main()
+{
 	EngineGUI gui;
 	//On initialise tout
 	GLFWwindow* window;
@@ -56,8 +58,6 @@ int main() {
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init("#version 330");
 
-
-
 	Engine* engine = new Engine();
 	engine->Init();
 
@@ -82,7 +82,7 @@ int main() {
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
-		
+
 		// Use our shader
 		glUseProgram(programID);
 
