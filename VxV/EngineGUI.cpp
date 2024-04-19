@@ -34,7 +34,7 @@ void EngineGUI::UpdateGui()
 
 
 
-	//ImGui::ShowDemoWindow();
+	ImGui::ShowDemoWindow();
 	RedirectCout();
 	MainMenuBar();
 	ShowInfo();

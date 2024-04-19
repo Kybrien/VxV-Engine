@@ -433,6 +433,18 @@ void CreateGameObject(std::vector<std::string>& gameObjects, bool& show) {
 void ShowAddGameObject() {
 	if (ImGui::Begin("Create Game Object"))
 	{
+		// Menu Bar
+		if (ImGui::BeginMenuBar())
+		{
+			if (ImGui::BeginMenu("Prefab"))
+			{
+				ImGui::Text("prefab");
+
+			}
+			
+			ImGui::EndMenuBar();
+		}
+		ImGui::Text("Choisissez un prefab");
 		// open file dialog when user clicks this button
 		if (ImGui::Button("open file dialog"))
 			fileDialog.Open();
