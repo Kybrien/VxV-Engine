@@ -1,0 +1,38 @@
+\doxysection{Renderer.\+h}
+\hypertarget{_renderer_8h_source}{}\label{_renderer_8h_source}\mbox{\hyperlink{_renderer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Components.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <GL/glew.h>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_renderer}{Renderer}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_component}{Component}}\ \{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00008\ \ \ \ \ GLuint\ \mbox{\hyperlink{class_renderer_a3abdaea4bec387e7ca61c5fced91fa80}{VAO}};\ \textcolor{comment}{//\ Vertex\ array\ object}}
+\DoxyCodeLine{00009\ \ \ \ \ GLuint\ \mbox{\hyperlink{class_renderer_aa0a3629b47335a860d84c20bf934cbd9}{VBO}};\ \textcolor{comment}{//\ Vertex\ buffer\ object}}
+\DoxyCodeLine{00010\ \ \ \ \ GLuint\ \mbox{\hyperlink{class_renderer_a2e641fb7e174aa98002ba249e081d0af}{shaderProgram}};\ \textcolor{comment}{//\ Shader\ program\ ID}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{class_renderer_a1e671ea244f46da03c2d7c3c31a2f170}{Renderer}}(GLuint\ \mbox{\hyperlink{class_renderer_a2e641fb7e174aa98002ba249e081d0af}{shaderProgram}})\ :\ \mbox{\hyperlink{class_renderer_a2e641fb7e174aa98002ba249e081d0af}{shaderProgram}}(\mbox{\hyperlink{class_renderer_a2e641fb7e174aa98002ba249e081d0af}{shaderProgram}})\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ VAO,\ VBO,\ etc.}}
+\DoxyCodeLine{00014\ \ \ \ \ \}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_renderer_adde94d3402b015b1fcd23c9a283cae2e}{Render}}()\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Bind\ the\ shader}}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ glUseProgram(\mbox{\hyperlink{class_renderer_a2e641fb7e174aa98002ba249e081d0af}{shaderProgram}});}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Bind\ the\ VAO}}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ glBindVertexArray(\mbox{\hyperlink{class_renderer_a3abdaea4bec387e7ca61c5fced91fa80}{VAO}});}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ object}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ glDrawArrays(GL\_TRIANGLES,\ 0,\ 3);\ \textcolor{comment}{//\ Adjust\ based\ on\ your\ geometry}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Unbind\ the\ VAO}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ glBindVertexArray(0);}
+\DoxyCodeLine{00028\ \ \ \ \ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_renderer_afeee408862d5bd6255a6882d47e6d5cd}{\string~Renderer}}()\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Cleanup\ VAO,\ VBO,\ etc.}}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \};}
+
+\end{DoxyCode}

@@ -1,11 +1,13 @@
 ﻿#include "EngineGUI.h"
 #include "FileExplorer.h"
 #include <imgui.h>
+#include "FileExplorer.h"
 #include "WindowGui.h"
 #include "imfilebrowser.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
+#include "imgui_impl_opengl3.h"
 
 void EngineGUI::initImgui(GLFWwindow* window)
 {
@@ -37,6 +39,10 @@ void EngineGUI::UpdateGui()
 	ImGui::ShowDemoWindow();
 	RedirectCout();
 	MainMenuBar();
+
+	// Fen�tre pour l'acc�s aux fichiers
+	ShowFileExplorer();
+	//ShowMenuBar();
 	ShowInfo();
 	ShowConsoleWindow();
 	ShowAddGameObject();
@@ -44,7 +50,6 @@ void EngineGUI::UpdateGui()
 
 void EngineGUI::RenderGui()
 {
-		ImGui::Render();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
+	ImGui::Render();
+	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }

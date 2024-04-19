@@ -1,0 +1,52 @@
+\doxysection{File\+Explorer.\+h}
+\hypertarget{_file_explorer_8h_source}{}\label{_file_explorer_8h_source}\mbox{\hyperlink{_file_explorer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}imgui.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }fs\ =\ std::filesystem;}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_file_explorer_8h_a2803a4eff8c365dd9d4790190f9484fb}{ShowFileExplorer}}()\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ currentPath\ =\ \textcolor{stringliteral}{"{}."{}};\ \textcolor{comment}{//\ Commence\ à partir\ du\ répertoire\ actuel}}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ selectedPath\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Begin(\textcolor{stringliteral}{"{}Explorateur\ de\ fichiers"{}}))\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Parent"{}}))\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ currentPath\ =\ fs::path(currentPath).parent\_path().string();\ \textcolor{comment}{//\ Monter\ d'un\ répertoire}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Affiche\ le\ chemin\ actuel}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Chemin\ :\ \%s"{}},\ currentPath.c\_str());}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Lister\ les\ répertoires\ et\ fichiers\ dans\ le\ chemin\ actuel}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ entry\ :\ fs::directory\_iterator(currentPath))\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ path\ =\ entry.path();}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ filename\ =\ path.filename().string();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ l'entrée est\ un\ répertoire,\ ajoute\ un\ suffixe\ '/'\ pour\ indiquer\ qu'il\ s'agit\ d'un\ dossier}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (entry.is\_directory())\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ filename\ +=\ \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Selectable(filename.c\_str()))\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (entry.is\_directory())\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentPath\ =\ path.string();\ \textcolor{comment}{//\ Change\ le\ répertoire\ actuel}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ selectedPath\ =\ path.string();\ \textcolor{comment}{//\ Sélectionne\ le\ fichier}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Afficher\ le\ chemin\ du\ fichier\ sélectionné (si\ un\ fichier\ est\ sélectionné)}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!selectedPath.empty())\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Fichier\ sélectionné :\ \%s"{}},\ selectedPath.c\_str());}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00047\ \}}
+
+\end{DoxyCode}

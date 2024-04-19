@@ -1,0 +1,250 @@
+\doxysection{Memory\+Pool.\+h}
+\hypertarget{_memory_pool_8h_source}{}\label{_memory_pool_8h_source}\mbox{\hyperlink{_memory_pool_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <new>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_game_object_8h}{GameObject.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{class}\ Strategy>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_memory_pool}{MemoryPool}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00009\ \ \ \ \ Strategy\ m\_strategy;}
+\DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{class_memory_pool_a81562e65d5b85a7615f60b44d4461252}{MemoryPool}}(\textcolor{keywordtype}{int}\ size\ =\ 0)\ :\ m\_strategy(size)}
+\DoxyCodeLine{00012\ \ \ \ \ \{}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00017\ \ \ \ \ T*\ \mbox{\hyperlink{class_memory_pool_a78298262e0a5d2661533fe5f56ed5cbf}{Alloc}}(Args...\ args)}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ (sizeof(T)\ !=\ sizeof(type))\ \{}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ throw\ std::bad\_alloc();}}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ T*\ temp\ =\ \textcolor{keyword}{reinterpret\_cast<}T*\textcolor{keyword}{>}(m\_strategy.Allocate());}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ (temp)\ T(args...);}
+\DoxyCodeLine{00024\ \ \ \ \ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_memory_pool_ab9267708cc7a7801d0e1467cf01ca5e9}{Free}}(\textcolor{keywordtype}{void}*\ p)}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ m\_strategy.Deallocate(p);}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_memory_pool_ab2031dbba508e46248b28ae9d678f7ae}{FreeAll}}()}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ m\_strategy.DeallocateAll();}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Strategy>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_memory_pool}{MemoryPool}}<\mbox{\hyperlink{class_game_object}{GameObject}},\ Strategy>}
+\DoxyCodeLine{00038\ \{}
+\DoxyCodeLine{00039\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00040\ \ \ \ \ Strategy\ m\_strategy;}
+\DoxyCodeLine{00041\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{class_memory_pool_3_01_game_object_00_01_strategy_01_4_a98fe2f8327a2a030351f512be74cf965}{MemoryPool}}(\textcolor{keywordtype}{int}\ size\ =\ 0)\ :\ m\_strategy(size)}
+\DoxyCodeLine{00043\ \ \ \ \ \{}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ GameObject\ from\ the\ memory\ pool}}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_game_object}{GameObject}}*\ \mbox{\hyperlink{class_memory_pool_3_01_game_object_00_01_strategy_01_4_abd2fb39d2393f8e0746dd090c1546c7d}{CreateGameObject}}(std::string\ name\ =\ \textcolor{stringliteral}{"{}GO"{}},\ \textcolor{keywordtype}{bool}\ PrefabLoading\ =\ \textcolor{keyword}{true},\ \mbox{\hyperlink{class_prefab}{Prefab}}*\ prefab\ =\ \textcolor{keyword}{nullptr},\ \textcolor{keywordtype}{bool}\ loading\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00049\ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_game_object}{GameObject}}*\ temp\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{class_game_object}{GameObject}}*\textcolor{keyword}{>}(m\_strategy.Allocate());}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ (temp)\ \mbox{\hyperlink{class_game_object}{GameObject}}(name,\ PrefabLoading,\ prefab,\ loading);}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_memory_pool_3_01_game_object_00_01_strategy_01_4_ab837033a3643cd989e5dd8be92ba2c66}{Free}}(\textcolor{keywordtype}{void}*\ p)}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ m\_strategy.Deallocate(p);}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_memory_pool_3_01_game_object_00_01_strategy_01_4_a52bbfb394c701530a87cc7e44bac62b7}{FreeAll}}()}
+\DoxyCodeLine{00060\ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ m\_strategy.DeallocateAll();}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ \textcolor{comment}{//template\ <typename\ T>\ class\ MemPool\_Malloc}}
+\DoxyCodeLine{00065\ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00066\ \textcolor{comment}{//public:}}
+\DoxyCodeLine{00067\ \textcolor{comment}{//\ \ void\ init()\ \{\}}}
+\DoxyCodeLine{00068\ \textcolor{comment}{//}}
+\DoxyCodeLine{00069\ \textcolor{comment}{//\ \ void*\ Allocate()}}
+\DoxyCodeLine{00070\ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{00071\ \textcolor{comment}{//\ \ \ \ \ \ return\ malloc(sizeof(T));}}
+\DoxyCodeLine{00072\ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00073\ \textcolor{comment}{//}}
+\DoxyCodeLine{00074\ \textcolor{comment}{//\ \ void\ Deallocate(void*\ p)}}
+\DoxyCodeLine{00075\ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{00076\ \textcolor{comment}{//\ \ \ \ \ \ free(p);}}
+\DoxyCodeLine{00077\ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00078\ \textcolor{comment}{//\};}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_mem_pool___linear}{MemPool\_Linear}}}
+\DoxyCodeLine{00081\ \{}
+\DoxyCodeLine{00082\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size\_type;}
+\DoxyCodeLine{00084\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00085\ \ \ \ \ std::vector<uint8\_t>\ m\_buffer;\textcolor{comment}{//\ the\ memory,\ the\ objects\ are\ stored\ here}}
+\DoxyCodeLine{00086\ \ \ \ \ std::vector<bool>\ m\_state;\textcolor{comment}{//\ true\ if\ the\ memory\ chunk\ is\ occupied,\ false\ if\ it's\ free}}
+\DoxyCodeLine{00087\ \ \ \ \ size\_type\ N;\textcolor{comment}{//\ number\ of\ memory\ chunks}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{class_mem_pool___linear_a746247aa76fe63d6a57e0685cdf294b0}{MemPool\_Linear}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size)\ :\ m\_buffer(sizeof(T)*\ size),\ m\_state(size),\ N(size)}
+\DoxyCodeLine{00091\ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ initially\ all\ memory\ chunks\ are\ free}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (size\_type\ i\ =\ 0;\ i\ <\ N;\ i++)}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ m\_state[i]\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout<<\ \textcolor{stringliteral}{"{}Memory\ Chunk\ "{}}\ <<\ i\ <<\ \textcolor{stringliteral}{"{}\ is\ free"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{class_mem_pool___linear_acacd6cb135f6e078b11a2a4b946d6f3e}{Allocate}}()}
+\DoxyCodeLine{00101\ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ size\_type\ old\_size\ =\ m\_buffer.size();}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ search\ linearily\ through\ the\ array\ to\ find\ an\ unused}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ memory\ chunk,\ take\ it\ and\ mark\ it\ occupied}}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (size\_type\ i\ =\ 0;\ i\ <\ N;\ i++)}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_state[i])}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_state[i]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&m\_buffer[\textcolor{keyword}{sizeof}(T)\ *\ i];}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_mem_pool___linear_a3c9b9aa9688e19f4b43a0ec8fec5834d}{ResizePool}}();}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&m\_buffer[\textcolor{keyword}{sizeof}(T)\ *\ old\_size];}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mem_pool___linear_a9a0baa1b83ff21cc0465b5a732f69924}{Deallocate}}(\textcolor{keywordtype}{void}*\ p)}
+\DoxyCodeLine{00118\ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ search\ all\ memory\ chunks\ to\ find\ the\ one\ to\ be\ freed,}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ then\ mark\ it\ as\ not\ occupied.}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (size\_type\ i\ =\ 0;\ i\ <\ N;\ i++)}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\&m\_buffer[\textcolor{keyword}{sizeof}(T)\ *\ i]\ ==\ p)}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_state[i]\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00129\ \ \ \ \ \}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mem_pool___linear_a020a7a12fcf394b39623480784cbb576}{DeallocateAll}}()}
+\DoxyCodeLine{00132\ \ \ \ \ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (size\_type\ i\ =\ 0;\ i\ <\ N;\ i++)}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ m\_state[i]\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00137\ \ \ \ \ \}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mem_pool___linear_a3c9b9aa9688e19f4b43a0ec8fec5834d}{ResizePool}}()}
+\DoxyCodeLine{00140\ \ \ \ \ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Resizing\ Pool"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ size\_type\ i\ =\ m\_buffer.size()\ *\ 2;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ m\_buffer.resize(i);}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ m\_state.resize(m\_state.size()\ *\ 2);}
+\DoxyCodeLine{00145\ \ \ \ \ \}}
+\DoxyCodeLine{00146\ \};}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \textcolor{comment}{//template\ <typename\ T>\ class\ MemPool\_Heap}}
+\DoxyCodeLine{00149\ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00150\ \textcolor{comment}{//private:}}
+\DoxyCodeLine{00151\ \textcolor{comment}{//\ \ typedef\ unsigned\ int\ size\_type;\ //\ convinience}}
+\DoxyCodeLine{00152\ \textcolor{comment}{//private:}}
+\DoxyCodeLine{00153\ \textcolor{comment}{//\ \ size\_type\ N;\ //\ number\ of\ memory\ chunks}}
+\DoxyCodeLine{00154\ \textcolor{comment}{//\ \ size\_type\ available;\ //\ number\ of\ memory\ chunks\ available}}
+\DoxyCodeLine{00155\ \textcolor{comment}{//\ \ T*\ a[N\ +\ 1];\ //\ book\ keeping,\ first\ place\ not\ used}}
+\DoxyCodeLine{00156\ \textcolor{comment}{//\ \ uint8\_t\ buf[sizeof(T)\ *\ N];\ //\ the\ memory\ itself,\ here\ will\ the\ objects\ be\ stored}}
+\DoxyCodeLine{00157\ \textcolor{comment}{//private:}}
+\DoxyCodeLine{00158\ \textcolor{comment}{//}}
+\DoxyCodeLine{00159\ \textcolor{comment}{//\ \ inline\ void\ swap(size\_type\ i,\ size\_type\ j)}}
+\DoxyCodeLine{00160\ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{00161\ \textcolor{comment}{//\ \ \ \ \ \ T*\ t\ =\ a[i];}}
+\DoxyCodeLine{00162\ \textcolor{comment}{//\ \ \ \ \ \ a[i]\ =\ a[j];}}
+\DoxyCodeLine{00163\ \textcolor{comment}{//\ \ \ \ \ \ a[j]\ =\ t;}}
+\DoxyCodeLine{00164\ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00165\ \textcolor{comment}{//}}
+\DoxyCodeLine{00166\ \textcolor{comment}{//\ \ void\ up()}}
+\DoxyCodeLine{00167\ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{00168\ \textcolor{comment}{//\ \ \ \ \ \ for\ (size\_type\ n\ =\ available;\ n\ >\ 1;\ )\ \{}}
+\DoxyCodeLine{00169\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ size\_type\ i\ =\ n\ /\ 2;}}
+\DoxyCodeLine{00170\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ if\ (!(a[i]\ \&\&\ a[n]))}}
+\DoxyCodeLine{00171\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ swap(i,\ n);}}
+\DoxyCodeLine{00172\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ n\ =\ i;}}
+\DoxyCodeLine{00173\ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{00174\ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00175\ \textcolor{comment}{//}}
+\DoxyCodeLine{00176\ \textcolor{comment}{//\ \ void\ down()}}
+\DoxyCodeLine{00177\ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{00178\ \textcolor{comment}{//\ \ \ \ \ \ size\_type\ i\ =\ 1;}}
+\DoxyCodeLine{00179\ \textcolor{comment}{//\ \ \ \ \ \ size\_type\ c\ =\ 2\ *\ i;}}
+\DoxyCodeLine{00180\ \textcolor{comment}{//\ \ \ \ \ \ while\ (c\ <=\ available)\ \{}}
+\DoxyCodeLine{00181\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ if\ (c\ +\ 1\ <=\ available)}}
+\DoxyCodeLine{00182\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (!(a[c]\ \&\&\ a[c\ +\ 1]))}}
+\DoxyCodeLine{00183\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++c;}}
+\DoxyCodeLine{00184\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ if\ (!(a[i]\ \&\&\ a[c]))}}
+\DoxyCodeLine{00185\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ swap(i,\ c);}}
+\DoxyCodeLine{00186\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ i\ =\ c;}}
+\DoxyCodeLine{00187\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ c\ =\ 2\ *\ i;}}
+\DoxyCodeLine{00188\ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{00189\ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00190\ \textcolor{comment}{//public:}}
+\DoxyCodeLine{00191\ \textcolor{comment}{//\ \ MemPool\_Heap()\ :\ N(0),\ a}}
+\DoxyCodeLine{00192\ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{00193\ \textcolor{comment}{//\ \ \ \ \ \ //\ number\ of\ available\ memory\ chunks\ is\ the\ size\ of\ the\ memory\ pool,\ naturally}}
+\DoxyCodeLine{00194\ \textcolor{comment}{//\ \ \ \ \ \ available\ =\ N;}}
+\DoxyCodeLine{00195\ \textcolor{comment}{//}}
+\DoxyCodeLine{00196\ \textcolor{comment}{//\ \ \ \ \ \ //\ first\ node\ is\ not\ used,\ convinience}}
+\DoxyCodeLine{00197\ \textcolor{comment}{//\ \ \ \ \ \ a[0]\ =\ NULL;}}
+\DoxyCodeLine{00198\ \textcolor{comment}{//}}
+\DoxyCodeLine{00199\ \textcolor{comment}{//\ \ \ \ \ \ //\ all\ other\ memory\ chunks\ are\ free,\ the\ pointers\ are\ initialized}}
+\DoxyCodeLine{00200\ \textcolor{comment}{//\ \ \ \ \ \ for\ (size\_type\ i\ =\ 1;\ i\ <=\ N;\ ++i)\ \{}}
+\DoxyCodeLine{00201\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ a[i]\ =\ reinterpret\_cast<T*>(\&buf[sizeof(T)\ *\ (i\ -\/\ 1)]);}}
+\DoxyCodeLine{00202\ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{00203\ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00204\ \textcolor{comment}{//}}
+\DoxyCodeLine{00205\ \textcolor{comment}{//\ \ void*\ allocate()}}
+\DoxyCodeLine{00206\ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{00207\ \textcolor{comment}{//\ \ \ \ \ \ //\ allocation\ not\ possible\ if\ the\ memory\ pool\ has\ no\ more\ space}}
+\DoxyCodeLine{00208\ \textcolor{comment}{//\ \ \ \ \ \ if\ (available\ <=\ 0)\ throw\ std::bad\_alloc();}}
+\DoxyCodeLine{00209\ \textcolor{comment}{//}}
+\DoxyCodeLine{00210\ \textcolor{comment}{//\ \ \ \ \ \ //\ the\ first\ memory\ chunk\ is\ always\ on\ index\ 1,\ this\ is\ guaranteed}}
+\DoxyCodeLine{00211\ \textcolor{comment}{//\ \ \ \ \ \ //\ by\ the\ heap}}
+\DoxyCodeLine{00212\ \textcolor{comment}{//\ \ \ \ \ \ T*\ t\ =\ a[1];}}
+\DoxyCodeLine{00213\ \textcolor{comment}{//}}
+\DoxyCodeLine{00214\ \textcolor{comment}{//\ \ \ \ \ \ //\ move\ the\ last\ free\ node\ to\ front}}
+\DoxyCodeLine{00215\ \textcolor{comment}{//\ \ \ \ \ \ a[1]\ =\ a[available];}}
+\DoxyCodeLine{00216\ \textcolor{comment}{//}}
+\DoxyCodeLine{00217\ \textcolor{comment}{//\ \ \ \ \ \ //\ mark\ the\ used\ chunk}}
+\DoxyCodeLine{00218\ \textcolor{comment}{//\ \ \ \ \ \ a[available]\ =\ NULL;}}
+\DoxyCodeLine{00219\ \textcolor{comment}{//}}
+\DoxyCodeLine{00220\ \textcolor{comment}{//\ \ \ \ \ \ //\ number\ of\ free\ chunks\ decreased}}
+\DoxyCodeLine{00221\ \textcolor{comment}{//\ \ \ \ \ \ -\/-\/available;}}
+\DoxyCodeLine{00222\ \textcolor{comment}{//}}
+\DoxyCodeLine{00223\ \textcolor{comment}{//\ \ \ \ \ \ //\ book\ keeping\ for\ the\ heap}}
+\DoxyCodeLine{00224\ \textcolor{comment}{//\ \ \ \ \ \ down();}}
+\DoxyCodeLine{00225\ \textcolor{comment}{//}}
+\DoxyCodeLine{00226\ \textcolor{comment}{//\ \ \ \ \ \ //\ return\ a\ pointer\ to\ the\ allocated\ space}}
+\DoxyCodeLine{00227\ \textcolor{comment}{//\ \ \ \ \ \ return\ t;}}
+\DoxyCodeLine{00228\ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00229\ \textcolor{comment}{//}}
+\DoxyCodeLine{00230\ \textcolor{comment}{//\ \ void\ deallocate(void*\ p)}}
+\DoxyCodeLine{00231\ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{00232\ \textcolor{comment}{//\ \ \ \ \ \ //\ invalid\ pointers\ are\ ignored}}
+\DoxyCodeLine{00233\ \textcolor{comment}{//\ \ \ \ \ \ if\ (!p\ ||\ available\ >=\ N)\ return;}}
+\DoxyCodeLine{00234\ \textcolor{comment}{//}}
+\DoxyCodeLine{00235\ \textcolor{comment}{//\ \ \ \ \ \ //\ memory\ is\ freed,\ more\ space\ within\ the\ pool}}
+\DoxyCodeLine{00236\ \textcolor{comment}{//\ \ \ \ \ \ ++available;}}
+\DoxyCodeLine{00237\ \textcolor{comment}{//}}
+\DoxyCodeLine{00238\ \textcolor{comment}{//\ \ \ \ \ \ //\ the\ freed\ node\ is,\ well,\ free.\ status\ and\ pointer\ are\ restored.}}
+\DoxyCodeLine{00239\ \textcolor{comment}{//\ \ \ \ \ \ a[available]\ =\ reinterpret\_cast<T*>(p);}}
+\DoxyCodeLine{00240\ \textcolor{comment}{//}}
+\DoxyCodeLine{00241\ \textcolor{comment}{//\ \ \ \ \ \ //\ book\ keeping\ for\ the\ heap}}
+\DoxyCodeLine{00242\ \textcolor{comment}{//\ \ \ \ \ \ up();}}
+\DoxyCodeLine{00243\ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00244\ \textcolor{comment}{//\};}}
+\DoxyCodeLine{00245\ }
+
+\end{DoxyCode}

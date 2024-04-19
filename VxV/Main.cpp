@@ -6,7 +6,8 @@
 #include "object.hpp"
 #include "EngineGUI.h"
 
-int main() {
+int main()
+{
 	EngineGUI gui;
 	//On initialise tout
 	GLFWwindow* window;
@@ -26,13 +27,9 @@ int main() {
 	glm::mat4 Projection = initializeProjectionMatrix();
 	glm::mat4 View = initializeViewMatrix();
 
-	std::vector<Object> objects;
-	addNewObject("miku.obj", objects);
-
 	// Get a handle for our uniforms
 	GLuint TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID;
-	setupHandlesForUniforms(programID, TextureID, LightID, MaterialAmbientColorID,
-		MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
+	setupHandlesForUniforms(programID, TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
 
 	glBindVertexArray(0);
 	// glfwGetTime is called only once, the first time this function is called
@@ -54,7 +51,9 @@ int main() {
 		// Compute time difference between current and last frame
 		double currentTime = glfwGetTime();
 		nbFrames++;
-		if (currentTime - lastTimeFPS >= 1.0) { // If last printf() was more than 1 sec ago
+		if (currentTime - lastTimeFPS >= 1.0)
+		{
+			// If last printf() was more than 1 sec ago
 			// printf and reset timer
 			printf("%f ms/frame, FPS: %d\n", 1000.0 / double(nbFrames), nbFrames);
 			nbFrames = 0;
@@ -63,8 +62,8 @@ int main() {
 
 		float deltaTime = float(currentTime - lastTime);
 
-		float angle = deltaTime * 50.0f;  // Rotate by 60 degrees
-		glm::vec3 axis(0.0f, 0.0f, -1.0f);  // Rotate around the z-axis
+		float angle = deltaTime * 50.0f; // Rotate by 60 degrees
+		glm::vec3 axis(0.0f, 0.0f, -1.0f); // Rotate around the z-axis
 
 		glm::vec3 lightPos = glm::vec3(0, 0, 8);
 		glUniform3f(LightID, lightPos.x, lightPos.y, lightPos.z);
@@ -72,9 +71,16 @@ int main() {
 		// Compute the MVP matrix from keyboard and mouse input
 		computeMatricesFromInputs(window);
 		glm::mat4 ProjectionMatrix = getProjectionMatrix();
-		for (auto& object : objects) {
-			sendMVPData(object, angle, axis, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
-			drawObjects(objects, TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
+		for (GameObject* go : goList)
+		{
+			Model* modelComp = go->GetComponent<Model>();
+			if (modelComp != nullptr)
+			{
+				auto& model = *(modelComp->GetModel());
+
+				sendMVPData(model, angle, axis, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
+				drawModel(modelComp->GetModel(), TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
+			}
 		}
 
 		gui.UpdateGui();
@@ -89,9 +95,19 @@ int main() {
 		// Swap buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();
-	} while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
+	}
+	while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
 
-	cleanup(window, objects, programID, VertexArrayID, TextureID, LightID,
-		MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
+	for (GameObject* go : Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects())
+	{
+		Model* modelComp = go->GetComponent<Model>();
+		if (modelComp != nullptr)
+		{
+			auto& object = *(modelComp->GetModel());
+
+			cleanup(window, object);
+		}
+	}
+	finishProgram(programID, VertexArrayID, TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
 	return 0;
 }

@@ -29,7 +29,7 @@ void main(){
     float LightPower = 50.0f;
     
     // Material properties from texture
-    vec3 MaterialAmbientColor2 = vec3(0.5,0.5,0.5) * MaterialDiffuseColor;
+    vec3 MaterialAmbientColor2 = vec3(0.1,0.1,0.1) * MaterialDiffuseColor;
     vec3 textureColor = vec3(0.3,0.3,0.3) * texture( myTextureSampler, UV ).rgb;
     vec3 MaterialDiffuseColor2 = mix(texture( myTextureSampler, UV ).rgb , MaterialDiffuseColor , 0.5);
     //MaterialAmbientColor2 = mix(MaterialAmbientColor2, texture( myTextureSampler, UV ).rgb, 0.1);
