@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ClientChat.cpp">
+    <ClCompile Include="Client1.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

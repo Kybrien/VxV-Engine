@@ -53,7 +53,7 @@ int main() {
 
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_port = htons(12345);
-    serverAddr.sin_addr.s_addr = inet_addr("10.3.40.26");
+    serverAddr.sin_addr.s_addr = inet_addr("192.168.0.33");
 
     iResult = connect(clientSocket, (SOCKADDR*)&serverAddr, sizeof(serverAddr));
     if (iResult == SOCKET_ERROR) {
@@ -69,7 +69,7 @@ int main() {
 
     char message[1024];
     while (true) {
-        std::cout << "Vous : ";
+        std::cout << "Vous : " << std::endl;
         std::cin.getline(message, sizeof(message));
 
         // Envoi du message au serveur
