@@ -1,0 +1,122 @@
+\doxysection{object.\+hpp}
+\hypertarget{object_8hpp_source}{}\label{object_8hpp_source}\mbox{\hyperlink{object_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ OBJECT\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ OBJECT\_HPP}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <GLM/glm.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Externes/stb/stb\_image.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Externes/tiny\_obj\_loader.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{keyword}{using\ namespace\ }glm;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{loading_shader_8hpp}{loadingShader.hpp}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{controls_8hpp}{controls.hpp}}"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_vertex}{Vertex}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ glm::vec3\ \mbox{\hyperlink{class_vertex_a030819fdc241743bbd3e180a6b132ed3}{position}};}
+\DoxyCodeLine{00018\ \ \ \ \ glm::vec3\ \mbox{\hyperlink{class_vertex_a3aa35fe84025ecf1acccb5f65f5577fd}{normal}};}
+\DoxyCodeLine{00019\ \ \ \ \ glm::vec2\ \mbox{\hyperlink{class_vertex_a8214ff52fee03a5524ce58c3810a1be9}{texCoord}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_vertex_a80a54a84866d511b63bcc6f38899bed9}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vertex}{Vertex}}\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vertex_a030819fdc241743bbd3e180a6b132ed3}{position}}\ ==\ other.\mbox{\hyperlink{class_vertex_a030819fdc241743bbd3e180a6b132ed3}{position}}\ \&\&\ \mbox{\hyperlink{class_vertex_a3aa35fe84025ecf1acccb5f65f5577fd}{normal}}\ ==\ other.\mbox{\hyperlink{class_vertex_a3aa35fe84025ecf1acccb5f65f5577fd}{normal}}\ \&\&\ \mbox{\hyperlink{class_vertex_a8214ff52fee03a5524ce58c3810a1be9}{texCoord}}\ ==\ other.\mbox{\hyperlink{class_vertex_a8214ff52fee03a5524ce58c3810a1be9}{texCoord}};}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structpair__hash}{pair\_hash}}\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T1,\ \textcolor{keyword}{class}\ T2>}
+\DoxyCodeLine{00028\ \ \ \ \ std::size\_t\ \mbox{\hyperlink{structpair__hash_a721b3b210f2967d103515bf566fe2115}{operator\ ()\ }}(\textcolor{keyword}{const}\ std::pair<T1,\ T2>\&\ p)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ h1\ =\ std::hash<T1>\{\}(p.first);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ h2\ =\ std::hash<T2>\{\}(p.second);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Mainly\ for\ demonstration\ purposes,\ i.e.\ works\ but\ is\ overly\ simple}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ In\ the\ real\ world,\ use\ sth.\ like\ boost.hash\_combine}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ h1\ \string^\ h2;}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacestd}{std}}\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{template}<>\ \textcolor{keyword}{struct\ }hash<glm::vec3>\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structstd_1_1hash_3_01glm_1_1vec3_01_4_ac331b9d7daba792813d937449eb82c78}{operator()}}(glm::vec3\ \textcolor{keyword}{const}\&\ vec)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ((hash<float>()(vec.x)\ \string^\ (hash<float>()(vec.y)\ <<\ 1))\ >>\ 1)\ \string^\ (hash<float>()(vec.z)\ <<\ 1);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{template}<>\ \textcolor{keyword}{struct\ }hash<glm::vec2>\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structstd_1_1hash_3_01glm_1_1vec2_01_4_a840013e03f15f6f48bdba97bd8ba70db}{operator()}}(glm::vec2\ \textcolor{keyword}{const}\&\ vec)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ hash<float>()(vec.x)\ \string^\ (hash<float>()(vec.y)\ <<\ 1);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{template}<>\ \textcolor{keyword}{struct\ }hash<\mbox{\hyperlink{class_vertex}{Vertex}}>\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structstd_1_1hash_3_01_vertex_01_4_a6ca0b0b4c01c345481ca4ae6a3b791e1}{operator()}}(\mbox{\hyperlink{class_vertex}{Vertex}}\ \textcolor{keyword}{const}\&\ vertex)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ((hash<glm::vec3>()(vertex.\mbox{\hyperlink{class_vertex_a030819fdc241743bbd3e180a6b132ed3}{position}})\ \string^\ (hash<glm::vec3>()(vertex.\mbox{\hyperlink{class_vertex_a3aa35fe84025ecf1acccb5f65f5577fd}{normal}})\ <<\ 1))\ >>\ 1)\ \string^\ (hash<glm::vec2>()(vertex.\mbox{\hyperlink{class_vertex_a8214ff52fee03a5524ce58c3810a1be9}{texCoord}})\ <<\ 1);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \};}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structstd_1_1_vec3_hash}{Vec3Hash}}\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structstd_1_1_vec3_hash_a31316ada60f96e726f284c36c034f74f}{operator()}}(\textcolor{keyword}{const}\ glm::vec3\&\ vec)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ((hash<float>()(vec.x)\ \string^\ (hash<float>()(vec.y)\ <<\ 1))\ >>\ 1)\ \string^\ (hash<float>()(vec.z)\ <<\ 1);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structstd_1_1_vec2_hash}{Vec2Hash}}\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structstd_1_1_vec2_hash_a193e5007fa47cdfe05eae4b0f940ff73}{operator()}}(\textcolor{keyword}{const}\ glm::vec2\&\ vec)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ hash<float>()(vec.x)\ \string^\ (hash<float>()(vec.y)\ <<\ 1);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structstd_1_1_vertex_hash}{VertexHash}}\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structstd_1_1_vertex_hash_a513560efb1229416ab514ebeaff44e55}{operator()}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vertex}{Vertex}}\&\ vertex)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ((\mbox{\hyperlink{structstd_1_1_vec3_hash}{Vec3Hash}}()(vertex.\mbox{\hyperlink{class_vertex_a030819fdc241743bbd3e180a6b132ed3}{position}})\ \string^\ (\mbox{\hyperlink{structstd_1_1_vec3_hash}{Vec3Hash}}()(vertex.\mbox{\hyperlink{class_vertex_a3aa35fe84025ecf1acccb5f65f5577fd}{normal}})\ <<\ 1))\ >>\ 1)\ \string^\ (\mbox{\hyperlink{structstd_1_1_vec2_hash}{Vec2Hash}}()(vertex.\mbox{\hyperlink{class_vertex_a8214ff52fee03a5524ce58c3810a1be9}{texCoord}})\ <<\ 1);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \};}
+\DoxyCodeLine{00073\ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_object}{Object}}\ \{}
+\DoxyCodeLine{00076\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00077\ \ \ \ \ tinyobj::attrib\_t\ \mbox{\hyperlink{class_object_a34b86a3a05dfd61a1cb1dcb87134e786}{attributes}};}
+\DoxyCodeLine{00078\ \ \ \ \ std::vector<tinyobj::shape\_t>\ \mbox{\hyperlink{class_object_aaa04d9d25497299c7ff4feda8f73202d}{shapes}};}
+\DoxyCodeLine{00079\ \ \ \ \ std::vector<tinyobj::material\_t>\ \mbox{\hyperlink{class_object_a3461f82aeb4e5520ac7f58025e9ad613}{materials}};}
+\DoxyCodeLine{00080\ \ \ \ \ GLuint\ \mbox{\hyperlink{class_object_af3c7c45308a764d1f92333c8f72c7e13}{vertexbuffer}},\ \mbox{\hyperlink{class_object_a9b5466febed669c348099976edc4ed42}{indexbuffer}};}
+\DoxyCodeLine{00081\ \ \ \ \ std::vector<GLuint>\ \mbox{\hyperlink{class_object_a07e69d9859d8fee333c9769497ec34b3}{textureIDs}};}
+\DoxyCodeLine{00082\ \ \ \ \ std::unordered\_map<std::pair<GLuint,\ int>,\ std::vector<Vertex>,\ \mbox{\hyperlink{structpair__hash}{pair\_hash}}>\ \mbox{\hyperlink{class_object_a6323486c0a18a159d144b29cc273675a}{vertexBuffers}};}
+\DoxyCodeLine{00083\ \ \ \ \ std::unordered\_map<std::pair<GLuint,\ int>,\ GLuint,\ \mbox{\hyperlink{structpair__hash}{pair\_hash}}>\ \mbox{\hyperlink{class_object_a2b6e298d8d37e5e8fe47ff9980a20f08}{vertexBufferIDs}};}
+\DoxyCodeLine{00084\ \ \ \ \ glm::mat4\ \mbox{\hyperlink{class_object_a6b9e1c5f1dad7c7622cd5523d1a76de3}{transform}};}
+\DoxyCodeLine{00085\ \};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \mbox{\hyperlink{class_vertex}{Vertex}}\ \mbox{\hyperlink{object_8hpp_a9f9b1e415eb80126ec987fcf9006d7f7}{createVertexFromIndex}}(\textcolor{keyword}{const}\ tinyobj::attrib\_t\&\ attrib,\ \textcolor{keyword}{const}\ tinyobj::index\_t\&\ index);}
+\DoxyCodeLine{00088\ GLuint\ \mbox{\hyperlink{object_8hpp_ada2dfa2a2473899e0ec39b3ee9695cf1}{loadTexture}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filename);}
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_a8f490ee67f22023cf637d93730514863}{init}}(GLFWwindow*\&\ window);}
+\DoxyCodeLine{00090\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_a0d19ebac03a8c658fecf491ec7d7fefb}{setupInput}}(GLFWwindow*\ window);}
+\DoxyCodeLine{00091\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_a6e31672d5229034125de7c14588fd963}{initOpenGLSettings}}();}
+\DoxyCodeLine{00092\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_a6271f9c23852dede80128644794fbc4c}{initializeVertexArrayObject}}(GLuint\&\ VertexArrayID);}
+\DoxyCodeLine{00093\ glm::mat4\ \mbox{\hyperlink{object_8hpp_a27bf9558ecaf7d4f22d1d02a77462ead}{initializeProjectionMatrix}}();}
+\DoxyCodeLine{00094\ glm::mat4\ \mbox{\hyperlink{object_8hpp_a818cec7d86c467bdd2bbcb06a5abc722}{initializeViewMatrix}}();}
+\DoxyCodeLine{00095\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_ac3e4d4cfe635daf76270ee3492fe30e4}{setupVertexAttributes}}();}
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_ae97479b18d4aa965bfede8e68520f9bd}{setupBuffers}}(GLuint\&\ vertexbuffer,\ \textcolor{keyword}{const}\ std::vector<Vertex>\&\ vertices,\ GLuint\&\ indexbuffer,\ \textcolor{keyword}{const}\ std::vector<unsigned\ int>\&\ indices);}
+\DoxyCodeLine{00097\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_a15ab9bea9e8686fbe8e2a6815f414503}{cleanup}}(GLFWwindow*\ window,\ std::vector<Object>\&\ objects,\ GLuint\ programID,\ GLuint\ VertexArrayID,\ GLuint\&\ TextureID,\ GLuint\&\ LightID,}
+\DoxyCodeLine{00098\ \ \ \ \ GLuint\&\ MaterialAmbientColorID,\ GLuint\&\ MaterialDiffuseColorID,\ GLuint\&\ MaterialSpecularColorID,\ GLuint\&\ MatrixID,\ GLuint\&\ ViewMatrixID,}
+\DoxyCodeLine{00099\ \ \ \ \ GLuint\&\ ModelMatrixID);}
+\DoxyCodeLine{00100\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_abb14214ff67e919f55a92b86a0ec79d1}{loadingObject}}(\textcolor{keyword}{const}\ std::string\&\ filename,\ \mbox{\hyperlink{class_object}{Object}}\&\ obj);}
+\DoxyCodeLine{00101\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_a3bf8fed1fb5996ae7047f4821514d29b}{loadTextures}}(\mbox{\hyperlink{class_object}{Object}}\&\ obj);}
+\DoxyCodeLine{00102\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_a21dc407bf79c7ab357937beb739158fd}{loadObjAndTextures}}(\textcolor{keyword}{const}\ std::string\&\ filename,\ \mbox{\hyperlink{class_object}{Object}}\&\ obj);}
+\DoxyCodeLine{00103\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_a4fff386bd0495e094e84aa3f2333811c}{batchingObj}}(\mbox{\hyperlink{class_object}{Object}}\&\ obj);}
+\DoxyCodeLine{00104\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_a53821b06fa0fc9ee4d459706b4e2a231}{loadObjAndBatching}}(\textcolor{keyword}{const}\ std::string\&\ filename,\ \mbox{\hyperlink{class_object}{Object}}\&\ obj);}
+\DoxyCodeLine{00105\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_a93f4bd652857b99283eb669be62320c3}{addNewObject}}(\textcolor{keyword}{const}\ std::string\&\ filename,\ std::vector<Object>\&\ objects);}
+\DoxyCodeLine{00106\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_a05939fd662d197f395fd5fad460cf1a5}{copyObjectAndAdd}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_object}{Object}}\&\ obj,\ std::vector<Object>\&\ objects);}
+\DoxyCodeLine{00107\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_ada42dad34b781b6b47fda1b31360b777}{setupHandlesForUniforms}}(GLuint\&\ programID,\ GLuint\&\ TextureID,\ GLuint\&\ LightID,\ GLuint\&\ MaterialAmbientColorID,}
+\DoxyCodeLine{00108\ \ \ \ \ GLuint\&\ MaterialDiffuseColorID,\ GLuint\&\ MaterialSpecularColorID,\ GLuint\&\ MatrixID,\ GLuint\&\ ViewMatrixID,\ GLuint\&\ ModelMatrixID);}
+\DoxyCodeLine{00109\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_a1b8747f6a19bea1095596b0d6c0e0462}{drawObject}}(\mbox{\hyperlink{class_object}{Object}}\&\ \textcolor{keywordtype}{object},\ GLuint\ TextureID,\ GLuint\ MaterialAmbientColorID,\ GLuint\ MaterialDiffuseColorID,}
+\DoxyCodeLine{00110\ \ \ \ \ GLuint\ MaterialSpecularColorID);}
+\DoxyCodeLine{00111\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_a2f532028382f0b1215e3240d9546659e}{translateObject}}(\mbox{\hyperlink{class_object}{Object}}\&\ \textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ glm::vec3\&\ translation);}
+\DoxyCodeLine{00112\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_aff1f96c88383a04b810b5ad9a47bd4c1}{rotateObject}}(\mbox{\hyperlink{class_object}{Object}}\&\ \textcolor{keywordtype}{object},\ \textcolor{keywordtype}{float}\ angle,\ \textcolor{keyword}{const}\ glm::vec3\&\ axis);}
+\DoxyCodeLine{00113\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_a79acbdc63ceb9cc4675f200d57b03586}{scaleObject}}(\mbox{\hyperlink{class_object}{Object}}\&\ \textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ glm::vec3\&\ scale);}
+\DoxyCodeLine{00114\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{object_8hpp_ac97e52ddf4b9d85af238aa36dcbaa683}{sendMVPData}}(\mbox{\hyperlink{class_object}{Object}}\&\ \textcolor{keywordtype}{object},\ \textcolor{keywordtype}{float}\ angle,\ \textcolor{keyword}{const}\ glm::vec3\&\ axis,\ GLuint\ VertexArrayID,\ GLuint\ MatrixID,}
+\DoxyCodeLine{00115\ \ \ \ \ GLuint\ ModelMatrixID,\ GLuint\ ViewMatrixID);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,83 @@
+\doxysection{Scene Class Reference}
+\hypertarget{class_scene}{}\label{class_scene}\index{Scene@{Scene}}
+
+
+{\ttfamily \#include $<$Scene.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_scene_a6ba5bb9b5249b96421a5199491e7d517}{Scene}} (std\+::string name\+\_\+="{}Sample\+Scene"{})
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \& \mbox{\hyperlink{class_scene_a05e21fc3b8a98abfe1227ca77d6ce6f1}{Get\+Game\+Objects}} ()
+\item 
+void \mbox{\hyperlink{class_scene_aca63760fd328a1c44cd8e46c71141def}{Add\+Game\+Object}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go)
+\item 
+void \mbox{\hyperlink{class_scene_a456b73af3ea678135c40f45644ae6e29}{Remove\+Game\+Object}} (int id)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_scene_a8e7c528eaf26088daa91e19102182845}{Get\+All\+Game\+Objects}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_scene_a73428b3e2f7f9ca0de9ad23ac1c6b02c}{origin}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_scene_a6ba5bb9b5249b96421a5199491e7d517}\label{class_scene_a6ba5bb9b5249b96421a5199491e7d517} 
+\index{Scene@{Scene}!Scene@{Scene}}
+\index{Scene@{Scene}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{Scene()}{Scene()}}
+{\footnotesize\ttfamily Scene\+::\+Scene (\begin{DoxyParamCaption}\item[{std\+::string}]{name\+\_\+ = {\ttfamily "{}SampleScene"{}} }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_scene_aca63760fd328a1c44cd8e46c71141def}\label{class_scene_aca63760fd328a1c44cd8e46c71141def} 
+\index{Scene@{Scene}!AddGameObject@{AddGameObject}}
+\index{AddGameObject@{AddGameObject}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{AddGameObject()}{AddGameObject()}}
+{\footnotesize\ttfamily void Scene\+::\+Add\+Game\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_scene_a8e7c528eaf26088daa91e19102182845}\label{class_scene_a8e7c528eaf26088daa91e19102182845} 
+\index{Scene@{Scene}!GetAllGameObjects@{GetAllGameObjects}}
+\index{GetAllGameObjects@{GetAllGameObjects}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{GetAllGameObjects()}{GetAllGameObjects()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ Scene\+::\+Get\+All\+Game\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_scene_a05e21fc3b8a98abfe1227ca77d6ce6f1}\label{class_scene_a05e21fc3b8a98abfe1227ca77d6ce6f1} 
+\index{Scene@{Scene}!GetGameObjects@{GetGameObjects}}
+\index{GetGameObjects@{GetGameObjects}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{GetGameObjects()}{GetGameObjects()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \& Scene\+::\+Get\+Game\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_scene_a456b73af3ea678135c40f45644ae6e29}\label{class_scene_a456b73af3ea678135c40f45644ae6e29} 
+\index{Scene@{Scene}!RemoveGameObject@{RemoveGameObject}}
+\index{RemoveGameObject@{RemoveGameObject}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{RemoveGameObject()}{RemoveGameObject()}}
+{\footnotesize\ttfamily void Scene\+::\+Remove\+Game\+Object (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_scene_a44b2d6bffa153dda02f026f8533ceb08}\label{class_scene_a44b2d6bffa153dda02f026f8533ceb08} 
+\index{Scene@{Scene}!name@{name}}
+\index{name@{name}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily std\+::string Scene\+::name}
+
+\Hypertarget{class_scene_a73428b3e2f7f9ca0de9ad23ac1c6b02c}\label{class_scene_a73428b3e2f7f9ca0de9ad23ac1c6b02c} 
+\index{Scene@{Scene}!origin@{origin}}
+\index{origin@{origin}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{origin}{origin}}
+{\footnotesize\ttfamily glm\+::vec3 Scene\+::origin}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_scene_8h}{Scene.\+h}}\item 
+\mbox{\hyperlink{_scene_8cpp}{Scene.\+cpp}}\end{DoxyCompactItemize}

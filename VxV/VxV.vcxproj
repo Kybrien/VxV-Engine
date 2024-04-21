@@ -124,9 +124,17 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)/VxV/Externes/jsoncpp/lib;$(SolutionDir)\VxV\Externes\jsoncpp\lib;$(SolutionDir)\VxV\Externes\glew-2.1.0\lib\Release\x64;$(SolutionDir)\VxV\Externes\glfw-3.4.bin.WIN64\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\VxV\Externes\jsoncpp\lib\Debug;$(SolutionDir)\VxV\Externes\glew-2.1.0\lib\Release\x64;$(SolutionDir)\VxV\Externes\glfw-3.4.bin.WIN64\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;jsoncpp.lib;jsoncpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /E /I /Y "$(ProjectDir)Files" "$(TargetDir)Files"
+
+copy $(ProjectDir)SimpleFragmentShader.VALORANT $(TargetDir)
+
+copy $(ProjectDir)SimpleVertexShader.MIKU $(TargetDir)
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -136,7 +144,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/VxV/Externes/jsoncpp/include/json;$(SolutionDir)/VxV/Externes/glew-2.1.0/include;$(SolutionDir)/VxV/Externes/glfw-3.4.bin.WIN64/include;%(AdditionalIncludeDirectories);imgui</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)VxV/Externes/jsoncpp/include/json;$(SolutionDir)VxV/Externes/glew-2.1.0/include;$(SolutionDir)VxV/Externes/glfw-3.4.bin.WIN64/include;$(SolutionDir)VxV/Externes/glm-1.0.1;%(AdditionalIncludeDirectories);imgui</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -144,19 +152,30 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)/VxV/Externes/jsoncpp/lib;$(SolutionDir)\VxV\Externes\glew-2.1.0\lib\Release\x64;$(SolutionDir)\VxV\Externes\glfw-3.4.bin.WIN64\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\VxV\Externes\jsoncpp\lib\Release;$(SolutionDir)\VxV\Externes\glew-2.1.0\lib\Release\x64;$(SolutionDir)\VxV\Externes\glfw-3.4.bin.WIN64\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;jsoncpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /E /I /Y "\"$(ProjectDir)Files\"" "\"$(TargetDir)Files\""
+
+copy "\"$(ProjectDir)SimpleFragmentShader.VALORANT\"" "\"$(TargetDir)\""
+
+copy "\"$(ProjectDir)SimpleVertexShader.MIKU\"" "\"$(TargetDir)\""
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="controls.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="loadingShader.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="object.cpp" />
+    <ClCompile Include="MemoryPool.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModelManager.cpp" />
+    <ClCompile Include="ModelComponent.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EngineGUI.cpp" />
-    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
     <ClCompile Include="imgui\imgui_draw.cpp" />
@@ -173,6 +192,7 @@
     <ClInclude Include="controls.hpp" />
     <ClInclude Include="EngineGUI.h" />
     <ClInclude Include="FileExplorer.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_glfw.h" />
@@ -182,40 +202,46 @@
     <ClInclude Include="imgui\imstb_rectpack.h" />
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
-    <ClCompile Include="Transform.cpp" />
     <ClInclude Include="InputManager.h" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Prefab.cpp" />
     <ClCompile Include="PrefabManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
-    <ClInclude Include="WindowGui.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="SimpleFragmentShader.VALORANT" />
-    <Text Include="SimpleVertexShader.MIKU" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="loadingShader.hpp" />
-    <ClInclude Include="object.hpp" />
-    <ClInclude Include="Component.h" />
-    <ClInclude Include="Debug.h" />
-    <ClInclude Include="Engine.h" />
-    <ClInclude Include="GameObject.h" />
     <ClInclude Include="Manager.h" />
+    <ClInclude Include="MemoryPool.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="ModelManager.h" />
+    <ClInclude Include="ModelComponent.hpp" />
     <ClInclude Include="Prefab.h" />
     <ClInclude Include="PrefabManager.h" />
+    <ClInclude Include="Renderer.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Script.h" />
     <ClInclude Include="ScriptingComponent.h" />
     <ClInclude Include="ScriptManager.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="WindowGui.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="SimpleFragmentShader.VALORANT">
+      <FileType>Document</FileType>
+    </Text>
+    <Text Include="SimpleVertexShader.MIKU">
+      <FileType>Document</FileType>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="loadingShader.hpp" />
+    <ClInclude Include="Debug.h" />
+    <ClInclude Include="Engine.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GameObject.inl" />
     <None Include="Manager.inl" />
     <None Include="Nomenclature.clang-format" />
+    <None Include="square.mtl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

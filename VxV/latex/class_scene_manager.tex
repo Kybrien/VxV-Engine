@@ -1,0 +1,124 @@
+\doxysection{Scene\+Manager Class Reference}
+\hypertarget{class_scene_manager}{}\label{class_scene_manager}\index{SceneManager@{SceneManager}}
+
+
+{\ttfamily \#include $<$Scene\+Manager.\+h$>$}
+
+Inheritance diagram for Scene\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_scene_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_scene_manager_a93f6af15e43dbff2b5d4819dd7d8dfa2}{Scene\+Manager}} (\mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*}manager)
+\item 
+void \mbox{\hyperlink{class_scene_manager_ac6e546dd58da6e7b133b3a9a8e7734e1}{Add\+Scene}} (\mbox{\hyperlink{class_scene}{Scene}} \texorpdfstring{$\ast$}{*}scene)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_scene}{Scene}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_scene_manager_a09c9196e3ad9cb53673b9ba051c9f411}{Get\+Scenes}} ()
+\item 
+void \mbox{\hyperlink{class_scene_manager_a13e07df59690a7a5b163268012173e41}{Save}} () override
+\item 
+void \mbox{\hyperlink{class_scene_manager_aa3b2dea2aa6baab258cbb1348846ee08}{Load}} (std\+::wstring w\+File\+Direction, std\+::wstring w\+File\+Name) override
+\item 
+\mbox{\hyperlink{class_scene}{Scene}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_scene_manager_aa12ac3807b8e59b815ec445c25fca5ae}{Get\+Current\+Scene}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_manager}{Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_a2569efa6dd78f87cc0b64086043cc4ca}{Get\+Manager}} ()
+\item 
+void \mbox{\hyperlink{class_manager_a200a7092507e1769240452e88996127b}{Init}} ()
+\item 
+void \mbox{\hyperlink{class_manager_a037a7066aa1ba886bafe691ef3f6f98c}{Stop}} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_manager_ab6bfbb7862710ba6c42634f7ea521994}{Add\+Manager}} (T \texorpdfstring{$\ast$}{*}manager)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}}, \mbox{\hyperlink{class_mem_pool___linear}{Mem\+Pool\+\_\+\+Linear}}$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} $>$ $>$ \mbox{\hyperlink{class_scene_manager_a614f5f63a2224b6f960ca1db365a75e2}{game\+Object\+Pool}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_manager}{Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_abf52d7d532c05607cc23c687f23e6b67}{Get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_manager}{Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_manager_a066ee0e0faa861515f582e510a722804}{Search\+File}} (std\+::string file\+Direction, std\+::string extension, T \texorpdfstring{$\ast$}{*}manager)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_manager}{Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_ac80f5ee151565f111593921bac645ad7}{instance}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_scene_manager_a93f6af15e43dbff2b5d4819dd7d8dfa2}\label{class_scene_manager_a93f6af15e43dbff2b5d4819dd7d8dfa2} 
+\index{SceneManager@{SceneManager}!SceneManager@{SceneManager}}
+\index{SceneManager@{SceneManager}!SceneManager@{SceneManager}}
+\doxysubsubsection{\texorpdfstring{SceneManager()}{SceneManager()}}
+{\footnotesize\ttfamily Scene\+Manager\+::\+Scene\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*}}]{manager }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_scene_manager_ac6e546dd58da6e7b133b3a9a8e7734e1}\label{class_scene_manager_ac6e546dd58da6e7b133b3a9a8e7734e1} 
+\index{SceneManager@{SceneManager}!AddScene@{AddScene}}
+\index{AddScene@{AddScene}!SceneManager@{SceneManager}}
+\doxysubsubsection{\texorpdfstring{AddScene()}{AddScene()}}
+{\footnotesize\ttfamily void Scene\+Manager\+::\+Add\+Scene (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scene}{Scene}} \texorpdfstring{$\ast$}{*}}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_scene_manager_aa12ac3807b8e59b815ec445c25fca5ae}\label{class_scene_manager_aa12ac3807b8e59b815ec445c25fca5ae} 
+\index{SceneManager@{SceneManager}!GetCurrentScene@{GetCurrentScene}}
+\index{GetCurrentScene@{GetCurrentScene}!SceneManager@{SceneManager}}
+\doxysubsubsection{\texorpdfstring{GetCurrentScene()}{GetCurrentScene()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_scene}{Scene}} \texorpdfstring{$\ast$}{*} Scene\+Manager\+::\+Get\+Current\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_scene_manager_a09c9196e3ad9cb53673b9ba051c9f411}\label{class_scene_manager_a09c9196e3ad9cb53673b9ba051c9f411} 
+\index{SceneManager@{SceneManager}!GetScenes@{GetScenes}}
+\index{GetScenes@{GetScenes}!SceneManager@{SceneManager}}
+\doxysubsubsection{\texorpdfstring{GetScenes()}{GetScenes()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_scene}{Scene}} \texorpdfstring{$\ast$}{*} $>$ Scene\+Manager\+::\+Get\+Scenes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_scene_manager_aa3b2dea2aa6baab258cbb1348846ee08}\label{class_scene_manager_aa3b2dea2aa6baab258cbb1348846ee08} 
+\index{SceneManager@{SceneManager}!Load@{Load}}
+\index{Load@{Load}!SceneManager@{SceneManager}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily void Scene\+Manager\+::\+Load (\begin{DoxyParamCaption}\item[{std\+::wstring}]{w\+File\+Direction,  }\item[{std\+::wstring}]{w\+File\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_manager_a1ca627323200c3ac1c6da0d3c510f0c7}{Manager}}.
+
+\Hypertarget{class_scene_manager_a13e07df59690a7a5b163268012173e41}\label{class_scene_manager_a13e07df59690a7a5b163268012173e41} 
+\index{SceneManager@{SceneManager}!Save@{Save}}
+\index{Save@{Save}!SceneManager@{SceneManager}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily void Scene\+Manager\+::\+Save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_manager_aa66c5cc0be93116d3901ce317b2332fb}{Manager}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_scene_manager_a614f5f63a2224b6f960ca1db365a75e2}\label{class_scene_manager_a614f5f63a2224b6f960ca1db365a75e2} 
+\index{SceneManager@{SceneManager}!gameObjectPool@{gameObjectPool}}
+\index{gameObjectPool@{gameObjectPool}!SceneManager@{SceneManager}}
+\doxysubsubsection{\texorpdfstring{gameObjectPool}{gameObjectPool}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$\mbox{\hyperlink{class_game_object}{Game\+Object}}, \mbox{\hyperlink{class_mem_pool___linear}{Mem\+Pool\+\_\+\+Linear}}$<$\mbox{\hyperlink{class_game_object}{Game\+Object}}$>$ $>$ Scene\+Manager\+::game\+Object\+Pool}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_scene_manager_8h}{Scene\+Manager.\+h}}\item 
+\mbox{\hyperlink{_scene_manager_8cpp}{Scene\+Manager.\+cpp}}\end{DoxyCompactItemize}

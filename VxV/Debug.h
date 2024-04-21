@@ -5,5 +5,5 @@
 
 class Debug {
 public:
-	static void Log(std::string message) { std::cout << message; } // Print sur la console
+	static void Log(std::string message) { std::cout << message << std::endl; } // Print sur la console
 };

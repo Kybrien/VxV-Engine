@@ -1,14 +1,20 @@
 #pragma once
 
-#include "SceneManager.h"
-#include "ScriptManager.h"
+#include "ModelManager.h"
 #include "PrefabManager.h"
 #include "InputManager.h"
+#include "SceneManager.h"
 
+
+/**
+ * Define the state of the engine.
+ */
 class Engine {
 private:
 
-
+	/**
+	* Define the states of the engine.
+	*/
 	enum EngineState {
 		Off = 0,
 		Initializing,
@@ -20,16 +26,12 @@ private:
 		Stopped
 	};
 
-
 	static Engine* instance;
 	EngineState state = Off;
 
-
-
-
-
 public:
 	Manager* manager;
+
 	static Engine* GetInstance()
 	{
 		if (!instance)
@@ -37,15 +39,21 @@ public:
 		return instance;
 	}
 
+	/**  
+	* @param none
+	*/
 	EngineState GetState() {
 		return state;
 	}
 
-	Engine() {
+	Engine()
+	{
 		instance = this;
 	}
 
-
+	/**
+	 * Initialize all the managers and the engine.
+	 */
 	void Init() { 
 		state = Initializing; 
 
@@ -58,18 +66,16 @@ public:
 		Start();
 	}
 
-	void Start() {
+	void Start()
+	{
 		state = Starting;
 		// start go
 
-
 		Update();
 	}
-	void Update() 
-	{ 
-		state = Running; 
+
+	void Update()
+	{
+		state = Running;
 	}
-
-
-
 };
