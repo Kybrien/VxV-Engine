@@ -76,7 +76,7 @@ int main()
 	go2->GetComponent<Model>()->SetModel("cube");
 
 	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
-
+	translateModel(*go->GetComponent<Model>()->GetModel(), glm::vec3(10, 0, 0));
 	do
 	{
 		// Clear the screen
@@ -106,8 +106,6 @@ int main()
 
 		float angleMiku = deltaTime * 50.0f; // Rotate by 60 degrees
 		glm::vec3 axisMiku(0.0f, 0.0f, -1.0f); // Rotate around the z-axis
-		sendMVPData(*(go->GetComponent<Model>()->GetModel()), angleMiku, axisMiku, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
-		sendMVPData(*(go2->GetComponent<Model>()->GetModel()), angleMiku*2, axisMiku, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
 
 		glm::vec3 lightPos = glm::vec3(0, 0, 8);
 		glUniform3f(LightID, lightPos.x, lightPos.y, lightPos.z);
@@ -120,6 +118,7 @@ int main()
 			Model* modelComp = go->GetComponent<Model>();
 			if (modelComp != nullptr)
 			{
+				sendMVPData(*(go->GetComponent<Model>()->GetModel()), VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
 				drawModel(modelComp->GetModel(), TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
 			}
 		}
