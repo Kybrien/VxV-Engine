@@ -398,13 +398,54 @@ void drawModel(ModelComponent* model, GLuint TextureID, GLuint MaterialAmbientCo
 
 
 void setRotationModel(ModelComponent& model, float angle, const glm::vec3& axis) {
-	model.transform = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis) * model.transform;
+	// Extract the position (translation) from the transformation matrix
+	glm::vec3 position = glm::vec3(model.transform[3]);
+
+	// Extract the scale from the transformation matrix
+	glm::vec3 scale = glm::vec3(glm::length(model.transform[0]), glm::length(model.transform[1]), glm::length(model.transform[2]));
+
+	// Reset the transformation matrix
+	model.transform = glm::mat4(1.0f);
+
+	// Apply the rotation
+	model.transform = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis);
+
+	// Reapply the scale
+	model.transform = glm::scale(model.transform, scale);
+
+	// Reapply the position
+	model.transform[3] = glm::vec4(position, 1.0f);
 }
 
 void setTranslationModel(ModelComponent& model, const glm::vec3& translation) {
-	glm::vec3 position = glm::vec3(model.transform[3].x, model.transform[3].y, model.transform[3].z);
-	model.transform = glm::translate(glm::mat4(1.0f), translation) * model.transform; // Apply the new translation
+	// Extract the rotation and scale from the transformation matrix
+	glm::mat4 rotationScaleMatrix = model.transform;
+	rotationScaleMatrix[3] = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
+
+	// Set the translation
+	model.transform = glm::mat4(1.0f);
+	model.transform[3] = glm::vec4(translation, 1.0f);
+
+	// Reapply the rotation and scale
+	model.transform *= rotationScaleMatrix;
 }
+
+void setScaleModel(ModelComponent& model, const glm::vec3& scale) {
+	// Extract the rotation and translation from the transformation matrix
+	glm::mat4 rotationTranslationMatrix = model.transform;
+	rotationTranslationMatrix[0] = glm::normalize(rotationTranslationMatrix[0]);
+	rotationTranslationMatrix[1] = glm::normalize(rotationTranslationMatrix[1]);
+	rotationTranslationMatrix[2] = glm::normalize(rotationTranslationMatrix[2]);
+
+	// Set the scale
+	model.transform = glm::mat4(1.0f);
+	model.transform = glm::scale(model.transform, scale);
+
+	// Reapply the rotation and translation
+	model.transform *= rotationTranslationMatrix;
+}
+
+
 
 
 

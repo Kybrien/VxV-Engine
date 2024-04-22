@@ -286,6 +286,7 @@ void drawModel(ModelComponent* model, GLuint TextureID, GLuint MaterialAmbientCo
 
 void setRotationModel(ModelComponent& model, float angle, const glm::vec3& axis);
 void setTranslationModel(ModelComponent& model, const glm::vec3& translation);
+void setScaleModel(ModelComponent& model, const glm::vec3& scale);
 
 /**
 * @brief Translate the model by the given translation vector.

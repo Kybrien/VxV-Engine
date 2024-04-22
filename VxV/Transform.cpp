@@ -70,7 +70,7 @@ void Transform::SetRotation(float xAngle, float yAngle, float zAngle) {
 
 void Transform::SetScale(glm::vec3 sca) {
 	scale = sca;
-	scaleModel(*linkedGameObject->GetComponent<Model>()->GetModel(), sca);
+	setScaleModel(*linkedGameObject->GetComponent<Model>()->GetModel(), sca);
 }
 
 
