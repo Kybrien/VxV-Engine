@@ -320,6 +320,6 @@ void scaleModel(ModelComponent& model, const glm::vec3& scale);
 * @param ViewMatrixID reference to the view matrix ID
 * @return void
 */
-void sendMVPData(ModelComponent& model, float angle, const glm::vec3& axis, GLuint VertexArrayID, GLuint MatrixID, GLuint ModelMatrixID, GLuint ViewMatrixID);
+void sendMVPData(ModelComponent& model, GLuint VertexArrayID, GLuint MatrixID, GLuint ModelMatrixID, GLuint ViewMatrixID);
 
 //#endif

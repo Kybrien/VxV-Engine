@@ -411,14 +411,14 @@ void scaleModel(ModelComponent& model, const glm::vec3& scale)
 	model.transform = glm::scale(model.transform, scale);
 }
 
-void sendMVPData(ModelComponent& model, float angle, const glm::vec3& axis, GLuint VertexArrayID, GLuint MatrixID, GLuint ModelMatrixID, GLuint ViewMatrixID)
+void sendMVPData(ModelComponent& model, GLuint VertexArrayID, GLuint MatrixID, GLuint ModelMatrixID, GLuint ViewMatrixID)
 {
 	glm::vec3 position = glm::vec3(model.transform[3].x, model.transform[3].y, model.transform[3].z);
 	glm::vec3 scale = glm::vec3(glm::length(model.transform[0]), glm::length(model.transform[1]), glm::length(model.transform[2]));
-	model.transform = glm::mat4(1.0f);
-	model.transform = glm::scale(model.transform, scale);
-	model.transform = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis) * model.transform;
-	model.transform = glm::translate(glm::mat4(1.0f), position) * model.transform;
+	//model.transform = glm::mat4(1.0f);
+	//model.transform = glm::scale(model.transform, scale);
+	//model.transform = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis) * model.transform;
+	//model.transform = glm::translate(glm::mat4(1.0f), position) * model.transform;
 
 	glm::mat4 ModelMatrix = glm::mat4(1.0f) * model.transform;
 	glm::mat4 ViewMatrix = getViewMatrix();

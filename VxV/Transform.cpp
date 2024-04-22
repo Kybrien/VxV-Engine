@@ -1,6 +1,13 @@
 #include "Transform.h"
 #include "GameObject.h"
 
+#include "ModelComponent.hpp"
+#include "Model.h"
+
+#include "Debug.h"
+
+#include "Engine.h"
+
 
 
 Transform::Transform(GameObject* gameObject) : Component(gameObject) {
@@ -44,7 +51,61 @@ void Transform::Copy(GameObject* goToFill) {
 }
 
 
+void Transform::SetPosition(glm::vec3 pos) {
+	position = pos;
+	translateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), pos);
+}
 
+
+void Transform::SetRotation(float rot, glm::vec3 axis) {
+
+
+	if (axis.x == 0 && axis.y == 0 && axis.z == 1){
+		rotation.z = rot;
+		rotateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), rot, axis);
+	}
+	else if (axis.x == 0 && axis.y == 1 && axis.z == 0) {
+		rotation.y = rot;
+		rotateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), rot, axis);
+	}
+	else if (axis.x == 1 && axis.y == 0 && axis.z == 0){
+		rotation.x = rot;
+		rotateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), rot, axis);
+	}
+	else
+		Debug::Log("Error: Axis not valid");
+}
+
+void Transform::SetScale(glm::vec3 sca) {
+	scale = sca;
+	scaleModel(*linkedGameObject->GetComponent<Model>()->GetModel(), sca);
+}
+
+
+void Transform::Translate(glm::vec3 pos) {
+	position += pos;
+	translateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), position);
+}
+
+void Transform::Rotate(float rot, glm::vec3 axis) {
+	rotation += axis * rot;
+
+
+	if (axis.x == 0 && axis.y == 0 && axis.z == 1) {
+		rotateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), rotation.z, axis);
+	}
+	else if (axis.x == 0 && axis.y == 1 && axis.z == 0) {
+		rotateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), rotation.y, axis);
+	}
+	else if (axis.x == 1 && axis.y == 0 && axis.z == 0) {
+		rotateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), rotation.x, axis);
+	}
+}
+
+void Transform::Scale(glm::vec3 sca) {
+	scale += sca;
+	scaleModel(*linkedGameObject->GetComponent<Model>()->GetModel(), scale);
+}
 
 
 
