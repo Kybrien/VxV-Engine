@@ -32,7 +32,7 @@ void receiveMessages(SOCKET clientSocket) {
     }
 }
 
-int main() {
+int initClient() {
     WSADATA wsaData;
     SOCKET clientSocket;
     SOCKADDR_IN serverAddr;
