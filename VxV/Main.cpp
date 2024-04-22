@@ -11,6 +11,9 @@
 
 #include "imfilebrowser.h"
 
+#include "Debug.h"
+
+
 int main()
 {
 	EngineGUI gui;
@@ -59,7 +62,7 @@ int main()
 	ImGui_ImplOpenGL3_Init("#version 330");
 
 	Engine* engine = new Engine();
-	engine->Init();
+	engine->Init(VertexArrayID, MatrixID, ViewMatrixID, ModelMatrixID);
 
 	Manager* manager = Manager::GetInstance();
 	SceneManager* sceneManager = manager->GetManager<SceneManager>();
@@ -102,10 +105,13 @@ int main()
 			lastTimeFPS += 1.0;
 		}
 
-		float deltaTime = float(currentTime - lastTime);
+		
 
-		float angleMiku = deltaTime * 50.0f; // Rotate by 60 degrees
-		glm::vec3 axisMiku(0.0f, 0.0f, -1.0f); // Rotate around the z-axis
+		go->GetComponent<Transform>()->Rotate(20, glm::vec3(0, 1, 0));
+		go->GetComponent<Transform>()->Rotate(10 ,glm::vec3(1, 0, 0));
+
+
+
 
 		glm::vec3 lightPos = glm::vec3(0, 0, 8);
 		glUniform3f(LightID, lightPos.x, lightPos.y, lightPos.z);
@@ -118,7 +124,6 @@ int main()
 			Model* modelComp = go->GetComponent<Model>();
 			if (modelComp != nullptr)
 			{
-				sendMVPData(*(go->GetComponent<Model>()->GetModel()), VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
 				drawModel(modelComp->GetModel(), TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
 			}
 		}
