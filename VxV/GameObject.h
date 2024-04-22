@@ -5,7 +5,6 @@
 #include <GLM/glm.hpp>
 #include "Component.h"
 
-
 class Scene;
 class Prefab;
 
@@ -16,9 +15,10 @@ public:
 
 	std::vector<Component*> components;
 
-    std::vector<Component*> components;
-    std::vector<GameObject> gameObjects;
-    GameObject(std::string name_ = "GO", bool PrefabLoading = false, Prefab* prefab = nullptr, bool copying = false);
+	GameObject(std::string name_ = "GO", bool PrefabLoading = false, Prefab* prefab = nullptr, bool copying = false);
+
+	glm::vec3 origin;
+	bool isChild = false;
 
 	std::string name; // Nom du GO
 	virtual void Init() {}; // Est appelé au début 
@@ -41,8 +41,7 @@ public:
 	void static Load(Json::Value root, GameObject* goParent = nullptr, bool PrefabLoading = false);
 	void Save(Json::Value& root);
 
-
-    
+	void AddChild(GameObject* go);
 
 	void AddParent(GameObject* go)
 	{

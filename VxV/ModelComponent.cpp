@@ -221,9 +221,9 @@ void loadingModel(const std::string& filename, ModelComponent& model)
 			tinyobj::index_t index = mesh.indices[f];
 
 			Vertex vertex = {};
-			vertex.position = {model.attributes.vertices[3 * index.vertex_index + 0], model.attributes.vertices[3 * index.vertex_index + 1], model.attributes.vertices[3 * index.vertex_index + 2]};
-			vertex.normal = {model.attributes.normals[3 * index.normal_index + 0], model.attributes.normals[3 * index.normal_index + 1], model.attributes.normals[3 * index.normal_index + 2]};
-			vertex.texCoord = {model.attributes.texcoords[2 * index.texcoord_index + 0], model.attributes.texcoords[2 * index.texcoord_index + 1]};
+			vertex.position = { model.attributes.vertices[3 * index.vertex_index + 0], model.attributes.vertices[3 * index.vertex_index + 1], model.attributes.vertices[3 * index.vertex_index + 2] };
+			vertex.normal = { model.attributes.normals[3 * index.normal_index + 0], model.attributes.normals[3 * index.normal_index + 1], model.attributes.normals[3 * index.normal_index + 2] };
+			vertex.texCoord = { model.attributes.texcoords[2 * index.texcoord_index + 0], model.attributes.texcoords[2 * index.texcoord_index + 1] };
 
 			if (uniqueVertices.count(vertex) == 0)
 			{
@@ -380,9 +380,9 @@ void drawModel(ModelComponent* model, GLuint TextureID, GLuint MaterialAmbientCo
 
 		// Set the material properties
 		tinyobj::material_t& material = model->materials[matID];
-		GLfloat ambient[3] = {material.ambient[0], material.ambient[1], material.ambient[2]};
-		GLfloat diffuse[3] = {material.diffuse[0], material.diffuse[1], material.diffuse[2]};
-		GLfloat specular[3] = {material.specular[0], material.specular[1], material.specular[2]};
+		GLfloat ambient[3] = { material.ambient[0], material.ambient[1], material.ambient[2] };
+		GLfloat diffuse[3] = { material.diffuse[0], material.diffuse[1], material.diffuse[2] };
+		GLfloat specular[3] = { material.specular[0], material.specular[1], material.specular[2] };
 		glUniform3fv(MaterialAmbientColorID, 1, ambient);
 		glUniform3fv(MaterialDiffuseColorID, 1, diffuse);
 		glUniform3fv(MaterialSpecularColorID, 1, specular);

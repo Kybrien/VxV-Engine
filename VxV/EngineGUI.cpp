@@ -7,8 +7,6 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
-#include "imgui_impl_opengl3.h"
-
 void EngineGUI::initImgui(GLFWwindow* window)
 {
 	IMGUI_CHECKVERSION();
@@ -84,9 +82,9 @@ void EngineGUI::UpdateGui()
     }
 
     // Docking space setup for a flexible layout, assuming ImGui version is 1.71 or later
-    const ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags_None;
-    ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
-    ImGui::DockSpaceOverViewport(ImGui::GetMainViewport(), dockspace_flags);
+    //const ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags_None;
+    //ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
+    //ImGui::DockSpaceOverViewport(ImGui::GetMainViewport(), dockspace_flags);
     // Hierarchy panel
     if (ImGui::Begin("Hierarchy"))
     {
@@ -105,7 +103,7 @@ void EngineGUI::UpdateGui()
     }
 
     // Inspector panel
-    if (ImGui::Begin("Inspector"))
+    /*if (ImGui::Begin("Inspector"))
     {
         if (ImGui::CollapsingHeader("Transform Component"))
         {
@@ -125,7 +123,7 @@ void EngineGUI::UpdateGui()
         }
         // ... More components
         ImGui::End();
-    }
+    }*/
 
     // Other panels (e.g., asset browser, scene view, etc.) would be created in a similar fashion
 
@@ -135,7 +133,7 @@ void EngineGUI::UpdateGui()
     // Render the ImGui frame
     ImGui::Render();
 }
-}
+
 
 void EngineGUI::RenderGui()
 {

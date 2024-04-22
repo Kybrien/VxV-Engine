@@ -1,10 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
+
 #define STB_IMAGE_IMPLEMENTATION
 #define TINYOBJLOADER_IMPLEMENTATION
+#include "loadingShader.hpp"
+
 #include "MemoryPool.h"
-#include "object.hpp"
 #include "EngineGUI.h"
+#include "Engine.h"
 
 int main()
 {
@@ -14,6 +18,8 @@ int main()
 	init(window);
 	setupInput(window);
 	initOpenGLSettings();
+	gui.initImgui(window);
+
 	GLuint VertexArrayID;
 	initializeVertexArrayObject(VertexArrayID);
 
@@ -37,7 +43,6 @@ int main()
 	double lastTimeFPS = lastTime;
 	int nbFrames = 0;
 	//update be  like
-	gui.initImgui(window);
 
 	Engine* engine = new Engine();
 	engine->Init();
