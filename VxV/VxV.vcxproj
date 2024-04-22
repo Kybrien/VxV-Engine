@@ -191,6 +191,7 @@ copy "\"$(ProjectDir)SimpleVertexShader.MIKU\"" "\"$(TargetDir)\""
     <ClCompile Include="ScriptUser.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="ConsoleRecup.h" />
     <ClInclude Include="controls.hpp" />
     <ClInclude Include="EngineGUI.h" />
     <ClInclude Include="FileExplorer.h" />
