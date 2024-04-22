@@ -15,11 +15,11 @@ public:
 	Transform(GameObject* gameObject);
 
 	void SetPosition(glm::vec3 pos);
-	void SetRotation(float rot, glm::vec3 axis);
+	void SetRotation(float xAngle, float yAngle, float zAngle);
 	void SetScale(glm::vec3 sca);
 
 	void Translate(glm::vec3 pos);
-	void Rotate(float rot, glm::vec3 axis);
+	void Rotate(float xAngle, float yAngle, float zAngle);
 	void Scale(glm::vec3 sca);
 
 

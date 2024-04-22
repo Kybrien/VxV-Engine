@@ -396,6 +396,19 @@ void drawModel(ModelComponent* model, GLuint TextureID, GLuint MaterialAmbientCo
 	}
 }
 
+
+void setRotationModel(ModelComponent& model, float angle, const glm::vec3& axis) {
+	model.transform = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis) * model.transform;
+}
+
+void setTranslationModel(ModelComponent& model, const glm::vec3& translation) {
+	glm::vec3 position = glm::vec3(model.transform[3].x, model.transform[3].y, model.transform[3].z);
+	model.transform = glm::translate(glm::mat4(1.0f), translation) * model.transform; // Apply the new translation
+}
+
+
+
+
 void translateModel(ModelComponent& model, const glm::vec3& translation)
 {
 	model.transform = glm::translate(model.transform, translation);

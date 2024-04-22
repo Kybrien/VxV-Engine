@@ -107,9 +107,10 @@ int main()
 
 		
 
-		go->GetComponent<Transform>()->Rotate(20, glm::vec3(0, 1, 0));
-		go->GetComponent<Transform>()->Rotate(10 ,glm::vec3(1, 0, 0));
+		go->GetComponent<Transform>()->Rotate(180, 180 ,0);
+		go->GetComponent<Transform>()->SetRotation(90, 0, 0);
 
+		go->GetComponent<Transform>()->SetPosition(glm::vec3(0, 10, 0));
 
 
 
