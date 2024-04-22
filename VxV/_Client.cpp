@@ -26,7 +26,7 @@ void receiveMessages(SOCKET clientSocket) {
         }
         else {
             std::lock_guard<std::mutex> lock(mutex);
-            std::cerr << "Erreur lors de la reception du message: " << WSAGetLastError() << std::endl;
+            std::cerr << "Erreur lors de la réception du message: " << WSAGetLastError() << std::endl;
             break;
         }
     }
@@ -46,7 +46,7 @@ int main() {
 
     clientSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (clientSocket == INVALID_SOCKET) {
-        std::cerr << "Erreur lors de la creation du socket: " << WSAGetLastError() << std::endl;
+        std::cerr << "Erreur lors de la création du socket: " << WSAGetLastError() << std::endl;
         WSACleanup();
         return 1;
     }
@@ -63,11 +63,27 @@ int main() {
         return 1;
     }
 
-    std::cout << "Connecte au serveur de chat\n";
-
-    std::thread receiveThread(receiveMessages, clientSocket);
+    std::cout << "Connecté au serveur de chat\n";
 
     char message[1024];
+    std::thread receiveThread([&]() {
+        while (true) {
+            iResult = recv(clientSocket, message, sizeof(message), 0);
+            if (iResult > 0) {
+                message[iResult] = '\0';
+                std::cout << "Serveur : " << message << std::endl;
+            }
+            else if (iResult == 0) {
+                std::cerr << "Connexion au serveur fermée\n";
+                break;
+            }
+            else {
+                std::cerr << "Erreur lors de la réception du message: " << WSAGetLastError() << std::endl;
+                break;
+            }
+        }
+        });
+
     while (true) {
         std::cout << "Vous : " << std::endl;
         std::cin.getline(message, sizeof(message));
@@ -78,10 +94,8 @@ int main() {
             std::cerr << "Erreur lors de l'envoi du message: " << WSAGetLastError() << std::endl;
             break;
         }
-
-        // Effacer le message après l'avoir envoyé
-        memset(message, 0, sizeof(message));
     }
+
 
     closesocket(clientSocket);
     WSACleanup();
