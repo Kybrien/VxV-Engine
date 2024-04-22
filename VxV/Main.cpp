@@ -62,7 +62,7 @@ int main()
 	ImGui_ImplOpenGL3_Init("#version 330");
 
 	Engine* engine = new Engine();
-	engine->Init(VertexArrayID, MatrixID, ViewMatrixID, ModelMatrixID);
+	engine->Init();
 
 	Manager* manager = Manager::GetInstance();
 	SceneManager* sceneManager = manager->GetManager<SceneManager>();
@@ -124,6 +124,7 @@ int main()
 			Model* modelComp = go->GetComponent<Model>();
 			if (modelComp != nullptr)
 			{
+				sendMVPData(*(go->GetComponent<Model>()->GetModel()), VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
 				drawModel(modelComp->GetModel(), TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
 			}
 		}

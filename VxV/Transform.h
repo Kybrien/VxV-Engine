@@ -33,6 +33,4 @@ private:
 	void SaveVec3(Json::Value& compJson, glm::vec3 vec);
 
 	void LoadVec3(Json::Value& compJson, glm::vec3& vec);
-
-	void SendData();
 };

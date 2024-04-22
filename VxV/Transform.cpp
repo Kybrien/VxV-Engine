@@ -85,8 +85,6 @@ void Transform::SetScale(glm::vec3 sca) {
 void Transform::Translate(glm::vec3 pos) {
 	position += pos;
 	translateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), position);
-
-	SendData();
 }
 
 void Transform::Rotate(float rot, glm::vec3 axis) {
@@ -102,15 +100,11 @@ void Transform::Rotate(float rot, glm::vec3 axis) {
 	else if (axis.x == 1 && axis.y == 0 && axis.z == 0) {
 		rotateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), rotation.x, axis);
 	}
-
-	SendData();
 }
 
 void Transform::Scale(glm::vec3 sca) {
 	scale += sca;
 	scaleModel(*linkedGameObject->GetComponent<Model>()->GetModel(), scale);
-
-	SendData();
 }
 
 
@@ -135,11 +129,5 @@ void Transform::LoadVec3(Json::Value& compJson, glm::vec3& vec) {
 	vec.x = compJson[0].asFloat();
 	vec.y = compJson[1].asFloat();
 	vec.z = compJson[2].asFloat();
-}
-
-void Transform::SendData() {
-	Engine* engine = Engine::GetInstance();
-
-	sendMVPData(*(linkedGameObject->GetComponent<Model>()->GetModel()), engine->VertexArrayID, engine->MatrixID, engine->ModelMatrixID, engine->ViewMatrixID);
 }
 

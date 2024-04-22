@@ -30,9 +30,6 @@ private:
 	EngineState state = Off;
 
 public:
-	GLuint VertexArrayID;
-	GLuint MatrixID, ViewMatrixID, ModelMatrixID;
-
 
 	Manager* manager;
 
@@ -58,13 +55,8 @@ public:
 	/**
 	 * Initialize all the managers and the engine.
 	 */
-	void Init(GLuint _VertexArrayID, GLuint _MatrixID, GLuint _ViewMatrixID, GLuint _ModelMatrixID) {
+	void Init() {
 		state = Initializing; 
-
-		VertexArrayID = _VertexArrayID;
-		MatrixID = _MatrixID;
-		ViewMatrixID = _ViewMatrixID;
-		ModelMatrixID = _ModelMatrixID;
 
 		manager = Manager::GetInstance();
 		manager->Init();
