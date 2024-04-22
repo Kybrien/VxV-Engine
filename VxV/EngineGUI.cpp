@@ -46,6 +46,95 @@ void EngineGUI::UpdateGui()
 	ShowInfo();
 	ShowConsoleWindow();
 	ShowAddGameObject();
+    if (ImGui::BeginMenuBar())
+    {
+        if (ImGui::BeginMenu("File"))
+        {
+            ImGui::MenuItem("New Scene");
+            ImGui::MenuItem("Open Scene...");
+            ImGui::MenuItem("Save Scene");
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("Edit"))
+        {
+            // ... Edit menu items
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("Assets"))
+        {
+            // ... Assets menu items
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("GameObject"))
+        {
+            // ... GameObject menu items
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("Window"))
+        {
+            // ... Window menu items
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("Help"))
+        {
+            // ... Help menu items
+            ImGui::EndMenu();
+        }
+        ImGui::EndMenuBar();
+    }
+
+    // Docking space setup for a flexible layout, assuming ImGui version is 1.71 or later
+    const ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags_None;
+    ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
+    ImGui::DockSpaceOverViewport(ImGui::GetMainViewport(), dockspace_flags);
+    // Hierarchy panel
+    if (ImGui::Begin("Hierarchy"))
+    {
+        ImGui::Text("Entities");
+        ImGui::Separator();
+        for (int i = 0; i < 10; ++i)
+        {
+            ImGui::PushID(i);
+            if (ImGui::Selectable("Entity", false))
+            {
+                // Select entity logic
+            }
+            ImGui::PopID();
+        }
+        ImGui::End();
+    }
+
+    // Inspector panel
+    if (ImGui::Begin("Inspector"))
+    {
+        if (ImGui::CollapsingHeader("Transform Component"))
+        {
+            // Transform properties
+            ImGui::DragFloat3("Position", position, 0.1f);
+            ImGui::DragFloat3("Rotation", rotation, 0.1f);
+            ImGui::DragFloat3("Scale", scale, 0.1f);
+        }
+
+        if (ImGui::CollapsingHeader("Rendering Component"))
+        {
+            // Rendering properties
+            ImGui::ColorEdit3("Albedo", albedo);
+            ImGui::SliderFloat("Roughness", &roughness, 0.0f, 1.0f);
+            ImGui::SliderFloat("Metallic", &metallic, 0.0f, 1.0f);
+            // ... More rendering properties
+        }
+        // ... More components
+        ImGui::End();
+    }
+
+    // Other panels (e.g., asset browser, scene view, etc.) would be created in a similar fashion
+
+    // End the main window
+    ImGui::End();
+
+    // Render the ImGui frame
+    ImGui::Render();
+}
 }
 
 void EngineGUI::RenderGui()
