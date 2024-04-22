@@ -1,11 +1,7 @@
 #include "EngineGUI.h"
-#include <imgui.h>
-#include "FileExplorer.h"
-#include "WindowGui.h"
 
-#include "imgui_impl_opengl3.h"
 
-void EngineGUI::UpdateGui()
+void EngineGUI::UpdateGui(ChatContext* chatContext)
 {
 	//ImGui::ShowDemoWindow();
 
@@ -14,6 +10,7 @@ void EngineGUI::UpdateGui()
 	// Fenêtre pour l'accès aux fichiers
 	ShowFileExplorer();
 	//ShowMenuBar();
+	ShowChat(chatContext);
 	ShowInfo();
 }
 

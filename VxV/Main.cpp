@@ -1,10 +1,7 @@
 #include "loadingShader.hpp"
-
 #include <iostream>
-
 #include "Engine.h"
 #include "EngineGUI.h"
-
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
@@ -71,6 +68,9 @@ int main()
 
 	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
 
+	
+	ChatContext* chatContext;
+	chatContext->clientSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	do
 	{
 		// Clear the screen
@@ -118,8 +118,8 @@ int main()
 				drawModel(modelComp->GetModel(), TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
 			}
 		}
-
-		gui.UpdateGui();
+		
+		gui.UpdateGui(chatContext);
 
 		gui.RenderGui();
 
