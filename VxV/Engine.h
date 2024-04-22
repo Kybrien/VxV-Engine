@@ -30,7 +30,6 @@ private:
 	EngineState state = Off;
 
 public:
-
 	Manager* manager;
 
 	static Engine* GetInstance()

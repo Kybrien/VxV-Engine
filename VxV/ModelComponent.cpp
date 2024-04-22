@@ -403,12 +403,7 @@ void translateModel(ModelComponent& model, const glm::vec3& translation)
 
 void rotateModel(ModelComponent& model, float angle, const glm::vec3& axis)
 {
-	glm::vec3 position = glm::vec3(model.transform[3].x, model.transform[3].y, model.transform[3].z);
-	glm::vec3 scale = glm::vec3(glm::length(model.transform[0]), glm::length(model.transform[1]), glm::length(model.transform[2]));
-	model.transform = glm::mat4(1.0f);
-	model.transform = glm::scale(model.transform, scale);
-	model.transform = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis) * model.transform;
-	model.transform = glm::translate(glm::mat4(1.0f), position) * model.transform;
+	model.transform = glm::rotate(model.transform, glm::radians(angle), axis);
 }
 
 void scaleModel(ModelComponent& model, const glm::vec3& scale)
