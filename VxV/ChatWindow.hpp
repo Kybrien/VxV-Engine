@@ -44,7 +44,7 @@ struct ChatWindow {
         sockaddr_in serverAddr;
         serverAddr.sin_family = AF_INET;
         serverAddr.sin_port = htons(12345);
-        InetPton(AF_INET, TEXT("127.0.0.1"), &serverAddr.sin_addr);
+        InetPton(AF_INET, TEXT("10.3.102.41"), &serverAddr.sin_addr);
 
         if (connect(clientSocket, (SOCKADDR*)&serverAddr, sizeof(serverAddr)) == SOCKET_ERROR) {
             closesocket(clientSocket);
@@ -68,10 +68,9 @@ struct ChatWindow {
     void receiveMessages() {
         char message[1024];
         while (true) {
-            int iResult = recv(clientSocket, message, sizeof(message), 0);
+            int iResult = recv(clientSocket, message, sizeof(message) -1, 0);
             if (iResult > 0) {
                 message[iResult] = '\0';
-                std::lock_guard<std::mutex> lock(mutex);
                 addMessage("Server: " + std::string(message));
             }
             else {
@@ -106,16 +105,19 @@ struct ChatWindow {
     void Draw() {
         ImGui::Begin("Chat Window");
 
+        // Zone pour afficher les messages avec une barre de défilement
         if (ImGui::BeginChild("ScrollingRegion", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()), false, ImGuiWindowFlags_HorizontalScrollbar)) {
             for (const auto& message : messages) {
                 ImGui::TextUnformatted(message.c_str());
             }
+            // Défilement automatique pour voir le dernier message
             if (ImGui::GetScrollY() >= ImGui::GetScrollMaxY()) {
                 ImGui::SetScrollHereY(1.0f);
             }
         }
         ImGui::EndChild();
 
+        // Zone de texte pour l'entrée des messages
         bool reclaim_focus = false;
         if (ImGui::InputText("Input", inputBuf, sizeof(inputBuf), ImGuiInputTextFlags_EnterReturnsTrue)) {
             std::string message = inputBuf;
@@ -123,9 +125,10 @@ struct ChatWindow {
                 sendMessage(message);
                 reclaim_focus = true;
             }
-            memset(inputBuf, 0, sizeof(inputBuf));
+            memset(inputBuf, 0, sizeof(inputBuf)); // Clear the input text field after sending
         }
 
+        // Rétablir le focus sur la zone de texte après l'envoi d'un message
         if (reclaim_focus) {
             ImGui::SetKeyboardFocusHere(-1);
         }
