@@ -12,6 +12,7 @@ void EngineGUI::UpdateGui()
 
 	MainMenuBar();
 
+	/*chatWindow.DrawLogin();*/
 	chatWindow.Draw();
 	// Fenêtre pour l'accès aux fichiers
 	ShowFileExplorer();
