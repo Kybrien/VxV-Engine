@@ -26,12 +26,14 @@ public:
 	virtual void Update() {}; // Est appelé à chaque frame
 
 	const int GetId() { return id; } // Renvoie l'Id du GameObject
-	void SetId(int id_) { id = id_; }
+	void SetId(int id_) { id = id_; } // Permet de changer l'Id du GameObject
+	void GetName(std::string name_) { name = name_; } // Renvoie le nom du GameObject
+    void SetName(std::string name_) { name = name_; } // Permet de changer le nom du GameObject
 
 	GameObject* GetChildByName(std::string name); // Rechercher un GameObject enfant du GameObject
 	std::vector<Component*> GetComponents();
 
-	std::vector<GameObject*> GetChilds();
+	std::vector<GameObject*> GetChilds(); // Renvoie la liste des enfants du GameObject
 
 	GameObject* GetParent()
 	{
@@ -58,6 +60,7 @@ public:
 	void AddComponent();
 
 	void LoadComponent(Json::Value compJson, GameObject* parentGo);
+
 
 	static void Delete(GameObject* go);
 

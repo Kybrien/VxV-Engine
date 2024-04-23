@@ -3,6 +3,7 @@
 #include <string>
 #include <GLM/glm.hpp>
 
+
 #include "GameObject.h"
 
 class SceneManager;
@@ -11,7 +12,7 @@ class SceneManager;
 class Scene {
 private:
 	std::vector<GameObject*> gameObjects;
-	std::vector<GameObject*> allGameObjects;
+	static std::vector<GameObject*> allGameObjects;
 	SceneManager* sceneManager;
 
 public:
@@ -28,7 +29,7 @@ public:
 		gameObjects.push_back(go);
 		allGameObjects.push_back(go);
 	}
-
+	
 	void RemoveGameObject(int id) {
 		for (int i = 0; i < allGameObjects.size(); i++)
 		{
@@ -39,7 +40,7 @@ public:
 		}
 	}
 
-	std::vector<GameObject*> GetAllGameObjects() {
+	static std::vector<GameObject*> GetAllGameObjects() {
 		return allGameObjects;
 	}
 

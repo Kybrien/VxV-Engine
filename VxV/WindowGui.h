@@ -5,6 +5,7 @@
 #include "imfilebrowser.h"
 #include "GameObject.h"
 #include "ConsoleRecup.h"
+#include "Scene.h"
 static bool enabled = true;
 static ImGui::FileBrowser fileDialog;
 
@@ -490,13 +491,22 @@ void RenderSceneHierarchy() {
 	ImGui::Begin("Scene Hierarchy");
 
 	// Iterate through your game objects/entities and create tree nodes
-	for (const auto& gameObject : gameObjects) {
+	for (const auto& gameObjectPtr : Scene::GetAllGameObjects()) {
+		// Dereference the pointer to get the actual GameObject
+		const auto& gameObject = *gameObjectPtr;
+
 		// Create a tree node with the name of the entity
-		if (ImGui::TreeNode(gameObject.GetName().c_str())) {
+		// Assuming GetName() is a method of GameObject that returns a string
+		if (ImGui::TreeNode(gameObject->GetName().c_str())) {
 			// If the tree node is open, you can list components or children here
 			// For each component or child, you can make them selectable
-			for (const auto& component : gameObject.GetComponents()) {
-				ImGui::Selectable(component.GetName().c_str(), &component.IsSelected());
+			// Assuming GetComponents() is a method of GameObject that returns a list of Component pointers
+			for (const auto& componentPtr : gameObject.GetComponents()) {
+				// Dereference the pointer to get the actual Component
+				const auto& component = *componentPtr;
+				// Assuming GetName() and IsSelected() are methods of Component
+				// GetName() returns a string and IsSelected() returns a bool
+				ImGui::Selectable(component.GetName().c_str(), component.IsSelected());
 			}
 
 			// Don't forget to call TreePop!

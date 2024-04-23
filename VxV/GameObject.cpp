@@ -228,3 +228,7 @@ std::vector<Component*> GameObject::GetComponents()
 {
 	return components;
 }
+
+
+
+
