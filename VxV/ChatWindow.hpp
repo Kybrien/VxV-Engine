@@ -44,7 +44,7 @@ struct ChatWindow {
         sockaddr_in serverAddr;
         serverAddr.sin_family = AF_INET;
         serverAddr.sin_port = htons(12345);
-        InetPton(AF_INET, TEXT("10.3.102.41"), &serverAddr.sin_addr);
+        InetPton(AF_INET, TEXT("127.0.0.1"), &serverAddr.sin_addr);
 
         if (connect(clientSocket, (SOCKADDR*)&serverAddr, sizeof(serverAddr)) == SOCKET_ERROR) {
             closesocket(clientSocket);
@@ -72,12 +72,10 @@ struct ChatWindow {
                 message[iResult] = '\0';
                 std::lock_guard<std::mutex> lock(mutex);
                 addMessage("Server: " + std::string(message));
-            }
-            else {
+            } else {
                 if (iResult == 0) {
                     addMessage("Connection closed by server.");
-                }
-                else {
+                } else {
                     addMessage("Error receiving message.");
                 }
                 break;
@@ -91,9 +89,10 @@ struct ChatWindow {
     }
 
     void sendMessage(const std::string& message) {
+        std::cout << "Sending message: " << message << std::endl;  // Ajoutez cette ligne pour le débogage
         int iResult = send(clientSocket, message.c_str(), message.length(), 0);
         if (iResult == SOCKET_ERROR) {
-            addMessage("Error sending message.");
+            addMessage("Error sending message: " + std::to_string(WSAGetLastError()));;
         }
     }
 
