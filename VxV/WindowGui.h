@@ -463,7 +463,8 @@ void ShowAddGameObject() {
 		std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
 		fileDialog.ClearSelected();
 	}
-
+	ImGui::Separator();
+	
 }
 
 
@@ -481,5 +482,27 @@ void ShowConsoleWindow()
 	}
 
 	// Terminer la fen?tre ImGui
+	ImGui::End();
+}
+
+void RenderSceneHierarchy() {
+	// Start the ImGui window
+	ImGui::Begin("Scene Hierarchy");
+
+	// Iterate through your game objects/entities and create tree nodes
+	for (const auto& gameObject : gameObjects) {
+		// Create a tree node with the name of the entity
+		if (ImGui::TreeNode(gameObject.GetName().c_str())) {
+			// If the tree node is open, you can list components or children here
+			// For each component or child, you can make them selectable
+			for (const auto& component : gameObject.GetComponents()) {
+				ImGui::Selectable(component.GetName().c_str(), &component.IsSelected());
+			}
+
+			// Don't forget to call TreePop!
+			ImGui::TreePop();
+		}
+	}
+
 	ImGui::End();
 }
