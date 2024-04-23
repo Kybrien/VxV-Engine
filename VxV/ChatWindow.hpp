@@ -103,7 +103,7 @@ struct ChatWindow {
     }
 
     void sendMessage(const std::string& message) {
-        std::string fullMessage = username + ": " + message;
+        std::string fullMessage = message;
         int bytesSent = send(clientSocket, fullMessage.c_str(), fullMessage.length(), 0);
         if (bytesSent == SOCKET_ERROR) {
             addMessage("Error sending message: " + std::to_string(WSAGetLastError()));
