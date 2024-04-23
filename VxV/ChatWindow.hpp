@@ -44,7 +44,7 @@ struct ChatWindow {
         sockaddr_in serverAddr;
         serverAddr.sin_family = AF_INET;
         serverAddr.sin_port = htons(12345);
-        InetPton(AF_INET, TEXT("10.3.102.50"), &serverAddr.sin_addr);
+        InetPton(AF_INET, TEXT("10.3.102.41"), &serverAddr.sin_addr);
 
         if (connect(clientSocket, (SOCKADDR*)&serverAddr, sizeof(serverAddr)) == SOCKET_ERROR) {
             closesocket(clientSocket);
