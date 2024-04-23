@@ -54,6 +54,7 @@ struct ChatWindow {
         }
 
         receiveThread = std::thread(&ChatWindow::receiveMessages, this);
+        receiveThread.detach();  // It's detached to prevent blocking.
     }
 
     void closeNetwork() {
@@ -72,10 +73,12 @@ struct ChatWindow {
                 message[iResult] = '\0';
                 std::lock_guard<std::mutex> lock(mutex);
                 addMessage("Server: " + std::string(message));
-            } else {
+            }
+            else {
                 if (iResult == 0) {
                     addMessage("Connection closed by server.");
-                } else {
+                }
+                else {
                     addMessage("Error receiving message.");
                 }
                 break;
@@ -89,26 +92,30 @@ struct ChatWindow {
     }
 
     void sendMessage(const std::string& message) {
-        std::cout << "Sending message: " << message << std::endl;  // Ajoutez cette ligne pour le débogage
+        std::cout << "Sending message: " << message << std::endl;
         int iResult = send(clientSocket, message.c_str(), message.length(), 0);
         if (iResult == SOCKET_ERROR) {
-            addMessage("Error sending message: " + std::to_string(WSAGetLastError()));;
+            addMessage("Error sending message: " + std::to_string(WSAGetLastError()));
+        }
+        else {
+            // Ajout du message envoyé à l'affichage du chat avec une indication que vous l'avez envoyé
+            addMessage("Vous: " + message);
         }
     }
 
     void Draw() {
         ImGui::Begin("Chat Window");
 
-        // Display messages
-        for (const auto& message : messages) {
-            ImGui::TextUnformatted(message.c_str());
+        if (ImGui::BeginChild("ScrollingRegion", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()), false, ImGuiWindowFlags_HorizontalScrollbar)) {
+            for (const auto& message : messages) {
+                ImGui::TextUnformatted(message.c_str());
+            }
+            if (ImGui::GetScrollY() >= ImGui::GetScrollMaxY()) {
+                ImGui::SetScrollHereY(1.0f);
+            }
         }
+        ImGui::EndChild();
 
-        // Scroll to bottom when a new message is added
-        if (ImGui::GetScrollY() >= ImGui::GetScrollMaxY())
-            ImGui::SetScrollHereY(1.0f);
-
-        // Text input
         bool reclaim_focus = false;
         if (ImGui::InputText("Input", inputBuf, sizeof(inputBuf), ImGuiInputTextFlags_EnterReturnsTrue)) {
             std::string message = inputBuf;
@@ -116,11 +123,11 @@ struct ChatWindow {
                 sendMessage(message);
                 reclaim_focus = true;
             }
-            memset(inputBuf, 0, sizeof(inputBuf)); // Clear the input text field
+            memset(inputBuf, 0, sizeof(inputBuf));
         }
 
         if (reclaim_focus) {
-            ImGui::SetKeyboardFocusHere(-1); // Auto focus previous widget
+            ImGui::SetKeyboardFocusHere(-1);
         }
 
         ImGui::End();
