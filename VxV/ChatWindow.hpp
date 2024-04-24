@@ -75,7 +75,7 @@ struct ChatWindow {
 
 
     void startServer() {
-        system("start Server.exe"); // Remplacer "Server.exe" par la commande réelle pour démarrer votre exécutable de serveur
+        system("start Server.exe");
         // Obtenez l'adresse IP locale après le démarrage du serveur
         std::string ipAddress = get_local_ip_address();
         // Copiez l'adresse IP dans le tampon de l'adresse IP en utilisant strcpy_s
@@ -198,8 +198,8 @@ struct ChatWindow {
                 // La connexion a réussi, préparer l'interface pour le chat
                 memset(usernameBuf, 0, sizeof(usernameBuf));  // Clear buffers after successful login
                 memset(serverIPBuf, 0, sizeof(serverIPBuf));
-                ImGui::End();  // Fermer la fenêtre de login
-                return;  // S'assurer de ne pas redessiner la fenêtre de login
+                ImGui::End();  
+                return; 
             }
         }
 
