@@ -70,7 +70,7 @@ static void MainMenuBar()
 			ShowExampleMenuFile();
 			ImGui::EndMenu();
 		}
-		if (ImGui::BeginMenu("Edit"))
+		if (ImGui::BeginMenu("Editor"))
 		{
 			if (ImGui::MenuItem("Undo", "CTRL+Z")) {}
 			if (ImGui::MenuItem("Redo", "CTRL+Y", false, false)) {} // Disabled item
@@ -78,6 +78,17 @@ static void MainMenuBar()
 			if (ImGui::MenuItem("Cut", "CTRL+X")) {}
 			if (ImGui::MenuItem("Copy", "CTRL+C")) {}
 			if (ImGui::MenuItem("Paste", "CTRL+V")) {}
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("Scene"))
+		{
+
+
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("Settings"))
+		{
+
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Help"))
@@ -486,33 +497,93 @@ void ShowConsoleWindow()
 	ImGui::End();
 }
 
-void RenderSceneHierarchy() {
-	// Start the ImGui window
-	ImGui::Begin("Scene Hierarchy");
 
-	// Iterate through your game objects/entities and create tree nodes
-	for (const auto& gameObjectPtr : Scene::GetAllGameObjects()) {
-		// Dereference the pointer to get the actual GameObject
-		const auto& gameObject = *gameObjectPtr;
+//void RenderSceneHierarchy() {
+//	// Start the ImGui window
+//	ImGui::Begin("Scene Hierarchy");
+//
+//	// Iterate through your game objects/entities and create tree nodes
+//	for (const auto& gameObjectPtr : Scene::GetAllGameObjects()) {
+//		// Dereference the pointer to get the actual GameObject
+//		const auto& gameObject = *gameObjectPtr;
+//
+//		// Create a tree node with the name of the entity
+//		// Assuming GetName() is a method of GameObject that returns a string
+//		if (ImGui::TreeNode(gameObject->GetName().c_str())) {
+//			// If the tree node is open, you can list components or children here
+//			// For each component or child, you can make them selectable
+//			// Assuming GetComponents() is a method of GameObject that returns a list of Component pointers
+//			for (const auto& componentPtr : gameObject.GetComponents()) {
+//				// Dereference the pointer to get the actual Component
+//				const auto& component = *componentPtr;
+//				// Assuming GetName() and IsSelected() are methods of Component
+//				// GetName() returns a string and IsSelected() returns a bool
+//				ImGui::Selectable(component.GetName().c_str(), component.IsSelected());
+//			}
+//
+//			// Don't forget to call TreePop!
+//			ImGui::TreePop();
+//		}
+//	}
+//
+//	ImGui::End();
+//}
 
-		// Create a tree node with the name of the entity
-		// Assuming GetName() is a method of GameObject that returns a string
-		if (ImGui::TreeNode(gameObject->GetName().c_str())) {
-			// If the tree node is open, you can list components or children here
-			// For each component or child, you can make them selectable
-			// Assuming GetComponents() is a method of GameObject that returns a list of Component pointers
-			for (const auto& componentPtr : gameObject.GetComponents()) {
-				// Dereference the pointer to get the actual Component
-				const auto& component = *componentPtr;
-				// Assuming GetName() and IsSelected() are methods of Component
-				// GetName() returns a string and IsSelected() returns a bool
-				ImGui::Selectable(component.GetName().c_str(), component.IsSelected());
-			}
+void RenderToolbar() {
+	// Assuming toolbarHeight is set to your desired height for the toolbar
+	float toolbarHeight = 24.0f;
+	ImGuiViewport* viewport = ImGui::GetMainViewport();
+	ImGui::SetNextWindowPos(ImVec2(viewport->WorkPos.x, viewport->WorkPos.y));
+	ImGui::SetNextWindowSize(ImVec2(viewport->WorkSize.x, toolbarHeight));
 
-			// Don't forget to call TreePop!
-			ImGui::TreePop();
+	// We don't want the toolbar window to be moveable or have any framing
+	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoMove;
+
+	ImGui::Begin("##Toolbar", nullptr, window_flags);
+
+	// Left-aligned buttons
+	if (ImGui::Button("Play")) {
+		// Trigger play action
+	}
+	ImGui::SameLine();
+	if (ImGui::Button("Pause")) {
+		// Trigger pause action
+	}
+	ImGui::SameLine();
+	if (ImGui::Button("Stop")) {
+		// Trigger stop action
+	}
+
+	// Calculate the size needed to center the next set of buttons
+	float availableSpace = ImGui::GetContentRegionAvail().x;
+	float buttonSize = ImGui::CalcTextSize("Centered Button").x + ImGui::GetStyle().FramePadding.x * 2;
+	// Spacing needed to center the buttons
+	float spacing = (availableSpace - buttonSize * 3) * 0.5f;
+	if (spacing > 0) {
+		ImGui::SameLine(spacing);
+	}
+
+	// Center-aligned buttons
+	for (int i = 0; i < 3; ++i) {
+		if (i > 0) ImGui::SameLine();
+		if (ImGui::Button("Centered Button")) {
+			// Trigger action for this button
 		}
+	}
+
+	ImGui::SameLine();
+	if (ImGui::Button("Save")) {
+		// Trigger play action
+	}
+	ImGui::SameLine();
+	if (ImGui::Button("move")) {
+		// Trigger pause action
+	}
+	ImGui::SameLine();
+	if (ImGui::Button("")) {
+		// Trigger stop action
 	}
 
 	ImGui::End();
 }
+

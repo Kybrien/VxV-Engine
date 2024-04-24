@@ -1,7 +1,9 @@
 #include "Scene.h"
 #include "SceneManager.h"
 
+
 Scene::Scene(std::string name_) {
+
 	Manager* manager = Manager::GetInstance();
 	sceneManager = manager->GetManager<SceneManager>(); 
 

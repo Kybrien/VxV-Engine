@@ -38,6 +38,7 @@ void EngineGUI::UpdateGui()
     RedirectCout();
     MainMenuBar();
     ShowInfo();
+    RenderToolbar();
     ShowConsoleWindow();
     ShowAddGameObject();
 }
