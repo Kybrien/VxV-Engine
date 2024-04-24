@@ -47,7 +47,7 @@ public:
 	/**
 	 * Initialize all the managers and the engine.
 	 */
-	void Init() { 
+	void Init() {
 		state = Initializing; 
 
 		manager = Manager::GetInstance();

@@ -14,6 +14,14 @@ public:
 
 	Transform(GameObject* gameObject);
 
+	void SetPosition(glm::vec3 pos);
+	void SetRotation(float xAngle, float yAngle, float zAngle);
+	void SetScale(glm::vec3 sca);
+
+	void Translate(glm::vec3 pos);
+	void Rotate(float xAngle, float yAngle, float zAngle);
+	void Scale(glm::vec3 sca);
+
 
 	void Load(Json::Value& compJson, GameObject* ParentGO) override;
 

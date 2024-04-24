@@ -284,6 +284,10 @@ void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& Light
 */
 void drawModel(ModelComponent* model, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID, GLuint MaterialSpecularColorID);
 
+void setRotationModel(ModelComponent& model, float angle, const glm::vec3& axis);
+void setTranslationModel(ModelComponent& model, const glm::vec3& translation);
+void setScaleModel(ModelComponent& model, const glm::vec3& scale);
+
 /**
 * @brief Translate the model by the given translation vector.
 * @param model reference to the model
@@ -320,6 +324,6 @@ void scaleModel(ModelComponent& model, const glm::vec3& scale);
 * @param ViewMatrixID reference to the view matrix ID
 * @return void
 */
-void sendMVPData(ModelComponent& model, float angle, const glm::vec3& axis, GLuint VertexArrayID, GLuint MatrixID, GLuint ModelMatrixID, GLuint ViewMatrixID);
+void sendMVPData(ModelComponent& model, GLuint VertexArrayID, GLuint MatrixID, GLuint ModelMatrixID, GLuint ViewMatrixID);
 
 //#endif

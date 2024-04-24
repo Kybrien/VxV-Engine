@@ -5,7 +5,7 @@
 #include "WindowGui.h"
 #include "Engine.h"
 #include "imfilebrowser.h"
-
+#include "Debug.h"
 
 int main() {
 	Engine* state = Engine::GetInstance();
@@ -39,20 +39,7 @@ int main() {
 	int nbFrames = 0;
 	//update be  like
 
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO();
-	(void)io;
-	// Chargez la police qui supporte les caractères accentués
-	ImFont* font = io.Fonts->AddFontFromFileTTF("monocraft.ttf", 17);
-
-	// V�rifiez si la police a �t� charg�e correctement
-	if (font == nullptr)
-	{
-		std::cerr << "Erreur lors du chargement de la police." << std::endl;
-	}
-	ImGui_ImplGlfw_InitForOpenGL(window, true);
-	ImGui_ImplOpenGL3_Init("#version 330");
+	gui.initImgui(window);
 
 	Engine* engine = new Engine();
 	engine->Init();
@@ -63,19 +50,20 @@ int main() {
 	GameObject* go = sceneManager->gameObjectPool.CreateGameObject();
 
 	go->AddComponent<Model>();
-	go->GetComponent<Model>()->SetModel("sphere");
+	go->GetComponent<Model>()->SetModel("miku");
+
+
+	GameObject* go2 = sceneManager->gameObjectPool.CreateGameObject();
+
+	go2->AddComponent<Model>();
+	go2->GetComponent<Model>()->SetModel("cube");
 
 	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
-
+	translateModel(*go->GetComponent<Model>()->GetModel(), glm::vec3(10, 0, 0));
 	do
 	{
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		// Start the Dear ImGui frame
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
-		ImGui::NewFrame();
 
 		// Use our shader
 		glUseProgram(programID);
@@ -92,10 +80,16 @@ int main() {
 			lastTimeFPS += 1.0;
 		}
 
-		float deltaTime = float(currentTime - lastTime);
+		
 
-		float angle = deltaTime * 50.0f; // Rotate by 60 degrees
-		glm::vec3 axis(0.0f, 0.0f, -1.0f); // Rotate around the z-axis
+		go->GetComponent<Transform>()->Rotate(180, 180 ,0);
+		go->GetComponent<Transform>()->SetRotation(90, 0, 0);
+
+		go->GetComponent<Transform>()->SetPosition(glm::vec3(0, 0, 0));
+
+		go->GetComponent<Transform>()->SetScale(glm::vec3(10, 1, 1));
+
+
 
 		glm::vec3 lightPos = glm::vec3(0, 0, 8);
 		glUniform3f(LightID, lightPos.x, lightPos.y, lightPos.z);
@@ -108,9 +102,7 @@ int main() {
 			Model* modelComp = go->GetComponent<Model>();
 			if (modelComp != nullptr)
 			{
-				auto& model = *(modelComp->GetModel());
-
-				sendMVPData(model, angle, axis, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
+				sendMVPData(*(go->GetComponent<Model>()->GetModel()), VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
 				drawModel(modelComp->GetModel(), TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
 			}
 		}

@@ -55,18 +55,26 @@ void computeMatricesFromInputs(GLFWwindow* window) {
 
 	// Up vector
 	glm::vec3 up = glm::cross(right, direction);
+	static double lastXpos, lastYpos;
+	static bool firstRightClick = true;
 
 	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS) {
 		// Reset mouse position for next frame
-		int width, height;
-		glfwGetWindowSize(window, &width, &height);
-		glfwSetCursorPos(window, width / 2, height / 2);
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
-		// Compute new orientation only if right mouse button is pressed
-		// Compute new orientation
-		horizontalAngle += mouseSpeed * float(width / 2 - xpos);
-		verticalAngle += mouseSpeed * float(height / 2 - ypos);
+		if (firstRightClick) {
+			// Store the current mouse position but don't update the camera's direction
+			glfwGetCursorPos(window, &lastXpos, &lastYpos);
+			firstRightClick = false;
+		}
+		else {
+			// Compute new orientation based on the difference between the current and the last mouse position
+			horizontalAngle += mouseSpeed * float(lastXpos - xpos);
+			verticalAngle += mouseSpeed * float(lastYpos - ypos);
+		}
+		// Store the current mouse position for the next frame
+		lastXpos = xpos;
+		lastYpos = ypos;
 
 		// Move forward
 		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
@@ -104,6 +112,7 @@ void computeMatricesFromInputs(GLFWwindow* window) {
 		}
 	}
 	else {
+		firstRightClick = true;
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 	}
 

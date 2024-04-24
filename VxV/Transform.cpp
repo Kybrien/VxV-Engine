@@ -1,6 +1,13 @@
 #include "Transform.h"
 #include "GameObject.h"
 
+#include "ModelComponent.hpp"
+#include "Model.h"
+
+#include "Debug.h"
+
+#include "Engine.h"
+
 
 
 Transform::Transform(GameObject* gameObject) : Component(gameObject) {
@@ -44,7 +51,48 @@ void Transform::Copy(GameObject* goToFill) {
 }
 
 
+void Transform::SetPosition(glm::vec3 pos) {
+	position = pos;
+	setTranslationModel(*linkedGameObject->GetComponent<Model>()->GetModel(), pos);
+}
 
+
+void Transform::SetRotation(float xAngle, float yAngle, float zAngle) {
+
+	rotation = glm::vec3(xAngle, yAngle, zAngle);
+	if (xAngle != 0)
+		setRotationModel(*linkedGameObject->GetComponent<Model>()->GetModel(), xAngle, glm::vec3(1, 0, 0));
+	if (yAngle != 0)
+		setRotationModel(*linkedGameObject->GetComponent<Model>()->GetModel(), yAngle, glm::vec3(0, 1, 0));
+	if (zAngle != 0)
+		setRotationModel(*linkedGameObject->GetComponent<Model>()->GetModel(), zAngle, glm::vec3(0, 0, 1));
+}
+
+void Transform::SetScale(glm::vec3 sca) {
+	scale = sca;
+	setScaleModel(*linkedGameObject->GetComponent<Model>()->GetModel(), sca);
+}
+
+
+void Transform::Translate(glm::vec3 pos) {
+	position += pos;
+	translateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), position);
+}
+
+void Transform::Rotate(float xAngle, float yAngle, float zAngle) {
+	rotation += glm::vec3(xAngle, yAngle, zAngle);
+	if (xAngle != 0)
+		rotateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), xAngle, glm::vec3(1, 0, 0));
+	if (yAngle != 0)
+		rotateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), yAngle, glm::vec3(0, 1, 0));
+	if (zAngle != 0)
+		rotateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), zAngle, glm::vec3(0, 0, 1));
+}
+
+void Transform::Scale(glm::vec3 sca) {
+	scale += sca;
+	scaleModel(*linkedGameObject->GetComponent<Model>()->GetModel(), scale);
+}
 
 
 
