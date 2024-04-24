@@ -4,6 +4,7 @@
 #include "PrefabManager.h"
 #include "InputManager.h"
 #include "SceneManager.h"
+#include "EngineState.h"
 
 
 /**
@@ -13,19 +14,8 @@ class Engine {
 private:
 	static Engine* instance;
 	SceneManager* sceneManager;	
-public:
-	enum EngineState {
-		Edition = 0,
-		Initializing,
-		Ready,
-		Starting,
-		Running,
-		AsktoStop,
-		Stopping,
-		Stopped
-	};
-private:
-	EngineState state = Edition;
+	EngineState* engineState = EngineState::GetInstance();
+
 public:
 	Manager* manager;
 
@@ -36,9 +26,6 @@ public:
 		return instance;
 	}
 
-	EngineState const GetState() {
-		return state;
-	}
 
 	Engine() {
 		
@@ -48,13 +35,13 @@ public:
 	 * Initialize all the managers and the engine.
 	 */
 	void Init() {
-		state = Initializing; 
+		engineState->StartBooting();
 
 		manager = Manager::GetInstance();
 		manager->Init();
 		sceneManager = manager->GetManager<SceneManager>();
 		// init les managers
-		state = Ready;
+		engineState->ReadyBooting();
 
 		//init go
 		sceneManager->GetCurrentScene()->Init();
@@ -63,18 +50,33 @@ public:
 
 	void Start()
 	{
-		state = Starting;
+		engineState->StartRunning();
 
 
 		// start go
 		sceneManager->GetCurrentScene()->Start();
 
-		state = Running;
+		engineState->Running();
 		Update();
 	}
 
 	void Update()
 	{
 		sceneManager->GetCurrentScene()->Update();
+	}
+
+	EngineState* GetEngineState()
+	{
+		return engineState;
+	}
+
+	EngineState::ActiveState GetActiveState()
+	{
+		return engineState->GetActiveState();
+	}
+
+	EngineState::BootingState GetBootingState()
+	{
+		return engineState->GetBootingState();
 	}
 };
