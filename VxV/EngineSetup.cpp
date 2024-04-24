@@ -1,7 +1,30 @@
 ﻿#include "EngineSetup.hpp"
 
-void startup() {
+void startup(EngineGUI* _gui, APIopenGL* _apiGraphic) {
+	_apiGraphic->initialize();
+	_apiGraphic->setShaders("SimpleVertexShader.MIKU", "SimpleFragmentShader.VALORANT");
+	_apiGraphic->setBackgroundColor(0.0f, 0.0f, 0.4f, 0.0f);
+	_apiGraphic->setCamera(45.0f, 4.0f, 3.0f, 0.1f, 100.0f, 9, 5, 1, 0, 0, 0, 0, 1, 0);
+	_apiGraphic->setHandles();
 	
+	double lastTime = glfwGetTime();
+	double lastTimeFPS = lastTime;
+	int nbFrames = 0;
+
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO();
+	(void)io;
+	// Chargez la police qui supporte les caractères accentués
+	ImFont* font = io.Fonts->AddFontFromFileTTF("monocraft.ttf", 17);
+
+	// V�rifiez si la police a �t� charg�e correctement
+	if (font == nullptr)
+	{
+		std::cerr << "Erreur lors du chargement de la police." << std::endl;
+	}
+	ImGui_ImplGlfw_InitForOpenGL(_apiGraphic->getWindow(), true);
+	ImGui_ImplOpenGL3_Init("#version 330");
 }
 
 void temp() {
@@ -56,13 +79,13 @@ void temp() {
 	Manager* manager = Manager::GetInstance();
 	SceneManager* sceneManager = manager->GetManager<SceneManager>();
 
-	GameObject* go = sceneManager->gameObjectPool.CreateGameObject();
+	GameObject* go = sceneManager->gameObjectPool.CreateGoFromPool();
 
 	go->AddComponent<Model>();
 	go->GetComponent<Model>()->SetModel("miku");
 
 
-	GameObject* go2 = sceneManager->gameObjectPool.CreateGameObject();
+	GameObject* go2 = sceneManager->gameObjectPool.CreateGoFromPool();
 
 	go2->AddComponent<Model>();
 	go2->GetComponent<Model>()->SetModel("cube");

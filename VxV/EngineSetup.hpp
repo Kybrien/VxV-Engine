@@ -1,6 +1,6 @@
 #pragma once
 #include "loadingShader.hpp"
-
+#include "APIopenGL.hpp"
 #include <iostream>
 
 #include "Engine.h"
@@ -14,4 +14,4 @@
 
 #include "Debug.h"
 
-void startup();
+void startup(EngineGUI* _gui, APIopenGL* _apiGraphic);
