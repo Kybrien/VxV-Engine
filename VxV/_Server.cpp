@@ -31,7 +31,7 @@ void handleClient(SOCKET clientSocket) {
         std::lock_guard<std::mutex> lock(clientsMutex);
         clients.push_back({ clientSocket, nickname });
     }
-    
+
     // Boucle de réception des messages du client
     while (true) {
         iResult = recv(clientSocket, message, sizeof(message), 0);
@@ -58,11 +58,12 @@ void handleClient(SOCKET clientSocket) {
                     }
                 }
             }
-            std::cerr << "Connexion au client fermée\n";
+            std::cerr << "Connexion au client fermee\n";
             break;
         }
         else {
-            std::cerr << "Erreur lors de la réception du message: " << WSAGetLastError() << std::endl;
+            //std::cerr << "Erreur lors de la reception du message: " << WSAGetLastError() << std::endl;
+            std::cout << nickname << " is OFFLINE" << std::endl;
             break;
         }
     }
@@ -84,7 +85,7 @@ int initServ() {
 
     serverSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (serverSocket == INVALID_SOCKET) {
-        std::cerr << "Erreur lors de la création du socket: " << WSAGetLastError() << std::endl;
+        std::cerr << "Erreur lors de la creation du socket: " << WSAGetLastError() << std::endl;
         WSACleanup();
         return 1;
     }
@@ -101,17 +102,23 @@ int initServ() {
     }
 
     if (listen(serverSocket, SOMAXCONN) == SOCKET_ERROR) {
-        std::cerr << "Erreur lors de la mise en écoute du socket: " << WSAGetLastError() << std::endl;
+        std::cerr << "Erreur lors de la mise en ecoute du socket: " << WSAGetLastError() << std::endl;
         closesocket(serverSocket);
         WSACleanup();
         return 1;
     }
 
-    std::cout << "Le serveur de chat est en écoute...\n";
+    std::cout << "Le serveur de chat est en ecoute...\n";
 
     while (true) {
         SOCKET clientSocket = accept(serverSocket, NULL, NULL);
-        std::cout << "Client connecté\n";
+        char nickname[1024];
+        int nicknameLength = recv(clientSocket, nickname, sizeof(nickname), 0);
+        if (nicknameLength > 0) {
+            nickname[nicknameLength] = '\0'; // Ajoutez le caractère de fin de chaîne
+        }
+        std::string clientNickname = nickname;
+        std::cout << "| " << clientNickname << " is ONLINE |\n";
 
         std::thread clientThread(handleClient, clientSocket);
         clientThread.detach(); // Détacher le thread pour qu'il se termine automatiquement
