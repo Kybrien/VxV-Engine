@@ -169,6 +169,7 @@ copy "\"$(ProjectDir)SimpleVertexShader.MIKU\"" "\"$(TargetDir)\""
     <ClCompile Include="controls.cpp" />
     <ClCompile Include="EngineSetup.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="EngineState.cpp" />
     <ClCompile Include="loadingShader.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MemoryPool.cpp" />
@@ -195,9 +196,11 @@ copy "\"$(ProjectDir)SimpleVertexShader.MIKU\"" "\"$(TargetDir)\""
     <ClCompile Include="_Server.cpp" />
     <ClInclude Include="ChatWindow.hpp" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="ConsoleRecup.h" />
     <ClInclude Include="controls.hpp" />
     <ClInclude Include="EngineGUI.h" />
     <ClInclude Include="EngineSetup.hpp" />
+    <ClInclude Include="EngineState.h" />
     <ClInclude Include="FileExplorer.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="imgui\imconfig.h" />

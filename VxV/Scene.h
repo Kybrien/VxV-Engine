@@ -43,4 +43,21 @@ public:
 		return allGameObjects;
 	}
 
+	void Init() {
+		for (GameObject* go : gameObjects) {
+			go->Init();
+		}
+	}
+
+	void Start() {
+		for (GameObject* go : gameObjects) {
+			go->Start();
+		}
+	}
+
+	void Update() {
+		for (GameObject* go : gameObjects) {
+			go->Update();
+		}
+	}
 };

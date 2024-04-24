@@ -11,12 +11,11 @@
  */
 class Engine {
 private:
-
-	/**
-	* Define the states of the engine.
-	*/
+	static Engine* instance;
+	SceneManager* sceneManager;	
+public:
 	enum EngineState {
-		Off = 0,
+		Edition = 0,
 		Initializing,
 		Ready,
 		Starting,
@@ -25,10 +24,8 @@ private:
 		Stopping,
 		Stopped
 	};
-
-	static Engine* instance;
-	EngineState state = Off;
-
+private:
+	EngineState state = Edition;
 public:
 	Manager* manager;
 
@@ -39,16 +36,12 @@ public:
 		return instance;
 	}
 
-	/**  
-	* @param none
-	*/
-	EngineState GetState() {
+	EngineState const GetState() {
 		return state;
 	}
 
-	Engine()
-	{
-		instance = this;
+	Engine() {
+		
 	}
 
 	/**
@@ -59,23 +52,29 @@ public:
 
 		manager = Manager::GetInstance();
 		manager->Init();
+		sceneManager = manager->GetManager<SceneManager>();
 		// init les managers
 		state = Ready;
 
 		//init go
+		sceneManager->GetCurrentScene()->Init();
 		Start();
 	}
 
 	void Start()
 	{
 		state = Starting;
-		// start go
 
+
+		// start go
+		sceneManager->GetCurrentScene()->Start();
+
+		state = Running;
 		Update();
 	}
 
 	void Update()
 	{
-		state = Running;
+		sceneManager->GetCurrentScene()->Update();
 	}
 };
