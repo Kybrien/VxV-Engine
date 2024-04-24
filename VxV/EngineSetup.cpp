@@ -25,6 +25,24 @@ void startup(EngineGUI* _gui, APIopenGL* _apiGraphic) {
 	ImGui_ImplOpenGL3_Init("#version 330");
 }
 
+void apiDrawLoopSetup(APIopenGL* _apiGraphic)
+{
+	_apiGraphic->clearScreen();
+	_apiGraphic->useShader();
+	glm::vec3 lightPos = glm::vec3(0, 0, 8);
+	glUniform3f(_apiGraphic->getLightID(), lightPos.x, lightPos.y, lightPos.z);
+	computeMatricesFromInputs(_apiGraphic->getWindow());
+	glm::mat4 ProjectionMatrix = getProjectionMatrix();
+}
+
+void checkCloseWindow(APIopenGL* _apiGraphic,Engine* _engine)
+{
+	if (glfwGetKey(_apiGraphic->getWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS || glfwWindowShouldClose(_apiGraphic->getWindow())) {
+		_engine->GetEngineState()->Stopped();
+	}
+}
+
+
 void temp() {
 	EngineGUI gui;
 	//On initialise tout

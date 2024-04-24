@@ -28,12 +28,8 @@ int main()
 	translateModel(*go->GetComponent<Model>()->GetModel(), glm::vec3(10, 0, 0));
 	while (engine->GetBootingState() != EngineState::BootingState::Stopped)
 	{
-		apiGraphic->clearScreen();
-		apiGraphic->useShader();
-		glm::vec3 lightPos = glm::vec3(0, 0, 8);
-		glUniform3f(apiGraphic->getLightID(), lightPos.x, lightPos.y, lightPos.z);
-		computeMatricesFromInputs(apiGraphic->getWindow());
-		glm::mat4 ProjectionMatrix = getProjectionMatrix();
+		checkCloseWindow(apiGraphic, engine);
+		apiDrawLoopSetup(apiGraphic);
 		if (engine->GetActiveState() == EngineState::ActiveState::Edition) {
 
 		}
