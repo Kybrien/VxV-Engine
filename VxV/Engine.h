@@ -12,7 +12,7 @@
 class Engine {
 private:
 	static Engine* instance;
-
+	SceneManager* sceneManager;	
 public:
 	enum EngineState {
 		Edition = 0,
@@ -52,23 +52,29 @@ public:
 
 		manager = Manager::GetInstance();
 		manager->Init();
+		sceneManager = manager->GetManager<SceneManager>();
 		// init les managers
 		state = Ready;
 
 		//init go
+		sceneManager->GetCurrentScene()->Init();
 		Start();
 	}
 
 	void Start()
 	{
 		state = Starting;
-		// start go
 
+
+		// start go
+		sceneManager->GetCurrentScene()->Start();
+
+		state = Running;
 		Update();
 	}
 
 	void Update()
 	{
-		state = Running;
+		sceneManager->GetCurrentScene()->Update();
 	}
 };
