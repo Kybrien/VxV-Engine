@@ -27,7 +27,7 @@ int main()
 	go->AddChild(go2);
 
 	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
-	translateModel(*go->GetComponent<Model>()->GetModel(), glm::vec3(10, 0, 0));
+	go2->GetComponent<Transform>()->Translate(glm::vec3(10, 0, 0));
 	while (engine->GetBootingState() != EngineState::BootingState::Stopped)
 	{
 		checkCloseWindow(apiGraphic, engine);
@@ -46,7 +46,7 @@ int main()
 			Model* modelComp = go->GetComponent<Model>();
 			if (modelComp != nullptr)
 			{
-				apiGraphic->drawingModel(modelComp);
+				apiGraphic->drawingModel(go);
 			}
 		}
 

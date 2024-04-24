@@ -59,10 +59,10 @@ public :
 	{
 		programID = LoadShaders(_vertexShaderPath, _fragmentShaderPath);
 	}
-	void drawingModel(Model* _model) override
+	void drawingModel(GameObject* _gameObject) override
 	{
-		sendMVPData(*(_model->GetModel()), VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
-		drawModel(_model->GetModel(), TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
+		sendMVPData(_gameObject, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
+		drawModel(_gameObject->GetComponent<Model>()->GetModel(), TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
 	}
 
 	void setHandles() override
