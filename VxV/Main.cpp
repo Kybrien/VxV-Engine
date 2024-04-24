@@ -81,7 +81,7 @@ int main()
 	go->AddChild(go2);
 
 	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
-	go->GetComponent<Transform>()->SetPosition(glm::vec3(0, 10, 0));
+	go->GetComponent<Transform>()->SetPosition(glm::vec3(0, 5, 0));
 	go2->GetComponent<Transform>()->SetPosition(glm::vec3(10, 0, 0));
 	go2->GetComponent<Transform>()->SetScale(glm::vec3(0.5, 0.5, 0.5));
 	go->GetComponent<Transform>()->SetScale(glm::vec3(0.5, 0.5, 0.5));
