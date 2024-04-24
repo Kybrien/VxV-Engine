@@ -1,5 +1,4 @@
 ﻿#include "EngineGUI.h"
-#include "FileExplorer.h"
 #include <imgui.h>
 #include "FileExplorer.h"
 #include "WindowGui.h"
@@ -23,6 +22,12 @@ void EngineGUI::initImgui(GLFWwindow* window)
     }
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init("#version 330");
+
+    ImGui::StyleColorsDark();
+
+    // Rediriger std::cout vers la console
+    RedirectCout();
+
 }
 
 void EngineGUI::UpdateGui()
@@ -35,12 +40,12 @@ void EngineGUI::UpdateGui()
 
 
     ImGui::ShowDemoWindow();
-    RedirectCout();
     MainMenuBar();
     ShowInfo();
-    //RenderToolbar();
+    RenderToolbar();
     ShowConsoleWindow();
     ShowAddGameObject();
+
 }
 
 

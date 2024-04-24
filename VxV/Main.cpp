@@ -1,7 +1,6 @@
 #include "loadingShader.hpp"
 
 #include <iostream>
-
 #include "Engine.h"
 #include "EngineGUI.h"
 

@@ -462,9 +462,53 @@ void CreateGameObject(std::vector<std::string>& gameObjects, bool& show) {
 void ShowAddGameObject() {
 	if (ImGui::Begin("Create Game Object"))
 	{
-		// open file dialog when user clicks this button
-		if (ImGui::Button("open file dialog"))
-			fileDialog.Open();
+		static char gameObjectName[128];
+
+		if (ImGui::BeginTabBar("TabBar"))
+		{
+			if (ImGui::BeginTabItem("Create"))
+			{
+				// open file dialog when user clicks this button
+				if (ImGui::Button("open file obj"))
+					fileDialog.Open();
+
+				ImGui::EndTabItem();
+			}
+			if (ImGui::BeginTabItem("Prefab"))
+			{
+				if (ImGui::Button("Cube"))
+				{
+					// Code pour créer le prefab
+				}
+				if (ImGui::Button("Sphere"))
+				{
+					// Code pour créer le prefab 1
+				}
+
+				if (ImGui::Button("Capsule"))
+				{
+					// Code pour créer le prefab 2
+				}
+				if (ImGui::Button("Plane"))
+				{
+					// Code pour créer le prefab 1
+				}
+
+				if (ImGui::Button("Cylinder"))
+				{
+					// Code pour créer le prefab 2
+				}
+				if (ImGui::Button("Miku"))
+				{
+					// Code pour créer le prefab 1
+				}
+
+				// Ajoutez plus de boutons pour plus de prefabs ici...
+
+				ImGui::EndTabItem();
+			}
+			ImGui::EndTabBar();
+		}
 	}
 	ImGui::End();
 
@@ -472,18 +516,19 @@ void ShowAddGameObject() {
 
 	if (fileDialog.HasSelected())
 	{
+
 		std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
 		fileDialog.ClearSelected();
 	}
 	ImGui::Separator();
-
 }
+
 
 
 
 void ShowConsoleWindow()
 {
-	// Commencer une nouvelle fen?tre ImGui
+	// Commencer une nouvelle fenêtre ImGui
 	ImGui::Begin("Console");
 
 	// Parcourir la liste des messages de la console
@@ -493,51 +538,48 @@ void ShowConsoleWindow()
 		ImGui::TextUnformatted(message.c_str());
 	}
 
-	// Terminer la fen?tre ImGui
+	// Terminer la fenêtre ImGui
 	ImGui::End();
 }
 
 
-//void RenderSceneHierarchy() {
-//	// Start the ImGui window
-//	ImGui::Begin("Scene Hierarchy");
-//
-//	// Iterate through your game objects/entities and create tree nodes
-//	for (const auto& gameObjectPtr : Scene::GetAllGameObjects()) {
-//		// Dereference the pointer to get the actual GameObject
-//		const auto& gameObject = *gameObjectPtr;
-//
-//		// Create a tree node with the name of the entity
-//		// Assuming GetName() is a method of GameObject that returns a string
-//		if (ImGui::TreeNode(gameObject->GetName().c_str())) {
-//			// If the tree node is open, you can list components or children here
-//			// For each component or child, you can make them selectable
-//			// Assuming GetComponents() is a method of GameObject that returns a list of Component pointers
-//			for (const auto& componentPtr : gameObject.GetComponents()) {
-//				// Dereference the pointer to get the actual Component
-//				const auto& component = *componentPtr;
-//				// Assuming GetName() and IsSelected() are methods of Component
-//				// GetName() returns a string and IsSelected() returns a bool
-//				ImGui::Selectable(component.GetName().c_str(), component.IsSelected());
-//			}
-//
-//			// Don't forget to call TreePop!
-//			ImGui::TreePop();
-//		}
-//	}
-//
-//	ImGui::End();
-//}
+void RenderSceneHierarchy() {
+	// Start the ImGui window
+	ImGui::Begin("Scene Hierarchy");
+
+	// Iterate through your game objects/entities and create tree nodes
+	for (const auto& gameObjectPtr : Scene::GetAllGameObjects()) {
+		// Dereference the pointer to get the actual GameObject
+		const auto& gameObject = *gameObjectPtr;
+
+		// Create a tree node with the name of the entity
+		// Assuming GetName() is a method of GameObject that returns a string
+		if (ImGui::TreeNode(gameObject->GetName().c_str())) {
+			// If the tree node is open, you can list components or children here
+			// For each component or child, you can make them selectable
+			// Assuming GetComponents() is a method of GameObject that returns a list of Component pointers
+			for (const auto& componentPtr : gameObject.GetComponents()) {
+				// Dereference the pointer to get the actual Component
+				const auto& component = *componentPtr;
+				// Assuming GetName() and IsSelected() are methods of Component
+				// GetName() returns a string and IsSelected() returns a bool
+				ImGui::Selectable(component.GetName().c_str(), component.IsSelected());
+			}
+
+			// Don't forget to call TreePop!
+			ImGui::TreePop();
+		}
+	}
+
+	ImGui::End();
+}
 
 void RenderToolbar() {
 	// Assuming toolbarHeight is set to your desired height for the toolbar
-	float toolbarHeight = 24.0f;
-	ImGuiViewport* viewport = ImGui::GetMainViewport();
-	ImGui::SetNextWindowPos(ImVec2(viewport->WorkPos.x, viewport->WorkPos.y));
-	ImGui::SetNextWindowSize(ImVec2(viewport->WorkSize.x, toolbarHeight));
+
 
 	// We don't want the toolbar window to be moveable or have any framing
-	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoMove;
+	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoScrollWithMouse ;
 
 	ImGui::Begin("##Toolbar", nullptr, window_flags);
 
@@ -571,18 +613,7 @@ void RenderToolbar() {
 		}
 	}
 
-	ImGui::SameLine();
-	if (ImGui::Button("Save")) {
-		// Trigger play action
-	}
-	ImGui::SameLine();
-	if (ImGui::Button("move")) {
-		// Trigger pause action
-	}
-	ImGui::SameLine();
-	if (ImGui::Button("")) {
-		// Trigger stop action
-	}
+	
 
 	ImGui::End();
 }
