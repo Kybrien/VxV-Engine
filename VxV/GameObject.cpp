@@ -65,7 +65,7 @@ void GameObject::Load(Json::Value root, GameObject* goParent, bool PrefabLoading
     Manager* manager = Manager::GetInstance();
     SceneManager* sceneManager = manager->GetManager<SceneManager>();
 
-    GameObject* go = sceneManager->gameObjectPool.CreateGameObject("", PrefabLoading, nullptr, true);
+    GameObject* go = sceneManager->gameObjectPool.CreateGoFromPool("", PrefabLoading, nullptr, true);
     go->SetId(root["Id"].asInt());
     go->name = root["Name"].asString();
     go->isChild = root["Is Child"].asBool();

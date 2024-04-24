@@ -46,7 +46,7 @@ public:
 	}
 
 	// Create a GameObject from the memory pool
-	GameObject* CreateGameObject(std::string name = "GO", bool PrefabLoading = false, Prefab* prefab = nullptr, bool loading = false)
+	GameObject* CreateGoFromPool(std::string name = "GO", bool PrefabLoading = false, Prefab* prefab = nullptr, bool loading = false)
 	{
 		GameObject* temp = reinterpret_cast<GameObject*>(m_strategy.Allocate());
 		return new (temp) GameObject(name, PrefabLoading, prefab, loading);

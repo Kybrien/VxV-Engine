@@ -2,19 +2,15 @@
 
 #include <iostream>
 #include "Engine.h"
+#include "ModelComponent.hpp"
 #include "EngineGUI.h"
-
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
-
+#include "WindowGui.h"
+#include "Engine.h"
 #include "imfilebrowser.h"
-
 #include "Debug.h"
 
-
-int main()
-{
+int main() {
+	Engine* state = Engine::GetInstance();
 	EngineGUI gui;
 	//On initialise tout
 	GLFWwindow* window;
@@ -125,8 +121,7 @@ int main()
 		// Swap buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();
-	}
-	while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
+	} while (state->GetState() == Engine::EngineState::Running);
 
 	for (GameObject* go : Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects())
 	{
