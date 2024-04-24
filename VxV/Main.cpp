@@ -78,7 +78,7 @@ int main()
 	go2->AddComponent<Model>();
 	go2->GetComponent<Model>()->SetModel("miku");
 
-	//go->AddChild(go2);
+	go->AddChild(go2);
 
 	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
 	go->GetComponent<Transform>()->SetPosition(glm::vec3(0, 10, 0));
@@ -129,7 +129,7 @@ int main()
 			Model* modelComp = go->GetComponent<Model>();
 			if (modelComp != nullptr)
 			{
-				sendMVPData(*(go->GetComponent<Model>()->GetModel()), VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
+				sendMVPData(go, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
 				drawModel(modelComp->GetModel(), TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
 			}
 		}

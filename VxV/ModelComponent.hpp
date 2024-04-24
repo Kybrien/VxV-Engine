@@ -3,6 +3,7 @@
 #include <GLM/glm.hpp>
 
 #include "controls.hpp"
+#include "GameObject.h"
 
 #include "Externes/tiny_obj_loader.h"
 
@@ -324,6 +325,6 @@ void scaleModel(ModelComponent& model, const glm::vec3& scale);
 * @param ViewMatrixID reference to the view matrix ID
 * @return void
 */
-void sendMVPData(ModelComponent& model, GLuint VertexArrayID, GLuint MatrixID, GLuint ModelMatrixID, GLuint ViewMatrixID);
+void sendMVPData(GameObject* go, GLuint VertexArrayID, GLuint MatrixID, GLuint ModelMatrixID, GLuint ViewMatrixID);
 
 //#endif
