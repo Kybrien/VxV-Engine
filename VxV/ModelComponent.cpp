@@ -397,73 +397,25 @@ void drawModel(ModelComponent* model, GLuint TextureID, GLuint MaterialAmbientCo
 }
 
 
-void setRotationModel(ModelComponent& model, float angle, const glm::vec3& axis) {
-	// Extract the position (translation) from the transformation matrix
-	glm::vec3 position = glm::vec3(model.transform[3]);
+	ModelComponent& model = *go->GetComponent<Model>()->GetModel();
+	Transform& transform = *go->GetComponent<Transform>();
 
-	// Extract the scale from the transformation matrix
-	glm::vec3 scale = glm::vec3(glm::length(model.transform[0]), glm::length(model.transform[1]), glm::length(model.transform[2]));
-
-	// Reset the transformation matrix
 	model.transform = glm::mat4(1.0f);
 
-	// Apply the rotation
-	model.transform = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis);
+	// Calcul de la translation
+	mat4 transMat = glm::translate(glm::mat4(1.0f), go->origin + transform.position);
 
-	// Reapply the scale
-	model.transform = glm::scale(model.transform, scale);
+	// Calculs des quaternions pour la rotation
+	quat quaternion;
+	vec3 rotationRad = glm::radians(transform.rotation);
+	quaternion = glm::quat(rotationRad);
+	mat4 rotMat = glm::mat4_cast(quaternion);
+	
+	// Calcul de la mise à l'échelle
+	mat4 ScaMat = glm::scale(glm::mat4(1.0f), transform.scale);
 
-	// Reapply the position
-	model.transform[3] = glm::vec4(position, 1.0f);
-}
-
-void setTranslationModel(ModelComponent& model, const glm::vec3& translation) {
-	// Extract the rotation and scale from the transformation matrix
-	glm::mat4 rotationScaleMatrix = model.transform;
-	rotationScaleMatrix[3] = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
-
-	// Set the translation
-	model.transform = glm::mat4(1.0f);
-	model.transform[3] = glm::vec4(translation, 1.0f);
-
-	// Reapply the rotation and scale
-	model.transform *= rotationScaleMatrix;
-}
-
-void setScaleModel(ModelComponent& model, const glm::vec3& scale) {
-	// Extract the rotation and translation from the transformation matrix
-	glm::mat4 rotationTranslationMatrix = model.transform;
-	rotationTranslationMatrix[0] = glm::normalize(rotationTranslationMatrix[0]);
-	rotationTranslationMatrix[1] = glm::normalize(rotationTranslationMatrix[1]);
-	rotationTranslationMatrix[2] = glm::normalize(rotationTranslationMatrix[2]);
-
-	// Set the scale
-	model.transform = glm::mat4(1.0f);
-	model.transform = glm::scale(model.transform, scale);
-
-	// Reapply the rotation and translation
-	model.transform *= rotationTranslationMatrix;
-}
-
-
-
-
-
-
-void translateModel(ModelComponent& model, const glm::vec3& translation)
-{
-	model.transform = glm::translate(model.transform, translation);
-}
-
-void rotateModel(ModelComponent& model, float angle, const glm::vec3& axis)
-{
-	model.transform = glm::rotate(model.transform, glm::radians(angle), axis);
-}
-
-void scaleModel(ModelComponent& model, const glm::vec3& scale)
-{
-	model.transform = glm::scale(model.transform, scale);
-}
+	// Matrice finale
+	model.transform = transMat * rotMat * ScaMat;
 
 void sendMVPData(ModelComponent& model, GLuint VertexArrayID, GLuint MatrixID, GLuint ModelMatrixID, GLuint ViewMatrixID)
 {
