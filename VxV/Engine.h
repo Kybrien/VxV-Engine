@@ -41,7 +41,7 @@ public:
 	}
 
 	Engine() {
-		instance = new Engine();
+		
 	}
 
 	/**
