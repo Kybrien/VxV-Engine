@@ -78,8 +78,12 @@ int main()
 	go2->AddComponent<Model>();
 	go2->GetComponent<Model>()->SetModel("cube");
 
+	//go->AddChild(go2);
+
 	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
-	translateModel(*go->GetComponent<Model>()->GetModel(), glm::vec3(10, 0, 0));
+	go->GetComponent<Transform>()->SetPosition(glm::vec3(10, 0, 0));
+	go2->GetComponent<Transform>()->SetPosition(glm::vec3(10, 0, 0));
+	go2->GetComponent<Transform>()->SetRotation(30, 0, 0);
 	do
 	{
 		// Clear the screen
@@ -106,13 +110,16 @@ int main()
 		}
 
 		
+		//go->GetComponent<Transform>()->Rotate(0.1, 0.1, 0.1);
+		go->GetComponent<Transform>()->Translate(glm::vec3(0.1, 0, 0));
 
-		go->GetComponent<Transform>()->Rotate(180, 180 ,0);
-		go->GetComponent<Transform>()->SetRotation(90, 0, 0);
+		Debug::Log(std::to_string(go->GetComponent<Transform>()->position.x));
 
-		go->GetComponent<Transform>()->SetPosition(glm::vec3(0, 0, 0));
+		if (go->GetComponent<Transform>()->position.x > 10)
+		{
+			go->GetComponent<Transform>()->SetPosition(glm::vec3(-10, 0, 0));
+		}
 
-		go->GetComponent<Transform>()->SetScale(glm::vec3(10, 1, 1));
 
 
 
