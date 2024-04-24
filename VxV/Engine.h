@@ -15,7 +15,7 @@ private:
 	static Engine* instance;
 	SceneManager* sceneManager;	
 	EngineState* engineState = EngineState::GetInstance();
-
+	double lastTime = glfwGetTime();
 public:
 	Manager* manager;
 
@@ -78,5 +78,14 @@ public:
 	EngineState::BootingState GetBootingState()
 	{
 		return engineState->GetBootingState();
+	}
+
+	double getLastTime()
+	{
+		return lastTime;
+	}
+	void setLastTime(double _lastTime)
+	{
+		lastTime = _lastTime;
 	}
 };

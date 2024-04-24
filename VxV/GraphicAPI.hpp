@@ -17,4 +17,7 @@ class GraphicAPI
 		virtual void drawingModel(Model* _model) = 0;
 		virtual void setHandles() = 0;
 		virtual void clearScreen() = 0;
+		virtual void swapBuffers() = 0;
+		virtual void unbindArrays() = 0;
+		virtual void useShader() = 0;
 };

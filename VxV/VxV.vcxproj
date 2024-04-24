@@ -194,6 +194,7 @@ copy "\"$(ProjectDir)SimpleVertexShader.MIKU\"" "\"$(TargetDir)\""
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="_Client.cpp" />
     <ClCompile Include="_Server.cpp" />
+    <ClInclude Include="APIopenGL.hpp" />
     <ClInclude Include="ChatWindow.hpp" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ConsoleRecup.h" />

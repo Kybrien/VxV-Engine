@@ -6,19 +6,17 @@ void startup(EngineGUI* _gui, APIopenGL* _apiGraphic) {
 	_apiGraphic->setBackgroundColor(0.0f, 0.0f, 0.4f, 0.0f);
 	_apiGraphic->setCamera(45.0f, 4.0f, 3.0f, 0.1f, 100.0f, 9, 5, 1, 0, 0, 0, 0, 1, 0);
 	_apiGraphic->setHandles();
-	
-	double lastTime = glfwGetTime();
-	double lastTimeFPS = lastTime;
-	int nbFrames = 0;
+	_apiGraphic->setLightColor(glm::vec3(1, 0, 0));
+	_apiGraphic->setLightPower(50.0f);
 
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
 	(void)io;
-	// Chargez la police qui supporte les caractères accentués
+	// Load the font
 	ImFont* font = io.Fonts->AddFontFromFileTTF("monocraft.ttf", 17);
 
-	// V�rifiez si la police a �t� charg�e correctement
+	// Check if the font has been loaded correctly
 	if (font == nullptr)
 	{
 		std::cerr << "Erreur lors du chargement de la police." << std::endl;
@@ -49,7 +47,7 @@ void temp() {
 
 	// Get a handle for our uniforms
 	GLuint TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID;
-	setupHandlesForUniforms(programID, TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
+	setupHandlesForUniforms(programID, TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
 
 	glBindVertexArray(0);
 	// glfwGetTime is called only once, the first time this function is called
@@ -129,7 +127,7 @@ void temp() {
 
 
 		glm::vec3 lightPos = glm::vec3(0, 0, 8);
-		glUniform3f(LightID, lightPos.x, lightPos.y, lightPos.z);
+		//glUniform3f(LightID, lightPos.x, lightPos.y, lightPos.z);
 
 		// Compute the MVP matrix from keyboard and mouse input
 		computeMatricesFromInputs(window);

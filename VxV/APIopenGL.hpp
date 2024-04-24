@@ -5,7 +5,7 @@ class APIopenGL : public GraphicAPI
 {
 	GLFWwindow* window;
 	GLuint programID, VertexArrayID, TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID,
-		MatrixID, ViewMatrixID, ModelMatrixID;
+		MatrixID, ViewMatrixID, ModelMatrixID, LightColorID, LightPowerID;
 	glm::mat4 Projection, View;
 public :
 	APIopenGL()
@@ -67,7 +67,8 @@ public :
 
 	void setHandles() override
 	{
-		setupHandlesForUniforms(programID, TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
+		setupHandlesForUniforms(programID, TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID);
+		setupLightHandles(programID, LightID, LightColorID, LightPowerID);
 		glBindVertexArray(0);
 	}
 
@@ -76,5 +77,55 @@ public :
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
+	void unbindArrays() override
+	{
+		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
+		glDisableVertexAttribArray(2);
+		glBindVertexArray(0);
+	}
+
+	void swapBuffers() override
+	{
+		glfwSwapBuffers(window);
+	}
+
+	void useShader() override
+	{
+		glUseProgram(programID);
+	}
+
+	void setLightColor(glm::vec3 _lightColor) {
+		glUniform3f(LightColorID, _lightColor.x, _lightColor.y, _lightColor.z);
+	}
+
+	void setLightPower(float _lightPower) {
+		glUniform1f(LightPowerID, _lightPower);
+	}
+
 	GLFWwindow* getWindow() { return window; }
+
+	GLuint getProgramID() { return programID; }
+
+	GLuint getVertexArrayID() { return VertexArrayID; }
+
+	GLuint getTextureID() { return TextureID; }
+
+	GLuint getLightID() { return LightID; }
+
+	GLuint getMaterialAmbientColorID() { return MaterialAmbientColorID; }
+
+	GLuint getMaterialDiffuseColorID() { return MaterialDiffuseColorID; }
+
+	GLuint getMaterialSpecularColorID() { return MaterialSpecularColorID; }
+
+	GLuint getMatrixID() { return MatrixID; }
+
+	GLuint getViewMatrixID() { return ViewMatrixID; }
+
+	GLuint getModelMatrixID() { return ModelMatrixID; }
+
+	glm::mat4 getProjection() { return Projection; }
+
+	glm::mat4 getView() { return View; }
 };

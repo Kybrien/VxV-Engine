@@ -265,7 +265,6 @@ void copyModelAndAdd(const ModelComponent& model, std::vector<ModelComponent>& m
 * @brief Setup the handles for the uniforms of the shader program.
 * @param programID reference to the program ID
 * @param TextureID reference to the texture ID
-* @param LightID reference to the light ID
 * @param MaterialAmbientColorID reference to the material ambient color ID
 * @param MaterialDiffuseColorID reference to the material diffuse color ID
 * @param MaterialSpecularColorID reference to the material specular color ID
@@ -274,7 +273,16 @@ void copyModelAndAdd(const ModelComponent& model, std::vector<ModelComponent>& m
 * @param ModelMatrixID reference to the model matrix ID
 * @return void
 */
-void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& LightID, GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID);
+void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID);
+
+/**
+* @brief Setup the handles for the light of the shader program.
+* @param programID reference to the program ID
+* @param LightID reference to the light ID
+* @param LightColorID reference to the light color ID
+* @param LightPowerID reference to the light power ID
+*/
+void setupLightHandles(GLuint& programID, GLuint& LightID, GLuint& LightColorID, GLuint& LightPowerID);
 
 /**
 * @brief Draw the model to the screen.
