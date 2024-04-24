@@ -7,7 +7,7 @@ void startup(EngineGUI* _gui, APIopenGL* _apiGraphic) {
 	_apiGraphic->setCamera(45.0f, 4.0f, 3.0f, 0.1f, 100.0f, 9, 5, 1, 0, 0, 0, 0, 1, 0);
 	_apiGraphic->setHandles();
 	_apiGraphic->setLightColor(glm::vec3(1, 1, 1));
-	_apiGraphic->setLightPower(50.0f);
+	_apiGraphic->setLightPower(80.0f);
 
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
