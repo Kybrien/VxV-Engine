@@ -105,103 +105,110 @@ public:
 
 /**
  * @brief Create a Vertex from the given index.
- * * @param attrib 
- * * @param index 
- * * @return Vertex 
+ * @param attrib 
+ * @param index 
+ * @return Vertex 
  * 
 */
 Vertex createVertexFromIndex(const tinyobj::attrib_t& attrib, const tinyobj::index_t& index);
 
 /**
  * @brief Load the texture from the given filename.
- * * @param filename name of the file
- * * @return GLuint returns the texture ID
+ * @param filename name of the file
+ * @return GLuint returns the texture ID
  * 
  */
 GLuint loadTexture(const char* filename);
 
 /**
  * @brief Initialize the window and OpenGL settings for the program.
- * * @param GLFWwindow*& reference to the pointer of the window
- * * @return void
+ * @param GLFWwindow*& reference to the pointer of the window
+ * @return void
  * 
  */
 void init(GLFWwindow*& window);
 
 /**
  * @brief Setup the user inputs for the window.
- * * @param GLFWwindow* window
- * * @return void
+ * @param GLFWwindow* window
+ * @return void
  * 
  */
 void setupInput(GLFWwindow* window);
 
 /**
  * @brief Initialize the OpenGL settings and culling.
- * * @return void
+ * @return void
  * 
  */
 void initOpenGLSettings();
 
 /**
  * @brief Initialize and bind the vertex array object to the openGL context.
- * * @param GLuint& reference to the vertex array object
- * * @return void
+ * @param GLuint& reference to the vertex array object
+ * @return void
  * 
  */
 void initializeVertexArrayObject(GLuint& VertexArrayID);
 
 /**
  * @brief Initialize the projection matrix that corresponds to the camera space.
- * * @return glm::mat4 returns the projection matrix
+ * @return glm::mat4 returns the projection matrix
  * 
  */
 glm::mat4 initializeProjectionMatrix();
 
 /**
  * @brief Initialize the view matrix that corresponds to the camera position and where it is looking.
- * * @return glm::mat4 returns the view matrix
+ * @return glm::mat4 returns the view matrix
  * 
  */
 glm::mat4 initializeViewMatrix();
 
 /**
  * @brief Setup the vertex attributes of the Model for the shader program to use.
- * * @return void
+ * @return void
  * 
  */
 void setupVertexAttributes();
 
 /**
  * @brief Setup the buffers for the Model to be drawn.
- * * @param GLuint& reference to the vertex buffer
- * * @param std::vector<Vertex> vertices
- * * @param GLuint& reference to the index buffer
- * * @param std::vector<unsigned int> indices
- * * @return void
+ * @param GLuint& reference to the vertex buffer
+ * @param std::vector<Vertex> vertices
+ * @param GLuint& reference to the index buffer
+ * @param std::vector<unsigned int> indices
+ * @return void
  * 
  */
 void setupBuffers(GLuint& vertexbuffer, const std::vector<Vertex>& vertices, GLuint& indexbuffer, const std::vector<unsigned int>& indices);
 
 /**
  * @brief Delete and clean all the handles of our render program.
- * * @param GLFWwindow* window
- * * @param std::vector<ModelComponent>& reference to the models
- * * @param GLuint& program ID
- * * @param GLuint& vertex array ID
- * * @param GLuint& texture ID
- * * @param GLuint& light ID
- * * @param GLuint& reference to the material ambient color ID
- * * @param GLuint& reference to the material diffuse color ID
- * * @param GLuint& reference to the material specular color ID
- * * @param GLuint& reference to the matrix ID
- * * @param GLuint& reference to the view matrix ID
- * * @param GLuint& reference to the model matrix ID
- * * @return void
+ * @param GLFWwindow* window
+ * @param std::vector<ModelComponent>& reference to the models
+ * @param GLuint& program ID
+ * @param GLuint& vertex array ID
+ * @param GLuint& texture ID
+ * @param GLuint& light ID
+ * @param GLuint& reference to the material ambient color ID
+ * @param GLuint& reference to the material diffuse color ID
+ * @param GLuint& reference to the material specular color ID
+ * @param GLuint& reference to the matrix ID
+ * @param GLuint& reference to the view matrix ID
+ * @param GLuint& reference to the model matrix ID
+ * @return void
  * 
  */
 void cleanup(GLFWwindow* window, ModelComponent& object);
 
+/**
+ * @brief Load the shaders from the given file paths.
+ * @param const char* vertex_file_path
+ * @param const char* fragment_file_path
+ * @return GLuint returns the program ID
+ * 
+ */
 void finishProgram(GLuint programID, GLuint VertexArrayID, GLuint& TextureID, GLuint& LightID, GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID);
 
 /**
@@ -284,8 +291,26 @@ void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& Light
 */
 void drawModel(ModelComponent* model, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID, GLuint MaterialSpecularColorID);
 
+/**
+* @brief Set the rotation of the model.
+* @param ModelComponent reference to the model
+* @param angle angle to rotate
+* @param axis axis of the rotation
+*/
 void setRotationModel(ModelComponent& model, float angle, const glm::vec3& axis);
+
+/**
+* @brief Set the translation of the model.
+* @param ModelComponent reference to the model
+* @param translation translation vector
+*/
 void setTranslationModel(ModelComponent& model, const glm::vec3& translation);
+
+/**
+* @brief Set the scale of the model.
+* @param ModelComponent reference to the model
+* @param scale scale vector
+*/
 void setScaleModel(ModelComponent& model, const glm::vec3& scale);
 
 /**
