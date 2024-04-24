@@ -22,7 +22,9 @@ int main()
 	GameObject* go2 = sceneManager->gameObjectPool.CreateGoFromPool();
 
 	go2->AddComponent<Model>();
-	go2->GetComponent<Model>()->SetModel("cube");
+	go2->GetComponent<Model>()->SetModel("miku");
+
+	go->AddChild(go2);
 
 	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
 	translateModel(*go->GetComponent<Model>()->GetModel(), glm::vec3(10, 0, 0));
@@ -38,7 +40,6 @@ int main()
 			double deltaTime = currentTime - engine->getLastTime();
 			engine->setLastTime(currentTime);
 		}
-
 
 		for (GameObject* go : goList)
 		{
