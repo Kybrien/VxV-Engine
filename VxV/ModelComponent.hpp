@@ -108,7 +108,6 @@ public:
  * @param attrib 
  * @param index 
  * @return Vertex 
- * 
 */
 Vertex createVertexFromIndex(const tinyobj::attrib_t& attrib, const tinyobj::index_t& index);
 
@@ -116,7 +115,6 @@ Vertex createVertexFromIndex(const tinyobj::attrib_t& attrib, const tinyobj::ind
  * @brief Load the texture from the given filename.
  * @param filename name of the file
  * @return GLuint returns the texture ID
- * 
  */
 GLuint loadTexture(const char* filename);
 
@@ -124,7 +122,6 @@ GLuint loadTexture(const char* filename);
  * @brief Initialize the window and OpenGL settings for the program.
  * @param GLFWwindow*& reference to the pointer of the window
  * @return void
- * 
  */
 void init(GLFWwindow*& window);
 
@@ -132,14 +129,12 @@ void init(GLFWwindow*& window);
  * @brief Setup the user inputs for the window.
  * @param GLFWwindow* window
  * @return void
- * 
  */
 void setupInput(GLFWwindow* window);
 
 /**
  * @brief Initialize the OpenGL settings and culling.
  * @return void
- * 
  */
 void initOpenGLSettings();
 
@@ -147,28 +142,31 @@ void initOpenGLSettings();
  * @brief Initialize and bind the vertex array object to the openGL context.
  * @param GLuint& reference to the vertex array object
  * @return void
- * 
+
  */
 void initializeVertexArrayObject(GLuint& VertexArrayID);
 
 /**
  * @brief Initialize the projection matrix that corresponds to the camera space.
+ * @param float _fov field of view
+ * @param float _ratioWidth ratio width
+ * @param float _ratioHeight ratio height
+ * @param float _near near plane
+ * @param float _far far plane
  * @return glm::mat4 returns the projection matrix
- * 
  */
-glm::mat4 initializeProjectionMatrix();
+glm::mat4 initializeProjectionMatrix(float _fov, float _ratioWidth, float _ratioHeight, float _near, float _far);
 
 /**
  * @brief Initialize the view matrix that corresponds to the camera position and where it is looking.
  * @return glm::mat4 returns the view matrix
- * 
  */
-glm::mat4 initializeViewMatrix();
+glm::mat4 initializeViewMatrix(int _cameraPositionX, int _cameraPositionY, int _cameraPositionZ, int _cameraTargetX, int _cameraTargetY,
+	int _cameraTargetZ, int _upVectorX, int _upVectorY, int _upVectorZ);
 
 /**
  * @brief Setup the vertex attributes of the Model for the shader program to use.
  * @return void
- * 
  */
 void setupVertexAttributes();
 
@@ -179,7 +177,6 @@ void setupVertexAttributes();
  * @param GLuint& reference to the index buffer
  * @param std::vector<unsigned int> indices
  * @return void
- * 
  */
 void setupBuffers(GLuint& vertexbuffer, const std::vector<Vertex>& vertices, GLuint& indexbuffer, const std::vector<unsigned int>& indices);
 
@@ -198,7 +195,6 @@ void setupBuffers(GLuint& vertexbuffer, const std::vector<Vertex>& vertices, GLu
  * @param GLuint& reference to the view matrix ID
  * @param GLuint& reference to the model matrix ID
  * @return void
- * 
  */
 void cleanup(GLFWwindow* window, ModelComponent& object);
 

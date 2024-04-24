@@ -1,6 +1,10 @@
 ﻿#include "EngineSetup.hpp"
 
 void startup() {
+	
+}
+
+void temp() {
 	EngineGUI gui;
 	//On initialise tout
 	GLFWwindow* window;
@@ -17,8 +21,8 @@ void startup() {
 
 	// Ortho camera:
 	//glm::mat4 Projection = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,6.0f,100.0f); // In world coordinates
-	glm::mat4 Projection = initializeProjectionMatrix();
-	glm::mat4 View = initializeViewMatrix();
+	glm::mat4 Projection = initializeProjectionMatrix(45.0f, 4.0f, 3.0f, 0.1f, 100.0f);
+	glm::mat4 View = initializeViewMatrix(9, 5, 1, 0, 0, 0, 0, 1, 0);
 
 	// Get a handle for our uniforms
 	GLuint TextureID, LightID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID, MatrixID, ViewMatrixID, ModelMatrixID;
@@ -112,7 +116,7 @@ void startup() {
 			Model* modelComp = go->GetComponent<Model>();
 			if (modelComp != nullptr)
 			{
-				sendMVPData(*(go->GetComponent<Model>()->GetModel()), VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
+				sendMVPData(*(modelComp->GetModel()), VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
 				drawModel(modelComp->GetModel(), TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
 			}
 		}

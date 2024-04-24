@@ -126,13 +126,14 @@ void initializeVertexArrayObject(GLuint& VertexArrayID)
 	glBindVertexArray(VertexArrayID);
 }
 
-glm::mat4 initializeProjectionMatrix()
+glm::mat4 initializeProjectionMatrix(float _fov, float _ratioWidth, float _ratioHeight, float _near, float _far)
 {
 	// Projection matrix: 45° Field of View, 4:3 ratio, display range: 0.1 unit <-> 100 units
-	return glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
+	return glm::perspective(glm::radians(_fov), _ratioWidth / _ratioHeight, _near, _far);
 }
 
-glm::mat4 initializeViewMatrix()
+glm::mat4 initializeViewMatrix(int _cameraPositionX, int _cameraPositionY, int _cameraPositionZ, int _cameraTargetX, int _cameraTargetY,
+	int _cameraTargetZ, int _upVectorX, int _upVectorY, int _upVectorZ)
 {
 	// Camera matrix
 	return glm::lookAt(glm::vec3(9, 5, 1), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
