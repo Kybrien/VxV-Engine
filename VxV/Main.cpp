@@ -11,6 +11,9 @@
 
 #include "imfilebrowser.h"
 
+#include "Debug.h"
+
+
 int main()
 {
 	EngineGUI gui;
@@ -54,10 +57,16 @@ int main()
 	GameObject* go = sceneManager->gameObjectPool.CreateGameObject();
 
 	go->AddComponent<Model>();
-	go->GetComponent<Model>()->SetModel("sphere");
+	go->GetComponent<Model>()->SetModel("miku");
+
+
+	GameObject* go2 = sceneManager->gameObjectPool.CreateGameObject();
+
+	go2->AddComponent<Model>();
+	go2->GetComponent<Model>()->SetModel("cube");
 
 	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
-
+	translateModel(*go->GetComponent<Model>()->GetModel(), glm::vec3(10, 0, 0));
 	do
 	{
 		// Clear the screen
@@ -78,10 +87,16 @@ int main()
 			lastTimeFPS += 1.0;
 		}
 
-		float deltaTime = float(currentTime - lastTime);
+		
 
-		float angle = deltaTime * 50.0f; // Rotate by 60 degrees
-		glm::vec3 axis(0.0f, 0.0f, -1.0f); // Rotate around the z-axis
+		go->GetComponent<Transform>()->Rotate(180, 180 ,0);
+		go->GetComponent<Transform>()->SetRotation(90, 0, 0);
+
+		go->GetComponent<Transform>()->SetPosition(glm::vec3(0, 0, 0));
+
+		go->GetComponent<Transform>()->SetScale(glm::vec3(10, 1, 1));
+
+
 
 		glm::vec3 lightPos = glm::vec3(0, 0, 8);
 		glUniform3f(LightID, lightPos.x, lightPos.y, lightPos.z);
@@ -94,9 +109,7 @@ int main()
 			Model* modelComp = go->GetComponent<Model>();
 			if (modelComp != nullptr)
 			{
-				auto& model = *(modelComp->GetModel());
-
-				sendMVPData(model, angle, axis, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
+				sendMVPData(*(go->GetComponent<Model>()->GetModel()), VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
 				drawModel(modelComp->GetModel(), TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
 			}
 		}

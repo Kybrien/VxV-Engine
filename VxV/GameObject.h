@@ -5,6 +5,8 @@
 #include <GLM/glm.hpp>
 #include "Component.h"
 
+#include "Transform.h"
+
 class Scene;
 class Prefab;
 

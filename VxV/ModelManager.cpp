@@ -12,6 +12,7 @@ ModelManager::ModelManager(Manager* manager) {
 	SearchFile<ModelManager>(fileDirection, extention, this);
 
     LoadModel("cube.obj");
+	modelVector[0]->numberUsed++;
 }
 
 

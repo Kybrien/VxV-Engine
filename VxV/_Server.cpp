@@ -69,7 +69,7 @@ void handleClient(SOCKET clientSocket) {
     closesocket(clientSocket);
 }
 
-int main() {
+int initServ() {
     WSADATA wsaData;
     SOCKET serverSocket;
     SOCKADDR_IN serverAddr;

@@ -8,7 +8,7 @@
 class Model : public Component
 {
 private:
-	ModelComponent* model;
+	ModelComponent* model = nullptr;
 
 public:
 	Model(GameObject* go);
