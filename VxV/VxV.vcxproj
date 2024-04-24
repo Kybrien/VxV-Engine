@@ -133,7 +133,8 @@
 copy $(ProjectDir)SimpleFragmentShader.VALORANT $(TargetDir)
 
 copy $(ProjectDir)SimpleVertexShader.MIKU $(TargetDir)
-</Command>
+
+copy $(ProjectDir)monocraft.ttf $(TargetDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -156,7 +157,13 @@ copy $(ProjectDir)SimpleVertexShader.MIKU $(TargetDir)
       <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;jsoncpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /E /I /Y "$(ProjectDir)Files" "$(TargetDir)Files"</Command>
+      <Command>xcopy /E /I /Y "$(ProjectDir)Files" "$(TargetDir)Files"
+
+copy $(ProjectDir)SimpleFragmentShader.VALORANT $(TargetDir)
+
+copy $(ProjectDir)SimpleVertexShader.MIKU $(TargetDir)
+
+copy $(ProjectDir)monocraft.ttf $(TargetDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
