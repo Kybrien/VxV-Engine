@@ -3,6 +3,7 @@
 #include <winsock2.h>
 #include <thread>
 #include <mutex>
+#include "ChatWindow.hpp"
 
 #pragma comment(lib, "Ws2_32.lib")
 
@@ -37,6 +38,8 @@ int initClient() {
     SOCKET clientSocket;
     SOCKADDR_IN serverAddr;
     int iResult;
+    ChatWindow chatWindow;
+
 
     iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
     if (iResult != 0) {
@@ -63,37 +66,39 @@ int initClient() {
         return 1;
     }
 
-    std::cout << "Connecté au serveur de chat\n";
-
+    //std::cout << "Connecté au serveur de chat\n";
+    chatWindow.addMessage("Connecté au serveur de chat\n");
     char message[1024];
     std::thread receiveThread([&]() {
         while (true) {
             iResult = recv(clientSocket, message, sizeof(message), 0);
             if (iResult > 0) {
                 message[iResult] = '\0';
-                std::cout << "Serveur : " << message << std::endl;
+                chatWindow.addMessage(std::string("Serveur : ") + message);
             }
             else if (iResult == 0) {
-                std::cerr << "Connexion au serveur fermée\n";
+                chatWindow.addMessage("Connexion au serveur fermée\n");
                 break;
             }
             else {
-                std::cerr << "Erreur lors de la réception du message: " << WSAGetLastError() << std::endl;
+                chatWindow.addMessage("Erreur lors de la réception du message: " + std::to_string(WSAGetLastError()) + "\n");
                 break;
             }
         }
         });
 
     while (true) {
-        std::cout << "Vous : " << std::endl;
-        std::cin.getline(message, sizeof(message));
-
+        //std::cout << "Vous : " << std::endl;
+        //std::cin.getline(message, sizeof(message));
+        chatWindow.addMessage(std::string("Vous : ") + message);
+        chatWindow.sendMessage(message);
         // Envoi du message au serveur
         iResult = send(clientSocket, message, strlen(message), 0);
         if (iResult == SOCKET_ERROR) {
             std::cerr << "Erreur lors de l'envoi du message: " << WSAGetLastError() << std::endl;
             break;
         }
+        chatWindow.Draw();
     }
 
 

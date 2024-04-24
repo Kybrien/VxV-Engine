@@ -18,7 +18,7 @@ void handleClient(SOCKET clientSocket) {
     char message[1024];
     int iResult;
 
-    // Demander et recevoir le pseudonyme du client
+    // Recevoir le pseudonyme du client
     std::string nickname;
     iResult = recv(clientSocket, message, sizeof(message), 0);
     if (iResult > 0) {
@@ -31,18 +31,19 @@ void handleClient(SOCKET clientSocket) {
         std::lock_guard<std::mutex> lock(clientsMutex);
         clients.push_back({ clientSocket, nickname });
     }
-
+    
+    // Boucle de réception des messages du client
     while (true) {
         iResult = recv(clientSocket, message, sizeof(message), 0);
         if (iResult > 0) {
             message[iResult] = '\0';
-            // Diffuser le message à tous les autres clients
-            {
-                std::lock_guard<std::mutex> lock(clientsMutex);
-                for (const auto& otherClient : clients) {
-                    if (otherClient.socket != clientSocket) {
-                        send(otherClient.socket, message, iResult, 0);
-                    }
+            std::string fullMessage = nickname + ": " + std::string(message);
+
+            // Diffuser le message préfixé
+            std::lock_guard<std::mutex> lock(clientsMutex);
+            for (const auto& otherClient : clients) {
+                if (otherClient.socket != clientSocket) {
+                    send(otherClient.socket, fullMessage.c_str(), fullMessage.length(), 0);
                 }
             }
         }

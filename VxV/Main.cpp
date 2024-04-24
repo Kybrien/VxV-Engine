@@ -78,8 +78,14 @@ int main()
 	go2->AddComponent<Model>();
 	go2->GetComponent<Model>()->SetModel("cube");
 
+	go->AddChild(go2);
+
 	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
-	translateModel(*go->GetComponent<Model>()->GetModel(), glm::vec3(10, 0, 0));
+	go->GetComponent<Transform>()->SetPosition(glm::vec3(10, 0, 0));
+	go2->GetComponent<Transform>()->SetPosition(glm::vec3(10, 0, 0));
+	go2->GetComponent<Transform>()->SetRotation(30, 0, 0);
+
+
 	do
 	{
 		// Clear the screen
@@ -106,8 +112,10 @@ int main()
 		}
 
 		
+		go->GetComponent<Transform>()->Rotate(01, 01, 01);
 
-		go->GetComponent<Transform>()->Translate(glm::vec3(0.01, 0, 0));
+		Debug::Log(std::to_string(go->GetComponent<Transform>()->rotation.x) + " " + std::to_string(go->GetComponent<Transform>()->rotation.y) + " " + std::to_string(go->GetComponent<Transform>()->rotation.z) + "\n");	
+		//go->GetComponent<Transform>()->Translate(glm::vec3(0.1, 0, 0));
 
 
 
@@ -122,7 +130,7 @@ int main()
 			Model* modelComp = go->GetComponent<Model>();
 			if (modelComp != nullptr)
 			{
-				sendMVPData(*(go->GetComponent<Model>()->GetModel()), VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
+				sendMVPData(go, VertexArrayID, MatrixID, ModelMatrixID, ViewMatrixID);
 				drawModel(modelComp->GetModel(), TextureID, MaterialAmbientColorID, MaterialDiffuseColorID, MaterialSpecularColorID);
 			}
 		}
