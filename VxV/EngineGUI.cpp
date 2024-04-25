@@ -1,10 +1,11 @@
 ﻿#include "EngineGUI.h"
 #include <imgui.h>
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
 #include "FileExplorer.h"
 #include "WindowGui.h"
 #include "imfilebrowser.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
+
 
 
 void EngineGUI::initImgui(GLFWwindow* window)

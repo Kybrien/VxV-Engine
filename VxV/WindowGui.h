@@ -10,6 +10,7 @@
 
 static bool enabled = true;
 static ImGui::FileBrowser fileDialog;
+GameObject* selectedGameObject = nullptr;
 
 Engine* engine = Engine::GetInstance();
 
@@ -573,33 +574,62 @@ static void ShowHierarchy()
 {
 	SceneManager* sceneManager = Manager::GetInstance()->GetManager<SceneManager>();
 	Scene& scene = *sceneManager->GetCurrentScene();
-	GameObject* selectedGameObject = nullptr;
 
 	// Utilisez la fonction GetAllGameObjects() pour obtenir tous les GameObjects
 	std::vector<GameObject*> allGameObjects = scene.GetAllGameObjects();
 	// Dans votre boucle de rendu ImGui
-	ImGui::Begin("Hiérarchie de la scène");
-
-	// Affichez une liste de tous les GameObjects
-	for (GameObject* gameobjects : allGameObjects)
+	ImGui::Begin("Hierarchie de la scene");
 	{
-		if (ImGui::Selectable(gameobjects->name.c_str()))
+		// Affichez une liste de tous les GameObjects
+		for (GameObject* gameobjects : allGameObjects)
 		{
-			// Si l'utilisateur clique sur un GameObject, stockez une référence à ce GameObject
-			GameObject* selectedGameObject = gameobjects;
+			if (ImGui::Selectable(gameobjects->name.c_str()))
+			{
+				// Si l'utilisateur clique sur un GameObject, stockez une référence à ce GameObject
+				selectedGameObject = gameobjects;
+			}
 		}
 	}
+	ImGui::End();
 
+
+	// Si un GameObject a été sélectionné, affichez ses informations dans une fenêtre ImGui
 	if (selectedGameObject != nullptr)
 	{
 		ImGui::Begin("Inspector");
 
 		// Affichez le nom du GameObject
 		ImGui::Text("Nom: %s", selectedGameObject->name.c_str());
-
 		ImGui::Separator();
 
+		// Obtenez le Transform du GameObject
+		Transform* transform = selectedGameObject->GetComponent<Transform>();
+		
+			// Créez des contrôles de glissement pour la position, la rotation et l'échelle
+			glm::vec3 position = transform->SetPosition();
+			if (ImGui::DragFloat3("Position", &position.x))
+			{
+				// Si l'utilisateur modifie la position, mettez à jour le Transform
+				transform->SetPosition(position);
+			}
+
+			glm::vec3 rotation = transform->GetRotation();
+			if (ImGui::DragFloat3("Rotation", &rotation.x))
+			{
+				// Si l'utilisateur modifie la rotation, mettez à jour le Transform
+				transform->SetRotation(rotation);
+			}
+
+			glm::vec3 scale = transform->GetScale();
+			if (ImGui::DragFloat3("Scale", &scale.x, 0.1f, 0.1f, 10.0f))
+			{
+				// Si l'utilisateur modifie l'échelle, mettez à jour le Transform
+				transform->SetScale(scale);
+			}
+		
 		ImGui::End();
 
-	ImGui::End();
+
+	}
+
 }
