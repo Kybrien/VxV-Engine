@@ -1,5 +1,5 @@
-#include "GraphicAPI.hpp"
 #include "loadingShader.hpp"
+#include "GraphicAPI.hpp"
 
 class APIopenGL : public GraphicAPI
 {

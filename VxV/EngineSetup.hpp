@@ -1,10 +1,8 @@
 #pragma once
-#include "loadingShader.hpp"
-#include "APIopenGL.hpp"
-#include <iostream>
-
 #include "Engine.h"
 #include "EngineGUI.h"
+#include <iostream>
+
 
 #include "imgui.h"
 #include "imgui_impl_glfw.h"

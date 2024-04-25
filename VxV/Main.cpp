@@ -1,5 +1,9 @@
 #include "EngineSetup.hpp"
 
+
+const float DESIRED_FPS = 60.0f;
+const float FRAME_TIME = 1.0f / DESIRED_FPS;
+
 int main()
 {
 
@@ -28,6 +32,8 @@ int main()
 
 	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
 	go2->GetComponent<Transform>()->Translate(glm::vec3(10, 0, 0));
+	//*test
+
 	while (engine->GetBootingState() != EngineState::BootingState::Stopped)
 	{
 		checkCloseWindow(apiGraphic, engine);
@@ -36,11 +42,17 @@ int main()
 
 		}
 		else if (engine->GetActiveState() == EngineState::ActiveState::RunTime) {
-			double currentTime = glfwGetTime();
-			double deltaTime = currentTime - engine->getLastTime();
+			float currentTime = glfwGetTime();
+			float deltaTime = currentTime - engine->getLastTime();
+			
+			if (deltaTime > FRAME_TIME) {
+				engine->Update();
+				std::cout << "Update" << std::endl;
+			}
 			engine->setLastTime(currentTime);
 		}
 
+		//TODO: Move it to EngineSetup
 		for (GameObject* go : goList)
 		{
 			Model* modelComp = go->GetComponent<Model>();
@@ -58,15 +70,9 @@ int main()
 		glfwPollEvents();
 	}
 
+	//TODO : Move it to EngineSetup
+	//engine->Stop(apiGraphic);
 
-	for (GameObject* go : Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects())
-	{
-		Model* model = go->GetComponent<Model>();
-		if (model != nullptr)
-		{
-			apiGraphic->cleanupModel(model);
-		}
-	}
 	apiGraphic->terminate();
 	return 0;
 }
