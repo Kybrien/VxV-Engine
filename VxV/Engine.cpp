@@ -1,5 +1,6 @@
 #pragma once
 #include "Engine.hpp"
+#include "Light.h"
 
 Engine* Engine::m_instance = nullptr;
 
@@ -135,8 +136,17 @@ void Engine::ApiDrawLoopSetup(APIopenGL* _apiGraphic)
 {
 	_apiGraphic->clearScreen();
 	_apiGraphic->useShader();
-	glm::vec3 lightPos = glm::vec3(0, 0, 8);
-	glUniform3f(_apiGraphic->getLightID(), lightPos.x, lightPos.y, lightPos.z);
+
+	for (GameObject* go : m_goList)
+	{
+		Light* light = go->GetComponent<Light>();
+		if (light != nullptr)
+		{
+			glm::vec3 lightPos = go->GetComponent<Transform>()->GetPosition();
+			glUniform3f(_apiGraphic->getLightID(), lightPos.x, lightPos.y, lightPos.z);
+		}
+	}
+
 	computeMatricesFromInputs(_apiGraphic->getWindow());
 	glm::mat4 ProjectionMatrix = getProjectionMatrix();
 }

@@ -2,7 +2,6 @@
 #include "json.h"
 
 class GameObject;
-class Transform;
 
 class Component
 {
@@ -51,6 +50,7 @@ public:
 		Transform,          /**< Transform component. */
 		Model,               /**< Mesh component. */
 		ScriptComponent,    /**< Script component. */
+		Light,              /**< Light component. */
 	};
 
 	/**
