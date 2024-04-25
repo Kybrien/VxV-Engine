@@ -169,7 +169,6 @@ copy $(ProjectDir)monocraft.ttf $(TargetDir)</Command>
   <ItemGroup>
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="controls.cpp" />
-    <ClCompile Include="EngineSetup.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="EngineState.cpp" />
     <ClCompile Include="loadingShader.cpp" />
@@ -188,13 +187,11 @@ copy $(ProjectDir)monocraft.ttf $(TargetDir)</Command>
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Script.cpp" />
     <ClCompile Include="ScriptingComponent.cpp" />
     <ClCompile Include="ScriptManager.cpp" />
     <ClCompile Include="ScriptUser.cpp" />
     <ClCompile Include="Transform.cpp" />
-    <ClCompile Include="_Client.cpp" />
     <ClCompile Include="_Server.cpp" />
     <ClInclude Include="APIopenGL.hpp" />
     <ClInclude Include="ChatWindow.hpp" />
@@ -202,10 +199,10 @@ copy $(ProjectDir)monocraft.ttf $(TargetDir)</Command>
     <ClInclude Include="ConsoleRecup.h" />
     <ClInclude Include="controls.hpp" />
     <ClInclude Include="EngineGUI.h" />
-    <ClInclude Include="EngineSetup.hpp" />
     <ClInclude Include="EngineState.h" />
     <ClInclude Include="FileExplorer.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GraphicAPI.hpp" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_glfw.h" />
@@ -228,7 +225,6 @@ copy $(ProjectDir)monocraft.ttf $(TargetDir)</Command>
     <ClInclude Include="ModelComponent.hpp" />
     <ClInclude Include="Prefab.h" />
     <ClInclude Include="PrefabManager.h" />
-    <ClInclude Include="Renderer.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Script.h" />
@@ -248,7 +244,7 @@ copy $(ProjectDir)monocraft.ttf $(TargetDir)</Command>
   <ItemGroup>
     <ClInclude Include="loadingShader.hpp" />
     <ClInclude Include="Debug.h" />
-    <ClInclude Include="Engine.h" />
+    <ClInclude Include="Engine.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GameObject.inl" />

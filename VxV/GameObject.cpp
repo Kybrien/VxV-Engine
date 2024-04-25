@@ -22,8 +22,8 @@ GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, b
 		currentScene = sceneManager->GetCurrentScene();
 		std::vector<GameObject*> goList = currentScene->GetAllGameObjects();
 
-        bool idFound = false;
-        int i = 0;
+		bool idFound = false;
+		int i = 0;
 
 		while (!idFound)
 		{
@@ -62,13 +62,13 @@ GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, b
 }
 
 void GameObject::Load(Json::Value root, GameObject* goParent, bool PrefabLoading) {
-    Manager* manager = Manager::GetInstance();
-    SceneManager* sceneManager = manager->GetManager<SceneManager>();
+	Manager* manager = Manager::GetInstance();
+	SceneManager* sceneManager = manager->GetManager<SceneManager>();
 
-    GameObject* go = sceneManager->gameObjectPool.CreateGoFromPool("", PrefabLoading, nullptr, true);
-    go->SetId(root["Id"].asInt());
-    go->name = root["Name"].asString();
-    go->isChild = root["Is Child"].asBool();
+	GameObject* go = sceneManager->gameObjectPool.CreateGoFromPool("", PrefabLoading, nullptr, true);
+	go->SetId(root["Id"].asInt());
+	go->name = root["Name"].asString();
+	go->isChild = root["Is Child"].asBool();
 
 	if (root.isMember("PrefabName"))
 	{
@@ -220,7 +220,7 @@ void GameObject::LoadComponent(Json::Value compJson, GameObject* parentGo)
 	case 1: 
 		GetComponent<Transform>()->Load(compJson, parentGo);
 		break;
-	case 2: 
+	case 2:
 		AddComponent<Model>();
 		GetComponent<Model>()->Load(compJson, parentGo);
 		break;
