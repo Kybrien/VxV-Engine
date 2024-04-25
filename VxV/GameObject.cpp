@@ -22,8 +22,8 @@ GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, b
 		currentScene = sceneManager->GetCurrentScene();
 		std::vector<GameObject*> goList = currentScene->GetAllGameObjects();
 
-        bool idFound = false;
-        int i = 0;
+		bool idFound = false;
+		int i = 0;
 
 		while (!idFound)
 		{
@@ -62,23 +62,24 @@ GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, b
 }
 
 void GameObject::Load(Json::Value root, GameObject* goParent, bool PrefabLoading) {
-    Manager* manager = Manager::GetInstance();
-    SceneManager* sceneManager = manager->GetManager<SceneManager>();
+	Manager* manager = Manager::GetInstance();
+	SceneManager* sceneManager = manager->GetManager<SceneManager>();
 
-    GameObject* go = sceneManager->gameObjectPool.CreateGoFromPool("", PrefabLoading, nullptr, true);
-    go->SetId(root["Id"].asInt());
-    go->name = root["Name"].asString();
-    go->isChild = root["Is Child"].asBool();
+	GameObject* go = sceneManager->gameObjectPool.CreateGoFromPool("", PrefabLoading, nullptr, true);
+	go->SetId(root["Id"].asInt());
+	go->name = root["Name"].asString();
+	go->isChild = root["Is Child"].asBool();
 
 	if (root.isMember("PrefabName"))
 	{
-		for (Prefab* prefab_ : Manager::GetInstance()->GetManager<PrefabManager>()->GetPrefabs())
+		go->prefabName = root["PrefabName"].asString();
+		/*for (Prefab* prefab_ : Manager::GetInstance()->GetManager<PrefabManager>()->GetPrefabs())
 		{
 			if (prefab_->name == root["PrefabName"].asString())
 			{
 				go->prefab = prefab_;
 			}
-		}
+		}*/
 	}
 
 	for (const Json::Value compJson : root["Components"])
@@ -152,9 +153,13 @@ void GameObject::Delete(GameObject* go)
 
 void GameObject::AddChild(GameObject* go)
 {
-	go->GetComponent<Transform>()->position.x -= GetComponent<Transform>()->position.x;
-	go->GetComponent<Transform>()->position.y -= GetComponent<Transform>()->position.y;
-	go->GetComponent<Transform>()->position.z -= GetComponent<Transform>()->position.z;
+	glm::vec3 position;
+
+	position.x = go->GetComponent<Transform>()->GetPosition().x - GetComponent<Transform>()->GetPosition().x;
+	position.y = go->GetComponent<Transform>()->GetPosition().y - GetComponent<Transform>()->GetPosition().y;
+	position.z = go->GetComponent<Transform>()->GetPosition().z - GetComponent<Transform>()->GetPosition().z;
+		
+	go->GetComponent<Transform>()->SetPosition(position);
 	go->origin = origin;
 
 	go->isChild = true;
@@ -212,9 +217,10 @@ void GameObject::LoadComponent(Json::Value compJson, GameObject* parentGo)
 	switch (compJson["Type"].asInt())
 	{
 	case 0: break;
-	case 1: GetComponent<Transform>()->Load(compJson, parentGo);
+	case 1: 
+		GetComponent<Transform>()->Load(compJson, parentGo);
 		break;
-	case 2: 
+	case 2:
 		AddComponent<Model>();
 		GetComponent<Model>()->Load(compJson, parentGo);
 		break;

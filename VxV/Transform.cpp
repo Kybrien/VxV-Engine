@@ -1,3 +1,4 @@
+#include "Engine.hpp"
 #include "Transform.h"
 #include "GameObject.h"
 
@@ -6,14 +7,13 @@
 
 #include "Debug.h"
 
-#include "Engine.h"
 
 
 
 Transform::Transform(GameObject* gameObject) : Component(gameObject) {
 	position = glm::vec3(0, 0, 0);
 	rotation = glm::vec3(0, 0, 0);
-	scale = glm::vec3(0, 0, 0);
+	scale = glm::vec3(1, 1, 1);
 
 	type = Component::Type::Transform;
 	linkedGameObject = gameObject;
@@ -52,47 +52,66 @@ void Transform::Copy(GameObject* goToFill) {
 }
 
 
-void Transform::SetPosition(glm::vec3 pos) {
-	position = pos;
-	setTranslationModel(*linkedGameObject->GetComponent<Model>()->GetModel(), pos);
+void Transform::SetPosition(glm::vec3 pos, bool isChild) {
+	if (!isChild) {
+		position = pos;
+	}
+
+
+	glm::vec3 tempPosition = linkedGameObject->origin + pos;
+	for (GameObject* child : linkedGameObject->GetChilds())
+	{
+		child->origin = tempPosition;
+	}
+
+	for(GameObject* child : linkedGameObject->GetChilds())
+		child->GetComponent<Transform>()->SetPosition(child->GetComponent<Transform>()->position + tempPosition, true);
 }
 
 
-void Transform::SetRotation(float xAngle, float yAngle, float zAngle) {
+void Transform::SetRotation(float xAngle, float yAngle, float zAngle, bool isChild) {
 
 	rotation = glm::vec3(xAngle, yAngle, zAngle);
-	if (xAngle != 0)
-		setRotationModel(*linkedGameObject->GetComponent<Model>()->GetModel(), xAngle, glm::vec3(1, 0, 0));
-	if (yAngle != 0)
-		setRotationModel(*linkedGameObject->GetComponent<Model>()->GetModel(), yAngle, glm::vec3(0, 1, 0));
-	if (zAngle != 0)
-		setRotationModel(*linkedGameObject->GetComponent<Model>()->GetModel(), zAngle, glm::vec3(0, 0, 1));
+
+	for(GameObject* child : linkedGameObject->GetChilds())
+		child->GetComponent<Transform>()->SetRotation(child->GetComponent<Transform>()->rotation.x + xAngle, child->GetComponent<Transform>()->rotation.y + yAngle, child->GetComponent<Transform>()->rotation.z + zAngle, true);
 }
 
-void Transform::SetScale(glm::vec3 sca) {
+void Transform::SetScale(glm::vec3 sca, bool isChild) {
 	scale = sca;
-	setScaleModel(*linkedGameObject->GetComponent<Model>()->GetModel(), sca);
+
+	for(GameObject* child : linkedGameObject->GetChilds())
+		child->GetComponent<Transform>()->SetScale(child->GetComponent<Transform>()->scale * sca, true);
 }
 
 
-void Transform::Translate(glm::vec3 pos) {
-	position += pos;
-	translateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), position);
+void Transform::Translate(glm::vec3 pos, bool isChild) {
+	if (!isChild) {
+		position += pos;
+	}
+
+
+	for (GameObject* child : linkedGameObject->GetChilds())
+	{
+		child->origin = position;
+	}
+
+	for(GameObject* child : linkedGameObject->GetChilds())
+		child->GetComponent<Transform>()->Translate(pos, true);
 }
 
-void Transform::Rotate(float xAngle, float yAngle, float zAngle) {
+void Transform::Rotate(float xAngle, float yAngle, float zAngle, bool isChild) {
 	rotation += glm::vec3(xAngle, yAngle, zAngle);
-	if (xAngle != 0)
-		rotateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), xAngle, glm::vec3(1, 0, 0));
-	if (yAngle != 0)
-		rotateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), yAngle, glm::vec3(0, 1, 0));
-	if (zAngle != 0)
-		rotateModel(*linkedGameObject->GetComponent<Model>()->GetModel(), zAngle, glm::vec3(0, 0, 1));
+
+	for(GameObject* child : linkedGameObject->GetChilds())
+		child->GetComponent<Transform>()->Rotate(xAngle, yAngle, zAngle, true);
 }
 
-void Transform::Scale(glm::vec3 sca) {
+void Transform::Scale(glm::vec3 sca, bool isChild) {
 	scale += sca;
-	scaleModel(*linkedGameObject->GetComponent<Model>()->GetModel(), scale);
+
+	for(GameObject* child : linkedGameObject->GetChilds())
+		child->GetComponent<Transform>()->Scale(sca, true);
 }
 
 

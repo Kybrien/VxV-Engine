@@ -3,11 +3,16 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 
 #include "ModelComponent.hpp"
+#include "Transform.h"
+#include "Model.h"
 
 #include <iostream>
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "Externes/stb/stb_image.h"
+
+#include <glm/gtc/quaternion.hpp > 
+//#include <glm/gtx/quaternion.hpp>
 
 Vertex createVertexFromIndex(const tinyobj::attrib_t& attrib, const tinyobj::index_t& index)
 {
@@ -126,13 +131,14 @@ void initializeVertexArrayObject(GLuint& VertexArrayID)
 	glBindVertexArray(VertexArrayID);
 }
 
-glm::mat4 initializeProjectionMatrix()
+glm::mat4 initializeProjectionMatrix(float _fov, float _ratioWidth, float _ratioHeight, float _near, float _far)
 {
 	// Projection matrix: 45° Field of View, 4:3 ratio, display range: 0.1 unit <-> 100 units
-	return glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
+	return glm::perspective(glm::radians(_fov), _ratioWidth / _ratioHeight, _near, _far);
 }
 
-glm::mat4 initializeViewMatrix()
+glm::mat4 initializeViewMatrix(int _cameraPositionX, int _cameraPositionY, int _cameraPositionZ, int _cameraTargetX, int _cameraTargetY,
+	int _cameraTargetZ, int _upVectorX, int _upVectorY, int _upVectorZ)
 {
 	// Camera matrix
 	return glm::lookAt(glm::vec3(9, 5, 1), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
@@ -352,17 +358,23 @@ void copyModelAndAdd(const ModelComponent& model, std::vector<ModelComponent>& m
 	models.push_back(newObj);
 }
 
-void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& LightID, GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID)
+void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID)
 {
 	glUseProgram(programID);
 	TextureID = glGetUniformLocation(programID, "myTextureSampler");
-	LightID = glGetUniformLocation(programID, "LightPosition_worldspace");
 	MaterialAmbientColorID = glGetUniformLocation(programID, "MaterialAmbientColor");
 	MaterialDiffuseColorID = glGetUniformLocation(programID, "MaterialDiffuseColor");
 	MaterialSpecularColorID = glGetUniformLocation(programID, "MaterialSpecularColor");
 	MatrixID = glGetUniformLocation(programID, "MVP");
 	ViewMatrixID = glGetUniformLocation(programID, "V");
 	ModelMatrixID = glGetUniformLocation(programID, "M");
+}
+
+void setupLightHandles(GLuint& programID, GLuint& LightID, GLuint& LightColorID, GLuint& LightPowerID)
+{
+	LightID = glGetUniformLocation(programID, "LightPosition_worldspace");
+	LightColorID = glGetUniformLocation(programID, "LightColor");
+	LightPowerID = glGetUniformLocation(programID, "LightPower");
 }
 
 void drawModel(ModelComponent* model, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID, GLuint MaterialSpecularColorID)
@@ -396,83 +408,31 @@ void drawModel(ModelComponent* model, GLuint TextureID, GLuint MaterialAmbientCo
 	}
 }
 
+void sendMVPData(GameObject* go, GLuint VertexArrayID, GLuint MatrixID, GLuint ModelMatrixID, GLuint ViewMatrixID)
+{
+	/*glm::vec3 position = glm::vec3(model.transform[3].x, model.transform[3].y, model.transform[3].z);
+	glm::vec3 scale = glm::vec3(glm::length(model.transform[0]), glm::length(model.transform[1]), glm::length(model.transform[2]));*/
 
-void setRotationModel(ModelComponent& model, float angle, const glm::vec3& axis) {
-	// Extract the position (translation) from the transformation matrix
-	glm::vec3 position = glm::vec3(model.transform[3]);
+	ModelComponent& model = *go->GetComponent<Model>()->GetModel();
+	Transform& transform = *go->GetComponent<Transform>();
 
-	// Extract the scale from the transformation matrix
-	glm::vec3 scale = glm::vec3(glm::length(model.transform[0]), glm::length(model.transform[1]), glm::length(model.transform[2]));
-
-	// Reset the transformation matrix
 	model.transform = glm::mat4(1.0f);
 
-	// Apply the rotation
-	model.transform = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis);
+	// Calcul de la translation
+	mat4 transMat = glm::translate(glm::mat4(1.0f), go->origin + transform.GetPosition());
 
-	// Reapply the scale
-	model.transform = glm::scale(model.transform, scale);
+	// Calculs des quaternions pour la rotation
+	quat quaternion;
+	vec3 rotationRad = glm::radians(transform.GetRotation());
+	quaternion = glm::quat(rotationRad);
+	mat4 rotMat = glm::mat4_cast(quaternion);
+	
+	// Calcul de la mise à l'échelle
+	mat4 ScaMat = glm::scale(glm::mat4(1.0f), transform.GetScale());
 
-	// Reapply the position
-	model.transform[3] = glm::vec4(position, 1.0f);
-}
+	// Matrice finale
+	model.transform = transMat * rotMat * ScaMat;
 
-void setTranslationModel(ModelComponent& model, const glm::vec3& translation) {
-	// Extract the rotation and scale from the transformation matrix
-	glm::mat4 rotationScaleMatrix = model.transform;
-	rotationScaleMatrix[3] = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
-
-	// Set the translation
-	model.transform = glm::mat4(1.0f);
-	model.transform[3] = glm::vec4(translation, 1.0f);
-
-	// Reapply the rotation and scale
-	model.transform *= rotationScaleMatrix;
-}
-
-void setScaleModel(ModelComponent& model, const glm::vec3& scale) {
-	// Extract the rotation and translation from the transformation matrix
-	glm::mat4 rotationTranslationMatrix = model.transform;
-	rotationTranslationMatrix[0] = glm::normalize(rotationTranslationMatrix[0]);
-	rotationTranslationMatrix[1] = glm::normalize(rotationTranslationMatrix[1]);
-	rotationTranslationMatrix[2] = glm::normalize(rotationTranslationMatrix[2]);
-
-	// Set the scale
-	model.transform = glm::mat4(1.0f);
-	model.transform = glm::scale(model.transform, scale);
-
-	// Reapply the rotation and translation
-	model.transform *= rotationTranslationMatrix;
-}
-
-
-
-
-
-
-void translateModel(ModelComponent& model, const glm::vec3& translation)
-{
-	model.transform = glm::translate(model.transform, translation);
-}
-
-void rotateModel(ModelComponent& model, float angle, const glm::vec3& axis)
-{
-	model.transform = glm::rotate(model.transform, glm::radians(angle), axis);
-}
-
-void scaleModel(ModelComponent& model, const glm::vec3& scale)
-{
-	model.transform = glm::scale(model.transform, scale);
-}
-
-void sendMVPData(ModelComponent& model, GLuint VertexArrayID, GLuint MatrixID, GLuint ModelMatrixID, GLuint ViewMatrixID)
-{
-	glm::vec3 position = glm::vec3(model.transform[3].x, model.transform[3].y, model.transform[3].z);
-	glm::vec3 scale = glm::vec3(glm::length(model.transform[0]), glm::length(model.transform[1]), glm::length(model.transform[2]));
-	//model.transform = glm::mat4(1.0f);
-	//model.transform = glm::scale(model.transform, scale);
-	//model.transform = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis) * model.transform;
-	//model.transform = glm::translate(glm::mat4(1.0f), position) * model.transform;
 
 	glm::mat4 ModelMatrix = glm::mat4(1.0f) * model.transform;
 	glm::mat4 ViewMatrix = getViewMatrix();

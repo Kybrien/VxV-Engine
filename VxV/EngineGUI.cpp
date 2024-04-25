@@ -2,6 +2,7 @@
 #include <imgui.h>
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
+#include "ChatWindow.hpp"
 #include "FileExplorer.h"
 #include "WindowGui.h"
 #include "imfilebrowser.h"
@@ -14,10 +15,10 @@ void EngineGUI::initImgui(GLFWwindow* window)
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
     (void)io;
-    // Chargez la police qui supporte les caractères accentués
+    // Load the font
     ImFont* font = io.Fonts->AddFontFromFileTTF("monocraft.ttf", 17);
 
-    // V�rifiez si la police a �t� charg�e correctement
+    //Check if the font has been loaded correctly
     if (font == nullptr)
     {
         std::cerr << "Erreur lors du chargement de la police." << std::endl;
@@ -32,15 +33,18 @@ void EngineGUI::initImgui(GLFWwindow* window)
 
 }
 
+ChatWindow chatWindow;
+
 void EngineGUI::UpdateGui()
 {
+    
     // Start the Dear ImGui frame
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
 
 
-
+    chatWindow.Draw();
     ImGui::ShowDemoWindow();
     MainMenuBar();
     ShowInfo();

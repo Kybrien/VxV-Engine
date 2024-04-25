@@ -1,0 +1,37 @@
+PrefabSaveFile
+{
+	"GameObjects" : 
+	[
+		{
+			"Components" : 
+			[
+				{
+					"Position" : 
+					[
+						0.0,
+						0.0,
+						0.0
+					],
+					"Rotation" : 
+					[
+						0.0,
+						0.0,
+						0.0
+					],
+					"Scale" : 
+					[
+						1.0,
+						1.0,
+						1.0
+					],
+					"Type" : 1
+				}
+			],
+			"Id" : 0,
+			"Is Child" : false,
+			"Name" : ""
+		}
+	],
+	"Name" : "PrefabSample"
+}
+

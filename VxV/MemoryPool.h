@@ -4,6 +4,11 @@
 #include <iostream>
 #include "GameObject.h"
 
+/**
+* @brief MemoryPool class that uses a specific strategy to allocate and deallocate memory
+* @param T - type of object to allocate memory for
+* @param Strategy - strategy to use for memory allocation and deallocation
+*/
 template<typename T, class Strategy> class MemoryPool
 {
 private:
@@ -14,6 +19,10 @@ public:
 
 	}
 
+	/**
+	* @brief Allocates memory for an object of type T
+	* @param args - arguments to pass to the constructor of the object
+	*/
 	template<typename... Args>
 	T* Alloc(Args... args)
 	{
@@ -24,17 +33,28 @@ public:
 		return new (temp) T(args...);
 	}
 
+	/**
+	* @brief Deallocates memory for a specific object
+	* @param p - pointer to the object to deallocate
+	*/
 	void Free(void* p)
 	{
 		m_strategy.Deallocate(p);
 	}
 
+	/**
+	* @brief Deallocates memory for all objects in the pool
+	*/
 	void FreeAll()
 	{
 		m_strategy.DeallocateAll();
 	}
 };
 
+/**
+* @brief specific MemoryPool class for GameObjects
+* @param Strategy - strategy to use for memory allocation and deallocation
+*/
 template<class Strategy> class MemoryPool<GameObject, Strategy>
 {
 private:
@@ -78,6 +98,10 @@ public:
 //	}
 //};
 
+/**
+* @brief Strategy class for a MemoryPool - This Strategy creates a vector of memory chunks and allocates memory from it
+* @param T - type of object to allocate memory for
+*/
 template <typename T> class MemPool_Linear
 {
 private:

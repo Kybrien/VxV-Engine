@@ -133,7 +133,8 @@
 copy $(ProjectDir)SimpleFragmentShader.VALORANT $(TargetDir)
 
 copy $(ProjectDir)SimpleVertexShader.MIKU $(TargetDir)
-</Command>
+
+copy $(ProjectDir)monocraft.ttf $(TargetDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -156,12 +157,13 @@ copy $(ProjectDir)SimpleVertexShader.MIKU $(TargetDir)
       <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;jsoncpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /E /I /Y "\"$(ProjectDir)Files\"" "\"$(TargetDir)Files\""
+      <Command>xcopy /E /I /Y "$(ProjectDir)Files" "$(TargetDir)Files"
 
-copy "\"$(ProjectDir)SimpleFragmentShader.VALORANT\"" "\"$(TargetDir)\""
+copy $(ProjectDir)SimpleFragmentShader.VALORANT $(TargetDir)
 
-copy "\"$(ProjectDir)SimpleVertexShader.MIKU\"" "\"$(TargetDir)\""
-</Command>
+copy $(ProjectDir)SimpleVertexShader.MIKU $(TargetDir)
+
+copy $(ProjectDir)monocraft.ttf $(TargetDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -185,14 +187,13 @@ copy "\"$(ProjectDir)SimpleVertexShader.MIKU\"" "\"$(TargetDir)\""
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Script.cpp" />
     <ClCompile Include="ScriptingComponent.cpp" />
     <ClCompile Include="ScriptManager.cpp" />
     <ClCompile Include="ScriptUser.cpp" />
     <ClCompile Include="Transform.cpp" />
-    <ClCompile Include="_Client.cpp" />
     <ClCompile Include="_Server.cpp" />
+    <ClInclude Include="APIopenGL.hpp" />
     <ClInclude Include="ChatWindow.hpp" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ConsoleRecup.h" />
@@ -201,6 +202,7 @@ copy "\"$(ProjectDir)SimpleVertexShader.MIKU\"" "\"$(TargetDir)\""
     <ClInclude Include="EngineState.h" />
     <ClInclude Include="FileExplorer.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GraphicAPI.hpp" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_glfw.h" />
@@ -223,7 +225,6 @@ copy "\"$(ProjectDir)SimpleVertexShader.MIKU\"" "\"$(TargetDir)\""
     <ClInclude Include="ModelComponent.hpp" />
     <ClInclude Include="Prefab.h" />
     <ClInclude Include="PrefabManager.h" />
-    <ClInclude Include="Renderer.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Script.h" />
@@ -243,7 +244,7 @@ copy "\"$(ProjectDir)SimpleVertexShader.MIKU\"" "\"$(TargetDir)\""
   <ItemGroup>
     <ClInclude Include="loadingShader.hpp" />
     <ClInclude Include="Debug.h" />
-    <ClInclude Include="Engine.h" />
+    <ClInclude Include="Engine.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GameObject.inl" />

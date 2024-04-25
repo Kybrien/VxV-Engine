@@ -9,7 +9,7 @@
 Model::Model(GameObject* go) : Component(go) { 
 	ModelManager* modelManager = Manager::GetInstance()->GetManager<ModelManager>();
 	linkedGameObject = go;
-	type = Component::Mesh;
+	type = Component::Model;
 
 	model = modelManager->GetModel("cube.obj");
 	model->numberUsed++;
