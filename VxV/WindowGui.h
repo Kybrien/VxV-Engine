@@ -6,6 +6,7 @@
 #include "GameObject.h"
 #include "ConsoleRecup.h"
 #include "Scene.h"
+#include "Engine.h"
 static bool enabled = true;
 static ImGui::FileBrowser fileDialog;
 
@@ -458,6 +459,28 @@ void CreateGameObject(std::vector<std::string>& gameObjects, bool& show) {
 	// Terminez la fen?tre
 	ImGui::End();
 }
+GameObject* CreateGameObjectWithModel(const std::string& modelName) {
+	Manager* manager = Manager::GetInstance();
+	SceneManager* sceneManager = manager->GetManager<SceneManager>();
+
+	GameObject* go = sceneManager->gameObjectPool.CreateGoFromPool();
+
+	if (go != nullptr) {
+		go->AddComponent<Model>();
+		Model* modelComponent = go->GetComponent<Model>();
+		if (modelComponent != nullptr) {
+			modelComponent->SetModel(modelName);
+		}
+		else {
+			std::cout << "Could not add Model component to GameObject" << std::endl;
+		}
+	}
+	else {
+		std::cout << "Could not create GameObject" << std::endl;
+	}
+
+	return go; // This will return nullptr if GameObject creation failed
+}
 
 void ShowAddGameObject() {
 	if (ImGui::Begin("Create Game Object"))
@@ -478,11 +501,11 @@ void ShowAddGameObject() {
 			{
 				if (ImGui::Button("Cube"))
 				{
-					// Code pour créer le prefab
+					CreateGameObjectWithModel("cube.obj");
 				}
 				if (ImGui::Button("Sphere"))
 				{
-					// Code pour créer le prefab 1
+					CreateGameObjectWithModel("sphere.obj");
 				}
 
 				if (ImGui::Button("Capsule"))
@@ -518,6 +541,7 @@ void ShowAddGameObject() {
 	{
 
 		std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
+		CreateGameObjectWithModel(fileDialog.GetSelected().string());
 		fileDialog.ClearSelected();
 	}
 	ImGui::Separator();
@@ -543,36 +567,36 @@ void ShowConsoleWindow()
 }
 
 
-void RenderSceneHierarchy() {
-	// Start the ImGui window
-	ImGui::Begin("Scene Hierarchy");
-
-	// Iterate through your game objects/entities and create tree nodes
-	for (const auto& gameObjectPtr : Scene::GetAllGameObjects()) {
-		// Dereference the pointer to get the actual GameObject
-		const auto& gameObject = *gameObjectPtr;
-
-		// Create a tree node with the name of the entity
-		// Assuming GetName() is a method of GameObject that returns a string
-		if (ImGui::TreeNode(gameObject->GetName().c_str())) {
-			// If the tree node is open, you can list components or children here
-			// For each component or child, you can make them selectable
-			// Assuming GetComponents() is a method of GameObject that returns a list of Component pointers
-			for (const auto& componentPtr : gameObject.GetComponents()) {
-				// Dereference the pointer to get the actual Component
-				const auto& component = *componentPtr;
-				// Assuming GetName() and IsSelected() are methods of Component
-				// GetName() returns a string and IsSelected() returns a bool
-				ImGui::Selectable(component.GetName().c_str(), component.IsSelected());
-			}
-
-			// Don't forget to call TreePop!
-			ImGui::TreePop();
-		}
-	}
-
-	ImGui::End();
-}
+//void RenderSceneHierarchy() {
+//	// Start the ImGui window
+//	ImGui::Begin("Scene Hierarchy");
+//
+//	// Iterate through your game objects/entities and create tree nodes
+//	for (const auto& gameObjectPtr : Scene::GetAllGameObjects()) {
+//		// Dereference the pointer to get the actual GameObject
+//		const auto& gameObject = *gameObjectPtr;
+//
+//		// Create a tree node with the name of the entity
+//		// Assuming GetName() is a method of GameObject that returns a string
+//		if (ImGui::TreeNode(gameObject->GetName().c_str())) {
+//			// If the tree node is open, you can list components or children here
+//			// For each component or child, you can make them selectable
+//			// Assuming GetComponents() is a method of GameObject that returns a list of Component pointers
+//			for (const auto& componentPtr : gameObject.GetComponents()) {
+//				// Dereference the pointer to get the actual Component
+//				const auto& component = *componentPtr;
+//				// Assuming GetName() and IsSelected() are methods of Component
+//				// GetName() returns a string and IsSelected() returns a bool
+//				ImGui::Selectable(component.GetName().c_str(), component.IsSelected());
+//			}
+//
+//			// Don't forget to call TreePop!
+//			ImGui::TreePop();
+//		}
+//	}
+//
+//	ImGui::End();
+//}
 
 void RenderToolbar() {
 	// Assuming toolbarHeight is set to your desired height for the toolbar
@@ -617,3 +641,24 @@ void RenderToolbar() {
 
 	ImGui::End();
 }
+
+//// Ajoutez un paramètre Scene à la fonction ShowHierarchy
+//static void ShowHierarchy(Scene& scene)
+//{
+//	// Utilisez la fonction GetAllGameObjects() pour obtenir tous les GameObjects
+//	std::vector<GameObject*> allGameObjects = scene.GetAllGameObjects();
+//	// Dans votre boucle de rendu ImGui
+//	ImGui::Begin("Hiérarchie de la scène");
+//
+//	// Affichez une liste de tous les GameObjects
+//	for (GameObject* gameobjects : allGameObjects)
+//	{
+//		if (ImGui::Selectable(gameobjects->name.c_str()))
+//		{
+//			// Si l'utilisateur clique sur un GameObject, stockez une référence à ce GameObject
+//			GameObject* selectedGameObject = gameobjects;
+//		}
+//	}
+//
+//	ImGui::End();
+//}

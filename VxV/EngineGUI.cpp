@@ -6,6 +6,9 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
+
+//Scene scene;
+
 void EngineGUI::initImgui(GLFWwindow* window)
 {
     IMGUI_CHECKVERSION();
@@ -45,6 +48,7 @@ void EngineGUI::UpdateGui()
     RenderToolbar();
     ShowConsoleWindow();
     ShowAddGameObject();
+    //ShowHierarchy(scene);
 
 }
 
@@ -54,4 +58,11 @@ void EngineGUI::RenderGui()
 {
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+}
+
+void EngineGUI::DestroyGui()
+{
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
 }
