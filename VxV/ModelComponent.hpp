@@ -296,52 +296,6 @@ void setupLightHandles(GLuint& programID, GLuint& LightID, GLuint& LightColorID,
 */
 void drawModel(ModelComponent* model, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID, GLuint MaterialSpecularColorID);
 
-/**
-* @brief Set the rotation of the model.
-* @param ModelComponent reference to the model
-* @param angle angle to rotate
-* @param axis axis of the rotation
-*/
-void setRotationModel(ModelComponent& model, float angle, const glm::vec3& axis);
-
-/**
-* @brief Set the translation of the model.
-* @param ModelComponent reference to the model
-* @param translation translation vector
-*/
-void setTranslationModel(ModelComponent& model, const glm::vec3& translation);
-
-/**
-* @brief Set the scale of the model.
-* @param ModelComponent reference to the model
-* @param scale scale vector
-*/
-void setScaleModel(ModelComponent& model, const glm::vec3& scale);
-
-/**
-* @brief Translate the model by the given translation vector.
-* @param model reference to the model
-* @param translation translation vector
-* @return void
-*/
-void translateModel(ModelComponent& model, const glm::vec3& translation);
-
-/**
-* @brief Rotate the model by the given angle and axis.
-* @param ModelComponent reference to the model
-* @param angle angle to rotate
-* @param axis axis to rotate
-* @return void
-*/
-void rotateModel(ModelComponent& model, float angle, const glm::vec3& axis);
-
-/**
-* @brief Scale the model by the given scale vector.
-* @param ModelComponent reference to the model
-* @param scale scale vector
-* @return void
-*/
-void scaleModel(ModelComponent& model, const glm::vec3& scale);
 
 /**
 * @brief Send the MVP data to the shader program.

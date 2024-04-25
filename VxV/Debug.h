@@ -5,5 +5,10 @@
 
 class Debug {
 public:
-	static void Log(std::string message) { std::cout << message << std::endl; } // Print sur la console
+	/**
+	* @brief Logs a message to the standard output stream.
+	* @param message The message to be logged.
+	*/
+	static void Log(std::string message) { std::cout << message << std::endl; }
+
 };
