@@ -248,7 +248,7 @@ copy $(ProjectDir)monocraft.ttf $(TargetDir)</Command>
   <ItemGroup>
     <ClInclude Include="loadingShader.hpp" />
     <ClInclude Include="Debug.h" />
-    <ClInclude Include="Engine.h" />
+    <ClInclude Include="Engine.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GameObject.inl" />
