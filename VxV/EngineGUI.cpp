@@ -1,6 +1,7 @@
 ﻿#include "EngineGUI.h"
 #include "FileExplorer.h"
 #include <imgui.h>
+#include "ChatWindow.hpp"
 #include "FileExplorer.h"
 #include "WindowGui.h"
 #include "imfilebrowser.h"
@@ -25,15 +26,18 @@ void EngineGUI::initImgui(GLFWwindow* window)
     ImGui_ImplOpenGL3_Init("#version 330");
 }
 
+ChatWindow chatWindow;
+
 void EngineGUI::UpdateGui()
 {
+    
     // Start the Dear ImGui frame
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
 
 
-
+    chatWindow.Draw();
     ImGui::ShowDemoWindow();
     RedirectCout();
     MainMenuBar();
