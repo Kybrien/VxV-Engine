@@ -21,6 +21,8 @@ public :
 		MatrixID = 0;
 		ViewMatrixID = 0;
 		ModelMatrixID = 0;
+		LightColorID = 0;
+		LightPowerID = 0;
 		Projection = glm::mat4(1.0f);
 		View = glm::mat4(1.0f);
 	}

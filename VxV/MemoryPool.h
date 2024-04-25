@@ -5,7 +5,7 @@
 #include "GameObject.h"
 
 /**
-* @breif MemoryPool class that uses a specific strategy to allocate and deallocate memory
+* @brief MemoryPool class that uses a specific strategy to allocate and deallocate memory
 * @param T - type of object to allocate memory for
 * @param Strategy - strategy to use for memory allocation and deallocation
 */
@@ -20,7 +20,7 @@ public:
 	}
 
 	/**
-	* @breif Allocates memory for an object of type T
+	* @brief Allocates memory for an object of type T
 	* @param args - arguments to pass to the constructor of the object
 	*/
 	template<typename... Args>
@@ -34,7 +34,7 @@ public:
 	}
 
 	/**
-	* @breif Deallocates memory for a specific object
+	* @brief Deallocates memory for a specific object
 	* @param p - pointer to the object to deallocate
 	*/
 	void Free(void* p)
@@ -43,7 +43,7 @@ public:
 	}
 
 	/**
-	* @breif Deallocates memory for all objects in the pool
+	* @brief Deallocates memory for all objects in the pool
 	*/
 	void FreeAll()
 	{
@@ -52,7 +52,7 @@ public:
 };
 
 /**
-* @breif specific MemoryPool class for GameObjects
+* @brief specific MemoryPool class for GameObjects
 * @param Strategy - strategy to use for memory allocation and deallocation
 */
 template<class Strategy> class MemoryPool<GameObject, Strategy>
