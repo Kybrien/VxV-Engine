@@ -12,6 +12,8 @@ Prefab::Prefab(GameObject* go, std::string name) {
 	Copy(gameObject, go);
 	gameObject->isChild = false;
 	Manager::GetInstance()->GetManager<PrefabManager>()->AddPrefab(this);
+
+	Manager::GetInstance()->GetManager<PrefabManager>()->Save();
 }
 
 

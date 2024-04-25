@@ -12,22 +12,27 @@ int main()
 	Manager* manager = Manager::GetInstance();
 	SceneManager* sceneManager = manager->GetManager<SceneManager>();
 
+
+	if (sceneManager->GetCurrentScene()->GetAllGameObjects().empty()) {
+
 	//test
 	GameObject* go = sceneManager->gameObjectPool.CreateGoFromPool();
 
 	go->AddComponent<Model>();
 	go->GetComponent<Model>()->SetModel("miku");
 
+	Prefab* prefab = new Prefab(go);
 
-	GameObject* go2 = sceneManager->gameObjectPool.CreateGoFromPool();
 
-	go2->AddComponent<Model>();
-	go2->GetComponent<Model>()->SetModel("miku");
+	GameObject* go2 = sceneManager->gameObjectPool.CreateGoFromPool("Prefab", false, prefab);
+	
 
 	go->AddChild(go2);
 
-	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
 	go2->GetComponent<Transform>()->Translate(glm::vec3(10, 0, 0));
+	}
+
+	std::vector<GameObject*> goList = Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects();
 	while (engine->GetBootingState() != EngineState::BootingState::Stopped)
 	{
 		checkCloseWindow(apiGraphic, engine);
@@ -68,5 +73,6 @@ int main()
 		}
 	}
 	apiGraphic->terminate();
+	sceneManager->Save();
 	return 0;
 }

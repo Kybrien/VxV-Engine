@@ -1,4 +1,5 @@
 #include "PrefabManager.h"
+#include "SceneManager.h"
 #include <json.h>
 #include <iostream>
 
@@ -57,6 +58,11 @@ void PrefabManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
 
 					Prefab* prefab = new Prefab(go);
 					prefab->name = PrefabJson["Name"].asString();
+
+					for (GameObject* go : Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects()) {
+						if (prefab->name == go->getPrefabName())
+							go->SetPrefab(prefab);
+					}
 				}
 
 			}
@@ -66,6 +72,8 @@ void PrefabManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
 			std::cerr << "Erreur lors de la lecture du fichier : " + fileDirection << std::endl;
 		}
 	}
+
+	
 }
 
 void PrefabManager::Save() { 

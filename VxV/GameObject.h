@@ -50,6 +50,19 @@ public:
 		parent = go;
 	}
 
+	std::string getPrefabName()
+	{
+		return prefabName;
+	}
+	void SetPrefab(Prefab* prefab_)
+	{
+		prefab = prefab_;
+	}
+	Prefab* GetPrefab()
+	{
+		return prefab;
+	}
+
 	void RemoveChild(GameObject* goChild);
 
 	// Mettre des enable if
@@ -67,6 +80,7 @@ private:
 	int id; // ID du GO
 	std::vector<GameObject*> childObjects; // Liste des enfants
 	GameObject* parent;
+	std::string prefabName;
 	Prefab* prefab;
 };
 

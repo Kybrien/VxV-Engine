@@ -419,16 +419,16 @@ void sendMVPData(GameObject* go, GLuint VertexArrayID, GLuint MatrixID, GLuint M
 	model.transform = glm::mat4(1.0f);
 
 	// Calcul de la translation
-	mat4 transMat = glm::translate(glm::mat4(1.0f), go->origin + transform.position);
+	mat4 transMat = glm::translate(glm::mat4(1.0f), go->origin + transform.GetPosition());
 
 	// Calculs des quaternions pour la rotation
 	quat quaternion;
-	vec3 rotationRad = glm::radians(transform.rotation);
+	vec3 rotationRad = glm::radians(transform.GetRotation());
 	quaternion = glm::quat(rotationRad);
 	mat4 rotMat = glm::mat4_cast(quaternion);
 	
 	// Calcul de la mise à l'échelle
-	mat4 ScaMat = glm::scale(glm::mat4(1.0f), transform.scale);
+	mat4 ScaMat = glm::scale(glm::mat4(1.0f), transform.GetScale());
 
 	// Matrice finale
 	model.transform = transMat * rotMat * ScaMat;
