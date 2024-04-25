@@ -1,5 +1,6 @@
 #pragma once
 
+#include "APIopenGL.hpp"
 #include "ModelManager.h"
 #include "PrefabManager.h"
 #include "InputManager.h"
@@ -15,7 +16,7 @@ private:
 	static Engine* instance;
 	SceneManager* sceneManager;	
 	EngineState* engineState = EngineState::GetInstance();
-	double lastTime = glfwGetTime();
+	float lastTime = glfwGetTime();
 public:
 	Manager* manager;
 
@@ -62,8 +63,27 @@ public:
 
 	void Update()
 	{
+		while (engineState->GetActiveState() == EngineState::ActiveState::RunTime) {
+
 		sceneManager->GetCurrentScene()->Update();
+		}
 	}
+
+	void Stop(APIopenGL* _apiGraphic)
+	{
+		std::cout << "Engine Stop" << std::endl;
+		engineState->AskToStop();
+		for (GameObject* go : Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects())
+		{
+			Model* model = go->GetComponent<Model>();
+			if (model != nullptr)
+			{
+				_apiGraphic->cleanupModel(model);
+			}
+		}
+	}
+
+
 
 	EngineState* GetEngineState()
 	{

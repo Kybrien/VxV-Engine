@@ -32,7 +32,7 @@ public:
 	}
 	EngineState() {
 		m_bootingState = BootingState::Edition;
-		m_state = ActiveState::Edition;
+		m_state = ActiveState::RunTime;
 	}
 	~EngineState() {
 		delete m_instance;
