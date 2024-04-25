@@ -8,6 +8,8 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <imgui.h>
+#include <cstdlib>
+#include <iostream> 
 
 #pragma comment(lib, "Ws2_32.lib")
 
@@ -20,13 +22,64 @@ struct ChatWindow {
     std::thread receiveThread;
     std::mutex mutex;
     bool isConnected = false;
+    char ipAddressBuf[256];
 
     ChatWindow() {
         memset(inputBuf, 0, sizeof(inputBuf));
+        memset(ipAddressBuf, 0, sizeof(ipAddressBuf));
     }
 
     ~ChatWindow() {
         closeNetwork();
+    }
+
+    std::string get_local_ip_address() {
+        WSADATA wsaData;
+        int result = WSAStartup(MAKEWORD(2, 2), &wsaData);
+        if (result != 0) {
+            std::cerr << "WSAStartup failed: " << result << std::endl;
+            return "";
+        }
+
+        char hostname[NI_MAXHOST];
+        result = gethostname(hostname, NI_MAXHOST);
+        if (result != 0) {
+            std::cerr << "Error getting hostname: " << WSAGetLastError() << std::endl;
+            WSACleanup();
+            return "";
+        }
+
+        struct addrinfo* info = nullptr;
+        struct addrinfo hints;
+        memset(&hints, 0, sizeof(hints));
+        hints.ai_family = AF_INET;  // Use IPv4
+        hints.ai_socktype = SOCK_STREAM;
+        hints.ai_protocol = IPPROTO_TCP;
+
+        result = getaddrinfo(hostname, nullptr, &hints, &info);
+        if (result != 0) {
+            std::cerr << "Error getting address info: " << result << std::endl;
+            WSACleanup();
+            return "";
+        }
+
+        char ip[INET_ADDRSTRLEN];
+        inet_ntop(AF_INET, &((struct sockaddr_in*)info->ai_addr)->sin_addr, ip, INET_ADDRSTRLEN);
+
+        freeaddrinfo(info);
+        WSACleanup();
+
+        return std::string(ip);
+    }
+
+    void startServer() {
+        system("start Server.exe");
+        // Obtenez l'adresse IP locale après le démarrage du serveur
+        std::string ipAddress = get_local_ip_address();
+        // Copiez l'adresse IP dans le tampon de l'adresse IP en utilisant strcpy_s
+        strcpy_s(ipAddressBuf, sizeof(ipAddressBuf), ipAddress.c_str());
+        // Afficher l'adresse IP locale dans la console (pour le débogage)
+        std::cout << "Local IP Address: " << ipAddress << std::endl;
     }
 
     void setupConnection(const std::string& user, const std::string& ip) {
@@ -65,6 +118,7 @@ struct ChatWindow {
         receiveThread = std::thread(&ChatWindow::receiveMessages, this);
         receiveThread.detach();  // It's detached to prevent blocking.
         isConnected = true;
+        send(clientSocket, username.c_str(), username.length(), 0);
     }
 
     void closeNetwork() {
@@ -116,23 +170,46 @@ struct ChatWindow {
     void DrawLogin() {
         static char usernameBuf[256] = "";
         static char serverIPBuf[256] = "Your Ipv4 Adress";
-        if (!isConnected) {  // Ne montrer la fenêtre de login que si non connecté
-            ImGui::Begin("Login");
-            ImGui::InputText("Username", usernameBuf, sizeof(usernameBuf));
-            ImGui::InputText("Server IP", serverIPBuf, sizeof(serverIPBuf));
-            if (ImGui::Button("Connect")) {
-                setupConnection(std::string(usernameBuf), std::string(serverIPBuf));
-                if (isConnected) {
-                    // La connexion a réussi, préparer l'interface pour le chat
-                    memset(usernameBuf, 0, sizeof(usernameBuf));  // Clear buffers after successful login
-                    memset(serverIPBuf, 0, sizeof(serverIPBuf));
-                    ImGui::End();  // Fermer la fenêtre de login
-                    return;  // S'assurer de ne pas redessiner la fenêtre de login
-                }
+        static bool showIPAddress = false;
+
+        ImGui::Begin("Login");
+
+        ImGui::InputText("Username", usernameBuf, sizeof(usernameBuf));
+        ImGui::InputText("Server IP", serverIPBuf, sizeof(serverIPBuf));
+
+        ImGui::PushID(1); // Pour éviter les conflits d'ID
+        if (ImGui::Button("Host")) {
+            startServer();
+            showIPAddress = true;
+        }
+        ImGui::PopID();
+
+        if (showIPAddress) {
+            ImGui::SameLine();
+            ImGui::Text("Host IP: %s", ipAddressBuf);
+        }
+
+        if (ImGui::Button("Connect")) {
+            setupConnection(std::string(usernameBuf), std::string(serverIPBuf));
+            if (isConnected) {
+                // La connexion a réussi, préparer l'interface pour le chat
+                memset(usernameBuf, 0, sizeof(usernameBuf));  // Clear buffers after successful login
+                memset(serverIPBuf, 0, sizeof(serverIPBuf));
+                ImGui::End();
+                return;
             }
-            ImGui::End();
+        }
+
+        ImGui::End();
+    }
+
+    void disconnect() {
+        if (isConnected) {
+            closeNetwork();
+            isConnected = false;
         }
     }
+
 
     void Draw() {
         if (!isConnected) {
@@ -162,7 +239,13 @@ struct ChatWindow {
             if (reclaim_focus) {
                 ImGui::SetKeyboardFocusHere(-1);
             }
+
+            if (ImGui::Button("Disconnect")) {
+                disconnect();
+            }
+
             ImGui::End();
         }
     }
+
 };
