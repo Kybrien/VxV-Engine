@@ -7,10 +7,11 @@
 #include "ConsoleRecup.h"
 #include "Scene.h"
 #include "Engine.h"
+
 static bool enabled = true;
 static ImGui::FileBrowser fileDialog;
 
-
+Engine* engine = Engine::GetInstance();
 
 static void ShowExampleMenuFile()
 {
@@ -463,7 +464,7 @@ GameObject* CreateGameObjectWithModel(const std::string& modelName) {
 	Manager* manager = Manager::GetInstance();
 	SceneManager* sceneManager = manager->GetManager<SceneManager>();
 
-	GameObject* go = sceneManager->gameObjectPool.CreateGoFromPool();
+	GameObject* go = sceneManager->gameObjectPool.CreateGoFromPool(modelName);
 
 	if (go != nullptr) {
 		go->AddComponent<Model>();
@@ -510,11 +511,11 @@ void ShowAddGameObject() {
 
 				if (ImGui::Button("Capsule"))
 				{
-					// Code pour créer le prefab 2
+					CreateGameObjectWithModel("capsule.obj");
 				}
 				if (ImGui::Button("Plane"))
 				{
-					// Code pour créer le prefab 1
+					CreateGameObjectWithModel("Plane.obj");
 				}
 
 				if (ImGui::Button("Cylinder"))
@@ -609,15 +610,15 @@ void RenderToolbar() {
 
 	// Left-aligned buttons
 	if (ImGui::Button("Play")) {
-		// Trigger play action
+		engine->GetEngineStateInstance()->StartRunTime();
 	}
 	ImGui::SameLine();
 	if (ImGui::Button("Pause")) {
-		// Trigger pause action
+		engine->GetEngineStateInstance()->PauseRunTime();
 	}
 	ImGui::SameLine();
 	if (ImGui::Button("Stop")) {
-		// Trigger stop action
+		engine->GetEngineStateInstance()->ExitRunTime();
 	}
 
 	// Calculate the size needed to center the next set of buttons
@@ -642,23 +643,31 @@ void RenderToolbar() {
 	ImGui::End();
 }
 
-//// Ajoutez un paramètre Scene à la fonction ShowHierarchy
-//static void ShowHierarchy(Scene& scene)
-//{
-//	// Utilisez la fonction GetAllGameObjects() pour obtenir tous les GameObjects
-//	std::vector<GameObject*> allGameObjects = scene.GetAllGameObjects();
-//	// Dans votre boucle de rendu ImGui
-//	ImGui::Begin("Hiérarchie de la scène");
-//
-//	// Affichez une liste de tous les GameObjects
-//	for (GameObject* gameobjects : allGameObjects)
-//	{
-//		if (ImGui::Selectable(gameobjects->name.c_str()))
-//		{
-//			// Si l'utilisateur clique sur un GameObject, stockez une référence à ce GameObject
-//			GameObject* selectedGameObject = gameobjects;
-//		}
-//	}
-//
-//	ImGui::End();
-//}
+// Ajoutez un paramètre Scene à la fonction ShowHierarchy
+static void ShowHierarchy()
+{
+	SceneManager* sceneManager = Manager::GetInstance()->GetManager<SceneManager>();
+	Scene& scene = *sceneManager->GetCurrentScene();
+
+	// Utilisez la fonction GetAllGameObjects() pour obtenir tous les GameObjects
+	std::vector<GameObject*> allGameObjects = scene.GetAllGameObjects();
+	// Dans votre boucle de rendu ImGui
+	ImGui::Begin("Hiérarchie de la scène");
+
+	// Affichez une liste de tous les GameObjects
+	for (GameObject* gameobjects : allGameObjects)
+	{
+		if (ImGui::Selectable(gameobjects->name.c_str()))
+		{
+			// Si l'utilisateur clique sur un GameObject, stockez une référence à ce GameObject
+			GameObject* selectedGameObject = gameobjects;
+		}
+	}
+
+	//if (GameObject* selectedGameObject != nullptr)
+	{
+
+	}
+
+	ImGui::End();
+}

@@ -79,4 +79,9 @@ public:
 	{
 		return engineState->GetBootingState();
 	}
+
+	EngineState* GetEngineStateInstance()
+	{
+		return engineState;
+	}
 };

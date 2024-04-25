@@ -7,8 +7,6 @@
 #include "imgui_impl_opengl3.h"
 
 
-//Scene scene;
-
 void EngineGUI::initImgui(GLFWwindow* window)
 {
     IMGUI_CHECKVERSION();
@@ -48,7 +46,7 @@ void EngineGUI::UpdateGui()
     RenderToolbar();
     ShowConsoleWindow();
     ShowAddGameObject();
-    //ShowHierarchy(scene);
+    ShowHierarchy();
 
 }
 
