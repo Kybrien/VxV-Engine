@@ -24,6 +24,10 @@ public:
 		scenes.push_back(scene);
 	}
 
+	/**
+	* @brief Return all the scenes
+	* @return std::vector<Scene*>
+	*/
 	std::vector<Scene*> GetScenes()
 	{
 		return scenes;

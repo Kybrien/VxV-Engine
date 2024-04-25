@@ -15,6 +15,9 @@ private:
 public:
 	ScriptManager(Manager* manager);
 
+	/**
+	* @brief Get all scripts 
+	*/
 	std::vector<Script*> GetAllScripts()
 	{
 		return scripts;

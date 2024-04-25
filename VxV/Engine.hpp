@@ -20,31 +20,29 @@
 
 
 /**
- * Define the state of the engine.
+ * Setup the engine.
  */
 class Engine {
 private:
-	static Engine* instance;
-	SceneManager* sceneManager;
-	EngineState* engineState = EngineState::GetInstance();
-	float lastTime = glfwGetTime();
-	std::vector<GameObject*> goList;
-	EngineGUI* gui;
-	APIopenGL* apiGraphic;
+	static Engine* m_instance;
+	SceneManager* m_sceneManager;
+	EngineState* m_engineState = EngineState::GetInstance();
+	float m_lastTime = glfwGetTime();
+	std::vector<GameObject*> m_goList;
+	EngineGUI* m_gui;
+	APIopenGL* m_apiGraphic;
 public:
 	Manager* manager;
 
 	static Engine* GetInstance()
 	{
-		if (!instance)
-			instance = new Engine();
-		return instance;
+		if (!m_instance)
+			m_instance = new Engine();
+		return m_instance;
 	}
 
 
-	Engine() {
-
-	}
+	Engine(){}
 
 	/**
 	 * Initialize all the managers and the engine.
@@ -57,36 +55,60 @@ public:
 
 	void Stop(APIopenGL* _apiGraphic);
 
-	void startup(EngineGUI* _gui, APIopenGL* _apiGraphic);
-	void apiDrawLoopSetup(APIopenGL* _apiGraphic);
-	void checkCloseWindow(APIopenGL* _apiGraphic, Engine* _engine);
+	//Load and Init all Graphic API
+	void Startup(EngineGUI* _gui, APIopenGL* _apiGraphic);
+	//Draw the loop
+	void ApiDrawLoopSetup(APIopenGL* _apiGraphic);
+	//Check if the window is closed
+	void CheckCloseWindow(APIopenGL* _apiGraphic, Engine* _engine);
 
+	/**
+	* @brief First instance on play
+	*/
 	void PlayInit();
+	/**
+	* @brief Second instance on play
+	*/
 	void PlayStart();
+	/**
+	* @brief Update every frames after Start
+	*/
 	void PlayUpdate();
+	/**
+	* @brief Last instance before stop
+	*/
 	void PlayStop();
 
+	//Get the EngineState instance
 	EngineState* GetEngineState()
 	{
-		return engineState;
+		return m_engineState;
 	}
 
+	/**
+	* @brief Get the play state of the engine
+	* @return EngineState::ActiveState Return the play state of the engine
+	*/
 	EngineState::ActiveState GetActiveState()
 	{
-		return engineState->GetActiveState();
+		return m_engineState->GetActiveState();
 	}
 
+	/** 
+	* @brief Get the booting state of the engine
+	* @return EngineState::BootingState Return the booting state of the engine
+	*/
 	EngineState::BootingState GetBootingState()
 	{
-		return engineState->GetBootingState();
+		return m_engineState->GetBootingState();
 	}
 
 	double getLastTime()
 	{
-		return lastTime;
+		return m_lastTime;
 	}
 	void setLastTime(double _lastTime)
 	{
-		lastTime = _lastTime;
+		m_lastTime = _lastTime;
 	}
 };

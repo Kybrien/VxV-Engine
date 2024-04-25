@@ -16,8 +16,13 @@ public:
 		return instance;
 	}
 
+	/**
+	* @brief Return the manager of the type T
+	* @return T*
+	*/
 	template<typename T>
 	T* GetManager();
+
 	void Init();
 
 	void Stop(); // Supprimer tous les pointeurs

@@ -13,10 +13,10 @@ void EngineGUI::initImgui(GLFWwindow* window)
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
     (void)io;
-    // Chargez la police qui supporte les caractères accentués
+    // Load the font
     ImFont* font = io.Fonts->AddFontFromFileTTF("monocraft.ttf", 17);
 
-    // V�rifiez si la police a �t� charg�e correctement
+    //Check if the font has been loaded correctly
     if (font == nullptr)
     {
         std::cerr << "Erreur lors du chargement de la police." << std::endl;

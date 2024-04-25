@@ -1,34 +1,34 @@
 #pragma once
 #include "Engine.hpp"
 
-Engine* Engine::instance = nullptr;
+Engine* Engine::m_instance = nullptr;
 
 void Engine::InitEngine() {
-	engineState->StartBooting();
+	m_engineState->StartBooting();
 
 
-	gui = new EngineGUI();
-	apiGraphic = new APIopenGL();
+	m_gui = new EngineGUI();
+	m_apiGraphic = new APIopenGL();
 
-	startup(gui, apiGraphic);
+	Startup(m_gui, m_apiGraphic);
 	manager = Manager::GetInstance();
 	// init les managers
 	manager->Init();
-	sceneManager = manager->GetManager<SceneManager>();
-	goList = sceneManager->GetCurrentScene()->GetAllGameObjects();
+	m_sceneManager = manager->GetManager<SceneManager>();
+	m_goList = m_sceneManager->GetCurrentScene()->GetAllGameObjects();
 
 
 
-	engineState->ReadyBooting();
+	m_engineState->ReadyBooting();
 	Start();
 }
 
 void Engine::Start()
 {
-	engineState->StartRunning();
+	m_engineState->StartRunning();
 
 
-	engineState->Running();
+	m_engineState->Running();
 	Update();
 }
 
@@ -36,8 +36,8 @@ void Engine::Update()
 {
 	while (GetBootingState() == EngineState::BootingState::Running)
 	{
-		checkCloseWindow(apiGraphic, this->GetInstance());
-		apiDrawLoopSetup(apiGraphic);
+		CheckCloseWindow(m_apiGraphic, this->GetInstance());
+		ApiDrawLoopSetup(m_apiGraphic);
 		if (GetActiveState() == EngineState::ActiveState::Edition) {
 
 		}
@@ -46,20 +46,20 @@ void Engine::Update()
 		}
 
 		//TODO: Move it to EngineSetup
-		for (GameObject* go : goList)
+		for (GameObject* go : m_goList)
 		{
 			Model* modelComp = go->GetComponent<Model>();
 			if (modelComp != nullptr)
 			{
-				apiGraphic->drawingModel(go);
+				m_apiGraphic->drawingModel(go);
 			}
 		}
 
-		gui->UpdateGui();
-		gui->RenderGui();
+		m_gui->UpdateGui();
+		m_gui->RenderGui();
 
-		apiGraphic->unbindArrays();
-		apiGraphic->swapBuffers();
+		m_apiGraphic->unbindArrays();
+		m_apiGraphic->swapBuffers();
 		glfwPollEvents();
 	}
 }
@@ -68,26 +68,25 @@ void Engine::Update()
 //init go
 void Engine::PlayInit()
 {
-	sceneManager->GetCurrentScene()->Init();
+	m_sceneManager->GetCurrentScene()->Init();
 }
 
 //start go
 void Engine::PlayStart()
 {
-	sceneManager->GetCurrentScene()->Start();
+	m_sceneManager->GetCurrentScene()->Start();
 }
 
 //stop go
 void Engine::PlayUpdate()
 {
-
-	sceneManager->GetCurrentScene()->Update();
+		m_sceneManager->GetCurrentScene()->Update();
 }
 
 void Engine::Stop(APIopenGL* _apiGraphic)
 {
 	std::cout << "Engine Stop" << std::endl;
-	engineState->AskToStop();
+	m_engineState->AskToStop();
 	for (GameObject* go : Manager::GetInstance()->GetManager<SceneManager>()->GetCurrentScene()->GetAllGameObjects())
 	{
 		Model* model = go->GetComponent<Model>();
@@ -96,10 +95,10 @@ void Engine::Stop(APIopenGL* _apiGraphic)
 			_apiGraphic->cleanupModel(model);
 		}
 	}
-	apiGraphic->terminate();
+	m_apiGraphic->terminate();
 }
 
-void Engine::startup(EngineGUI* _gui, APIopenGL* _apiGraphic) {
+void Engine::Startup(EngineGUI* _gui, APIopenGL* _apiGraphic) {
 	_apiGraphic->initialize();
 	_apiGraphic->setShaders("SimpleVertexShader.MIKU", "SimpleFragmentShader.VALORANT");
 	_apiGraphic->setBackgroundColor(0.0f, 0.0f, 0.4f, 0.0f);
@@ -124,14 +123,15 @@ void Engine::startup(EngineGUI* _gui, APIopenGL* _apiGraphic) {
 	ImGui_ImplOpenGL3_Init("#version 330");
 }
 
-void Engine::checkCloseWindow(APIopenGL* _apiGraphic, Engine* _engine)
+void Engine::CheckCloseWindow(APIopenGL* _apiGraphic, Engine* _engine)
 {
-	if (glfwGetKey(_apiGraphic->getWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS || glfwWindowShouldClose(_apiGraphic->getWindow())) {
+	if (glfwWindowShouldClose(_apiGraphic->getWindow())) {
+		Stop(_apiGraphic);
 		_engine->GetEngineState()->Stopped();
 	}
 }
 
-void Engine::apiDrawLoopSetup(APIopenGL* _apiGraphic)
+void Engine::ApiDrawLoopSetup(APIopenGL* _apiGraphic)
 {
 	_apiGraphic->clearScreen();
 	_apiGraphic->useShader();
