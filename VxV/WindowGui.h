@@ -414,52 +414,6 @@ void ShowInputBool(const std::string& message, bool& input, bool& show)
 	ImGui::End();
 }
 
-/*void ModifyGameObjects()
-{
-	// Structure pour repr?senter un GameObject
-	struct GameObject {
-		std::string name;
-		float position[3] = { 0.0f, 0.0f, 0.0f };
-		float rotation[3] = { 0.0f, 0.0f, 0.0f };
-	};
-	// Commencer une nouvelle fen?tre ImGui
-	ImGui::Begin("GameObjects");
-
-	// Parcourir la liste de GameObjects
-	for (GameObject& gameObject : gameObjects)
-	{
-		if (ImGui::TreeNode(gameObject.name.c_str()))
-		{
-			ImGui::SliderFloat3("Position", gameObject.position, -100.0f, 100.0f);
-			ImGui::SliderFloat3("Rotation", gameObject.rotation, -180.0f, 180.0f);
-			ImGui::TreePop();
-		}
-	}
-
-	// Terminer la fen?tre ImGui
-	ImGui::End();
-}*/
-
-void CreateGameObject(std::vector<std::string>& gameObjects, bool& show) {
-	// Cr?ez une nouvelle fen?tre ImGui
-	ImGui::Begin("Cr?er un GameObject", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Ajoutez un champ de texte pour le nom du GameObject
-	static char gameObjectName[128];
-	ImGui::InputText("Nom", gameObjectName, IM_ARRAYSIZE(gameObjectName));
-
-	// Ajoutez un bouton pour cr?er le GameObject
-	if (ImGui::Button("Cr?er")) {
-		// Ajoutez le GameObject ? la liste
-		gameObjects.push_back(gameObjectName);
-
-		// Effacez le champ de texte
-		memset(gameObjectName, 0, sizeof(gameObjectName));
-	}
-
-	// Terminez la fen?tre
-	ImGui::End();
-}
 GameObject* CreateGameObjectWithModel(const std::string& modelName) {
 	Manager* manager = Manager::GetInstance();
 	SceneManager* sceneManager = manager->GetManager<SceneManager>();
@@ -482,6 +436,7 @@ GameObject* CreateGameObjectWithModel(const std::string& modelName) {
 
 	return go; // This will return nullptr if GameObject creation failed
 }
+
 
 void ShowAddGameObject() {
 	if (ImGui::Begin("Create Game Object"))
@@ -520,14 +475,13 @@ void ShowAddGameObject() {
 
 				if (ImGui::Button("Cylinder"))
 				{
-					// Code pour créer le prefab 2
+					CreateGameObjectWithModel("Cylinder.obj");
 				}
 				if (ImGui::Button("Miku"))
 				{
-					// Code pour créer le prefab 1
+					CreateGameObjectWithModel("Cylinder.obj");
 				}
 
-				// Ajoutez plus de boutons pour plus de prefabs ici...
 
 				ImGui::EndTabItem();
 			}
@@ -568,36 +522,6 @@ void ShowConsoleWindow()
 }
 
 
-//void RenderSceneHierarchy() {
-//	// Start the ImGui window
-//	ImGui::Begin("Scene Hierarchy");
-//
-//	// Iterate through your game objects/entities and create tree nodes
-//	for (const auto& gameObjectPtr : Scene::GetAllGameObjects()) {
-//		// Dereference the pointer to get the actual GameObject
-//		const auto& gameObject = *gameObjectPtr;
-//
-//		// Create a tree node with the name of the entity
-//		// Assuming GetName() is a method of GameObject that returns a string
-//		if (ImGui::TreeNode(gameObject->GetName().c_str())) {
-//			// If the tree node is open, you can list components or children here
-//			// For each component or child, you can make them selectable
-//			// Assuming GetComponents() is a method of GameObject that returns a list of Component pointers
-//			for (const auto& componentPtr : gameObject.GetComponents()) {
-//				// Dereference the pointer to get the actual Component
-//				const auto& component = *componentPtr;
-//				// Assuming GetName() and IsSelected() are methods of Component
-//				// GetName() returns a string and IsSelected() returns a bool
-//				ImGui::Selectable(component.GetName().c_str(), component.IsSelected());
-//			}
-//
-//			// Don't forget to call TreePop!
-//			ImGui::TreePop();
-//		}
-//	}
-//
-//	ImGui::End();
-//}
 
 void RenderToolbar() {
 	// Assuming toolbarHeight is set to your desired height for the toolbar
@@ -643,11 +567,13 @@ void RenderToolbar() {
 	ImGui::End();
 }
 
+
 // Ajoutez un paramètre Scene à la fonction ShowHierarchy
 static void ShowHierarchy()
 {
 	SceneManager* sceneManager = Manager::GetInstance()->GetManager<SceneManager>();
 	Scene& scene = *sceneManager->GetCurrentScene();
+	GameObject* selectedGameObject = nullptr;
 
 	// Utilisez la fonction GetAllGameObjects() pour obtenir tous les GameObjects
 	std::vector<GameObject*> allGameObjects = scene.GetAllGameObjects();
@@ -664,10 +590,16 @@ static void ShowHierarchy()
 		}
 	}
 
-	//if (GameObject* selectedGameObject != nullptr)
+	if (selectedGameObject != nullptr)
 	{
+		ImGui::Begin("Inspector");
 
-	}
+		// Affichez le nom du GameObject
+		ImGui::Text("Nom: %s", selectedGameObject->name.c_str());
+
+		ImGui::Separator();
+
+		ImGui::End();
 
 	ImGui::End();
 }
