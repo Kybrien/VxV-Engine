@@ -46,7 +46,8 @@ public:
 
 	/**
 	* @brief Return the first child GameObject with the name
-	* @param std::string name : Child with the name
+	* @param std::string name : name of the child
+	* @return GameObject* : Child with the name
 	*/
 	GameObject* GetChildByName(std::string name);
 
