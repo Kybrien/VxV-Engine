@@ -14,6 +14,17 @@ struct ClientInfo {
 std::vector<ClientInfo> clients;
 std::mutex clientsMutex;
 
+void handleClientDisconnection(SOCKET clientSocket, const std::string& nickname) {
+    std::lock_guard<std::mutex> lock(clientsMutex);
+    for (auto it = clients.begin(); it != clients.end(); ++it) {
+        if (it->socket == clientSocket) {
+            clients.erase(it);
+            break;
+        }
+    }
+    std::cerr << "Connection with " << nickname << " closed\n";
+}
+
 void handleClient(SOCKET clientSocket) {
     char message[1024];
     int iResult;
@@ -47,8 +58,7 @@ void handleClient(SOCKET clientSocket) {
                 }
             }
         }
-        else if (iResult == 0) {
-            // Supprimer le client de la liste des clients connectés
+        else {
             {
                 std::lock_guard<std::mutex> lock(clientsMutex);
                 for (auto it = clients.begin(); it != clients.end(); ++it) {
@@ -58,10 +68,6 @@ void handleClient(SOCKET clientSocket) {
                     }
                 }
             }
-            std::cerr << "Connexion au client fermee\n";
-            break;
-        }
-        else {
             //std::cerr << "Erreur lors de la reception du message: " << WSAGetLastError() << std::endl;
             std::cout << nickname << " is OFFLINE" << std::endl;
             break;
@@ -70,6 +76,7 @@ void handleClient(SOCKET clientSocket) {
 
     closesocket(clientSocket);
 }
+
 
 int initServ() {
     WSADATA wsaData;
@@ -120,7 +127,17 @@ int initServ() {
         std::string clientNickname = nickname;
         std::cout << "| " << clientNickname << " is ONLINE |\n";
 
+        char joinMessage[1024] = " a rejoint le chat...";
+        std::string welcomeServ = nickname + std::string(joinMessage);
+        for (const auto& otherClient : clients) {
+            if (otherClient.socket != clientSocket) {
+                send(otherClient.socket, welcomeServ.c_str(), welcomeServ.length(), 0);
+            }
+        }
+        
+
         std::thread clientThread(handleClient, clientSocket);
+
         clientThread.detach(); // Détacher le thread pour qu'il se termine automatiquement
 
         Sleep(100); // Attente courte pour éviter les problèmes de concurrence

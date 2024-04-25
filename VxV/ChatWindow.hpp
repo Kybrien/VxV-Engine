@@ -71,8 +71,6 @@ struct ChatWindow {
 
         return std::string(ip);
     }
-    
-
 
     void startServer() {
         system("start Server.exe");
@@ -83,8 +81,6 @@ struct ChatWindow {
         // Afficher l'adresse IP locale dans la console (pour le débogage)
         std::cout << "Local IP Address: " << ipAddress << std::endl;
     }
-
-
 
     void setupConnection(const std::string& user, const std::string& ip) {
         username = user;
@@ -122,6 +118,7 @@ struct ChatWindow {
         receiveThread = std::thread(&ChatWindow::receiveMessages, this);
         receiveThread.detach();  // It's detached to prevent blocking.
         isConnected = true;
+        send(clientSocket, username.c_str(), username.length(), 0);
     }
 
     void closeNetwork() {
@@ -198,15 +195,13 @@ struct ChatWindow {
                 // La connexion a réussi, préparer l'interface pour le chat
                 memset(usernameBuf, 0, sizeof(usernameBuf));  // Clear buffers after successful login
                 memset(serverIPBuf, 0, sizeof(serverIPBuf));
-                ImGui::End();  
-                return; 
+                ImGui::End();
+                return;
             }
         }
 
         ImGui::End();
     }
-
-
 
     void disconnect() {
         if (isConnected) {
