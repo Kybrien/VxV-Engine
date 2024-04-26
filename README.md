@@ -4,19 +4,17 @@
 [Henri T.](https://github.com/46Yuu) | [Hugo R.](https://github.com/Hroycode) | [Victor L.](https://github.com/Draknut) | [Yanaël C.](https://github.com/Dranemo) | [Melvin G.](https://github.com/Mguellaff) | [Gwendal A.](https://github.com/LiLPray) | [Adrien P.](https://github.com/Kybrien)
 ***
 #### ❓ What is VxV ?
-VxV is a homemade OpenGL engine we've been working on since 5 weeks.   
+VxV is a homemade OpenGL engine we've been working on since almost 4 weeks.   
 It only has an educational purpose (for now at least) and it's the best way for us to understand properly HOW does a game engine work.   
 ***
 #### 💬 How to use ?
-You firt need to compile the file _Server.cpp and place the .exe in the source folder. You can then compile the Engine and it will be ready to go.
+It is actually pretty simple, just download the Alpha release, compile it in your Visual Studio and the .exe should appear in the Debug folder. Simple.
 ***
 #### ⚠️ Note
 We are still working on this project so the releases are not perfect and you may encounter issues or bugs while using it :)   
 👇🏼 If you are interested in the extern libraries we used it's just down below   
 ***
 ### External Libraries :   
-*Overall documentation with [Doxygen](https://www.doxygen.nl)*   
-
 We first used [GLFW](https://www.glfw.org/) :
 > It provided us a simple API for creating windows, contexts and surfaces, receiving input and events.   
 
@@ -32,4 +30,4 @@ For the 3D objects importation we chose [tinyObj](https://github.com/tinyobjload
 
 We then needed a Json reader/writer for managing our saves. Thanks to [jsonCPP](https://github.com/open-source-parsers/jsoncpp) we got all of that quite easily :
 > JsonCpp is a C++ library that allows manipulating JSON values, including serialization and deserialization to and from strings.
-> It can also preserve existing comment in unserialization/serialization steps, making it a convenient format to store user input files.   
+> It can also preserve existing comment in unserialization/serialization steps, making it a convenient format to store user input files.
