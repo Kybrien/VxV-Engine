@@ -7,6 +7,7 @@
 #include "ConsoleRecup.h"
 #include "Scene.h"
 #include "Engine.hpp"
+#include "Transform.h"
 
 
 static bool enabled = true;

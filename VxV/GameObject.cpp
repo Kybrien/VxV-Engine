@@ -242,7 +242,7 @@ void GameObject::LoadComponent(Json::Value compJson, GameObject* parentGo)
 	case 3: AddComponent<ScriptingComponent>();
 		GetComponent<ScriptingComponent>()->Load(compJson, parentGo);
 		break;
-	case 4: //AddComponent<Light>();
+	case 4: AddComponent<Light>();
 		break;
 	}
 }

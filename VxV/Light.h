@@ -10,6 +10,9 @@ public:
 	*/
 	Light(GameObject* gameObject);
 
+
+	void Load(Json::Value& compJson, GameObject* ParentGO) override {}
+
 	void Save(Json::Value& compJson) override;
 
 	void Copy(GameObject* goToFill) override;

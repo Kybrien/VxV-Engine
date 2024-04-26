@@ -12,5 +12,5 @@ void Light::Save(Json::Value& compJson) {
 }
 
 void Light::Copy(GameObject* goToFill) {
-	//goToFill->AddComponent<Light>();
+	goToFill->AddComponent<Light>();
 }
