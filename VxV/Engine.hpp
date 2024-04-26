@@ -1,13 +1,20 @@
 #pragma once
 
 #include "APIopenGL.hpp"
+#include "EngineGUI.h"
 #include "ModelManager.h"
 #include "PrefabManager.h"
 #include "InputManager.h"
 #include "SceneManager.h"
 #include "EngineState.h"
-#include "EngineGUI.h"
 #include <iostream>
+
+
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+
+#include "imfilebrowser.h"
 
 #include "Debug.h"
 

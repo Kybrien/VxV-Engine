@@ -1,3 +1,4 @@
+#pragma once
 #include "loadingShader.hpp"
 #include "GraphicAPI.hpp"
 

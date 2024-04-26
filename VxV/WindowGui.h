@@ -535,15 +535,15 @@ void RenderToolbar() {
 
 	// Left-aligned buttons
 	if (ImGui::Button("Play")) {
-		engine->GetEngineStateInstance()->StartRunTime();
+		engine->GetEngineState()->StartRunTime();
 	}
 	ImGui::SameLine();
 	if (ImGui::Button("Pause")) {
-		engine->GetEngineStateInstance()->PauseRunTime();
+		engine->GetEngineState()->PauseRunTime();
 	}
 	ImGui::SameLine();
 	if (ImGui::Button("Stop")) {
-		engine->GetEngineStateInstance()->ExitRunTime();
+		engine->GetEngineState()->ExitRunTime();
 	}
 
 	// Calculate the size needed to center the next set of buttons
@@ -630,7 +630,7 @@ static void ShowHierarchy()
 			if (ImGui::DragFloat3("Rotation", &rotation.x))
 			{
 				// Si l'utilisateur modifie la rotation, mettez à jour le Transform
-				transform->SetRotation(rotation);
+				transform->SetRotation(rotation.x,rotation.y, rotation.z);
 			}
 
 			glm::vec3 scale = transform->GetScale();
