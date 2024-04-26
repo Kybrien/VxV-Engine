@@ -19,7 +19,9 @@ void Scene::RemoveGameObject(int id)
 	{
 		if (allGameObjects[i]->GetId() == id) {
 			sceneManager->gameObjectPool.Free(allGameObjects[i]);
+			sceneManager->gameObjectPool.Free(gameObjects[i]);
 			allGameObjects.erase(allGameObjects.begin() + i);
+			gameObjects.erase(gameObjects.begin() + i);
 			break;
 		}
 	}

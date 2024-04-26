@@ -557,13 +557,18 @@ void RenderToolbar() {
 		ImGui::SameLine(spacing);
 	}
 
-	// Center-aligned buttons
-	for (int i = 0; i < 3; ++i) {
-		if (i > 0) ImGui::SameLine();
-		if (ImGui::Button("Centered Button")) {
-			// Trigger action for this button
-		}
+	if (ImGui::Button("Save"))
+	{
+		engine->manager->GetManager<SceneManager>()->Save();
 	}
+
+	// Center-aligned buttons
+	//for (int i = 0; i < 3; ++i) {
+	//	if (i > 0) ImGui::SameLine();
+	//	if (ImGui::Button("Centered Button")) {
+	//		// Trigger action for this button
+	//	}
+	//}
 
 
 
