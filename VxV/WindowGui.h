@@ -626,7 +626,6 @@ static void ShowHierarchy()
 		glm::vec3 rotation = transform->GetRotation();
 		glm::vec3 scale = transform->GetScale();
 		std::string name = selectedGameObject->name;
-		std::cout << position << std::endl;
 
 
 
