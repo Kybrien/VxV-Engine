@@ -7,6 +7,9 @@
 #include "ConsoleRecup.h"
 #include "Scene.h"
 #include "Engine.h"
+#include "ScriptingComponent.h"
+#include <filesystem>
+
 
 static bool enabled = true;
 static ImGui::FileBrowser fileDialog;
@@ -85,15 +88,22 @@ static void MainMenuBar()
 		}
 		if (ImGui::BeginMenu("Scene"))
 		{
+			if (ImGui::MenuItem("Load")) {}
+			if (ImGui::MenuItem("Save")) {}
+			if (ImGui::MenuItem("Save As")) {}
 
 
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Settings"))
 		{
-
+			if (ImGui::MenuItem("General")) {}
+			if (ImGui::MenuItem("Editor")) {}
+			if (ImGui::MenuItem("Scene")) {}
+			if (ImGui::MenuItem("Input")) {}
 			ImGui::EndMenu();
 		}
+
 		if (ImGui::BeginMenu("Help"))
 		{
 			if (ImGui::BeginMenu("Controls"))
@@ -449,38 +459,49 @@ void ShowAddGameObject() {
 			if (ImGui::BeginTabItem("Create"))
 			{
 				// open file dialog when user clicks this button
+				fileDialog.SetTypeFilters({ ".obj" });
 				if (ImGui::Button("open file obj"))
 					fileDialog.Open();
 
+				fileDialog.Display();
+
+				if (fileDialog.HasSelected())
+				{
+					std::filesystem::path filePath(fileDialog.GetSelected().string());
+
+					std::cout << "Selected filename: " << filePath.stem().string() << std::endl;
+					CreateGameObjectWithModel(filePath.stem().string());
+					fileDialog.ClearSelected();
+				}
 				ImGui::EndTabItem();
 			}
 			if (ImGui::BeginTabItem("Prefab"))
 			{
 				if (ImGui::Button("Cube"))
 				{
-					CreateGameObjectWithModel("cube.obj");
+					CreateGameObjectWithModel("cube");
 				}
 				if (ImGui::Button("Sphere"))
 				{
-					CreateGameObjectWithModel("sphere.obj");
+					CreateGameObjectWithModel("sphere");
 				}
 
 				if (ImGui::Button("Capsule"))
 				{
-					CreateGameObjectWithModel("capsule.obj");
+					CreateGameObjectWithModel("capsule");
 				}
 				if (ImGui::Button("Plane"))
 				{
-					CreateGameObjectWithModel("Plane.obj");
+					CreateGameObjectWithModel("plane");
 				}
 
 				if (ImGui::Button("Cylinder"))
 				{
-					CreateGameObjectWithModel("Cylinder.obj");
+					CreateGameObjectWithModel("cylinder");
 				}
 				if (ImGui::Button("Miku"))
 				{
-					CreateGameObjectWithModel("Cylinder.obj");
+					CreateGameObjectWithModel("miku");
 				}
 
 
@@ -491,15 +512,6 @@ void ShowAddGameObject() {
 	}
 	ImGui::End();
 
-	fileDialog.Display();
-
-	if (fileDialog.HasSelected())
-	{
-
-		std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
-		CreateGameObjectWithModel(fileDialog.GetSelected().string());
-		fileDialog.ClearSelected();
-	}
 	ImGui::Separator();
 }
 
@@ -529,7 +541,7 @@ void RenderToolbar() {
 
 
 	// We don't want the toolbar window to be moveable or have any framing
-	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoScrollWithMouse ;
+	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoScrollWithMouse;
 
 	ImGui::Begin("##Toolbar", nullptr, window_flags);
 
@@ -563,7 +575,7 @@ void RenderToolbar() {
 		}
 	}
 
-	
+
 
 	ImGui::End();
 }
@@ -596,39 +608,80 @@ static void ShowHierarchy()
 	// Si un GameObject a été sélectionné, affichez ses informations dans une fenêtre ImGui
 	if (selectedGameObject != nullptr)
 	{
-		ImGui::Begin("Inspector");
+		if (ImGui::Begin("Inspector", nullptr, ImGuiWindowFlags_NoCollapse)) {
 
-		// Affichez le nom du GameObject
-		ImGui::Text("Nom: %s", selectedGameObject->name.c_str());
-		ImGui::Separator();
+			// Affichez le nom du GameObject
+			ImGui::Text("Nom: %s", selectedGameObject->name.c_str());
 
-		// Obtenez le Transform du GameObject
-		Transform* transform = selectedGameObject->GetComponent<Transform>();
-		
+			ImGui::Separator();
+
+			// Obtenez le Transform du GameObject
+			Transform* transform = selectedGameObject->GetComponent<Transform>();
+
 			// Créez des contrôles de glissement pour la position, la rotation et l'échelle
-			glm::vec3 position = transform->SetPosition();
-			if (ImGui::DragFloat3("Position", &position.x))
+			glm::vec3 position = transform->GetPosition();
+
+			if (ImGui::DragFloat("Position X", &position.x) || ImGui::DragFloat("Position Y", &position.y) || ImGui::DragFloat("Position Z", &position.z))
 			{
 				// Si l'utilisateur modifie la position, mettez à jour le Transform
 				transform->SetPosition(position);
 			}
 
+			ImGui::Separator();
+
 			glm::vec3 rotation = transform->GetRotation();
-			if (ImGui::DragFloat3("Rotation", &rotation.x))
+			if (ImGui::DragFloat("Rotation X", &rotation.x) || ImGui::DragFloat("Rotation Y", &rotation.y) || ImGui::DragFloat("Rotation Z", &rotation.z))
 			{
 				// Si l'utilisateur modifie la rotation, mettez à jour le Transform
-				transform->SetRotation(rotation);
+				transform->Rotate(rotation.x, rotation.y, rotation.z);
 			}
 
+			ImGui::Separator();
+
 			glm::vec3 scale = transform->GetScale();
-			if (ImGui::DragFloat3("Scale", &scale.x, 0.1f, 0.1f, 10.0f))
+			if (ImGui::DragFloat("Scale X", &scale.x) || ImGui::DragFloat("Scale Y", &scale.y) || ImGui::DragFloat("Scale Z", &scale.z))
 			{
 				// Si l'utilisateur modifie l'échelle, mettez à jour le Transform
 				transform->SetScale(scale);
 			}
-		
-		ImGui::End();
 
+			ImGui::Separator();
+
+			ImGui::Text("Script");
+			//// Ajoutez un bouton pour ajouter un script
+			//if (ImGui::Button("Ajouter un script"))
+			//{
+			//	// Ajoutez un ScriptingComponent au GameObject
+			//	ScriptingComponent* scriptComponent = selectedGameObject->AddComponent<ScriptingComponent>();
+			//	// Vous pouvez également définir le script ici si vous le souhaitez
+			//	// scriptComponent->SetScript(...);
+			//}
+
+			ImGui::Separator();
+			ImGui::Text("Model");
+			Model* modelComponent = selectedGameObject->GetComponent<Model>();
+			if (ImGui::Button("Changer le modèle"))
+			{
+				// Ouvrez un dialogue de sélection de fichier
+				fileDialog.Open();
+			}
+
+			// Si un fichier a été sélectionné, mettez à jour le modèle du GameObject
+			if (fileDialog.HasSelected())
+			{
+				std::filesystem::path filePath(fileDialog.GetSelected().string());
+				modelComponent->SetModel(filePath.stem().string());
+				fileDialog.ClearSelected();
+			}
+
+			// Ajoutez un bouton pour supprimer le GameObject
+			if (ImGui::Button("Supprimer"))
+			{
+				modelComponent->SetModel("cube");
+
+			}
+		ImGui::End();
+		}
 
 	}
 

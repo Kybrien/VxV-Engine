@@ -81,12 +81,12 @@ int main() {
 
 		
 
-		go->GetComponent<Transform>()->Rotate(180, 180 ,0);
+		/*go->GetComponent<Transform>()->Rotate(180, 180 ,0);
 		go->GetComponent<Transform>()->SetRotation(90, 0, 0);
 
 		go->GetComponent<Transform>()->SetPosition(glm::vec3(0, 0, 0));
 
-		go->GetComponent<Transform>()->SetScale(glm::vec3(10, 1, 1));
+		go->GetComponent<Transform>()->SetScale(glm::vec3(10, 1, 1));*/
 
 
 
