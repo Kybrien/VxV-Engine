@@ -114,18 +114,6 @@ void Transform::Scale(glm::vec3 sca, bool isChild) {
 		child->GetComponent<Transform>()->Scale(sca, true);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 void Transform::SaveVec3(Json::Value& compJson, glm::vec3 vec) {
 	compJson.append(vec.x);
 	compJson.append(vec.y);
@@ -137,4 +125,3 @@ void Transform::LoadVec3(Json::Value& compJson, glm::vec3& vec) {
 	vec.y = compJson[1].asFloat();
 	vec.z = compJson[2].asFloat();
 }
-

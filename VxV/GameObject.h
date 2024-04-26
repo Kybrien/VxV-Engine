@@ -226,12 +226,12 @@ public:
 	void Delete();
 
 
+
 private:
 	/**
 	* @brief ID of the GameObject.
 	* Represents the unique identifier assigned to the GameObject.
 	*/
-
 
 	/**
 	* @brief List of child GameObjects.
