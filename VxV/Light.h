@@ -1,0 +1,21 @@
+#pragma once
+#include "Component.h"
+
+class Light : public Component
+{
+public:
+	/**
+	* @brief Instanciate a component Light.
+	* @param A reference to the linked GameObject
+	*/
+	Light(GameObject* gameObject);
+	Light();
+
+
+	void Load(Json::Value& compJson, GameObject* ParentGO) override {}
+
+	void Save(Json::Value& compJson) override;
+
+	void Copy(GameObject* goToFill) override;
+};
+
