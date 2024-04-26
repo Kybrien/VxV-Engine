@@ -14,6 +14,12 @@ struct ClientInfo {
 std::vector<ClientInfo> clients;
 std::mutex clientsMutex;
 
+/**
+ * @brief Handles client disconnection.
+ * @param clientSocket The socket of the client to disconnect.
+ * @param nickname The nickname of the client.
+ * @return void
+ */
 void handleClientDisconnection(SOCKET clientSocket, const std::string& nickname) {
     std::lock_guard<std::mutex> lock(clientsMutex);
     for (auto it = clients.begin(); it != clients.end(); ++it) {
@@ -25,6 +31,11 @@ void handleClientDisconnection(SOCKET clientSocket, const std::string& nickname)
     std::cerr << "Connection with " << nickname << " closed\n";
 }
 
+/**
+ * @brief Handles a connected client.
+ * @param clientSocket The socket of the client.
+ * @return void
+ */
 void handleClient(SOCKET clientSocket) {
     char message[1024];
     int iResult;
@@ -77,7 +88,10 @@ void handleClient(SOCKET clientSocket) {
     closesocket(clientSocket);
 }
 
-
+/**
+ * @brief Initializes the chat server.
+ * @return 0 if initialization is successful, otherwise an error code.
+ */
 int initServ() {
     WSADATA wsaData;
     SOCKET serverSocket;

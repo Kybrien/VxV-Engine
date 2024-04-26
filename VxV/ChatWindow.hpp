@@ -13,8 +13,10 @@
 
 #pragma comment(lib, "Ws2_32.lib")
 
-
-
+/**
+ * @struct ChatWindow
+ * @brief Represents a chat window including connection handling, message sending, and receiving.
+ */
 struct ChatWindow {
     std::string username;
     std::deque<std::string> messages;
@@ -26,14 +28,26 @@ struct ChatWindow {
     bool isConnected = false;
     char ipAddressBuf[256];
 
+    /**
+   * @brief Constructor for ChatWindow.
+   */
     ChatWindow() {
         memset(inputBuf, 0, sizeof(inputBuf));
         memset(ipAddressBuf, 0, sizeof(ipAddressBuf));
     }
 
+    /**
+     * @brief Destructor for ChatWindow.
+     */
     ~ChatWindow() {
         closeNetwork();
     }
+
+
+    /**
+     * @brief Gets the local IP address of the host machine.
+     * @return The local IP address as a string.
+     */
 
     std::string get_local_ip_address() {
         WSADATA wsaData;
@@ -74,6 +88,9 @@ struct ChatWindow {
         return std::string(ip);
     }
 
+    /**
+    * @brief Starts the chat server.
+    */
     void startServer() {
         system("start Server.exe");
         // Obtenez l'adresse IP locale après le démarrage du serveur
@@ -84,12 +101,20 @@ struct ChatWindow {
         std::cout << "Local IP Address: " << ipAddress << std::endl;
     }
 
+    /**
+   * @brief Sets up the connection to the chat server.
+   * @param user The username of the client.
+   * @param ip The IP address of the server.
+   */
     void setupConnection(const std::string& user, const std::string& ip) {
         username = user;
         serverIP = ip;
         initNetwork();
     }
 
+    /**
+     * @brief Initializes the network connection.
+     */
     void initNetwork() {
         WSADATA wsaData;
         int result = WSAStartup(MAKEWORD(2, 2), &wsaData);
@@ -123,6 +148,9 @@ struct ChatWindow {
         send(clientSocket, username.c_str(), username.length(), 0);
     }
 
+    /**
+    * @brief Closes the network connection.
+    */
     void closeNetwork() {
         if (clientSocket != INVALID_SOCKET) {
             closesocket(clientSocket);
@@ -133,6 +161,9 @@ struct ChatWindow {
         }
     }
 
+    /**
+    * @brief Receives messages from the server in a separate thread.
+    */
     void receiveMessages() {
         char buffer[1024];
         while (true) {
@@ -153,11 +184,19 @@ struct ChatWindow {
         }
     }
 
+    /**
+     * @brief Adds a message to the message queue.
+     * @param message The message to add.
+     */
     void addMessage(const std::string& message) {
         std::lock_guard<std::mutex> lock(mutex);
         messages.push_back(message);
     }
 
+    /**
+    * @brief Sends a message to the chat server.
+    * @param message The message to send.
+    */
     void sendMessage(const std::string& message) {
         std::string fullMessage = message;
         int bytesSent = send(clientSocket, fullMessage.c_str(), fullMessage.length(), 0);
@@ -169,6 +208,9 @@ struct ChatWindow {
         }
     }
 
+    /**
+    * @brief Draws the login interface.
+    */
     void DrawLogin() {
         static char usernameBuf[256] = "";
         static char serverIPBuf[256] = "Your Ipv4 Adress";
@@ -205,6 +247,9 @@ struct ChatWindow {
         ImGui::End();
     }
 
+    /**
+    * @brief Disconnects from the chat server.
+    */
     void disconnect() {
         if (isConnected) {
             closeNetwork();
@@ -212,7 +257,9 @@ struct ChatWindow {
         }
     }
 
-
+    /**
+    * @brief Draws the chat interface.
+    */
     void Draw() {
         if (!isConnected) {
             DrawLogin();
