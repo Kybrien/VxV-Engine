@@ -118,7 +118,6 @@ public:
 		for (size_type i = 0; i < N; i++)
 		{
 			m_state[i] = false;
-			std::cout<< "Memory Chunk " << i << " is free" << std::endl;
 		}
 	}
 
@@ -132,11 +131,23 @@ public:
 			if (!m_state[i])
 			{
 				m_state[i] = true;
+				std::cout << "Allocating memory at memoru chunk" << i << std::endl;
+
 				return &m_buffer[sizeof(T) * i];
 			}
 		}
-		ResizePool();
-		return &m_buffer[sizeof(T) * old_size];
+		ResizePool(); 
+		return &m_buffer[sizeof(T) * 1];
+		//for (size_type i = 0; i < N; i++)
+		//{
+		//	if (!m_state[i])
+		//	{
+		//		m_state[i] = true;
+		//		std::cout << "Allocating memory at memoru chunk" << i << std::endl;
+
+		//		return &m_buffer[sizeof(T) * i];
+		//	}
+		//}
 	}
 
 	void Deallocate(void* p)
@@ -164,8 +175,8 @@ public:
 	void ResizePool()
 	{
 		std::cout << "Resizing Pool" << std::endl;
-		size_type i = m_buffer.size() * 2;
-		m_buffer.resize(i);
+		size_type i = N * 2;
+		m_buffer.resize(i * sizeof(T));
 		m_state.resize(m_state.size() * 2);
 	}
 };

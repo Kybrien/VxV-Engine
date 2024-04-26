@@ -8,6 +8,7 @@
 #include "Scene.h"
 #include "Engine.hpp"
 
+
 static bool enabled = true;
 static ImGui::FileBrowser fileDialog;
 GameObject* selectedGameObject = nullptr;
@@ -471,16 +472,16 @@ void ShowAddGameObject() {
 				}
 				if (ImGui::Button("Plane"))
 				{
-					CreateGameObjectWithModel("Plane.obj");
+					CreateGameObjectWithModel("plane.obj");
 				}
 
 				if (ImGui::Button("Cylinder"))
 				{
-					CreateGameObjectWithModel("Cylinder.obj");
+					CreateGameObjectWithModel("cylinder.obj");
 				}
 				if (ImGui::Button("Miku"))
 				{
-					CreateGameObjectWithModel("Cylinder.obj");
+					CreateGameObjectWithModel("miku.obj");
 				}
 
 
@@ -529,12 +530,13 @@ void RenderToolbar() {
 
 
 	// We don't want the toolbar window to be moveable or have any framing
-	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoScrollWithMouse ;
+	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoScrollWithMouse;
 
 	ImGui::Begin("##Toolbar", nullptr, window_flags);
 
 	// Left-aligned buttons
 	if (ImGui::Button("Play")) {
+		std::cout << "Play" << std::endl;
 		engine->GetEngineState()->StartRunTime();
 	}
 	ImGui::SameLine();
@@ -563,7 +565,7 @@ void RenderToolbar() {
 		}
 	}
 
-	
+
 
 	ImGui::End();
 }
@@ -581,12 +583,13 @@ static void ShowHierarchy()
 	ImGui::Begin("Hierarchie de la scene");
 	{
 		// Affichez une liste de tous les GameObjects
-		for (GameObject* gameobjects : allGameObjects)
+		for (GameObject* gameobject : allGameObjects)
 		{
-			if (ImGui::Selectable(gameobjects->name.c_str()))
+			std::string temp = gameobject->name + "_" + std::to_string(gameobject->id);
+			if (ImGui::Selectable(temp.c_str()))
 			{
 				// Si l'utilisateur clique sur un GameObject, stockez une référence à ce GameObject
-				selectedGameObject = gameobjects;
+				selectedGameObject = gameobject;
 			}
 		}
 	}
@@ -596,50 +599,52 @@ static void ShowHierarchy()
 	// Si un GameObject a été sélectionné, affichez ses informations dans une fenêtre ImGui
 	if (selectedGameObject != nullptr)
 	{
+		std::string temp = selectedGameObject->name + "_" + std::to_string(selectedGameObject->id);
+		static int selectedComponent = 0;
 		ImGui::Begin("Inspector");
 
 		// Affichez le nom du GameObject
-		ImGui::Text("Nom: %s", selectedGameObject->name.c_str());
+		ImGui::Text("Nom: %s", temp.c_str());
 		ImGui::Separator();
 
 		// Obtenez le Transform du GameObject
 		Transform* transform = selectedGameObject->GetComponent<Transform>();
-		
-			// Créez des contrôles de glissement pour la position, la rotation et l'échelle
-			float position[3] = { transform->GetPosition().x, transform->GetPosition().y, transform->GetPosition().z };
-			std::cout << position << std::endl;
 
-			if (ImGui::DragFloat3("Positon X", &position[0]))
-			{
-				// Si l'utilisateur modifie la position, mettez à jour le Transform
-				transform->SetPosition(glm::vec3(position[0], position[1], position[2]));
-			}
-			if (ImGui::DragFloat3("Positon y", &position[1]))
-			{
-				// Si l'utilisateur modifie la position, mettez à jour le Transform
-				transform->SetPosition(glm::vec3(position[0], position[1], position[2]));
-			}
-			if (ImGui::DragFloat3("Positon z", &position[2]))
-			{
-				// Si l'utilisateur modifie la position, mettez à jour le Transform
-				transform->SetPosition(glm::vec3(position[0], position[1], position[2]));
-			}
+		// Créez des contrôles de glissement pour la position, la rotation et l'échelle
+		float position[3] = { transform->GetPosition().x, transform->GetPosition().y, transform->GetPosition().z };
+		glm::vec3 rotation = transform->GetRotation();
+		glm::vec3 scale = transform->GetScale();
+		std::string name = selectedGameObject->name;
+		std::cout << position << std::endl;
 
 
-			glm::vec3 rotation = transform->GetRotation();
-			if (ImGui::DragFloat3("Rotation", &rotation.x))
-			{
-				// Si l'utilisateur modifie la rotation, mettez à jour le Transform
-				transform->SetRotation(rotation.x,rotation.y, rotation.z);
-			}
 
-			glm::vec3 scale = transform->GetScale();
-			if (ImGui::DragFloat3("Scale", &scale.x, 0.1f, 0.1f, 10.0f))
-			{
-				// Si l'utilisateur modifie l'échelle, mettez à jour le Transform
-				transform->SetScale(scale);
-			}
-		
+		if (ImGui::DragFloat3("Positon", &position[0]))
+		{
+			// Si l'utilisateur modifie la position, mettez à jour le Transform
+			transform->SetPosition(glm::vec3(position[0], position[1], position[2]));
+		}
+
+		if (ImGui::DragFloat3("Rotation", &rotation.x))
+		{
+			// Si l'utilisateur modifie la rotation, mettez à jour le Transform
+			transform->SetRotation(rotation.x, rotation.y, rotation.z);
+		}
+
+		if (ImGui::DragFloat3("Scale", &scale.x, 0.1f, 0.1f, 10.0f))
+		{
+			// Si l'utilisateur modifie l'échelle, mettez à jour le Transform
+			transform->SetScale(scale);
+		}
+
+		if (ImGui::Button("Delete"))
+		{
+			selectedGameObject->Delete();
+			sceneManager->gameObjectPool.Free(selectedGameObject);
+			selectedGameObject = nullptr;
+		}
+
+
 		ImGui::End();
 
 

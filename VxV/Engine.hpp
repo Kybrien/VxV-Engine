@@ -103,6 +103,11 @@ public:
 		return m_engineState->GetBootingState();
 	}
 
+	void UpdateGameObjectList() 
+	{
+		m_goList = m_sceneManager->GetCurrentScene()->GetAllGameObjects();
+	}
+
 	double getLastTime()
 	{
 		return m_lastTime;

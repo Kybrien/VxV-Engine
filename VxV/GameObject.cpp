@@ -61,6 +61,11 @@ GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, b
 	}
 }
 
+GameObject::~GameObject()
+{
+
+}
+
 void GameObject::Load(Json::Value root, GameObject* goParent, bool PrefabLoading) {
 	Manager* manager = Manager::GetInstance();
 	SceneManager* sceneManager = manager->GetManager<SceneManager>();
@@ -143,12 +148,21 @@ void GameObject::Save(Json::Value& root)
 	}
 }
 
-void GameObject::Delete(GameObject* go)
+void GameObject::Delete()
 {
+	GameObject* go = this;
 	if (go->isChild)
 	{
-		go->GetParent()->GetChildByName(go->name);
+		go->GetParent()->RemoveChild(go);
 	}
+	for (Component* comp : components)
+	{
+		delete comp;
+	}
+	Manager* manager = Manager::GetInstance();
+	SceneManager* sceneManager = manager->GetManager<SceneManager>();
+	currentScene = sceneManager->GetCurrentScene();
+	currentScene->RemoveGameObject(id);
 }
 
 void GameObject::AddChild(GameObject* go)
@@ -158,7 +172,7 @@ void GameObject::AddChild(GameObject* go)
 	position.x = go->GetComponent<Transform>()->GetPosition().x - GetComponent<Transform>()->GetPosition().x;
 	position.y = go->GetComponent<Transform>()->GetPosition().y - GetComponent<Transform>()->GetPosition().y;
 	position.z = go->GetComponent<Transform>()->GetPosition().z - GetComponent<Transform>()->GetPosition().z;
-		
+
 	go->GetComponent<Transform>()->SetPosition(position);
 	go->origin = origin;
 
@@ -217,7 +231,7 @@ void GameObject::LoadComponent(Json::Value compJson, GameObject* parentGo)
 	switch (compJson["Type"].asInt())
 	{
 	case 0: break;
-	case 1: 
+	case 1:
 		GetComponent<Transform>()->Load(compJson, parentGo);
 		break;
 	case 2:
