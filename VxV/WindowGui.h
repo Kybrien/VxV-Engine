@@ -9,12 +9,21 @@
 #include "ScriptingComponent.h"
 #include <filesystem>
 #include "Engine.hpp"
+#include "ScriptManager.h"
 
 
 static bool enabled = true;
 static ImGui::FileBrowser fileDialog;
 GameObject* selectedGameObject = nullptr;
 
+enum class FileState
+{
+	Init,
+	LoadFile,
+	ChangeModel
+};
+
+FileState fileState = FileState::Init;
 Engine* engine = Engine::GetInstance();
 
 static void ShowExampleMenuFile()
@@ -458,14 +467,17 @@ void ShowAddGameObject() {
 		{
 			if (ImGui::BeginTabItem("Create"))
 			{
+
 				// open file dialog when user clicks this button
 				fileDialog.SetTypeFilters({ ".obj" });
 				if (ImGui::Button("open file obj"))
+				{
+					fileState = FileState::LoadFile;
 					fileDialog.Open();
-
+				}
 				fileDialog.Display();
 
-				if (fileDialog.HasSelected())
+				if (fileDialog.HasSelected() && fileState == FileState::LoadFile)
 				{
 					std::filesystem::path filePath(fileDialog.GetSelected().string());
 
@@ -626,6 +638,8 @@ static void ShowHierarchy()
 		// Obtenez le Transform du GameObject
 		Transform* transform = selectedGameObject->GetComponent<Transform>();
 		Model* modelComponent = selectedGameObject->GetComponent<Model>();
+		ScriptingComponent* scriptComponent = selectedGameObject->GetComponent<ScriptingComponent>();
+
 		// Cr�ez des contr�les de glissement pour la position, la rotation et l'�chelle
 		float position[3] = { transform->GetPosition().x, transform->GetPosition().y, transform->GetPosition().z };
 		glm::vec3 rotation = transform->GetRotation();
@@ -663,28 +677,60 @@ static void ShowHierarchy()
 		ImGui::Separator();
 
 		ImGui::Text("Script");
-		//// Ajoutez un bouton pour ajouter un script
-		//if (ImGui::Button("Ajouter un script"))
-		//{
-		//	// Ajoutez un ScriptingComponent au GameObject
-		//	ScriptingComponent* scriptComponent = selectedGameObject->AddComponent<ScriptingComponent>();
-		//	// Vous pouvez �galement d�finir le script ici si vous le souhaitez
-		//	// scriptComponent->SetScript(...);
-		//}
+		// Ajoutez un bouton pour ajouter un script
+		if (ImGui::Button("Ajouter un script"))
+		{
 
+			// Ajoutez un ScriptingComponent au GameObject
+			if (scriptComponent == nullptr) {
+				selectedGameObject->AddComponent<ScriptingComponent>();
+				scriptComponent = selectedGameObject->GetComponent<ScriptingComponent>();
+				std::cout << "ScriptingComponent added" << std::endl;
+			}
+			
+			
+		}
+		// Ajoutez un champ d'entrée pour modifier le script
+		static char scriptName[128] = "";
+		static char sName[128] = "";
+
+		if (ImGui::InputText("##", scriptName, IM_ARRAYSIZE(scriptName)))
+		{
+			if (ImGui::Button("ScriptName"))
+			{
+
+				std::string sName = scriptName;
+	
+				
+
+
+			}
+			
+		}
+		if (ImGui::Button("add ScriptName"))
+		{
+			Script* script = ScriptManager::NewScript(sName);
+
+			scriptComponent->AddScript(script);
+		}
+
+		// Vous pouvez �galement d�finir le script ici si vous le souhaitez
+		// scriptComponent->SetScript(...);
 		ImGui::Separator();
 		ImGui::Text("Model");
 
 		if (ImGui::Button("Changer le mod�le"))
 		{
 			// Ouvrez un dialogue de s�lection de fichier
+			fileState = FileState::ChangeModel;
 			fileDialog.Open();
 		}
 
 		// Si un fichier a �t� s�lectionn�, mettez � jour le mod�le du GameObject
-		if (fileDialog.HasSelected())
+		if (fileDialog.HasSelected() && fileState == FileState::ChangeModel)
 		{
 			std::filesystem::path filePath(fileDialog.GetSelected().string());
+			std::cout << "Selected filename: " << filePath.stem().string() << std::endl;
 			modelComponent->SetModel(filePath.stem().string());
 			fileDialog.ClearSelected();
 		}
