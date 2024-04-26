@@ -8,8 +8,8 @@
 Manager* Manager::instance = nullptr;
 
 void Manager::Init() {
-	new SceneManager(this);
 	new ModelManager(this);
-	new ScriptManager(this);
+	new SceneManager(this);
 	new PrefabManager(this);
+	new ScriptManager(this);
 }

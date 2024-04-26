@@ -3,6 +3,7 @@
 #include <GLM/glm.hpp>
 
 #include "controls.hpp"
+#include "GameObject.h"
 
 #include "Externes/tiny_obj_loader.h"
 
@@ -105,103 +106,106 @@ public:
 
 /**
  * @brief Create a Vertex from the given index.
- * * @param attrib 
- * * @param index 
- * * @return Vertex 
- * 
+ * @param attrib 
+ * @param index 
+ * @return Vertex 
 */
 Vertex createVertexFromIndex(const tinyobj::attrib_t& attrib, const tinyobj::index_t& index);
 
 /**
  * @brief Load the texture from the given filename.
- * * @param filename name of the file
- * * @return GLuint returns the texture ID
- * 
+ * @param filename name of the file
+ * @return GLuint returns the texture ID
  */
 GLuint loadTexture(const char* filename);
 
 /**
  * @brief Initialize the window and OpenGL settings for the program.
- * * @param GLFWwindow*& reference to the pointer of the window
- * * @return void
- * 
+ * @param GLFWwindow*& reference to the pointer of the window
+ * @return void
  */
 void init(GLFWwindow*& window);
 
 /**
  * @brief Setup the user inputs for the window.
- * * @param GLFWwindow* window
- * * @return void
- * 
+ * @param GLFWwindow* window
+ * @return void
  */
 void setupInput(GLFWwindow* window);
 
 /**
  * @brief Initialize the OpenGL settings and culling.
- * * @return void
- * 
+ * @return void
  */
 void initOpenGLSettings();
 
 /**
  * @brief Initialize and bind the vertex array object to the openGL context.
- * * @param GLuint& reference to the vertex array object
- * * @return void
- * 
+ * @param GLuint& reference to the vertex array object
+ * @return void
+
  */
 void initializeVertexArrayObject(GLuint& VertexArrayID);
 
 /**
  * @brief Initialize the projection matrix that corresponds to the camera space.
- * * @return glm::mat4 returns the projection matrix
- * 
+ * @param float _fov field of view
+ * @param float _ratioWidth ratio width
+ * @param float _ratioHeight ratio height
+ * @param float _near near plane
+ * @param float _far far plane
+ * @return glm::mat4 returns the projection matrix
  */
-glm::mat4 initializeProjectionMatrix();
+glm::mat4 initializeProjectionMatrix(float _fov, float _ratioWidth, float _ratioHeight, float _near, float _far);
 
 /**
  * @brief Initialize the view matrix that corresponds to the camera position and where it is looking.
- * * @return glm::mat4 returns the view matrix
- * 
+ * @return glm::mat4 returns the view matrix
  */
-glm::mat4 initializeViewMatrix();
+glm::mat4 initializeViewMatrix(int _cameraPositionX, int _cameraPositionY, int _cameraPositionZ, int _cameraTargetX, int _cameraTargetY,
+	int _cameraTargetZ, int _upVectorX, int _upVectorY, int _upVectorZ);
 
 /**
  * @brief Setup the vertex attributes of the Model for the shader program to use.
- * * @return void
- * 
+ * @return void
  */
 void setupVertexAttributes();
 
 /**
  * @brief Setup the buffers for the Model to be drawn.
- * * @param GLuint& reference to the vertex buffer
- * * @param std::vector<Vertex> vertices
- * * @param GLuint& reference to the index buffer
- * * @param std::vector<unsigned int> indices
- * * @return void
- * 
+ * @param GLuint& reference to the vertex buffer
+ * @param std::vector<Vertex> vertices
+ * @param GLuint& reference to the index buffer
+ * @param std::vector<unsigned int> indices
+ * @return void
  */
 void setupBuffers(GLuint& vertexbuffer, const std::vector<Vertex>& vertices, GLuint& indexbuffer, const std::vector<unsigned int>& indices);
 
 /**
  * @brief Delete and clean all the handles of our render program.
- * * @param GLFWwindow* window
- * * @param std::vector<ModelComponent>& reference to the models
- * * @param GLuint& program ID
- * * @param GLuint& vertex array ID
- * * @param GLuint& texture ID
- * * @param GLuint& light ID
- * * @param GLuint& reference to the material ambient color ID
- * * @param GLuint& reference to the material diffuse color ID
- * * @param GLuint& reference to the material specular color ID
- * * @param GLuint& reference to the matrix ID
- * * @param GLuint& reference to the view matrix ID
- * * @param GLuint& reference to the model matrix ID
- * * @return void
- * 
+ * @param GLFWwindow* window
+ * @param std::vector<ModelComponent>& reference to the models
+ * @param GLuint& program ID
+ * @param GLuint& vertex array ID
+ * @param GLuint& texture ID
+ * @param GLuint& light ID
+ * @param GLuint& reference to the material ambient color ID
+ * @param GLuint& reference to the material diffuse color ID
+ * @param GLuint& reference to the material specular color ID
+ * @param GLuint& reference to the matrix ID
+ * @param GLuint& reference to the view matrix ID
+ * @param GLuint& reference to the model matrix ID
+ * @return void
  */
 void cleanup(GLFWwindow* window, ModelComponent& object);
 
+/**
+ * @brief Load the shaders from the given file paths.
+ * @param const char* vertex_file_path
+ * @param const char* fragment_file_path
+ * @return GLuint returns the program ID
+ * 
+ */
 void finishProgram(GLuint programID, GLuint VertexArrayID, GLuint& TextureID, GLuint& LightID, GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID);
 
 /**
@@ -262,7 +266,6 @@ void copyModelAndAdd(const ModelComponent& model, std::vector<ModelComponent>& m
 * @brief Setup the handles for the uniforms of the shader program.
 * @param programID reference to the program ID
 * @param TextureID reference to the texture ID
-* @param LightID reference to the light ID
 * @param MaterialAmbientColorID reference to the material ambient color ID
 * @param MaterialDiffuseColorID reference to the material diffuse color ID
 * @param MaterialSpecularColorID reference to the material specular color ID
@@ -271,7 +274,16 @@ void copyModelAndAdd(const ModelComponent& model, std::vector<ModelComponent>& m
 * @param ModelMatrixID reference to the model matrix ID
 * @return void
 */
-void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& LightID, GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID);
+void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID);
+
+/**
+* @brief Setup the handles for the light of the shader program.
+* @param programID reference to the program ID
+* @param LightID reference to the light ID
+* @param LightColorID reference to the light color ID
+* @param LightPowerID reference to the light power ID
+*/
+void setupLightHandles(GLuint& programID, GLuint& LightID, GLuint& LightColorID, GLuint& LightPowerID);
 
 /**
 * @brief Draw the model to the screen.
@@ -284,34 +296,6 @@ void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& Light
 */
 void drawModel(ModelComponent* model, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID, GLuint MaterialSpecularColorID);
 
-void setRotationModel(ModelComponent& model, float angle, const glm::vec3& axis);
-void setTranslationModel(ModelComponent& model, const glm::vec3& translation);
-void setScaleModel(ModelComponent& model, const glm::vec3& scale);
-
-/**
-* @brief Translate the model by the given translation vector.
-* @param model reference to the model
-* @param translation translation vector
-* @return void
-*/
-void translateModel(ModelComponent& model, const glm::vec3& translation);
-
-/**
-* @brief Rotate the model by the given angle and axis.
-* @param ModelComponent reference to the model
-* @param angle angle to rotate
-* @param axis axis to rotate
-* @return void
-*/
-void rotateModel(ModelComponent& model, float angle, const glm::vec3& axis);
-
-/**
-* @brief Scale the model by the given scale vector.
-* @param ModelComponent reference to the model
-* @param scale scale vector
-* @return void
-*/
-void scaleModel(ModelComponent& model, const glm::vec3& scale);
 
 /**
 * @brief Send the MVP data to the shader program.
@@ -324,6 +308,6 @@ void scaleModel(ModelComponent& model, const glm::vec3& scale);
 * @param ViewMatrixID reference to the view matrix ID
 * @return void
 */
-void sendMVPData(ModelComponent& model, GLuint VertexArrayID, GLuint MatrixID, GLuint ModelMatrixID, GLuint ViewMatrixID);
+void sendMVPData(GameObject* go, GLuint VertexArrayID, GLuint MatrixID, GLuint ModelMatrixID, GLuint ViewMatrixID);
 
 //#endif

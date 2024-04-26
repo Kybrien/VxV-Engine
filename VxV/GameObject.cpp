@@ -61,6 +61,11 @@ GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, b
 	}
 }
 
+GameObject::~GameObject()
+{
+
+}
+
 void GameObject::Load(Json::Value root, GameObject* goParent, bool PrefabLoading) {
 	Manager* manager = Manager::GetInstance();
 	SceneManager* sceneManager = manager->GetManager<SceneManager>();
@@ -143,12 +148,21 @@ void GameObject::Save(Json::Value& root)
 	}
 }
 
-void GameObject::Delete(GameObject* go)
+void GameObject::Delete()
 {
+	GameObject* go = this;
 	if (go->isChild)
 	{
-		go->GetParent()->GetChildByName(go->name);
+		go->GetParent()->RemoveChild(go);
 	}
+	for (Component* comp : components)
+	{
+		delete comp;
+	}
+	Manager* manager = Manager::GetInstance();
+	SceneManager* sceneManager = manager->GetManager<SceneManager>();
+	currentScene = sceneManager->GetCurrentScene();
+	currentScene->RemoveGameObject(id);
 }
 
 void GameObject::AddChild(GameObject* go)

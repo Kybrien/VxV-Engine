@@ -20,13 +20,10 @@ uniform vec3 MaterialAmbientColor;
 uniform vec3 MaterialDiffuseColor;
 uniform vec3 MaterialSpecularColor;
 
+uniform vec3 LightColor;
+uniform float LightPower;
 
 void main(){
-
-    // Light emission properties
-    // You'll probably want to put them as uniforms
-    vec3 LightColor = vec3(1,1,1);
-    float LightPower = 50.0f;
     
     // Material properties from texture
     vec3 MaterialAmbientColor2 = vec3(0.1,0.1,0.1) * MaterialDiffuseColor;
