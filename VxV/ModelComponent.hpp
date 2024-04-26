@@ -206,7 +206,7 @@ void cleanup(GLFWwindow* window, ModelComponent& object);
  * @return GLuint returns the program ID
  * 
  */
-void finishProgram(GLuint programID, GLuint VertexArrayID, GLuint& TextureID, GLuint& LightID, GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID);
+void finishProgram(GLuint programID, GLuint VertexArrayID, GLuint& TextureID, GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID);
 
 /**
 * @brief Load the Model from the given filename and store the data in the model.

@@ -185,12 +185,11 @@ void cleanup(GLFWwindow* window, ModelComponent& model)
 	}
 }
 
-void finishProgram(GLuint programID, GLuint VertexArrayID, GLuint& TextureID, GLuint& LightID, GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID)
+void finishProgram(GLuint programID, GLuint VertexArrayID, GLuint& TextureID, GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID)
 {
 	glDeleteProgram(programID);
 	glDeleteVertexArrays(1, &VertexArrayID);
 	glDeleteVertexArrays(1, &TextureID);
-	glDeleteVertexArrays(1, &LightID);
 	glDeleteVertexArrays(1, &MaterialAmbientColorID);
 	glDeleteVertexArrays(1, &MaterialDiffuseColorID);
 	glDeleteVertexArrays(1, &MaterialSpecularColorID);
@@ -370,12 +369,12 @@ void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& Mater
 	ModelMatrixID = glGetUniformLocation(programID, "M");
 }
 
-void setupLightHandles(GLuint& programID, GLuint& LightID, GLuint& LightColorID, GLuint& LightPowerID)
-{
-	LightID = glGetUniformLocation(programID, "LightPosition_worldspace");
-	LightColorID = glGetUniformLocation(programID, "LightColor");
-	LightPowerID = glGetUniformLocation(programID, "LightPower");
-}
+//void setupLightHandles(GLuint& programID, GLuint& LightID, GLuint& LightColorID, GLuint& LightPowerID)
+//{
+//	LightID = glGetUniformLocation(programID, "LightPosition_worldspace");
+//	LightColorID = glGetUniformLocation(programID, "LightColor");
+//	LightPowerID = glGetUniformLocation(programID, "LightPower");
+//}
 
 void drawModel(ModelComponent* model, GLuint TextureID, GLuint MaterialAmbientColorID, GLuint MaterialDiffuseColorID, GLuint MaterialSpecularColorID)
 {

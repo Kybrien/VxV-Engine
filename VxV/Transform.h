@@ -18,6 +18,8 @@ public:
 	*/
 	Transform(GameObject* gameObject);
 
+	std::string name = "Transform";
+
 
 
 	/**
