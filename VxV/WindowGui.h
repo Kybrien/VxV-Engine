@@ -626,7 +626,7 @@ static void ShowHierarchy()
 
 		// Obtenez le Transform du GameObject
 		Transform* transform = selectedGameObject->GetComponent<Transform>();
-
+		Model* modelComponent = selectedGameObject->GetComponent<Model>();
 		// Cr�ez des contr�les de glissement pour la position, la rotation et l'�chelle
 		float position[3] = { transform->GetPosition().x, transform->GetPosition().y, transform->GetPosition().z };
 		glm::vec3 rotation = transform->GetRotation();
@@ -675,7 +675,7 @@ static void ShowHierarchy()
 
 		ImGui::Separator();
 		ImGui::Text("Model");
-		Model* modelComponent = selectedGameObject->GetComponent<Model>();
+
 		if (ImGui::Button("Changer le mod�le"))
 		{
 			// Ouvrez un dialogue de s�lection de fichier
@@ -691,7 +691,7 @@ static void ShowHierarchy()
 		}
 
 		// Ajoutez un bouton pour supprimer le GameObject
-		if (ImGui::Button("Supprimer"))
+		if (ImGui::Button("Reset Model"))
 		{
 			modelComponent->SetModel("cube");
 
