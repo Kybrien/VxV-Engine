@@ -6,7 +6,7 @@
 #include "GameObject.h"
 #include "ConsoleRecup.h"
 #include "Scene.h"
-#include "Engine.h"
+#include "Engine.hpp"
 
 static bool enabled = true;
 static ImGui::FileBrowser fileDialog;
@@ -606,12 +606,25 @@ static void ShowHierarchy()
 		Transform* transform = selectedGameObject->GetComponent<Transform>();
 		
 			// Créez des contrôles de glissement pour la position, la rotation et l'échelle
-			glm::vec3 position = transform->SetPosition();
-			if (ImGui::DragFloat3("Position", &position.x))
+			float position[3] = { transform->GetPosition().x, transform->GetPosition().y, transform->GetPosition().z };
+			std::cout << position << std::endl;
+
+			if (ImGui::DragFloat3("Positon X", &position[0]))
 			{
 				// Si l'utilisateur modifie la position, mettez à jour le Transform
-				transform->SetPosition(position);
+				transform->SetPosition(glm::vec3(position[0], position[1], position[2]));
 			}
+			if (ImGui::DragFloat3("Positon y", &position[1]))
+			{
+				// Si l'utilisateur modifie la position, mettez à jour le Transform
+				transform->SetPosition(glm::vec3(position[0], position[1], position[2]));
+			}
+			if (ImGui::DragFloat3("Positon z", &position[2]))
+			{
+				// Si l'utilisateur modifie la position, mettez à jour le Transform
+				transform->SetPosition(glm::vec3(position[0], position[1], position[2]));
+			}
+
 
 			glm::vec3 rotation = transform->GetRotation();
 			if (ImGui::DragFloat3("Rotation", &rotation.x))
