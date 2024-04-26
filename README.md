@@ -8,7 +8,8 @@ VxV is a homemade OpenGL engine we've been working on since 5 weeks.
 It only has an educational purpose (for now at least) and it's the best way for us to understand properly HOW does a game engine work.   
 ***
 #### 💬 How to use ?
-You firt need to compile the file _Server.cpp and place the .exe in the source folder. You can then compile the Engine and it will be ready to go.
+You first need to compile the file _Server.cpp and place the .exe in the source folder. You can then compile the Engine and it will be ready to go.   
+
 ***
 #### ⚠️ Note
 We are still working on this project so the releases are not perfect and you may encounter issues or bugs while using it :)   
