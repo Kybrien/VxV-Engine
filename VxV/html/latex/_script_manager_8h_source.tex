@@ -1,0 +1,44 @@
+\doxysection{Script\+Manager.\+h}
+\hypertarget{_script_manager_8h_source}{}\label{_script_manager_8h_source}\mbox{\hyperlink{_script_manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_manager_8h}{Manager.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_script_8h}{Script.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_script_manager}{ScriptManager}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_manager}{Manager}}}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00014\ \ \ \ \ std::vector<Script*>\ scripts;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ GenerateScript(\textcolor{keyword}{const}\ std::string\&\ className,\ \textcolor{keyword}{const}\ std::string\&\ templateFileName\ =\ \textcolor{stringliteral}{"{}ScriptUser.cpp"{}});}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_script_manager_a78c933f419dc0b5aa27fca9c1250878b}{ScriptManager}}(\mbox{\hyperlink{class_manager}{Manager}}*\ manager);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00037\ \ \ \ \ std::vector<Script*>\ \mbox{\hyperlink{class_script_manager_a3fd61469e7d754e196180d5255de0850}{GetAllScripts}}()}
+\DoxyCodeLine{00038\ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ scripts;}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_script_manager_ac7e887a4c7502301ddb68d65d0657eb2}{AddScript}}(\mbox{\hyperlink{class_script}{Script}}*\ script)}
+\DoxyCodeLine{00048\ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ scripts.push\_back(script);}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_script_manager_ac6eaeb7c7d82cb5a7cd1594c0be557bb}{Save}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_script_manager_a665862e0d165a750ddb7d387b9563df8}{Load}}(std::wstring\ wFileDirection,\ std::wstring\ wFileName)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{class_script_manager_ac7c6e339c6c087c95cafc0b0e5d65e9b}{fileDirection}};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{class_script_manager_a98f99039f0748a4e134c82622a2ec061}{extention}};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_script}{Script}}*\ \mbox{\hyperlink{class_script_manager_a80016cc74af49f9d9195c7ff80d30db8}{NewScript}}(std::string\ name);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \};}
+
+\end{DoxyCode}

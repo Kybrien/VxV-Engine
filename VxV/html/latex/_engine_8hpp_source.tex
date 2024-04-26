@@ -1,0 +1,98 @@
+\doxysection{Engine.\+hpp}
+\hypertarget{_engine_8hpp_source}{}\label{_engine_8hpp_source}\mbox{\hyperlink{_engine_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_a_p_iopen_g_l_8hpp}{APIopenGL.hpp}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_g_u_i_8h}{EngineGUI.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_model_manager_8h}{ModelManager.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_prefab_manager_8h}{PrefabManager.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_input_manager_8h}{InputManager.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_scene_manager_8h}{SceneManager.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_state_8h}{EngineState.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}imgui.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}imgui\_impl\_glfw.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}imgui\_impl\_opengl3.h"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{imfilebrowser_8h}{imfilebrowser.h}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_debug_8h}{Debug.h}}"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_engine}{Engine}}\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_engine}{Engine}}*\ m\_instance;}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_scene_manager}{SceneManager}}*\ m\_sceneManager;}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_engine_state}{EngineState}}*\ m\_engineState\ =\ \mbox{\hyperlink{class_engine_state_a5a0389c26fb5e9ff860c12b81fd2c9e2}{EngineState::GetInstance}}();}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_lastTime\ =\ glfwGetTime();}
+\DoxyCodeLine{00031\ \ \ \ \ std::vector<GameObject*>\ m\_goList;}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_engine_g_u_i}{EngineGUI}}*\ m\_gui;}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_a_p_iopen_g_l}{APIopenGL}}*\ m\_apiGraphic;}
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_manager}{Manager}}*\ \mbox{\hyperlink{class_engine_a31bdbb12d7926d71dcaeb0fedcc7a9d5}{manager}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_engine}{Engine}}*\ \mbox{\hyperlink{class_engine_a2146785b1df88f59838cab30aabc8d37}{GetInstance}}()}
+\DoxyCodeLine{00038\ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_instance)}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ m\_instance\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}{Engine}}();}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_instance;}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}{Engine}}()\{\}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_af79e06528e4263c7feb3b37fb49a293b}{InitEngine}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_a1fbe9f5cb4abc3572e432cae1f154817}{Start}}();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_ac84eefe06226f430a2448306e6fd2579}{Update}}();}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_ab2af293eb8be426dd5e233b60ba6fefb}{Stop}}(\mbox{\hyperlink{class_a_p_iopen_g_l}{APIopenGL}}*\ \_apiGraphic);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//Load\ and\ Init\ all\ Graphic\ API}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_a4b588d7df14308fc0154b0da7f8dd507}{Startup}}(\mbox{\hyperlink{class_engine_g_u_i}{EngineGUI}}*\ \_gui,\ \mbox{\hyperlink{class_a_p_iopen_g_l}{APIopenGL}}*\ \_apiGraphic);}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//Draw\ the\ loop}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_ae97431d1dc03f84b2f0fe59fcec62bd4}{ApiDrawLoopSetup}}(\mbox{\hyperlink{class_a_p_iopen_g_l}{APIopenGL}}*\ \_apiGraphic);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//Check\ if\ the\ window\ is\ closed}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_aa497c1b9eba137612dcbb05472cb483b}{CheckCloseWindow}}(\mbox{\hyperlink{class_a_p_iopen_g_l}{APIopenGL}}*\ \_apiGraphic,\ \mbox{\hyperlink{class_engine}{Engine}}*\ \_engine);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_a59d617c5418e50aca410815b58f0bf49}{PlayInit}}();}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_a9731cf96adbf310ec3cd54875c941978}{PlayStart}}();}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_a6a5f43fddf606a87d0d2064c59fee066}{PlayUpdate}}();}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_a53483abe916c290d9d3273dcf4fbc330}{PlayStop}}();}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//Get\ the\ EngineState\ instance}}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{class_engine_state}{EngineState}}*\ \mbox{\hyperlink{class_engine_ac1f17171b8414b22df26afa3930d8ddf}{GetEngineState}}()}
+\DoxyCodeLine{00085\ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_engineState;}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57e}{EngineState::ActiveState}}\ \mbox{\hyperlink{class_engine_a3f8f3c9f1d1415cd11cedf46879b0d4d}{GetActiveState}}()}
+\DoxyCodeLine{00094\ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_engineState-\/>\mbox{\hyperlink{class_engine_state_af520b26a4892763a8e74bdf04727d2f2}{GetActiveState}}();}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00102\ \ \ \ \ \mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccce}{EngineState::BootingState}}\ \mbox{\hyperlink{class_engine_a60a7c1d94006aa21ea1a388fce4e6d42}{GetBootingState}}()}
+\DoxyCodeLine{00103\ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_engineState-\/>\mbox{\hyperlink{class_engine_state_a30c0bec19b15f3a3af87352edf4df284}{GetBootingState}}();}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_a1dd052bf35d5ad33527c8d40e66a7bdc}{UpdateGameObjectList}}()\ }
+\DoxyCodeLine{00108\ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ m\_goList\ =\ m\_sceneManager-\/>\mbox{\hyperlink{class_scene_manager_aa12ac3807b8e59b815ec445c25fca5ae}{GetCurrentScene}}()-\/>\mbox{\hyperlink{class_scene_a8e7c528eaf26088daa91e19102182845}{GetAllGameObjects}}();}
+\DoxyCodeLine{00110\ \ \ \ \ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_engine_a3ded2b78ca0cb11b96982daad16973a6}{getLastTime}}()}
+\DoxyCodeLine{00113\ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_lastTime;}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_engine_ae3a21932357d36d787e303c99697cc09}{setLastTime}}(\textcolor{keywordtype}{double}\ \_lastTime)}
+\DoxyCodeLine{00117\ \ \ \ \ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ m\_lastTime\ =\ \_lastTime;}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \};}
+
+\end{DoxyCode}

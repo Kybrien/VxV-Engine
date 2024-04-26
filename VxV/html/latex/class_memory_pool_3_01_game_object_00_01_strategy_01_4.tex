@@ -1,0 +1,73 @@
+\doxysection{Memory\+Pool\texorpdfstring{$<$}{<} Game\+Object, Strategy \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_memory_pool_3_01_game_object_00_01_strategy_01_4}{}\label{class_memory_pool_3_01_game_object_00_01_strategy_01_4}\index{MemoryPool$<$ GameObject, Strategy $>$@{MemoryPool$<$ GameObject, Strategy $>$}}
+
+
+specific \doxylink{class_memory_pool}{Memory\+Pool} class for Game\+Objects  
+
+
+
+
+{\ttfamily \#include $<$Memory\+Pool.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_memory_pool_3_01_game_object_00_01_strategy_01_4_a98fe2f8327a2a030351f512be74cf965}{Memory\+Pool}} (int size=0)
+\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_memory_pool_3_01_game_object_00_01_strategy_01_4_ad8210ed60cfdfa34fd9f8409aa76ef1d}{Create\+Go\+From\+Pool}} (std\+::string name="{}GO"{}, bool Prefab\+Loading=false, \mbox{\hyperlink{class_prefab}{Prefab}} \texorpdfstring{$\ast$}{*}prefab=nullptr, bool loading=false)
+\item 
+void \mbox{\hyperlink{class_memory_pool_3_01_game_object_00_01_strategy_01_4_ab837033a3643cd989e5dd8be92ba2c66}{Free}} (void \texorpdfstring{$\ast$}{*}p)
+\item 
+void \mbox{\hyperlink{class_memory_pool_3_01_game_object_00_01_strategy_01_4_a52bbfb394c701530a87cc7e44bac62b7}{Free\+All}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class Strategy$>$\newline
+class Memory\+Pool$<$ Game\+Object, Strategy $>$}
+specific \doxylink{class_memory_pool}{Memory\+Pool} class for Game\+Objects 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Strategy} & -\/ strategy to use for memory allocation and deallocation \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_memory_pool_3_01_game_object_00_01_strategy_01_4_a98fe2f8327a2a030351f512be74cf965}\label{class_memory_pool_3_01_game_object_00_01_strategy_01_4_a98fe2f8327a2a030351f512be74cf965} 
+\index{MemoryPool$<$ GameObject, Strategy $>$@{MemoryPool$<$ GameObject, Strategy $>$}!MemoryPool@{MemoryPool}}
+\index{MemoryPool@{MemoryPool}!MemoryPool$<$ GameObject, Strategy $>$@{MemoryPool$<$ GameObject, Strategy $>$}}
+\doxysubsubsection{\texorpdfstring{MemoryPool()}{MemoryPool()}}
+{\footnotesize\ttfamily template$<$class Strategy $>$ \\
+\mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}}, Strategy $>$\mbox{\hyperlink{class_memory_pool}{\+::\+Memory\+Pool}} (\begin{DoxyParamCaption}\item[{int}]{size = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_memory_pool_3_01_game_object_00_01_strategy_01_4_ad8210ed60cfdfa34fd9f8409aa76ef1d}\label{class_memory_pool_3_01_game_object_00_01_strategy_01_4_ad8210ed60cfdfa34fd9f8409aa76ef1d} 
+\index{MemoryPool$<$ GameObject, Strategy $>$@{MemoryPool$<$ GameObject, Strategy $>$}!CreateGoFromPool@{CreateGoFromPool}}
+\index{CreateGoFromPool@{CreateGoFromPool}!MemoryPool$<$ GameObject, Strategy $>$@{MemoryPool$<$ GameObject, Strategy $>$}}
+\doxysubsubsection{\texorpdfstring{CreateGoFromPool()}{CreateGoFromPool()}}
+{\footnotesize\ttfamily template$<$class Strategy $>$ \\
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}}, Strategy $>$\+::\+Create\+Go\+From\+Pool (\begin{DoxyParamCaption}\item[{std\+::string}]{name = {\ttfamily "{}GO"{}},  }\item[{bool}]{Prefab\+Loading = {\ttfamily false},  }\item[{\mbox{\hyperlink{class_prefab}{Prefab}} \texorpdfstring{$\ast$}{*}}]{prefab = {\ttfamily nullptr},  }\item[{bool}]{loading = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_memory_pool_3_01_game_object_00_01_strategy_01_4_ab837033a3643cd989e5dd8be92ba2c66}\label{class_memory_pool_3_01_game_object_00_01_strategy_01_4_ab837033a3643cd989e5dd8be92ba2c66} 
+\index{MemoryPool$<$ GameObject, Strategy $>$@{MemoryPool$<$ GameObject, Strategy $>$}!Free@{Free}}
+\index{Free@{Free}!MemoryPool$<$ GameObject, Strategy $>$@{MemoryPool$<$ GameObject, Strategy $>$}}
+\doxysubsubsection{\texorpdfstring{Free()}{Free()}}
+{\footnotesize\ttfamily template$<$class Strategy $>$ \\
+void \mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}}, Strategy $>$\+::\+Free (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_memory_pool_3_01_game_object_00_01_strategy_01_4_a52bbfb394c701530a87cc7e44bac62b7}\label{class_memory_pool_3_01_game_object_00_01_strategy_01_4_a52bbfb394c701530a87cc7e44bac62b7} 
+\index{MemoryPool$<$ GameObject, Strategy $>$@{MemoryPool$<$ GameObject, Strategy $>$}!FreeAll@{FreeAll}}
+\index{FreeAll@{FreeAll}!MemoryPool$<$ GameObject, Strategy $>$@{MemoryPool$<$ GameObject, Strategy $>$}}
+\doxysubsubsection{\texorpdfstring{FreeAll()}{FreeAll()}}
+{\footnotesize\ttfamily template$<$class Strategy $>$ \\
+void \mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}}, Strategy $>$\+::\+Free\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_memory_pool_8h}{Memory\+Pool.\+h}}\end{DoxyCompactItemize}

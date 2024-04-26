@@ -25,7 +25,6 @@
   <td id="projectalign">
    <div id="projectname">VxV
    </div>
-   <div id="projectbrief">A perfectly ok engine</div>
   </td>
  </tr>
  </tbody>
@@ -81,20 +80,51 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="_engine_8h_source.html">Engine.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_engine_8hpp_source.html">Engine.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a755f703d22ba6f1b3612f0b9136808ae" id="r_a755f703d22ba6f1b3612f0b9136808ae"><td class="memItemLeft" align="right" valign="top">EngineState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a755f703d22ba6f1b3612f0b9136808ae">GetState</a> ()</td></tr>
-<tr class="separator:a755f703d22ba6f1b3612f0b9136808ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c98683b0a3aa28d8ab72a8bcd0d52f2" id="r_a8c98683b0a3aa28d8ab72a8bcd0d52f2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c98683b0a3aa28d8ab72a8bcd0d52f2">Engine</a> ()</td></tr>
 <tr class="separator:a8c98683b0a3aa28d8ab72a8bcd0d52f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa425192c63c4e258588db980ddf18d0d" id="r_aa425192c63c4e258588db980ddf18d0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa425192c63c4e258588db980ddf18d0d">Init</a> ()</td></tr>
-<tr class="separator:aa425192c63c4e258588db980ddf18d0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af79e06528e4263c7feb3b37fb49a293b" id="r_af79e06528e4263c7feb3b37fb49a293b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af79e06528e4263c7feb3b37fb49a293b">InitEngine</a> ()</td></tr>
+<tr class="separator:af79e06528e4263c7feb3b37fb49a293b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fbe9f5cb4abc3572e432cae1f154817" id="r_a1fbe9f5cb4abc3572e432cae1f154817"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fbe9f5cb4abc3572e432cae1f154817">Start</a> ()</td></tr>
 <tr class="separator:a1fbe9f5cb4abc3572e432cae1f154817"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac84eefe06226f430a2448306e6fd2579" id="r_ac84eefe06226f430a2448306e6fd2579"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac84eefe06226f430a2448306e6fd2579">Update</a> ()</td></tr>
 <tr class="separator:ac84eefe06226f430a2448306e6fd2579"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2af293eb8be426dd5e233b60ba6fefb" id="r_ab2af293eb8be426dd5e233b60ba6fefb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2af293eb8be426dd5e233b60ba6fefb">Stop</a> (<a class="el" href="class_a_p_iopen_g_l.html">APIopenGL</a> *_apiGraphic)</td></tr>
+<tr class="separator:ab2af293eb8be426dd5e233b60ba6fefb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b588d7df14308fc0154b0da7f8dd507" id="r_a4b588d7df14308fc0154b0da7f8dd507"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b588d7df14308fc0154b0da7f8dd507">Startup</a> (<a class="el" href="class_engine_g_u_i.html">EngineGUI</a> *_gui, <a class="el" href="class_a_p_iopen_g_l.html">APIopenGL</a> *_apiGraphic)</td></tr>
+<tr class="separator:a4b588d7df14308fc0154b0da7f8dd507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae97431d1dc03f84b2f0fe59fcec62bd4" id="r_ae97431d1dc03f84b2f0fe59fcec62bd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae97431d1dc03f84b2f0fe59fcec62bd4">ApiDrawLoopSetup</a> (<a class="el" href="class_a_p_iopen_g_l.html">APIopenGL</a> *_apiGraphic)</td></tr>
+<tr class="separator:ae97431d1dc03f84b2f0fe59fcec62bd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa497c1b9eba137612dcbb05472cb483b" id="r_aa497c1b9eba137612dcbb05472cb483b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa497c1b9eba137612dcbb05472cb483b">CheckCloseWindow</a> (<a class="el" href="class_a_p_iopen_g_l.html">APIopenGL</a> *_apiGraphic, <a class="el" href="class_engine.html">Engine</a> *_engine)</td></tr>
+<tr class="separator:aa497c1b9eba137612dcbb05472cb483b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59d617c5418e50aca410815b58f0bf49" id="r_a59d617c5418e50aca410815b58f0bf49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59d617c5418e50aca410815b58f0bf49">PlayInit</a> ()</td></tr>
+<tr class="separator:a59d617c5418e50aca410815b58f0bf49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9731cf96adbf310ec3cd54875c941978" id="r_a9731cf96adbf310ec3cd54875c941978"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9731cf96adbf310ec3cd54875c941978">PlayStart</a> ()</td></tr>
+<tr class="memdesc:a9731cf96adbf310ec3cd54875c941978"><td class="mdescLeft">&#160;</td><td class="mdescRight">Second instance on play.  <br /></td></tr>
+<tr class="separator:a9731cf96adbf310ec3cd54875c941978"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a5f43fddf606a87d0d2064c59fee066" id="r_a6a5f43fddf606a87d0d2064c59fee066"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a5f43fddf606a87d0d2064c59fee066">PlayUpdate</a> ()</td></tr>
+<tr class="memdesc:a6a5f43fddf606a87d0d2064c59fee066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update every frames after Start.  <br /></td></tr>
+<tr class="separator:a6a5f43fddf606a87d0d2064c59fee066"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53483abe916c290d9d3273dcf4fbc330" id="r_a53483abe916c290d9d3273dcf4fbc330"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53483abe916c290d9d3273dcf4fbc330">PlayStop</a> ()</td></tr>
+<tr class="memdesc:a53483abe916c290d9d3273dcf4fbc330"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last instance before stop.  <br /></td></tr>
+<tr class="separator:a53483abe916c290d9d3273dcf4fbc330"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1f17171b8414b22df26afa3930d8ddf" id="r_ac1f17171b8414b22df26afa3930d8ddf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_engine_state.html">EngineState</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1f17171b8414b22df26afa3930d8ddf">GetEngineState</a> ()</td></tr>
+<tr class="separator:ac1f17171b8414b22df26afa3930d8ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f8f3c9f1d1415cd11cedf46879b0d4d" id="r_a3f8f3c9f1d1415cd11cedf46879b0d4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_engine_state.html#a59a7e1f0d64a835cf2cbe3634b54c57e">EngineState::ActiveState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f8f3c9f1d1415cd11cedf46879b0d4d">GetActiveState</a> ()</td></tr>
+<tr class="memdesc:a3f8f3c9f1d1415cd11cedf46879b0d4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the play state of the engine.  <br /></td></tr>
+<tr class="separator:a3f8f3c9f1d1415cd11cedf46879b0d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60a7c1d94006aa21ea1a388fce4e6d42" id="r_a60a7c1d94006aa21ea1a388fce4e6d42"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_engine_state.html#a4a9b0715fa542e4fbf67fdaaf9c6ccce">EngineState::BootingState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60a7c1d94006aa21ea1a388fce4e6d42">GetBootingState</a> ()</td></tr>
+<tr class="memdesc:a60a7c1d94006aa21ea1a388fce4e6d42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the booting state of the engine.  <br /></td></tr>
+<tr class="separator:a60a7c1d94006aa21ea1a388fce4e6d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dd052bf35d5ad33527c8d40e66a7bdc" id="r_a1dd052bf35d5ad33527c8d40e66a7bdc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1dd052bf35d5ad33527c8d40e66a7bdc">UpdateGameObjectList</a> ()</td></tr>
+<tr class="separator:a1dd052bf35d5ad33527c8d40e66a7bdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ded2b78ca0cb11b96982daad16973a6" id="r_a3ded2b78ca0cb11b96982daad16973a6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ded2b78ca0cb11b96982daad16973a6">getLastTime</a> ()</td></tr>
+<tr class="separator:a3ded2b78ca0cb11b96982daad16973a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3a21932357d36d787e303c99697cc09" id="r_ae3a21932357d36d787e303c99697cc09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3a21932357d36d787e303c99697cc09">setLastTime</a> (double _lastTime)</td></tr>
+<tr class="separator:ae3a21932357d36d787e303c99697cc09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -107,7 +137,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a31bdbb12d7926d71dcaeb0fedcc7a9d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Define the state of the engine. </p>
+<div class="textblock"><p>Setup the engine. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8c98683b0a3aa28d8ab72a8bcd0d52f2" name="a8c98683b0a3aa28d8ab72a8bcd0d52f2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8c98683b0a3aa28d8ab72a8bcd0d52f2">&#9670;&#160;</a></span>Engine()</h2>
@@ -135,6 +165,125 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae97431d1dc03f84b2f0fe59fcec62bd4" name="ae97431d1dc03f84b2f0fe59fcec62bd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae97431d1dc03f84b2f0fe59fcec62bd4">&#9670;&#160;</a></span>ApiDrawLoopSetup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::ApiDrawLoopSetup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_a_p_iopen_g_l.html">APIopenGL</a> *</td>          <td class="paramname"><span class="paramname"><em>_apiGraphic</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa497c1b9eba137612dcbb05472cb483b" name="aa497c1b9eba137612dcbb05472cb483b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa497c1b9eba137612dcbb05472cb483b">&#9670;&#160;</a></span>CheckCloseWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::CheckCloseWindow </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_a_p_iopen_g_l.html">APIopenGL</a> *</td>          <td class="paramname"><span class="paramname"><em>_apiGraphic</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_engine.html">Engine</a> *</td>          <td class="paramname"><span class="paramname"><em>_engine</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3f8f3c9f1d1415cd11cedf46879b0d4d" name="a3f8f3c9f1d1415cd11cedf46879b0d4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f8f3c9f1d1415cd11cedf46879b0d4d">&#9670;&#160;</a></span>GetActiveState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_engine_state.html#a59a7e1f0d64a835cf2cbe3634b54c57e">EngineState::ActiveState</a> Engine::GetActiveState </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the play state of the engine. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_engine_state.html#a59a7e1f0d64a835cf2cbe3634b54c57e">EngineState::ActiveState</a> Return the play state of the engine </dd></dl>
+
+</div>
+</div>
+<a id="a60a7c1d94006aa21ea1a388fce4e6d42" name="a60a7c1d94006aa21ea1a388fce4e6d42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60a7c1d94006aa21ea1a388fce4e6d42">&#9670;&#160;</a></span>GetBootingState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_engine_state.html#a4a9b0715fa542e4fbf67fdaaf9c6ccce">EngineState::BootingState</a> Engine::GetBootingState </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the booting state of the engine. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_engine_state.html#a4a9b0715fa542e4fbf67fdaaf9c6ccce">EngineState::BootingState</a> Return the booting state of the engine </dd></dl>
+
+</div>
+</div>
+<a id="ac1f17171b8414b22df26afa3930d8ddf" name="ac1f17171b8414b22df26afa3930d8ddf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1f17171b8414b22df26afa3930d8ddf">&#9670;&#160;</a></span>GetEngineState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_engine_state.html">EngineState</a> * Engine::GetEngineState </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a2146785b1df88f59838cab30aabc8d37" name="a2146785b1df88f59838cab30aabc8d37"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2146785b1df88f59838cab30aabc8d37">&#9670;&#160;</a></span>GetInstance()</h2>
 
@@ -160,8 +309,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a755f703d22ba6f1b3612f0b9136808ae" name="a755f703d22ba6f1b3612f0b9136808ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a755f703d22ba6f1b3612f0b9136808ae">&#9670;&#160;</a></span>GetState()</h2>
+<a id="a3ded2b78ca0cb11b96982daad16973a6" name="a3ded2b78ca0cb11b96982daad16973a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ded2b78ca0cb11b96982daad16973a6">&#9670;&#160;</a></span>getLastTime()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -170,7 +319,7 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">EngineState Engine::GetState </td>
+          <td class="memname">double Engine::getLastTime </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -182,38 +331,124 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">none</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
-<a id="aa425192c63c4e258588db980ddf18d0d" name="aa425192c63c4e258588db980ddf18d0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa425192c63c4e258588db980ddf18d0d">&#9670;&#160;</a></span>Init()</h2>
+<a id="af79e06528e4263c7feb3b37fb49a293b" name="af79e06528e4263c7feb3b37fb49a293b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af79e06528e4263c7feb3b37fb49a293b">&#9670;&#160;</a></span>InitEngine()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Engine::Init </td>
+          <td class="memname">void Engine::InitEngine </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Initialize all the managers and the engine. </p>
+
+</div>
+</div>
+<a id="a59d617c5418e50aca410815b58f0bf49" name="a59d617c5418e50aca410815b58f0bf49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59d617c5418e50aca410815b58f0bf49">&#9670;&#160;</a></span>PlayInit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::PlayInit </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>First instance on play </p><dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a9731cf96adbf310ec3cd54875c941978" name="a9731cf96adbf310ec3cd54875c941978"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9731cf96adbf310ec3cd54875c941978">&#9670;&#160;</a></span>PlayStart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::PlayStart </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Second instance on play. </p>
+
+</div>
+</div>
+<a id="a53483abe916c290d9d3273dcf4fbc330" name="a53483abe916c290d9d3273dcf4fbc330"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53483abe916c290d9d3273dcf4fbc330">&#9670;&#160;</a></span>PlayStop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::PlayStop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Last instance before stop. </p>
+
+</div>
+</div>
+<a id="a6a5f43fddf606a87d0d2064c59fee066" name="a6a5f43fddf606a87d0d2064c59fee066"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a5f43fddf606a87d0d2064c59fee066">&#9670;&#160;</a></span>PlayUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::PlayUpdate </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update every frames after Start. </p>
+
+</div>
+</div>
+<a id="ae3a21932357d36d787e303c99697cc09" name="ae3a21932357d36d787e303c99697cc09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3a21932357d36d787e303c99697cc09">&#9670;&#160;</a></span>setLastTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::setLastTime </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>_lastTime</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -222,9 +457,6 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Engine::Start </td>
@@ -233,11 +465,44 @@ Public Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4b588d7df14308fc0154b0da7f8dd507" name="a4b588d7df14308fc0154b0da7f8dd507"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b588d7df14308fc0154b0da7f8dd507">&#9670;&#160;</a></span>Startup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Startup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_g_u_i.html">EngineGUI</a> *</td>          <td class="paramname"><span class="paramname"><em>_gui</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_a_p_iopen_g_l.html">APIopenGL</a> *</td>          <td class="paramname"><span class="paramname"><em>_apiGraphic</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab2af293eb8be426dd5e233b60ba6fefb" name="ab2af293eb8be426dd5e233b60ba6fefb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2af293eb8be426dd5e233b60ba6fefb">&#9670;&#160;</a></span>Stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Stop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_a_p_iopen_g_l.html">APIopenGL</a> *</td>          <td class="paramname"><span class="paramname"><em>_apiGraphic</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
@@ -247,12 +512,29 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1dd052bf35d5ad33527c8d40e66a7bdc" name="a1dd052bf35d5ad33527c8d40e66a7bdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dd052bf35d5ad33527c8d40e66a7bdc">&#9670;&#160;</a></span>UpdateGameObjectList()</h2>
+
+<div class="memitem">
+<div class="memproto">
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Engine::Update </td>
+          <td class="memname">void Engine::UpdateGameObjectList </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -283,7 +565,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="_engine_8h_source.html">Engine.h</a></li>
+<li><a class="el" href="_engine_8hpp_source.html">Engine.hpp</a></li>
 <li><a class="el" href="_engine_8cpp.html">Engine.cpp</a></li>
 </ul>
 </div><!-- contents -->

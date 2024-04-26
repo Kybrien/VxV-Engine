@@ -1,0 +1,49 @@
+\doxysection{Scene\+Manager.\+h}
+\hypertarget{_scene_manager_8h_source}{}\label{_scene_manager_8h_source}\mbox{\hyperlink{_scene_manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_manager_8h}{Manager.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_scene_8h}{Scene.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_memory_pool_8h}{MemoryPool.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_scene_manager}{SceneManager}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_manager}{Manager}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \ \ std::vector<Scene*>\ scenes;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_scene}{Scene}}*\ currentScene;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ fileDirection;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ extention;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_memory_pool}{MemoryPool<GameObject,\ MemPool\_Linear<GameObject>}}>\ \mbox{\hyperlink{class_scene_manager_a614f5f63a2224b6f960ca1db365a75e2}{gameObjectPool}};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_scene_manager_a93f6af15e43dbff2b5d4819dd7d8dfa2}{SceneManager}}(\mbox{\hyperlink{class_manager}{Manager}}*\ manager);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_manager_ac6e546dd58da6e7b133b3a9a8e7734e1}{AddScene}}(\mbox{\hyperlink{class_scene}{Scene}}*\ scene)}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ scenes.push\_back(scene);}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00063\ \ \ \ \ std::vector<Scene*>\ \mbox{\hyperlink{class_scene_manager_a09c9196e3ad9cb53673b9ba051c9f411}{GetScenes}}()}
+\DoxyCodeLine{00064\ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ scenes;}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_manager_a13e07df59690a7a5b163268012173e41}{Save}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_manager_aa3b2dea2aa6baab258cbb1348846ee08}{Load}}(std::wstring\ wFileDirection,\ std::wstring\ wFileName)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{class_scene}{Scene}}*\ \mbox{\hyperlink{class_scene_manager_aa12ac3807b8e59b815ec445c25fca5ae}{GetCurrentScene}}()}
+\DoxyCodeLine{00077\ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ currentScene;}
+\DoxyCodeLine{00079\ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \};}
+
+\end{DoxyCode}

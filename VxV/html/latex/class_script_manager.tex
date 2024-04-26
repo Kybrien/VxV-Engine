@@ -1,0 +1,198 @@
+\doxysection{Script\+Manager Class Reference}
+\hypertarget{class_script_manager}{}\label{class_script_manager}\index{ScriptManager@{ScriptManager}}
+
+
+{\ttfamily \#include $<$Script\+Manager.\+h$>$}
+
+Inheritance diagram for Script\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_script_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_script_manager_a78c933f419dc0b5aa27fca9c1250878b}{Script\+Manager}} (\mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*}manager)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_script_manager}{Script\+Manager} object. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_script}{Script}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_script_manager_a3fd61469e7d754e196180d5255de0850}{Get\+All\+Scripts}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves all scripts managed by the \doxylink{class_script_manager}{Script\+Manager}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_script_manager_ac7e887a4c7502301ddb68d65d0657eb2}{Add\+Script}} (\mbox{\hyperlink{class_script}{Script}} \texorpdfstring{$\ast$}{*}script)
+\begin{DoxyCompactList}\small\item\em Adds a script to the \doxylink{class_script_manager}{Script\+Manager}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_script_manager_ac6eaeb7c7d82cb5a7cd1594c0be557bb}{Save}} () override
+\begin{DoxyCompactList}\small\item\em Saves data associated with the object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_script_manager_a665862e0d165a750ddb7d387b9563df8}{Load}} (std\+::wstring w\+File\+Direction, std\+::wstring w\+File\+Name) override
+\begin{DoxyCompactList}\small\item\em Loads data associated with the object from the specified file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_manager}{Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_a2569efa6dd78f87cc0b64086043cc4ca}{Get\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the manager of type T. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_manager_a200a7092507e1769240452e88996127b}{Init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the \doxylink{class_manager}{Manager}. Represents initializing the \doxylink{class_manager}{Manager}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_manager_a037a7066aa1ba886bafe691ef3f6f98c}{Stop}} ()
+\begin{DoxyCompactList}\small\item\em Stops the \doxylink{class_manager}{Manager}. Represents stopping the \doxylink{class_manager}{Manager} and deleting all pointers. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_manager_ab6bfbb7862710ba6c42634f7ea521994}{Add\+Manager}} (T \texorpdfstring{$\ast$}{*}manager)
+\begin{DoxyCompactList}\small\item\em Adds a manager to the \doxylink{class_manager}{Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_script}{Script}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_script_manager_a80016cc74af49f9d9195c7ff80d30db8}{New\+Script}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Creates a new \doxylink{class_script}{Script} object with the given name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_manager}{Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_abf52d7d532c05607cc23c687f23e6b67}{Get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the singleton instance of the \doxylink{class_manager}{Manager} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{class_script_manager_ac7c6e339c6c087c95cafc0b0e5d65e9b}{file\+Direction}} = "{}Scripts"{}
+\begin{DoxyCompactList}\small\item\em Static string representing the file direction. Used to store the directory where files are located. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{class_script_manager_a98f99039f0748a4e134c82622a2ec061}{extention}} = "{}.cpp"{}
+\begin{DoxyCompactList}\small\item\em Static string representing the file extension. Used to specify the file extension for files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_manager}{Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_manager_a066ee0e0faa861515f582e510a722804}{Search\+File}} (std\+::string file\+Direction, std\+::string extension, T \texorpdfstring{$\ast$}{*}manager)
+\begin{DoxyCompactList}\small\item\em Searches for files with a specific extension in a given directory and processes them using the specified manager. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_manager}{Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_ac80f5ee151565f111593921bac645ad7}{instance}} = nullptr
+\begin{DoxyCompactList}\small\item\em Pointer to the singleton instance of the \doxylink{class_manager}{Manager} class. Represents the singleton instance of the \doxylink{class_manager}{Manager} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_script_manager_a78c933f419dc0b5aa27fca9c1250878b}\label{class_script_manager_a78c933f419dc0b5aa27fca9c1250878b} 
+\index{ScriptManager@{ScriptManager}!ScriptManager@{ScriptManager}}
+\index{ScriptManager@{ScriptManager}!ScriptManager@{ScriptManager}}
+\doxysubsubsection{\texorpdfstring{ScriptManager()}{ScriptManager()}}
+{\footnotesize\ttfamily Script\+Manager\+::\+Script\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*}}]{manager }\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_script_manager}{Script\+Manager} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manager} & Pointer to the \doxylink{class_manager}{Manager} object associated with the \doxylink{class_script_manager}{Script\+Manager}. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_script_manager_ac7e887a4c7502301ddb68d65d0657eb2}\label{class_script_manager_ac7e887a4c7502301ddb68d65d0657eb2} 
+\index{ScriptManager@{ScriptManager}!AddScript@{AddScript}}
+\index{AddScript@{AddScript}!ScriptManager@{ScriptManager}}
+\doxysubsubsection{\texorpdfstring{AddScript()}{AddScript()}}
+{\footnotesize\ttfamily void Script\+Manager\+::\+Add\+Script (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_script}{Script}} \texorpdfstring{$\ast$}{*}}]{script }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a script to the \doxylink{class_script_manager}{Script\+Manager}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em script} & Pointer to the \doxylink{class_script}{Script} object to be added. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{class_script_manager_a3fd61469e7d754e196180d5255de0850}\label{class_script_manager_a3fd61469e7d754e196180d5255de0850} 
+\index{ScriptManager@{ScriptManager}!GetAllScripts@{GetAllScripts}}
+\index{GetAllScripts@{GetAllScripts}!ScriptManager@{ScriptManager}}
+\doxysubsubsection{\texorpdfstring{GetAllScripts()}{GetAllScripts()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_script}{Script}} \texorpdfstring{$\ast$}{*} $>$ Script\+Manager\+::\+Get\+All\+Scripts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves all scripts managed by the \doxylink{class_script_manager}{Script\+Manager}. 
+
+\begin{DoxyReturn}{Returns}
+A vector containing pointers to all \doxylink{class_script}{Script} objects. 
+\end{DoxyReturn}
+\Hypertarget{class_script_manager_a665862e0d165a750ddb7d387b9563df8}\label{class_script_manager_a665862e0d165a750ddb7d387b9563df8} 
+\index{ScriptManager@{ScriptManager}!Load@{Load}}
+\index{Load@{Load}!ScriptManager@{ScriptManager}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily void Script\+Manager\+::\+Load (\begin{DoxyParamCaption}\item[{std\+::wstring}]{w\+File\+Direction,  }\item[{std\+::wstring}]{w\+File\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Loads data associated with the object from the specified file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w\+File\+Direction} & The directory where the file is located. \\
+\hline
+{\em w\+File\+Name} & The name of the file to load. Represents loading data associated with the object from the specified file. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_manager_a1ca627323200c3ac1c6da0d3c510f0c7}{Manager}}.
+
+\Hypertarget{class_script_manager_a80016cc74af49f9d9195c7ff80d30db8}\label{class_script_manager_a80016cc74af49f9d9195c7ff80d30db8} 
+\index{ScriptManager@{ScriptManager}!NewScript@{NewScript}}
+\index{NewScript@{NewScript}!ScriptManager@{ScriptManager}}
+\doxysubsubsection{\texorpdfstring{NewScript()}{NewScript()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_script}{Script}} \texorpdfstring{$\ast$}{*} Script\+Manager\+::\+New\+Script (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Creates a new \doxylink{class_script}{Script} object with the given name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the script. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly created \doxylink{class_script}{Script} object. 
+\end{DoxyReturn}
+\Hypertarget{class_script_manager_ac6eaeb7c7d82cb5a7cd1594c0be557bb}\label{class_script_manager_ac6eaeb7c7d82cb5a7cd1594c0be557bb} 
+\index{ScriptManager@{ScriptManager}!Save@{Save}}
+\index{Save@{Save}!ScriptManager@{ScriptManager}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily void Script\+Manager\+::\+Save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Saves data associated with the object. 
+
+Override this function to define custom saving behavior for derived classes. Represents saving data associated with the object. 
+
+Reimplemented from \mbox{\hyperlink{class_manager_aa66c5cc0be93116d3901ce317b2332fb}{Manager}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_script_manager_a98f99039f0748a4e134c82622a2ec061}\label{class_script_manager_a98f99039f0748a4e134c82622a2ec061} 
+\index{ScriptManager@{ScriptManager}!extention@{extention}}
+\index{extention@{extention}!ScriptManager@{ScriptManager}}
+\doxysubsubsection{\texorpdfstring{extention}{extention}}
+{\footnotesize\ttfamily std\+::string Script\+Manager\+::extention = "{}.cpp"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Static string representing the file extension. Used to specify the file extension for files. 
+
+\Hypertarget{class_script_manager_ac7c6e339c6c087c95cafc0b0e5d65e9b}\label{class_script_manager_ac7c6e339c6c087c95cafc0b0e5d65e9b} 
+\index{ScriptManager@{ScriptManager}!fileDirection@{fileDirection}}
+\index{fileDirection@{fileDirection}!ScriptManager@{ScriptManager}}
+\doxysubsubsection{\texorpdfstring{fileDirection}{fileDirection}}
+{\footnotesize\ttfamily std\+::string Script\+Manager\+::file\+Direction = "{}Scripts"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Static string representing the file direction. Used to store the directory where files are located. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_script_manager_8h}{Script\+Manager.\+h}}\item 
+\mbox{\hyperlink{_script_manager_8cpp}{Script\+Manager.\+cpp}}\end{DoxyCompactItemize}

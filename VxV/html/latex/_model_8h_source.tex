@@ -1,0 +1,33 @@
+\doxysection{Model.\+h}
+\hypertarget{_model_8h_source}{}\label{_model_8h_source}\mbox{\hyperlink{_model_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_component_8h}{Component.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_model_component_8hpp}{ModelComponent.hpp}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_model}{Model}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_component}{Component}}}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_model_component}{ModelComponent}}*\ model\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a090cc807df7587ff4441c31ee17f24fc}{Model}}(\mbox{\hyperlink{class_game_object}{GameObject}}*\ go);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_ae3d3f59dbf7e11e24680a68bbe120ae6}{Save}}(Json::Value\&\ compJson)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_a60883d5a7f23665d725dc9e10f1f1251}{Load}}(Json::Value\&\ compJson,\ \mbox{\hyperlink{class_game_object}{GameObject}}*\ ParentGO)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_a71d5bba83fbb2cf0b73ddca0d6e9573b}{Copy}}(\mbox{\hyperlink{class_game_object}{GameObject}}*\ goToFill)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_ac1d2b7fdde64308f8020d635785e9e11}{SetModel}}(std::string\ modelName);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_model_component}{ModelComponent}}*\&\ \mbox{\hyperlink{class_model_a7fc7bffa99f6b49b6270d4819c08543e}{GetModel}}()\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ model;}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \};}
+
+\end{DoxyCode}

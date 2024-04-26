@@ -1,0 +1,198 @@
+\doxysection{Scripting\+Component Class Reference}
+\hypertarget{class_scripting_component}{}\label{class_scripting_component}\index{ScriptingComponent@{ScriptingComponent}}
+
+
+{\ttfamily \#include $<$Scripting\+Component.\+h$>$}
+
+Inheritance diagram for Scripting\+Component\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_scripting_component}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_scripting_component_a1051c995ab06bf5bb01361b36bd41aef}{Scripting\+Component}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}game\+Object)
+\begin{DoxyCompactList}\small\item\em Instanciate a component \doxylink{class_script}{Script}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scripting_component_ad92ce27eaff4f29506491597eee925ca}{Add\+Script}} (\mbox{\hyperlink{class_script}{Script}} \texorpdfstring{$\ast$}{*}script)
+\begin{DoxyCompactList}\small\item\em Assign a script to the component. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_script}{Script}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_scripting_component_a0faac8c58e323affe80a21e12a83269e}{Get\+Script}} ()
+\begin{DoxyCompactList}\small\item\em Get the script assigned to the component. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scripting_component_a2a726d11eab8a8446e38e14ed06703fc}{Save}} (Json\+::\+Value \&comp\+Json) override
+\begin{DoxyCompactList}\small\item\em Save the component in a Json Object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scripting_component_ad3cdd584251d433cbf80d1e4e58a00c3}{Load}} (Json\+::\+Value \&comp\+Json, \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}Parent\+GO) override
+\begin{DoxyCompactList}\small\item\em Load the component from a Json Object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scripting_component_a7d595c437bbb1d55e8be730e8149dabc}{Copy}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go\+To\+Fill) override
+\begin{DoxyCompactList}\small\item\em Copy the value of a component to another game\+Object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_component_ae527ef1a4d1be744d50e2676a6c4f5f6}{Component}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_component}{Component} object and links it to a \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_component_ae26f4d08f6a55499e30a1f700a4c08b7}{Get\+Linked\+Game\+Object}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the linked \doxylink{class_game_object}{Game\+Object} of the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_scripting_component_a99024036e3eaf589e974ef6bb85a9e71}{name}} = "{}Script\+Component"{}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_script}{Script}\textquotesingle{}s name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Type}} \mbox{\hyperlink{class_component_a18de93d5a176aa3cd6dc6724788dfacb}{type}}
+\begin{DoxyCompactList}\small\item\em Type of the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Type}} \{ \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94}{Unknown}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059}{Transform}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a090cc807df7587ff4441c31ee17f24fc}{Model}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51}{Script\+Component}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration representing different types of components. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_component_ae82678b1f50e36ccba0a8775f12036c3}{linked\+Game\+Object}}
+\begin{DoxyCompactList}\small\item\em Pointer to the \doxylink{class_game_object}{Game\+Object} linked to the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_scripting_component_a1051c995ab06bf5bb01361b36bd41aef}\label{class_scripting_component_a1051c995ab06bf5bb01361b36bd41aef} 
+\index{ScriptingComponent@{ScriptingComponent}!ScriptingComponent@{ScriptingComponent}}
+\index{ScriptingComponent@{ScriptingComponent}!ScriptingComponent@{ScriptingComponent}}
+\doxysubsubsection{\texorpdfstring{ScriptingComponent()}{ScriptingComponent()}}
+{\footnotesize\ttfamily Scripting\+Component\+::\+Scripting\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{game\+Object }\end{DoxyParamCaption})}
+
+
+
+Instanciate a component \doxylink{class_script}{Script}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & reference to the linked \doxylink{class_game_object}{Game\+Object} \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_scripting_component_ad92ce27eaff4f29506491597eee925ca}\label{class_scripting_component_ad92ce27eaff4f29506491597eee925ca} 
+\index{ScriptingComponent@{ScriptingComponent}!AddScript@{AddScript}}
+\index{AddScript@{AddScript}!ScriptingComponent@{ScriptingComponent}}
+\doxysubsubsection{\texorpdfstring{AddScript()}{AddScript()}}
+{\footnotesize\ttfamily void Scripting\+Component\+::\+Add\+Script (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_script}{Script}} \texorpdfstring{$\ast$}{*}}]{script }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Assign a script to the component. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & reference to the the script to assign \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{class_scripting_component_a7d595c437bbb1d55e8be730e8149dabc}\label{class_scripting_component_a7d595c437bbb1d55e8be730e8149dabc} 
+\index{ScriptingComponent@{ScriptingComponent}!Copy@{Copy}}
+\index{Copy@{Copy}!ScriptingComponent@{ScriptingComponent}}
+\doxysubsubsection{\texorpdfstring{Copy()}{Copy()}}
+{\footnotesize\ttfamily void Scripting\+Component\+::\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go\+To\+Fill }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Copy the value of a component to another game\+Object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & reference to the \doxylink{class_game_object}{Game\+Object} to fill \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_component_ad70a279b1453b27839c0fc6e9f3a0b08}{Component}}.
+
+\Hypertarget{class_scripting_component_a0faac8c58e323affe80a21e12a83269e}\label{class_scripting_component_a0faac8c58e323affe80a21e12a83269e} 
+\index{ScriptingComponent@{ScriptingComponent}!GetScript@{GetScript}}
+\index{GetScript@{GetScript}!ScriptingComponent@{ScriptingComponent}}
+\doxysubsubsection{\texorpdfstring{GetScript()}{GetScript()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_script}{Script}} \texorpdfstring{$\ast$}{*} Scripting\+Component\+::\+Get\+Script (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the script assigned to the component. 
+
+\begin{DoxyReturn}{Returns}
+Script\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+\Hypertarget{class_scripting_component_ad3cdd584251d433cbf80d1e4e58a00c3}\label{class_scripting_component_ad3cdd584251d433cbf80d1e4e58a00c3} 
+\index{ScriptingComponent@{ScriptingComponent}!Load@{Load}}
+\index{Load@{Load}!ScriptingComponent@{ScriptingComponent}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily void Scripting\+Component\+::\+Load (\begin{DoxyParamCaption}\item[{Json\+::\+Value \&}]{comp\+Json,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{Parent\+GO }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Load the component from a Json Object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & Json Value used by the lib jsoncpp to save the data \\
+\hline
+{\em A} & reference to the parent \doxylink{class_game_object}{Game\+Object} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_component_ac6833433134e649053b0fe16f60dfd98}{Component}}.
+
+\Hypertarget{class_scripting_component_a2a726d11eab8a8446e38e14ed06703fc}\label{class_scripting_component_a2a726d11eab8a8446e38e14ed06703fc} 
+\index{ScriptingComponent@{ScriptingComponent}!Save@{Save}}
+\index{Save@{Save}!ScriptingComponent@{ScriptingComponent}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily void Scripting\+Component\+::\+Save (\begin{DoxyParamCaption}\item[{Json\+::\+Value \&}]{comp\+Json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Save the component in a Json Object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & Json Value used by the lib jsoncpp to save the data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_component_a78f3311bb53ce9b6d095e95021df681a}{Component}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_scripting_component_a99024036e3eaf589e974ef6bb85a9e71}\label{class_scripting_component_a99024036e3eaf589e974ef6bb85a9e71} 
+\index{ScriptingComponent@{ScriptingComponent}!name@{name}}
+\index{name@{name}!ScriptingComponent@{ScriptingComponent}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily std\+::string Scripting\+Component\+::name = "{}Script\+Component"{}}
+
+
+
+\doxylink{class_script}{Script}\textquotesingle{}s name. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_scripting_component_8h}{Scripting\+Component.\+h}}\item 
+\mbox{\hyperlink{_scripting_component_8cpp}{Scripting\+Component.\+cpp}}\end{DoxyCompactItemize}

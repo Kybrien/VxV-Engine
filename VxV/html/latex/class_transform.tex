@@ -1,0 +1,328 @@
+\doxysection{Transform Class Reference}
+\hypertarget{class_transform}{}\label{class_transform}\index{Transform@{Transform}}
+
+
+{\ttfamily \#include $<$Transform.\+h$>$}
+
+Inheritance diagram for Transform\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_transform}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_transform_a00209266b27fa0c297551a0ce4a07017}{Transform}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}game\+Object)
+\begin{DoxyCompactList}\small\item\em Instanciate a component \doxylink{class_transform}{Transform}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_transform_aafa0e1d9cc3817b5a89c14fc5da5679e}{Set\+Position}} (glm\+::vec3 pos, bool is\+Child=false)
+\begin{DoxyCompactList}\small\item\em Set the position of the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_transform_af55f34f24b7f560ad4e8096174ae9f97}{Set\+Rotation}} (float x\+Angle, float y\+Angle, float z\+Angle, bool is\+Child=false)
+\begin{DoxyCompactList}\small\item\em Set the rotation of the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_transform_a026cde3b4f39979cc50124cab7ab4977}{Set\+Scale}} (glm\+::vec3 sca, bool is\+Child=false)
+\begin{DoxyCompactList}\small\item\em Set the scale of the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_transform_afc067c0f32c845c5b632766d661ea7c9}{Translate}} (glm\+::vec3 pos, bool is\+Child=false)
+\begin{DoxyCompactList}\small\item\em Translate the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_transform_a2ab11f63623cf22fa133c352e891ef5e}{Rotate}} (float x\+Angle, float y\+Angle, float z\+Angle, bool is\+Child=false)
+\begin{DoxyCompactList}\small\item\em Rotate the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_transform_aa2a840b2aa304ffa372d6b92b9cfca09}{Scale}} (glm\+::vec3 sca, bool is\+Child=false)
+\begin{DoxyCompactList}\small\item\em Scale the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_transform_ab56d0806d3d2d67a0587c7ffebf0b2d0}{Get\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Get the position of the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_transform_a5af4d340711239a3517813e9122c6065}{Get\+Rotation}} ()
+\begin{DoxyCompactList}\small\item\em Get the rotation of the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_transform_a28a37980813cba4e8bada11d5ee6d070}{Get\+Scale}} ()
+\begin{DoxyCompactList}\small\item\em Get the scale of the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_transform_a6fefaab8dad405393d413a05742b23db}{Load}} (Json\+::\+Value \&comp\+Json, \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}Parent\+GO) override
+\begin{DoxyCompactList}\small\item\em Load the component from a Json Object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_transform_a3e44e2c5961d89008e845ed14dc8c0e3}{Save}} (Json\+::\+Value \&comp\+Json) override
+\begin{DoxyCompactList}\small\item\em Save the component in a Json Object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_transform_a238e8b69aab0b8f29597a2eba53eef59}{Copy}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go\+To\+Fill) override
+\begin{DoxyCompactList}\small\item\em Copy the value of a component to another game\+Object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_component_ae527ef1a4d1be744d50e2676a6c4f5f6}{Component}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_component}{Component} object and links it to a \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_component_ae26f4d08f6a55499e30a1f700a4c08b7}{Get\+Linked\+Game\+Object}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the linked \doxylink{class_game_object}{Game\+Object} of the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Type}} \{ \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94}{Unknown}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059}{Transform}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a090cc807df7587ff4441c31ee17f24fc}{Model}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51}{Script\+Component}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration representing different types of components. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Type}} \mbox{\hyperlink{class_component_a18de93d5a176aa3cd6dc6724788dfacb}{type}}
+\begin{DoxyCompactList}\small\item\em Type of the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_component_ae82678b1f50e36ccba0a8775f12036c3}{linked\+Game\+Object}}
+\begin{DoxyCompactList}\small\item\em Pointer to the \doxylink{class_game_object}{Game\+Object} linked to the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_transform_a00209266b27fa0c297551a0ce4a07017}\label{class_transform_a00209266b27fa0c297551a0ce4a07017} 
+\index{Transform@{Transform}!Transform@{Transform}}
+\index{Transform@{Transform}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{Transform()}{Transform()}}
+{\footnotesize\ttfamily Transform\+::\+Transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{game\+Object }\end{DoxyParamCaption})}
+
+
+
+Instanciate a component \doxylink{class_transform}{Transform}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & reference to the linked \doxylink{class_game_object}{Game\+Object} \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_transform_a238e8b69aab0b8f29597a2eba53eef59}\label{class_transform_a238e8b69aab0b8f29597a2eba53eef59} 
+\index{Transform@{Transform}!Copy@{Copy}}
+\index{Copy@{Copy}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{Copy()}{Copy()}}
+{\footnotesize\ttfamily void Transform\+::\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go\+To\+Fill }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Copy the value of a component to another game\+Object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & reference to the \doxylink{class_game_object}{Game\+Object} to fill \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_component_ad70a279b1453b27839c0fc6e9f3a0b08}{Component}}.
+
+\Hypertarget{class_transform_ab56d0806d3d2d67a0587c7ffebf0b2d0}\label{class_transform_ab56d0806d3d2d67a0587c7ffebf0b2d0} 
+\index{Transform@{Transform}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily glm\+::vec3 Transform\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the position of the \doxylink{class_game_object}{Game\+Object}. 
+
+\begin{DoxyReturn}{Returns}
+glm\+::vec3 
+\end{DoxyReturn}
+\Hypertarget{class_transform_a5af4d340711239a3517813e9122c6065}\label{class_transform_a5af4d340711239a3517813e9122c6065} 
+\index{Transform@{Transform}!GetRotation@{GetRotation}}
+\index{GetRotation@{GetRotation}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{GetRotation()}{GetRotation()}}
+{\footnotesize\ttfamily glm\+::vec3 Transform\+::\+Get\+Rotation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the rotation of the \doxylink{class_game_object}{Game\+Object}. 
+
+\begin{DoxyReturn}{Returns}
+glm\+::vec3 
+\end{DoxyReturn}
+\Hypertarget{class_transform_a28a37980813cba4e8bada11d5ee6d070}\label{class_transform_a28a37980813cba4e8bada11d5ee6d070} 
+\index{Transform@{Transform}!GetScale@{GetScale}}
+\index{GetScale@{GetScale}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{GetScale()}{GetScale()}}
+{\footnotesize\ttfamily glm\+::vec3 Transform\+::\+Get\+Scale (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the scale of the \doxylink{class_game_object}{Game\+Object}. 
+
+\begin{DoxyReturn}{Returns}
+glm\+::vec3 
+\end{DoxyReturn}
+\Hypertarget{class_transform_a6fefaab8dad405393d413a05742b23db}\label{class_transform_a6fefaab8dad405393d413a05742b23db} 
+\index{Transform@{Transform}!Load@{Load}}
+\index{Load@{Load}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily void Transform\+::\+Load (\begin{DoxyParamCaption}\item[{Json\+::\+Value \&}]{comp\+Json,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{Parent\+GO }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Load the component from a Json Object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & Json Value used by the lib jsoncpp to save the data \\
+\hline
+{\em A} & reference to the parent \doxylink{class_game_object}{Game\+Object} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_component_ac6833433134e649053b0fe16f60dfd98}{Component}}.
+
+\Hypertarget{class_transform_a2ab11f63623cf22fa133c352e891ef5e}\label{class_transform_a2ab11f63623cf22fa133c352e891ef5e} 
+\index{Transform@{Transform}!Rotate@{Rotate}}
+\index{Rotate@{Rotate}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{Rotate()}{Rotate()}}
+{\footnotesize\ttfamily void Transform\+::\+Rotate (\begin{DoxyParamCaption}\item[{float}]{x\+Angle,  }\item[{float}]{y\+Angle,  }\item[{float}]{z\+Angle,  }\item[{bool}]{is\+Child = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Rotate the \doxylink{class_game_object}{Game\+Object}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & float with the rotation on X \\
+\hline
+{\em A} & float with the rotation on Y \\
+\hline
+{\em A} & float with the rotation on Z \\
+\hline
+{\em A} & boolean to know if the position is a child position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{class_transform_a3e44e2c5961d89008e845ed14dc8c0e3}\label{class_transform_a3e44e2c5961d89008e845ed14dc8c0e3} 
+\index{Transform@{Transform}!Save@{Save}}
+\index{Save@{Save}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily void Transform\+::\+Save (\begin{DoxyParamCaption}\item[{Json\+::\+Value \&}]{comp\+Json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Save the component in a Json Object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & Json Value used by the lib jsoncpp to save the data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_component_a78f3311bb53ce9b6d095e95021df681a}{Component}}.
+
+\Hypertarget{class_transform_aa2a840b2aa304ffa372d6b92b9cfca09}\label{class_transform_aa2a840b2aa304ffa372d6b92b9cfca09} 
+\index{Transform@{Transform}!Scale@{Scale}}
+\index{Scale@{Scale}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{Scale()}{Scale()}}
+{\footnotesize\ttfamily void Transform\+::\+Scale (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{sca,  }\item[{bool}]{is\+Child = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Scale the \doxylink{class_game_object}{Game\+Object}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & vector3 with the Scale changement \\
+\hline
+{\em A} & boolean to know if the position is a child position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{class_transform_aafa0e1d9cc3817b5a89c14fc5da5679e}\label{class_transform_aafa0e1d9cc3817b5a89c14fc5da5679e} 
+\index{Transform@{Transform}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{SetPosition()}{SetPosition()}}
+{\footnotesize\ttfamily void Transform\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{pos,  }\item[{bool}]{is\+Child = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Set the position of the \doxylink{class_game_object}{Game\+Object}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & vector3 with the new position \\
+\hline
+{\em A} & boolean to know if the position is a child position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{class_transform_af55f34f24b7f560ad4e8096174ae9f97}\label{class_transform_af55f34f24b7f560ad4e8096174ae9f97} 
+\index{Transform@{Transform}!SetRotation@{SetRotation}}
+\index{SetRotation@{SetRotation}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{SetRotation()}{SetRotation()}}
+{\footnotesize\ttfamily void Transform\+::\+Set\+Rotation (\begin{DoxyParamCaption}\item[{float}]{x\+Angle,  }\item[{float}]{y\+Angle,  }\item[{float}]{z\+Angle,  }\item[{bool}]{is\+Child = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Set the rotation of the \doxylink{class_game_object}{Game\+Object}. 
+
+A float with the new rotation on X
+
+A float with the new rotation on Y
+
+A float with the new rotation on Z 
+\begin{DoxyParams}{Parameters}
+{\em A} & boolean to know if the position is a child position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{class_transform_a026cde3b4f39979cc50124cab7ab4977}\label{class_transform_a026cde3b4f39979cc50124cab7ab4977} 
+\index{Transform@{Transform}!SetScale@{SetScale}}
+\index{SetScale@{SetScale}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{SetScale()}{SetScale()}}
+{\footnotesize\ttfamily void Transform\+::\+Set\+Scale (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{sca,  }\item[{bool}]{is\+Child = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Set the scale of the \doxylink{class_game_object}{Game\+Object}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & vector3 with the new scale \\
+\hline
+{\em A} & boolean to know if the position is a child position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{class_transform_afc067c0f32c845c5b632766d661ea7c9}\label{class_transform_afc067c0f32c845c5b632766d661ea7c9} 
+\index{Transform@{Transform}!Translate@{Translate}}
+\index{Translate@{Translate}!Transform@{Transform}}
+\doxysubsubsection{\texorpdfstring{Translate()}{Translate()}}
+{\footnotesize\ttfamily void Transform\+::\+Translate (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{pos,  }\item[{bool}]{is\+Child = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Translate the \doxylink{class_game_object}{Game\+Object}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & vector3 with the deplacement vector \\
+\hline
+{\em A} & boolean to know if the position is a child position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_transform_8h}{Transform.\+h}}\item 
+\mbox{\hyperlink{_transform_8cpp}{Transform.\+cpp}}\end{DoxyCompactItemize}

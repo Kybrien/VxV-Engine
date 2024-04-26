@@ -1,0 +1,98 @@
+\doxysection{Memory\+Pool\texorpdfstring{$<$}{<} T, Strategy \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_memory_pool}{}\label{class_memory_pool}\index{MemoryPool$<$ T, Strategy $>$@{MemoryPool$<$ T, Strategy $>$}}
+
+
+\doxylink{class_memory_pool}{Memory\+Pool} class that uses a specific strategy to allocate and deallocate memory.  
+
+
+
+
+{\ttfamily \#include $<$Memory\+Pool.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_memory_pool_a81562e65d5b85a7615f60b44d4461252}{Memory\+Pool}} (int size=0)
+\item 
+{\footnotesize template$<$typename... Args$>$ }\\T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_memory_pool_a78298262e0a5d2661533fe5f56ed5cbf}{Alloc}} (Args... args)
+\begin{DoxyCompactList}\small\item\em Allocates memory for an object of type T. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_memory_pool_ab9267708cc7a7801d0e1467cf01ca5e9}{Free}} (void \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Deallocates memory for a specific object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_memory_pool_ab2031dbba508e46248b28ae9d678f7ae}{Free\+All}} ()
+\begin{DoxyCompactList}\small\item\em Deallocates memory for all objects in the pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, class Strategy$>$\newline
+class Memory\+Pool$<$ T, Strategy $>$}
+\doxylink{class_memory_pool}{Memory\+Pool} class that uses a specific strategy to allocate and deallocate memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T} & -\/ type of object to allocate memory for \\
+\hline
+{\em Strategy} & -\/ strategy to use for memory allocation and deallocation \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_memory_pool_a81562e65d5b85a7615f60b44d4461252}\label{class_memory_pool_a81562e65d5b85a7615f60b44d4461252} 
+\index{MemoryPool$<$ T, Strategy $>$@{MemoryPool$<$ T, Strategy $>$}!MemoryPool@{MemoryPool}}
+\index{MemoryPool@{MemoryPool}!MemoryPool$<$ T, Strategy $>$@{MemoryPool$<$ T, Strategy $>$}}
+\doxysubsubsection{\texorpdfstring{MemoryPool()}{MemoryPool()}}
+{\footnotesize\ttfamily template$<$typename T , class Strategy $>$ \\
+\mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$ T, Strategy $>$\mbox{\hyperlink{class_memory_pool}{\+::\+Memory\+Pool}} (\begin{DoxyParamCaption}\item[{int}]{size = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_memory_pool_a78298262e0a5d2661533fe5f56ed5cbf}\label{class_memory_pool_a78298262e0a5d2661533fe5f56ed5cbf} 
+\index{MemoryPool$<$ T, Strategy $>$@{MemoryPool$<$ T, Strategy $>$}!Alloc@{Alloc}}
+\index{Alloc@{Alloc}!MemoryPool$<$ T, Strategy $>$@{MemoryPool$<$ T, Strategy $>$}}
+\doxysubsubsection{\texorpdfstring{Alloc()}{Alloc()}}
+{\footnotesize\ttfamily template$<$typename T , class Strategy $>$ \\
+template$<$typename... Args$>$ \\
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$ T, Strategy $>$\+::\+Alloc (\begin{DoxyParamCaption}\item[{Args...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Allocates memory for an object of type T. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & -\/ arguments to pass to the constructor of the object \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_memory_pool_ab9267708cc7a7801d0e1467cf01ca5e9}\label{class_memory_pool_ab9267708cc7a7801d0e1467cf01ca5e9} 
+\index{MemoryPool$<$ T, Strategy $>$@{MemoryPool$<$ T, Strategy $>$}!Free@{Free}}
+\index{Free@{Free}!MemoryPool$<$ T, Strategy $>$@{MemoryPool$<$ T, Strategy $>$}}
+\doxysubsubsection{\texorpdfstring{Free()}{Free()}}
+{\footnotesize\ttfamily template$<$typename T , class Strategy $>$ \\
+void \mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$ T, Strategy $>$\+::\+Free (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Deallocates memory for a specific object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & -\/ pointer to the object to deallocate \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_memory_pool_ab2031dbba508e46248b28ae9d678f7ae}\label{class_memory_pool_ab2031dbba508e46248b28ae9d678f7ae} 
+\index{MemoryPool$<$ T, Strategy $>$@{MemoryPool$<$ T, Strategy $>$}!FreeAll@{FreeAll}}
+\index{FreeAll@{FreeAll}!MemoryPool$<$ T, Strategy $>$@{MemoryPool$<$ T, Strategy $>$}}
+\doxysubsubsection{\texorpdfstring{FreeAll()}{FreeAll()}}
+{\footnotesize\ttfamily template$<$typename T , class Strategy $>$ \\
+void \mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$ T, Strategy $>$\+::\+Free\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Deallocates memory for all objects in the pool. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_memory_pool_8h}{Memory\+Pool.\+h}}\end{DoxyCompactItemize}

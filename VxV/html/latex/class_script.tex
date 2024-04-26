@@ -1,0 +1,132 @@
+\doxysection{Script Class Reference}
+\hypertarget{class_script}{}\label{class_script}\index{Script@{Script}}
+
+
+{\ttfamily \#include $<$Script.\+h$>$}
+
+Inheritance diagram for Script\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_script}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_script_a10975b78b03162488c522f095fd7707f}{Script}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_script}{Script} object. Represents constructing a \doxylink{class_script}{Script} object. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_script_a7435017a2bae25792f2b0dd2918080be}{get\+File}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the file direction associated with the script. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_script_aaef6acc277b06d2afd3eb3a860fdd904}{Set\+File}} (std\+::string file\+Direction\+\_\+)
+\begin{DoxyCompactList}\small\item\em Sets the file direction associated with the script. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_script_a5d3f82c959b4faba268cf3f546d66129}{Load}} (std\+::string \+\_\+file\+Direction, std\+::string \+\_\+name)
+\begin{DoxyCompactList}\small\item\em Loads the script from the specified file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_script_a0a47c254a030d9ad0e053df2f7a8e546}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Called when the script starts. Represents the start function of the script. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_script_a683fdcace21f323e3d5d244e89a967bb}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Called every frame. Represents the update function of the script. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_script_a3aa8a16b8d2ed0ee2a777805625717b7}{name}}
+\begin{DoxyCompactList}\small\item\em Represents the name of the script. Stores the name assigned to the script. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_script_a10975b78b03162488c522f095fd7707f}\label{class_script_a10975b78b03162488c522f095fd7707f} 
+\index{Script@{Script}!Script@{Script}}
+\index{Script@{Script}!Script@{Script}}
+\doxysubsubsection{\texorpdfstring{Script()}{Script()}}
+{\footnotesize\ttfamily Script\+::\+Script (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_script}{Script} object. Represents constructing a \doxylink{class_script}{Script} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_script_a7435017a2bae25792f2b0dd2918080be}\label{class_script_a7435017a2bae25792f2b0dd2918080be} 
+\index{Script@{Script}!getFile@{getFile}}
+\index{getFile@{getFile}!Script@{Script}}
+\doxysubsubsection{\texorpdfstring{getFile()}{getFile()}}
+{\footnotesize\ttfamily std\+::string Script\+::get\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the file direction associated with the script. 
+
+\begin{DoxyReturn}{Returns}
+The file direction associated with the script. Represents retrieving the file direction associated with the script. 
+\end{DoxyReturn}
+\Hypertarget{class_script_a5d3f82c959b4faba268cf3f546d66129}\label{class_script_a5d3f82c959b4faba268cf3f546d66129} 
+\index{Script@{Script}!Load@{Load}}
+\index{Load@{Load}!Script@{Script}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily void Script\+::\+Load (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+file\+Direction,  }\item[{std\+::string}]{\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Loads the script from the specified file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+file\+Direction} & The file direction where the script is located. \\
+\hline
+{\em \+\_\+name} & The name of the script. Represents loading the script from the specified file. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_script_aaef6acc277b06d2afd3eb3a860fdd904}\label{class_script_aaef6acc277b06d2afd3eb3a860fdd904} 
+\index{Script@{Script}!SetFile@{SetFile}}
+\index{SetFile@{SetFile}!Script@{Script}}
+\doxysubsubsection{\texorpdfstring{SetFile()}{SetFile()}}
+{\footnotesize\ttfamily void Script\+::\+Set\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Direction\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the file direction associated with the script. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Direction\+\_\+} & The file direction to set. Represents setting the file direction associated with the script. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_script_a0a47c254a030d9ad0e053df2f7a8e546}\label{class_script_a0a47c254a030d9ad0e053df2f7a8e546} 
+\index{Script@{Script}!Start@{Start}}
+\index{Start@{Start}!Script@{Script}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Script\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Called when the script starts. Represents the start function of the script. 
+
+\Hypertarget{class_script_a683fdcace21f323e3d5d244e89a967bb}\label{class_script_a683fdcace21f323e3d5d244e89a967bb} 
+\index{Script@{Script}!Update@{Update}}
+\index{Update@{Update}!Script@{Script}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Script\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Called every frame. Represents the update function of the script. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_script_a3aa8a16b8d2ed0ee2a777805625717b7}\label{class_script_a3aa8a16b8d2ed0ee2a777805625717b7} 
+\index{Script@{Script}!name@{name}}
+\index{name@{name}!Script@{Script}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily std\+::string Script\+::name}
+
+
+
+Represents the name of the script. Stores the name assigned to the script. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_script_8h}{Script.\+h}}\item 
+\mbox{\hyperlink{_script_8cpp}{Script.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,168 @@
+\doxysection{Scene Class Reference}
+\hypertarget{class_scene}{}\label{class_scene}\index{Scene@{Scene}}
+
+
+{\ttfamily \#include $<$Scene.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_scene_a6ba5bb9b5249b96421a5199491e7d517}{Scene}} (std\+::string name\+\_\+="{}Sample\+Scene"{})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_scene}{Scene} object with an optional name. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \& \mbox{\hyperlink{class_scene_a05e21fc3b8a98abfe1227ca77d6ce6f1}{Get\+Game\+Objects}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves a reference to the vector containing pointers to Game\+Objects in the scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_aca63760fd328a1c44cd8e46c71141def}{Add\+Game\+Object}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go)
+\begin{DoxyCompactList}\small\item\em Adds a \doxylink{class_game_object}{Game\+Object} to the scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_a456b73af3ea678135c40f45644ae6e29}{Remove\+Game\+Object}} (int id)
+\begin{DoxyCompactList}\small\item\em Removes a \doxylink{class_game_object}{Game\+Object} from the scene by its ID. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_scene_a8e7c528eaf26088daa91e19102182845}{Get\+All\+Game\+Objects}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves all Game\+Objects in the scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_a0f3009b2ffcd55c44ebb1d571bbdd101}{Init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes all Game\+Objects in the scene. Represents initializing all Game\+Objects in the scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_a31e0e1b9ce39bd9f5ec160835cc94d44}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Starts all Game\+Objects in the scene. Represents starting all Game\+Objects in the scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_a71a71b4f7752b853ff8032b0941a9d8d}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Updates all Game\+Objects in the scene. Represents updating all Game\+Objects in the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}}
+\begin{DoxyCompactList}\small\item\em Represents the name of the scene. Stores the name assigned to the scene. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_scene_a73428b3e2f7f9ca0de9ad23ac1c6b02c}{origin}}
+\begin{DoxyCompactList}\small\item\em Represents the origin point of the scene. Stores the origin point of the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_scene_a6ba5bb9b5249b96421a5199491e7d517}\label{class_scene_a6ba5bb9b5249b96421a5199491e7d517} 
+\index{Scene@{Scene}!Scene@{Scene}}
+\index{Scene@{Scene}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{Scene()}{Scene()}}
+{\footnotesize\ttfamily Scene\+::\+Scene (\begin{DoxyParamCaption}\item[{std\+::string}]{name\+\_\+ = {\ttfamily "{}SampleScene"{}} }\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_scene}{Scene} object with an optional name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name\+\_\+} & The name of the scene. Default is "{}\+Sample\+Scene"{}. Represents constructing a \doxylink{class_scene}{Scene} object with an optional name. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_scene_aca63760fd328a1c44cd8e46c71141def}\label{class_scene_aca63760fd328a1c44cd8e46c71141def} 
+\index{Scene@{Scene}!AddGameObject@{AddGameObject}}
+\index{AddGameObject@{AddGameObject}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{AddGameObject()}{AddGameObject()}}
+{\footnotesize\ttfamily void Scene\+::\+Add\+Game\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a \doxylink{class_game_object}{Game\+Object} to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em go} & Pointer to the \doxylink{class_game_object}{Game\+Object} to add. Represents adding a \doxylink{class_game_object}{Game\+Object} to the scene. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_scene_a8e7c528eaf26088daa91e19102182845}\label{class_scene_a8e7c528eaf26088daa91e19102182845} 
+\index{Scene@{Scene}!GetAllGameObjects@{GetAllGameObjects}}
+\index{GetAllGameObjects@{GetAllGameObjects}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{GetAllGameObjects()}{GetAllGameObjects()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ Scene\+::\+Get\+All\+Game\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves all Game\+Objects in the scene. 
+
+\begin{DoxyReturn}{Returns}
+A vector containing pointers to all Game\+Objects in the scene. Represents retrieving all Game\+Objects in the scene. 
+\end{DoxyReturn}
+\Hypertarget{class_scene_a05e21fc3b8a98abfe1227ca77d6ce6f1}\label{class_scene_a05e21fc3b8a98abfe1227ca77d6ce6f1} 
+\index{Scene@{Scene}!GetGameObjects@{GetGameObjects}}
+\index{GetGameObjects@{GetGameObjects}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{GetGameObjects()}{GetGameObjects()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \& Scene\+::\+Get\+Game\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves a reference to the vector containing pointers to Game\+Objects in the scene. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the vector containing pointers to Game\+Objects in the scene. Represents retrieving the vector of Game\+Objects in the scene. 
+\end{DoxyReturn}
+\Hypertarget{class_scene_a0f3009b2ffcd55c44ebb1d571bbdd101}\label{class_scene_a0f3009b2ffcd55c44ebb1d571bbdd101} 
+\index{Scene@{Scene}!Init@{Init}}
+\index{Init@{Init}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Scene\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Initializes all Game\+Objects in the scene. Represents initializing all Game\+Objects in the scene. 
+
+\Hypertarget{class_scene_a456b73af3ea678135c40f45644ae6e29}\label{class_scene_a456b73af3ea678135c40f45644ae6e29} 
+\index{Scene@{Scene}!RemoveGameObject@{RemoveGameObject}}
+\index{RemoveGameObject@{RemoveGameObject}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{RemoveGameObject()}{RemoveGameObject()}}
+{\footnotesize\ttfamily void Scene\+::\+Remove\+Game\+Object (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Removes a \doxylink{class_game_object}{Game\+Object} from the scene by its ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the \doxylink{class_game_object}{Game\+Object} to remove. Represents removing a \doxylink{class_game_object}{Game\+Object} from the scene by its ID. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_scene_a31e0e1b9ce39bd9f5ec160835cc94d44}\label{class_scene_a31e0e1b9ce39bd9f5ec160835cc94d44} 
+\index{Scene@{Scene}!Start@{Start}}
+\index{Start@{Start}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Scene\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Starts all Game\+Objects in the scene. Represents starting all Game\+Objects in the scene. 
+
+\Hypertarget{class_scene_a71a71b4f7752b853ff8032b0941a9d8d}\label{class_scene_a71a71b4f7752b853ff8032b0941a9d8d} 
+\index{Scene@{Scene}!Update@{Update}}
+\index{Update@{Update}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Scene\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Updates all Game\+Objects in the scene. Represents updating all Game\+Objects in the scene. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_scene_a44b2d6bffa153dda02f026f8533ceb08}\label{class_scene_a44b2d6bffa153dda02f026f8533ceb08} 
+\index{Scene@{Scene}!name@{name}}
+\index{name@{name}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily std\+::string Scene\+::name}
+
+
+
+Represents the name of the scene. Stores the name assigned to the scene. 
+
+\Hypertarget{class_scene_a73428b3e2f7f9ca0de9ad23ac1c6b02c}\label{class_scene_a73428b3e2f7f9ca0de9ad23ac1c6b02c} 
+\index{Scene@{Scene}!origin@{origin}}
+\index{origin@{origin}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{origin}{origin}}
+{\footnotesize\ttfamily glm\+::vec3 Scene\+::origin}
+
+
+
+Represents the origin point of the scene. Stores the origin point of the scene. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_scene_8h}{Scene.\+h}}\item 
+\mbox{\hyperlink{_scene_8cpp}{Scene.\+cpp}}\end{DoxyCompactItemize}

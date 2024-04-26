@@ -25,7 +25,6 @@
   <td id="projectalign">
    <div id="projectname">VxV
    </div>
-   <div id="projectbrief">A perfectly ok engine</div>
   </td>
  </tr>
  </tbody>
@@ -81,22 +80,23 @@ $(function() { codefold.init(0); });
 </div><!--header-->
 <div class="contents">
 <a href="_engine_g_u_i_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;imgui.h&quot;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;imgui_impl_glfw.h&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;imgui_impl_opengl3.h&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;GLFW/glfw3.h&gt;</span></div>
-<div class="foldopen" id="foldopen00006" data-start="{" data-end="};">
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="class_engine_g_u_i.html">    6</a></span><span class="keyword">class </span><a class="code hl_class" href="class_engine_g_u_i.html">EngineGUI</a></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>{</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_engine_g_u_i.html#a9ee1a021f03ac7f88675a40236e812ce">UpdateGui</a>();</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_engine_g_u_i.html#a0c11d56c931dbd26d00004dc39a4f92a">RenderGui</a>();</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>};</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;GLFW/glfw3.h&gt;</span></div>
+<div class="foldopen" id="foldopen00003" data-start="{" data-end="};">
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="class_engine_g_u_i.html">    3</a></span><span class="keyword">class </span><a class="code hl_class" href="class_engine_g_u_i.html">EngineGUI</a></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>{</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_engine_g_u_i.html#aa26462ec9579e1f4258d0fc092bd696b">initImgui</a>(GLFWwindow* window);</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_engine_g_u_i.html#a9ee1a021f03ac7f88675a40236e812ce">UpdateGui</a>();</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_engine_g_u_i.html#a0c11d56c931dbd26d00004dc39a4f92a">RenderGui</a>();</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_engine_g_u_i.html#a29c937d66dd225fadb2c71273cfb8069">DestroyGui</a>();</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>};</div>
 </div>
-<div class="ttc" id="aclass_engine_g_u_i_html"><div class="ttname"><a href="class_engine_g_u_i.html">EngineGUI</a></div><div class="ttdef"><b>Definition</b> EngineGUI.h:7</div></div>
-<div class="ttc" id="aclass_engine_g_u_i_html_a0c11d56c931dbd26d00004dc39a4f92a"><div class="ttname"><a href="class_engine_g_u_i.html#a0c11d56c931dbd26d00004dc39a4f92a">EngineGUI::RenderGui</a></div><div class="ttdeci">void RenderGui()</div><div class="ttdef"><b>Definition</b> EngineGUI.cpp:15</div></div>
-<div class="ttc" id="aclass_engine_g_u_i_html_a9ee1a021f03ac7f88675a40236e812ce"><div class="ttname"><a href="class_engine_g_u_i.html#a9ee1a021f03ac7f88675a40236e812ce">EngineGUI::UpdateGui</a></div><div class="ttdeci">void UpdateGui()</div><div class="ttdef"><b>Definition</b> EngineGUI.cpp:7</div></div>
+<div class="ttc" id="aclass_engine_g_u_i_html"><div class="ttname"><a href="class_engine_g_u_i.html">EngineGUI</a></div><div class="ttdef"><b>Definition</b> EngineGUI.h:4</div></div>
+<div class="ttc" id="aclass_engine_g_u_i_html_a0c11d56c931dbd26d00004dc39a4f92a"><div class="ttname"><a href="class_engine_g_u_i.html#a0c11d56c931dbd26d00004dc39a4f92a">EngineGUI::RenderGui</a></div><div class="ttdeci">void RenderGui()</div><div class="ttdef"><b>Definition</b> EngineGUI.cpp:61</div></div>
+<div class="ttc" id="aclass_engine_g_u_i_html_a29c937d66dd225fadb2c71273cfb8069"><div class="ttname"><a href="class_engine_g_u_i.html#a29c937d66dd225fadb2c71273cfb8069">EngineGUI::DestroyGui</a></div><div class="ttdeci">void DestroyGui()</div><div class="ttdef"><b>Definition</b> EngineGUI.cpp:67</div></div>
+<div class="ttc" id="aclass_engine_g_u_i_html_a9ee1a021f03ac7f88675a40236e812ce"><div class="ttname"><a href="class_engine_g_u_i.html#a9ee1a021f03ac7f88675a40236e812ce">EngineGUI::UpdateGui</a></div><div class="ttdeci">void UpdateGui()</div><div class="ttdef"><b>Definition</b> EngineGUI.cpp:39</div></div>
+<div class="ttc" id="aclass_engine_g_u_i_html_aa26462ec9579e1f4258d0fc092bd696b"><div class="ttname"><a href="class_engine_g_u_i.html#aa26462ec9579e1f4258d0fc092bd696b">EngineGUI::initImgui</a></div><div class="ttdeci">void initImgui(GLFWwindow *window)</div><div class="ttdef"><b>Definition</b> EngineGUI.cpp:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

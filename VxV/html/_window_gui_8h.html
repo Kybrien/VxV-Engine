@@ -25,7 +25,6 @@
   <td id="projectalign">
    <div id="projectname">VxV
    </div>
-   <div id="projectbrief">A perfectly ok engine</div>
   </td>
  </tr>
  </tbody>
@@ -73,21 +72,18 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">WindowGui.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;imgui.h&quot;</code><br />
-<code>#include &quot;imgui_impl_glfw.h&quot;</code><br />
-<code>#include &quot;imgui_impl_opengl3.h&quot;</code><br />
-<code>#include &lt;GLFW/glfw3.h&gt;</code><br />
-<code>#include &lt;glm/glm.hpp&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &lt;fstream&gt;</code><br />
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &quot;<a class="el" href="imfilebrowser_8h_source.html">imfilebrowser.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_game_object_8h_source.html">GameObject.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_console_recup_8h_source.html">ConsoleRecup.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_scene_8h_source.html">Scene.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_engine_8hpp_source.html">Engine.hpp</a>&quot;</code><br />
 </div>
 <p><a href="_window_gui_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -117,27 +113,68 @@ Functions</h2></td></tr>
 <tr class="separator:ac1b1ed3362123d29b7e1be38e7052965"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af989d7d8874b3f1a34d25dec0f509c5e" id="r_af989d7d8874b3f1a34d25dec0f509c5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af989d7d8874b3f1a34d25dec0f509c5e">ShowInputBool</a> (const std::string &amp;message, bool &amp;input, bool &amp;show)</td></tr>
 <tr class="separator:af989d7d8874b3f1a34d25dec0f509c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae401f339da6bf6fd4784f5009559d29e" id="r_ae401f339da6bf6fd4784f5009559d29e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae401f339da6bf6fd4784f5009559d29e">ShowGameObjects</a> (std::vector&lt; std::string &gt; &amp;gameObjects, bool &amp;show)</td></tr>
-<tr class="separator:ae401f339da6bf6fd4784f5009559d29e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02404ff212c758d7b9e5f3d7c66ca212" id="r_a02404ff212c758d7b9e5f3d7c66ca212"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02404ff212c758d7b9e5f3d7c66ca212">CreateGameObject</a> (std::vector&lt; std::string &gt; &amp;gameObjects, bool &amp;show)</td></tr>
-<tr class="separator:a02404ff212c758d7b9e5f3d7c66ca212"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a804e650ef4940c3e2dc9bae349ac4d96" id="r_a804e650ef4940c3e2dc9bae349ac4d96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_object.html">GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a804e650ef4940c3e2dc9bae349ac4d96">CreateGameObjectWithModel</a> (const std::string &amp;modelName)</td></tr>
+<tr class="separator:a804e650ef4940c3e2dc9bae349ac4d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37a85750904ce5d456e33d46b6d6386a" id="r_a37a85750904ce5d456e33d46b6d6386a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37a85750904ce5d456e33d46b6d6386a">ShowAddGameObject</a> ()</td></tr>
+<tr class="separator:a37a85750904ce5d456e33d46b6d6386a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0339d0428276274dd624af04969a324" id="r_aa0339d0428276274dd624af04969a324"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0339d0428276274dd624af04969a324">ShowConsoleWindow</a> ()</td></tr>
+<tr class="separator:aa0339d0428276274dd624af04969a324"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a843ba87d66bb42bb617d5c93c42022e4" id="r_a843ba87d66bb42bb617d5c93c42022e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a843ba87d66bb42bb617d5c93c42022e4">RenderToolbar</a> ()</td></tr>
+<tr class="separator:a843ba87d66bb42bb617d5c93c42022e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ab87030731ac50abe8021e0274d11c356" id="r_ab87030731ac50abe8021e0274d11c356"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_object.html">GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab87030731ac50abe8021e0274d11c356">selectedGameObject</a> = nullptr</td></tr>
+<tr class="separator:ab87030731ac50abe8021e0274d11c356"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04ee0d142e98779501ddb0ea5f687ac7" id="r_a04ee0d142e98779501ddb0ea5f687ac7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_engine.html">Engine</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04ee0d142e98779501ddb0ea5f687ac7">engine</a> = <a class="el" href="class_engine.html#a2146785b1df88f59838cab30aabc8d37">Engine::GetInstance</a>()</td></tr>
+<tr class="separator:a04ee0d142e98779501ddb0ea5f687ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a02404ff212c758d7b9e5f3d7c66ca212" name="a02404ff212c758d7b9e5f3d7c66ca212"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02404ff212c758d7b9e5f3d7c66ca212">&#9670;&#160;</a></span>CreateGameObject()</h2>
+<a id="a804e650ef4940c3e2dc9bae349ac4d96" name="a804e650ef4940c3e2dc9bae349ac4d96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a804e650ef4940c3e2dc9bae349ac4d96">&#9670;&#160;</a></span>CreateGameObjectWithModel()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void CreateGameObject </td>
+          <td class="memname"><a class="el" href="class_game_object.html">GameObject</a> * CreateGameObjectWithModel </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; std::string &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>gameObjects</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>modelName</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">bool &amp;</td>          <td class="paramname"><span class="paramname"><em>show</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a843ba87d66bb42bb617d5c93c42022e4" name="a843ba87d66bb42bb617d5c93c42022e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a843ba87d66bb42bb617d5c93c42022e4">&#9670;&#160;</a></span>RenderToolbar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RenderToolbar </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a37a85750904ce5d456e33d46b6d6386a" name="a37a85750904ce5d456e33d46b6d6386a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37a85750904ce5d456e33d46b6d6386a">&#9670;&#160;</a></span>ShowAddGameObject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ShowAddGameObject </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -165,6 +202,23 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aa0339d0428276274dd624af04969a324" name="aa0339d0428276274dd624af04969a324"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0339d0428276274dd624af04969a324">&#9670;&#160;</a></span>ShowConsoleWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ShowConsoleWindow </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a2acce5670ce1cd9819520eb891ead6d1" name="a2acce5670ce1cd9819520eb891ead6d1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2acce5670ce1cd9819520eb891ead6d1">&#9670;&#160;</a></span>ShowError()</h2>
 
@@ -176,27 +230,6 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>message</em></span></td><td>)</td>
           <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae401f339da6bf6fd4784f5009559d29e" name="ae401f339da6bf6fd4784f5009559d29e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae401f339da6bf6fd4784f5009559d29e">&#9670;&#160;</a></span>ShowGameObjects()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ShowGameObjects </td>
-          <td>(</td>
-          <td class="paramtype">std::vector&lt; std::string &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>gameObjects</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool &amp;</td>          <td class="paramname"><span class="paramname"><em>show</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -439,6 +472,35 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>message</em></span></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a04ee0d142e98779501ddb0ea5f687ac7" name="a04ee0d142e98779501ddb0ea5f687ac7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04ee0d142e98779501ddb0ea5f687ac7">&#9670;&#160;</a></span>engine</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_engine.html">Engine</a>* engine = <a class="el" href="class_engine.html#a2146785b1df88f59838cab30aabc8d37">Engine::GetInstance</a>()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab87030731ac50abe8021e0274d11c356" name="ab87030731ac50abe8021e0274d11c356"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab87030731ac50abe8021e0274d11c356">&#9670;&#160;</a></span>selectedGameObject</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_game_object.html">GameObject</a>* selectedGameObject = nullptr</td>
         </tr>
       </table>
 </div><div class="memdoc">

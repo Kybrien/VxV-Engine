@@ -1,0 +1,82 @@
+\doxysection{Mem\+Pool\+\_\+\+Linear\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_mem_pool___linear}{}\label{class_mem_pool___linear}\index{MemPool\_Linear$<$ T $>$@{MemPool\_Linear$<$ T $>$}}
+
+
+Strategy class for a \doxylink{class_memory_pool}{Memory\+Pool} -\/ This Strategy creates a vector of memory chunks and allocates memory from it.  
+
+
+
+
+{\ttfamily \#include $<$Memory\+Pool.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_mem_pool___linear_a746247aa76fe63d6a57e0685cdf294b0}{Mem\+Pool\+\_\+\+Linear}} (unsigned int size)
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_mem_pool___linear_acacd6cb135f6e078b11a2a4b946d6f3e}{Allocate}} ()
+\item 
+void \mbox{\hyperlink{class_mem_pool___linear_a9a0baa1b83ff21cc0465b5a732f69924}{Deallocate}} (void \texorpdfstring{$\ast$}{*}p)
+\item 
+void \mbox{\hyperlink{class_mem_pool___linear_a020a7a12fcf394b39623480784cbb576}{Deallocate\+All}} ()
+\item 
+void \mbox{\hyperlink{class_mem_pool___linear_a3c9b9aa9688e19f4b43a0ec8fec5834d}{Resize\+Pool}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Mem\+Pool\+\_\+\+Linear$<$ T $>$}
+Strategy class for a \doxylink{class_memory_pool}{Memory\+Pool} -\/ This Strategy creates a vector of memory chunks and allocates memory from it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T} & -\/ type of object to allocate memory for \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_mem_pool___linear_a746247aa76fe63d6a57e0685cdf294b0}\label{class_mem_pool___linear_a746247aa76fe63d6a57e0685cdf294b0} 
+\index{MemPool\_Linear$<$ T $>$@{MemPool\_Linear$<$ T $>$}!MemPool\_Linear@{MemPool\_Linear}}
+\index{MemPool\_Linear@{MemPool\_Linear}!MemPool\_Linear$<$ T $>$@{MemPool\_Linear$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{MemPool\_Linear()}{MemPool\_Linear()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_mem_pool___linear}{Mem\+Pool\+\_\+\+Linear}}$<$ T $>$\mbox{\hyperlink{class_mem_pool___linear}{\+::\+Mem\+Pool\+\_\+\+Linear}} (\begin{DoxyParamCaption}\item[{unsigned int}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mem_pool___linear_acacd6cb135f6e078b11a2a4b946d6f3e}\label{class_mem_pool___linear_acacd6cb135f6e078b11a2a4b946d6f3e} 
+\index{MemPool\_Linear$<$ T $>$@{MemPool\_Linear$<$ T $>$}!Allocate@{Allocate}}
+\index{Allocate@{Allocate}!MemPool\_Linear$<$ T $>$@{MemPool\_Linear$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Allocate()}{Allocate()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_mem_pool___linear}{Mem\+Pool\+\_\+\+Linear}}$<$ T $>$\+::\+Allocate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_mem_pool___linear_a9a0baa1b83ff21cc0465b5a732f69924}\label{class_mem_pool___linear_a9a0baa1b83ff21cc0465b5a732f69924} 
+\index{MemPool\_Linear$<$ T $>$@{MemPool\_Linear$<$ T $>$}!Deallocate@{Deallocate}}
+\index{Deallocate@{Deallocate}!MemPool\_Linear$<$ T $>$@{MemPool\_Linear$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Deallocate()}{Deallocate()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_mem_pool___linear}{Mem\+Pool\+\_\+\+Linear}}$<$ T $>$\+::\+Deallocate (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_mem_pool___linear_a020a7a12fcf394b39623480784cbb576}\label{class_mem_pool___linear_a020a7a12fcf394b39623480784cbb576} 
+\index{MemPool\_Linear$<$ T $>$@{MemPool\_Linear$<$ T $>$}!DeallocateAll@{DeallocateAll}}
+\index{DeallocateAll@{DeallocateAll}!MemPool\_Linear$<$ T $>$@{MemPool\_Linear$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{DeallocateAll()}{DeallocateAll()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_mem_pool___linear}{Mem\+Pool\+\_\+\+Linear}}$<$ T $>$\+::\+Deallocate\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_mem_pool___linear_a3c9b9aa9688e19f4b43a0ec8fec5834d}\label{class_mem_pool___linear_a3c9b9aa9688e19f4b43a0ec8fec5834d} 
+\index{MemPool\_Linear$<$ T $>$@{MemPool\_Linear$<$ T $>$}!ResizePool@{ResizePool}}
+\index{ResizePool@{ResizePool}!MemPool\_Linear$<$ T $>$@{MemPool\_Linear$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ResizePool()}{ResizePool()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_mem_pool___linear}{Mem\+Pool\+\_\+\+Linear}}$<$ T $>$\+::\+Resize\+Pool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_memory_pool_8h}{Memory\+Pool.\+h}}\end{DoxyCompactItemize}

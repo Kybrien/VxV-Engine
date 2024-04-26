@@ -25,7 +25,6 @@
   <td id="projectalign">
    <div id="projectname">VxV
    </div>
-   <div id="projectbrief">A perfectly ok engine</div>
   </td>
  </tr>
  </tbody>
@@ -79,20 +78,32 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>specific <a class="el" href="class_memory_pool.html" title="MemoryPool class that uses a specific strategy to allocate and deallocate memory.">MemoryPool</a> class for GameObjects  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_memory_pool_8h_source.html">MemoryPool.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a98fe2f8327a2a030351f512be74cf965" id="r_a98fe2f8327a2a030351f512be74cf965"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98fe2f8327a2a030351f512be74cf965">MemoryPool</a> (int size=0)</td></tr>
 <tr class="separator:a98fe2f8327a2a030351f512be74cf965"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd2fb39d2393f8e0746dd090c1546c7d" id="r_abd2fb39d2393f8e0746dd090c1546c7d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_object.html">GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd2fb39d2393f8e0746dd090c1546c7d">CreateGameObject</a> (std::string name=&quot;GO&quot;, bool PrefabLoading=true, <a class="el" href="class_prefab.html">Prefab</a> *prefab=nullptr, bool loading=false)</td></tr>
-<tr class="separator:abd2fb39d2393f8e0746dd090c1546c7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8210ed60cfdfa34fd9f8409aa76ef1d" id="r_ad8210ed60cfdfa34fd9f8409aa76ef1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_object.html">GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad8210ed60cfdfa34fd9f8409aa76ef1d">CreateGoFromPool</a> (std::string name=&quot;GO&quot;, bool PrefabLoading=false, <a class="el" href="class_prefab.html">Prefab</a> *prefab=nullptr, bool loading=false)</td></tr>
+<tr class="separator:ad8210ed60cfdfa34fd9f8409aa76ef1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab837033a3643cd989e5dd8be92ba2c66" id="r_ab837033a3643cd989e5dd8be92ba2c66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab837033a3643cd989e5dd8be92ba2c66">Free</a> (void *p)</td></tr>
 <tr class="separator:ab837033a3643cd989e5dd8be92ba2c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52bbfb394c701530a87cc7e44bac62b7" id="r_a52bbfb394c701530a87cc7e44bac62b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52bbfb394c701530a87cc7e44bac62b7">FreeAll</a> ()</td></tr>
 <tr class="separator:a52bbfb394c701530a87cc7e44bac62b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;class Strategy&gt;<br />
+class MemoryPool&lt; GameObject, Strategy &gt;</div><p>specific <a class="el" href="class_memory_pool.html" title="MemoryPool class that uses a specific strategy to allocate and deallocate memory.">MemoryPool</a> class for GameObjects </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Strategy</td><td>- strategy to use for memory allocation and deallocation </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a98fe2f8327a2a030351f512be74cf965" name="a98fe2f8327a2a030351f512be74cf965"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a98fe2f8327a2a030351f512be74cf965">&#9670;&#160;</a></span>MemoryPool()</h2>
 
@@ -121,8 +132,8 @@ template&lt;class Strategy &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="abd2fb39d2393f8e0746dd090c1546c7d" name="abd2fb39d2393f8e0746dd090c1546c7d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd2fb39d2393f8e0746dd090c1546c7d">&#9670;&#160;</a></span>CreateGameObject()</h2>
+<a id="ad8210ed60cfdfa34fd9f8409aa76ef1d" name="ad8210ed60cfdfa34fd9f8409aa76ef1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8210ed60cfdfa34fd9f8409aa76ef1d">&#9670;&#160;</a></span>CreateGoFromPool()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -133,14 +144,14 @@ template&lt;class Strategy &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_game_object.html">GameObject</a> * <a class="el" href="class_memory_pool.html">MemoryPool</a>&lt; <a class="el" href="class_game_object.html">GameObject</a>, Strategy &gt;::CreateGameObject </td>
+          <td class="memname"><a class="el" href="class_game_object.html">GameObject</a> * <a class="el" href="class_memory_pool.html">MemoryPool</a>&lt; <a class="el" href="class_game_object.html">GameObject</a>, Strategy &gt;::CreateGoFromPool </td>
           <td>(</td>
           <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>name</em><span class="paramdefsep"> = </span><span class="paramdefval">&quot;GO&quot;</span>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>PrefabLoading</em><span class="paramdefsep"> = </span><span class="paramdefval">true</span>, </span></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>PrefabLoading</em><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>

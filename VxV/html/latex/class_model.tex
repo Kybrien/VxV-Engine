@@ -1,0 +1,180 @@
+\doxysection{Model Class Reference}
+\hypertarget{class_model}{}\label{class_model}\index{Model@{Model}}
+
+
+{\ttfamily \#include $<$Model.\+h$>$}
+
+Inheritance diagram for Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_model}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_a2d677c3a8cab1f392779bf65ec50d06e}{Model}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go)
+\begin{DoxyCompactList}\small\item\em Instanciate a component \doxylink{class_model}{Model}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_ae3d3f59dbf7e11e24680a68bbe120ae6}{Save}} (Json\+::\+Value \&comp\+Json) override
+\begin{DoxyCompactList}\small\item\em Save the component in a Json Object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_a60883d5a7f23665d725dc9e10f1f1251}{Load}} (Json\+::\+Value \&comp\+Json, \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}Parent\+GO) override
+\begin{DoxyCompactList}\small\item\em Load the component from a Json Object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_a71d5bba83fbb2cf0b73ddca0d6e9573b}{Copy}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go\+To\+Fill) override
+\begin{DoxyCompactList}\small\item\em Copy the value of a component to another game\+Object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_ac1d2b7fdde64308f8020d635785e9e11}{Set\+Model}} (std\+::string model\+Name)
+\begin{DoxyCompactList}\small\item\em Assign the 3d model to the component, searching the name in the model manager. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*}\& \mbox{\hyperlink{class_model_a7fc7bffa99f6b49b6270d4819c08543e}{Get\+Model}} ()
+\begin{DoxyCompactList}\small\item\em Get the model assigned to the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_component_ae527ef1a4d1be744d50e2676a6c4f5f6}{Component}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_component}{Component} object and links it to a \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_component_ae26f4d08f6a55499e30a1f700a4c08b7}{Get\+Linked\+Game\+Object}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the linked \doxylink{class_game_object}{Game\+Object} of the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Type}} \{ \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94}{Unknown}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059}{Transform}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a090cc807df7587ff4441c31ee17f24fc}{Model}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51}{Script\+Component}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration representing different types of components. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Type}} \mbox{\hyperlink{class_component_a18de93d5a176aa3cd6dc6724788dfacb}{type}}
+\begin{DoxyCompactList}\small\item\em Type of the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_component_ae82678b1f50e36ccba0a8775f12036c3}{linked\+Game\+Object}}
+\begin{DoxyCompactList}\small\item\em Pointer to the \doxylink{class_game_object}{Game\+Object} linked to the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_model_a2d677c3a8cab1f392779bf65ec50d06e}\label{class_model_a2d677c3a8cab1f392779bf65ec50d06e} 
+\index{Model@{Model}!Model@{Model}}
+\index{Model@{Model}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{Model()}{Model()}}
+{\footnotesize\ttfamily Model\+::\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go }\end{DoxyParamCaption})}
+
+
+
+Instanciate a component \doxylink{class_model}{Model}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & reference to the linked \doxylink{class_game_object}{Game\+Object} \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_model_a71d5bba83fbb2cf0b73ddca0d6e9573b}\label{class_model_a71d5bba83fbb2cf0b73ddca0d6e9573b} 
+\index{Model@{Model}!Copy@{Copy}}
+\index{Copy@{Copy}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{Copy()}{Copy()}}
+{\footnotesize\ttfamily void Model\+::\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go\+To\+Fill }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Copy the value of a component to another game\+Object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & reference to the \doxylink{class_game_object}{Game\+Object} to fill \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_component_ad70a279b1453b27839c0fc6e9f3a0b08}{Component}}.
+
+\Hypertarget{class_model_a7fc7bffa99f6b49b6270d4819c08543e}\label{class_model_a7fc7bffa99f6b49b6270d4819c08543e} 
+\index{Model@{Model}!GetModel@{GetModel}}
+\index{GetModel@{GetModel}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{GetModel()}{GetModel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*}\& Model\+::\+Get\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the model assigned to the component. 
+
+\begin{DoxyReturn}{Returns}
+Model\+Component\texorpdfstring{$\ast$}{*}\& 
+\end{DoxyReturn}
+\Hypertarget{class_model_a60883d5a7f23665d725dc9e10f1f1251}\label{class_model_a60883d5a7f23665d725dc9e10f1f1251} 
+\index{Model@{Model}!Load@{Load}}
+\index{Load@{Load}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily void Model\+::\+Load (\begin{DoxyParamCaption}\item[{Json\+::\+Value \&}]{comp\+Json,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{Parent\+GO }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Load the component from a Json Object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & Json Value used by the lib jsoncpp to save the data \\
+\hline
+{\em A} & reference to the parent \doxylink{class_game_object}{Game\+Object} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_component_ac6833433134e649053b0fe16f60dfd98}{Component}}.
+
+\Hypertarget{class_model_ae3d3f59dbf7e11e24680a68bbe120ae6}\label{class_model_ae3d3f59dbf7e11e24680a68bbe120ae6} 
+\index{Model@{Model}!Save@{Save}}
+\index{Save@{Save}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily void Model\+::\+Save (\begin{DoxyParamCaption}\item[{Json\+::\+Value \&}]{comp\+Json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Save the component in a Json Object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & Json Value used by the lib jsoncpp to save the data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_component_a78f3311bb53ce9b6d095e95021df681a}{Component}}.
+
+\Hypertarget{class_model_ac1d2b7fdde64308f8020d635785e9e11}\label{class_model_ac1d2b7fdde64308f8020d635785e9e11} 
+\index{Model@{Model}!SetModel@{SetModel}}
+\index{SetModel@{SetModel}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{SetModel()}{SetModel()}}
+{\footnotesize\ttfamily void Model\+::\+Set\+Model (\begin{DoxyParamCaption}\item[{std\+::string}]{model\+Name }\end{DoxyParamCaption})}
+
+
+
+Assign the 3d model to the component, searching the name in the model manager. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & string containing the name of the model \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_model_8h}{Model.\+h}}\item 
+\mbox{\hyperlink{_model_8cpp}{Model.\+cpp}}\end{DoxyCompactItemize}

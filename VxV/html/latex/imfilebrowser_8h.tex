@@ -1,0 +1,106 @@
+\doxysection{imfilebrowser.\+h File Reference}
+\hypertarget{imfilebrowser_8h}{}\label{imfilebrowser_8h}\index{imfilebrowser.h@{imfilebrowser.h}}
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$cctype$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$filesystem$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$string\+\_\+view$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$imgui.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_im_gui_1_1_file_browser}{Im\+Gui\+::\+File\+Browser}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_im_gui}{Im\+Gui}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{imfilebrowser_8h_a4b010dcb9d51887505410cc7b83087ab}{Im\+Gui\+File\+Browser\+Flags}} = int
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280}{Im\+Gui\+File\+Browser\+Flags\+\_\+}} \{ \newline
+\mbox{\hyperlink{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280ab2c8098a16f687c97382f88683df981f}{Im\+Gui\+File\+Browser\+Flags\+\_\+\+Select\+Directory}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0
+, \mbox{\hyperlink{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a7d1d30c55d6c9dbba4a9b94f153a4692}{Im\+Gui\+File\+Browser\+Flags\+\_\+\+Enter\+New\+Filename}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 1
+, \mbox{\hyperlink{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a9625fae1d32ee7496982bdb75492e411}{Im\+Gui\+File\+Browser\+Flags\+\_\+\+No\+Modal}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2
+, \mbox{\hyperlink{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280abd769715298960700a224c857a2fc409}{Im\+Gui\+File\+Browser\+Flags\+\_\+\+No\+Title\+Bar}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 3
+, \newline
+\mbox{\hyperlink{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a42f278d3b0fc2e8c109a50cef69f4363}{Im\+Gui\+File\+Browser\+Flags\+\_\+\+No\+Status\+Bar}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 4
+, \mbox{\hyperlink{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a02cd332dbb0f36271dad997a117f043b}{Im\+Gui\+File\+Browser\+Flags\+\_\+\+Close\+On\+Esc}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 5
+, \mbox{\hyperlink{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a45ae86df215c38a437b9de87f01d8de0}{Im\+Gui\+File\+Browser\+Flags\+\_\+\+Create\+New\+Dir}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 6
+, \mbox{\hyperlink{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a61bc2d0b34c800c89fa8d4af4530e60a}{Im\+Gui\+File\+Browser\+Flags\+\_\+\+Multiple\+Selection}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 7
+, \newline
+\mbox{\hyperlink{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280ac21f92764b354824ebb41f5f8f31f931}{Im\+Gui\+File\+Browser\+Flags\+\_\+\+Hide\+Regular\+Files}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 8
+, \mbox{\hyperlink{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280ad12535e1e84c71f556b3ad2b4885290d}{Im\+Gui\+File\+Browser\+Flags\+\_\+\+Confirm\+On\+Enter}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 9
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{imfilebrowser_8h_a4b010dcb9d51887505410cc7b83087ab}\label{imfilebrowser_8h_a4b010dcb9d51887505410cc7b83087ab} 
+\index{imfilebrowser.h@{imfilebrowser.h}!ImGuiFileBrowserFlags@{ImGuiFileBrowserFlags}}
+\index{ImGuiFileBrowserFlags@{ImGuiFileBrowserFlags}!imfilebrowser.h@{imfilebrowser.h}}
+\doxysubsubsection{\texorpdfstring{ImGuiFileBrowserFlags}{ImGuiFileBrowserFlags}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{imfilebrowser_8h_a4b010dcb9d51887505410cc7b83087ab}{Im\+Gui\+File\+Browser\+Flags}} = int}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280}\label{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280} 
+\index{imfilebrowser.h@{imfilebrowser.h}!ImGuiFileBrowserFlags\_@{ImGuiFileBrowserFlags\_}}
+\index{ImGuiFileBrowserFlags\_@{ImGuiFileBrowserFlags\_}!imfilebrowser.h@{imfilebrowser.h}}
+\doxysubsubsection{\texorpdfstring{ImGuiFileBrowserFlags\_}{ImGuiFileBrowserFlags\_}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280}{Im\+Gui\+File\+Browser\+Flags\+\_\+}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ImGuiFileBrowserFlags\_SelectDirectory@{ImGuiFileBrowserFlags\_SelectDirectory}!imfilebrowser.h@{imfilebrowser.h}}\index{imfilebrowser.h@{imfilebrowser.h}!ImGuiFileBrowserFlags\_SelectDirectory@{ImGuiFileBrowserFlags\_SelectDirectory}}}\Hypertarget{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280ab2c8098a16f687c97382f88683df981f}\label{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280ab2c8098a16f687c97382f88683df981f} 
+Im\+Gui\+File\+Browser\+Flags\+\_\+\+Select\+Directory&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ImGuiFileBrowserFlags\_EnterNewFilename@{ImGuiFileBrowserFlags\_EnterNewFilename}!imfilebrowser.h@{imfilebrowser.h}}\index{imfilebrowser.h@{imfilebrowser.h}!ImGuiFileBrowserFlags\_EnterNewFilename@{ImGuiFileBrowserFlags\_EnterNewFilename}}}\Hypertarget{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a7d1d30c55d6c9dbba4a9b94f153a4692}\label{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a7d1d30c55d6c9dbba4a9b94f153a4692} 
+Im\+Gui\+File\+Browser\+Flags\+\_\+\+Enter\+New\+Filename&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ImGuiFileBrowserFlags\_NoModal@{ImGuiFileBrowserFlags\_NoModal}!imfilebrowser.h@{imfilebrowser.h}}\index{imfilebrowser.h@{imfilebrowser.h}!ImGuiFileBrowserFlags\_NoModal@{ImGuiFileBrowserFlags\_NoModal}}}\Hypertarget{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a9625fae1d32ee7496982bdb75492e411}\label{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a9625fae1d32ee7496982bdb75492e411} 
+Im\+Gui\+File\+Browser\+Flags\+\_\+\+No\+Modal&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ImGuiFileBrowserFlags\_NoTitleBar@{ImGuiFileBrowserFlags\_NoTitleBar}!imfilebrowser.h@{imfilebrowser.h}}\index{imfilebrowser.h@{imfilebrowser.h}!ImGuiFileBrowserFlags\_NoTitleBar@{ImGuiFileBrowserFlags\_NoTitleBar}}}\Hypertarget{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280abd769715298960700a224c857a2fc409}\label{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280abd769715298960700a224c857a2fc409} 
+Im\+Gui\+File\+Browser\+Flags\+\_\+\+No\+Title\+Bar&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ImGuiFileBrowserFlags\_NoStatusBar@{ImGuiFileBrowserFlags\_NoStatusBar}!imfilebrowser.h@{imfilebrowser.h}}\index{imfilebrowser.h@{imfilebrowser.h}!ImGuiFileBrowserFlags\_NoStatusBar@{ImGuiFileBrowserFlags\_NoStatusBar}}}\Hypertarget{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a42f278d3b0fc2e8c109a50cef69f4363}\label{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a42f278d3b0fc2e8c109a50cef69f4363} 
+Im\+Gui\+File\+Browser\+Flags\+\_\+\+No\+Status\+Bar&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ImGuiFileBrowserFlags\_CloseOnEsc@{ImGuiFileBrowserFlags\_CloseOnEsc}!imfilebrowser.h@{imfilebrowser.h}}\index{imfilebrowser.h@{imfilebrowser.h}!ImGuiFileBrowserFlags\_CloseOnEsc@{ImGuiFileBrowserFlags\_CloseOnEsc}}}\Hypertarget{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a02cd332dbb0f36271dad997a117f043b}\label{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a02cd332dbb0f36271dad997a117f043b} 
+Im\+Gui\+File\+Browser\+Flags\+\_\+\+Close\+On\+Esc&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ImGuiFileBrowserFlags\_CreateNewDir@{ImGuiFileBrowserFlags\_CreateNewDir}!imfilebrowser.h@{imfilebrowser.h}}\index{imfilebrowser.h@{imfilebrowser.h}!ImGuiFileBrowserFlags\_CreateNewDir@{ImGuiFileBrowserFlags\_CreateNewDir}}}\Hypertarget{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a45ae86df215c38a437b9de87f01d8de0}\label{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a45ae86df215c38a437b9de87f01d8de0} 
+Im\+Gui\+File\+Browser\+Flags\+\_\+\+Create\+New\+Dir&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ImGuiFileBrowserFlags\_MultipleSelection@{ImGuiFileBrowserFlags\_MultipleSelection}!imfilebrowser.h@{imfilebrowser.h}}\index{imfilebrowser.h@{imfilebrowser.h}!ImGuiFileBrowserFlags\_MultipleSelection@{ImGuiFileBrowserFlags\_MultipleSelection}}}\Hypertarget{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a61bc2d0b34c800c89fa8d4af4530e60a}\label{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280a61bc2d0b34c800c89fa8d4af4530e60a} 
+Im\+Gui\+File\+Browser\+Flags\+\_\+\+Multiple\+Selection&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ImGuiFileBrowserFlags\_HideRegularFiles@{ImGuiFileBrowserFlags\_HideRegularFiles}!imfilebrowser.h@{imfilebrowser.h}}\index{imfilebrowser.h@{imfilebrowser.h}!ImGuiFileBrowserFlags\_HideRegularFiles@{ImGuiFileBrowserFlags\_HideRegularFiles}}}\Hypertarget{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280ac21f92764b354824ebb41f5f8f31f931}\label{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280ac21f92764b354824ebb41f5f8f31f931} 
+Im\+Gui\+File\+Browser\+Flags\+\_\+\+Hide\+Regular\+Files&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ImGuiFileBrowserFlags\_ConfirmOnEnter@{ImGuiFileBrowserFlags\_ConfirmOnEnter}!imfilebrowser.h@{imfilebrowser.h}}\index{imfilebrowser.h@{imfilebrowser.h}!ImGuiFileBrowserFlags\_ConfirmOnEnter@{ImGuiFileBrowserFlags\_ConfirmOnEnter}}}\Hypertarget{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280ad12535e1e84c71f556b3ad2b4885290d}\label{imfilebrowser_8h_a589922f26c2a4a5999c24bd567e9f280ad12535e1e84c71f556b3ad2b4885290d} 
+Im\+Gui\+File\+Browser\+Flags\+\_\+\+Confirm\+On\+Enter&\\
+\hline
+
+\end{DoxyEnumFields}

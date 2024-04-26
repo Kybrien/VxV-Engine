@@ -25,7 +25,6 @@
   <td id="projectalign">
    <div id="projectname">VxV
    </div>
-   <div id="projectbrief">A perfectly ok engine</div>
   </td>
  </tr>
  </tbody>
@@ -89,7 +88,7 @@ Inheritance diagram for Component:</div>
  <div class="center">
   <img src="class_component.png" usemap="#Component_map" alt=""/>
   <map id="Component_map" name="Component_map">
-<area href="class_renderer.html" alt="Renderer" shape="rect" coords="0,56,125,80"/>
+<area href="class_model.html" alt="Model" shape="rect" coords="0,56,125,80"/>
 <area href="class_scripting_component.html" alt="ScriptingComponent" shape="rect" coords="135,56,260,80"/>
 <area href="class_transform.html" alt="Transform" shape="rect" coords="270,56,395,80"/>
   </map>
@@ -99,34 +98,40 @@ Inheritance diagram for Component:</div>
 Public Types</h2></td></tr>
 <tr class="memitem:afd50861fbf83f7ff7777a5e6dd7b7ca4" id="r_afd50861fbf83f7ff7777a5e6dd7b7ca4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd50861fbf83f7ff7777a5e6dd7b7ca4">Type</a> { <a class="el" href="#afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94">Unknown</a>
 , <a class="el" href="#afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059">Transform</a>
-, <a class="el" href="#afd50861fbf83f7ff7777a5e6dd7b7ca4acbf24d847fc02f14b8b7bba654ff05f4">Mesh_renderer</a>
+, <a class="el" href="#afd50861fbf83f7ff7777a5e6dd7b7ca4a090cc807df7587ff4441c31ee17f24fc">Model</a>
 , <a class="el" href="#afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51">ScriptComponent</a>
  }</td></tr>
+<tr class="memdesc:afd50861fbf83f7ff7777a5e6dd7b7ca4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration representing different types of components.  <a href="#afd50861fbf83f7ff7777a5e6dd7b7ca4">More...</a><br /></td></tr>
 <tr class="separator:afd50861fbf83f7ff7777a5e6dd7b7ca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aca4f3bf8d7148444f750714ca8e58bfe" id="r_aca4f3bf8d7148444f750714ca8e58bfe"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca4f3bf8d7148444f750714ca8e58bfe">JaiBesoinDunVirtual</a> ()</td></tr>
-<tr class="separator:aca4f3bf8d7148444f750714ca8e58bfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae527ef1a4d1be744d50e2676a6c4f5f6" id="r_ae527ef1a4d1be744d50e2676a6c4f5f6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae527ef1a4d1be744d50e2676a6c4f5f6">Component</a> (<a class="el" href="class_game_object.html">GameObject</a> *go)</td></tr>
+<tr class="memdesc:ae527ef1a4d1be744d50e2676a6c4f5f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_component.html">Component</a> object and links it to a <a class="el" href="class_game_object.html">GameObject</a>.  <br /></td></tr>
 <tr class="separator:ae527ef1a4d1be744d50e2676a6c4f5f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78f3311bb53ce9b6d095e95021df681a" id="r_a78f3311bb53ce9b6d095e95021df681a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78f3311bb53ce9b6d095e95021df681a">Save</a> (Json::Value &amp;compJson)=0</td></tr>
+<tr class="memdesc:a78f3311bb53ce9b6d095e95021df681a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save the component in a Json Object.  <br /></td></tr>
 <tr class="separator:a78f3311bb53ce9b6d095e95021df681a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6833433134e649053b0fe16f60dfd98" id="r_ac6833433134e649053b0fe16f60dfd98"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6833433134e649053b0fe16f60dfd98">Load</a> (Json::Value &amp;compJson, <a class="el" href="class_game_object.html">GameObject</a> *ParentGO)=0</td></tr>
+<tr class="memdesc:ac6833433134e649053b0fe16f60dfd98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the component from a Json Object.  <br /></td></tr>
 <tr class="separator:ac6833433134e649053b0fe16f60dfd98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad70a279b1453b27839c0fc6e9f3a0b08" id="r_ad70a279b1453b27839c0fc6e9f3a0b08"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad70a279b1453b27839c0fc6e9f3a0b08">Copy</a> (<a class="el" href="class_game_object.html">GameObject</a> *goToFill)=0</td></tr>
+<tr class="memdesc:ad70a279b1453b27839c0fc6e9f3a0b08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the value of a component to another gameObject.  <br /></td></tr>
 <tr class="separator:ad70a279b1453b27839c0fc6e9f3a0b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae26f4d08f6a55499e30a1f700a4c08b7" id="r_ae26f4d08f6a55499e30a1f700a4c08b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_object.html">GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae26f4d08f6a55499e30a1f700a4c08b7">GetLinkedGameObject</a> () const</td></tr>
+<tr class="memdesc:ae26f4d08f6a55499e30a1f700a4c08b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the linked <a class="el" href="class_game_object.html">GameObject</a> of the component.  <br /></td></tr>
 <tr class="separator:ae26f4d08f6a55499e30a1f700a4c08b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a18de93d5a176aa3cd6dc6724788dfacb" id="r_a18de93d5a176aa3cd6dc6724788dfacb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#afd50861fbf83f7ff7777a5e6dd7b7ca4">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18de93d5a176aa3cd6dc6724788dfacb">type</a></td></tr>
+<tr class="memdesc:a18de93d5a176aa3cd6dc6724788dfacb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the component.  <br /></td></tr>
 <tr class="separator:a18de93d5a176aa3cd6dc6724788dfacb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:ae82678b1f50e36ccba0a8775f12036c3" id="r_ae82678b1f50e36ccba0a8775f12036c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_object.html">GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae82678b1f50e36ccba0a8775f12036c3">linkedGameObject</a></td></tr>
+<tr class="memdesc:ae82678b1f50e36ccba0a8775f12036c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the <a class="el" href="class_game_object.html">GameObject</a> linked to the component.  <br /></td></tr>
 <tr class="separator:ae82678b1f50e36ccba0a8775f12036c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Enumeration Documentation</h2>
@@ -141,11 +146,17 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Enumeration representing different types of components. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94" name="afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94"></a>Unknown&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059" name="afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059"></a>Transform&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="afd50861fbf83f7ff7777a5e6dd7b7ca4acbf24d847fc02f14b8b7bba654ff05f4" name="afd50861fbf83f7ff7777a5e6dd7b7ca4acbf24d847fc02f14b8b7bba654ff05f4"></a>Mesh_renderer&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51" name="afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51"></a>ScriptComponent&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94" name="afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94"></a>Unknown&#160;</td><td class="fielddoc"><p>Unknown type. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059" name="afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059"></a>Transform&#160;</td><td class="fielddoc"><p><a class="el" href="class_transform.html">Transform</a> component. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afd50861fbf83f7ff7777a5e6dd7b7ca4a090cc807df7587ff4441c31ee17f24fc" name="afd50861fbf83f7ff7777a5e6dd7b7ca4a090cc807df7587ff4441c31ee17f24fc"></a>Model&#160;</td><td class="fielddoc"><p>Mesh component. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51" name="afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51"></a>ScriptComponent&#160;</td><td class="fielddoc"><p><a class="el" href="class_script.html">Script</a> component. </p>
+</td></tr>
 </table>
 
 </div>
@@ -174,6 +185,14 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Constructs a <a class="el" href="class_component.html">Component</a> object and links it to a <a class="el" href="class_game_object.html">GameObject</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">go</td><td>Pointer to the <a class="el" href="class_game_object.html">GameObject</a> to which the component is linked. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -200,7 +219,16 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_scripting_component.html#a7d595c437bbb1d55e8be730e8149dabc">ScriptingComponent</a>, and <a class="el" href="class_transform.html#a238e8b69aab0b8f29597a2eba53eef59">Transform</a>.</p>
+<p>Copy the value of a component to another gameObject. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">A</td><td>reference to the <a class="el" href="class_game_object.html">GameObject</a> to fill </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+<p>Implemented in <a class="el" href="class_model.html#a71d5bba83fbb2cf0b73ddca0d6e9573b">Model</a>, <a class="el" href="class_scripting_component.html#a7d595c437bbb1d55e8be730e8149dabc">ScriptingComponent</a>, and <a class="el" href="class_transform.html#a238e8b69aab0b8f29597a2eba53eef59">Transform</a>.</p>
 
 </div>
 </div>
@@ -227,30 +255,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="aca4f3bf8d7148444f750714ca8e58bfe" name="aca4f3bf8d7148444f750714ca8e58bfe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca4f3bf8d7148444f750714ca8e58bfe">&#9670;&#160;</a></span>JaiBesoinDunVirtual()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void Component::JaiBesoinDunVirtual </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>Retrieves the linked <a class="el" href="class_game_object.html">GameObject</a> of the component. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the linked <a class="el" href="class_game_object.html">GameObject</a>. </dd></dl>
 
 </div>
 </div>
@@ -281,7 +287,17 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_scripting_component.html#a039125336f48a34ba45e1e3989e61d4d">ScriptingComponent</a>, and <a class="el" href="class_transform.html#a6fefaab8dad405393d413a05742b23db">Transform</a>.</p>
+<p>Load the component from a Json Object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">A</td><td>Json Value used by the lib jsoncpp to save the data </td></tr>
+    <tr><td class="paramname">A</td><td>reference to the parent <a class="el" href="class_game_object.html">GameObject</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+<p>Implemented in <a class="el" href="class_model.html#a60883d5a7f23665d725dc9e10f1f1251">Model</a>, <a class="el" href="class_scripting_component.html#ad3cdd584251d433cbf80d1e4e58a00c3">ScriptingComponent</a>, and <a class="el" href="class_transform.html#a6fefaab8dad405393d413a05742b23db">Transform</a>.</p>
 
 </div>
 </div>
@@ -308,7 +324,16 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_scripting_component.html#a2a726d11eab8a8446e38e14ed06703fc">ScriptingComponent</a>, and <a class="el" href="class_transform.html#a3e44e2c5961d89008e845ed14dc8c0e3">Transform</a>.</p>
+<p>Save the component in a Json Object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">A</td><td>Json Value used by the lib jsoncpp to save the data </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+<p>Implemented in <a class="el" href="class_model.html#ae3d3f59dbf7e11e24680a68bbe120ae6">Model</a>, <a class="el" href="class_scripting_component.html#a2a726d11eab8a8446e38e14ed06703fc">ScriptingComponent</a>, and <a class="el" href="class_transform.html#a3e44e2c5961d89008e845ed14dc8c0e3">Transform</a>.</p>
 
 </div>
 </div>
@@ -333,6 +358,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Pointer to the <a class="el" href="class_game_object.html">GameObject</a> linked to the component. </p>
+
 </div>
 </div>
 <a id="a18de93d5a176aa3cd6dc6724788dfacb" name="a18de93d5a176aa3cd6dc6724788dfacb"></a>
@@ -346,6 +373,8 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Type of the component. </p>
 
 </div>
 </div>

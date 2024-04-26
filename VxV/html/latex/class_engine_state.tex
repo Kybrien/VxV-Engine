@@ -1,0 +1,227 @@
+\doxysection{Engine\+State Class Reference}
+\hypertarget{class_engine_state}{}\label{class_engine_state}\index{EngineState@{EngineState}}
+
+
+{\ttfamily \#include $<$Engine\+State.\+h$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccce}{Booting\+State}} \{ \newline
+\mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea226c03c443192cffffa4a924b4ccffde}{Edition}}
+, \mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea32b169f72b293ef80d35435e9894f8e2}{Initializing}}
+, \mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccceae7d31fc0602fb2ede144d18cdffd816b}{Ready}}
+, \mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccceac2efe4bbd13e6cb0db293e72884273c0}{Starting}}
+, \newline
+\mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea5bda814c4aedb126839228f1a3d92f09}{Running}}
+, \mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea6ed6d72ff6c1b821f5df7299390ac2ed}{Askto\+Stop}}
+, \mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea7b7ecb39b9e110c2a31409a1672bad23}{Stopping}}
+, \mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccceac23e2b09ebe6bf4cb5e2a9abe85c0be2}{Stopped}}
+ \}
+\item 
+enum class \mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57e}{Active\+State}} \{ \mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57ea226c03c443192cffffa4a924b4ccffde}{Edition}} = 0
+, \mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57eac59e0d57d6768caab6d70b180aac50d7}{Run\+Time}} = 1
+, \mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57ea105b296a83f9c105355403f3332af50f}{Pause}} = 2
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_engine_state_a199788a4679df1d89e4477f401763bf6}{Engine\+State}} ()
+\item 
+\mbox{\hyperlink{class_engine_state_a43ea8ebca3f2c9a0afec63322c761f83}{\texorpdfstring{$\sim$}{\string~}\+Engine\+State}} ()
+\item 
+void \mbox{\hyperlink{class_engine_state_a38b5ab12fb22c3883c949937b6c5ebfe}{Start\+Booting}} ()
+\item 
+void \mbox{\hyperlink{class_engine_state_a13c0740f02c8fb8a21da1fc2747d1298}{Ready\+Booting}} ()
+\item 
+void \mbox{\hyperlink{class_engine_state_aff78b9441d4b87c88b75c0e89c80378a}{Start\+Running}} ()
+\item 
+void \mbox{\hyperlink{class_engine_state_a20b6970d5dce3c3f94a73be55954735a}{Running}} ()
+\item 
+void \mbox{\hyperlink{class_engine_state_aad2d43745875152d4abc2802e5dace9c}{Ask\+To\+Stop}} ()
+\item 
+void \mbox{\hyperlink{class_engine_state_ad472cdf70771d2543188c67a7695699d}{Stopping}} ()
+\item 
+void \mbox{\hyperlink{class_engine_state_ae1e581d4d977d24f0762d481dae20b15}{Stopped}} ()
+\item 
+void \mbox{\hyperlink{class_engine_state_ade7c2e7483844dc24c057c3b13f017c5}{Start\+Run\+Time}} ()
+\item 
+void \mbox{\hyperlink{class_engine_state_a98c347c07c7a158c0ca3095d721eafc7}{Exit\+Run\+Time}} ()
+\item 
+void \mbox{\hyperlink{class_engine_state_a829816938841a68620b8457835f9dd24}{Pause\+Run\+Time}} ()
+\item 
+\mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57e}{Active\+State}} const \mbox{\hyperlink{class_engine_state_af520b26a4892763a8e74bdf04727d2f2}{Get\+Active\+State}} ()
+\item 
+\mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccce}{Booting\+State}} const \mbox{\hyperlink{class_engine_state_a30c0bec19b15f3a3af87352edf4df284}{Get\+Booting\+State}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_engine_state}{Engine\+State}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_engine_state_a5a0389c26fb5e9ff860c12b81fd2c9e2}{Get\+Instance}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57e}\label{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57e} 
+\index{EngineState@{EngineState}!ActiveState@{ActiveState}}
+\index{ActiveState@{ActiveState}!EngineState@{EngineState}}
+\doxysubsubsection{\texorpdfstring{ActiveState}{ActiveState}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57e}{Engine\+State\+::\+Active\+State}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Edition@{Edition}!EngineState@{EngineState}}\index{EngineState@{EngineState}!Edition@{Edition}}}\Hypertarget{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57ea226c03c443192cffffa4a924b4ccffde}\label{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57ea226c03c443192cffffa4a924b4ccffde} 
+Edition&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RunTime@{RunTime}!EngineState@{EngineState}}\index{EngineState@{EngineState}!RunTime@{RunTime}}}\Hypertarget{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57eac59e0d57d6768caab6d70b180aac50d7}\label{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57eac59e0d57d6768caab6d70b180aac50d7} 
+Run\+Time&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Pause@{Pause}!EngineState@{EngineState}}\index{EngineState@{EngineState}!Pause@{Pause}}}\Hypertarget{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57ea105b296a83f9c105355403f3332af50f}\label{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57ea105b296a83f9c105355403f3332af50f} 
+Pause&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccce}\label{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccce} 
+\index{EngineState@{EngineState}!BootingState@{BootingState}}
+\index{BootingState@{BootingState}!EngineState@{EngineState}}
+\doxysubsubsection{\texorpdfstring{BootingState}{BootingState}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccce}{Engine\+State\+::\+Booting\+State}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Edition@{Edition}!EngineState@{EngineState}}\index{EngineState@{EngineState}!Edition@{Edition}}}\Hypertarget{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea226c03c443192cffffa4a924b4ccffde}\label{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea226c03c443192cffffa4a924b4ccffde} 
+Edition&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Initializing@{Initializing}!EngineState@{EngineState}}\index{EngineState@{EngineState}!Initializing@{Initializing}}}\Hypertarget{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea32b169f72b293ef80d35435e9894f8e2}\label{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea32b169f72b293ef80d35435e9894f8e2} 
+Initializing&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Ready@{Ready}!EngineState@{EngineState}}\index{EngineState@{EngineState}!Ready@{Ready}}}\Hypertarget{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccceae7d31fc0602fb2ede144d18cdffd816b}\label{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccceae7d31fc0602fb2ede144d18cdffd816b} 
+Ready&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Starting@{Starting}!EngineState@{EngineState}}\index{EngineState@{EngineState}!Starting@{Starting}}}\Hypertarget{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccceac2efe4bbd13e6cb0db293e72884273c0}\label{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccceac2efe4bbd13e6cb0db293e72884273c0} 
+Starting&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Running@{Running}!EngineState@{EngineState}}\index{EngineState@{EngineState}!Running@{Running}}}\Hypertarget{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea5bda814c4aedb126839228f1a3d92f09}\label{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea5bda814c4aedb126839228f1a3d92f09} 
+Running&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AsktoStop@{AsktoStop}!EngineState@{EngineState}}\index{EngineState@{EngineState}!AsktoStop@{AsktoStop}}}\Hypertarget{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea6ed6d72ff6c1b821f5df7299390ac2ed}\label{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea6ed6d72ff6c1b821f5df7299390ac2ed} 
+Askto\+Stop&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Stopping@{Stopping}!EngineState@{EngineState}}\index{EngineState@{EngineState}!Stopping@{Stopping}}}\Hypertarget{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea7b7ecb39b9e110c2a31409a1672bad23}\label{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea7b7ecb39b9e110c2a31409a1672bad23} 
+Stopping&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Stopped@{Stopped}!EngineState@{EngineState}}\index{EngineState@{EngineState}!Stopped@{Stopped}}}\Hypertarget{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccceac23e2b09ebe6bf4cb5e2a9abe85c0be2}\label{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccceac23e2b09ebe6bf4cb5e2a9abe85c0be2} 
+Stopped&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_engine_state_a199788a4679df1d89e4477f401763bf6}\label{class_engine_state_a199788a4679df1d89e4477f401763bf6} 
+\index{EngineState@{EngineState}!EngineState@{EngineState}}
+\index{EngineState@{EngineState}!EngineState@{EngineState}}
+\doxysubsubsection{\texorpdfstring{EngineState()}{EngineState()}}
+{\footnotesize\ttfamily Engine\+State\+::\+Engine\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_engine_state_a43ea8ebca3f2c9a0afec63322c761f83}\label{class_engine_state_a43ea8ebca3f2c9a0afec63322c761f83} 
+\index{EngineState@{EngineState}!````~EngineState@{\texorpdfstring{$\sim$}{\string~}EngineState}}
+\index{````~EngineState@{\texorpdfstring{$\sim$}{\string~}EngineState}!EngineState@{EngineState}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}EngineState()}{\string~EngineState()}}
+{\footnotesize\ttfamily Engine\+State\+::\texorpdfstring{$\sim$}{\string~}\+Engine\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_engine_state_aad2d43745875152d4abc2802e5dace9c}\label{class_engine_state_aad2d43745875152d4abc2802e5dace9c} 
+\index{EngineState@{EngineState}!AskToStop@{AskToStop}}
+\index{AskToStop@{AskToStop}!EngineState@{EngineState}}
+\doxysubsubsection{\texorpdfstring{AskToStop()}{AskToStop()}}
+{\footnotesize\ttfamily void Engine\+State\+::\+Ask\+To\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_engine_state_a98c347c07c7a158c0ca3095d721eafc7}\label{class_engine_state_a98c347c07c7a158c0ca3095d721eafc7} 
+\index{EngineState@{EngineState}!ExitRunTime@{ExitRunTime}}
+\index{ExitRunTime@{ExitRunTime}!EngineState@{EngineState}}
+\doxysubsubsection{\texorpdfstring{ExitRunTime()}{ExitRunTime()}}
+{\footnotesize\ttfamily void Engine\+State\+::\+Exit\+Run\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_engine_state_af520b26a4892763a8e74bdf04727d2f2}\label{class_engine_state_af520b26a4892763a8e74bdf04727d2f2} 
+\index{EngineState@{EngineState}!GetActiveState@{GetActiveState}}
+\index{GetActiveState@{GetActiveState}!EngineState@{EngineState}}
+\doxysubsubsection{\texorpdfstring{GetActiveState()}{GetActiveState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57e}{Active\+State}} const Engine\+State\+::\+Get\+Active\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_engine_state_a30c0bec19b15f3a3af87352edf4df284}\label{class_engine_state_a30c0bec19b15f3a3af87352edf4df284} 
+\index{EngineState@{EngineState}!GetBootingState@{GetBootingState}}
+\index{GetBootingState@{GetBootingState}!EngineState@{EngineState}}
+\doxysubsubsection{\texorpdfstring{GetBootingState()}{GetBootingState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccce}{Booting\+State}} const Engine\+State\+::\+Get\+Booting\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_engine_state_a5a0389c26fb5e9ff860c12b81fd2c9e2}\label{class_engine_state_a5a0389c26fb5e9ff860c12b81fd2c9e2} 
+\index{EngineState@{EngineState}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!EngineState@{EngineState}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_engine_state}{Engine\+State}} \texorpdfstring{$\ast$}{*} Engine\+State\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{class_engine_state_a829816938841a68620b8457835f9dd24}\label{class_engine_state_a829816938841a68620b8457835f9dd24} 
+\index{EngineState@{EngineState}!PauseRunTime@{PauseRunTime}}
+\index{PauseRunTime@{PauseRunTime}!EngineState@{EngineState}}
+\doxysubsubsection{\texorpdfstring{PauseRunTime()}{PauseRunTime()}}
+{\footnotesize\ttfamily void Engine\+State\+::\+Pause\+Run\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_engine_state_a13c0740f02c8fb8a21da1fc2747d1298}\label{class_engine_state_a13c0740f02c8fb8a21da1fc2747d1298} 
+\index{EngineState@{EngineState}!ReadyBooting@{ReadyBooting}}
+\index{ReadyBooting@{ReadyBooting}!EngineState@{EngineState}}
+\doxysubsubsection{\texorpdfstring{ReadyBooting()}{ReadyBooting()}}
+{\footnotesize\ttfamily void Engine\+State\+::\+Ready\+Booting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_engine_state_a20b6970d5dce3c3f94a73be55954735a}\label{class_engine_state_a20b6970d5dce3c3f94a73be55954735a} 
+\index{EngineState@{EngineState}!Running@{Running}}
+\index{Running@{Running}!EngineState@{EngineState}}
+\doxysubsubsection{\texorpdfstring{Running()}{Running()}}
+{\footnotesize\ttfamily void Engine\+State\+::\+Running (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_engine_state_a38b5ab12fb22c3883c949937b6c5ebfe}\label{class_engine_state_a38b5ab12fb22c3883c949937b6c5ebfe} 
+\index{EngineState@{EngineState}!StartBooting@{StartBooting}}
+\index{StartBooting@{StartBooting}!EngineState@{EngineState}}
+\doxysubsubsection{\texorpdfstring{StartBooting()}{StartBooting()}}
+{\footnotesize\ttfamily void Engine\+State\+::\+Start\+Booting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_engine_state_aff78b9441d4b87c88b75c0e89c80378a}\label{class_engine_state_aff78b9441d4b87c88b75c0e89c80378a} 
+\index{EngineState@{EngineState}!StartRunning@{StartRunning}}
+\index{StartRunning@{StartRunning}!EngineState@{EngineState}}
+\doxysubsubsection{\texorpdfstring{StartRunning()}{StartRunning()}}
+{\footnotesize\ttfamily void Engine\+State\+::\+Start\+Running (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_engine_state_ade7c2e7483844dc24c057c3b13f017c5}\label{class_engine_state_ade7c2e7483844dc24c057c3b13f017c5} 
+\index{EngineState@{EngineState}!StartRunTime@{StartRunTime}}
+\index{StartRunTime@{StartRunTime}!EngineState@{EngineState}}
+\doxysubsubsection{\texorpdfstring{StartRunTime()}{StartRunTime()}}
+{\footnotesize\ttfamily void Engine\+State\+::\+Start\+Run\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_engine_state_ae1e581d4d977d24f0762d481dae20b15}\label{class_engine_state_ae1e581d4d977d24f0762d481dae20b15} 
+\index{EngineState@{EngineState}!Stopped@{Stopped}}
+\index{Stopped@{Stopped}!EngineState@{EngineState}}
+\doxysubsubsection{\texorpdfstring{Stopped()}{Stopped()}}
+{\footnotesize\ttfamily void Engine\+State\+::\+Stopped (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_engine_state_ad472cdf70771d2543188c67a7695699d}\label{class_engine_state_ad472cdf70771d2543188c67a7695699d} 
+\index{EngineState@{EngineState}!Stopping@{Stopping}}
+\index{Stopping@{Stopping}!EngineState@{EngineState}}
+\doxysubsubsection{\texorpdfstring{Stopping()}{Stopping()}}
+{\footnotesize\ttfamily void Engine\+State\+::\+Stopping (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_engine_state_8h}{Engine\+State.\+h}}\item 
+\mbox{\hyperlink{_engine_state_8cpp}{Engine\+State.\+cpp}}\end{DoxyCompactItemize}
