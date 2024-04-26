@@ -1,0 +1,52 @@
+\doxysection{controls.\+hpp File Reference}
+\hypertarget{controls_8hpp}{}\label{controls_8hpp}\index{controls.hpp@{controls.hpp}}
+{\ttfamily \#include $<$GLFW/glfw3.\+h$>$}\newline
+{\ttfamily \#include $<$glm/glm.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/gtc/matrix\+\_\+transform.\+hpp$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{controls_8hpp_a067f804fb5da9b80cebaa1edcf94cc79}{compute\+Matrices\+From\+Inputs}} (GLFWwindow \texorpdfstring{$\ast$}{*}window)
+\begin{DoxyCompactList}\small\item\em Handle the inputs of the user and change the view matrix in consequence. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{controls_8hpp_ae5c7c56d0f0158d920deb05074dd013e}{get\+View\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em Get the view matrix. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{controls_8hpp_a111b020a13f0a5b197c995b6a8294ddd}{get\+Projection\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em Get the projection matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{controls_8hpp_a067f804fb5da9b80cebaa1edcf94cc79}\label{controls_8hpp_a067f804fb5da9b80cebaa1edcf94cc79} 
+\index{controls.hpp@{controls.hpp}!computeMatricesFromInputs@{computeMatricesFromInputs}}
+\index{computeMatricesFromInputs@{computeMatricesFromInputs}!controls.hpp@{controls.hpp}}
+\doxysubsubsection{\texorpdfstring{computeMatricesFromInputs()}{computeMatricesFromInputs()}}
+{\footnotesize\ttfamily void compute\+Matrices\+From\+Inputs (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
+
+
+
+Handle the inputs of the user and change the view matrix in consequence. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The window \\
+\hline
+\end{DoxyParams}
+\Hypertarget{controls_8hpp_a111b020a13f0a5b197c995b6a8294ddd}\label{controls_8hpp_a111b020a13f0a5b197c995b6a8294ddd} 
+\index{controls.hpp@{controls.hpp}!getProjectionMatrix@{getProjectionMatrix}}
+\index{getProjectionMatrix@{getProjectionMatrix}!controls.hpp@{controls.hpp}}
+\doxysubsubsection{\texorpdfstring{getProjectionMatrix()}{getProjectionMatrix()}}
+{\footnotesize\ttfamily glm\+::mat4 get\+Projection\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the projection matrix. 
+
+\Hypertarget{controls_8hpp_ae5c7c56d0f0158d920deb05074dd013e}\label{controls_8hpp_ae5c7c56d0f0158d920deb05074dd013e} 
+\index{controls.hpp@{controls.hpp}!getViewMatrix@{getViewMatrix}}
+\index{getViewMatrix@{getViewMatrix}!controls.hpp@{controls.hpp}}
+\doxysubsubsection{\texorpdfstring{getViewMatrix()}{getViewMatrix()}}
+{\footnotesize\ttfamily glm\+::mat4 get\+View\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the view matrix. 
+

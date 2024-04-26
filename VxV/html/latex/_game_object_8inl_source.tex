@@ -1,0 +1,28 @@
+\doxysection{Game\+Object.\+inl}
+\hypertarget{_game_object_8inl_source}{}\label{_game_object_8inl_source}\mbox{\hyperlink{_game_object_8inl}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_object_a83b5aa2871b1e564aba800f94944d7fa}{GameObject::AddComponent}}()\ \{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_base\_of<Component,\ T>::value,\ \textcolor{stringliteral}{"{}T\ must\ be\ a\ descendant\ of\ Component"{}});}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{comment}{//\ Adds\ a\ new\ component\ of\ type\ T}}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_game_object_aac1acad42a3837282d3abf7df8eb34a7}{components}}.push\_back(\textcolor{keyword}{new}\ T(\textcolor{keyword}{this}));}
+\DoxyCodeLine{00015\ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00025\ T*\ \mbox{\hyperlink{class_game_object_a5ba3b458e6bee6ea5aedd5c8cdeabf18}{GameObject::GetComponent}}()\ \{}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_component}{Component}}*\ comp\ :\ \mbox{\hyperlink{class_game_object_aac1acad42a3837282d3abf7df8eb34a7}{components}})\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ T*\ typedComp\ =\ \textcolor{keyword}{dynamic\_cast<}T*\textcolor{keyword}{>}(comp);}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (typedComp\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ typedComp;\ \textcolor{comment}{//\ Returns\ the\ component\ of\ type\ T\ if\ found}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ \textcolor{comment}{//\ No\ component\ of\ type\ T\ found}}
+\DoxyCodeLine{00035\ \}}
+
+\end{DoxyCode}

@@ -25,7 +25,6 @@
   <td id="projectalign">
    <div id="projectname">VxV
    </div>
-   <div id="projectbrief">A perfectly ok engine</div>
   </td>
  </tr>
  </tbody>
@@ -82,45 +81,75 @@ $(function() { codefold.init(0); });
 <div class="contents">
 <a href="_transform_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;glm/glm.hpp&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="_component_8h.html">Component.h</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="_component_8h.html">Component.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using namespace </span>glm;</div>
 <div class="foldopen" id="foldopen00007" data-start="{" data-end="};">
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="class_transform.html">    7</a></span><span class="keyword">class </span><a class="code hl_class" href="class_transform.html">Transform</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_component.html">Component</a> {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="class_transform.html#aa357f8eb780f4ef195027d1c636baa36">    9</a></span>    glm::vec3 <a class="code hl_variable" href="class_transform.html#aa357f8eb780f4ef195027d1c636baa36">position</a>;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_transform.html#aefd4a6bf41e01cf5898fd57430d93dea">   10</a></span>    glm::vec3 <a class="code hl_variable" href="class_transform.html#aefd4a6bf41e01cf5898fd57430d93dea">rotation</a>;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="class_transform.html#acf6ab53778448fd2f2d8a367c14e7f95">   11</a></span>    glm::vec3 <a class="code hl_variable" href="class_transform.html#acf6ab53778448fd2f2d8a367c14e7f95">scale</a>;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    glm::vec3 position;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    glm::vec3 rotation;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    glm::vec3 scale;</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_enumvalue" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059">Transform</a>(<a class="code hl_class" href="class_game_object.html">GameObject</a>* gameObject);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_transform.html#a6fefaab8dad405393d413a05742b23db">Load</a>(Json::Value&amp; compJson, <a class="code hl_class" href="class_game_object.html">GameObject</a>* ParentGO) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_transform.html#a3e44e2c5961d89008e845ed14dc8c0e3">Save</a>(Json::Value&amp; compJson) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_enumvalue" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059">Transform</a>(<a class="code hl_class" href="class_game_object.html">GameObject</a>* gameObject);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_transform.html#a238e8b69aab0b8f29597a2eba53eef59">Copy</a>(<a class="code hl_class" href="class_game_object.html">GameObject</a>* goToFill) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">void</span> SaveVec3(Json::Value&amp; compJson, glm::vec3 vec);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">void</span> LoadVec3(Json::Value&amp; compJson, glm::vec3&amp; vec);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>};</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_transform.html#aafa0e1d9cc3817b5a89c14fc5da5679e">SetPosition</a>(glm::vec3 pos, <span class="keywordtype">bool</span> isChild = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_transform.html#af55f34f24b7f560ad4e8096174ae9f97">SetRotation</a>(<span class="keywordtype">float</span> xAngle, <span class="keywordtype">float</span> yAngle, <span class="keywordtype">float</span> zAngle, <span class="keywordtype">bool</span> isChild = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_transform.html#a026cde3b4f39979cc50124cab7ab4977">SetScale</a>(glm::vec3 sca, <span class="keywordtype">bool</span> isChild = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_transform.html#afc067c0f32c845c5b632766d661ea7c9">Translate</a>(glm::vec3 pos, <span class="keywordtype">bool</span> isChild = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_transform.html#a2ab11f63623cf22fa133c352e891ef5e">Rotate</a>(<span class="keywordtype">float</span> xAngle, <span class="keywordtype">float</span> yAngle, <span class="keywordtype">float</span> zAngle, <span class="keywordtype">bool</span> isChild = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_transform.html#aa2a840b2aa304ffa372d6b92b9cfca09">Scale</a>(glm::vec3 sca, <span class="keywordtype">bool</span> isChild = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="class_transform.html#ab56d0806d3d2d67a0587c7ffebf0b2d0">   82</a></span>    glm::vec3 <a class="code hl_function" href="class_transform.html#ab56d0806d3d2d67a0587c7ffebf0b2d0">GetPosition</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="controls_8cpp.html#ab17456efa59b99dbb85317ee492274b6">position</a>; }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="class_transform.html#a5af4d340711239a3517813e9122c6065">   88</a></span>    glm::vec3 <a class="code hl_function" href="class_transform.html#a5af4d340711239a3517813e9122c6065">GetRotation</a>() { <span class="keywordflow">return</span> rotation; }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="class_transform.html#a28a37980813cba4e8bada11d5ee6d070">   94</a></span>    glm::vec3 <a class="code hl_function" href="class_transform.html#a28a37980813cba4e8bada11d5ee6d070">GetScale</a>() { <span class="keywordflow">return</span> scale; }</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_transform.html#a6fefaab8dad405393d413a05742b23db">Load</a>(Json::Value&amp; compJson, <a class="code hl_class" href="class_game_object.html">GameObject</a>* ParentGO) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_transform.html#a3e44e2c5961d89008e845ed14dc8c0e3">Save</a>(Json::Value&amp; compJson) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_transform.html#a238e8b69aab0b8f29597a2eba53eef59">Copy</a>(<a class="code hl_class" href="class_game_object.html">GameObject</a>* goToFill) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">void</span> SaveVec3(Json::Value&amp; compJson, glm::vec3 vec);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordtype">void</span> LoadVec3(Json::Value&amp; compJson, glm::vec3&amp; vec);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>};</div>
 </div>
 <div class="ttc" id="a_component_8h_html"><div class="ttname"><a href="_component_8h.html">Component.h</a></div></div>
-<div class="ttc" id="aclass_component_html"><div class="ttname"><a href="class_component.html">Component</a></div><div class="ttdef"><b>Definition</b> Component.h:10</div></div>
-<div class="ttc" id="aclass_component_html_afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059"><div class="ttname"><a href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059">Component::Transform</a></div><div class="ttdeci">@ Transform</div><div class="ttdef"><b>Definition</b> Component.h:30</div></div>
-<div class="ttc" id="aclass_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdef"><b>Definition</b> GameObject.h:13</div></div>
+<div class="ttc" id="aclass_component_html"><div class="ttname"><a href="class_component.html">Component</a></div><div class="ttdef"><b>Definition</b> Component.h:8</div></div>
+<div class="ttc" id="aclass_component_html_afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059"><div class="ttname"><a href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059">Component::Transform</a></div><div class="ttdeci">@ Transform</div><div class="ttdef"><b>Definition</b> Component.h:51</div></div>
+<div class="ttc" id="aclass_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdef"><b>Definition</b> GameObject.h:14</div></div>
 <div class="ttc" id="aclass_transform_html"><div class="ttname"><a href="class_transform.html">Transform</a></div><div class="ttdef"><b>Definition</b> Transform.h:7</div></div>
-<div class="ttc" id="aclass_transform_html_a238e8b69aab0b8f29597a2eba53eef59"><div class="ttname"><a href="class_transform.html#a238e8b69aab0b8f29597a2eba53eef59">Transform::Copy</a></div><div class="ttdeci">void Copy(GameObject *goToFill) override</div><div class="ttdef"><b>Definition</b> Transform.cpp:38</div></div>
-<div class="ttc" id="aclass_transform_html_a3e44e2c5961d89008e845ed14dc8c0e3"><div class="ttname"><a href="class_transform.html#a3e44e2c5961d89008e845ed14dc8c0e3">Transform::Save</a></div><div class="ttdeci">void Save(Json::Value &amp;compJson) override</div><div class="ttdef"><b>Definition</b> Transform.cpp:25</div></div>
-<div class="ttc" id="aclass_transform_html_a6fefaab8dad405393d413a05742b23db"><div class="ttname"><a href="class_transform.html#a6fefaab8dad405393d413a05742b23db">Transform::Load</a></div><div class="ttdeci">void Load(Json::Value &amp;compJson, GameObject *ParentGO) override</div><div class="ttdef"><b>Definition</b> Transform.cpp:16</div></div>
-<div class="ttc" id="aclass_transform_html_aa357f8eb780f4ef195027d1c636baa36"><div class="ttname"><a href="class_transform.html#aa357f8eb780f4ef195027d1c636baa36">Transform::position</a></div><div class="ttdeci">glm::vec3 position</div><div class="ttdef"><b>Definition</b> Transform.h:9</div></div>
-<div class="ttc" id="aclass_transform_html_acf6ab53778448fd2f2d8a367c14e7f95"><div class="ttname"><a href="class_transform.html#acf6ab53778448fd2f2d8a367c14e7f95">Transform::scale</a></div><div class="ttdeci">glm::vec3 scale</div><div class="ttdef"><b>Definition</b> Transform.h:11</div></div>
-<div class="ttc" id="aclass_transform_html_aefd4a6bf41e01cf5898fd57430d93dea"><div class="ttname"><a href="class_transform.html#aefd4a6bf41e01cf5898fd57430d93dea">Transform::rotation</a></div><div class="ttdeci">glm::vec3 rotation</div><div class="ttdef"><b>Definition</b> Transform.h:10</div></div>
+<div class="ttc" id="aclass_transform_html_a026cde3b4f39979cc50124cab7ab4977"><div class="ttname"><a href="class_transform.html#a026cde3b4f39979cc50124cab7ab4977">Transform::SetScale</a></div><div class="ttdeci">void SetScale(glm::vec3 sca, bool isChild=false)</div><div class="ttdoc">Set the scale of the GameObject.</div><div class="ttdef"><b>Definition</b> Transform.cpp:80</div></div>
+<div class="ttc" id="aclass_transform_html_a238e8b69aab0b8f29597a2eba53eef59"><div class="ttname"><a href="class_transform.html#a238e8b69aab0b8f29597a2eba53eef59">Transform::Copy</a></div><div class="ttdeci">void Copy(GameObject *goToFill) override</div><div class="ttdoc">Copy the value of a component to another gameObject.</div><div class="ttdef"><b>Definition</b> Transform.cpp:46</div></div>
+<div class="ttc" id="aclass_transform_html_a28a37980813cba4e8bada11d5ee6d070"><div class="ttname"><a href="class_transform.html#a28a37980813cba4e8bada11d5ee6d070">Transform::GetScale</a></div><div class="ttdeci">glm::vec3 GetScale()</div><div class="ttdoc">Get the scale of the GameObject.</div><div class="ttdef"><b>Definition</b> Transform.h:94</div></div>
+<div class="ttc" id="aclass_transform_html_a2ab11f63623cf22fa133c352e891ef5e"><div class="ttname"><a href="class_transform.html#a2ab11f63623cf22fa133c352e891ef5e">Transform::Rotate</a></div><div class="ttdeci">void Rotate(float xAngle, float yAngle, float zAngle, bool isChild=false)</div><div class="ttdoc">Rotate the GameObject.</div><div class="ttdef"><b>Definition</b> Transform.cpp:103</div></div>
+<div class="ttc" id="aclass_transform_html_a3e44e2c5961d89008e845ed14dc8c0e3"><div class="ttname"><a href="class_transform.html#a3e44e2c5961d89008e845ed14dc8c0e3">Transform::Save</a></div><div class="ttdeci">void Save(Json::Value &amp;compJson) override</div><div class="ttdoc">Save the component in a Json Object.</div><div class="ttdef"><b>Definition</b> Transform.cpp:33</div></div>
+<div class="ttc" id="aclass_transform_html_a5af4d340711239a3517813e9122c6065"><div class="ttname"><a href="class_transform.html#a5af4d340711239a3517813e9122c6065">Transform::GetRotation</a></div><div class="ttdeci">glm::vec3 GetRotation()</div><div class="ttdoc">Get the rotation of the GameObject.</div><div class="ttdef"><b>Definition</b> Transform.h:88</div></div>
+<div class="ttc" id="aclass_transform_html_a6fefaab8dad405393d413a05742b23db"><div class="ttname"><a href="class_transform.html#a6fefaab8dad405393d413a05742b23db">Transform::Load</a></div><div class="ttdeci">void Load(Json::Value &amp;compJson, GameObject *ParentGO) override</div><div class="ttdoc">Load the component from a Json Object.</div><div class="ttdef"><b>Definition</b> Transform.cpp:24</div></div>
+<div class="ttc" id="aclass_transform_html_aa2a840b2aa304ffa372d6b92b9cfca09"><div class="ttname"><a href="class_transform.html#aa2a840b2aa304ffa372d6b92b9cfca09">Transform::Scale</a></div><div class="ttdeci">void Scale(glm::vec3 sca, bool isChild=false)</div><div class="ttdoc">Scale the GameObject.</div><div class="ttdef"><b>Definition</b> Transform.cpp:110</div></div>
+<div class="ttc" id="aclass_transform_html_aafa0e1d9cc3817b5a89c14fc5da5679e"><div class="ttname"><a href="class_transform.html#aafa0e1d9cc3817b5a89c14fc5da5679e">Transform::SetPosition</a></div><div class="ttdeci">void SetPosition(glm::vec3 pos, bool isChild=false)</div><div class="ttdoc">Set the position of the GameObject.</div><div class="ttdef"><b>Definition</b> Transform.cpp:55</div></div>
+<div class="ttc" id="aclass_transform_html_ab56d0806d3d2d67a0587c7ffebf0b2d0"><div class="ttname"><a href="class_transform.html#ab56d0806d3d2d67a0587c7ffebf0b2d0">Transform::GetPosition</a></div><div class="ttdeci">glm::vec3 GetPosition()</div><div class="ttdoc">Get the position of the GameObject.</div><div class="ttdef"><b>Definition</b> Transform.h:82</div></div>
+<div class="ttc" id="aclass_transform_html_af55f34f24b7f560ad4e8096174ae9f97"><div class="ttname"><a href="class_transform.html#af55f34f24b7f560ad4e8096174ae9f97">Transform::SetRotation</a></div><div class="ttdeci">void SetRotation(float xAngle, float yAngle, float zAngle, bool isChild=false)</div><div class="ttdoc">Set the rotation of the GameObject.</div><div class="ttdef"><b>Definition</b> Transform.cpp:72</div></div>
+<div class="ttc" id="aclass_transform_html_afc067c0f32c845c5b632766d661ea7c9"><div class="ttname"><a href="class_transform.html#afc067c0f32c845c5b632766d661ea7c9">Transform::Translate</a></div><div class="ttdeci">void Translate(glm::vec3 pos, bool isChild=false)</div><div class="ttdoc">Translate the GameObject.</div><div class="ttdef"><b>Definition</b> Transform.cpp:88</div></div>
+<div class="ttc" id="acontrols_8cpp_html_ab17456efa59b99dbb85317ee492274b6"><div class="ttname"><a href="controls_8cpp.html#ab17456efa59b99dbb85317ee492274b6">position</a></div><div class="ttdeci">glm::vec3 position</div><div class="ttdef"><b>Definition</b> controls.cpp:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

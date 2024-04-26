@@ -17,7 +17,8 @@ var searchData=
   ['nfdchar_5ft_14',['nfdchar_t',['../nfd_8h.html#ac2bbba0a1ca14bc1399696fe611b7d7b',1,'nfd.h']]],
   ['nfdpathset_5ft_15',['nfdpathset_t',['../structnfdpathset__t.html',1,'']]],
   ['nfdresult_5ft_16',['nfdresult_t',['../nfd_8h.html#af8653f87bdc1662963a84f68802e96b4',1,'nfd.h']]],
-  ['normal_17',['normal',['../class_vertex.html#a3aa35fe84025ecf1acccb5f65f5577fd',1,'Vertex']]],
-  ['note_18',['⚠️ Note',['../index.html#autotoc_md2',1,'']]],
-  ['null_19',['Null',['../class_input_manager.html#a1a4a2a196e96e61cd81a8c26dc32fcc2a6e7df3f906dc25573b43ddeca72994a2',1,'InputManager']]]
+  ['nickname_17',['nickname',['../struct_client_info.html#a25edc5982eaf7aeb0dd27809182e3137',1,'ClientInfo']]],
+  ['normal_18',['normal',['../class_vertex.html#a3aa35fe84025ecf1acccb5f65f5577fd',1,'Vertex']]],
+  ['null_19',['Null',['../class_input_manager.html#a1a4a2a196e96e61cd81a8c26dc32fcc2a6e7df3f906dc25573b43ddeca72994a2',1,'InputManager']]],
+  ['numberused_20',['numberUsed',['../class_model_component.html#a7c91a876876d5d2fdbd006e88126efb2',1,'ModelComponent']]]
 ];

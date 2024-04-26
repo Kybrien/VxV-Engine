@@ -248,3 +248,9 @@ std::vector<Component*> GameObject::GetComponents()
 {
 	return components;
 }
+
+void GameObject::Update(){
+	
+	this->GetComponent<Transform>()->Rotate(0.0f, 5.0f, 0.0f);
+
+}

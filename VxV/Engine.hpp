@@ -63,7 +63,8 @@ public:
 	void CheckCloseWindow(APIopenGL* _apiGraphic, Engine* _engine);
 
 	/**
-	* @brief First instance on play
+	* First instance on play
+	* @return void
 	*/
 	void PlayInit();
 	/**

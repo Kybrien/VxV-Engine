@@ -25,7 +25,6 @@
   <td id="projectalign">
    <div id="projectname">VxV
    </div>
-   <div id="projectbrief">A perfectly ok engine</div>
   </td>
  </tr>
  </tbody>
@@ -81,66 +80,71 @@ $(function() { codefold.init(0); });
 </div><!--header-->
 <div class="contents">
 <a href="_scene_manager_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="_manager_8h.html">Manager.h</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="_scene_8h.html">Scene.h</a>&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="_memory_pool_8h.html">MemoryPool.h</a>&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_scene_manager.html">   10</a></span><span class="keyword">class </span><a class="code hl_class" href="class_scene_manager.html">SceneManager</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_manager.html">Manager</a> {</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="_manager_8h.html">Manager.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="_scene_8h.html">Scene.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="_memory_pool_8h.html">MemoryPool.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="class_scene_manager.html">    9</a></span><span class="keyword">class </span><a class="code hl_class" href="class_scene_manager.html">SceneManager</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_manager.html">Manager</a></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    std::vector&lt;Scene*&gt; scenes;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <a class="code hl_class" href="class_scene.html">Scene</a>* currentScene;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">static</span> std::string fileDirection;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">static</span> std::string extention;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="class_scene_manager.html#a614f5f63a2224b6f960ca1db365a75e2">   19</a></span>    <a class="code hl_class" href="class_memory_pool.html">MemoryPool&lt;GameObject, MemPool_Linear&lt;GameObject&gt;</a>&gt; <a class="code hl_variable" href="class_scene_manager.html#a614f5f63a2224b6f960ca1db365a75e2">gameObjectPool</a>;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_function" href="class_scene_manager.html#a93f6af15e43dbff2b5d4819dd7d8dfa2">SceneManager</a>(<a class="code hl_class" href="class_manager.html">Manager</a>* manager);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="class_scene_manager.html#ac6e546dd58da6e7b133b3a9a8e7734e1">   24</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_scene_manager.html#ac6e546dd58da6e7b133b3a9a8e7734e1">AddScene</a>(<a class="code hl_class" href="class_scene.html">Scene</a>* scene) {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        scenes.push_back(scene);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
-</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="foldopen" id="foldopen00028" data-start="{" data-end="}">
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="class_scene_manager.html#a09c9196e3ad9cb53673b9ba051c9f411">   28</a></span>    std::vector&lt;Scene*&gt; <a class="code hl_function" href="class_scene_manager.html#a09c9196e3ad9cb53673b9ba051c9f411">GetScenes</a>() {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordflow">return</span> scenes;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
-</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_scene_manager.html#a13e07df59690a7a5b163268012173e41">Save</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_scene_manager.html#aa3b2dea2aa6baab258cbb1348846ee08">Load</a>(std::wstring wFileDirection, std::wstring wFileName) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    std::vector&lt;Scene*&gt; scenes;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_class" href="class_scene.html">Scene</a>* currentScene;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">static</span> std::string fileDirection;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">static</span> std::string extention;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="foldopen" id="foldopen00036" data-start="{" data-end="}">
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="class_scene_manager.html#aa12ac3807b8e59b815ec445c25fca5ae">   36</a></span>    <a class="code hl_class" href="class_scene.html">Scene</a>* <a class="code hl_function" href="class_scene_manager.html#aa12ac3807b8e59b815ec445c25fca5ae">GetCurrentScene</a>() {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordflow">return</span> currentScene;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="class_scene_manager.html#a614f5f63a2224b6f960ca1db365a75e2">   41</a></span>    <a class="code hl_class" href="class_memory_pool.html">MemoryPool&lt;GameObject, MemPool_Linear&lt;GameObject&gt;</a>&gt; <a class="code hl_variable" href="class_scene_manager.html#a614f5f63a2224b6f960ca1db365a75e2">gameObjectPool</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_function" href="class_scene_manager.html#a93f6af15e43dbff2b5d4819dd7d8dfa2">SceneManager</a>(<a class="code hl_class" href="class_manager.html">Manager</a>* manager);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="class_scene_manager.html#ac6e546dd58da6e7b133b3a9a8e7734e1">   54</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_scene_manager.html#ac6e546dd58da6e7b133b3a9a8e7734e1">AddScene</a>(<a class="code hl_class" href="class_scene.html">Scene</a>* scene)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        scenes.push_back(scene);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    }</div>
 </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>};</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="foldopen" id="foldopen00063" data-start="{" data-end="}">
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="class_scene_manager.html#a09c9196e3ad9cb53673b9ba051c9f411">   63</a></span>    std::vector&lt;Scene*&gt; <a class="code hl_function" href="class_scene_manager.html#a09c9196e3ad9cb53673b9ba051c9f411">GetScenes</a>()</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordflow">return</span> scenes;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    }</div>
+</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_scene_manager.html#a13e07df59690a7a5b163268012173e41">Save</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_scene_manager.html#aa3b2dea2aa6baab258cbb1348846ee08">Load</a>(std::wstring wFileDirection, std::wstring wFileName) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="foldopen" id="foldopen00076" data-start="{" data-end="}">
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="class_scene_manager.html#aa12ac3807b8e59b815ec445c25fca5ae">   76</a></span>    <a class="code hl_class" href="class_scene.html">Scene</a>* <a class="code hl_function" href="class_scene_manager.html#aa12ac3807b8e59b815ec445c25fca5ae">GetCurrentScene</a>()</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordflow">return</span> currentScene;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    }</div>
+</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>};</div>
 </div>
 <div class="ttc" id="a_manager_8h_html"><div class="ttname"><a href="_manager_8h.html">Manager.h</a></div></div>
 <div class="ttc" id="a_memory_pool_8h_html"><div class="ttname"><a href="_memory_pool_8h.html">MemoryPool.h</a></div></div>
 <div class="ttc" id="a_scene_8h_html"><div class="ttname"><a href="_scene_8h.html">Scene.h</a></div></div>
 <div class="ttc" id="aclass_manager_html"><div class="ttname"><a href="class_manager.html">Manager</a></div><div class="ttdef"><b>Definition</b> Manager.h:6</div></div>
-<div class="ttc" id="aclass_memory_pool_html"><div class="ttname"><a href="class_memory_pool.html">MemoryPool</a></div><div class="ttdef"><b>Definition</b> MemoryPool.h:7</div></div>
+<div class="ttc" id="aclass_memory_pool_html"><div class="ttname"><a href="class_memory_pool.html">MemoryPool</a></div><div class="ttdoc">MemoryPool class that uses a specific strategy to allocate and deallocate memory.</div><div class="ttdef"><b>Definition</b> MemoryPool.h:13</div></div>
 <div class="ttc" id="aclass_scene_html"><div class="ttname"><a href="class_scene.html">Scene</a></div><div class="ttdef"><b>Definition</b> Scene.h:11</div></div>
 <div class="ttc" id="aclass_scene_manager_html"><div class="ttname"><a href="class_scene_manager.html">SceneManager</a></div><div class="ttdef"><b>Definition</b> SceneManager.h:10</div></div>
-<div class="ttc" id="aclass_scene_manager_html_a09c9196e3ad9cb53673b9ba051c9f411"><div class="ttname"><a href="class_scene_manager.html#a09c9196e3ad9cb53673b9ba051c9f411">SceneManager::GetScenes</a></div><div class="ttdeci">std::vector&lt; Scene * &gt; GetScenes()</div><div class="ttdef"><b>Definition</b> SceneManager.h:28</div></div>
-<div class="ttc" id="aclass_scene_manager_html_a13e07df59690a7a5b163268012173e41"><div class="ttname"><a href="class_scene_manager.html#a13e07df59690a7a5b163268012173e41">SceneManager::Save</a></div><div class="ttdeci">void Save() override</div><div class="ttdef"><b>Definition</b> SceneManager.cpp:30</div></div>
-<div class="ttc" id="aclass_scene_manager_html_a614f5f63a2224b6f960ca1db365a75e2"><div class="ttname"><a href="class_scene_manager.html#a614f5f63a2224b6f960ca1db365a75e2">SceneManager::gameObjectPool</a></div><div class="ttdeci">MemoryPool&lt; GameObject, MemPool_Linear&lt; GameObject &gt; &gt; gameObjectPool</div><div class="ttdef"><b>Definition</b> SceneManager.h:19</div></div>
-<div class="ttc" id="aclass_scene_manager_html_a93f6af15e43dbff2b5d4819dd7d8dfa2"><div class="ttname"><a href="class_scene_manager.html#a93f6af15e43dbff2b5d4819dd7d8dfa2">SceneManager::SceneManager</a></div><div class="ttdeci">SceneManager(Manager *manager)</div><div class="ttdef"><b>Definition</b> SceneManager.cpp:12</div></div>
-<div class="ttc" id="aclass_scene_manager_html_aa12ac3807b8e59b815ec445c25fca5ae"><div class="ttname"><a href="class_scene_manager.html#aa12ac3807b8e59b815ec445c25fca5ae">SceneManager::GetCurrentScene</a></div><div class="ttdeci">Scene * GetCurrentScene()</div><div class="ttdef"><b>Definition</b> SceneManager.h:36</div></div>
-<div class="ttc" id="aclass_scene_manager_html_aa3b2dea2aa6baab258cbb1348846ee08"><div class="ttname"><a href="class_scene_manager.html#aa3b2dea2aa6baab258cbb1348846ee08">SceneManager::Load</a></div><div class="ttdeci">void Load(std::wstring wFileDirection, std::wstring wFileName) override</div><div class="ttdef"><b>Definition</b> SceneManager.cpp:71</div></div>
-<div class="ttc" id="aclass_scene_manager_html_ac6e546dd58da6e7b133b3a9a8e7734e1"><div class="ttname"><a href="class_scene_manager.html#ac6e546dd58da6e7b133b3a9a8e7734e1">SceneManager::AddScene</a></div><div class="ttdeci">void AddScene(Scene *scene)</div><div class="ttdef"><b>Definition</b> SceneManager.h:24</div></div>
+<div class="ttc" id="aclass_scene_manager_html_a09c9196e3ad9cb53673b9ba051c9f411"><div class="ttname"><a href="class_scene_manager.html#a09c9196e3ad9cb53673b9ba051c9f411">SceneManager::GetScenes</a></div><div class="ttdeci">std::vector&lt; Scene * &gt; GetScenes()</div><div class="ttdoc">Retrieves the list of scenes managed by the SceneManager.</div><div class="ttdef"><b>Definition</b> SceneManager.h:63</div></div>
+<div class="ttc" id="aclass_scene_manager_html_a13e07df59690a7a5b163268012173e41"><div class="ttname"><a href="class_scene_manager.html#a13e07df59690a7a5b163268012173e41">SceneManager::Save</a></div><div class="ttdeci">void Save() override</div><div class="ttdoc">Saves data associated with the object.</div><div class="ttdef"><b>Definition</b> SceneManager.cpp:30</div></div>
+<div class="ttc" id="aclass_scene_manager_html_a614f5f63a2224b6f960ca1db365a75e2"><div class="ttname"><a href="class_scene_manager.html#a614f5f63a2224b6f960ca1db365a75e2">SceneManager::gameObjectPool</a></div><div class="ttdeci">MemoryPool&lt; GameObject, MemPool_Linear&lt; GameObject &gt; &gt; gameObjectPool</div><div class="ttdoc">Memory pool for GameObject instances. Uses MemPool_Linear as the underlying memory management strateg...</div><div class="ttdef"><b>Definition</b> SceneManager.h:41</div></div>
+<div class="ttc" id="aclass_scene_manager_html_a93f6af15e43dbff2b5d4819dd7d8dfa2"><div class="ttname"><a href="class_scene_manager.html#a93f6af15e43dbff2b5d4819dd7d8dfa2">SceneManager::SceneManager</a></div><div class="ttdeci">SceneManager(Manager *manager)</div><div class="ttdoc">Constructs a SceneManager object.</div><div class="ttdef"><b>Definition</b> SceneManager.cpp:12</div></div>
+<div class="ttc" id="aclass_scene_manager_html_aa12ac3807b8e59b815ec445c25fca5ae"><div class="ttname"><a href="class_scene_manager.html#aa12ac3807b8e59b815ec445c25fca5ae">SceneManager::GetCurrentScene</a></div><div class="ttdeci">Scene * GetCurrentScene()</div><div class="ttdoc">Retrieves the current scene.</div><div class="ttdef"><b>Definition</b> SceneManager.h:76</div></div>
+<div class="ttc" id="aclass_scene_manager_html_aa3b2dea2aa6baab258cbb1348846ee08"><div class="ttname"><a href="class_scene_manager.html#aa3b2dea2aa6baab258cbb1348846ee08">SceneManager::Load</a></div><div class="ttdeci">void Load(std::wstring wFileDirection, std::wstring wFileName) override</div><div class="ttdoc">Loads data associated with the object from the specified file.</div><div class="ttdef"><b>Definition</b> SceneManager.cpp:71</div></div>
+<div class="ttc" id="aclass_scene_manager_html_ac6e546dd58da6e7b133b3a9a8e7734e1"><div class="ttname"><a href="class_scene_manager.html#ac6e546dd58da6e7b133b3a9a8e7734e1">SceneManager::AddScene</a></div><div class="ttdeci">void AddScene(Scene *scene)</div><div class="ttdoc">Adds a scene to the SceneManager.</div><div class="ttdef"><b>Definition</b> SceneManager.h:54</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

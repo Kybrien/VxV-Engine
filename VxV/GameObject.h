@@ -59,21 +59,21 @@ public:
 	* This function is called at the beginning.
 	* Override this function to perform initialization tasks.
 	*/
-	virtual void Init() {}; // Est appelé au début
+	void Init() {}; // Est appelé au début
 
 	/**
 	* @brief Starts the GameObject.
 	* This function is called at the first frame.
 	* Override this function to perform start-up tasks.
 	*/
-	virtual void Start() {}; // Est appelé à la première frame
+	void Start(){}; // Est appelé à la première frame
 
 	/**
 	* @brief Updates the GameObject.
 	* This function is called at each frame.
 	* Override this function to perform update tasks.
 	*/
-	virtual void Update() {}; // Est appelé à chaque frame
+	void Update(); // Est appelé à chaque frame
 
 	/**
 	* @brief Gets the ID of the GameObject.

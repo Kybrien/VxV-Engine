@@ -1,0 +1,410 @@
+\doxysection{APIopen\+GL Class Reference}
+\hypertarget{class_a_p_iopen_g_l}{}\label{class_a_p_iopen_g_l}\index{APIopenGL@{APIopenGL}}
+
+
+{\ttfamily \#include $<$APIopen\+GL.\+hpp$>$}
+
+Inheritance diagram for APIopen\+GL\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_a_p_iopen_g_l}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_a_p_iopen_g_l_a3326c08fb02fb8311d34c03c17a9b0ad}{APIopen\+GL}} ()
+\item 
+void \mbox{\hyperlink{class_a_p_iopen_g_l_a02046426cfccac064f319812cce40965}{initialize}} () override
+\begin{DoxyCompactList}\small\item\em Initialize the graphic API. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_p_iopen_g_l_a3c87e770bfec9026cbb64088f606700f}{cleanup\+Model}} (\mbox{\hyperlink{class_model}{Model}} \texorpdfstring{$\ast$}{*}\+\_\+model) override
+\begin{DoxyCompactList}\small\item\em Clean up the model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_p_iopen_g_l_a6e0bfa4c94eaa1f61aebf3c7dd44bad4}{set\+Window\+Size}} (int \+\_\+width, int \+\_\+height) override
+\begin{DoxyCompactList}\small\item\em Set the window size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_p_iopen_g_l_a3e56bbf553339811b71866ae4d8fa004}{terminate}} () override
+\begin{DoxyCompactList}\small\item\em Terminate the graphic API. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_p_iopen_g_l_aab3c4b3ad3e5ef7f141a917b6135bdee}{set\+Background\+Color}} (float \+\_\+red, float \+\_\+green, float \+\_\+blue, float \+\_\+alpha) override
+\begin{DoxyCompactList}\small\item\em Set the background color. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_p_iopen_g_l_a9468da0d0ffe35901cee9c381686bfab}{set\+Camera}} (float \+\_\+fov, float \+\_\+ratio\+Width, float \+\_\+ratio\+Height, float \+\_\+near, float \+\_\+far, int \+\_\+camera\+PositionX, int \+\_\+camera\+PositionY, int \+\_\+camera\+PositionZ, int \+\_\+camera\+TargetX, int \+\_\+camera\+TargetY, int \+\_\+camera\+TargetZ, int \+\_\+up\+VectorX, int \+\_\+up\+VectorY, int \+\_\+up\+VectorZ) override
+\begin{DoxyCompactList}\small\item\em Set the camera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_p_iopen_g_l_a07b3d697a16b9a2d0088eb6586b12963}{set\+Shaders}} (const char \texorpdfstring{$\ast$}{*}\+\_\+vertex\+Shader\+Path, const char \texorpdfstring{$\ast$}{*}\+\_\+fragment\+Shader\+Path) override
+\begin{DoxyCompactList}\small\item\em Set the shaders. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_p_iopen_g_l_a7d6c121cad1ced038ce23878335a0f09}{drawing\+Model}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\+\_\+game\+Object) override
+\begin{DoxyCompactList}\small\item\em Drawing the model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_p_iopen_g_l_aa7c61392b99602ee7c8811d2aecb932a}{set\+Handles}} () override
+\begin{DoxyCompactList}\small\item\em Set the handles. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_p_iopen_g_l_af9b108e44fc395c00557f8d3f6d4d110}{clear\+Screen}} () override
+\begin{DoxyCompactList}\small\item\em Clear the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_p_iopen_g_l_af92852955c6a5e9920e94f73a36ab0c1}{unbind\+Arrays}} () override
+\begin{DoxyCompactList}\small\item\em Unbind the arrays. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_p_iopen_g_l_ae361ed8ccaf4ad6888fa6ce5f1ec93d2}{swap\+Buffers}} () override
+\begin{DoxyCompactList}\small\item\em Swap the buffers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_p_iopen_g_l_a960918c31d015ef9fa356756382efdc8}{use\+Shader}} () override
+\begin{DoxyCompactList}\small\item\em Use the shader. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_p_iopen_g_l_a5b7a5f1e3e091c0f63a313c1b6299440}{set\+Light\+Color}} (glm\+::vec3 \+\_\+light\+Color)
+\item 
+void \mbox{\hyperlink{class_a_p_iopen_g_l_a7de69dfa162b6d566e0d3a2cf8e1108c}{set\+Light\+Power}} (float \+\_\+light\+Power)
+\item 
+GLFWwindow \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_a_p_iopen_g_l_a2f1b1be8f8447d8e8c240f4cc5c1a8ea}{get\+Window}} ()
+\item 
+GLuint \mbox{\hyperlink{class_a_p_iopen_g_l_ab529b40accc790aa4221f65083006e69}{get\+Program\+ID}} ()
+\item 
+GLuint \mbox{\hyperlink{class_a_p_iopen_g_l_a8c6e1cbf7b0df6f4f001df43af7a985a}{get\+Vertex\+Array\+ID}} ()
+\item 
+GLuint \mbox{\hyperlink{class_a_p_iopen_g_l_a02f66ca10898f93d5581b5ff5f16356f}{get\+Texture\+ID}} ()
+\item 
+GLuint \mbox{\hyperlink{class_a_p_iopen_g_l_a9b276fcf0fa1c9ce14db915f66f09755}{get\+Light\+ID}} ()
+\item 
+GLuint \mbox{\hyperlink{class_a_p_iopen_g_l_abe48dbbd92a0d88e00bdfb7f26ab583a}{get\+Material\+Ambient\+Color\+ID}} ()
+\item 
+GLuint \mbox{\hyperlink{class_a_p_iopen_g_l_ac1e8f244276abfe627ed004a90b24360}{get\+Material\+Diffuse\+Color\+ID}} ()
+\item 
+GLuint \mbox{\hyperlink{class_a_p_iopen_g_l_a92bf122ece85a9c059dab9917c14825a}{get\+Material\+Specular\+Color\+ID}} ()
+\item 
+GLuint \mbox{\hyperlink{class_a_p_iopen_g_l_a054c9c246ea5f1afcc21399341919cf3}{get\+Matrix\+ID}} ()
+\item 
+GLuint \mbox{\hyperlink{class_a_p_iopen_g_l_a2cfe4f1f5611832d26a7c408bdb12cc6}{get\+View\+Matrix\+ID}} ()
+\item 
+GLuint \mbox{\hyperlink{class_a_p_iopen_g_l_a877bd356ee36f2103e8be83960f90fab}{get\+Model\+Matrix\+ID}} ()
+\item 
+glm\+::mat4 \mbox{\hyperlink{class_a_p_iopen_g_l_ac01929d5621c7b2bcb06f4cc4be36142}{get\+Projection}} ()
+\item 
+glm\+::mat4 \mbox{\hyperlink{class_a_p_iopen_g_l_a83f309f08d02bc31fefccc72b08d2dd7}{get\+View}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_graphic_a_p_i}{Graphic\+API}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_graphic_a_p_i_a74ba2d1eefe2cac3a155a8a7853f8105}{\texorpdfstring{$\sim$}{\string~}\+Graphic\+API}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_a_p_iopen_g_l_a3326c08fb02fb8311d34c03c17a9b0ad}\label{class_a_p_iopen_g_l_a3326c08fb02fb8311d34c03c17a9b0ad} 
+\index{APIopenGL@{APIopenGL}!APIopenGL@{APIopenGL}}
+\index{APIopenGL@{APIopenGL}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{APIopenGL()}{APIopenGL()}}
+{\footnotesize\ttfamily APIopen\+GL\+::\+APIopen\+GL (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_a_p_iopen_g_l_a3c87e770bfec9026cbb64088f606700f}\label{class_a_p_iopen_g_l_a3c87e770bfec9026cbb64088f606700f} 
+\index{APIopenGL@{APIopenGL}!cleanupModel@{cleanupModel}}
+\index{cleanupModel@{cleanupModel}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{cleanupModel()}{cleanupModel()}}
+{\footnotesize\ttfamily void APIopen\+GL\+::cleanup\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model}{Model}} \texorpdfstring{$\ast$}{*}}]{\+\_\+model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clean up the model. 
+
+
+
+Implements \mbox{\hyperlink{class_graphic_a_p_i_a91ab3a55eea70664dd07bec9c1647df5}{Graphic\+API}}.
+
+\Hypertarget{class_a_p_iopen_g_l_af9b108e44fc395c00557f8d3f6d4d110}\label{class_a_p_iopen_g_l_af9b108e44fc395c00557f8d3f6d4d110} 
+\index{APIopenGL@{APIopenGL}!clearScreen@{clearScreen}}
+\index{clearScreen@{clearScreen}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{clearScreen()}{clearScreen()}}
+{\footnotesize\ttfamily void APIopen\+GL\+::clear\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clear the screen. 
+
+
+
+Implements \mbox{\hyperlink{class_graphic_a_p_i_a13ebf86578c5fdc83f469b6993a7a719}{Graphic\+API}}.
+
+\Hypertarget{class_a_p_iopen_g_l_a7d6c121cad1ced038ce23878335a0f09}\label{class_a_p_iopen_g_l_a7d6c121cad1ced038ce23878335a0f09} 
+\index{APIopenGL@{APIopenGL}!drawingModel@{drawingModel}}
+\index{drawingModel@{drawingModel}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{drawingModel()}{drawingModel()}}
+{\footnotesize\ttfamily void APIopen\+GL\+::drawing\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+game\+Object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Drawing the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+game\+Object} & The game object to draw \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_graphic_a_p_i_a0212d1bd9b82ab8f360d2943f4f66282}{Graphic\+API}}.
+
+\Hypertarget{class_a_p_iopen_g_l_a9b276fcf0fa1c9ce14db915f66f09755}\label{class_a_p_iopen_g_l_a9b276fcf0fa1c9ce14db915f66f09755} 
+\index{APIopenGL@{APIopenGL}!getLightID@{getLightID}}
+\index{getLightID@{getLightID}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{getLightID()}{getLightID()}}
+{\footnotesize\ttfamily GLuint APIopen\+GL\+::get\+Light\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_a_p_iopen_g_l_abe48dbbd92a0d88e00bdfb7f26ab583a}\label{class_a_p_iopen_g_l_abe48dbbd92a0d88e00bdfb7f26ab583a} 
+\index{APIopenGL@{APIopenGL}!getMaterialAmbientColorID@{getMaterialAmbientColorID}}
+\index{getMaterialAmbientColorID@{getMaterialAmbientColorID}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{getMaterialAmbientColorID()}{getMaterialAmbientColorID()}}
+{\footnotesize\ttfamily GLuint APIopen\+GL\+::get\+Material\+Ambient\+Color\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_a_p_iopen_g_l_ac1e8f244276abfe627ed004a90b24360}\label{class_a_p_iopen_g_l_ac1e8f244276abfe627ed004a90b24360} 
+\index{APIopenGL@{APIopenGL}!getMaterialDiffuseColorID@{getMaterialDiffuseColorID}}
+\index{getMaterialDiffuseColorID@{getMaterialDiffuseColorID}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{getMaterialDiffuseColorID()}{getMaterialDiffuseColorID()}}
+{\footnotesize\ttfamily GLuint APIopen\+GL\+::get\+Material\+Diffuse\+Color\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_a_p_iopen_g_l_a92bf122ece85a9c059dab9917c14825a}\label{class_a_p_iopen_g_l_a92bf122ece85a9c059dab9917c14825a} 
+\index{APIopenGL@{APIopenGL}!getMaterialSpecularColorID@{getMaterialSpecularColorID}}
+\index{getMaterialSpecularColorID@{getMaterialSpecularColorID}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{getMaterialSpecularColorID()}{getMaterialSpecularColorID()}}
+{\footnotesize\ttfamily GLuint APIopen\+GL\+::get\+Material\+Specular\+Color\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_a_p_iopen_g_l_a054c9c246ea5f1afcc21399341919cf3}\label{class_a_p_iopen_g_l_a054c9c246ea5f1afcc21399341919cf3} 
+\index{APIopenGL@{APIopenGL}!getMatrixID@{getMatrixID}}
+\index{getMatrixID@{getMatrixID}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{getMatrixID()}{getMatrixID()}}
+{\footnotesize\ttfamily GLuint APIopen\+GL\+::get\+Matrix\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_a_p_iopen_g_l_a877bd356ee36f2103e8be83960f90fab}\label{class_a_p_iopen_g_l_a877bd356ee36f2103e8be83960f90fab} 
+\index{APIopenGL@{APIopenGL}!getModelMatrixID@{getModelMatrixID}}
+\index{getModelMatrixID@{getModelMatrixID}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{getModelMatrixID()}{getModelMatrixID()}}
+{\footnotesize\ttfamily GLuint APIopen\+GL\+::get\+Model\+Matrix\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_a_p_iopen_g_l_ab529b40accc790aa4221f65083006e69}\label{class_a_p_iopen_g_l_ab529b40accc790aa4221f65083006e69} 
+\index{APIopenGL@{APIopenGL}!getProgramID@{getProgramID}}
+\index{getProgramID@{getProgramID}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{getProgramID()}{getProgramID()}}
+{\footnotesize\ttfamily GLuint APIopen\+GL\+::get\+Program\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_a_p_iopen_g_l_ac01929d5621c7b2bcb06f4cc4be36142}\label{class_a_p_iopen_g_l_ac01929d5621c7b2bcb06f4cc4be36142} 
+\index{APIopenGL@{APIopenGL}!getProjection@{getProjection}}
+\index{getProjection@{getProjection}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{getProjection()}{getProjection()}}
+{\footnotesize\ttfamily glm\+::mat4 APIopen\+GL\+::get\+Projection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_a_p_iopen_g_l_a02f66ca10898f93d5581b5ff5f16356f}\label{class_a_p_iopen_g_l_a02f66ca10898f93d5581b5ff5f16356f} 
+\index{APIopenGL@{APIopenGL}!getTextureID@{getTextureID}}
+\index{getTextureID@{getTextureID}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{getTextureID()}{getTextureID()}}
+{\footnotesize\ttfamily GLuint APIopen\+GL\+::get\+Texture\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_a_p_iopen_g_l_a8c6e1cbf7b0df6f4f001df43af7a985a}\label{class_a_p_iopen_g_l_a8c6e1cbf7b0df6f4f001df43af7a985a} 
+\index{APIopenGL@{APIopenGL}!getVertexArrayID@{getVertexArrayID}}
+\index{getVertexArrayID@{getVertexArrayID}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{getVertexArrayID()}{getVertexArrayID()}}
+{\footnotesize\ttfamily GLuint APIopen\+GL\+::get\+Vertex\+Array\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_a_p_iopen_g_l_a83f309f08d02bc31fefccc72b08d2dd7}\label{class_a_p_iopen_g_l_a83f309f08d02bc31fefccc72b08d2dd7} 
+\index{APIopenGL@{APIopenGL}!getView@{getView}}
+\index{getView@{getView}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{getView()}{getView()}}
+{\footnotesize\ttfamily glm\+::mat4 APIopen\+GL\+::get\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_a_p_iopen_g_l_a2cfe4f1f5611832d26a7c408bdb12cc6}\label{class_a_p_iopen_g_l_a2cfe4f1f5611832d26a7c408bdb12cc6} 
+\index{APIopenGL@{APIopenGL}!getViewMatrixID@{getViewMatrixID}}
+\index{getViewMatrixID@{getViewMatrixID}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{getViewMatrixID()}{getViewMatrixID()}}
+{\footnotesize\ttfamily GLuint APIopen\+GL\+::get\+View\+Matrix\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_a_p_iopen_g_l_a2f1b1be8f8447d8e8c240f4cc5c1a8ea}\label{class_a_p_iopen_g_l_a2f1b1be8f8447d8e8c240f4cc5c1a8ea} 
+\index{APIopenGL@{APIopenGL}!getWindow@{getWindow}}
+\index{getWindow@{getWindow}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{getWindow()}{getWindow()}}
+{\footnotesize\ttfamily GLFWwindow \texorpdfstring{$\ast$}{*} APIopen\+GL\+::get\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_a_p_iopen_g_l_a02046426cfccac064f319812cce40965}\label{class_a_p_iopen_g_l_a02046426cfccac064f319812cce40965} 
+\index{APIopenGL@{APIopenGL}!initialize@{initialize}}
+\index{initialize@{initialize}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void APIopen\+GL\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initialize the graphic API. 
+
+
+
+Implements \mbox{\hyperlink{class_graphic_a_p_i_aedfef351795d9d9cd2fed11189e35f8e}{Graphic\+API}}.
+
+\Hypertarget{class_a_p_iopen_g_l_aab3c4b3ad3e5ef7f141a917b6135bdee}\label{class_a_p_iopen_g_l_aab3c4b3ad3e5ef7f141a917b6135bdee} 
+\index{APIopenGL@{APIopenGL}!setBackgroundColor@{setBackgroundColor}}
+\index{setBackgroundColor@{setBackgroundColor}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{setBackgroundColor()}{setBackgroundColor()}}
+{\footnotesize\ttfamily void APIopen\+GL\+::set\+Background\+Color (\begin{DoxyParamCaption}\item[{float}]{\+\_\+red,  }\item[{float}]{\+\_\+green,  }\item[{float}]{\+\_\+blue,  }\item[{float}]{\+\_\+alpha }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the background color. 
+
+
+
+Implements \mbox{\hyperlink{class_graphic_a_p_i_a9cf67461a8b48ae1893f081103a3e0e7}{Graphic\+API}}.
+
+\Hypertarget{class_a_p_iopen_g_l_a9468da0d0ffe35901cee9c381686bfab}\label{class_a_p_iopen_g_l_a9468da0d0ffe35901cee9c381686bfab} 
+\index{APIopenGL@{APIopenGL}!setCamera@{setCamera}}
+\index{setCamera@{setCamera}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{setCamera()}{setCamera()}}
+{\footnotesize\ttfamily void APIopen\+GL\+::set\+Camera (\begin{DoxyParamCaption}\item[{float}]{\+\_\+fov,  }\item[{float}]{\+\_\+ratio\+Width,  }\item[{float}]{\+\_\+ratio\+Height,  }\item[{float}]{\+\_\+near,  }\item[{float}]{\+\_\+far,  }\item[{int}]{\+\_\+camera\+PositionX,  }\item[{int}]{\+\_\+camera\+PositionY,  }\item[{int}]{\+\_\+camera\+PositionZ,  }\item[{int}]{\+\_\+camera\+TargetX,  }\item[{int}]{\+\_\+camera\+TargetY,  }\item[{int}]{\+\_\+camera\+TargetZ,  }\item[{int}]{\+\_\+up\+VectorX,  }\item[{int}]{\+\_\+up\+VectorY,  }\item[{int}]{\+\_\+up\+VectorZ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the camera. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+fov} & The field of view \\
+\hline
+{\em \+\_\+ratio\+Width} & The ratio width \\
+\hline
+{\em \+\_\+ratio\+Height} & The ratio height \\
+\hline
+{\em \+\_\+near} & The near plane of the fustrum \\
+\hline
+{\em \+\_\+far} & The far plane of the fustrum \\
+\hline
+{\em \+\_\+camera\+PositionX} & The x position of the camera \\
+\hline
+{\em \+\_\+camera\+PositionY} & The y position of the camera \\
+\hline
+{\em \+\_\+camera\+PositionZ} & The z position of the camera \\
+\hline
+{\em \+\_\+camera\+TargetX} & The x position of the target \\
+\hline
+{\em \+\_\+camera\+TargetY} & The y position of the target \\
+\hline
+{\em \+\_\+camera\+TargetZ} & The z position of the target \\
+\hline
+{\em \+\_\+up\+VectorX} & The x position of the up vector \\
+\hline
+{\em \+\_\+up\+VectorY} & The y position of the up vector \\
+\hline
+{\em \+\_\+up\+VectorZ} & The z position of the up vector \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_graphic_a_p_i_a569b2f397b979a316d087071b574b110}{Graphic\+API}}.
+
+\Hypertarget{class_a_p_iopen_g_l_aa7c61392b99602ee7c8811d2aecb932a}\label{class_a_p_iopen_g_l_aa7c61392b99602ee7c8811d2aecb932a} 
+\index{APIopenGL@{APIopenGL}!setHandles@{setHandles}}
+\index{setHandles@{setHandles}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{setHandles()}{setHandles()}}
+{\footnotesize\ttfamily void APIopen\+GL\+::set\+Handles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the handles. 
+
+
+
+Implements \mbox{\hyperlink{class_graphic_a_p_i_ad4622fee849a6e5ec0e099078337ed84}{Graphic\+API}}.
+
+\Hypertarget{class_a_p_iopen_g_l_a5b7a5f1e3e091c0f63a313c1b6299440}\label{class_a_p_iopen_g_l_a5b7a5f1e3e091c0f63a313c1b6299440} 
+\index{APIopenGL@{APIopenGL}!setLightColor@{setLightColor}}
+\index{setLightColor@{setLightColor}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{setLightColor()}{setLightColor()}}
+{\footnotesize\ttfamily void APIopen\+GL\+::set\+Light\+Color (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+light\+Color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_a_p_iopen_g_l_a7de69dfa162b6d566e0d3a2cf8e1108c}\label{class_a_p_iopen_g_l_a7de69dfa162b6d566e0d3a2cf8e1108c} 
+\index{APIopenGL@{APIopenGL}!setLightPower@{setLightPower}}
+\index{setLightPower@{setLightPower}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{setLightPower()}{setLightPower()}}
+{\footnotesize\ttfamily void APIopen\+GL\+::set\+Light\+Power (\begin{DoxyParamCaption}\item[{float}]{\+\_\+light\+Power }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_a_p_iopen_g_l_a07b3d697a16b9a2d0088eb6586b12963}\label{class_a_p_iopen_g_l_a07b3d697a16b9a2d0088eb6586b12963} 
+\index{APIopenGL@{APIopenGL}!setShaders@{setShaders}}
+\index{setShaders@{setShaders}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{setShaders()}{setShaders()}}
+{\footnotesize\ttfamily void APIopen\+GL\+::set\+Shaders (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{\+\_\+vertex\+Shader\+Path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{\+\_\+fragment\+Shader\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the shaders. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+vertex\+Shader\+Path} & The path of the vertex shader \\
+\hline
+{\em \+\_\+fragment\+Shader\+Path} & The path of the fragment shader \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_graphic_a_p_i_a2c1a681228099ebca7ccc5f189450f4a}{Graphic\+API}}.
+
+\Hypertarget{class_a_p_iopen_g_l_a6e0bfa4c94eaa1f61aebf3c7dd44bad4}\label{class_a_p_iopen_g_l_a6e0bfa4c94eaa1f61aebf3c7dd44bad4} 
+\index{APIopenGL@{APIopenGL}!setWindowSize@{setWindowSize}}
+\index{setWindowSize@{setWindowSize}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{setWindowSize()}{setWindowSize()}}
+{\footnotesize\ttfamily void APIopen\+GL\+::set\+Window\+Size (\begin{DoxyParamCaption}\item[{int}]{\+\_\+width,  }\item[{int}]{\+\_\+height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the window size. 
+
+
+
+Implements \mbox{\hyperlink{class_graphic_a_p_i_a651cddb01ba764f53ac6c1b51ca56d9b}{Graphic\+API}}.
+
+\Hypertarget{class_a_p_iopen_g_l_ae361ed8ccaf4ad6888fa6ce5f1ec93d2}\label{class_a_p_iopen_g_l_ae361ed8ccaf4ad6888fa6ce5f1ec93d2} 
+\index{APIopenGL@{APIopenGL}!swapBuffers@{swapBuffers}}
+\index{swapBuffers@{swapBuffers}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{swapBuffers()}{swapBuffers()}}
+{\footnotesize\ttfamily void APIopen\+GL\+::swap\+Buffers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Swap the buffers. 
+
+
+
+Implements \mbox{\hyperlink{class_graphic_a_p_i_a0a6eddcfd9975e8bf87dff2f70356808}{Graphic\+API}}.
+
+\Hypertarget{class_a_p_iopen_g_l_a3e56bbf553339811b71866ae4d8fa004}\label{class_a_p_iopen_g_l_a3e56bbf553339811b71866ae4d8fa004} 
+\index{APIopenGL@{APIopenGL}!terminate@{terminate}}
+\index{terminate@{terminate}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{terminate()}{terminate()}}
+{\footnotesize\ttfamily void APIopen\+GL\+::terminate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Terminate the graphic API. 
+
+
+
+Implements \mbox{\hyperlink{class_graphic_a_p_i_a67db4716f2a794dae7cc1c0f889287d6}{Graphic\+API}}.
+
+\Hypertarget{class_a_p_iopen_g_l_af92852955c6a5e9920e94f73a36ab0c1}\label{class_a_p_iopen_g_l_af92852955c6a5e9920e94f73a36ab0c1} 
+\index{APIopenGL@{APIopenGL}!unbindArrays@{unbindArrays}}
+\index{unbindArrays@{unbindArrays}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{unbindArrays()}{unbindArrays()}}
+{\footnotesize\ttfamily void APIopen\+GL\+::unbind\+Arrays (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Unbind the arrays. 
+
+
+
+Implements \mbox{\hyperlink{class_graphic_a_p_i_acd96c3bdc2a98dc61f8cc185ded7b42f}{Graphic\+API}}.
+
+\Hypertarget{class_a_p_iopen_g_l_a960918c31d015ef9fa356756382efdc8}\label{class_a_p_iopen_g_l_a960918c31d015ef9fa356756382efdc8} 
+\index{APIopenGL@{APIopenGL}!useShader@{useShader}}
+\index{useShader@{useShader}!APIopenGL@{APIopenGL}}
+\doxysubsubsection{\texorpdfstring{useShader()}{useShader()}}
+{\footnotesize\ttfamily void APIopen\+GL\+::use\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Use the shader. 
+
+
+
+Implements \mbox{\hyperlink{class_graphic_a_p_i_a413cfcdd5a5bc52d79612d0fcd0647bc}{Graphic\+API}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_a_p_iopen_g_l_8hpp}{APIopen\+GL.\+hpp}}\end{DoxyCompactItemize}

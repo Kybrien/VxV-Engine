@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['glew_5fstatic_0',['GLEW_STATIC',['../loading_shader_8hpp.html#abcde84ea0ef5f934384e4620f092c85a',1,'loadingShader.hpp']]]
+  ['_5fwinsock_5fdeprecated_5fno_5fwarnings_0',['_WINSOCK_DEPRECATED_NO_WARNINGS',['../___client_8cpp.html#adfc8f90f3a8caa8423099cf36ff214f1',1,'_WINSOCK_DEPRECATED_NO_WARNINGS:&#160;_Client.cpp'],['../_chat_window_8hpp.html#adfc8f90f3a8caa8423099cf36ff214f1',1,'_WINSOCK_DEPRECATED_NO_WARNINGS:&#160;ChatWindow.hpp']]]
 ];

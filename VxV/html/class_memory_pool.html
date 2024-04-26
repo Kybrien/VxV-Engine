@@ -25,7 +25,6 @@
   <td id="projectalign">
    <div id="projectname">VxV
    </div>
-   <div id="projectbrief">A perfectly ok engine</div>
   </td>
  </tr>
  </tbody>
@@ -79,6 +78,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p><a class="el" href="class_memory_pool.html" title="MemoryPool class that uses a specific strategy to allocate and deallocate memory.">MemoryPool</a> class that uses a specific strategy to allocate and deallocate memory.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_memory_pool_8h_source.html">MemoryPool.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -87,13 +89,26 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a81562e65d5b85a7615f60b44d4461252"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78298262e0a5d2661533fe5f56ed5cbf" id="r_a78298262e0a5d2661533fe5f56ed5cbf"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
 <tr class="memitem:a78298262e0a5d2661533fe5f56ed5cbf"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a78298262e0a5d2661533fe5f56ed5cbf">Alloc</a> (Args... args)</td></tr>
+<tr class="memdesc:a78298262e0a5d2661533fe5f56ed5cbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates memory for an object of type T.  <br /></td></tr>
 <tr class="separator:a78298262e0a5d2661533fe5f56ed5cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9267708cc7a7801d0e1467cf01ca5e9" id="r_ab9267708cc7a7801d0e1467cf01ca5e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9267708cc7a7801d0e1467cf01ca5e9">Free</a> (void *p)</td></tr>
+<tr class="memdesc:ab9267708cc7a7801d0e1467cf01ca5e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deallocates memory for a specific object.  <br /></td></tr>
 <tr class="separator:ab9267708cc7a7801d0e1467cf01ca5e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2031dbba508e46248b28ae9d678f7ae" id="r_ab2031dbba508e46248b28ae9d678f7ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2031dbba508e46248b28ae9d678f7ae">FreeAll</a> ()</td></tr>
+<tr class="memdesc:ab2031dbba508e46248b28ae9d678f7ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deallocates memory for all objects in the pool.  <br /></td></tr>
 <tr class="separator:ab2031dbba508e46248b28ae9d678f7ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename T, class Strategy&gt;<br />
+class MemoryPool&lt; T, Strategy &gt;</div><p><a class="el" href="class_memory_pool.html" title="MemoryPool class that uses a specific strategy to allocate and deallocate memory.">MemoryPool</a> class that uses a specific strategy to allocate and deallocate memory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">T</td><td>- type of object to allocate memory for </td></tr>
+    <tr><td class="paramname">Strategy</td><td>- strategy to use for memory allocation and deallocation </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a81562e65d5b85a7615f60b44d4461252" name="a81562e65d5b85a7615f60b44d4461252"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a81562e65d5b85a7615f60b44d4461252">&#9670;&#160;</a></span>MemoryPool()</h2>
 
@@ -149,6 +164,14 @@ template&lt;typename... Args&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Allocates memory for an object of type T. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>- arguments to pass to the constructor of the object </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ab9267708cc7a7801d0e1467cf01ca5e9" name="ab9267708cc7a7801d0e1467cf01ca5e9"></a>
@@ -176,6 +199,14 @@ template&lt;typename T , class Strategy &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Deallocates memory for a specific object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>- pointer to the object to deallocate </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ab2031dbba508e46248b28ae9d678f7ae" name="ab2031dbba508e46248b28ae9d678f7ae"></a>
@@ -202,6 +233,8 @@ template&lt;typename T , class Strategy &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Deallocates memory for all objects in the pool. </p>
 
 </div>
 </div>

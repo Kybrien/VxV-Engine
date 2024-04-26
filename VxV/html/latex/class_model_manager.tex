@@ -1,0 +1,208 @@
+\doxysection{Model\+Manager Class Reference}
+\hypertarget{class_model_manager}{}\label{class_model_manager}\index{ModelManager@{ModelManager}}
+
+
+{\ttfamily \#include $<$Model\+Manager.\+h$>$}
+
+Inheritance diagram for Model\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_model_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_manager_a6642c2c176b906a6c80ac8d61335780e}{Model\+Manager}} (\mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*}manager)
+\begin{DoxyCompactList}\small\item\em Construct a \doxylink{class_model_manager}{Model\+Manager} instance. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_model_manager_abd7fa24d2ede5c91521a8bc8f5e36ff0}{Get\+Models}} ()
+\begin{DoxyCompactList}\small\item\em Retrieve a vector of \doxylink{class_model_component}{Model\+Component} pointers. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ \mbox{\hyperlink{class_model_manager_a0388c7384ddc679353cea13493a9d45e}{Get\+All\+Model\+Properties}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves all model properties. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_manager_aaf127042d5d4e6dae2c91ef5391b8950}{Add\+Model}} (\mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*}mesh)
+\begin{DoxyCompactList}\small\item\em Adds a model to the collection. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_model_manager_a284ae813017e9f86e4a6d36db3bab85d}{Get\+Model}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Retrieves a model by its name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_manager_a6984e13bcc05946e0c1fba912076ae16}{Set\+Model}} (std\+::string model\+Name, \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go)
+\begin{DoxyCompactList}\small\item\em Sets the model of a \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_manager_af279c8092298ca1f3058166dc6d4c041}{Load}} (std\+::wstring w\+File\+Direction, std\+::wstring w\+File\+Name) override
+\begin{DoxyCompactList}\small\item\em Loads data associated with the object from the specified file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_manager_a5f9f79c888c30367018f48678ef23dbf}{Load\+Model}} (std\+::string file\+Name)
+\begin{DoxyCompactList}\small\item\em Loads a model from a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_manager}{Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_a2569efa6dd78f87cc0b64086043cc4ca}{Get\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the manager of type T. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_manager_a200a7092507e1769240452e88996127b}{Init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the \doxylink{class_manager}{Manager}. Represents initializing the \doxylink{class_manager}{Manager}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_manager_a037a7066aa1ba886bafe691ef3f6f98c}{Stop}} ()
+\begin{DoxyCompactList}\small\item\em Stops the \doxylink{class_manager}{Manager}. Represents stopping the \doxylink{class_manager}{Manager} and deleting all pointers. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_manager_ab6bfbb7862710ba6c42634f7ea521994}{Add\+Manager}} (T \texorpdfstring{$\ast$}{*}manager)
+\begin{DoxyCompactList}\small\item\em Adds a manager to the \doxylink{class_manager}{Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_manager}{Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_abf52d7d532c05607cc23c687f23e6b67}{Get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the singleton instance of the \doxylink{class_manager}{Manager} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_manager}{Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_manager_a066ee0e0faa861515f582e510a722804}{Search\+File}} (std\+::string file\+Direction, std\+::string extension, T \texorpdfstring{$\ast$}{*}manager)
+\begin{DoxyCompactList}\small\item\em Searches for files with a specific extension in a given directory and processes them using the specified manager. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_manager_aa66c5cc0be93116d3901ce317b2332fb}{Save}} ()
+\begin{DoxyCompactList}\small\item\em Saves data associated with the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_manager}{Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_ac80f5ee151565f111593921bac645ad7}{instance}} = nullptr
+\begin{DoxyCompactList}\small\item\em Pointer to the singleton instance of the \doxylink{class_manager}{Manager} class. Represents the singleton instance of the \doxylink{class_manager}{Manager} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_model_manager_a6642c2c176b906a6c80ac8d61335780e}\label{class_model_manager_a6642c2c176b906a6c80ac8d61335780e} 
+\index{ModelManager@{ModelManager}!ModelManager@{ModelManager}}
+\index{ModelManager@{ModelManager}!ModelManager@{ModelManager}}
+\doxysubsubsection{\texorpdfstring{ModelManager()}{ModelManager()}}
+{\footnotesize\ttfamily Model\+Manager\+::\+Model\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*}}]{manager }\end{DoxyParamCaption})}
+
+
+
+Construct a \doxylink{class_model_manager}{Model\+Manager} instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manager} & A pointer to the \doxylink{class_manager}{Manager} instance managing this \doxylink{class_model_manager}{Model\+Manager}. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_model_manager_aaf127042d5d4e6dae2c91ef5391b8950}\label{class_model_manager_aaf127042d5d4e6dae2c91ef5391b8950} 
+\index{ModelManager@{ModelManager}!AddModel@{AddModel}}
+\index{AddModel@{AddModel}!ModelManager@{ModelManager}}
+\doxysubsubsection{\texorpdfstring{AddModel()}{AddModel()}}
+{\footnotesize\ttfamily void Model\+Manager\+::\+Add\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*}}]{mesh }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a model to the collection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Model\+Component\texorpdfstring{$\ast$}{*}} & Pointer to the \doxylink{class_model_component}{Model\+Component} to be added. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{class_model_manager_a0388c7384ddc679353cea13493a9d45e}\label{class_model_manager_a0388c7384ddc679353cea13493a9d45e} 
+\index{ModelManager@{ModelManager}!GetAllModelProperties@{GetAllModelProperties}}
+\index{GetAllModelProperties@{GetAllModelProperties}!ModelManager@{ModelManager}}
+\doxysubsubsection{\texorpdfstring{GetAllModelProperties()}{GetAllModelProperties()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ Model\+Manager\+::\+Get\+All\+Model\+Properties (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves all model properties. 
+
+\begin{DoxyReturn}{Returns}
+A vector of vectors containing the properties of all models. 
+\end{DoxyReturn}
+\Hypertarget{class_model_manager_a284ae813017e9f86e4a6d36db3bab85d}\label{class_model_manager_a284ae813017e9f86e4a6d36db3bab85d} 
+\index{ModelManager@{ModelManager}!GetModel@{GetModel}}
+\index{GetModel@{GetModel}!ModelManager@{ModelManager}}
+\doxysubsubsection{\texorpdfstring{GetModel()}{GetModel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*} Model\+Manager\+::\+Get\+Model (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves a model by its name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & The name of the model to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the \doxylink{class_model_component}{Model\+Component} if found, otherwise nullptr. 
+\end{DoxyReturn}
+\Hypertarget{class_model_manager_abd7fa24d2ede5c91521a8bc8f5e36ff0}\label{class_model_manager_abd7fa24d2ede5c91521a8bc8f5e36ff0} 
+\index{ModelManager@{ModelManager}!GetModels@{GetModels}}
+\index{GetModels@{GetModels}!ModelManager@{ModelManager}}
+\doxysubsubsection{\texorpdfstring{GetModels()}{GetModels()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*} $>$ Model\+Manager\+::\+Get\+Models (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieve a vector of \doxylink{class_model_component}{Model\+Component} pointers. 
+
+\begin{DoxyReturn}{Returns}
+A vector containing pointers to \doxylink{class_model_component}{Model\+Component} instances. 
+\end{DoxyReturn}
+\Hypertarget{class_model_manager_af279c8092298ca1f3058166dc6d4c041}\label{class_model_manager_af279c8092298ca1f3058166dc6d4c041} 
+\index{ModelManager@{ModelManager}!Load@{Load}}
+\index{Load@{Load}!ModelManager@{ModelManager}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily void Model\+Manager\+::\+Load (\begin{DoxyParamCaption}\item[{std\+::wstring}]{w\+File\+Direction,  }\item[{std\+::wstring}]{w\+File\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Loads data associated with the object from the specified file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w\+File\+Direction} & The directory where the file is located. \\
+\hline
+{\em w\+File\+Name} & The name of the file to load. Represents loading data associated with the object from the specified file. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_manager_a1ca627323200c3ac1c6da0d3c510f0c7}{Manager}}.
+
+\Hypertarget{class_model_manager_a5f9f79c888c30367018f48678ef23dbf}\label{class_model_manager_a5f9f79c888c30367018f48678ef23dbf} 
+\index{ModelManager@{ModelManager}!LoadModel@{LoadModel}}
+\index{LoadModel@{LoadModel}!ModelManager@{ModelManager}}
+\doxysubsubsection{\texorpdfstring{LoadModel()}{LoadModel()}}
+{\footnotesize\ttfamily void Model\+Manager\+::\+Load\+Model (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Loads a model from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & The name of the file to load the model from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{class_model_manager_a6984e13bcc05946e0c1fba912076ae16}\label{class_model_manager_a6984e13bcc05946e0c1fba912076ae16} 
+\index{ModelManager@{ModelManager}!SetModel@{SetModel}}
+\index{SetModel@{SetModel}!ModelManager@{ModelManager}}
+\doxysubsubsection{\texorpdfstring{SetModel()}{SetModel()}}
+{\footnotesize\ttfamily void Model\+Manager\+::\+Set\+Model (\begin{DoxyParamCaption}\item[{std\+::string}]{model\+Name,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go }\end{DoxyParamCaption})}
+
+
+
+Sets the model of a \doxylink{class_game_object}{Game\+Object}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & The name of the model to set. \\
+\hline
+{\em Game\+Object\texorpdfstring{$\ast$}{*}} & Pointer to the \doxylink{class_game_object}{Game\+Object}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_model_manager_8h}{Model\+Manager.\+h}}\item 
+\mbox{\hyperlink{_model_manager_8cpp}{Model\+Manager.\+cpp}}\end{DoxyCompactItemize}

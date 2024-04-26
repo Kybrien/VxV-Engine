@@ -1,0 +1,120 @@
+\doxysection{controls.\+cpp File Reference}
+\hypertarget{controls_8cpp}{}\label{controls_8cpp}\index{controls.cpp@{controls.cpp}}
+{\ttfamily \#include "{}controls.\+hpp"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::mat4 \mbox{\hyperlink{controls_8cpp_ae5c7c56d0f0158d920deb05074dd013e}{get\+View\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em Get the view matrix. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{controls_8cpp_a111b020a13f0a5b197c995b6a8294ddd}{get\+Projection\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em Get the projection matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{controls_8cpp_a067f804fb5da9b80cebaa1edcf94cc79}{compute\+Matrices\+From\+Inputs}} (GLFWwindow \texorpdfstring{$\ast$}{*}window)
+\begin{DoxyCompactList}\small\item\em Handle the inputs of the user and change the view matrix in consequence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::mat4 \mbox{\hyperlink{controls_8cpp_ab276b213c71fd372d962f617566518be}{View\+Matrix}}
+\item 
+glm\+::mat4 \mbox{\hyperlink{controls_8cpp_af437a7042c55c02cfdbd4a1e074b890a}{Projection\+Matrix}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{controls_8cpp_ab17456efa59b99dbb85317ee492274b6}{position}} = glm\+::vec3(0, 0, 15)
+\item 
+float \mbox{\hyperlink{controls_8cpp_a4c2ba943b619893584c41f1d11a1de71}{horizontal\+Angle}} = 3.\+14f
+\item 
+float \mbox{\hyperlink{controls_8cpp_ac45d691b293310b6ec827ec9dbfbc9ea}{vertical\+Angle}} = 0.\+0f
+\item 
+float \mbox{\hyperlink{controls_8cpp_a033ba7979037c00361e7315ddc7c0e12}{initial\+FoV}} = 45.\+0f
+\item 
+float \mbox{\hyperlink{controls_8cpp_a7f7e4724cf57d59513b39c5ecc81adc8}{speed}} = 3.\+0f
+\item 
+float \mbox{\hyperlink{controls_8cpp_ad86cf88b1bfa45799e65ca2a0ec9f24c}{mouse\+Speed}} = 0.\+0025f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{controls_8cpp_a067f804fb5da9b80cebaa1edcf94cc79}\label{controls_8cpp_a067f804fb5da9b80cebaa1edcf94cc79} 
+\index{controls.cpp@{controls.cpp}!computeMatricesFromInputs@{computeMatricesFromInputs}}
+\index{computeMatricesFromInputs@{computeMatricesFromInputs}!controls.cpp@{controls.cpp}}
+\doxysubsubsection{\texorpdfstring{computeMatricesFromInputs()}{computeMatricesFromInputs()}}
+{\footnotesize\ttfamily void compute\+Matrices\+From\+Inputs (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
+
+
+
+Handle the inputs of the user and change the view matrix in consequence. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The window \\
+\hline
+\end{DoxyParams}
+\Hypertarget{controls_8cpp_a111b020a13f0a5b197c995b6a8294ddd}\label{controls_8cpp_a111b020a13f0a5b197c995b6a8294ddd} 
+\index{controls.cpp@{controls.cpp}!getProjectionMatrix@{getProjectionMatrix}}
+\index{getProjectionMatrix@{getProjectionMatrix}!controls.cpp@{controls.cpp}}
+\doxysubsubsection{\texorpdfstring{getProjectionMatrix()}{getProjectionMatrix()}}
+{\footnotesize\ttfamily glm\+::mat4 get\+Projection\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the projection matrix. 
+
+\Hypertarget{controls_8cpp_ae5c7c56d0f0158d920deb05074dd013e}\label{controls_8cpp_ae5c7c56d0f0158d920deb05074dd013e} 
+\index{controls.cpp@{controls.cpp}!getViewMatrix@{getViewMatrix}}
+\index{getViewMatrix@{getViewMatrix}!controls.cpp@{controls.cpp}}
+\doxysubsubsection{\texorpdfstring{getViewMatrix()}{getViewMatrix()}}
+{\footnotesize\ttfamily glm\+::mat4 get\+View\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the view matrix. 
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{controls_8cpp_a4c2ba943b619893584c41f1d11a1de71}\label{controls_8cpp_a4c2ba943b619893584c41f1d11a1de71} 
+\index{controls.cpp@{controls.cpp}!horizontalAngle@{horizontalAngle}}
+\index{horizontalAngle@{horizontalAngle}!controls.cpp@{controls.cpp}}
+\doxysubsubsection{\texorpdfstring{horizontalAngle}{horizontalAngle}}
+{\footnotesize\ttfamily float horizontal\+Angle = 3.\+14f}
+
+\Hypertarget{controls_8cpp_a033ba7979037c00361e7315ddc7c0e12}\label{controls_8cpp_a033ba7979037c00361e7315ddc7c0e12} 
+\index{controls.cpp@{controls.cpp}!initialFoV@{initialFoV}}
+\index{initialFoV@{initialFoV}!controls.cpp@{controls.cpp}}
+\doxysubsubsection{\texorpdfstring{initialFoV}{initialFoV}}
+{\footnotesize\ttfamily float initial\+FoV = 45.\+0f}
+
+\Hypertarget{controls_8cpp_ad86cf88b1bfa45799e65ca2a0ec9f24c}\label{controls_8cpp_ad86cf88b1bfa45799e65ca2a0ec9f24c} 
+\index{controls.cpp@{controls.cpp}!mouseSpeed@{mouseSpeed}}
+\index{mouseSpeed@{mouseSpeed}!controls.cpp@{controls.cpp}}
+\doxysubsubsection{\texorpdfstring{mouseSpeed}{mouseSpeed}}
+{\footnotesize\ttfamily float mouse\+Speed = 0.\+0025f}
+
+\Hypertarget{controls_8cpp_ab17456efa59b99dbb85317ee492274b6}\label{controls_8cpp_ab17456efa59b99dbb85317ee492274b6} 
+\index{controls.cpp@{controls.cpp}!position@{position}}
+\index{position@{position}!controls.cpp@{controls.cpp}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily glm\+::vec3 position = glm\+::vec3(0, 0, 15)}
+
+\Hypertarget{controls_8cpp_af437a7042c55c02cfdbd4a1e074b890a}\label{controls_8cpp_af437a7042c55c02cfdbd4a1e074b890a} 
+\index{controls.cpp@{controls.cpp}!ProjectionMatrix@{ProjectionMatrix}}
+\index{ProjectionMatrix@{ProjectionMatrix}!controls.cpp@{controls.cpp}}
+\doxysubsubsection{\texorpdfstring{ProjectionMatrix}{ProjectionMatrix}}
+{\footnotesize\ttfamily glm\+::mat4 Projection\+Matrix}
+
+\Hypertarget{controls_8cpp_a7f7e4724cf57d59513b39c5ecc81adc8}\label{controls_8cpp_a7f7e4724cf57d59513b39c5ecc81adc8} 
+\index{controls.cpp@{controls.cpp}!speed@{speed}}
+\index{speed@{speed}!controls.cpp@{controls.cpp}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily float speed = 3.\+0f}
+
+\Hypertarget{controls_8cpp_ac45d691b293310b6ec827ec9dbfbc9ea}\label{controls_8cpp_ac45d691b293310b6ec827ec9dbfbc9ea} 
+\index{controls.cpp@{controls.cpp}!verticalAngle@{verticalAngle}}
+\index{verticalAngle@{verticalAngle}!controls.cpp@{controls.cpp}}
+\doxysubsubsection{\texorpdfstring{verticalAngle}{verticalAngle}}
+{\footnotesize\ttfamily float vertical\+Angle = 0.\+0f}
+
+\Hypertarget{controls_8cpp_ab276b213c71fd372d962f617566518be}\label{controls_8cpp_ab276b213c71fd372d962f617566518be} 
+\index{controls.cpp@{controls.cpp}!ViewMatrix@{ViewMatrix}}
+\index{ViewMatrix@{ViewMatrix}!controls.cpp@{controls.cpp}}
+\doxysubsubsection{\texorpdfstring{ViewMatrix}{ViewMatrix}}
+{\footnotesize\ttfamily glm\+::mat4 View\+Matrix}
+

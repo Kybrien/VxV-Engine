@@ -1,0 +1,202 @@
+\doxysection{Chat\+Window Struct Reference}
+\hypertarget{struct_chat_window}{}\label{struct_chat_window}\index{ChatWindow@{ChatWindow}}
+
+
+{\ttfamily \#include $<$Chat\+Window.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_chat_window_aaec154a727645e9567c7be013e4713aa}{Chat\+Window}} ()
+\item 
+\mbox{\hyperlink{struct_chat_window_a100c64a78603b3c65026acfd0b64ad19}{\texorpdfstring{$\sim$}{\string~}\+Chat\+Window}} ()
+\item 
+std\+::string \mbox{\hyperlink{struct_chat_window_a5a3e386d219e62d3b674506ed26ca8ab}{get\+\_\+local\+\_\+ip\+\_\+address}} ()
+\item 
+void \mbox{\hyperlink{struct_chat_window_a9560014dfacf94e9bfd6698fd47ec36e}{start\+Server}} ()
+\item 
+void \mbox{\hyperlink{struct_chat_window_a8bd321bf529754a246aa5e910cfd5978}{setup\+Connection}} (const std\+::string \&user, const std\+::string \&ip)
+\item 
+void \mbox{\hyperlink{struct_chat_window_af7dc07c0cd28a2f35016ca4a5fc837c8}{init\+Network}} ()
+\item 
+void \mbox{\hyperlink{struct_chat_window_a103b36a7797b8c201f4bb1632d57b03d}{close\+Network}} ()
+\item 
+void \mbox{\hyperlink{struct_chat_window_ad9ee393852c6d0738aa1465c4e61d41c}{receive\+Messages}} ()
+\item 
+void \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{add\+Message}} (const std\+::string \&message)
+\item 
+void \mbox{\hyperlink{struct_chat_window_a147a8c305f0f27d2b53dad5ae84b959a}{send\+Message}} (const std\+::string \&message)
+\item 
+void \mbox{\hyperlink{struct_chat_window_a7a350c4fa0d85fcf85d2c09ce48160e4}{Draw\+Login}} ()
+\item 
+void \mbox{\hyperlink{struct_chat_window_a772615a7152b3e769cddd831cb9f1963}{disconnect}} ()
+\item 
+void \mbox{\hyperlink{struct_chat_window_a1cf658fe7db33fac0f7554ef00ee7695}{Draw}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{struct_chat_window_a68d666bcf564bf6cada8bb611d84687a}{username}}
+\item 
+std\+::deque$<$ std\+::string $>$ \mbox{\hyperlink{struct_chat_window_a5a272447bf42965540ff3ebed35c891b}{messages}}
+\item 
+char \mbox{\hyperlink{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}{input\+Buf}} \mbox{[}256\mbox{]}
+\item 
+SOCKET \mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{client\+Socket}}
+\item 
+std\+::string \mbox{\hyperlink{struct_chat_window_a1d237353d4e536634f37c8656f790652}{server\+IP}} = "{}Your Ipv4 Adress"{}
+\item 
+std\+::thread \mbox{\hyperlink{struct_chat_window_a0efb4cb862c9ad5a5077dca8672f6252}{receive\+Thread}}
+\item 
+std\+::mutex \mbox{\hyperlink{struct_chat_window_a946c78671452ee5868364dddfde70b2c}{mutex}}
+\item 
+bool \mbox{\hyperlink{struct_chat_window_aafeff939f24d2a6c27e359a3c8574b45}{is\+Connected}} = false
+\item 
+char \mbox{\hyperlink{struct_chat_window_a1c142f9cbda0db3416e6609339d37bba}{ip\+Address\+Buf}} \mbox{[}256\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_chat_window_aaec154a727645e9567c7be013e4713aa}\label{struct_chat_window_aaec154a727645e9567c7be013e4713aa} 
+\index{ChatWindow@{ChatWindow}!ChatWindow@{ChatWindow}}
+\index{ChatWindow@{ChatWindow}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{ChatWindow()}{ChatWindow()}}
+{\footnotesize\ttfamily Chat\+Window\+::\+Chat\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_chat_window_a100c64a78603b3c65026acfd0b64ad19}\label{struct_chat_window_a100c64a78603b3c65026acfd0b64ad19} 
+\index{ChatWindow@{ChatWindow}!````~ChatWindow@{\texorpdfstring{$\sim$}{\string~}ChatWindow}}
+\index{````~ChatWindow@{\texorpdfstring{$\sim$}{\string~}ChatWindow}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ChatWindow()}{\string~ChatWindow()}}
+{\footnotesize\ttfamily Chat\+Window\+::\texorpdfstring{$\sim$}{\string~}\+Chat\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}\label{struct_chat_window_a992bdc5df7b0994406693d6ca40714be} 
+\index{ChatWindow@{ChatWindow}!addMessage@{addMessage}}
+\index{addMessage@{addMessage}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{addMessage()}{addMessage()}}
+{\footnotesize\ttfamily void Chat\+Window\+::add\+Message (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_chat_window_a103b36a7797b8c201f4bb1632d57b03d}\label{struct_chat_window_a103b36a7797b8c201f4bb1632d57b03d} 
+\index{ChatWindow@{ChatWindow}!closeNetwork@{closeNetwork}}
+\index{closeNetwork@{closeNetwork}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{closeNetwork()}{closeNetwork()}}
+{\footnotesize\ttfamily void Chat\+Window\+::close\+Network (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_chat_window_a772615a7152b3e769cddd831cb9f1963}\label{struct_chat_window_a772615a7152b3e769cddd831cb9f1963} 
+\index{ChatWindow@{ChatWindow}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily void Chat\+Window\+::disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_chat_window_a1cf658fe7db33fac0f7554ef00ee7695}\label{struct_chat_window_a1cf658fe7db33fac0f7554ef00ee7695} 
+\index{ChatWindow@{ChatWindow}!Draw@{Draw}}
+\index{Draw@{Draw}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void Chat\+Window\+::\+Draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_chat_window_a7a350c4fa0d85fcf85d2c09ce48160e4}\label{struct_chat_window_a7a350c4fa0d85fcf85d2c09ce48160e4} 
+\index{ChatWindow@{ChatWindow}!DrawLogin@{DrawLogin}}
+\index{DrawLogin@{DrawLogin}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{DrawLogin()}{DrawLogin()}}
+{\footnotesize\ttfamily void Chat\+Window\+::\+Draw\+Login (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_chat_window_a5a3e386d219e62d3b674506ed26ca8ab}\label{struct_chat_window_a5a3e386d219e62d3b674506ed26ca8ab} 
+\index{ChatWindow@{ChatWindow}!get\_local\_ip\_address@{get\_local\_ip\_address}}
+\index{get\_local\_ip\_address@{get\_local\_ip\_address}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{get\_local\_ip\_address()}{get\_local\_ip\_address()}}
+{\footnotesize\ttfamily std\+::string Chat\+Window\+::get\+\_\+local\+\_\+ip\+\_\+address (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_chat_window_af7dc07c0cd28a2f35016ca4a5fc837c8}\label{struct_chat_window_af7dc07c0cd28a2f35016ca4a5fc837c8} 
+\index{ChatWindow@{ChatWindow}!initNetwork@{initNetwork}}
+\index{initNetwork@{initNetwork}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{initNetwork()}{initNetwork()}}
+{\footnotesize\ttfamily void Chat\+Window\+::init\+Network (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_chat_window_ad9ee393852c6d0738aa1465c4e61d41c}\label{struct_chat_window_ad9ee393852c6d0738aa1465c4e61d41c} 
+\index{ChatWindow@{ChatWindow}!receiveMessages@{receiveMessages}}
+\index{receiveMessages@{receiveMessages}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{receiveMessages()}{receiveMessages()}}
+{\footnotesize\ttfamily void Chat\+Window\+::receive\+Messages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_chat_window_a147a8c305f0f27d2b53dad5ae84b959a}\label{struct_chat_window_a147a8c305f0f27d2b53dad5ae84b959a} 
+\index{ChatWindow@{ChatWindow}!sendMessage@{sendMessage}}
+\index{sendMessage@{sendMessage}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{sendMessage()}{sendMessage()}}
+{\footnotesize\ttfamily void Chat\+Window\+::send\+Message (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_chat_window_a8bd321bf529754a246aa5e910cfd5978}\label{struct_chat_window_a8bd321bf529754a246aa5e910cfd5978} 
+\index{ChatWindow@{ChatWindow}!setupConnection@{setupConnection}}
+\index{setupConnection@{setupConnection}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{setupConnection()}{setupConnection()}}
+{\footnotesize\ttfamily void Chat\+Window\+::setup\+Connection (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{user,  }\item[{const std\+::string \&}]{ip }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_chat_window_a9560014dfacf94e9bfd6698fd47ec36e}\label{struct_chat_window_a9560014dfacf94e9bfd6698fd47ec36e} 
+\index{ChatWindow@{ChatWindow}!startServer@{startServer}}
+\index{startServer@{startServer}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{startServer()}{startServer()}}
+{\footnotesize\ttfamily void Chat\+Window\+::start\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}\label{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc} 
+\index{ChatWindow@{ChatWindow}!clientSocket@{clientSocket}}
+\index{clientSocket@{clientSocket}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{clientSocket}{clientSocket}}
+{\footnotesize\ttfamily SOCKET Chat\+Window\+::client\+Socket}
+
+\Hypertarget{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}\label{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258} 
+\index{ChatWindow@{ChatWindow}!inputBuf@{inputBuf}}
+\index{inputBuf@{inputBuf}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{inputBuf}{inputBuf}}
+{\footnotesize\ttfamily char Chat\+Window\+::input\+Buf\mbox{[}256\mbox{]}}
+
+\Hypertarget{struct_chat_window_a1c142f9cbda0db3416e6609339d37bba}\label{struct_chat_window_a1c142f9cbda0db3416e6609339d37bba} 
+\index{ChatWindow@{ChatWindow}!ipAddressBuf@{ipAddressBuf}}
+\index{ipAddressBuf@{ipAddressBuf}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{ipAddressBuf}{ipAddressBuf}}
+{\footnotesize\ttfamily char Chat\+Window\+::ip\+Address\+Buf\mbox{[}256\mbox{]}}
+
+\Hypertarget{struct_chat_window_aafeff939f24d2a6c27e359a3c8574b45}\label{struct_chat_window_aafeff939f24d2a6c27e359a3c8574b45} 
+\index{ChatWindow@{ChatWindow}!isConnected@{isConnected}}
+\index{isConnected@{isConnected}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{isConnected}{isConnected}}
+{\footnotesize\ttfamily bool Chat\+Window\+::is\+Connected = false}
+
+\Hypertarget{struct_chat_window_a5a272447bf42965540ff3ebed35c891b}\label{struct_chat_window_a5a272447bf42965540ff3ebed35c891b} 
+\index{ChatWindow@{ChatWindow}!messages@{messages}}
+\index{messages@{messages}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{messages}{messages}}
+{\footnotesize\ttfamily std\+::deque$<$std\+::string$>$ Chat\+Window\+::messages}
+
+\Hypertarget{struct_chat_window_a946c78671452ee5868364dddfde70b2c}\label{struct_chat_window_a946c78671452ee5868364dddfde70b2c} 
+\index{ChatWindow@{ChatWindow}!mutex@{mutex}}
+\index{mutex@{mutex}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{mutex}{mutex}}
+{\footnotesize\ttfamily std\+::mutex Chat\+Window\+::mutex}
+
+\Hypertarget{struct_chat_window_a0efb4cb862c9ad5a5077dca8672f6252}\label{struct_chat_window_a0efb4cb862c9ad5a5077dca8672f6252} 
+\index{ChatWindow@{ChatWindow}!receiveThread@{receiveThread}}
+\index{receiveThread@{receiveThread}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{receiveThread}{receiveThread}}
+{\footnotesize\ttfamily std\+::thread Chat\+Window\+::receive\+Thread}
+
+\Hypertarget{struct_chat_window_a1d237353d4e536634f37c8656f790652}\label{struct_chat_window_a1d237353d4e536634f37c8656f790652} 
+\index{ChatWindow@{ChatWindow}!serverIP@{serverIP}}
+\index{serverIP@{serverIP}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{serverIP}{serverIP}}
+{\footnotesize\ttfamily std\+::string Chat\+Window\+::server\+IP = "{}Your Ipv4 Adress"{}}
+
+\Hypertarget{struct_chat_window_a68d666bcf564bf6cada8bb611d84687a}\label{struct_chat_window_a68d666bcf564bf6cada8bb611d84687a} 
+\index{ChatWindow@{ChatWindow}!username@{username}}
+\index{username@{username}!ChatWindow@{ChatWindow}}
+\doxysubsubsection{\texorpdfstring{username}{username}}
+{\footnotesize\ttfamily std\+::string Chat\+Window\+::username}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_chat_window_8hpp}{Chat\+Window.\+hpp}}\end{DoxyCompactItemize}

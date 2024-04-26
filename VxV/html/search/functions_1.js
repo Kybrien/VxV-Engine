@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['batchingobj_0',['batchingObj',['../object_8cpp.html#a4fff386bd0495e094e84aa3f2333811c',1,'batchingObj(Object &amp;obj):&#160;object.cpp'],['../object_8hpp.html#a4fff386bd0495e094e84aa3f2333811c',1,'batchingObj(Object &amp;obj):&#160;object.cpp']]]
+  ['batchingobj_0',['batchingObj',['../_model_component_8cpp.html#ad2725d6417dc685dc10722477c21e165',1,'batchingObj(ModelComponent &amp;model):&#160;ModelComponent.cpp'],['../_model_component_8hpp.html#ad2725d6417dc685dc10722477c21e165',1,'batchingObj(ModelComponent &amp;model):&#160;ModelComponent.cpp']]]
 ];

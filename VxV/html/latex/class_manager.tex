@@ -1,0 +1,198 @@
+\doxysection{Manager Class Reference}
+\hypertarget{class_manager}{}\label{class_manager}\index{Manager@{Manager}}
+
+
+{\ttfamily \#include $<$Manager.\+h$>$}
+
+Inheritance diagram for Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_a2569efa6dd78f87cc0b64086043cc4ca}{Get\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the manager of type T. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_manager_a200a7092507e1769240452e88996127b}{Init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the \doxylink{class_manager}{Manager}. Represents initializing the \doxylink{class_manager}{Manager}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_manager_a037a7066aa1ba886bafe691ef3f6f98c}{Stop}} ()
+\begin{DoxyCompactList}\small\item\em Stops the \doxylink{class_manager}{Manager}. Represents stopping the \doxylink{class_manager}{Manager} and deleting all pointers. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_manager_ab6bfbb7862710ba6c42634f7ea521994}{Add\+Manager}} (T \texorpdfstring{$\ast$}{*}manager)
+\begin{DoxyCompactList}\small\item\em Adds a manager to the \doxylink{class_manager}{Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_abf52d7d532c05607cc23c687f23e6b67}{Get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the singleton instance of the \doxylink{class_manager}{Manager} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_manager_a066ee0e0faa861515f582e510a722804}{Search\+File}} (std\+::string file\+Direction, std\+::string extension, T \texorpdfstring{$\ast$}{*}manager)
+\begin{DoxyCompactList}\small\item\em Searches for files with a specific extension in a given directory and processes them using the specified manager. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_manager_aa66c5cc0be93116d3901ce317b2332fb}{Save}} ()
+\begin{DoxyCompactList}\small\item\em Saves data associated with the object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_manager_a1ca627323200c3ac1c6da0d3c510f0c7}{Load}} (std\+::wstring w\+File\+Direction, std\+::wstring w\+File\+Name)
+\begin{DoxyCompactList}\small\item\em Loads data associated with the object from the specified file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_ac80f5ee151565f111593921bac645ad7}{instance}} = nullptr
+\begin{DoxyCompactList}\small\item\em Pointer to the singleton instance of the \doxylink{class_manager}{Manager} class. Represents the singleton instance of the \doxylink{class_manager}{Manager} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_manager_ab6bfbb7862710ba6c42634f7ea521994}\label{class_manager_ab6bfbb7862710ba6c42634f7ea521994} 
+\index{Manager@{Manager}!AddManager@{AddManager}}
+\index{AddManager@{AddManager}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{AddManager()}{AddManager()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Manager\+::\+Add\+Manager (\begin{DoxyParamCaption}\item[{T \texorpdfstring{$\ast$}{*}}]{manager }\end{DoxyParamCaption})}
+
+
+
+Adds a manager to the \doxylink{class_manager}{Manager}. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of manager to add. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em manager} & Pointer to the manager to add. Represents adding a manager to the \doxylink{class_manager}{Manager}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_manager_abf52d7d532c05607cc23c687f23e6b67}\label{class_manager_abf52d7d532c05607cc23c687f23e6b67} 
+\index{Manager@{Manager}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*} Manager\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Retrieves the singleton instance of the \doxylink{class_manager}{Manager} class. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the singleton instance of the \doxylink{class_manager}{Manager} class. Represents retrieving the singleton instance of the \doxylink{class_manager}{Manager} class. 
+\end{DoxyReturn}
+\Hypertarget{class_manager_a2569efa6dd78f87cc0b64086043cc4ca}\label{class_manager_a2569efa6dd78f87cc0b64086043cc4ca} 
+\index{Manager@{Manager}!GetManager@{GetManager}}
+\index{GetManager@{GetManager}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{GetManager()}{GetManager()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \texorpdfstring{$\ast$}{*} Manager\+::\+Get\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves the manager of type T. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of manager to retrieve. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the manager of type T if found, otherwise nullptr. Represents retrieving the manager of type T. 
+\end{DoxyReturn}
+\Hypertarget{class_manager_a200a7092507e1769240452e88996127b}\label{class_manager_a200a7092507e1769240452e88996127b} 
+\index{Manager@{Manager}!Init@{Init}}
+\index{Init@{Init}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Manager\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the \doxylink{class_manager}{Manager}. Represents initializing the \doxylink{class_manager}{Manager}. 
+
+\Hypertarget{class_manager_a1ca627323200c3ac1c6da0d3c510f0c7}\label{class_manager_a1ca627323200c3ac1c6da0d3c510f0c7} 
+\index{Manager@{Manager}!Load@{Load}}
+\index{Load@{Load}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily virtual void Manager\+::\+Load (\begin{DoxyParamCaption}\item[{std\+::wstring}]{w\+File\+Direction,  }\item[{std\+::wstring}]{w\+File\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Loads data associated with the object from the specified file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w\+File\+Direction} & The directory where the file is located. \\
+\hline
+{\em w\+File\+Name} & The name of the file to load. Represents loading data associated with the object from the specified file. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_model_manager_af279c8092298ca1f3058166dc6d4c041}{Model\+Manager}}, \mbox{\hyperlink{class_prefab_manager_a5a30d1ed492b07435cbd55cfc2b6eebd}{Prefab\+Manager}}, \mbox{\hyperlink{class_scene_manager_aa3b2dea2aa6baab258cbb1348846ee08}{Scene\+Manager}}, and \mbox{\hyperlink{class_script_manager_a665862e0d165a750ddb7d387b9563df8}{Script\+Manager}}.
+
+\Hypertarget{class_manager_aa66c5cc0be93116d3901ce317b2332fb}\label{class_manager_aa66c5cc0be93116d3901ce317b2332fb} 
+\index{Manager@{Manager}!Save@{Save}}
+\index{Save@{Save}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily virtual void Manager\+::\+Save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Saves data associated with the object. 
+
+Override this function to define custom saving behavior for derived classes. Represents saving data associated with the object. 
+
+Reimplemented in \mbox{\hyperlink{class_input_manager_a933179e17c1d3cf34b2aed71f01280b1}{Input\+Manager}}, \mbox{\hyperlink{class_prefab_manager_ae30095617801209b09aee5b57abd76a7}{Prefab\+Manager}}, \mbox{\hyperlink{class_scene_manager_a13e07df59690a7a5b163268012173e41}{Scene\+Manager}}, and \mbox{\hyperlink{class_script_manager_ac6eaeb7c7d82cb5a7cd1594c0be557bb}{Script\+Manager}}.
+
+\Hypertarget{class_manager_a066ee0e0faa861515f582e510a722804}\label{class_manager_a066ee0e0faa861515f582e510a722804} 
+\index{Manager@{Manager}!SearchFile@{SearchFile}}
+\index{SearchFile@{SearchFile}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{SearchFile()}{SearchFile()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Manager\+::\+Search\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Direction,  }\item[{std\+::string}]{extension,  }\item[{T \texorpdfstring{$\ast$}{*}}]{manager }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Searches for files with a specific extension in a given directory and processes them using the specified manager. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of manager to use for processing the files. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Direction} & The directory to search for files. \\
+\hline
+{\em extension} & The file extension to search for. \\
+\hline
+{\em manager} & Pointer to the manager object used for processing the files. Represents searching for files with a specific extension in a given directory and processing them using the specified manager. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_manager_a037a7066aa1ba886bafe691ef3f6f98c}\label{class_manager_a037a7066aa1ba886bafe691ef3f6f98c} 
+\index{Manager@{Manager}!Stop@{Stop}}
+\index{Stop@{Stop}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily void Manager\+::\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Stops the \doxylink{class_manager}{Manager}. Represents stopping the \doxylink{class_manager}{Manager} and deleting all pointers. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_manager_ac80f5ee151565f111593921bac645ad7}\label{class_manager_ac80f5ee151565f111593921bac645ad7} 
+\index{Manager@{Manager}!instance@{instance}}
+\index{instance@{instance}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{instance}{instance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*} Manager\+::instance = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Pointer to the singleton instance of the \doxylink{class_manager}{Manager} class. Represents the singleton instance of the \doxylink{class_manager}{Manager} class. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_manager_8h}{Manager.\+h}}\item 
+\mbox{\hyperlink{_manager_8cpp}{Manager.\+cpp}}\item 
+\mbox{\hyperlink{_manager_8inl}{Manager.\+inl}}\end{DoxyCompactItemize}
