@@ -656,46 +656,43 @@ static void ShowHierarchy()
 		}
 
 
-		ImGui::End();
+		ImGui::Separator();
 
-			ImGui::Separator();
+		ImGui::Text("Script");
+		//// Ajoutez un bouton pour ajouter un script
+		//if (ImGui::Button("Ajouter un script"))
+		//{
+		//	// Ajoutez un ScriptingComponent au GameObject
+		//	ScriptingComponent* scriptComponent = selectedGameObject->AddComponent<ScriptingComponent>();
+		//	// Vous pouvez �galement d�finir le script ici si vous le souhaitez
+		//	// scriptComponent->SetScript(...);
+		//}
 
-			ImGui::Text("Script");
-			//// Ajoutez un bouton pour ajouter un script
-			//if (ImGui::Button("Ajouter un script"))
-			//{
-			//	// Ajoutez un ScriptingComponent au GameObject
-			//	ScriptingComponent* scriptComponent = selectedGameObject->AddComponent<ScriptingComponent>();
-			//	// Vous pouvez �galement d�finir le script ici si vous le souhaitez
-			//	// scriptComponent->SetScript(...);
-			//}
-
-			ImGui::Separator();
-			ImGui::Text("Model");
-			Model* modelComponent = selectedGameObject->GetComponent<Model>();
-			if (ImGui::Button("Changer le mod�le"))
-			{
-				// Ouvrez un dialogue de s�lection de fichier
-				fileDialog.Open();
-			}
-
-			// Si un fichier a �t� s�lectionn�, mettez � jour le mod�le du GameObject
-			if (fileDialog.HasSelected())
-			{
-				std::filesystem::path filePath(fileDialog.GetSelected().string());
-				modelComponent->SetModel(filePath.stem().string());
-				fileDialog.ClearSelected();
-			}
-
-			// Ajoutez un bouton pour supprimer le GameObject
-			if (ImGui::Button("Supprimer"))
-			{
-				modelComponent->SetModel("cube");
-
-			}
-		ImGui::End();
+		ImGui::Separator();
+		ImGui::Text("Model");
+		Model* modelComponent = selectedGameObject->GetComponent<Model>();
+		if (ImGui::Button("Changer le mod�le"))
+		{
+			// Ouvrez un dialogue de s�lection de fichier
+			fileDialog.Open();
 		}
 
+		// Si un fichier a �t� s�lectionn�, mettez � jour le mod�le du GameObject
+		if (fileDialog.HasSelected())
+		{
+			std::filesystem::path filePath(fileDialog.GetSelected().string());
+			modelComponent->SetModel(filePath.stem().string());
+			fileDialog.ClearSelected();
+		}
+
+		// Ajoutez un bouton pour supprimer le GameObject
+		if (ImGui::Button("Supprimer"))
+		{
+			modelComponent->SetModel("cube");
+
+		}
+		ImGui::End();
 	}
 
 }
+
