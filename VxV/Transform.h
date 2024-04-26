@@ -19,6 +19,8 @@ public:
 	Transform();
 	Transform(GameObject* gameObject);
 
+	std::string name = "Transform";
+
 
 	/**
 	* @brief Set the position of the GameObject.

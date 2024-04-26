@@ -7,6 +7,7 @@
 #include "Transform.h"
 #include "ScriptingComponent.h"
 #include "Model.h"
+#include "Light.h"
 
 #include "Component.h"
 
@@ -247,6 +248,8 @@ void GameObject::LoadComponent(Json::Value compJson, GameObject* parentGo)
 		break;
 	case 3: AddComponent<ScriptingComponent>();
 		GetComponent<ScriptingComponent>()->Load(compJson, parentGo);
+		break;
+	case 4: AddComponent<Light>();
 		break;
 	}
 }

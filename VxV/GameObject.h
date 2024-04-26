@@ -4,7 +4,6 @@
 #include <vector>
 #include <GLM/glm.hpp>
 
-#include "Transform.h"
 
 class Component;
 

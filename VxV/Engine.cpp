@@ -1,5 +1,7 @@
 #pragma once
 #include "Engine.hpp"
+#include "Light.h"
+#include "Transform.h"
 
 Engine* Engine::m_instance = nullptr;
 
@@ -17,6 +19,15 @@ void Engine::InitEngine() {
 	m_sceneManager = manager->GetManager<SceneManager>();
 
 
+	GameObject* go = m_sceneManager->gameObjectPool.CreateGoFromPool();
+	go->AddComponent<Light>();
+	go->GetComponent<Transform>()->SetPosition(glm::vec3(2.0f, 0.0f, 0.0f));
+	go->GetComponent<Light>()->SetColor(glm::vec3(1.0f, 0.0f, 0.0f));
+
+	GameObject* go2 = m_sceneManager->gameObjectPool.CreateGoFromPool();
+	go2->AddComponent<Light>();
+	go2->GetComponent<Transform>()->SetPosition(glm::vec3(-2.0f, 0.0f, 0.0f));
+	go2->GetComponent<Light>()->SetColor(glm::vec3(0.0f, 1.0f, 0.0f));
 
 	m_engineState->ReadyBooting();
 	Start();
@@ -107,8 +118,6 @@ void Engine::Startup(EngineGUI* _gui, APIopenGL* _apiGraphic) {
 	_apiGraphic->setBackgroundColor(0.0f, 0.0f, 0.4f, 0.0f);
 	_apiGraphic->setCamera(45.0f, 4.0f, 3.0f, 0.1f, 100.0f, 9, 5, 1, 0, 0, 0, 0, 1, 0);
 	_apiGraphic->setHandles();
-	_apiGraphic->setLightColor(glm::vec3(1, 1, 1));
-	_apiGraphic->setLightPower(80.0f);
 
 	_gui->initImgui(_apiGraphic->getWindow());
 
@@ -126,8 +135,23 @@ void Engine::ApiDrawLoopSetup(APIopenGL* _apiGraphic)
 {
 	_apiGraphic->clearScreen();
 	_apiGraphic->useShader();
-	glm::vec3 lightPos = glm::vec3(0, 0, 8);
-	glUniform3f(_apiGraphic->getLightID(), lightPos.x, lightPos.y, lightPos.z);
+	int numLights = 0;
+	for (GameObject* go : m_goList)
+	{
+		Light* light = go->GetComponent<Light>();
+		if (light != nullptr)
+		{
+			numLights++;
+			glm::vec3 lightPos = go->GetComponent<Transform>()->GetPosition();
+			glm::vec3 lightColor = go->GetComponent<Light>()->GetColor();
+			float lightPower = go->GetComponent<Light>()->GetPower();
+			glUniform3f(glGetUniformLocation(_apiGraphic->getProgramID(), ("LightPosition_worldspace[" + std::to_string(numLights) + "]").c_str()), lightPos.x, lightPos.y, lightPos.z);
+			glUniform3f(glGetUniformLocation(_apiGraphic->getProgramID(), ("LightColor[" + std::to_string(numLights) + "]").c_str()), lightColor.x, lightColor.y, lightColor.z);
+			glUniform1f(glGetUniformLocation(_apiGraphic->getProgramID(), ("LightPower[" + std::to_string(numLights) + "]").c_str()), lightPower);
+		}
+	}
+	glUniform1i(glGetUniformLocation(_apiGraphic->getProgramID(), "NumLights"), numLights);
+
 	computeMatricesFromInputs(_apiGraphic->getWindow());
 	glm::mat4 ProjectionMatrix = getProjectionMatrix();
 }
