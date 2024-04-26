@@ -8,13 +8,16 @@
 #include "Debug.h"
 
 
-
-
+Transform::Transform() : Component()
+{
+	type = Component::Type::Transform;
+	name = "Transform";
+}
 Transform::Transform(GameObject* gameObject) : Component(gameObject) {
 	position = glm::vec3(0, 0, 0);
 	rotation = glm::vec3(0, 0, 0);
 	scale = glm::vec3(1, 1, 1);
-
+	name = "Transform";
 	type = Component::Type::Transform;
 	linkedGameObject = gameObject;
 }
@@ -64,7 +67,7 @@ void Transform::SetPosition(glm::vec3 pos, bool isChild) {
 		child->origin = tempPosition;
 	}
 
-	for(GameObject* child : linkedGameObject->GetChilds())
+	for (GameObject* child : linkedGameObject->GetChilds())
 		child->GetComponent<Transform>()->SetPosition(child->GetComponent<Transform>()->position + tempPosition, true);
 }
 
@@ -73,14 +76,14 @@ void Transform::SetRotation(float xAngle, float yAngle, float zAngle, bool isChi
 
 	rotation = glm::vec3(xAngle, yAngle, zAngle);
 
-	for(GameObject* child : linkedGameObject->GetChilds())
+	for (GameObject* child : linkedGameObject->GetChilds())
 		child->GetComponent<Transform>()->SetRotation(child->GetComponent<Transform>()->rotation.x + xAngle, child->GetComponent<Transform>()->rotation.y + yAngle, child->GetComponent<Transform>()->rotation.z + zAngle, true);
 }
 
 void Transform::SetScale(glm::vec3 sca, bool isChild) {
 	scale = sca;
 
-	for(GameObject* child : linkedGameObject->GetChilds())
+	for (GameObject* child : linkedGameObject->GetChilds())
 		child->GetComponent<Transform>()->SetScale(child->GetComponent<Transform>()->scale * sca, true);
 }
 
@@ -96,21 +99,21 @@ void Transform::Translate(glm::vec3 pos, bool isChild) {
 		child->origin = position;
 	}
 
-	for(GameObject* child : linkedGameObject->GetChilds())
+	for (GameObject* child : linkedGameObject->GetChilds())
 		child->GetComponent<Transform>()->Translate(pos, true);
 }
 
 void Transform::Rotate(float xAngle, float yAngle, float zAngle, bool isChild) {
 	rotation += glm::vec3(xAngle, yAngle, zAngle);
 
-	for(GameObject* child : linkedGameObject->GetChilds())
+	for (GameObject* child : linkedGameObject->GetChilds())
 		child->GetComponent<Transform>()->Rotate(xAngle, yAngle, zAngle, true);
 }
 
 void Transform::Scale(glm::vec3 sca, bool isChild) {
 	scale += sca;
 
-	for(GameObject* child : linkedGameObject->GetChilds())
+	for (GameObject* child : linkedGameObject->GetChilds())
 		child->GetComponent<Transform>()->Scale(sca, true);
 }
 

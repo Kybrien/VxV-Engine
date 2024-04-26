@@ -1,12 +1,14 @@
 #include "GameObject.h"
 
+#include <vector>
+
 #include "PrefabManager.h"
 #include "SceneManager.h"
 #include "Transform.h"
 #include "ScriptingComponent.h"
 #include "Model.h"
 
-#include <vector>
+#include "Component.h"
 
 GameObject::GameObject(std::string name_, bool PrefabLoading, Prefab* prefab_, bool copying)
 {
@@ -224,6 +226,11 @@ void GameObject::RemoveChild(GameObject* goChild)
 			break;
 		}
 	}
+}
+
+void GameObject::AddComponent(Component* component)
+{
+	components.push_back(component);
 }
 
 void GameObject::LoadComponent(Json::Value compJson, GameObject* parentGo)

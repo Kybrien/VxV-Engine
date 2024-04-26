@@ -3,9 +3,10 @@
 #include <string>
 #include <vector>
 #include <GLM/glm.hpp>
-#include "Component.h"
 
 #include "Transform.h"
+
+class Component;
 
 class Scene;
 class Prefab;
@@ -211,6 +212,7 @@ public:
 	template<typename T>
 	void AddComponent();
 
+	void AddComponent(Component* component);
 	/**
 	* @brief Loads a component from JSON data and attaches it to the GameObject.
 	* @param compJson The JSON value containing the component data.

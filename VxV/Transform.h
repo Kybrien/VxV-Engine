@@ -16,8 +16,8 @@ public:
 	* @brief Instanciate a component Transform.
 	* @param A reference to the linked GameObject
 	*/
+	Transform();
 	Transform(GameObject* gameObject);
-
 
 
 	/**

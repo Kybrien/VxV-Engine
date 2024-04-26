@@ -35,9 +35,9 @@ void Engine::Update()
 {
 	while (GetBootingState() == EngineState::BootingState::Running)
 	{
-
 		CheckCloseWindow(m_apiGraphic, this->GetInstance());
 		ApiDrawLoopSetup(m_apiGraphic);
+
 		if (GetActiveState() == EngineState::ActiveState::Edition) {
 
 		}
@@ -46,9 +46,6 @@ void Engine::Update()
 			PlayUpdate();
 		}
 
-		m_gui->UpdateGui();
-		m_gui->RenderGui();
-		UpdateGameObjectList();
 
 		if (m_goList.size() > 0)
 		{
@@ -61,6 +58,9 @@ void Engine::Update()
 				}
 			}
 		}
+		m_gui->UpdateGui();
+		m_gui->RenderGui();
+		UpdateGameObjectList();
 		m_apiGraphic->unbindArrays();
 		m_apiGraphic->swapBuffers();
 		glfwPollEvents();

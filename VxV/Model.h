@@ -19,6 +19,7 @@ public:
 	* @param A reference to the linked GameObject
 	*/
 	Model(GameObject* go);
+	Model();
 
 
 	void Save(Json::Value& compJson) override;

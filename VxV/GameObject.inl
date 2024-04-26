@@ -14,7 +14,6 @@ void GameObject::AddComponent() {
     components.push_back(new T(this));
 }
 
-
 /**
 * @brief Retrieves a component of type T attached to the GameObject.
 * @tparam T The type of component to retrieve.

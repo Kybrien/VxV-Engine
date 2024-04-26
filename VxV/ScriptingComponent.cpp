@@ -4,6 +4,12 @@
 #include "GameObject.h"
 #include <iostream>
 
+
+ScriptingComponent::ScriptingComponent() : Component() {
+	script = nullptr;
+	name = "ScriptingComponent";
+}
+
 ScriptingComponent::ScriptingComponent(GameObject* gameObject) : Component(gameObject) {
 	scriptManager = Manager::GetInstance()->GetManager<ScriptManager>();
 

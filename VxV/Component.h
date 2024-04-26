@@ -16,8 +16,9 @@ public:
 		linkedGameObject = go;
 		type = Unknown;
 	};
+	Component() {};
 
-
+	std::string name;
 
 	/**
 	* @brief Save the component in a Json Object
@@ -50,7 +51,8 @@ public:
 		Unknown,            /**< Unknown type. */
 		Transform,          /**< Transform component. */
 		Model,               /**< Mesh component. */
-		ScriptComponent,    /**< Script component. */
+		ScriptComponent, 
+		Light,/**< Script component. */
 	};
 
 	/**

@@ -9,6 +9,8 @@
 #include "ScriptingComponent.h"
 #include <filesystem>
 #include "Engine.hpp"
+#include "Transform.h"
+#include "ComponentManager.hpp"
 
 
 static bool enabled = true;
@@ -651,6 +653,20 @@ static void ShowHierarchy()
 			// Si l'utilisateur modifie l'�chelle, mettez � jour le Transform
 			transform->SetScale(scale);
 		}
+		if (ImGui::BeginCombo("Add Component", ComponentManager::GetInstance()->GetComponentNameList()[0].c_str()))
+		{
+			for (std::string compo : ComponentManager::GetInstance()->GetComponentNameList())
+			{
+				bool is_selected = false;
+				if (ImGui::Selectable(compo.c_str(), is_selected))
+				{
+					std::cout << "Component " << compo << " Added" << std::endl;
+					selectedGameObject->AddComponent(ComponentManager::GetInstance()->createComponent(compo));
+				}
+			}
+			ImGui::EndCombo();
+		}
+
 
 		if (ImGui::Button("Delete"))
 		{

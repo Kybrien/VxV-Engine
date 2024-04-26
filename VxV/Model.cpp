@@ -6,6 +6,12 @@
 
 #include "ModelManager.h"
 
+Model::Model() : Component()
+{
+	type = Component::Model;
+	name = "Model";
+}
+
 Model::Model(GameObject* go) : Component(go) { 
 	ModelManager* modelManager = Manager::GetInstance()->GetManager<ModelManager>();
 	linkedGameObject = go;

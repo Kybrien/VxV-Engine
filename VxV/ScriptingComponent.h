@@ -30,6 +30,7 @@ public:
 	* @param A reference to the linked GameObject
 	*/
 	ScriptingComponent(GameObject* gameObject);
+	ScriptingComponent();
 
 	/**
 	* @brief Assign a script to the component.
