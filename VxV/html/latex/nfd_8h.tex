@@ -1,0 +1,123 @@
+\doxysection{nfd.\+h File Reference}
+\hypertarget{nfd_8h}{}\label{nfd_8h}\index{nfd.h@{nfd.h}}
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structnfdpathset__t}{nfdpathset\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef char \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{nfd_8h_af8653f87bdc1662963a84f68802e96b4}{nfdresult\+\_\+t}} \{ \mbox{\hyperlink{nfd_8h_af8653f87bdc1662963a84f68802e96b4ab90bbdffd9cfafc0be633aaaba162304}{NFD\+\_\+\+ERROR}}
+, \mbox{\hyperlink{nfd_8h_af8653f87bdc1662963a84f68802e96b4a2196b6a1989da837c0d80abb1e0d4a74}{NFD\+\_\+\+OKAY}}
+, \mbox{\hyperlink{nfd_8h_af8653f87bdc1662963a84f68802e96b4a5351c334dd556719737ce669a984dd20}{NFD\+\_\+\+CANCEL}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nfd_8h_af8653f87bdc1662963a84f68802e96b4}{nfdresult\+\_\+t}} \mbox{\hyperlink{nfd_8h_ae5e4070e3bbcae1eda06da4faeeb16e2}{NFD\+\_\+\+Open\+Dialog}} (const \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}filter\+List, const \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}default\+Path, \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}out\+Path)
+\item 
+\mbox{\hyperlink{nfd_8h_af8653f87bdc1662963a84f68802e96b4}{nfdresult\+\_\+t}} \mbox{\hyperlink{nfd_8h_ab173366698c833a2a1ad99a4d614f2b0}{NFD\+\_\+\+Open\+Dialog\+Multiple}} (const \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}filter\+List, const \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}default\+Path, \mbox{\hyperlink{structnfdpathset__t}{nfdpathset\+\_\+t}} \texorpdfstring{$\ast$}{*}out\+Paths)
+\item 
+\mbox{\hyperlink{nfd_8h_af8653f87bdc1662963a84f68802e96b4}{nfdresult\+\_\+t}} \mbox{\hyperlink{nfd_8h_aa235447f4b28a924e60bd08d56cb7921}{NFD\+\_\+\+Save\+Dialog}} (const \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}filter\+List, const \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}default\+Path, \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}out\+Path)
+\item 
+\mbox{\hyperlink{nfd_8h_af8653f87bdc1662963a84f68802e96b4}{nfdresult\+\_\+t}} \mbox{\hyperlink{nfd_8h_abd21bfd33ce4616b65b17102572f3ef7}{NFD\+\_\+\+Pick\+Folder}} (const \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}default\+Path, \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}out\+Path)
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{nfd_8h_ae0517c1ad6df09c7ad02a3d293a93918}{NFD\+\_\+\+Get\+Error}} (void)
+\item 
+size\+\_\+t \mbox{\hyperlink{nfd_8h_a91015bd82ca3144ea3ca11f25a6e083f}{NFD\+\_\+\+Path\+Set\+\_\+\+Get\+Count}} (const \mbox{\hyperlink{structnfdpathset__t}{nfdpathset\+\_\+t}} \texorpdfstring{$\ast$}{*}path\+Set)
+\item 
+\mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{nfd_8h_a4e2b4e1cafa2eb6b1c6a25c93148136d}{NFD\+\_\+\+Path\+Set\+\_\+\+Get\+Path}} (const \mbox{\hyperlink{structnfdpathset__t}{nfdpathset\+\_\+t}} \texorpdfstring{$\ast$}{*}path\+Set, size\+\_\+t index)
+\item 
+void \mbox{\hyperlink{nfd_8h_a017585ab37cd41b85e40d89b462939d3}{NFD\+\_\+\+Path\+Set\+\_\+\+Free}} (\mbox{\hyperlink{structnfdpathset__t}{nfdpathset\+\_\+t}} \texorpdfstring{$\ast$}{*}path\+Set)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}\label{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b} 
+\index{nfd.h@{nfd.h}!nfdchar\_t@{nfdchar\_t}}
+\index{nfdchar\_t@{nfdchar\_t}!nfd.h@{nfd.h}}
+\doxysubsubsection{\texorpdfstring{nfdchar\_t}{nfdchar\_t}}
+{\footnotesize\ttfamily typedef char \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{nfd_8h_af8653f87bdc1662963a84f68802e96b4}\label{nfd_8h_af8653f87bdc1662963a84f68802e96b4} 
+\index{nfd.h@{nfd.h}!nfdresult\_t@{nfdresult\_t}}
+\index{nfdresult\_t@{nfdresult\_t}!nfd.h@{nfd.h}}
+\doxysubsubsection{\texorpdfstring{nfdresult\_t}{nfdresult\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{nfd_8h_af8653f87bdc1662963a84f68802e96b4}{nfdresult\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NFD\_ERROR@{NFD\_ERROR}!nfd.h@{nfd.h}}\index{nfd.h@{nfd.h}!NFD\_ERROR@{NFD\_ERROR}}}\Hypertarget{nfd_8h_af8653f87bdc1662963a84f68802e96b4ab90bbdffd9cfafc0be633aaaba162304}\label{nfd_8h_af8653f87bdc1662963a84f68802e96b4ab90bbdffd9cfafc0be633aaaba162304} 
+NFD\+\_\+\+ERROR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NFD\_OKAY@{NFD\_OKAY}!nfd.h@{nfd.h}}\index{nfd.h@{nfd.h}!NFD\_OKAY@{NFD\_OKAY}}}\Hypertarget{nfd_8h_af8653f87bdc1662963a84f68802e96b4a2196b6a1989da837c0d80abb1e0d4a74}\label{nfd_8h_af8653f87bdc1662963a84f68802e96b4a2196b6a1989da837c0d80abb1e0d4a74} 
+NFD\+\_\+\+OKAY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NFD\_CANCEL@{NFD\_CANCEL}!nfd.h@{nfd.h}}\index{nfd.h@{nfd.h}!NFD\_CANCEL@{NFD\_CANCEL}}}\Hypertarget{nfd_8h_af8653f87bdc1662963a84f68802e96b4a5351c334dd556719737ce669a984dd20}\label{nfd_8h_af8653f87bdc1662963a84f68802e96b4a5351c334dd556719737ce669a984dd20} 
+NFD\+\_\+\+CANCEL&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{nfd_8h_ae0517c1ad6df09c7ad02a3d293a93918}\label{nfd_8h_ae0517c1ad6df09c7ad02a3d293a93918} 
+\index{nfd.h@{nfd.h}!NFD\_GetError@{NFD\_GetError}}
+\index{NFD\_GetError@{NFD\_GetError}!nfd.h@{nfd.h}}
+\doxysubsubsection{\texorpdfstring{NFD\_GetError()}{NFD\_GetError()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} NFD\+\_\+\+Get\+Error (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{nfd_8h_ae5e4070e3bbcae1eda06da4faeeb16e2}\label{nfd_8h_ae5e4070e3bbcae1eda06da4faeeb16e2} 
+\index{nfd.h@{nfd.h}!NFD\_OpenDialog@{NFD\_OpenDialog}}
+\index{NFD\_OpenDialog@{NFD\_OpenDialog}!nfd.h@{nfd.h}}
+\doxysubsubsection{\texorpdfstring{NFD\_OpenDialog()}{NFD\_OpenDialog()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nfd_8h_af8653f87bdc1662963a84f68802e96b4}{nfdresult\+\_\+t}} NFD\+\_\+\+Open\+Dialog (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{filter\+List,  }\item[{const \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{default\+Path,  }\item[{\mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{out\+Path }\end{DoxyParamCaption})}
+
+\Hypertarget{nfd_8h_ab173366698c833a2a1ad99a4d614f2b0}\label{nfd_8h_ab173366698c833a2a1ad99a4d614f2b0} 
+\index{nfd.h@{nfd.h}!NFD\_OpenDialogMultiple@{NFD\_OpenDialogMultiple}}
+\index{NFD\_OpenDialogMultiple@{NFD\_OpenDialogMultiple}!nfd.h@{nfd.h}}
+\doxysubsubsection{\texorpdfstring{NFD\_OpenDialogMultiple()}{NFD\_OpenDialogMultiple()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nfd_8h_af8653f87bdc1662963a84f68802e96b4}{nfdresult\+\_\+t}} NFD\+\_\+\+Open\+Dialog\+Multiple (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{filter\+List,  }\item[{const \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{default\+Path,  }\item[{\mbox{\hyperlink{structnfdpathset__t}{nfdpathset\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{out\+Paths }\end{DoxyParamCaption})}
+
+\Hypertarget{nfd_8h_a017585ab37cd41b85e40d89b462939d3}\label{nfd_8h_a017585ab37cd41b85e40d89b462939d3} 
+\index{nfd.h@{nfd.h}!NFD\_PathSet\_Free@{NFD\_PathSet\_Free}}
+\index{NFD\_PathSet\_Free@{NFD\_PathSet\_Free}!nfd.h@{nfd.h}}
+\doxysubsubsection{\texorpdfstring{NFD\_PathSet\_Free()}{NFD\_PathSet\_Free()}}
+{\footnotesize\ttfamily void NFD\+\_\+\+Path\+Set\+\_\+\+Free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnfdpathset__t}{nfdpathset\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{path\+Set }\end{DoxyParamCaption})}
+
+\Hypertarget{nfd_8h_a91015bd82ca3144ea3ca11f25a6e083f}\label{nfd_8h_a91015bd82ca3144ea3ca11f25a6e083f} 
+\index{nfd.h@{nfd.h}!NFD\_PathSet\_GetCount@{NFD\_PathSet\_GetCount}}
+\index{NFD\_PathSet\_GetCount@{NFD\_PathSet\_GetCount}!nfd.h@{nfd.h}}
+\doxysubsubsection{\texorpdfstring{NFD\_PathSet\_GetCount()}{NFD\_PathSet\_GetCount()}}
+{\footnotesize\ttfamily size\+\_\+t NFD\+\_\+\+Path\+Set\+\_\+\+Get\+Count (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structnfdpathset__t}{nfdpathset\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{path\+Set }\end{DoxyParamCaption})}
+
+\Hypertarget{nfd_8h_a4e2b4e1cafa2eb6b1c6a25c93148136d}\label{nfd_8h_a4e2b4e1cafa2eb6b1c6a25c93148136d} 
+\index{nfd.h@{nfd.h}!NFD\_PathSet\_GetPath@{NFD\_PathSet\_GetPath}}
+\index{NFD\_PathSet\_GetPath@{NFD\_PathSet\_GetPath}!nfd.h@{nfd.h}}
+\doxysubsubsection{\texorpdfstring{NFD\_PathSet\_GetPath()}{NFD\_PathSet\_GetPath()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*} NFD\+\_\+\+Path\+Set\+\_\+\+Get\+Path (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structnfdpathset__t}{nfdpathset\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{path\+Set,  }\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+\Hypertarget{nfd_8h_abd21bfd33ce4616b65b17102572f3ef7}\label{nfd_8h_abd21bfd33ce4616b65b17102572f3ef7} 
+\index{nfd.h@{nfd.h}!NFD\_PickFolder@{NFD\_PickFolder}}
+\index{NFD\_PickFolder@{NFD\_PickFolder}!nfd.h@{nfd.h}}
+\doxysubsubsection{\texorpdfstring{NFD\_PickFolder()}{NFD\_PickFolder()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nfd_8h_af8653f87bdc1662963a84f68802e96b4}{nfdresult\+\_\+t}} NFD\+\_\+\+Pick\+Folder (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{default\+Path,  }\item[{\mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{out\+Path }\end{DoxyParamCaption})}
+
+\Hypertarget{nfd_8h_aa235447f4b28a924e60bd08d56cb7921}\label{nfd_8h_aa235447f4b28a924e60bd08d56cb7921} 
+\index{nfd.h@{nfd.h}!NFD\_SaveDialog@{NFD\_SaveDialog}}
+\index{NFD\_SaveDialog@{NFD\_SaveDialog}!nfd.h@{nfd.h}}
+\doxysubsubsection{\texorpdfstring{NFD\_SaveDialog()}{NFD\_SaveDialog()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nfd_8h_af8653f87bdc1662963a84f68802e96b4}{nfdresult\+\_\+t}} NFD\+\_\+\+Save\+Dialog (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{filter\+List,  }\item[{const \mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{default\+Path,  }\item[{\mbox{\hyperlink{nfd_8h_ac2bbba0a1ca14bc1399696fe611b7d7b}{nfdchar\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{out\+Path }\end{DoxyParamCaption})}
+

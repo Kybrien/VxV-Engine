@@ -1,0 +1,41 @@
+\doxysection{Graphic\+API.\+hpp}
+\hypertarget{_graphic_a_p_i_8hpp_source}{}\label{_graphic_a_p_i_8hpp_source}\mbox{\hyperlink{_graphic_a_p_i_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_model_8h}{Model.h}}"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_graphic_a_p_i}{GraphicAPI}}}
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_graphic_a_p_i_a74ba2d1eefe2cac3a155a8a7853f8105}{\string~GraphicAPI}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graphic_a_p_i_aedfef351795d9d9cd2fed11189e35f8e}{initialize}}()\ =\ 0;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graphic_a_p_i_a91ab3a55eea70664dd07bec9c1647df5}{cleanupModel}}(\mbox{\hyperlink{class_model}{Model}}*\ \_model)\ =\ 0;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graphic_a_p_i_a651cddb01ba764f53ac6c1b51ca56d9b}{setWindowSize}}(\textcolor{keywordtype}{int}\ \_width,\ \textcolor{keywordtype}{int}\ \_height)\ =\ 0;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graphic_a_p_i_a67db4716f2a794dae7cc1c0f889287d6}{terminate}}()\ =\ 0;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graphic_a_p_i_a9cf67461a8b48ae1893f081103a3e0e7}{setBackgroundColor}}(\textcolor{keywordtype}{float}\ \_red,\textcolor{keywordtype}{float}\ \_green,\ \textcolor{keywordtype}{float}\ \_blue,\ \textcolor{keywordtype}{float}\ \_alpha)\ =\ 0;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graphic_a_p_i_a569b2f397b979a316d087071b574b110}{setCamera}}(\textcolor{keywordtype}{float}\ \_fov,\ \textcolor{keywordtype}{float}\ \_ratioWidth,\ \textcolor{keywordtype}{float}\ \_ratioHeight,\ \textcolor{keywordtype}{float}\ \_near,\ \textcolor{keywordtype}{float}\ \_far,}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_cameraPositionX,\ \textcolor{keywordtype}{int}\ \_cameraPositionY,\ \textcolor{keywordtype}{int}\ \_cameraPositionZ,\ \textcolor{keywordtype}{int}\ \_cameraTargetX,\ \textcolor{keywordtype}{int}\ \_cameraTargetY,}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_cameraTargetZ,\ \textcolor{keywordtype}{int}\ \_upVectorX,\ \textcolor{keywordtype}{int}\ \_upVectorY,\ \textcolor{keywordtype}{int}\ \_upVectorZ)\ =\ 0;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graphic_a_p_i_a2c1a681228099ebca7ccc5f189450f4a}{setShaders}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \_vertexShaderPath,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \_fragmentShaderPath)\ =\ 0;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graphic_a_p_i_a0212d1bd9b82ab8f360d2943f4f66282}{drawingModel}}(\mbox{\hyperlink{class_game_object}{GameObject}}*\ \_gameObject)\ =\ 0;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graphic_a_p_i_ad4622fee849a6e5ec0e099078337ed84}{setHandles}}()\ =\ 0;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graphic_a_p_i_a13ebf86578c5fdc83f469b6993a7a719}{clearScreen}}()\ =\ 0;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graphic_a_p_i_a0a6eddcfd9975e8bf87dff2f70356808}{swapBuffers}}()\ =\ 0;}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graphic_a_p_i_acd96c3bdc2a98dc61f8cc185ded7b42f}{unbindArrays}}()\ =\ 0;}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graphic_a_p_i_a413cfcdd5a5bc52d79612d0fcd0647bc}{useShader}}()\ =\ 0;}
+\DoxyCodeLine{00092\ \};}
+
+\end{DoxyCode}

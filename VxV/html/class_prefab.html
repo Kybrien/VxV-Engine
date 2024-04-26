@@ -25,7 +25,6 @@
   <td id="projectalign">
    <div id="projectname">VxV
    </div>
-   <div id="projectbrief">A perfectly ok engine</div>
   </td>
  </tr>
  </tbody>
@@ -86,18 +85,22 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0bac39721cf021fe1707fe171db6b36a" id="r_a0bac39721cf021fe1707fe171db6b36a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bac39721cf021fe1707fe171db6b36a">Prefab</a> (<a class="el" href="class_game_object.html">GameObject</a> *go, std::string <a class="el" href="#a7e0a7c6fdfb28a154a275168ef3eec99">name</a>=&quot;PrefabSample&quot;)</td></tr>
+<tr class="memdesc:a0bac39721cf021fe1707fe171db6b36a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_prefab.html">Prefab</a> object with optional parameters.  <br /></td></tr>
 <tr class="separator:a0bac39721cf021fe1707fe171db6b36a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38f14c8a1f5ff6d8c61efaca62091fed" id="r_a38f14c8a1f5ff6d8c61efaca62091fed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_object.html">GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38f14c8a1f5ff6d8c61efaca62091fed">getGameObject</a> ()</td></tr>
+<tr class="memdesc:a38f14c8a1f5ff6d8c61efaca62091fed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the <a class="el" href="class_game_object.html">GameObject</a> associated with the <a class="el" href="class_prefab.html">Prefab</a>.  <br /></td></tr>
 <tr class="separator:a38f14c8a1f5ff6d8c61efaca62091fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:af85dfd3f800c277d66118355ba31311e" id="r_af85dfd3f800c277d66118355ba31311e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_game_object.html">GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af85dfd3f800c277d66118355ba31311e">Copy</a> (<a class="el" href="class_game_object.html">GameObject</a> *goToFill, <a class="el" href="class_game_object.html">GameObject</a> *goToCopy)</td></tr>
+<tr class="memdesc:af85dfd3f800c277d66118355ba31311e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a copy of the provided <a class="el" href="class_game_object.html">GameObject</a> and fills it with data from another <a class="el" href="class_game_object.html">GameObject</a>.  <br /></td></tr>
 <tr class="separator:af85dfd3f800c277d66118355ba31311e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a7e0a7c6fdfb28a154a275168ef3eec99" id="r_a7e0a7c6fdfb28a154a275168ef3eec99"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e0a7c6fdfb28a154a275168ef3eec99">name</a></td></tr>
+<tr class="memdesc:a7e0a7c6fdfb28a154a275168ef3eec99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the name of the prefab. Stores the name assigned to the prefab.  <br /></td></tr>
 <tr class="separator:a7e0a7c6fdfb28a154a275168ef3eec99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -119,6 +122,15 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructs a <a class="el" href="class_prefab.html">Prefab</a> object with optional parameters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">go</td><td>Pointer to the <a class="el" href="class_game_object.html">GameObject</a> used to create the prefab. </td></tr>
+    <tr><td class="paramname">name</td><td>The name of the prefab. Default is "PrefabSample". Represents constructing a <a class="el" href="class_prefab.html">Prefab</a> object with optional parameters. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -150,6 +162,16 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Creates a copy of the provided <a class="el" href="class_game_object.html">GameObject</a> and fills it with data from another <a class="el" href="class_game_object.html">GameObject</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">goToFill</td><td>Pointer to the <a class="el" href="class_game_object.html">GameObject</a> to fill with data. </td></tr>
+    <tr><td class="paramname">goToCopy</td><td>Pointer to the <a class="el" href="class_game_object.html">GameObject</a> to copy data from. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the filled <a class="el" href="class_game_object.html">GameObject</a> copy. Represents creating a copy of a <a class="el" href="class_game_object.html">GameObject</a> and filling it with data from another <a class="el" href="class_game_object.html">GameObject</a>. </dd></dl>
+
 </div>
 </div>
 <a id="a38f14c8a1f5ff6d8c61efaca62091fed" name="a38f14c8a1f5ff6d8c61efaca62091fed"></a>
@@ -175,6 +197,9 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retrieves the <a class="el" href="class_game_object.html">GameObject</a> associated with the <a class="el" href="class_prefab.html">Prefab</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the <a class="el" href="class_game_object.html">GameObject</a> associated with the <a class="el" href="class_prefab.html">Prefab</a>. Represents retrieving the <a class="el" href="class_game_object.html">GameObject</a> associated with the <a class="el" href="class_prefab.html">Prefab</a>. </dd></dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -189,6 +214,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Represents the name of the prefab. Stores the name assigned to the prefab. </p>
 
 </div>
 </div>

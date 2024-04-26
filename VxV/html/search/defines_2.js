@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tinyobjloader_5fimplementation_0',['TINYOBJLOADER_IMPLEMENTATION',['../_main_8cpp.html#af14fac7fbc250522a78849d58d5b0811',1,'Main.cpp']]]
+  ['stb_5fimage_5fimplementation_0',['STB_IMAGE_IMPLEMENTATION',['../_model_component_8cpp.html#a18372412ad2fc3ce1e3240b3cf0efe78',1,'ModelComponent.cpp']]]
 ];

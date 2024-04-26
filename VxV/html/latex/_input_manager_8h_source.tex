@@ -1,0 +1,49 @@
+\doxysection{Input\+Manager.\+h}
+\hypertarget{_input_manager_8h_source}{}\label{_input_manager_8h_source}\mbox{\hyperlink{_input_manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <GLFW/glfw3.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_manager_8h}{Manager.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_input_manager}{InputManager}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_manager}{Manager}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_input_manager_a1a4a2a196e96e61cd81a8c26dc32fcc2}{ActionType}}}
+\DoxyCodeLine{00010\ \ \ \ \ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_manager_a1a4a2a196e96e61cd81a8c26dc32fcc2a6e7df3f906dc25573b43ddeca72994a2}{Null}},}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_manager_a1a4a2a196e96e61cd81a8c26dc32fcc2a4f578707b11c02a5ef63f368d0523288}{Jump}},}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_manager_a1a4a2a196e96e61cd81a8c26dc32fcc2a1537d4f3e9c706e35c1fb8fa21f2dca5}{Attack}},}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_manager_a1a4a2a196e96e61cd81a8c26dc32fcc2a506388d1bc03b598e3d31a37c14e71a9}{Left}},}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_manager_a1a4a2a196e96e61cd81a8c26dc32fcc2ada311cdcabcdf8904d3fe93c0db4c4d9}{Right}},}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_manager_a1a4a2a196e96e61cd81a8c26dc32fcc2aebe6d74f83d0524520b314e74b08ab8e}{Up}},}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_manager_a1a4a2a196e96e61cd81a8c26dc32fcc2af4d0df0e8c9473359bad40df08c40917}{Down}}}
+\DoxyCodeLine{00018\ \ \ \ \ \};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_input_manager_1_1_key_mapping}{KeyMapping}}}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_input_manager_1_1_key_mapping_a9deff72b48a88b00d36183cdfcd6bfe9}{key}};}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_manager_a1a4a2a196e96e61cd81a8c26dc32fcc2}{ActionType}}\ \mbox{\hyperlink{struct_input_manager_1_1_key_mapping_a95998b1d1e1cc22edce55ed8d52c4d9a}{action}};}
+\DoxyCodeLine{00024\ \ \ \ \ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<KeyMapping>\ \mbox{\hyperlink{class_input_manager_ad7657ab0f6dc8443cd0416538f9a2452}{GetKeyMappings}}()}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ keyMappings;}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_manager_a40999e3d2521fce8923e22c2dc424d2c}{ProcessAction}}(\mbox{\hyperlink{class_input_manager_a1a4a2a196e96e61cd81a8c26dc32fcc2}{ActionType}}\ action);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_manager_a516529ebf753c8242093a2224be757fa}{ChangeKeyMapping}}(\mbox{\hyperlink{class_input_manager_a1a4a2a196e96e61cd81a8c26dc32fcc2}{ActionType}}\ action,\ \textcolor{keywordtype}{int}\ newKey);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_manager_a3e575aa4a9c42939522c1502756bb3ef}{Init}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_manager_ad3ac30daccac551b0702e02d02851a57}{Update}}(\textcolor{keyword}{const}\ std::vector<bool>\&\ inputState);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_manager_a933179e17c1d3cf34b2aed71f01280b1}{Save}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00042\ \ \ \ \ std::vector<bool>\ GetInputState(GLFWwindow*\ window);}
+\DoxyCodeLine{00043\ \ \ \ \ std::vector<KeyMapping>\ keyMappings;}
+\DoxyCodeLine{00044\ \};}
+
+\end{DoxyCode}

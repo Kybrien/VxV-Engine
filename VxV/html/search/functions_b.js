@@ -1,6 +1,12 @@
 var searchData=
 [
-  ['main_0',['main',['../_main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'Main.cpp']]],
-  ['memorypool_1',['MemoryPool',['../class_memory_pool.html#a81562e65d5b85a7615f60b44d4461252',1,'MemoryPool::MemoryPool()'],['../class_memory_pool_3_01_game_object_00_01_strategy_01_4.html#a98fe2f8327a2a030351f512be74cf965',1,'MemoryPool&lt; GameObject, Strategy &gt;::MemoryPool()']]],
-  ['mempool_5flinear_2',['MemPool_Linear',['../class_mem_pool___linear.html#a746247aa76fe63d6a57e0685cdf294b0',1,'MemPool_Linear']]]
+  ['newscript_0',['NewScript',['../class_script_manager.html#a80016cc74af49f9d9195c7ff80d30db8',1,'ScriptManager']]],
+  ['nfd_5fgeterror_1',['NFD_GetError',['../nfd_8h.html#ae0517c1ad6df09c7ad02a3d293a93918',1,'nfd.h']]],
+  ['nfd_5fopendialog_2',['NFD_OpenDialog',['../nfd_8h.html#ae5e4070e3bbcae1eda06da4faeeb16e2',1,'nfd.h']]],
+  ['nfd_5fopendialogmultiple_3',['NFD_OpenDialogMultiple',['../nfd_8h.html#ab173366698c833a2a1ad99a4d614f2b0',1,'nfd.h']]],
+  ['nfd_5fpathset_5ffree_4',['NFD_PathSet_Free',['../nfd_8h.html#a017585ab37cd41b85e40d89b462939d3',1,'nfd.h']]],
+  ['nfd_5fpathset_5fgetcount_5',['NFD_PathSet_GetCount',['../nfd_8h.html#a91015bd82ca3144ea3ca11f25a6e083f',1,'nfd.h']]],
+  ['nfd_5fpathset_5fgetpath_6',['NFD_PathSet_GetPath',['../nfd_8h.html#a4e2b4e1cafa2eb6b1c6a25c93148136d',1,'nfd.h']]],
+  ['nfd_5fpickfolder_7',['NFD_PickFolder',['../nfd_8h.html#abd21bfd33ce4616b65b17102572f3ef7',1,'nfd.h']]],
+  ['nfd_5fsavedialog_8',['NFD_SaveDialog',['../nfd_8h.html#aa235447f4b28a924e60bd08d56cb7921',1,'nfd.h']]]
 ];

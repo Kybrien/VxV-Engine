@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['extention_0',['extention',['../class_script_manager.html#a98f99039f0748a4e134c82622a2ec061',1,'ScriptManager']]]
+  ['desired_5ffps_0',['DESIRED_FPS',['../_main_8cpp.html#a98d3858b7830ef9b4824ed29fb6d1b44',1,'Main.cpp']]]
 ];

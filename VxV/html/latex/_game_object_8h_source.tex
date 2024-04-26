@@ -1,0 +1,111 @@
+\doxysection{Game\+Object.\+h}
+\hypertarget{_game_object_8h_source}{}\label{_game_object_8h_source}\mbox{\hyperlink{_game_object_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <json.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <GLM/glm.hpp>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_component_8h}{Component.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_transform_8h}{Transform.h}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_scene}{Scene}};}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_prefab}{Prefab}};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_object}{GameObject}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_scene}{Scene}}*\ \mbox{\hyperlink{class_game_object_aa14787da7ac7d6f0dda76f0ddbdfc471}{currentScene}};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_game_object_a98291c60da12d9036e1ad24cfebcf6b3}{id}};\ \textcolor{comment}{//\ ID\ du\ GO}}
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<Component*>\ \mbox{\hyperlink{class_game_object_aac1acad42a3837282d3abf7df8eb34a7}{components}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_game_object_af0c049fcca8f16b4eda2e24ce27961f3}{GameObject}}(std::string\ name\_\ =\ \textcolor{stringliteral}{"{}GO"{}},\ \textcolor{keywordtype}{bool}\ PrefabLoading\ =\ \textcolor{keyword}{false},\ \mbox{\hyperlink{class_prefab}{Prefab}}*\ prefab\ =\ \textcolor{keyword}{nullptr},\ \textcolor{keywordtype}{bool}\ copying\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_game_object_ab82dfdb656f9051c0587e6593b2dda97}{\string~GameObject}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \ \ glm::vec3\ \mbox{\hyperlink{class_game_object_a0f9b752b014e8177d21c988550544914}{origin}};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_object_a667ec2490aca8934928e9d51adc92ff2}{isChild}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \ \ \ \ std::string\ \mbox{\hyperlink{class_game_object_af542b33c8de269343e22c5629e6b66c0}{name}};\ \textcolor{comment}{//\ Nom\ du\ GO}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_object_aa70012636f8b4c1e84d8344bf5f3480a}{Init}}()\ \{\};\ \textcolor{comment}{//\ Est\ appelé\ au\ début}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_object_aa27714b4172ebff2f7cddcf63b325ac7}{Start}}()\{\};\ \textcolor{comment}{//\ Est\ appelé\ à\ la\ première\ frame}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_object_a1bd14aa169f501f94f1721943d716535}{Update}}();\ \textcolor{comment}{//\ Est\ appelé\ à\ chaque\ frame}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_game_object_a97db8a4b760faea4a772aae3d69212eb}{GetId}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_game_object_a98291c60da12d9036e1ad24cfebcf6b3}{id}};\ \}\ \textcolor{comment}{//\ Renvoie\ l'Id\ du\ GameObject}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_object_a51e1b37b51bd3241ccc715f0ede9c2f4}{SetId}}(\textcolor{keywordtype}{int}\ id\_)\ \{\ \textcolor{keywordtype}{id}\ =\ id\_;\ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{class_game_object}{GameObject}}*\ \mbox{\hyperlink{class_game_object_a4cc2f753f74eca0c6a8b70f433bec773}{GetChildByName}}(std::string\ \mbox{\hyperlink{class_game_object_af542b33c8de269343e22c5629e6b66c0}{name}});\ \textcolor{comment}{//\ Rechercher\ un\ GameObject\ enfant\ du\ GameObject}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00106\ \ \ \ \ std::vector<Component*>\ \mbox{\hyperlink{class_game_object_a53e71063284902e7c9bcd2cd60f47f37}{GetComponents}}();}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00113\ \ \ \ \ std::vector<GameObject*>\ \mbox{\hyperlink{class_game_object_a94e228dfcdca3e604e7d1d67fccd6503}{GetChilds}}();}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00120\ \ \ \ \ \mbox{\hyperlink{class_game_object}{GameObject}}*\ \mbox{\hyperlink{class_game_object_ab8cd34f35a40f8c303d38a61a1c4cbed}{GetParent}}()}
+\DoxyCodeLine{00121\ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ parent;}
+\DoxyCodeLine{00123\ \ \ \ \ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_object_a623d7145313610b8623d62ba9afb4e7f}{Load}}(Json::Value\ root,\ \mbox{\hyperlink{class_game_object}{GameObject}}*\ goParent\ =\ \textcolor{keyword}{nullptr},\ \textcolor{keywordtype}{bool}\ PrefabLoading\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_object_a99f4295a43d790542088b8acfbc964b6}{Save}}(Json::Value\&\ root);}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_object_a15d6c2beb85dc141d61047db2db79b37}{AddChild}}(\mbox{\hyperlink{class_game_object}{GameObject}}*\ go);}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_object_ae6c54a1764b44863f009a2983a3ce65a}{AddParent}}(\mbox{\hyperlink{class_game_object}{GameObject}}*\ go)}
+\DoxyCodeLine{00155\ \ \ \ \ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ parent\ =\ go;}
+\DoxyCodeLine{00157\ \ \ \ \ \}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00164\ \ \ \ \ std::string\ \mbox{\hyperlink{class_game_object_a8126ec1f89a3fe25932c72ed01965187}{getPrefabName}}()}
+\DoxyCodeLine{00165\ \ \ \ \ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ prefabName;}
+\DoxyCodeLine{00167\ \ \ \ \ \}}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_object_a500073b6993842951c6098b7eadf3bde}{SetPrefab}}(\mbox{\hyperlink{class_prefab}{Prefab}}*\ prefab\_)}
+\DoxyCodeLine{00175\ \ \ \ \ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ prefab\ =\ prefab\_;}
+\DoxyCodeLine{00177\ \ \ \ \ \}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00184\ \ \ \ \ \mbox{\hyperlink{class_prefab}{Prefab}}*\ \mbox{\hyperlink{class_game_object_afcabc902c85be249c5ee175172f808af}{GetPrefab}}()}
+\DoxyCodeLine{00185\ \ \ \ \ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ prefab;}
+\DoxyCodeLine{00187\ \ \ \ \ \}}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_object_aa2775b50581c1f9d290b5428815b131f}{RemoveChild}}(\mbox{\hyperlink{class_game_object}{GameObject}}*\ goChild);}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00204\ \ \ \ \ T*\ \mbox{\hyperlink{class_game_object_a5ba3b458e6bee6ea5aedd5c8cdeabf18}{GetComponent}}();\ \textcolor{comment}{//\ Rechercher\ un\ component}}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_object_a83b5aa2871b1e564aba800f94944d7fa}{AddComponent}}();}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_object_a2efa82d6c00842f432826bd9769ffc17}{LoadComponent}}(Json::Value\ compJson,\ \mbox{\hyperlink{class_game_object}{GameObject}}*\ parentGo);}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_object_a322beae90ff8c484e0c52da2c8b4a2a5}{Delete}}();}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00241\ \ \ \ \ std::vector<GameObject*>\ childObjects;\ \textcolor{comment}{//\ Liste\ des\ enfants}}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00247\ \ \ \ \ \mbox{\hyperlink{class_game_object}{GameObject}}*\ parent;}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00253\ \ \ \ \ std::string\ prefabName;}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00259\ \ \ \ \ \mbox{\hyperlink{class_prefab}{Prefab}}*\ prefab;}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ \};}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_game_object_8inl}{GameObject.inl}}"{}}}
+
+\end{DoxyCode}

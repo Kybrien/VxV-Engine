@@ -1,0 +1,139 @@
+\doxysection{APIopen\+GL.\+hpp}
+\hypertarget{_a_p_iopen_g_l_8hpp_source}{}\label{_a_p_iopen_g_l_8hpp_source}\mbox{\hyperlink{_a_p_iopen_g_l_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{loading_shader_8hpp}{loadingShader.hpp}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_graphic_a_p_i_8hpp}{GraphicAPI.hpp}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_a_p_iopen_g_l}{APIopenGL}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_graphic_a_p_i}{GraphicAPI}}}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ GLFWwindow*\ window;}
+\DoxyCodeLine{00008\ \ \ \ \ GLuint\ programID,\ VertexArrayID,\ TextureID,\ LightID,\ MaterialAmbientColorID,\ MaterialDiffuseColorID,\ MaterialSpecularColorID,}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ MatrixID,\ ViewMatrixID,\ ModelMatrixID,\ LightColorID,\ LightPowerID;}
+\DoxyCodeLine{00010\ \ \ \ \ glm::mat4\ Projection,\ View;}
+\DoxyCodeLine{00011\ public\ :}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{class_a_p_iopen_g_l_a3326c08fb02fb8311d34c03c17a9b0ad}{APIopenGL}}()}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ window\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ programID\ =\ 0;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ VertexArrayID\ =\ 0;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ TextureID\ =\ 0;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ LightID\ =\ 0;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ MaterialAmbientColorID\ =\ 0;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ MaterialDiffuseColorID\ =\ 0;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ MaterialSpecularColorID\ =\ 0;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ MatrixID\ =\ 0;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ ViewMatrixID\ =\ 0;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ ModelMatrixID\ =\ 0;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ LightColorID\ =\ 0;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ LightPowerID\ =\ 0;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ Projection\ =\ glm::mat4(1.0f);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ View\ =\ glm::mat4(1.0f);}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_p_iopen_g_l_a02046426cfccac064f319812cce40965}{initialize}}()\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00032\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_model_component_8cpp_a8f490ee67f22023cf637d93730514863}{init}}(window);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_model_component_8cpp_a0d19ebac03a8c658fecf491ec7d7fefb}{setupInput}}(window);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_model_component_8cpp_a6e31672d5229034125de7c14588fd963}{initOpenGLSettings}}();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_model_component_8cpp_a6271f9c23852dede80128644794fbc4c}{initializeVertexArrayObject}}(VertexArrayID);}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_p_iopen_g_l_a3c87e770bfec9026cbb64088f606700f}{cleanupModel}}(\mbox{\hyperlink{class_model}{Model}}*\ \_model)\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00039\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_model_component_8cpp_a9cd4ac617fd5aeb0b1fa0a259fd4bc3d}{cleanup}}(window,\ *(\_model-\/>\mbox{\hyperlink{class_model_a7fc7bffa99f6b49b6270d4819c08543e}{GetModel}}()));}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_p_iopen_g_l_a6e0bfa4c94eaa1f61aebf3c7dd44bad4}{setWindowSize}}(\textcolor{keywordtype}{int}\ \_width,\ \textcolor{keywordtype}{int}\ \_height)\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00043\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ glfwSetWindowSize(window,\ \_width,\ \_height);}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_p_iopen_g_l_a3e56bbf553339811b71866ae4d8fa004}{terminate}}()\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00047\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_model_component_8cpp_a07ee5167da859a90e4034449f6a61370}{finishProgram}}(programID,\ VertexArrayID,\ TextureID,\ LightID,\ MaterialAmbientColorID,\ MaterialDiffuseColorID,\ MaterialSpecularColorID,\ MatrixID,\ ViewMatrixID,\ ModelMatrixID);}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_p_iopen_g_l_aab3c4b3ad3e5ef7f141a917b6135bdee}{setBackgroundColor}}(\textcolor{keywordtype}{float}\ \_red,\ \textcolor{keywordtype}{float}\ \_green,\ \textcolor{keywordtype}{float}\ \_blue,\ \textcolor{keywordtype}{float}\ \_alpha)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ glClearColor(\_red,\ \_green,\ \_blue,\ \_alpha);}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_p_iopen_g_l_a9468da0d0ffe35901cee9c381686bfab}{setCamera}}(\textcolor{keywordtype}{float}\ \_fov,\ \textcolor{keywordtype}{float}\ \_ratioWidth,\ \textcolor{keywordtype}{float}\ \_ratioHeight,\ \textcolor{keywordtype}{float}\ \_near,\ \textcolor{keywordtype}{float}\ \_far,}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_cameraPositionX,\ \textcolor{keywordtype}{int}\ \_cameraPositionY,\ \textcolor{keywordtype}{int}\ \_cameraPositionZ,\ \textcolor{keywordtype}{int}\ \_cameraTargetX,\ \textcolor{keywordtype}{int}\ \_cameraTargetY,}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_cameraTargetZ,\ \textcolor{keywordtype}{int}\ \_upVectorX,\ \textcolor{keywordtype}{int}\ \_upVectorY,\ \textcolor{keywordtype}{int}\ \_upVectorZ)\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00056\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ Projection\ =\ \mbox{\hyperlink{_model_component_8cpp_a277b030212103f393b7322b736bdc38c}{initializeProjectionMatrix}}(\_fov,\ \_ratioWidth,\ \_ratioHeight,\ \_near,\ \_far);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ View\ =\ \mbox{\hyperlink{_model_component_8cpp_a6df1ab789bab24b33ec2b92faba0ac51}{initializeViewMatrix}}(\_cameraPositionX,\ \_cameraPositionY,\ \_cameraPositionZ,\ \_cameraTargetX,}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \_cameraTargetY,\ \_cameraTargetZ,\ \_upVectorX,\ \_upVectorY,\ \_upVectorZ);}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_p_iopen_g_l_a07b3d697a16b9a2d0088eb6586b12963}{setShaders}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \_vertexShaderPath,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \_fragmentShaderPath)\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00062\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ programID\ =\ \mbox{\hyperlink{loading_shader_8cpp_a833f10cca6a76fe34ae9efa23ac5e73c}{LoadShaders}}(\_vertexShaderPath,\ \_fragmentShaderPath);}
+\DoxyCodeLine{00064\ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_p_iopen_g_l_a7d6c121cad1ced038ce23878335a0f09}{drawingModel}}(\mbox{\hyperlink{class_game_object}{GameObject}}*\ \_gameObject)\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00066\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_model_component_8cpp_a13c592924099e3130a1969dd038c1475}{sendMVPData}}(\_gameObject,\ VertexArrayID,\ MatrixID,\ ModelMatrixID,\ ViewMatrixID);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_model_component_8cpp_ae4ef641eaaf4961df909353dc3453c20}{drawModel}}(\_gameObject-\/>\mbox{\hyperlink{class_game_object_a5ba3b458e6bee6ea5aedd5c8cdeabf18}{GetComponent}}<\mbox{\hyperlink{class_model}{Model}}>()-\/>\mbox{\hyperlink{class_model_a7fc7bffa99f6b49b6270d4819c08543e}{GetModel}}(),\ TextureID,\ MaterialAmbientColorID,\ MaterialDiffuseColorID,\ MaterialSpecularColorID);}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_p_iopen_g_l_aa7c61392b99602ee7c8811d2aecb932a}{setHandles}}()\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00072\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_model_component_8cpp_a6ced2458f9b337e7fcbd3b4d5473e6c8}{setupHandlesForUniforms}}(programID,\ TextureID,\ MaterialAmbientColorID,\ MaterialDiffuseColorID,\ MaterialSpecularColorID,\ MatrixID,\ ViewMatrixID,\ ModelMatrixID);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_model_component_8cpp_a39d163d19b94ee2c4f8f6eb1bcc71be8}{setupLightHandles}}(programID,\ LightID,\ LightColorID,\ LightPowerID);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ glBindVertexArray(0);}
+\DoxyCodeLine{00076\ \ \ \ \ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_p_iopen_g_l_af9b108e44fc395c00557f8d3f6d4d110}{clearScreen}}()\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00079\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ glClear(GL\_COLOR\_BUFFER\_BIT\ |\ GL\_DEPTH\_BUFFER\_BIT);}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_p_iopen_g_l_af92852955c6a5e9920e94f73a36ab0c1}{unbindArrays}}()\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00084\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ glDisableVertexAttribArray(0);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ glDisableVertexAttribArray(1);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ glDisableVertexAttribArray(2);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ glBindVertexArray(0);}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_p_iopen_g_l_ae361ed8ccaf4ad6888fa6ce5f1ec93d2}{swapBuffers}}()\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00092\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ glfwSwapBuffers(window);}
+\DoxyCodeLine{00094\ \ \ \ \ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_p_iopen_g_l_a960918c31d015ef9fa356756382efdc8}{useShader}}()\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00097\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ glUseProgram(programID);}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_p_iopen_g_l_a5b7a5f1e3e091c0f63a313c1b6299440}{setLightColor}}(glm::vec3\ \_lightColor)\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ glUniform3f(LightColorID,\ \_lightColor.x,\ \_lightColor.y,\ \_lightColor.z);}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_a_p_iopen_g_l_a7de69dfa162b6d566e0d3a2cf8e1108c}{setLightPower}}(\textcolor{keywordtype}{float}\ \_lightPower)\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ glUniform1f(LightPowerID,\ \_lightPower);}
+\DoxyCodeLine{00107\ \ \ \ \ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ GLFWwindow*\ \mbox{\hyperlink{class_a_p_iopen_g_l_a2f1b1be8f8447d8e8c240f4cc5c1a8ea}{getWindow}}()\ \{\ \textcolor{keywordflow}{return}\ window;\ \}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ GLuint\ \mbox{\hyperlink{class_a_p_iopen_g_l_ab529b40accc790aa4221f65083006e69}{getProgramID}}()\ \{\ \textcolor{keywordflow}{return}\ programID;\ \}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ GLuint\ \mbox{\hyperlink{class_a_p_iopen_g_l_a8c6e1cbf7b0df6f4f001df43af7a985a}{getVertexArrayID}}()\ \{\ \textcolor{keywordflow}{return}\ VertexArrayID;\ \}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ GLuint\ \mbox{\hyperlink{class_a_p_iopen_g_l_a02f66ca10898f93d5581b5ff5f16356f}{getTextureID}}()\ \{\ \textcolor{keywordflow}{return}\ TextureID;\ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ GLuint\ \mbox{\hyperlink{class_a_p_iopen_g_l_a9b276fcf0fa1c9ce14db915f66f09755}{getLightID}}()\ \{\ \textcolor{keywordflow}{return}\ LightID;\ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ GLuint\ \mbox{\hyperlink{class_a_p_iopen_g_l_abe48dbbd92a0d88e00bdfb7f26ab583a}{getMaterialAmbientColorID}}()\ \{\ \textcolor{keywordflow}{return}\ MaterialAmbientColorID;\ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ GLuint\ \mbox{\hyperlink{class_a_p_iopen_g_l_ac1e8f244276abfe627ed004a90b24360}{getMaterialDiffuseColorID}}()\ \{\ \textcolor{keywordflow}{return}\ MaterialDiffuseColorID;\ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ GLuint\ \mbox{\hyperlink{class_a_p_iopen_g_l_a92bf122ece85a9c059dab9917c14825a}{getMaterialSpecularColorID}}()\ \{\ \textcolor{keywordflow}{return}\ MaterialSpecularColorID;\ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ GLuint\ \mbox{\hyperlink{class_a_p_iopen_g_l_a054c9c246ea5f1afcc21399341919cf3}{getMatrixID}}()\ \{\ \textcolor{keywordflow}{return}\ MatrixID;\ \}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ GLuint\ \mbox{\hyperlink{class_a_p_iopen_g_l_a2cfe4f1f5611832d26a7c408bdb12cc6}{getViewMatrixID}}()\ \{\ \textcolor{keywordflow}{return}\ ViewMatrixID;\ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ GLuint\ \mbox{\hyperlink{class_a_p_iopen_g_l_a877bd356ee36f2103e8be83960f90fab}{getModelMatrixID}}()\ \{\ \textcolor{keywordflow}{return}\ ModelMatrixID;\ \}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ glm::mat4\ \mbox{\hyperlink{class_a_p_iopen_g_l_ac01929d5621c7b2bcb06f4cc4be36142}{getProjection}}()\ \{\ \textcolor{keywordflow}{return}\ Projection;\ \}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ glm::mat4\ \mbox{\hyperlink{class_a_p_iopen_g_l_a83f309f08d02bc31fefccc72b08d2dd7}{getView}}()\ \{\ \textcolor{keywordflow}{return}\ View;\ \}}
+\DoxyCodeLine{00134\ \};}
+
+\end{DoxyCode}

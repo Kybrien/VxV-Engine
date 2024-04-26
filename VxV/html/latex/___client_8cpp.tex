@@ -1,0 +1,57 @@
+\doxysection{\+\_\+\+Client.\+cpp File Reference}
+\hypertarget{___client_8cpp}{}\label{___client_8cpp}\index{\_Client.cpp@{\_Client.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$winsock2.\+h$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include "{}Chat\+Window.\+hpp"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{___client_8cpp_adfc8f90f3a8caa8423099cf36ff214f1}{\+\_\+\+WINSOCK\+\_\+\+DEPRECATED\+\_\+\+NO\+\_\+\+WARNINGS}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{___client_8cpp_aef012b4a0c71e8ac03f80a312341bda2}{receive\+Messages}} (SOCKET client\+Socket)
+\item 
+int \mbox{\hyperlink{___client_8cpp_a669030cc0375e704c39a0335236c16e4}{init\+Client}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::mutex \mbox{\hyperlink{___client_8cpp_a1be3f7fa26e4521098de5f1ec0f865f3}{mutex}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{___client_8cpp_adfc8f90f3a8caa8423099cf36ff214f1}\label{___client_8cpp_adfc8f90f3a8caa8423099cf36ff214f1} 
+\index{\_Client.cpp@{\_Client.cpp}!\_WINSOCK\_DEPRECATED\_NO\_WARNINGS@{\_WINSOCK\_DEPRECATED\_NO\_WARNINGS}}
+\index{\_WINSOCK\_DEPRECATED\_NO\_WARNINGS@{\_WINSOCK\_DEPRECATED\_NO\_WARNINGS}!\_Client.cpp@{\_Client.cpp}}
+\doxysubsubsection{\texorpdfstring{\_WINSOCK\_DEPRECATED\_NO\_WARNINGS}{\_WINSOCK\_DEPRECATED\_NO\_WARNINGS}}
+{\footnotesize\ttfamily \#define \+\_\+\+WINSOCK\+\_\+\+DEPRECATED\+\_\+\+NO\+\_\+\+WARNINGS}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{___client_8cpp_a669030cc0375e704c39a0335236c16e4}\label{___client_8cpp_a669030cc0375e704c39a0335236c16e4} 
+\index{\_Client.cpp@{\_Client.cpp}!initClient@{initClient}}
+\index{initClient@{initClient}!\_Client.cpp@{\_Client.cpp}}
+\doxysubsubsection{\texorpdfstring{initClient()}{initClient()}}
+{\footnotesize\ttfamily int init\+Client (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{___client_8cpp_aef012b4a0c71e8ac03f80a312341bda2}\label{___client_8cpp_aef012b4a0c71e8ac03f80a312341bda2} 
+\index{\_Client.cpp@{\_Client.cpp}!receiveMessages@{receiveMessages}}
+\index{receiveMessages@{receiveMessages}!\_Client.cpp@{\_Client.cpp}}
+\doxysubsubsection{\texorpdfstring{receiveMessages()}{receiveMessages()}}
+{\footnotesize\ttfamily void receive\+Messages (\begin{DoxyParamCaption}\item[{SOCKET}]{client\+Socket }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{___client_8cpp_a1be3f7fa26e4521098de5f1ec0f865f3}\label{___client_8cpp_a1be3f7fa26e4521098de5f1ec0f865f3} 
+\index{\_Client.cpp@{\_Client.cpp}!mutex@{mutex}}
+\index{mutex@{mutex}!\_Client.cpp@{\_Client.cpp}}
+\doxysubsubsection{\texorpdfstring{mutex}{mutex}}
+{\footnotesize\ttfamily std\+::mutex mutex}
+

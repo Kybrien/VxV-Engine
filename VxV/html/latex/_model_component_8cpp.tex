@@ -1,0 +1,569 @@
+\doxysection{Model\+Component.\+cpp File Reference}
+\hypertarget{_model_component_8cpp}{}\label{_model_component_8cpp}\index{ModelComponent.cpp@{ModelComponent.cpp}}
+{\ttfamily \#include $<$GL/glew.\+h$>$}\newline
+{\ttfamily \#include "{}Model\+Component.\+hpp"{}}\newline
+{\ttfamily \#include "{}Transform.\+h"{}}\newline
+{\ttfamily \#include "{}Model.\+h"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include "{}Externes/stb/stb\+\_\+image.\+h"{}}\newline
+{\ttfamily \#include $<$glm/gtc/quaternion.\+hpp$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_model_component_8cpp_af14fac7fbc250522a78849d58d5b0811}{TINYOBJLOADER\+\_\+\+IMPLEMENTATION}}
+\item 
+\#define \mbox{\hyperlink{_model_component_8cpp_a18372412ad2fc3ce1e3240b3cf0efe78}{STB\+\_\+\+IMAGE\+\_\+\+IMPLEMENTATION}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_vertex}{Vertex}} \mbox{\hyperlink{_model_component_8cpp_a9f9b1e415eb80126ec987fcf9006d7f7}{create\+Vertex\+From\+Index}} (const tinyobj\+::attrib\+\_\+t \&attrib, const tinyobj\+::index\+\_\+t \&index)
+\begin{DoxyCompactList}\small\item\em Create a \doxylink{class_vertex}{Vertex} from the given index. \end{DoxyCompactList}\item 
+GLuint \mbox{\hyperlink{_model_component_8cpp_ada2dfa2a2473899e0ec39b3ee9695cf1}{load\+Texture}} (const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Load the texture from the given filename. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_a8f490ee67f22023cf637d93730514863}{init}} (GLFWwindow \texorpdfstring{$\ast$}{*}\&window)
+\begin{DoxyCompactList}\small\item\em Initialize the window and Open\+GL settings for the program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_a0d19ebac03a8c658fecf491ec7d7fefb}{setup\+Input}} (GLFWwindow \texorpdfstring{$\ast$}{*}window)
+\begin{DoxyCompactList}\small\item\em Setup the user inputs for the window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_a6e31672d5229034125de7c14588fd963}{init\+Open\+GLSettings}} ()
+\begin{DoxyCompactList}\small\item\em Initialize the Open\+GL settings and culling. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_a6271f9c23852dede80128644794fbc4c}{initialize\+Vertex\+Array\+Object}} (GLuint \&Vertex\+Array\+ID)
+\begin{DoxyCompactList}\small\item\em Initialize and bind the vertex array object to the open\+GL context. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{_model_component_8cpp_a277b030212103f393b7322b736bdc38c}{initialize\+Projection\+Matrix}} (float \+\_\+fov, float \+\_\+ratio\+Width, float \+\_\+ratio\+Height, float \+\_\+near, float \+\_\+far)
+\begin{DoxyCompactList}\small\item\em Initialize the projection matrix that corresponds to the camera space. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{_model_component_8cpp_a6df1ab789bab24b33ec2b92faba0ac51}{initialize\+View\+Matrix}} (int \+\_\+camera\+PositionX, int \+\_\+camera\+PositionY, int \+\_\+camera\+PositionZ, int \+\_\+camera\+TargetX, int \+\_\+camera\+TargetY, int \+\_\+camera\+TargetZ, int \+\_\+up\+VectorX, int \+\_\+up\+VectorY, int \+\_\+up\+VectorZ)
+\begin{DoxyCompactList}\small\item\em Initialize the view matrix that corresponds to the camera position and where it is looking. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_ac3e4d4cfe635daf76270ee3492fe30e4}{setup\+Vertex\+Attributes}} ()
+\begin{DoxyCompactList}\small\item\em Setup the vertex attributes of the \doxylink{class_model}{Model} for the shader program to use. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_ae97479b18d4aa965bfede8e68520f9bd}{setup\+Buffers}} (GLuint \&vertexbuffer, const std\+::vector$<$ \mbox{\hyperlink{class_vertex}{Vertex}} $>$ \&vertices, GLuint \&indexbuffer, const std\+::vector$<$ unsigned int $>$ \&indices)
+\begin{DoxyCompactList}\small\item\em Setup the buffers for the \doxylink{class_model}{Model} to be drawn. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_a9cd4ac617fd5aeb0b1fa0a259fd4bc3d}{cleanup}} (GLFWwindow \texorpdfstring{$\ast$}{*}window, \mbox{\hyperlink{class_model_component}{Model\+Component}} \&model)
+\begin{DoxyCompactList}\small\item\em Delete and clean all the handles of our render program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_a07ee5167da859a90e4034449f6a61370}{finish\+Program}} (GLuint program\+ID, GLuint Vertex\+Array\+ID, GLuint \&Texture\+ID, GLuint \&Light\+ID, GLuint \&Material\+Ambient\+Color\+ID, GLuint \&Material\+Diffuse\+Color\+ID, GLuint \&Material\+Specular\+Color\+ID, GLuint \&Matrix\+ID, GLuint \&View\+Matrix\+ID, GLuint \&Model\+Matrix\+ID)
+\begin{DoxyCompactList}\small\item\em Load the shaders from the given file paths. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_a29b258a787e23258ca1e50c48aa9e925}{loading\+Model}} (const std\+::string \&filename, \mbox{\hyperlink{class_model_component}{Model\+Component}} \&model)
+\begin{DoxyCompactList}\small\item\em Load the \doxylink{class_model}{Model} from the given filename and store the data in the model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_ab368619c853d01c9dcb2110ce5458133}{load\+Textures}} (\mbox{\hyperlink{class_model_component}{Model\+Component}} \&model)
+\begin{DoxyCompactList}\small\item\em Load the textures from the \doxylink{class_model}{Model}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_a392bc5eae1594f78444a82a4c053ef71}{load\+Obj\+And\+Textures}} (const std\+::string \&filename, \mbox{\hyperlink{class_model_component}{Model\+Component}} \&model)
+\begin{DoxyCompactList}\small\item\em Load the mesh and textures from the given filename and store the data in obj. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_ad2725d6417dc685dc10722477c21e165}{batching\+Obj}} (\mbox{\hyperlink{class_model_component}{Model\+Component}} \&model)
+\begin{DoxyCompactList}\small\item\em Apply batching to the model to regroup all faces using the same material for less draw calls. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_a74637e7d1db7ed50b43c2f77b9d2501c}{load\+Obj\+And\+Batching}} (const std\+::string \&filename, \mbox{\hyperlink{class_model_component}{Model\+Component}} \&model)
+\begin{DoxyCompactList}\small\item\em Load the obj and apply batching to the model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_abaf9eb3abb98454617ffe47c828d1add}{add\+New\+Model}} (const std\+::string \&filename, std\+::string \&file\+Direction, std\+::vector$<$ \mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*} $>$ \&models)
+\begin{DoxyCompactList}\small\item\em Add the new model to the models vector storing all the models to render. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_a13473b0c1f41828a70055555c753d135}{copy\+Model\+And\+Add}} (const \mbox{\hyperlink{class_model_component}{Model\+Component}} \&model, std\+::vector$<$ \mbox{\hyperlink{class_model_component}{Model\+Component}} $>$ \&models)
+\begin{DoxyCompactList}\small\item\em Copy the model and add it to the models vector storing all the models to render. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_a6ced2458f9b337e7fcbd3b4d5473e6c8}{setup\+Handles\+For\+Uniforms}} (GLuint \&program\+ID, GLuint \&Texture\+ID, GLuint \&Material\+Ambient\+Color\+ID, GLuint \&Material\+Diffuse\+Color\+ID, GLuint \&Material\+Specular\+Color\+ID, GLuint \&Matrix\+ID, GLuint \&View\+Matrix\+ID, GLuint \&Model\+Matrix\+ID)
+\begin{DoxyCompactList}\small\item\em Setup the handles for the uniforms of the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_a39d163d19b94ee2c4f8f6eb1bcc71be8}{setup\+Light\+Handles}} (GLuint \&program\+ID, GLuint \&Light\+ID, GLuint \&Light\+Color\+ID, GLuint \&Light\+Power\+ID)
+\begin{DoxyCompactList}\small\item\em Setup the handles for the light of the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_ae4ef641eaaf4961df909353dc3453c20}{draw\+Model}} (\mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*}model, GLuint Texture\+ID, GLuint Material\+Ambient\+Color\+ID, GLuint Material\+Diffuse\+Color\+ID, GLuint Material\+Specular\+Color\+ID)
+\begin{DoxyCompactList}\small\item\em Draw the model to the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_model_component_8cpp_a13c592924099e3130a1969dd038c1475}{send\+MVPData}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go, GLuint Vertex\+Array\+ID, GLuint Matrix\+ID, GLuint Model\+Matrix\+ID, GLuint View\+Matrix\+ID)
+\begin{DoxyCompactList}\small\item\em Send the MVP data to the shader program. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_model_component_8cpp_a18372412ad2fc3ce1e3240b3cf0efe78}\label{_model_component_8cpp_a18372412ad2fc3ce1e3240b3cf0efe78} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!STB\_IMAGE\_IMPLEMENTATION@{STB\_IMAGE\_IMPLEMENTATION}}
+\index{STB\_IMAGE\_IMPLEMENTATION@{STB\_IMAGE\_IMPLEMENTATION}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{STB\_IMAGE\_IMPLEMENTATION}{STB\_IMAGE\_IMPLEMENTATION}}
+{\footnotesize\ttfamily \#define STB\+\_\+\+IMAGE\+\_\+\+IMPLEMENTATION}
+
+\Hypertarget{_model_component_8cpp_af14fac7fbc250522a78849d58d5b0811}\label{_model_component_8cpp_af14fac7fbc250522a78849d58d5b0811} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!TINYOBJLOADER\_IMPLEMENTATION@{TINYOBJLOADER\_IMPLEMENTATION}}
+\index{TINYOBJLOADER\_IMPLEMENTATION@{TINYOBJLOADER\_IMPLEMENTATION}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{TINYOBJLOADER\_IMPLEMENTATION}{TINYOBJLOADER\_IMPLEMENTATION}}
+{\footnotesize\ttfamily \#define TINYOBJLOADER\+\_\+\+IMPLEMENTATION}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_model_component_8cpp_abaf9eb3abb98454617ffe47c828d1add}\label{_model_component_8cpp_abaf9eb3abb98454617ffe47c828d1add} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!addNewModel@{addNewModel}}
+\index{addNewModel@{addNewModel}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{addNewModel()}{addNewModel()}}
+{\footnotesize\ttfamily void add\+New\+Model (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{std\+::string \&}]{file\+Direction,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*} $>$ \&}]{models }\end{DoxyParamCaption})}
+
+
+
+Add the new model to the models vector storing all the models to render. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & name of the file \\
+\hline
+{\em \doxylink{class_model_component}{Model\+Component}} & reference to the models vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_ad2725d6417dc685dc10722477c21e165}\label{_model_component_8cpp_ad2725d6417dc685dc10722477c21e165} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!batchingObj@{batchingObj}}
+\index{batchingObj@{batchingObj}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{batchingObj()}{batchingObj()}}
+{\footnotesize\ttfamily void batching\+Obj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_component}{Model\+Component}} \&}]{model }\end{DoxyParamCaption})}
+
+
+
+Apply batching to the model to regroup all faces using the same material for less draw calls. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{class_model_component}{Model\+Component}} & reference to the model \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_a9cd4ac617fd5aeb0b1fa0a259fd4bc3d}\label{_model_component_8cpp_a9cd4ac617fd5aeb0b1fa0a259fd4bc3d} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!cleanup@{cleanup}}
+\index{cleanup@{cleanup}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{cleanup()}{cleanup()}}
+{\footnotesize\ttfamily void cleanup (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window,  }\item[{\mbox{\hyperlink{class_model_component}{Model\+Component}} \&}]{object }\end{DoxyParamCaption})}
+
+
+
+Delete and clean all the handles of our render program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em GLFWwindow\texorpdfstring{$\ast$}{*}} & window \\
+\hline
+{\em std\+::vector$<$\+Model\+Component$>$\&} & reference to the models \\
+\hline
+{\em GLuint\&} & program ID \\
+\hline
+{\em GLuint\&} & vertex array ID \\
+\hline
+{\em GLuint\&} & texture ID \\
+\hline
+{\em GLuint\&} & light ID \\
+\hline
+{\em GLuint\&} & reference to the material ambient color ID \\
+\hline
+{\em GLuint\&} & reference to the material diffuse color ID \\
+\hline
+{\em GLuint\&} & reference to the material specular color ID \\
+\hline
+{\em GLuint\&} & reference to the matrix ID \\
+\hline
+{\em GLuint\&} & reference to the view matrix ID \\
+\hline
+{\em GLuint\&} & reference to the model matrix ID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_a13473b0c1f41828a70055555c753d135}\label{_model_component_8cpp_a13473b0c1f41828a70055555c753d135} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!copyModelAndAdd@{copyModelAndAdd}}
+\index{copyModelAndAdd@{copyModelAndAdd}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{copyModelAndAdd()}{copyModelAndAdd()}}
+{\footnotesize\ttfamily void copy\+Model\+And\+Add (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_model_component}{Model\+Component}} \&}]{model,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_model_component}{Model\+Component}} $>$ \&}]{models }\end{DoxyParamCaption})}
+
+
+
+Copy the model and add it to the models vector storing all the models to render. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{class_model_component}{Model\+Component}} & reference to the model \\
+\hline
+{\em models} & reference to the models vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_a9f9b1e415eb80126ec987fcf9006d7f7}\label{_model_component_8cpp_a9f9b1e415eb80126ec987fcf9006d7f7} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!createVertexFromIndex@{createVertexFromIndex}}
+\index{createVertexFromIndex@{createVertexFromIndex}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{createVertexFromIndex()}{createVertexFromIndex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vertex}{Vertex}} create\+Vertex\+From\+Index (\begin{DoxyParamCaption}\item[{const tinyobj\+::attrib\+\_\+t \&}]{attrib,  }\item[{const tinyobj\+::index\+\_\+t \&}]{index }\end{DoxyParamCaption})}
+
+
+
+Create a \doxylink{class_vertex}{Vertex} from the given index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em attrib} & \\
+\hline
+{\em index} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_vertex}{Vertex} 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_ae4ef641eaaf4961df909353dc3453c20}\label{_model_component_8cpp_ae4ef641eaaf4961df909353dc3453c20} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!drawModel@{drawModel}}
+\index{drawModel@{drawModel}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{drawModel()}{drawModel()}}
+{\footnotesize\ttfamily void draw\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*}}]{model,  }\item[{GLuint}]{Texture\+ID,  }\item[{GLuint}]{Material\+Ambient\+Color\+ID,  }\item[{GLuint}]{Material\+Diffuse\+Color\+ID,  }\item[{GLuint}]{Material\+Specular\+Color\+ID }\end{DoxyParamCaption})}
+
+
+
+Draw the model to the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{class_model_component}{Model\+Component}} & reference to the model \\
+\hline
+{\em Texture\+ID} & reference to the texture ID \\
+\hline
+{\em Material\+Ambient\+Color\+ID} & reference to the material ambient color ID \\
+\hline
+{\em Material\+Diffuse\+Color\+ID} & reference to the material diffuse color ID \\
+\hline
+{\em Material\+Specular\+Color\+ID} & reference to the material specular color ID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_a07ee5167da859a90e4034449f6a61370}\label{_model_component_8cpp_a07ee5167da859a90e4034449f6a61370} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!finishProgram@{finishProgram}}
+\index{finishProgram@{finishProgram}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{finishProgram()}{finishProgram()}}
+{\footnotesize\ttfamily void finish\+Program (\begin{DoxyParamCaption}\item[{GLuint}]{program\+ID,  }\item[{GLuint}]{Vertex\+Array\+ID,  }\item[{GLuint \&}]{Texture\+ID,  }\item[{GLuint \&}]{Light\+ID,  }\item[{GLuint \&}]{Material\+Ambient\+Color\+ID,  }\item[{GLuint \&}]{Material\+Diffuse\+Color\+ID,  }\item[{GLuint \&}]{Material\+Specular\+Color\+ID,  }\item[{GLuint \&}]{Matrix\+ID,  }\item[{GLuint \&}]{View\+Matrix\+ID,  }\item[{GLuint \&}]{Model\+Matrix\+ID }\end{DoxyParamCaption})}
+
+
+
+Load the shaders from the given file paths. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & char\texorpdfstring{$\ast$}{*} vertex\+\_\+file\+\_\+path \\
+\hline
+{\em const} & char\texorpdfstring{$\ast$}{*} fragment\+\_\+file\+\_\+path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GLuint returns the program ID 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_a8f490ee67f22023cf637d93730514863}\label{_model_component_8cpp_a8f490ee67f22023cf637d93730514863} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!init@{init}}
+\index{init@{init}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void init (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}\&}]{window }\end{DoxyParamCaption})}
+
+
+
+Initialize the window and Open\+GL settings for the program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em GLFWwindow\texorpdfstring{$\ast$}{*}\&} & reference to the pointer of the window \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_a277b030212103f393b7322b736bdc38c}\label{_model_component_8cpp_a277b030212103f393b7322b736bdc38c} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!initializeProjectionMatrix@{initializeProjectionMatrix}}
+\index{initializeProjectionMatrix@{initializeProjectionMatrix}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{initializeProjectionMatrix()}{initializeProjectionMatrix()}}
+{\footnotesize\ttfamily glm\+::mat4 initialize\+Projection\+Matrix (\begin{DoxyParamCaption}\item[{float}]{\+\_\+fov,  }\item[{float}]{\+\_\+ratio\+Width,  }\item[{float}]{\+\_\+ratio\+Height,  }\item[{float}]{\+\_\+near,  }\item[{float}]{\+\_\+far }\end{DoxyParamCaption})}
+
+
+
+Initialize the projection matrix that corresponds to the camera space. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em float} & \+\_\+fov field of view \\
+\hline
+{\em float} & \+\_\+ratio\+Width ratio width \\
+\hline
+{\em float} & \+\_\+ratio\+Height ratio height \\
+\hline
+{\em float} & \+\_\+near near plane \\
+\hline
+{\em float} & \+\_\+far far plane \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+glm\+::mat4 returns the projection matrix 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_a6271f9c23852dede80128644794fbc4c}\label{_model_component_8cpp_a6271f9c23852dede80128644794fbc4c} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!initializeVertexArrayObject@{initializeVertexArrayObject}}
+\index{initializeVertexArrayObject@{initializeVertexArrayObject}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{initializeVertexArrayObject()}{initializeVertexArrayObject()}}
+{\footnotesize\ttfamily void initialize\+Vertex\+Array\+Object (\begin{DoxyParamCaption}\item[{GLuint \&}]{Vertex\+Array\+ID }\end{DoxyParamCaption})}
+
+
+
+Initialize and bind the vertex array object to the open\+GL context. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em GLuint\&} & reference to the vertex array object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_a6df1ab789bab24b33ec2b92faba0ac51}\label{_model_component_8cpp_a6df1ab789bab24b33ec2b92faba0ac51} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!initializeViewMatrix@{initializeViewMatrix}}
+\index{initializeViewMatrix@{initializeViewMatrix}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{initializeViewMatrix()}{initializeViewMatrix()}}
+{\footnotesize\ttfamily glm\+::mat4 initialize\+View\+Matrix (\begin{DoxyParamCaption}\item[{int}]{\+\_\+camera\+PositionX,  }\item[{int}]{\+\_\+camera\+PositionY,  }\item[{int}]{\+\_\+camera\+PositionZ,  }\item[{int}]{\+\_\+camera\+TargetX,  }\item[{int}]{\+\_\+camera\+TargetY,  }\item[{int}]{\+\_\+camera\+TargetZ,  }\item[{int}]{\+\_\+up\+VectorX,  }\item[{int}]{\+\_\+up\+VectorY,  }\item[{int}]{\+\_\+up\+VectorZ }\end{DoxyParamCaption})}
+
+
+
+Initialize the view matrix that corresponds to the camera position and where it is looking. 
+
+\begin{DoxyReturn}{Returns}
+glm\+::mat4 returns the view matrix 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_a6e31672d5229034125de7c14588fd963}\label{_model_component_8cpp_a6e31672d5229034125de7c14588fd963} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!initOpenGLSettings@{initOpenGLSettings}}
+\index{initOpenGLSettings@{initOpenGLSettings}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{initOpenGLSettings()}{initOpenGLSettings()}}
+{\footnotesize\ttfamily void init\+Open\+GLSettings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialize the Open\+GL settings and culling. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_a29b258a787e23258ca1e50c48aa9e925}\label{_model_component_8cpp_a29b258a787e23258ca1e50c48aa9e925} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!loadingModel@{loadingModel}}
+\index{loadingModel@{loadingModel}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{loadingModel()}{loadingModel()}}
+{\footnotesize\ttfamily void loading\+Model (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{\mbox{\hyperlink{class_model_component}{Model\+Component}} \&}]{model }\end{DoxyParamCaption})}
+
+
+
+Load the \doxylink{class_model}{Model} from the given filename and store the data in the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & name of the file \\
+\hline
+{\em \doxylink{class_model_component}{Model\+Component}} & reference to the model to store the data in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_a74637e7d1db7ed50b43c2f77b9d2501c}\label{_model_component_8cpp_a74637e7d1db7ed50b43c2f77b9d2501c} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!loadObjAndBatching@{loadObjAndBatching}}
+\index{loadObjAndBatching@{loadObjAndBatching}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{loadObjAndBatching()}{loadObjAndBatching()}}
+{\footnotesize\ttfamily void load\+Obj\+And\+Batching (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{\mbox{\hyperlink{class_model_component}{Model\+Component}} \&}]{model }\end{DoxyParamCaption})}
+
+
+
+Load the obj and apply batching to the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & name of the file \\
+\hline
+{\em \doxylink{class_model_component}{Model\+Component}} & reference to the model \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_a392bc5eae1594f78444a82a4c053ef71}\label{_model_component_8cpp_a392bc5eae1594f78444a82a4c053ef71} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!loadObjAndTextures@{loadObjAndTextures}}
+\index{loadObjAndTextures@{loadObjAndTextures}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{loadObjAndTextures()}{loadObjAndTextures()}}
+{\footnotesize\ttfamily void load\+Obj\+And\+Textures (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{\mbox{\hyperlink{class_model_component}{Model\+Component}} \&}]{model }\end{DoxyParamCaption})}
+
+
+
+Load the mesh and textures from the given filename and store the data in obj. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & name of the file \\
+\hline
+{\em \doxylink{class_model_component}{Model\+Component}} & reference to the model \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_ada2dfa2a2473899e0ec39b3ee9695cf1}\label{_model_component_8cpp_ada2dfa2a2473899e0ec39b3ee9695cf1} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!loadTexture@{loadTexture}}
+\index{loadTexture@{loadTexture}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{loadTexture()}{loadTexture()}}
+{\footnotesize\ttfamily GLuint load\+Texture (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Load the texture from the given filename. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & name of the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GLuint returns the texture ID 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_ab368619c853d01c9dcb2110ce5458133}\label{_model_component_8cpp_ab368619c853d01c9dcb2110ce5458133} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!loadTextures@{loadTextures}}
+\index{loadTextures@{loadTextures}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{loadTextures()}{loadTextures()}}
+{\footnotesize\ttfamily void load\+Textures (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_component}{Model\+Component}} \&}]{model }\end{DoxyParamCaption})}
+
+
+
+Load the textures from the \doxylink{class_model}{Model}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{class_model_component}{Model\+Component}} & reference to the \doxylink{class_model}{Model} to store the data in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_a13c592924099e3130a1969dd038c1475}\label{_model_component_8cpp_a13c592924099e3130a1969dd038c1475} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!sendMVPData@{sendMVPData}}
+\index{sendMVPData@{sendMVPData}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{sendMVPData()}{sendMVPData()}}
+{\footnotesize\ttfamily void send\+MVPData (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go,  }\item[{GLuint}]{Vertex\+Array\+ID,  }\item[{GLuint}]{Matrix\+ID,  }\item[{GLuint}]{Model\+Matrix\+ID,  }\item[{GLuint}]{View\+Matrix\+ID }\end{DoxyParamCaption})}
+
+
+
+Send the MVP data to the shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{class_model_component}{Model\+Component}} & reference to the model \\
+\hline
+{\em angle} & angle to rotate \\
+\hline
+{\em axis} & axis to rotate \\
+\hline
+{\em Vertex\+Array\+ID} & reference to the vertex array ID \\
+\hline
+{\em Matrix\+ID} & reference to the matrix ID \\
+\hline
+{\em Model\+Matrix\+ID} & reference to the model matrix ID \\
+\hline
+{\em View\+Matrix\+ID} & reference to the view matrix ID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_ae97479b18d4aa965bfede8e68520f9bd}\label{_model_component_8cpp_ae97479b18d4aa965bfede8e68520f9bd} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!setupBuffers@{setupBuffers}}
+\index{setupBuffers@{setupBuffers}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{setupBuffers()}{setupBuffers()}}
+{\footnotesize\ttfamily void setup\+Buffers (\begin{DoxyParamCaption}\item[{GLuint \&}]{vertexbuffer,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{class_vertex}{Vertex}} $>$ \&}]{vertices,  }\item[{GLuint \&}]{indexbuffer,  }\item[{const std\+::vector$<$ unsigned int $>$ \&}]{indices }\end{DoxyParamCaption})}
+
+
+
+Setup the buffers for the \doxylink{class_model}{Model} to be drawn. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em GLuint\&} & reference to the vertex buffer \\
+\hline
+{\em std\+::vector$<$\+Vertex$>$} & vertices \\
+\hline
+{\em GLuint\&} & reference to the index buffer \\
+\hline
+{\em std\+::vector$<$unsigned} & int\texorpdfstring{$>$}{>} indices \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_a6ced2458f9b337e7fcbd3b4d5473e6c8}\label{_model_component_8cpp_a6ced2458f9b337e7fcbd3b4d5473e6c8} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!setupHandlesForUniforms@{setupHandlesForUniforms}}
+\index{setupHandlesForUniforms@{setupHandlesForUniforms}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{setupHandlesForUniforms()}{setupHandlesForUniforms()}}
+{\footnotesize\ttfamily void setup\+Handles\+For\+Uniforms (\begin{DoxyParamCaption}\item[{GLuint \&}]{program\+ID,  }\item[{GLuint \&}]{Texture\+ID,  }\item[{GLuint \&}]{Material\+Ambient\+Color\+ID,  }\item[{GLuint \&}]{Material\+Diffuse\+Color\+ID,  }\item[{GLuint \&}]{Material\+Specular\+Color\+ID,  }\item[{GLuint \&}]{Matrix\+ID,  }\item[{GLuint \&}]{View\+Matrix\+ID,  }\item[{GLuint \&}]{Model\+Matrix\+ID }\end{DoxyParamCaption})}
+
+
+
+Setup the handles for the uniforms of the shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em program\+ID} & reference to the program ID \\
+\hline
+{\em Texture\+ID} & reference to the texture ID \\
+\hline
+{\em Material\+Ambient\+Color\+ID} & reference to the material ambient color ID \\
+\hline
+{\em Material\+Diffuse\+Color\+ID} & reference to the material diffuse color ID \\
+\hline
+{\em Material\+Specular\+Color\+ID} & reference to the material specular color ID \\
+\hline
+{\em Matrix\+ID} & reference to the matrix ID \\
+\hline
+{\em View\+Matrix\+ID} & reference to the view matrix ID \\
+\hline
+{\em Model\+Matrix\+ID} & reference to the model matrix ID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_a0d19ebac03a8c658fecf491ec7d7fefb}\label{_model_component_8cpp_a0d19ebac03a8c658fecf491ec7d7fefb} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!setupInput@{setupInput}}
+\index{setupInput@{setupInput}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{setupInput()}{setupInput()}}
+{\footnotesize\ttfamily void setup\+Input (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
+
+
+
+Setup the user inputs for the window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em GLFWwindow\texorpdfstring{$\ast$}{*}} & window \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{_model_component_8cpp_a39d163d19b94ee2c4f8f6eb1bcc71be8}\label{_model_component_8cpp_a39d163d19b94ee2c4f8f6eb1bcc71be8} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!setupLightHandles@{setupLightHandles}}
+\index{setupLightHandles@{setupLightHandles}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{setupLightHandles()}{setupLightHandles()}}
+{\footnotesize\ttfamily void setup\+Light\+Handles (\begin{DoxyParamCaption}\item[{GLuint \&}]{program\+ID,  }\item[{GLuint \&}]{Light\+ID,  }\item[{GLuint \&}]{Light\+Color\+ID,  }\item[{GLuint \&}]{Light\+Power\+ID }\end{DoxyParamCaption})}
+
+
+
+Setup the handles for the light of the shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em program\+ID} & reference to the program ID \\
+\hline
+{\em Light\+ID} & reference to the light ID \\
+\hline
+{\em Light\+Color\+ID} & reference to the light color ID \\
+\hline
+{\em Light\+Power\+ID} & reference to the light power ID \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_model_component_8cpp_ac3e4d4cfe635daf76270ee3492fe30e4}\label{_model_component_8cpp_ac3e4d4cfe635daf76270ee3492fe30e4} 
+\index{ModelComponent.cpp@{ModelComponent.cpp}!setupVertexAttributes@{setupVertexAttributes}}
+\index{setupVertexAttributes@{setupVertexAttributes}!ModelComponent.cpp@{ModelComponent.cpp}}
+\doxysubsubsection{\texorpdfstring{setupVertexAttributes()}{setupVertexAttributes()}}
+{\footnotesize\ttfamily void setup\+Vertex\+Attributes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Setup the vertex attributes of the \doxylink{class_model}{Model} for the shader program to use. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

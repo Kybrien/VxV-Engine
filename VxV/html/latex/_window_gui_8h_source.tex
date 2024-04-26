@@ -1,0 +1,658 @@
+\doxysection{Window\+Gui.\+h}
+\hypertarget{_window_gui_8h_source}{}\label{_window_gui_8h_source}\mbox{\hyperlink{_window_gui_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{imfilebrowser_8h}{imfilebrowser.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_game_object_8h}{GameObject.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_console_recup_8h}{ConsoleRecup.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_scene_8h}{Scene.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_engine_8hpp}{Engine.hpp}}"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ enabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00013\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_im_gui_1_1_file_browser}{ImGui::FileBrowser}}\ fileDialog;}
+\DoxyCodeLine{00014\ \mbox{\hyperlink{class_game_object}{GameObject}}*\ \mbox{\hyperlink{_window_gui_8h_ab87030731ac50abe8021e0274d11c356}{selectedGameObject}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \mbox{\hyperlink{class_engine}{Engine}}*\ \mbox{\hyperlink{_window_gui_8h_a04ee0d142e98779501ddb0ea5f687ac7}{engine}}\ =\ \mbox{\hyperlink{class_engine_a2146785b1df88f59838cab30aabc8d37}{Engine::GetInstance}}();}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ ShowExampleMenuFile()}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::MenuItem(\textcolor{stringliteral}{"{}New"{}}))\ \{\}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::MenuItem(\textcolor{stringliteral}{"{}Open"{}},\ \textcolor{stringliteral}{"{}Ctrl+O"{}}))\ \{\}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginMenu(\textcolor{stringliteral}{"{}Open\ Recent"{}}))}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ ImGui::MenuItem(\textcolor{stringliteral}{"{}test"{}});}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ ImGui::MenuItem(\textcolor{stringliteral}{"{}test2"{}});}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginMenu(\textcolor{stringliteral}{"{}More.."{}}))}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::MenuItem(\textcolor{stringliteral}{"{}test3"{}});}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::MenuItem(\textcolor{stringliteral}{"{}test4"{}});}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginMenu(\textcolor{stringliteral}{"{}Recurse.."{}}))}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ShowExampleMenuFile();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::EndMenu();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::EndMenu();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ ImGui::EndMenu();}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::MenuItem(\textcolor{stringliteral}{"{}Save"{}},\ \textcolor{stringliteral}{"{}Ctrl+S"{}}))\ \{\}}
+\DoxyCodeLine{00042\ \ \ \ \ ImGui::Separator();}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginMenu(\textcolor{stringliteral}{"{}Options"{}}))}
+\DoxyCodeLine{00044\ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ ImGui::MenuItem(\textcolor{stringliteral}{"{}show\ fps\ \&\ mouse\ position,"{}},\ \textcolor{stringliteral}{"{}"{}},\ \&enabled);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ f\ =\ 0.5f;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ n\ =\ 0;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ ImGui::SliderFloat(\textcolor{stringliteral}{"{}Value\ slider"{}},\ \&f,\ 0.0f,\ 1.0f);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ ImGui::InputInt(\textcolor{stringliteral}{"{}value\ Input"{}},\ \&n,\ 1);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ ImGui::Combo(\textcolor{stringliteral}{"{}Choice"{}},\ \&n,\ \textcolor{stringliteral}{"{}Yes\(\backslash\)0No\(\backslash\)0Maybe\(\backslash\)0\(\backslash\)0"{}});}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ ImGui::EndMenu();}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ Here\ we\ demonstrate\ appending\ again\ to\ the\ "{}Options"{}\ menu\ (which\ we\ already\ created\ above)}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ Of\ course\ in\ this\ demo\ it\ is\ a\ little\ bit\ silly\ that\ this\ function\ calls\ BeginMenu("{}Options"{})\ twice.}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ In\ a\ real\ code-\/base\ using\ it\ would\ make\ senses\ to\ use\ this\ feature\ from\ very\ different\ code\ locations.}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginMenu(\textcolor{stringliteral}{"{}Options"{}}))\ \textcolor{comment}{//\ <-\/-\/\ Append!}}
+\DoxyCodeLine{00058\ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ b\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ ImGui::Checkbox(\textcolor{stringliteral}{"{}Checkbox\ option"{}},\ \&b);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ ImGui::EndMenu();}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ ImGui::Separator();}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::MenuItem(\textcolor{stringliteral}{"{}Quit"{}},\ \textcolor{stringliteral}{"{}Alt+F4"{}}))\ \{\ exit(0);\ \}}
+\DoxyCodeLine{00066\ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ MainMenuBar()}
+\DoxyCodeLine{00069\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginMainMenuBar())}
+\DoxyCodeLine{00071\ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginMenu(\textcolor{stringliteral}{"{}File"{}}))}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ ShowExampleMenuFile();}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::EndMenu();}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginMenu(\textcolor{stringliteral}{"{}Editor"{}}))}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::MenuItem(\textcolor{stringliteral}{"{}Undo"{}},\ \textcolor{stringliteral}{"{}CTRL+Z"{}}))\ \{\}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::MenuItem(\textcolor{stringliteral}{"{}Redo"{}},\ \textcolor{stringliteral}{"{}CTRL+Y"{}},\ \textcolor{keyword}{false},\ \textcolor{keyword}{false}))\ \{\}\ \textcolor{comment}{//\ Disabled\ item}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Separator();}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::MenuItem(\textcolor{stringliteral}{"{}Cut"{}},\ \textcolor{stringliteral}{"{}CTRL+X"{}}))\ \{\}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::MenuItem(\textcolor{stringliteral}{"{}Copy"{}},\ \textcolor{stringliteral}{"{}CTRL+C"{}}))\ \{\}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::MenuItem(\textcolor{stringliteral}{"{}Paste"{}},\ \textcolor{stringliteral}{"{}CTRL+V"{}}))\ \{\}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::EndMenu();}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginMenu(\textcolor{stringliteral}{"{}Scene"{}}))}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::EndMenu();}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginMenu(\textcolor{stringliteral}{"{}Settings"{}}))}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::EndMenu();}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginMenu(\textcolor{stringliteral}{"{}Help"{}}))}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginMenu(\textcolor{stringliteral}{"{}Controls"{}}))}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Affichez\ le\ texte\ d'aide}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Utilisez\ ZQSD\ et\ EA\ pour\ deplacer\ la\ cam."{}});}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Utilisez\ Shift\ pour\ deplacer\ plus\ vite"{}});}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::EndMenu();}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginMenu(\textcolor{stringliteral}{"{}About"{}}))}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Affichez\ le\ texte\ d'information}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}This\ engine\ was\ created\ by:"{}});}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}\ VxV\ Group"{}});}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::EndMenu();}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::EndMenu();}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ ImGui::EndMainMenuBar();}
+\DoxyCodeLine{00120\ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ ShowInfo()\ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ Cr?ez\ une\ nouvelle\ fen?tre\ ImGui}}
+\DoxyCodeLine{00125\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Informations"{}},\ \textcolor{keyword}{nullptr},\ ImGuiWindowFlags\_NoDecoration\ |\ ImGuiWindowFlags\_AlwaysAutoResize\ |\ ImGuiWindowFlags\_NoSavedSettings\ |\ ImGuiWindowFlags\_NoFocusOnAppearing\ |\ ImGuiWindowFlags\_NoNav);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{comment}{//\ Obtenez\ le\ nombre\ de\ FPS}}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{float}\ fps\ =\ ImGui::GetIO().Framerate;}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{//\ Affichez\ le\ nombre\ de\ FPS}}
+\DoxyCodeLine{00131\ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}FPS:\ \%.1f"{}},\ fps);}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{comment}{//\ Obtenez\ la\ position\ de\ la\ souris}}
+\DoxyCodeLine{00134\ \ \ \ \ ImVec2\ mousePos\ =\ ImGui::GetIO().MousePos;}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//\ Affichez\ la\ position\ de\ la\ souris}}
+\DoxyCodeLine{00137\ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Position\ de\ la\ souris:\ (\%.1f,\ \%.1f)"{}},\ mousePos.x,\ mousePos.y);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//\ Terminez\ la\ fen?tre}}
+\DoxyCodeLine{00140\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00141\ \}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_window_gui_8h_a2acce5670ce1cd9819520eb891ead6d1}{ShowError}}(\textcolor{keyword}{const}\ std::string\&\ message)}
+\DoxyCodeLine{00144\ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{comment}{//\ Cr?ez\ une\ nouvelle\ fen?tre\ ImGui}}
+\DoxyCodeLine{00146\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Erreur"{}},\ \textcolor{keyword}{nullptr},\ ImGuiWindowFlags\_NoDecoration\ |\ ImGuiWindowFlags\_AlwaysAutoResize\ |\ ImGuiWindowFlags\_NoSavedSettings\ |\ ImGuiWindowFlags\_NoFocusOnAppearing\ |\ ImGuiWindowFlags\_NoNav);}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{comment}{//\ Affichez\ le\ message\ d'erreur}}
+\DoxyCodeLine{00149\ \ \ \ \ ImGui::Text(message.c\_str());}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{comment}{//\ Terminez\ la\ fen?tre}}
+\DoxyCodeLine{00152\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00153\ \}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_window_gui_8h_a58e9a469f33652bc45c40e3b414da7e7}{ShowSuccess}}(\textcolor{keyword}{const}\ std::string\&\ message)}
+\DoxyCodeLine{00156\ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{comment}{//\ Cr?ez\ une\ nouvelle\ fen?tre\ ImGui}}
+\DoxyCodeLine{00158\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Succ?s"{}},\ \textcolor{keyword}{nullptr},\ ImGuiWindowFlags\_NoDecoration\ |\ ImGuiWindowFlags\_AlwaysAutoResize\ |\ ImGuiWindowFlags\_NoSavedSettings\ |\ ImGuiWindowFlags\_NoFocusOnAppearing\ |\ ImGuiWindowFlags\_NoNav);}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{comment}{//\ Affichez\ le\ message\ de\ succ?s}}
+\DoxyCodeLine{00161\ \ \ \ \ ImGui::Text(message.c\_str());}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{comment}{//\ Terminez\ la\ fen?tre}}
+\DoxyCodeLine{00164\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00165\ \}}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_window_gui_8h_a26c71969818ccfa31cb5092a7da254b7}{ShowWarning}}(\textcolor{keyword}{const}\ std::string\&\ message)}
+\DoxyCodeLine{00168\ \{}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{comment}{//\ Cr?ez\ une\ nouvelle\ fen?tre\ ImGui}}
+\DoxyCodeLine{00170\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Avertissement"{}},\ \textcolor{keyword}{nullptr},\ ImGuiWindowFlags\_NoDecoration\ |\ ImGuiWindowFlags\_AlwaysAutoResize\ |\ ImGuiWindowFlags\_NoSavedSettings\ |\ ImGuiWindowFlags\_NoFocusOnAppearing\ |\ ImGuiWindowFlags\_NoNav);}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{comment}{//\ Affichez\ le\ message\ d'avertissement}}
+\DoxyCodeLine{00173\ \ \ \ \ ImGui::Text(message.c\_str());}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{comment}{//\ Terminez\ la\ fen?tre}}
+\DoxyCodeLine{00176\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00177\ \}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_window_gui_8h_a770b69888f00605b8d2eb6892e288eea}{ShowConfirmation}}(\textcolor{keyword}{const}\ std::string\&\ message,\ \textcolor{keywordtype}{bool}\&\ show)}
+\DoxyCodeLine{00180\ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{comment}{//\ Cr?ez\ une\ nouvelle\ fen?tre\ ImGui}}
+\DoxyCodeLine{00182\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Confirmation"{}},\ \&show,\ ImGuiWindowFlags\_NoDecoration\ |\ ImGuiWindowFlags\_AlwaysAutoResize\ |\ ImGuiWindowFlags\_NoSavedSettings\ |\ ImGuiWindowFlags\_NoFocusOnAppearing\ |\ ImGuiWindowFlags\_NoNav);}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{comment}{//\ Affichez\ le\ message\ de\ confirmation}}
+\DoxyCodeLine{00185\ \ \ \ \ ImGui::Text(message.c\_str());}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ confirmer}}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Confirmer"{}}))}
+\DoxyCodeLine{00189\ \ \ \ \ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00191\ \ \ \ \ \}}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ annuler}}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Annuler"{}}))}
+\DoxyCodeLine{00195\ \ \ \ \ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00197\ \ \ \ \ \}}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{comment}{//\ Terminez\ la\ fen?tre}}
+\DoxyCodeLine{00200\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00201\ \}}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_window_gui_8h_a7677130ff6b746c4318d307a8f1f0f44}{ShowInputInt}}(\textcolor{keyword}{const}\ std::string\&\ message,\ \textcolor{keywordtype}{int}\&\ input,\ \textcolor{keywordtype}{bool}\&\ show)}
+\DoxyCodeLine{00204\ \{}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{comment}{//\ Cr?ez\ une\ nouvelle\ fen?tre\ ImGui}}
+\DoxyCodeLine{00206\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Entr?e"{}},\ \&show,\ ImGuiWindowFlags\_NoDecoration\ |\ ImGuiWindowFlags\_AlwaysAutoResize\ |\ ImGuiWindowFlags\_NoSavedSettings\ |\ ImGuiWindowFlags\_NoFocusOnAppearing\ |\ ImGuiWindowFlags\_NoNav);}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{comment}{//\ Affichez\ le\ message\ d'entr?e}}
+\DoxyCodeLine{00209\ \ \ \ \ ImGui::Text(message.c\_str());}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ champ\ de\ texte\ pour\ l'entr?e}}
+\DoxyCodeLine{00212\ \ \ \ \ ImGui::InputInt(\textcolor{stringliteral}{"{}"{}},\ \&input);}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ confirmer}}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Confirmer"{}}))}
+\DoxyCodeLine{00216\ \ \ \ \ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00218\ \ \ \ \ \}}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ annuler}}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Annuler"{}}))}
+\DoxyCodeLine{00222\ \ \ \ \ \{}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00224\ \ \ \ \ \}}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{comment}{//\ Terminez\ la\ fen?tre}}
+\DoxyCodeLine{00227\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00228\ \}}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_window_gui_8h_acfdb76fe70c90eeb1497f15bc85cfb78}{ShowInputFloat}}(\textcolor{keyword}{const}\ std::string\&\ message,\ \textcolor{keywordtype}{float}\&\ input,\ \textcolor{keywordtype}{bool}\&\ show)}
+\DoxyCodeLine{00231\ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{comment}{//\ Cr?ez\ une\ nouvelle\ fen?tre\ ImGui}}
+\DoxyCodeLine{00233\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Entr?e"{}},\ \&show,\ ImGuiWindowFlags\_NoDecoration\ |\ ImGuiWindowFlags\_AlwaysAutoResize\ |\ ImGuiWindowFlags\_NoSavedSettings\ |\ ImGuiWindowFlags\_NoFocusOnAppearing\ |\ ImGuiWindowFlags\_NoNav);}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{comment}{//\ Affichez\ le\ message\ d'entr?e}}
+\DoxyCodeLine{00236\ \ \ \ \ ImGui::Text(message.c\_str());}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ champ\ de\ texte\ pour\ l'entr?e}}
+\DoxyCodeLine{00239\ \ \ \ \ ImGui::InputFloat(\textcolor{stringliteral}{"{}"{}},\ \&input);}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ confirmer}}
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Confirmer"{}}))}
+\DoxyCodeLine{00243\ \ \ \ \ \{}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00245\ \ \ \ \ \}}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ annuler}}
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Annuler"{}}))}
+\DoxyCodeLine{00249\ \ \ \ \ \{}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00251\ \ \ \ \ \}}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{comment}{//\ Terminez\ la\ fen?tre}}
+\DoxyCodeLine{00254\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00255\ \}}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_window_gui_8h_a34aa077753ad501f9ea588e20c17930d}{ShowInputDouble}}(\textcolor{keyword}{const}\ std::string\&\ message,\ \textcolor{keywordtype}{double}\&\ input,\ \textcolor{keywordtype}{bool}\&\ show)}
+\DoxyCodeLine{00258\ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{comment}{//\ Cr?ez\ une\ nouvelle\ fen?tre\ ImGui}}
+\DoxyCodeLine{00260\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Entr?e"{}},\ \&show,\ ImGuiWindowFlags\_NoDecoration\ |\ ImGuiWindowFlags\_AlwaysAutoResize\ |\ ImGuiWindowFlags\_NoSavedSettings\ |\ ImGuiWindowFlags\_NoFocusOnAppearing\ |\ ImGuiWindowFlags\_NoNav);}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{comment}{//\ Affichez\ le\ message\ d'entr?e}}
+\DoxyCodeLine{00263\ \ \ \ \ ImGui::Text(message.c\_str());}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ champ\ de\ texte\ pour\ l'entr?e}}
+\DoxyCodeLine{00266\ \ \ \ \ ImGui::InputDouble(\textcolor{stringliteral}{"{}"{}},\ \&input);}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ confirmer}}
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Confirmer"{}}))}
+\DoxyCodeLine{00270\ \ \ \ \ \{}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00272\ \ \ \ \ \}}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ annuler}}
+\DoxyCodeLine{00275\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Annuler"{}}))}
+\DoxyCodeLine{00276\ \ \ \ \ \{}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00278\ \ \ \ \ \}}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \ \ \ \ \textcolor{comment}{//\ Terminez\ la\ fen?tre}}
+\DoxyCodeLine{00281\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00282\ \}}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00284\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_window_gui_8h_ac2e731380d97b488d74f7b8158021eeb}{ShowInputVec2}}(\textcolor{keyword}{const}\ std::string\&\ message,\ glm::vec2\&\ input,\ \textcolor{keywordtype}{bool}\&\ show)}
+\DoxyCodeLine{00285\ \{}
+\DoxyCodeLine{00286\ \ \ \ \ \textcolor{comment}{//\ Cr?ez\ une\ nouvelle\ fen?tre\ ImGui}}
+\DoxyCodeLine{00287\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Entr?e"{}},\ \&show,\ ImGuiWindowFlags\_NoDecoration\ |\ ImGuiWindowFlags\_AlwaysAutoResize\ |\ ImGuiWindowFlags\_NoSavedSettings\ |\ ImGuiWindowFlags\_NoFocusOnAppearing\ |\ ImGuiWindowFlags\_NoNav);}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00289\ \ \ \ \ \textcolor{comment}{//\ Affichez\ le\ message\ d'entr?e}}
+\DoxyCodeLine{00290\ \ \ \ \ ImGui::Text(message.c\_str());}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ champ\ de\ texte\ pour\ l'entr?e}}
+\DoxyCodeLine{00293\ \ \ \ \ ImGui::InputFloat2(\textcolor{stringliteral}{"{}"{}},\ \&input.x);}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00295\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ confirmer}}
+\DoxyCodeLine{00296\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Confirmer"{}}))}
+\DoxyCodeLine{00297\ \ \ \ \ \{}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00299\ \ \ \ \ \}}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00301\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ annuler}}
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Annuler"{}}))}
+\DoxyCodeLine{00303\ \ \ \ \ \{}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00305\ \ \ \ \ \}}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{comment}{//\ Terminez\ la\ fen?tre}}
+\DoxyCodeLine{00308\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00309\ \}}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00311\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_window_gui_8h_a3a781f2df072142979c392411d28904a}{ShowInputVec3}}(\textcolor{keyword}{const}\ std::string\&\ message,\ glm::vec3\&\ input,\ \textcolor{keywordtype}{bool}\&\ show)}
+\DoxyCodeLine{00312\ \{}
+\DoxyCodeLine{00313\ \ \ \ \ \textcolor{comment}{//\ Cr?ez\ une\ nouvelle\ fen?tre\ ImGui}}
+\DoxyCodeLine{00314\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Entr?e"{}},\ \&show,\ ImGuiWindowFlags\_NoDecoration\ |\ ImGuiWindowFlags\_AlwaysAutoResize\ |\ ImGuiWindowFlags\_NoSavedSettings\ |\ ImGuiWindowFlags\_NoFocusOnAppearing\ |\ ImGuiWindowFlags\_NoNav);}
+\DoxyCodeLine{00315\ }
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{comment}{//\ Affichez\ le\ message\ d'entr?e}}
+\DoxyCodeLine{00317\ \ \ \ \ ImGui::Text(message.c\_str());}
+\DoxyCodeLine{00318\ }
+\DoxyCodeLine{00319\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ champ\ de\ texte\ pour\ l'entr?e}}
+\DoxyCodeLine{00320\ \ \ \ \ ImGui::InputFloat3(\textcolor{stringliteral}{"{}"{}},\ \&input.x);}
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ confirmer}}
+\DoxyCodeLine{00323\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Confirmer"{}}))}
+\DoxyCodeLine{00324\ \ \ \ \ \{}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00326\ \ \ \ \ \}}
+\DoxyCodeLine{00327\ }
+\DoxyCodeLine{00328\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ annuler}}
+\DoxyCodeLine{00329\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Annuler"{}}))}
+\DoxyCodeLine{00330\ \ \ \ \ \{}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00332\ \ \ \ \ \}}
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00334\ \ \ \ \ \textcolor{comment}{//\ Terminez\ la\ fen?tre}}
+\DoxyCodeLine{00335\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00336\ \}}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00338\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_window_gui_8h_a0eeb89b40728642a59ac2480ea9db1d0}{ShowInputVec4}}(\textcolor{keyword}{const}\ std::string\&\ message,\ glm::vec4\&\ input,\ \textcolor{keywordtype}{bool}\&\ show)}
+\DoxyCodeLine{00339\ \{}
+\DoxyCodeLine{00340\ \ \ \ \ \textcolor{comment}{//\ Cr?ez\ une\ nouvelle\ fen?tre\ ImGui}}
+\DoxyCodeLine{00341\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Entr?e"{}},\ \&show,\ ImGuiWindowFlags\_NoDecoration\ |\ ImGuiWindowFlags\_AlwaysAutoResize\ |\ ImGuiWindowFlags\_NoSavedSettings\ |\ ImGuiWindowFlags\_NoFocusOnAppearing\ |\ ImGuiWindowFlags\_NoNav);}
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00343\ \ \ \ \ \textcolor{comment}{//\ Affichez\ le\ message\ d'entr?e}}
+\DoxyCodeLine{00344\ \ \ \ \ ImGui::Text(message.c\_str());}
+\DoxyCodeLine{00345\ }
+\DoxyCodeLine{00346\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ champ\ de\ texte\ pour\ l'entr?e}}
+\DoxyCodeLine{00347\ \ \ \ \ ImGui::InputFloat4(\textcolor{stringliteral}{"{}"{}},\ \&input.x);}
+\DoxyCodeLine{00348\ }
+\DoxyCodeLine{00349\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ confirmer}}
+\DoxyCodeLine{00350\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Confirmer"{}}))}
+\DoxyCodeLine{00351\ \ \ \ \ \{}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00353\ \ \ \ \ \}}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ annuler}}
+\DoxyCodeLine{00356\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Annuler"{}}))}
+\DoxyCodeLine{00357\ \ \ \ \ \{}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00359\ \ \ \ \ \}}
+\DoxyCodeLine{00360\ }
+\DoxyCodeLine{00361\ \ \ \ \ \textcolor{comment}{//\ Terminez\ la\ fen?tre}}
+\DoxyCodeLine{00362\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00363\ \}}
+\DoxyCodeLine{00364\ }
+\DoxyCodeLine{00365\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_window_gui_8h_ac1b1ed3362123d29b7e1be38e7052965}{ShowInputColor}}(\textcolor{keyword}{const}\ std::string\&\ message,\ glm::vec4\&\ input,\ \textcolor{keywordtype}{bool}\&\ show)}
+\DoxyCodeLine{00366\ \{}
+\DoxyCodeLine{00367\ \ \ \ \ \textcolor{comment}{//\ Cr?ez\ une\ nouvelle\ fen?tre\ ImGui}}
+\DoxyCodeLine{00368\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Entr?e"{}},\ \&show,\ ImGuiWindowFlags\_NoDecoration\ |\ ImGuiWindowFlags\_AlwaysAutoResize\ |\ ImGuiWindowFlags\_NoSavedSettings\ |\ ImGuiWindowFlags\_NoFocusOnAppearing\ |\ ImGuiWindowFlags\_NoNav);}
+\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00370\ \ \ \ \ \textcolor{comment}{//\ Affichez\ le\ message\ d'entr?e}}
+\DoxyCodeLine{00371\ \ \ \ \ ImGui::Text(message.c\_str());}
+\DoxyCodeLine{00372\ }
+\DoxyCodeLine{00373\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ champ\ de\ texte\ pour\ l'entr?e}}
+\DoxyCodeLine{00374\ \ \ \ \ ImGui::ColorEdit4(\textcolor{stringliteral}{"{}"{}},\ \&input.x);}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00376\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ confirmer}}
+\DoxyCodeLine{00377\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Confirmer"{}}))}
+\DoxyCodeLine{00378\ \ \ \ \ \{}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00380\ \ \ \ \ \}}
+\DoxyCodeLine{00381\ }
+\DoxyCodeLine{00382\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ annuler}}
+\DoxyCodeLine{00383\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Annuler"{}}))}
+\DoxyCodeLine{00384\ \ \ \ \ \{}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00386\ \ \ \ \ \}}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00388\ \ \ \ \ \textcolor{comment}{//\ Terminez\ la\ fen?tre}}
+\DoxyCodeLine{00389\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00390\ \}}
+\DoxyCodeLine{00391\ }
+\DoxyCodeLine{00392\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_window_gui_8h_af989d7d8874b3f1a34d25dec0f509c5e}{ShowInputBool}}(\textcolor{keyword}{const}\ std::string\&\ message,\ \textcolor{keywordtype}{bool}\&\ input,\ \textcolor{keywordtype}{bool}\&\ show)}
+\DoxyCodeLine{00393\ \{}
+\DoxyCodeLine{00394\ \ \ \ \ \textcolor{comment}{//\ Cr?ez\ une\ nouvelle\ fen?tre\ ImGui}}
+\DoxyCodeLine{00395\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Entr?e"{}},\ \&show,\ ImGuiWindowFlags\_NoDecoration\ |\ ImGuiWindowFlags\_AlwaysAutoResize\ |\ ImGuiWindowFlags\_NoSavedSettings\ |\ ImGuiWindowFlags\_NoFocusOnAppearing\ |\ ImGuiWindowFlags\_NoNav);}
+\DoxyCodeLine{00396\ }
+\DoxyCodeLine{00397\ \ \ \ \ \textcolor{comment}{//\ Affichez\ le\ message\ d'entr?e}}
+\DoxyCodeLine{00398\ \ \ \ \ ImGui::Text(message.c\_str());}
+\DoxyCodeLine{00399\ }
+\DoxyCodeLine{00400\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ champ\ de\ texte\ pour\ l'entr?e}}
+\DoxyCodeLine{00401\ \ \ \ \ ImGui::Checkbox(\textcolor{stringliteral}{"{}"{}},\ \&input);}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00403\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ confirmer}}
+\DoxyCodeLine{00404\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Confirmer"{}}))}
+\DoxyCodeLine{00405\ \ \ \ \ \{}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00407\ \ \ \ \ \}}
+\DoxyCodeLine{00408\ }
+\DoxyCodeLine{00409\ \ \ \ \ \textcolor{comment}{//\ Ajoutez\ un\ bouton\ pour\ annuler}}
+\DoxyCodeLine{00410\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Annuler"{}}))}
+\DoxyCodeLine{00411\ \ \ \ \ \{}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ show\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00413\ \ \ \ \ \}}
+\DoxyCodeLine{00414\ }
+\DoxyCodeLine{00415\ \ \ \ \ \textcolor{comment}{//\ Terminez\ la\ fen?tre}}
+\DoxyCodeLine{00416\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00417\ \}}
+\DoxyCodeLine{00418\ }
+\DoxyCodeLine{00419\ \mbox{\hyperlink{class_game_object}{GameObject}}*\ \mbox{\hyperlink{_window_gui_8h_a804e650ef4940c3e2dc9bae349ac4d96}{CreateGameObjectWithModel}}(\textcolor{keyword}{const}\ std::string\&\ modelName)\ \{}
+\DoxyCodeLine{00420\ \ \ \ \ \mbox{\hyperlink{class_manager}{Manager}}*\ manager\ =\ \mbox{\hyperlink{class_manager_abf52d7d532c05607cc23c687f23e6b67}{Manager::GetInstance}}();}
+\DoxyCodeLine{00421\ \ \ \ \ \mbox{\hyperlink{class_scene_manager}{SceneManager}}*\ sceneManager\ =\ manager-\/>\mbox{\hyperlink{class_manager_a2569efa6dd78f87cc0b64086043cc4ca}{GetManager}}<\mbox{\hyperlink{class_scene_manager}{SceneManager}}>();}
+\DoxyCodeLine{00422\ }
+\DoxyCodeLine{00423\ \ \ \ \ \mbox{\hyperlink{class_game_object}{GameObject}}*\ go\ =\ sceneManager-\/>\mbox{\hyperlink{class_scene_manager_a614f5f63a2224b6f960ca1db365a75e2}{gameObjectPool}}.CreateGoFromPool(modelName);}
+\DoxyCodeLine{00424\ }
+\DoxyCodeLine{00425\ \ \ \ \ \textcolor{keywordflow}{if}\ (go\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ go-\/>AddComponent<\mbox{\hyperlink{class_model}{Model}}>();}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_model}{Model}}*\ modelComponent\ =\ go-\/>GetComponent<\mbox{\hyperlink{class_model}{Model}}>();}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (modelComponent\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ modelComponent-\/>\mbox{\hyperlink{class_model_ac1d2b7fdde64308f8020d635785e9e11}{SetModel}}(modelName);}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Could\ not\ add\ Model\ component\ to\ GameObject"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00434\ \ \ \ \ \}}
+\DoxyCodeLine{00435\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Could\ not\ create\ GameObject"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00437\ \ \ \ \ \}}
+\DoxyCodeLine{00438\ }
+\DoxyCodeLine{00439\ \ \ \ \ \textcolor{keywordflow}{return}\ go;\ \textcolor{comment}{//\ This\ will\ return\ nullptr\ if\ GameObject\ creation\ failed}}
+\DoxyCodeLine{00440\ \}}
+\DoxyCodeLine{00441\ }
+\DoxyCodeLine{00442\ }
+\DoxyCodeLine{00443\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_window_gui_8h_a37a85750904ce5d456e33d46b6d6386a}{ShowAddGameObject}}()\ \{}
+\DoxyCodeLine{00444\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Begin(\textcolor{stringliteral}{"{}Create\ Game\ Object"{}}))}
+\DoxyCodeLine{00445\ \ \ \ \ \{}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}\ gameObjectName[128];}
+\DoxyCodeLine{00447\ }
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginTabBar(\textcolor{stringliteral}{"{}TabBar"{}}))}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginTabItem(\textcolor{stringliteral}{"{}Create"{}}))}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ open\ file\ dialog\ when\ user\ clicks\ this\ button}}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}open\ file\ obj"{}}))}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fileDialog.\mbox{\hyperlink{class_im_gui_1_1_file_browser_ae8633a28d7df38822ccca54cee2573af}{Open}}();}
+\DoxyCodeLine{00455\ }
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::EndTabItem();}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginTabItem(\textcolor{stringliteral}{"{}Prefab"{}}))}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Cube"{}}))}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_window_gui_8h_a804e650ef4940c3e2dc9bae349ac4d96}{CreateGameObjectWithModel}}(\textcolor{stringliteral}{"{}cube.obj"{}});}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Sphere"{}}))}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_window_gui_8h_a804e650ef4940c3e2dc9bae349ac4d96}{CreateGameObjectWithModel}}(\textcolor{stringliteral}{"{}sphere.obj"{}});}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00468\ }
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Capsule"{}}))}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_window_gui_8h_a804e650ef4940c3e2dc9bae349ac4d96}{CreateGameObjectWithModel}}(\textcolor{stringliteral}{"{}capsule.obj"{}});}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Plane"{}}))}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_window_gui_8h_a804e650ef4940c3e2dc9bae349ac4d96}{CreateGameObjectWithModel}}(\textcolor{stringliteral}{"{}plane.obj"{}});}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00477\ }
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Cylinder"{}}))}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_window_gui_8h_a804e650ef4940c3e2dc9bae349ac4d96}{CreateGameObjectWithModel}}(\textcolor{stringliteral}{"{}cylinder.obj"{}});}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Miku"{}}))}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_window_gui_8h_a804e650ef4940c3e2dc9bae349ac4d96}{CreateGameObjectWithModel}}(\textcolor{stringliteral}{"{}miku.obj"{}});}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00486\ }
+\DoxyCodeLine{00487\ }
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::EndTabItem();}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::EndTabBar();}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00492\ \ \ \ \ \}}
+\DoxyCodeLine{00493\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00494\ }
+\DoxyCodeLine{00495\ \ \ \ \ fileDialog.\mbox{\hyperlink{class_im_gui_1_1_file_browser_aed595837d6232e7ffc2e8756c25a7b62}{Display}}();}
+\DoxyCodeLine{00496\ }
+\DoxyCodeLine{00497\ \ \ \ \ \textcolor{keywordflow}{if}\ (fileDialog.\mbox{\hyperlink{class_im_gui_1_1_file_browser_acb9f41705fdf795848b217c689234f0d}{HasSelected}}())}
+\DoxyCodeLine{00498\ \ \ \ \ \{}
+\DoxyCodeLine{00499\ }
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Selected\ filename"{}}\ <<\ fileDialog.\mbox{\hyperlink{class_im_gui_1_1_file_browser_ae9f4542abc9d1bd31d2cd75275b3b0c4}{GetSelected}}().string()\ <<\ std::endl;}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_window_gui_8h_a804e650ef4940c3e2dc9bae349ac4d96}{CreateGameObjectWithModel}}(fileDialog.\mbox{\hyperlink{class_im_gui_1_1_file_browser_ae9f4542abc9d1bd31d2cd75275b3b0c4}{GetSelected}}().string());}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ fileDialog.\mbox{\hyperlink{class_im_gui_1_1_file_browser_aa81b5fda3569dd0aa056b4a276fe24a4}{ClearSelected}}();}
+\DoxyCodeLine{00503\ \ \ \ \ \}}
+\DoxyCodeLine{00504\ \ \ \ \ ImGui::Separator();}
+\DoxyCodeLine{00505\ \}}
+\DoxyCodeLine{00506\ }
+\DoxyCodeLine{00507\ }
+\DoxyCodeLine{00508\ }
+\DoxyCodeLine{00509\ }
+\DoxyCodeLine{00510\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_window_gui_8h_aa0339d0428276274dd624af04969a324}{ShowConsoleWindow}}()}
+\DoxyCodeLine{00511\ \{}
+\DoxyCodeLine{00512\ \ \ \ \ \textcolor{comment}{//\ Commencer\ une\ nouvelle\ fenêtre\ ImGui}}
+\DoxyCodeLine{00513\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Console"{}});}
+\DoxyCodeLine{00514\ }
+\DoxyCodeLine{00515\ \ \ \ \ \textcolor{comment}{//\ Parcourir\ la\ liste\ des\ messages\ de\ la\ console}}
+\DoxyCodeLine{00516\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ std::string\&\ message\ :\ \mbox{\hyperlink{_console_recup_8h_ae09c89827a7c3359785dbb443870961d}{consoleMessages}})}
+\DoxyCodeLine{00517\ \ \ \ \ \{}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Afficher\ le\ message}}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ ImGui::TextUnformatted(message.c\_str());}
+\DoxyCodeLine{00520\ \ \ \ \ \}}
+\DoxyCodeLine{00521\ }
+\DoxyCodeLine{00522\ \ \ \ \ \textcolor{comment}{//\ Terminer\ la\ fenêtre\ ImGui}}
+\DoxyCodeLine{00523\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00524\ \}}
+\DoxyCodeLine{00525\ }
+\DoxyCodeLine{00526\ }
+\DoxyCodeLine{00527\ }
+\DoxyCodeLine{00528\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_window_gui_8h_a843ba87d66bb42bb617d5c93c42022e4}{RenderToolbar}}()\ \{}
+\DoxyCodeLine{00529\ \ \ \ \ \textcolor{comment}{//\ Assuming\ toolbarHeight\ is\ set\ to\ your\ desired\ height\ for\ the\ toolbar}}
+\DoxyCodeLine{00530\ }
+\DoxyCodeLine{00531\ }
+\DoxyCodeLine{00532\ \ \ \ \ \textcolor{comment}{//\ We\ don't\ want\ the\ toolbar\ window\ to\ be\ moveable\ or\ have\ any\ framing}}
+\DoxyCodeLine{00533\ \ \ \ \ ImGuiWindowFlags\ window\_flags\ =\ ImGuiWindowFlags\_NoDecoration\ |\ ImGuiWindowFlags\_NoScrollWithMouse;}
+\DoxyCodeLine{00534\ }
+\DoxyCodeLine{00535\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}\#\#Toolbar"{}},\ \textcolor{keyword}{nullptr},\ window\_flags);}
+\DoxyCodeLine{00536\ }
+\DoxyCodeLine{00537\ \ \ \ \ \textcolor{comment}{//\ Left-\/aligned\ buttons}}
+\DoxyCodeLine{00538\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Play"{}}))\ \{}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Play"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_window_gui_8h_a04ee0d142e98779501ddb0ea5f687ac7}{engine}}-\/>\mbox{\hyperlink{class_engine_ac1f17171b8414b22df26afa3930d8ddf}{GetEngineState}}()-\/>\mbox{\hyperlink{class_engine_state_ade7c2e7483844dc24c057c3b13f017c5}{StartRunTime}}();}
+\DoxyCodeLine{00541\ \ \ \ \ \}}
+\DoxyCodeLine{00542\ \ \ \ \ ImGui::SameLine();}
+\DoxyCodeLine{00543\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Pause"{}}))\ \{}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_window_gui_8h_a04ee0d142e98779501ddb0ea5f687ac7}{engine}}-\/>\mbox{\hyperlink{class_engine_ac1f17171b8414b22df26afa3930d8ddf}{GetEngineState}}()-\/>\mbox{\hyperlink{class_engine_state_a829816938841a68620b8457835f9dd24}{PauseRunTime}}();}
+\DoxyCodeLine{00545\ \ \ \ \ \}}
+\DoxyCodeLine{00546\ \ \ \ \ ImGui::SameLine();}
+\DoxyCodeLine{00547\ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Stop"{}}))\ \{}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_window_gui_8h_a04ee0d142e98779501ddb0ea5f687ac7}{engine}}-\/>\mbox{\hyperlink{class_engine_ac1f17171b8414b22df26afa3930d8ddf}{GetEngineState}}()-\/>\mbox{\hyperlink{class_engine_state_a98c347c07c7a158c0ca3095d721eafc7}{ExitRunTime}}();}
+\DoxyCodeLine{00549\ \ \ \ \ \}}
+\DoxyCodeLine{00550\ }
+\DoxyCodeLine{00551\ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ size\ needed\ to\ center\ the\ next\ set\ of\ buttons}}
+\DoxyCodeLine{00552\ \ \ \ \ \textcolor{keywordtype}{float}\ availableSpace\ =\ ImGui::GetContentRegionAvail().x;}
+\DoxyCodeLine{00553\ \ \ \ \ \textcolor{keywordtype}{float}\ buttonSize\ =\ ImGui::CalcTextSize(\textcolor{stringliteral}{"{}Centered\ Button"{}}).x\ +\ ImGui::GetStyle().FramePadding.x\ *\ 2;}
+\DoxyCodeLine{00554\ \ \ \ \ \textcolor{comment}{//\ Spacing\ needed\ to\ center\ the\ buttons}}
+\DoxyCodeLine{00555\ \ \ \ \ \textcolor{keywordtype}{float}\ spacing\ =\ (availableSpace\ -\/\ buttonSize\ *\ 3)\ *\ 0.5f;}
+\DoxyCodeLine{00556\ \ \ \ \ \textcolor{keywordflow}{if}\ (spacing\ >\ 0)\ \{}
+\DoxyCodeLine{00557\ \ \ \ \ \ \ \ \ ImGui::SameLine(spacing);}
+\DoxyCodeLine{00558\ \ \ \ \ \}}
+\DoxyCodeLine{00559\ }
+\DoxyCodeLine{00560\ \ \ \ \ \textcolor{comment}{//\ Center-\/aligned\ buttons}}
+\DoxyCodeLine{00561\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 3;\ ++i)\ \{}
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ >\ 0)\ ImGui::SameLine();}
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Centered\ Button"{}}))\ \{}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Trigger\ action\ for\ this\ button}}
+\DoxyCodeLine{00565\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00566\ \ \ \ \ \}}
+\DoxyCodeLine{00567\ }
+\DoxyCodeLine{00568\ }
+\DoxyCodeLine{00569\ }
+\DoxyCodeLine{00570\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00571\ \}}
+\DoxyCodeLine{00572\ }
+\DoxyCodeLine{00573\ }
+\DoxyCodeLine{00574\ \textcolor{comment}{//\ Ajoutez\ un\ paramètre\ Scene\ à la\ fonction\ ShowHierarchy}}
+\DoxyCodeLine{00575\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ ShowHierarchy()}
+\DoxyCodeLine{00576\ \{}
+\DoxyCodeLine{00577\ \ \ \ \ \mbox{\hyperlink{class_scene_manager}{SceneManager}}*\ sceneManager\ =\ \mbox{\hyperlink{class_manager_abf52d7d532c05607cc23c687f23e6b67}{Manager::GetInstance}}()-\/>\mbox{\hyperlink{class_manager_a2569efa6dd78f87cc0b64086043cc4ca}{GetManager}}<\mbox{\hyperlink{class_scene_manager}{SceneManager}}>();}
+\DoxyCodeLine{00578\ \ \ \ \ \mbox{\hyperlink{class_scene}{Scene}}\&\ scene\ =\ *sceneManager-\/>\mbox{\hyperlink{class_scene_manager_aa12ac3807b8e59b815ec445c25fca5ae}{GetCurrentScene}}();}
+\DoxyCodeLine{00579\ }
+\DoxyCodeLine{00580\ \ \ \ \ \textcolor{comment}{//\ Utilisez\ la\ fonction\ GetAllGameObjects()\ pour\ obtenir\ tous\ les\ GameObjects}}
+\DoxyCodeLine{00581\ \ \ \ \ std::vector<GameObject*>\ allGameObjects\ =\ scene.\mbox{\hyperlink{class_scene_a8e7c528eaf26088daa91e19102182845}{GetAllGameObjects}}();}
+\DoxyCodeLine{00582\ \ \ \ \ \textcolor{comment}{//\ Dans\ votre\ boucle\ de\ rendu\ ImGui}}
+\DoxyCodeLine{00583\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Hierarchie\ de\ la\ scene"{}});}
+\DoxyCodeLine{00584\ \ \ \ \ \{}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Affichez\ une\ liste\ de\ tous\ les\ GameObjects}}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_game_object}{GameObject}}*\ gameobject\ :\ allGameObjects)}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ temp\ =\ gameobject-\/>name\ +\ \textcolor{stringliteral}{"{}\_"{}}\ +\ std::to\_string(gameobject-\/>id);}
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Selectable(temp.c\_str()))}
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ l'utilisateur\ clique\ sur\ un\ GameObject,\ stockez\ une\ référence\ à ce\ GameObject}}
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_window_gui_8h_ab87030731ac50abe8021e0274d11c356}{selectedGameObject}}\ =\ gameobject;}
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00595\ \ \ \ \ \}}
+\DoxyCodeLine{00596\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00597\ }
+\DoxyCodeLine{00598\ }
+\DoxyCodeLine{00599\ \ \ \ \ \textcolor{comment}{//\ Si\ un\ GameObject\ a\ été\ sélectionné, affichez\ ses\ informations\ dans\ une\ fenêtre\ ImGui}}
+\DoxyCodeLine{00600\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{_window_gui_8h_ab87030731ac50abe8021e0274d11c356}{selectedGameObject}}\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00601\ \ \ \ \ \{}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ std::string\ temp\ =\ \mbox{\hyperlink{_window_gui_8h_ab87030731ac50abe8021e0274d11c356}{selectedGameObject}}-\/>\mbox{\hyperlink{class_game_object_af542b33c8de269343e22c5629e6b66c0}{name}}\ +\ \textcolor{stringliteral}{"{}\_"{}}\ +\ std::to\_string(\mbox{\hyperlink{_window_gui_8h_ab87030731ac50abe8021e0274d11c356}{selectedGameObject}}-\/>\mbox{\hyperlink{class_game_object_a98291c60da12d9036e1ad24cfebcf6b3}{id}});}
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ selectedComponent\ =\ 0;}
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Inspector"{}});}
+\DoxyCodeLine{00605\ }
+\DoxyCodeLine{00606\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Affichez\ le\ nom\ du\ GameObject}}
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Nom:\ \%s"{}},\ temp.c\_str());}
+\DoxyCodeLine{00608\ \ \ \ \ \ \ \ \ ImGui::Separator();}
+\DoxyCodeLine{00609\ }
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Obtenez\ le\ Transform\ du\ GameObject}}
+\DoxyCodeLine{00611\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_transform}{Transform}}*\ transform\ =\ \mbox{\hyperlink{_window_gui_8h_ab87030731ac50abe8021e0274d11c356}{selectedGameObject}}-\/>\mbox{\hyperlink{class_game_object_a5ba3b458e6bee6ea5aedd5c8cdeabf18}{GetComponent}}<\mbox{\hyperlink{class_transform}{Transform}}>();}
+\DoxyCodeLine{00612\ }
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Créez\ des\ contrôles\ de\ glissement\ pour\ la\ position,\ la\ rotation\ et\ l'échelle}}
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{controls_8cpp_ab17456efa59b99dbb85317ee492274b6}{position}}[3]\ =\ \{\ transform-\/>\mbox{\hyperlink{class_transform_ab56d0806d3d2d67a0587c7ffebf0b2d0}{GetPosition}}().x,\ transform-\/>\mbox{\hyperlink{class_transform_ab56d0806d3d2d67a0587c7ffebf0b2d0}{GetPosition}}().y,\ transform-\/>\mbox{\hyperlink{class_transform_ab56d0806d3d2d67a0587c7ffebf0b2d0}{GetPosition}}().z\ \};}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ glm::vec3\ rotation\ =\ transform-\/>\mbox{\hyperlink{class_transform_a5af4d340711239a3517813e9122c6065}{GetRotation}}();}
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \ \ glm::vec3\ scale\ =\ transform-\/>\mbox{\hyperlink{class_transform_a28a37980813cba4e8bada11d5ee6d070}{GetScale}}();}
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ std::string\ name\ =\ \mbox{\hyperlink{_window_gui_8h_ab87030731ac50abe8021e0274d11c356}{selectedGameObject}}-\/>\mbox{\hyperlink{class_game_object_af542b33c8de269343e22c5629e6b66c0}{name}};}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ std::cout\ <<\ \mbox{\hyperlink{controls_8cpp_ab17456efa59b99dbb85317ee492274b6}{position}}\ <<\ std::endl;}
+\DoxyCodeLine{00619\ }
+\DoxyCodeLine{00620\ }
+\DoxyCodeLine{00621\ }
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::DragFloat3(\textcolor{stringliteral}{"{}Positon"{}},\ \&\mbox{\hyperlink{controls_8cpp_ab17456efa59b99dbb85317ee492274b6}{position}}[0]))}
+\DoxyCodeLine{00623\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ l'utilisateur\ modifie\ la\ position,\ mettez\ à jour\ le\ Transform}}
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ \ \ \ \ transform-\/>\mbox{\hyperlink{class_transform_aafa0e1d9cc3817b5a89c14fc5da5679e}{SetPosition}}(glm::vec3(\mbox{\hyperlink{controls_8cpp_ab17456efa59b99dbb85317ee492274b6}{position}}[0],\ \mbox{\hyperlink{controls_8cpp_ab17456efa59b99dbb85317ee492274b6}{position}}[1],\ \mbox{\hyperlink{controls_8cpp_ab17456efa59b99dbb85317ee492274b6}{position}}[2]));}
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00627\ }
+\DoxyCodeLine{00628\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::DragFloat3(\textcolor{stringliteral}{"{}Rotation"{}},\ \&rotation.x))}
+\DoxyCodeLine{00629\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00630\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ l'utilisateur\ modifie\ la\ rotation,\ mettez\ à jour\ le\ Transform}}
+\DoxyCodeLine{00631\ \ \ \ \ \ \ \ \ \ \ \ \ transform-\/>\mbox{\hyperlink{class_transform_af55f34f24b7f560ad4e8096174ae9f97}{SetRotation}}(rotation.x,\ rotation.y,\ rotation.z);}
+\DoxyCodeLine{00632\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00633\ }
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::DragFloat3(\textcolor{stringliteral}{"{}Scale"{}},\ \&scale.x,\ 0.1f,\ 0.1f,\ 10.0f))}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00636\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ l'utilisateur\ modifie\ l'échelle,\ mettez\ à jour\ le\ Transform}}
+\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ \ \ \ \ transform-\/>\mbox{\hyperlink{class_transform_a026cde3b4f39979cc50124cab7ab4977}{SetScale}}(scale);}
+\DoxyCodeLine{00638\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00639\ }
+\DoxyCodeLine{00640\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Delete"{}}))}
+\DoxyCodeLine{00641\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00642\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_window_gui_8h_ab87030731ac50abe8021e0274d11c356}{selectedGameObject}}-\/>\mbox{\hyperlink{class_game_object_a322beae90ff8c484e0c52da2c8b4a2a5}{Delete}}();}
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ \ \ \ \ sceneManager-\/>\mbox{\hyperlink{class_scene_manager_a614f5f63a2224b6f960ca1db365a75e2}{gameObjectPool}}.\mbox{\hyperlink{class_memory_pool_ab9267708cc7a7801d0e1467cf01ca5e9}{Free}}(\mbox{\hyperlink{_window_gui_8h_ab87030731ac50abe8021e0274d11c356}{selectedGameObject}});}
+\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_window_gui_8h_ab87030731ac50abe8021e0274d11c356}{selectedGameObject}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00646\ }
+\DoxyCodeLine{00647\ }
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00649\ }
+\DoxyCodeLine{00650\ }
+\DoxyCodeLine{00651\ \ \ \ \ \}}
+\DoxyCodeLine{00652\ }
+\DoxyCodeLine{00653\ \}}
+
+\end{DoxyCode}

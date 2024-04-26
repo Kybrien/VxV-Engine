@@ -7,7 +7,7 @@ var searchData=
   ['manager_2ecpp_4',['Manager.cpp',['../_manager_8cpp.html',1,'']]],
   ['manager_2eh_5',['Manager.h',['../_manager_8h.html',1,'']]],
   ['manager_2einl_6',['Manager.inl',['../_manager_8inl.html',1,'']]],
-  ['materials_7',['materials',['../class_object.html#a3461f82aeb4e5520ac7f58025e9ad613',1,'Object']]],
+  ['materials_7',['materials',['../class_model_component.html#a8ed0bcb5ba86ae1268ed7a7354390bfe',1,'ModelComponent']]],
   ['memorypool_8',['MemoryPool',['../class_memory_pool.html',1,'MemoryPool&lt; T, Strategy &gt;'],['../class_memory_pool.html#a81562e65d5b85a7615f60b44d4461252',1,'MemoryPool::MemoryPool()'],['../class_memory_pool_3_01_game_object_00_01_strategy_01_4.html#a98fe2f8327a2a030351f512be74cf965',1,'MemoryPool&lt; GameObject, Strategy &gt;::MemoryPool()']]],
   ['memorypool_2ecpp_9',['MemoryPool.cpp',['../_memory_pool_8cpp.html',1,'']]],
   ['memorypool_2eh_10',['MemoryPool.h',['../_memory_pool_8h.html',1,'']]],
@@ -15,6 +15,16 @@ var searchData=
   ['memorypool_3c_20gameobject_2c_20strategy_20_3e_12',['MemoryPool&lt; GameObject, Strategy &gt;',['../class_memory_pool_3_01_game_object_00_01_strategy_01_4.html',1,'']]],
   ['mempool_5flinear_13',['MemPool_Linear',['../class_mem_pool___linear.html',1,'MemPool_Linear&lt; T &gt;'],['../class_mem_pool___linear.html#a746247aa76fe63d6a57e0685cdf294b0',1,'MemPool_Linear::MemPool_Linear()']]],
   ['mempool_5flinear_3c_20gameobject_20_3e_14',['MemPool_Linear&lt; GameObject &gt;',['../class_mem_pool___linear.html',1,'']]],
-  ['mesh_5frenderer_15',['Mesh_renderer',['../class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4acbf24d847fc02f14b8b7bba654ff05f4',1,'Component']]],
-  ['mousespeed_16',['mouseSpeed',['../controls_8cpp.html#ad86cf88b1bfa45799e65ca2a0ec9f24c',1,'controls.cpp']]]
+  ['messages_15',['messages',['../struct_chat_window.html#a5a272447bf42965540ff3ebed35c891b',1,'ChatWindow']]],
+  ['model_16',['Model',['../class_model.html',1,'Model'],['../class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4a090cc807df7587ff4441c31ee17f24fc',1,'Component::Model'],['../class_model.html#a2d677c3a8cab1f392779bf65ec50d06e',1,'Model::Model()']]],
+  ['model_2ecpp_17',['Model.cpp',['../_model_8cpp.html',1,'']]],
+  ['model_2eh_18',['Model.h',['../_model_8h.html',1,'']]],
+  ['modelcomponent_19',['ModelComponent',['../class_model_component.html',1,'']]],
+  ['modelcomponent_2ecpp_20',['ModelComponent.cpp',['../_model_component_8cpp.html',1,'']]],
+  ['modelcomponent_2ehpp_21',['ModelComponent.hpp',['../_model_component_8hpp.html',1,'']]],
+  ['modelmanager_22',['ModelManager',['../class_model_manager.html',1,'ModelManager'],['../class_model_manager.html#a6642c2c176b906a6c80ac8d61335780e',1,'ModelManager::ModelManager()']]],
+  ['modelmanager_2ecpp_23',['ModelManager.cpp',['../_model_manager_8cpp.html',1,'']]],
+  ['modelmanager_2eh_24',['ModelManager.h',['../_model_manager_8h.html',1,'']]],
+  ['mousespeed_25',['mouseSpeed',['../controls_8cpp.html#ad86cf88b1bfa45799e65ca2a0ec9f24c',1,'controls.cpp']]],
+  ['mutex_26',['mutex',['../struct_chat_window.html#a946c78671452ee5868364dddfde70b2c',1,'ChatWindow::mutex'],['../___client_8cpp.html#a1be3f7fa26e4521098de5f1ec0f865f3',1,'mutex:&#160;_Client.cpp']]]
 ];

@@ -25,7 +25,6 @@
   <td id="projectalign">
    <div id="projectname">VxV
    </div>
-   <div id="projectbrief">A perfectly ok engine</div>
   </td>
  </tr>
  </tbody>
@@ -90,9 +89,10 @@ Inheritance diagram for Manager:</div>
   <img src="class_manager.png" usemap="#Manager_map" alt=""/>
   <map id="Manager_map" name="Manager_map">
 <area href="class_input_manager.html" alt="InputManager" shape="rect" coords="0,56,101,80"/>
-<area href="class_prefab_manager.html" alt="PrefabManager" shape="rect" coords="111,56,212,80"/>
-<area href="class_scene_manager.html" alt="SceneManager" shape="rect" coords="222,56,323,80"/>
-<area href="class_script_manager.html" alt="ScriptManager" shape="rect" coords="333,56,434,80"/>
+<area href="class_model_manager.html" alt="ModelManager" shape="rect" coords="111,56,212,80"/>
+<area href="class_prefab_manager.html" alt="PrefabManager" shape="rect" coords="222,56,323,80"/>
+<area href="class_scene_manager.html" alt="SceneManager" shape="rect" coords="333,56,434,80"/>
+<area href="class_script_manager.html" alt="ScriptManager" shape="rect" coords="444,56,545,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -100,33 +100,42 @@ Inheritance diagram for Manager:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2569efa6dd78f87cc0b64086043cc4ca" id="r_a2569efa6dd78f87cc0b64086043cc4ca"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a2569efa6dd78f87cc0b64086043cc4ca"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a2569efa6dd78f87cc0b64086043cc4ca">GetManager</a> ()</td></tr>
+<tr class="memdesc:a2569efa6dd78f87cc0b64086043cc4ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the manager of type T.  <br /></td></tr>
 <tr class="separator:a2569efa6dd78f87cc0b64086043cc4ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a200a7092507e1769240452e88996127b" id="r_a200a7092507e1769240452e88996127b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a200a7092507e1769240452e88996127b">Init</a> ()</td></tr>
+<tr class="memdesc:a200a7092507e1769240452e88996127b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the <a class="el" href="class_manager.html">Manager</a>. Represents initializing the <a class="el" href="class_manager.html">Manager</a>.  <br /></td></tr>
 <tr class="separator:a200a7092507e1769240452e88996127b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a037a7066aa1ba886bafe691ef3f6f98c" id="r_a037a7066aa1ba886bafe691ef3f6f98c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a037a7066aa1ba886bafe691ef3f6f98c">Stop</a> ()</td></tr>
+<tr class="memdesc:a037a7066aa1ba886bafe691ef3f6f98c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the <a class="el" href="class_manager.html">Manager</a>. Represents stopping the <a class="el" href="class_manager.html">Manager</a> and deleting all pointers.  <br /></td></tr>
 <tr class="separator:a037a7066aa1ba886bafe691ef3f6f98c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6bfbb7862710ba6c42634f7ea521994" id="r_ab6bfbb7862710ba6c42634f7ea521994"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ab6bfbb7862710ba6c42634f7ea521994"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab6bfbb7862710ba6c42634f7ea521994">AddManager</a> (T *manager)</td></tr>
+<tr class="memdesc:ab6bfbb7862710ba6c42634f7ea521994"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a manager to the <a class="el" href="class_manager.html">Manager</a>.  <br /></td></tr>
 <tr class="separator:ab6bfbb7862710ba6c42634f7ea521994"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:abf52d7d532c05607cc23c687f23e6b67" id="r_abf52d7d532c05607cc23c687f23e6b67"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_manager.html">Manager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf52d7d532c05607cc23c687f23e6b67">GetInstance</a> ()</td></tr>
+<tr class="memdesc:abf52d7d532c05607cc23c687f23e6b67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the singleton instance of the <a class="el" href="class_manager.html">Manager</a> class.  <br /></td></tr>
 <tr class="separator:abf52d7d532c05607cc23c687f23e6b67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a066ee0e0faa861515f582e510a722804" id="r_a066ee0e0faa861515f582e510a722804"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a066ee0e0faa861515f582e510a722804"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a066ee0e0faa861515f582e510a722804">SearchFile</a> (std::string fileDirection, std::string extension, T *manager)</td></tr>
+<tr class="memdesc:a066ee0e0faa861515f582e510a722804"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches for files with a specific extension in a given directory and processes them using the specified manager.  <br /></td></tr>
 <tr class="separator:a066ee0e0faa861515f582e510a722804"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa66c5cc0be93116d3901ce317b2332fb" id="r_aa66c5cc0be93116d3901ce317b2332fb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa66c5cc0be93116d3901ce317b2332fb">Save</a> ()</td></tr>
+<tr class="memdesc:aa66c5cc0be93116d3901ce317b2332fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves data associated with the object.  <br /></td></tr>
 <tr class="separator:aa66c5cc0be93116d3901ce317b2332fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ca627323200c3ac1c6da0d3c510f0c7" id="r_a1ca627323200c3ac1c6da0d3c510f0c7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ca627323200c3ac1c6da0d3c510f0c7">Load</a> (std::wstring wFileDirection, std::wstring wFileName)</td></tr>
+<tr class="memdesc:a1ca627323200c3ac1c6da0d3c510f0c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads data associated with the object from the specified file.  <br /></td></tr>
 <tr class="separator:a1ca627323200c3ac1c6da0d3c510f0c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
 <tr class="memitem:ac80f5ee151565f111593921bac645ad7" id="r_ac80f5ee151565f111593921bac645ad7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_manager.html">Manager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac80f5ee151565f111593921bac645ad7">instance</a> = nullptr</td></tr>
+<tr class="memdesc:ac80f5ee151565f111593921bac645ad7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the singleton instance of the <a class="el" href="class_manager.html">Manager</a> class. Represents the singleton instance of the <a class="el" href="class_manager.html">Manager</a> class.  <br /></td></tr>
 <tr class="separator:ac80f5ee151565f111593921bac645ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -146,6 +155,20 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Adds a manager to the <a class="el" href="class_manager.html">Manager</a>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of manager to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">manager</td><td>Pointer to the manager to add. Represents adding a manager to the <a class="el" href="class_manager.html">Manager</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -172,6 +195,9 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Retrieves the singleton instance of the <a class="el" href="class_manager.html">Manager</a> class. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the singleton instance of the <a class="el" href="class_manager.html">Manager</a> class. Represents retrieving the singleton instance of the <a class="el" href="class_manager.html">Manager</a> class. </dd></dl>
+
 </div>
 </div>
 <a id="a2569efa6dd78f87cc0b64086043cc4ca" name="a2569efa6dd78f87cc0b64086043cc4ca"></a>
@@ -191,6 +217,15 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Retrieves the manager of type T. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of manager to retrieve. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the manager of type T if found, otherwise nullptr. Represents retrieving the manager of type T. </dd></dl>
+
 </div>
 </div>
 <a id="a200a7092507e1769240452e88996127b" name="a200a7092507e1769240452e88996127b"></a>
@@ -207,6 +242,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Initializes the <a class="el" href="class_manager.html">Manager</a>. Represents initializing the <a class="el" href="class_manager.html">Manager</a>. </p>
 
 </div>
 </div>
@@ -237,7 +274,16 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="class_prefab_manager.html#a5a30d1ed492b07435cbd55cfc2b6eebd">PrefabManager</a>, <a class="el" href="class_scene_manager.html#aa3b2dea2aa6baab258cbb1348846ee08">SceneManager</a>, and <a class="el" href="class_script_manager.html#a665862e0d165a750ddb7d387b9563df8">ScriptManager</a>.</p>
+<p>Loads data associated with the object from the specified file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wFileDirection</td><td>The directory where the file is located. </td></tr>
+    <tr><td class="paramname">wFileName</td><td>The name of the file to load. Represents loading data associated with the object from the specified file. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="class_model_manager.html#af279c8092298ca1f3058166dc6d4c041">ModelManager</a>, <a class="el" href="class_prefab_manager.html#a5a30d1ed492b07435cbd55cfc2b6eebd">PrefabManager</a>, <a class="el" href="class_scene_manager.html#aa3b2dea2aa6baab258cbb1348846ee08">SceneManager</a>, and <a class="el" href="class_script_manager.html#a665862e0d165a750ddb7d387b9563df8">ScriptManager</a>.</p>
 
 </div>
 </div>
@@ -263,6 +309,9 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Saves data associated with the object. </p>
+<p>Override this function to define custom saving behavior for derived classes. Represents saving data associated with the object. </p>
 
 <p>Reimplemented in <a class="el" href="class_input_manager.html#a933179e17c1d3cf34b2aed71f01280b1">InputManager</a>, <a class="el" href="class_prefab_manager.html#ae30095617801209b09aee5b57abd76a7">PrefabManager</a>, <a class="el" href="class_scene_manager.html#a13e07df59690a7a5b163268012173e41">SceneManager</a>, and <a class="el" href="class_script_manager.html#ac6eaeb7c7d82cb5a7cd1594c0be557bb">ScriptManager</a>.</p>
 
@@ -302,6 +351,22 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Searches for files with a specific extension in a given directory and processes them using the specified manager. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of manager to use for processing the files. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fileDirection</td><td>The directory to search for files. </td></tr>
+    <tr><td class="paramname">extension</td><td>The file extension to search for. </td></tr>
+    <tr><td class="paramname">manager</td><td>Pointer to the manager object used for processing the files. Represents searching for files with a specific extension in a given directory and processing them using the specified manager. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a037a7066aa1ba886bafe691ef3f6f98c" name="a037a7066aa1ba886bafe691ef3f6f98c"></a>
@@ -318,6 +383,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Stops the <a class="el" href="class_manager.html">Manager</a>. Represents stopping the <a class="el" href="class_manager.html">Manager</a> and deleting all pointers. </p>
 
 </div>
 </div>
@@ -341,6 +408,8 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Pointer to the singleton instance of the <a class="el" href="class_manager.html">Manager</a> class. Represents the singleton instance of the <a class="el" href="class_manager.html">Manager</a> class. </p>
 
 </div>
 </div>

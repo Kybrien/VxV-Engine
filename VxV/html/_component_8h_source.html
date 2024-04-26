@@ -25,7 +25,6 @@
   <td id="projectalign">
    <div id="projectname">VxV
    </div>
-   <div id="projectbrief">A perfectly ok engine</div>
   </td>
  </tr>
  </tbody>
@@ -81,71 +80,71 @@ $(function() { codefold.init(0); });
 </div><!--header-->
 <div class="contents">
 <a href="_component_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;string&quot;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;json.h&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">class </span><a class="code hl_class" href="class_game_object.html">GameObject</a>;</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">class </span><a class="code hl_class" href="class_transform.html">Transform</a>;</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_component.html">   10</a></span><span class="keyword">class </span><a class="code hl_class" href="class_component.html">Component</a> {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="class_component.html#aca4f3bf8d7148444f750714ca8e58bfe">   12</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_component.html#aca4f3bf8d7148444f750714ca8e58bfe">JaiBesoinDunVirtual</a>() {};</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_component.html#ae527ef1a4d1be744d50e2676a6c4f5f6">   15</a></span>    <a class="code hl_function" href="class_component.html#ae527ef1a4d1be744d50e2676a6c4f5f6">Component</a>(<a class="code hl_class" href="class_game_object.html">GameObject</a>* go) {</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;json.h&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">class </span><a class="code hl_class" href="class_game_object.html">GameObject</a>;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">class </span><a class="code hl_class" href="class_transform.html">Transform</a>;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="foldopen" id="foldopen00007" data-start="{" data-end="};">
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="class_component.html">    7</a></span><span class="keyword">class </span><a class="code hl_class" href="class_component.html">Component</a></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_component.html#ae527ef1a4d1be744d50e2676a6c4f5f6">   14</a></span>    <a class="code hl_function" href="class_component.html#ae527ef1a4d1be744d50e2676a6c4f5f6">Component</a>(<a class="code hl_class" href="class_game_object.html">GameObject</a>* go)</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    {</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <a class="code hl_variable" href="class_component.html#ae82678b1f50e36ccba0a8775f12036c3">linkedGameObject</a> = go;</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <a class="code hl_variable" href="class_component.html#a18de93d5a176aa3cd6dc6724788dfacb">type</a> = <a class="code hl_enumvalue" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94">Unknown</a>;</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    };</div>
 </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="class_component.html#a78f3311bb53ce9b6d095e95021df681a">   20</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_component.html#a78f3311bb53ce9b6d095e95021df681a">Save</a>(Json::Value &amp;compJson) = 0;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="class_component.html#ac6833433134e649053b0fe16f60dfd98">   21</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_component.html#ac6833433134e649053b0fe16f60dfd98">Load</a>(Json::Value&amp; compJson, <a class="code hl_class" href="class_game_object.html">GameObject</a>* ParentGO) = 0;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="class_component.html#ad70a279b1453b27839c0fc6e9f3a0b08">   23</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_component.html#ad70a279b1453b27839c0fc6e9f3a0b08">Copy</a>(<a class="code hl_class" href="class_game_object.html">GameObject</a>* goToFill) = 0;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">// Enumeration de tous les types de Components</span></div>
-<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4">   28</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4">Type</a> {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94">   29</a></span>        <a class="code hl_enumvalue" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94">Unknown</a>,</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059">   30</a></span>        <a class="code hl_enumvalue" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059">Transform</a>,</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4acbf24d847fc02f14b8b7bba654ff05f4">   31</a></span>        <a class="code hl_enumvalue" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4acbf24d847fc02f14b8b7bba654ff05f4">Mesh_renderer</a>,</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51">   32</a></span>        <a class="code hl_enumvalue" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51">ScriptComponent</a>,</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    };</div>
-</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="class_component.html#a18de93d5a176aa3cd6dc6724788dfacb">   35</a></span>    <a class="code hl_enumeration" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4">Type</a> <a class="code hl_variable" href="class_component.html#a18de93d5a176aa3cd6dc6724788dfacb">type</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="class_component.html#a78f3311bb53ce9b6d095e95021df681a">   27</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_component.html#a78f3311bb53ce9b6d095e95021df681a">Save</a>(Json::Value&amp; compJson) = 0;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="class_component.html#ac6833433134e649053b0fe16f60dfd98">   35</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_component.html#ac6833433134e649053b0fe16f60dfd98">Load</a>(Json::Value&amp; compJson, <a class="code hl_class" href="class_game_object.html">GameObject</a>* ParentGO) = 0;</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="class_component.html#ae26f4d08f6a55499e30a1f700a4c08b7">   37</a></span>    <a class="code hl_class" href="class_game_object.html">GameObject</a>* <a class="code hl_function" href="class_component.html#ae26f4d08f6a55499e30a1f700a4c08b7">GetLinkedGameObject</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="class_component.html#ae82678b1f50e36ccba0a8775f12036c3">linkedGameObject</a>;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="class_component.html#ad70a279b1453b27839c0fc6e9f3a0b08">   42</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_component.html#ad70a279b1453b27839c0fc6e9f3a0b08">Copy</a>(<a class="code hl_class" href="class_game_object.html">GameObject</a>* goToFill) = 0;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="foldopen" id="foldopen00048" data-start="{" data-end="};">
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4">   48</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4">Type</a></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94">   50</a></span>        <a class="code hl_enumvalue" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94">Unknown</a>,            </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059">   51</a></span>        <a class="code hl_enumvalue" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059">Transform</a>,          </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4a090cc807df7587ff4441c31ee17f24fc">   52</a></span>        <a class="code hl_enumvalue" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4a090cc807df7587ff4441c31ee17f24fc">Model</a>,               </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51">   53</a></span>        <a class="code hl_enumvalue" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51">ScriptComponent</a>,    </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    };</div>
 </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="class_component.html#ae82678b1f50e36ccba0a8775f12036c3">   42</a></span>    <a class="code hl_class" href="class_game_object.html">GameObject</a>* <a class="code hl_variable" href="class_component.html#ae82678b1f50e36ccba0a8775f12036c3">linkedGameObject</a>;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>};</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="class_component.html#a18de93d5a176aa3cd6dc6724788dfacb">   59</a></span>    <a class="code hl_enumeration" href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4">Type</a> <a class="code hl_variable" href="class_component.html#a18de93d5a176aa3cd6dc6724788dfacb">type</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="foldopen" id="foldopen00065" data-start="{" data-end="}">
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="class_component.html#ae26f4d08f6a55499e30a1f700a4c08b7">   65</a></span>    <a class="code hl_class" href="class_game_object.html">GameObject</a>* <a class="code hl_function" href="class_component.html#ae26f4d08f6a55499e30a1f700a4c08b7">GetLinkedGameObject</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="class_component.html#ae82678b1f50e36ccba0a8775f12036c3">linkedGameObject</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
 </div>
-<div class="ttc" id="aclass_component_html"><div class="ttname"><a href="class_component.html">Component</a></div><div class="ttdef"><b>Definition</b> Component.h:10</div></div>
-<div class="ttc" id="aclass_component_html_a18de93d5a176aa3cd6dc6724788dfacb"><div class="ttname"><a href="class_component.html#a18de93d5a176aa3cd6dc6724788dfacb">Component::type</a></div><div class="ttdeci">Type type</div><div class="ttdef"><b>Definition</b> Component.h:35</div></div>
-<div class="ttc" id="aclass_component_html_a78f3311bb53ce9b6d095e95021df681a"><div class="ttname"><a href="class_component.html#a78f3311bb53ce9b6d095e95021df681a">Component::Save</a></div><div class="ttdeci">virtual void Save(Json::Value &amp;compJson)=0</div></div>
-<div class="ttc" id="aclass_component_html_ac6833433134e649053b0fe16f60dfd98"><div class="ttname"><a href="class_component.html#ac6833433134e649053b0fe16f60dfd98">Component::Load</a></div><div class="ttdeci">virtual void Load(Json::Value &amp;compJson, GameObject *ParentGO)=0</div></div>
-<div class="ttc" id="aclass_component_html_aca4f3bf8d7148444f750714ca8e58bfe"><div class="ttname"><a href="class_component.html#aca4f3bf8d7148444f750714ca8e58bfe">Component::JaiBesoinDunVirtual</a></div><div class="ttdeci">virtual void JaiBesoinDunVirtual()</div><div class="ttdef"><b>Definition</b> Component.h:12</div></div>
-<div class="ttc" id="aclass_component_html_ad70a279b1453b27839c0fc6e9f3a0b08"><div class="ttname"><a href="class_component.html#ad70a279b1453b27839c0fc6e9f3a0b08">Component::Copy</a></div><div class="ttdeci">virtual void Copy(GameObject *goToFill)=0</div></div>
-<div class="ttc" id="aclass_component_html_ae26f4d08f6a55499e30a1f700a4c08b7"><div class="ttname"><a href="class_component.html#ae26f4d08f6a55499e30a1f700a4c08b7">Component::GetLinkedGameObject</a></div><div class="ttdeci">GameObject * GetLinkedGameObject() const</div><div class="ttdef"><b>Definition</b> Component.h:37</div></div>
-<div class="ttc" id="aclass_component_html_ae527ef1a4d1be744d50e2676a6c4f5f6"><div class="ttname"><a href="class_component.html#ae527ef1a4d1be744d50e2676a6c4f5f6">Component::Component</a></div><div class="ttdeci">Component(GameObject *go)</div><div class="ttdef"><b>Definition</b> Component.h:15</div></div>
-<div class="ttc" id="aclass_component_html_ae82678b1f50e36ccba0a8775f12036c3"><div class="ttname"><a href="class_component.html#ae82678b1f50e36ccba0a8775f12036c3">Component::linkedGameObject</a></div><div class="ttdeci">GameObject * linkedGameObject</div><div class="ttdef"><b>Definition</b> Component.h:42</div></div>
-<div class="ttc" id="aclass_component_html_afd50861fbf83f7ff7777a5e6dd7b7ca4"><div class="ttname"><a href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4">Component::Type</a></div><div class="ttdeci">Type</div><div class="ttdef"><b>Definition</b> Component.h:28</div></div>
-<div class="ttc" id="aclass_component_html_afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94"><div class="ttname"><a href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94">Component::Unknown</a></div><div class="ttdeci">@ Unknown</div><div class="ttdef"><b>Definition</b> Component.h:29</div></div>
-<div class="ttc" id="aclass_component_html_afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059"><div class="ttname"><a href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059">Component::Transform</a></div><div class="ttdeci">@ Transform</div><div class="ttdef"><b>Definition</b> Component.h:30</div></div>
-<div class="ttc" id="aclass_component_html_afd50861fbf83f7ff7777a5e6dd7b7ca4acbf24d847fc02f14b8b7bba654ff05f4"><div class="ttname"><a href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4acbf24d847fc02f14b8b7bba654ff05f4">Component::Mesh_renderer</a></div><div class="ttdeci">@ Mesh_renderer</div><div class="ttdef"><b>Definition</b> Component.h:31</div></div>
-<div class="ttc" id="aclass_component_html_afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51"><div class="ttname"><a href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51">Component::ScriptComponent</a></div><div class="ttdeci">@ ScriptComponent</div><div class="ttdef"><b>Definition</b> Component.h:32</div></div>
-<div class="ttc" id="aclass_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdef"><b>Definition</b> GameObject.h:13</div></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="class_component.html#ae82678b1f50e36ccba0a8775f12036c3">   75</a></span>    <a class="code hl_class" href="class_game_object.html">GameObject</a>* <a class="code hl_variable" href="class_component.html#ae82678b1f50e36ccba0a8775f12036c3">linkedGameObject</a>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>};</div>
+</div>
+<div class="ttc" id="aclass_component_html"><div class="ttname"><a href="class_component.html">Component</a></div><div class="ttdef"><b>Definition</b> Component.h:8</div></div>
+<div class="ttc" id="aclass_component_html_a18de93d5a176aa3cd6dc6724788dfacb"><div class="ttname"><a href="class_component.html#a18de93d5a176aa3cd6dc6724788dfacb">Component::type</a></div><div class="ttdeci">Type type</div><div class="ttdoc">Type of the component.</div><div class="ttdef"><b>Definition</b> Component.h:59</div></div>
+<div class="ttc" id="aclass_component_html_a78f3311bb53ce9b6d095e95021df681a"><div class="ttname"><a href="class_component.html#a78f3311bb53ce9b6d095e95021df681a">Component::Save</a></div><div class="ttdeci">virtual void Save(Json::Value &amp;compJson)=0</div><div class="ttdoc">Save the component in a Json Object.</div></div>
+<div class="ttc" id="aclass_component_html_ac6833433134e649053b0fe16f60dfd98"><div class="ttname"><a href="class_component.html#ac6833433134e649053b0fe16f60dfd98">Component::Load</a></div><div class="ttdeci">virtual void Load(Json::Value &amp;compJson, GameObject *ParentGO)=0</div><div class="ttdoc">Load the component from a Json Object.</div></div>
+<div class="ttc" id="aclass_component_html_ad70a279b1453b27839c0fc6e9f3a0b08"><div class="ttname"><a href="class_component.html#ad70a279b1453b27839c0fc6e9f3a0b08">Component::Copy</a></div><div class="ttdeci">virtual void Copy(GameObject *goToFill)=0</div><div class="ttdoc">Copy the value of a component to another gameObject.</div></div>
+<div class="ttc" id="aclass_component_html_ae26f4d08f6a55499e30a1f700a4c08b7"><div class="ttname"><a href="class_component.html#ae26f4d08f6a55499e30a1f700a4c08b7">Component::GetLinkedGameObject</a></div><div class="ttdeci">GameObject * GetLinkedGameObject() const</div><div class="ttdoc">Retrieves the linked GameObject of the component.</div><div class="ttdef"><b>Definition</b> Component.h:65</div></div>
+<div class="ttc" id="aclass_component_html_ae527ef1a4d1be744d50e2676a6c4f5f6"><div class="ttname"><a href="class_component.html#ae527ef1a4d1be744d50e2676a6c4f5f6">Component::Component</a></div><div class="ttdeci">Component(GameObject *go)</div><div class="ttdoc">Constructs a Component object and links it to a GameObject.</div><div class="ttdef"><b>Definition</b> Component.h:14</div></div>
+<div class="ttc" id="aclass_component_html_ae82678b1f50e36ccba0a8775f12036c3"><div class="ttname"><a href="class_component.html#ae82678b1f50e36ccba0a8775f12036c3">Component::linkedGameObject</a></div><div class="ttdeci">GameObject * linkedGameObject</div><div class="ttdoc">Pointer to the GameObject linked to the component.</div><div class="ttdef"><b>Definition</b> Component.h:75</div></div>
+<div class="ttc" id="aclass_component_html_afd50861fbf83f7ff7777a5e6dd7b7ca4"><div class="ttname"><a href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4">Component::Type</a></div><div class="ttdeci">Type</div><div class="ttdoc">Enumeration representing different types of components.</div><div class="ttdef"><b>Definition</b> Component.h:49</div></div>
+<div class="ttc" id="aclass_component_html_afd50861fbf83f7ff7777a5e6dd7b7ca4a090cc807df7587ff4441c31ee17f24fc"><div class="ttname"><a href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4a090cc807df7587ff4441c31ee17f24fc">Component::Model</a></div><div class="ttdeci">@ Model</div><div class="ttdef"><b>Definition</b> Component.h:52</div></div>
+<div class="ttc" id="aclass_component_html_afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94"><div class="ttname"><a href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94">Component::Unknown</a></div><div class="ttdeci">@ Unknown</div><div class="ttdef"><b>Definition</b> Component.h:50</div></div>
+<div class="ttc" id="aclass_component_html_afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059"><div class="ttname"><a href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059">Component::Transform</a></div><div class="ttdeci">@ Transform</div><div class="ttdef"><b>Definition</b> Component.h:51</div></div>
+<div class="ttc" id="aclass_component_html_afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51"><div class="ttname"><a href="class_component.html#afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51">Component::ScriptComponent</a></div><div class="ttdeci">@ ScriptComponent</div><div class="ttdef"><b>Definition</b> Component.h:53</div></div>
+<div class="ttc" id="aclass_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdef"><b>Definition</b> GameObject.h:14</div></div>
 <div class="ttc" id="aclass_transform_html"><div class="ttname"><a href="class_transform.html">Transform</a></div><div class="ttdef"><b>Definition</b> Transform.h:7</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

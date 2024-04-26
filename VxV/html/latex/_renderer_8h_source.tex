@@ -1,0 +1,38 @@
+\doxysection{Renderer.\+h}
+\hypertarget{_renderer_8h_source}{}\label{_renderer_8h_source}\mbox{\hyperlink{_renderer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\#include\ "{}Component.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\#include\ <GL/glew.h>}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{//class\ Renderer\ :\ public\ Component\ \{\ }}
+\DoxyCodeLine{00007\ \textcolor{comment}{//public:}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ \ \ \ GLuint\ VAO;\ //\ Vertex\ array\ object}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ \ \ GLuint\ VBO;\ //\ Vertex\ buffer\ object}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ \ \ \ GLuint\ shaderProgram;\ //\ Shader\ program\ ID}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ \ \ \ Renderer(GLuint\ shaderProgram)\ :\ shaderProgram(shaderProgram)\ \{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ \ \ \ \ \ \ \ //\ Initialize\ VAO,\ VBO,\ etc.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ \ \ \ void\ Render()\ \{}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ \ \ \ \ \ \ \ //\ Bind\ the\ shader}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ \ \ \ \ \ \ \ glUseProgram(shaderProgram);}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ \ \ \ \ \ \ \ //\ Bind\ the\ VAO}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ \ \ \ \ \ \ \ glBindVertexArray(VAO);}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ \ \ \ \ \ \ \ //\ Draw\ the\ object}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ \ \ \ \ \ \ \ glDrawArrays(GL\_TRIANGLES,\ 0,\ 3);\ //\ Adjust\ based\ on\ your\ geometry}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ \ \ \ \ \ \ \ //\ Unbind\ the\ VAO}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ \ \ \ \ \ \ \ glBindVertexArray(0);}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00029\ \textcolor{comment}{//}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ \ \ \ \string~Renderer()\ \{}}
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ \ \ \ \ \ \ \ //\ Cleanup\ VAO,\ VBO,\ etc.}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\};}}
+
+\end{DoxyCode}

@@ -1,0 +1,165 @@
+\doxysection{Window\+Gui.\+h File Reference}
+\hypertarget{_window_gui_8h}{}\label{_window_gui_8h}\index{WindowGui.h@{WindowGui.h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}imfilebrowser.\+h"{}}\newline
+{\ttfamily \#include "{}Game\+Object.\+h"{}}\newline
+{\ttfamily \#include "{}Console\+Recup.\+h"{}}\newline
+{\ttfamily \#include "{}Scene.\+h"{}}\newline
+{\ttfamily \#include "{}Engine.\+hpp"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_window_gui_8h_a2acce5670ce1cd9819520eb891ead6d1}{Show\+Error}} (const std\+::string \&message)
+\item 
+void \mbox{\hyperlink{_window_gui_8h_a58e9a469f33652bc45c40e3b414da7e7}{Show\+Success}} (const std\+::string \&message)
+\item 
+void \mbox{\hyperlink{_window_gui_8h_a26c71969818ccfa31cb5092a7da254b7}{Show\+Warning}} (const std\+::string \&message)
+\item 
+void \mbox{\hyperlink{_window_gui_8h_a770b69888f00605b8d2eb6892e288eea}{Show\+Confirmation}} (const std\+::string \&message, bool \&show)
+\item 
+void \mbox{\hyperlink{_window_gui_8h_a7677130ff6b746c4318d307a8f1f0f44}{Show\+Input\+Int}} (const std\+::string \&message, int \&input, bool \&show)
+\item 
+void \mbox{\hyperlink{_window_gui_8h_acfdb76fe70c90eeb1497f15bc85cfb78}{Show\+Input\+Float}} (const std\+::string \&message, float \&input, bool \&show)
+\item 
+void \mbox{\hyperlink{_window_gui_8h_a34aa077753ad501f9ea588e20c17930d}{Show\+Input\+Double}} (const std\+::string \&message, double \&input, bool \&show)
+\item 
+void \mbox{\hyperlink{_window_gui_8h_ac2e731380d97b488d74f7b8158021eeb}{Show\+Input\+Vec2}} (const std\+::string \&message, glm\+::vec2 \&input, bool \&show)
+\item 
+void \mbox{\hyperlink{_window_gui_8h_a3a781f2df072142979c392411d28904a}{Show\+Input\+Vec3}} (const std\+::string \&message, glm\+::vec3 \&input, bool \&show)
+\item 
+void \mbox{\hyperlink{_window_gui_8h_a0eeb89b40728642a59ac2480ea9db1d0}{Show\+Input\+Vec4}} (const std\+::string \&message, glm\+::vec4 \&input, bool \&show)
+\item 
+void \mbox{\hyperlink{_window_gui_8h_ac1b1ed3362123d29b7e1be38e7052965}{Show\+Input\+Color}} (const std\+::string \&message, glm\+::vec4 \&input, bool \&show)
+\item 
+void \mbox{\hyperlink{_window_gui_8h_af989d7d8874b3f1a34d25dec0f509c5e}{Show\+Input\+Bool}} (const std\+::string \&message, bool \&input, bool \&show)
+\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_window_gui_8h_a804e650ef4940c3e2dc9bae349ac4d96}{Create\+Game\+Object\+With\+Model}} (const std\+::string \&model\+Name)
+\item 
+void \mbox{\hyperlink{_window_gui_8h_a37a85750904ce5d456e33d46b6d6386a}{Show\+Add\+Game\+Object}} ()
+\item 
+void \mbox{\hyperlink{_window_gui_8h_aa0339d0428276274dd624af04969a324}{Show\+Console\+Window}} ()
+\item 
+void \mbox{\hyperlink{_window_gui_8h_a843ba87d66bb42bb617d5c93c42022e4}{Render\+Toolbar}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_window_gui_8h_ab87030731ac50abe8021e0274d11c356}{selected\+Game\+Object}} = nullptr
+\item 
+\mbox{\hyperlink{class_engine}{Engine}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_window_gui_8h_a04ee0d142e98779501ddb0ea5f687ac7}{engine}} = \mbox{\hyperlink{class_engine_a2146785b1df88f59838cab30aabc8d37}{Engine\+::\+Get\+Instance}}()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_window_gui_8h_a804e650ef4940c3e2dc9bae349ac4d96}\label{_window_gui_8h_a804e650ef4940c3e2dc9bae349ac4d96} 
+\index{WindowGui.h@{WindowGui.h}!CreateGameObjectWithModel@{CreateGameObjectWithModel}}
+\index{CreateGameObjectWithModel@{CreateGameObjectWithModel}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{CreateGameObjectWithModel()}{CreateGameObjectWithModel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} Create\+Game\+Object\+With\+Model (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{model\+Name }\end{DoxyParamCaption})}
+
+\Hypertarget{_window_gui_8h_a843ba87d66bb42bb617d5c93c42022e4}\label{_window_gui_8h_a843ba87d66bb42bb617d5c93c42022e4} 
+\index{WindowGui.h@{WindowGui.h}!RenderToolbar@{RenderToolbar}}
+\index{RenderToolbar@{RenderToolbar}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{RenderToolbar()}{RenderToolbar()}}
+{\footnotesize\ttfamily void Render\+Toolbar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{_window_gui_8h_a37a85750904ce5d456e33d46b6d6386a}\label{_window_gui_8h_a37a85750904ce5d456e33d46b6d6386a} 
+\index{WindowGui.h@{WindowGui.h}!ShowAddGameObject@{ShowAddGameObject}}
+\index{ShowAddGameObject@{ShowAddGameObject}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{ShowAddGameObject()}{ShowAddGameObject()}}
+{\footnotesize\ttfamily void Show\+Add\+Game\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{_window_gui_8h_a770b69888f00605b8d2eb6892e288eea}\label{_window_gui_8h_a770b69888f00605b8d2eb6892e288eea} 
+\index{WindowGui.h@{WindowGui.h}!ShowConfirmation@{ShowConfirmation}}
+\index{ShowConfirmation@{ShowConfirmation}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{ShowConfirmation()}{ShowConfirmation()}}
+{\footnotesize\ttfamily void Show\+Confirmation (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message,  }\item[{bool \&}]{show }\end{DoxyParamCaption})}
+
+\Hypertarget{_window_gui_8h_aa0339d0428276274dd624af04969a324}\label{_window_gui_8h_aa0339d0428276274dd624af04969a324} 
+\index{WindowGui.h@{WindowGui.h}!ShowConsoleWindow@{ShowConsoleWindow}}
+\index{ShowConsoleWindow@{ShowConsoleWindow}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{ShowConsoleWindow()}{ShowConsoleWindow()}}
+{\footnotesize\ttfamily void Show\+Console\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{_window_gui_8h_a2acce5670ce1cd9819520eb891ead6d1}\label{_window_gui_8h_a2acce5670ce1cd9819520eb891ead6d1} 
+\index{WindowGui.h@{WindowGui.h}!ShowError@{ShowError}}
+\index{ShowError@{ShowError}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{ShowError()}{ShowError()}}
+{\footnotesize\ttfamily void Show\+Error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+\Hypertarget{_window_gui_8h_af989d7d8874b3f1a34d25dec0f509c5e}\label{_window_gui_8h_af989d7d8874b3f1a34d25dec0f509c5e} 
+\index{WindowGui.h@{WindowGui.h}!ShowInputBool@{ShowInputBool}}
+\index{ShowInputBool@{ShowInputBool}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{ShowInputBool()}{ShowInputBool()}}
+{\footnotesize\ttfamily void Show\+Input\+Bool (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message,  }\item[{bool \&}]{input,  }\item[{bool \&}]{show }\end{DoxyParamCaption})}
+
+\Hypertarget{_window_gui_8h_ac1b1ed3362123d29b7e1be38e7052965}\label{_window_gui_8h_ac1b1ed3362123d29b7e1be38e7052965} 
+\index{WindowGui.h@{WindowGui.h}!ShowInputColor@{ShowInputColor}}
+\index{ShowInputColor@{ShowInputColor}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{ShowInputColor()}{ShowInputColor()}}
+{\footnotesize\ttfamily void Show\+Input\+Color (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message,  }\item[{glm\+::vec4 \&}]{input,  }\item[{bool \&}]{show }\end{DoxyParamCaption})}
+
+\Hypertarget{_window_gui_8h_a34aa077753ad501f9ea588e20c17930d}\label{_window_gui_8h_a34aa077753ad501f9ea588e20c17930d} 
+\index{WindowGui.h@{WindowGui.h}!ShowInputDouble@{ShowInputDouble}}
+\index{ShowInputDouble@{ShowInputDouble}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{ShowInputDouble()}{ShowInputDouble()}}
+{\footnotesize\ttfamily void Show\+Input\+Double (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message,  }\item[{double \&}]{input,  }\item[{bool \&}]{show }\end{DoxyParamCaption})}
+
+\Hypertarget{_window_gui_8h_acfdb76fe70c90eeb1497f15bc85cfb78}\label{_window_gui_8h_acfdb76fe70c90eeb1497f15bc85cfb78} 
+\index{WindowGui.h@{WindowGui.h}!ShowInputFloat@{ShowInputFloat}}
+\index{ShowInputFloat@{ShowInputFloat}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{ShowInputFloat()}{ShowInputFloat()}}
+{\footnotesize\ttfamily void Show\+Input\+Float (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message,  }\item[{float \&}]{input,  }\item[{bool \&}]{show }\end{DoxyParamCaption})}
+
+\Hypertarget{_window_gui_8h_a7677130ff6b746c4318d307a8f1f0f44}\label{_window_gui_8h_a7677130ff6b746c4318d307a8f1f0f44} 
+\index{WindowGui.h@{WindowGui.h}!ShowInputInt@{ShowInputInt}}
+\index{ShowInputInt@{ShowInputInt}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{ShowInputInt()}{ShowInputInt()}}
+{\footnotesize\ttfamily void Show\+Input\+Int (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message,  }\item[{int \&}]{input,  }\item[{bool \&}]{show }\end{DoxyParamCaption})}
+
+\Hypertarget{_window_gui_8h_ac2e731380d97b488d74f7b8158021eeb}\label{_window_gui_8h_ac2e731380d97b488d74f7b8158021eeb} 
+\index{WindowGui.h@{WindowGui.h}!ShowInputVec2@{ShowInputVec2}}
+\index{ShowInputVec2@{ShowInputVec2}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{ShowInputVec2()}{ShowInputVec2()}}
+{\footnotesize\ttfamily void Show\+Input\+Vec2 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message,  }\item[{glm\+::vec2 \&}]{input,  }\item[{bool \&}]{show }\end{DoxyParamCaption})}
+
+\Hypertarget{_window_gui_8h_a3a781f2df072142979c392411d28904a}\label{_window_gui_8h_a3a781f2df072142979c392411d28904a} 
+\index{WindowGui.h@{WindowGui.h}!ShowInputVec3@{ShowInputVec3}}
+\index{ShowInputVec3@{ShowInputVec3}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{ShowInputVec3()}{ShowInputVec3()}}
+{\footnotesize\ttfamily void Show\+Input\+Vec3 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message,  }\item[{glm\+::vec3 \&}]{input,  }\item[{bool \&}]{show }\end{DoxyParamCaption})}
+
+\Hypertarget{_window_gui_8h_a0eeb89b40728642a59ac2480ea9db1d0}\label{_window_gui_8h_a0eeb89b40728642a59ac2480ea9db1d0} 
+\index{WindowGui.h@{WindowGui.h}!ShowInputVec4@{ShowInputVec4}}
+\index{ShowInputVec4@{ShowInputVec4}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{ShowInputVec4()}{ShowInputVec4()}}
+{\footnotesize\ttfamily void Show\+Input\+Vec4 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message,  }\item[{glm\+::vec4 \&}]{input,  }\item[{bool \&}]{show }\end{DoxyParamCaption})}
+
+\Hypertarget{_window_gui_8h_a58e9a469f33652bc45c40e3b414da7e7}\label{_window_gui_8h_a58e9a469f33652bc45c40e3b414da7e7} 
+\index{WindowGui.h@{WindowGui.h}!ShowSuccess@{ShowSuccess}}
+\index{ShowSuccess@{ShowSuccess}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{ShowSuccess()}{ShowSuccess()}}
+{\footnotesize\ttfamily void Show\+Success (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+\Hypertarget{_window_gui_8h_a26c71969818ccfa31cb5092a7da254b7}\label{_window_gui_8h_a26c71969818ccfa31cb5092a7da254b7} 
+\index{WindowGui.h@{WindowGui.h}!ShowWarning@{ShowWarning}}
+\index{ShowWarning@{ShowWarning}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{ShowWarning()}{ShowWarning()}}
+{\footnotesize\ttfamily void Show\+Warning (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_window_gui_8h_a04ee0d142e98779501ddb0ea5f687ac7}\label{_window_gui_8h_a04ee0d142e98779501ddb0ea5f687ac7} 
+\index{WindowGui.h@{WindowGui.h}!engine@{engine}}
+\index{engine@{engine}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{engine}{engine}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engine}{Engine}}\texorpdfstring{$\ast$}{*} engine = \mbox{\hyperlink{class_engine_a2146785b1df88f59838cab30aabc8d37}{Engine\+::\+Get\+Instance}}()}
+
+\Hypertarget{_window_gui_8h_ab87030731ac50abe8021e0274d11c356}\label{_window_gui_8h_ab87030731ac50abe8021e0274d11c356} 
+\index{WindowGui.h@{WindowGui.h}!selectedGameObject@{selectedGameObject}}
+\index{selectedGameObject@{selectedGameObject}!WindowGui.h@{WindowGui.h}}
+\doxysubsubsection{\texorpdfstring{selectedGameObject}{selectedGameObject}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} selected\+Game\+Object = nullptr}
+
