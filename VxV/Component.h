@@ -50,7 +50,7 @@ public:
 		Transform,          /**< Transform component. */
 		Model,               /**< Mesh component. */
 		ScriptComponent,    /**< Script component. */
-		Light,              /**< Light component. */
+		Light,			  /**< Light component. */
 	};
 
 	/**

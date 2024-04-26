@@ -19,7 +19,6 @@ void Engine::InitEngine() {
 	m_sceneManager = manager->GetManager<SceneManager>();
 
 
-
 	m_engineState->ReadyBooting();
 	Start();
 }
@@ -109,8 +108,6 @@ void Engine::Startup(EngineGUI* _gui, APIopenGL* _apiGraphic) {
 	_apiGraphic->setBackgroundColor(0.0f, 0.0f, 0.4f, 0.0f);
 	_apiGraphic->setCamera(45.0f, 4.0f, 3.0f, 0.1f, 100.0f, 9, 5, 1, 0, 0, 0, 0, 1, 0);
 	_apiGraphic->setHandles();
-	_apiGraphic->setLightColor(glm::vec3(1, 1, 1));
-	_apiGraphic->setLightPower(80.0f);
 
 	_gui->initImgui(_apiGraphic->getWindow());
 
@@ -128,16 +125,22 @@ void Engine::ApiDrawLoopSetup(APIopenGL* _apiGraphic)
 {
 	_apiGraphic->clearScreen();
 	_apiGraphic->useShader();
-
+	int numLights = 0;
 	for (GameObject* go : m_goList)
 	{
 		Light* light = go->GetComponent<Light>();
 		if (light != nullptr)
 		{
+			numLights++;
 			glm::vec3 lightPos = go->GetComponent<Transform>()->GetPosition();
-			glUniform3f(_apiGraphic->getLightID(), lightPos.x, lightPos.y, lightPos.z);
+			glm::vec3 lightColor = go->GetComponent<Light>()->GetColor();
+			float lightPower = go->GetComponent<Light>()->GetPower();
+			glUniform3f(glGetUniformLocation(_apiGraphic->getProgramID(), ("LightPosition_worldspace[" + std::to_string(numLights) + "]").c_str()), lightPos.x, lightPos.y, lightPos.z);
+			glUniform3f(glGetUniformLocation(_apiGraphic->getProgramID(), ("LightColor[" + std::to_string(numLights) + "]").c_str()), lightColor.x, lightColor.y, lightColor.z);
+			glUniform1f(glGetUniformLocation(_apiGraphic->getProgramID(), ("LightPower[" + std::to_string(numLights) + "]").c_str()), lightPower);
 		}
 	}
+	glUniform1i(glGetUniformLocation(_apiGraphic->getProgramID(), "NumLights"), numLights);
 
 	computeMatricesFromInputs(_apiGraphic->getWindow());
 	glm::mat4 ProjectionMatrix = getProjectionMatrix();
