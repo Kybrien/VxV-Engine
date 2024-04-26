@@ -20,6 +20,7 @@ Transform::Transform(GameObject* gameObject) : Component(gameObject) {
 }
 
 
+
 void Transform::Load(Json::Value& compJson, GameObject* ParentGO) {
 
 	LoadVec3(compJson["Position"], position);

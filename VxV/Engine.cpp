@@ -16,7 +16,6 @@ void Engine::InitEngine() {
 	// init les managers
 	manager->Init();
 	m_sceneManager = manager->GetManager<SceneManager>();
-	m_goList = m_sceneManager->GetCurrentScene()->GetAllGameObjects();
 
 
 
@@ -37,28 +36,32 @@ void Engine::Update()
 {
 	while (GetBootingState() == EngineState::BootingState::Running)
 	{
+
 		CheckCloseWindow(m_apiGraphic, this->GetInstance());
 		ApiDrawLoopSetup(m_apiGraphic);
 		if (GetActiveState() == EngineState::ActiveState::Edition) {
 
 		}
 		else if (GetActiveState() == EngineState::ActiveState::RunTime) {
-			PlayUpdate();
-		}
 
-		//TODO: Move it to EngineSetup
-		for (GameObject* go : m_goList)
-		{
-			Model* modelComp = go->GetComponent<Model>();
-			if (modelComp != nullptr)
-			{
-				m_apiGraphic->drawingModel(go);
-			}
+			PlayUpdate();
 		}
 
 		m_gui->UpdateGui();
 		m_gui->RenderGui();
+		UpdateGameObjectList();
 
+		if (m_goList.size() > 0)
+		{
+			for (GameObject* go : m_goList)
+			{
+				Model* modelComp = go->GetComponent<Model>();
+				if (modelComp != nullptr)
+				{
+					m_apiGraphic->drawingModel(go);
+				}
+			}
+		}
 		m_apiGraphic->unbindArrays();
 		m_apiGraphic->swapBuffers();
 		glfwPollEvents();
@@ -81,7 +84,7 @@ void Engine::PlayStart()
 //stop go
 void Engine::PlayUpdate()
 {
-		m_sceneManager->GetCurrentScene()->Update();
+	m_sceneManager->GetCurrentScene()->Update();
 }
 
 void Engine::Stop(APIopenGL* _apiGraphic)
@@ -108,20 +111,8 @@ void Engine::Startup(EngineGUI* _gui, APIopenGL* _apiGraphic) {
 	_apiGraphic->setLightColor(glm::vec3(1, 1, 1));
 	_apiGraphic->setLightPower(80.0f);
 
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO();
-	(void)io;
-	// Load the font
-	ImFont* font = io.Fonts->AddFontFromFileTTF("monocraft.ttf", 17);
+	_gui->initImgui(_apiGraphic->getWindow());
 
-	// Check if the font has been loaded correctly
-	if (font == nullptr)
-	{
-		std::cerr << "Erreur lors du chargement de la police." << std::endl;
-	}
-	ImGui_ImplGlfw_InitForOpenGL(_apiGraphic->getWindow(), true);
-	ImGui_ImplOpenGL3_Init("#version 330");
 }
 
 void Engine::CheckCloseWindow(APIopenGL* _apiGraphic, Engine* _engine)

@@ -6,10 +6,14 @@
 #include "GameObject.h"
 #include "ConsoleRecup.h"
 #include "Scene.h"
+#include "Engine.hpp"
+
+
 static bool enabled = true;
 static ImGui::FileBrowser fileDialog;
+GameObject* selectedGameObject = nullptr;
 
-
+Engine* engine = Engine::GetInstance();
 
 static void ShowExampleMenuFile()
 {
@@ -412,59 +416,79 @@ void ShowInputBool(const std::string& message, bool& input, bool& show)
 	ImGui::End();
 }
 
-/*void ModifyGameObjects()
-{
-	// Structure pour repr?senter un GameObject
-	struct GameObject {
-		std::string name;
-		float position[3] = { 0.0f, 0.0f, 0.0f };
-		float rotation[3] = { 0.0f, 0.0f, 0.0f };
-	};
-	// Commencer une nouvelle fen?tre ImGui
-	ImGui::Begin("GameObjects");
+GameObject* CreateGameObjectWithModel(const std::string& modelName) {
+	Manager* manager = Manager::GetInstance();
+	SceneManager* sceneManager = manager->GetManager<SceneManager>();
 
-	// Parcourir la liste de GameObjects
-	for (GameObject& gameObject : gameObjects)
-	{
-		if (ImGui::TreeNode(gameObject.name.c_str()))
-		{
-			ImGui::SliderFloat3("Position", gameObject.position, -100.0f, 100.0f);
-			ImGui::SliderFloat3("Rotation", gameObject.rotation, -180.0f, 180.0f);
-			ImGui::TreePop();
+	GameObject* go = sceneManager->gameObjectPool.CreateGoFromPool(modelName);
+
+	if (go != nullptr) {
+		go->AddComponent<Model>();
+		Model* modelComponent = go->GetComponent<Model>();
+		if (modelComponent != nullptr) {
+			modelComponent->SetModel(modelName);
+		}
+		else {
+			std::cout << "Could not add Model component to GameObject" << std::endl;
 		}
 	}
-
-	// Terminer la fen?tre ImGui
-	ImGui::End();
-}*/
-
-void CreateGameObject(std::vector<std::string>& gameObjects, bool& show) {
-	// Cr?ez une nouvelle fen?tre ImGui
-	ImGui::Begin("Cr?er un GameObject", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Ajoutez un champ de texte pour le nom du GameObject
-	static char gameObjectName[128];
-	ImGui::InputText("Nom", gameObjectName, IM_ARRAYSIZE(gameObjectName));
-
-	// Ajoutez un bouton pour cr?er le GameObject
-	if (ImGui::Button("Cr?er")) {
-		// Ajoutez le GameObject ? la liste
-		gameObjects.push_back(gameObjectName);
-
-		// Effacez le champ de texte
-		memset(gameObjectName, 0, sizeof(gameObjectName));
+	else {
+		std::cout << "Could not create GameObject" << std::endl;
 	}
 
-	// Terminez la fen?tre
-	ImGui::End();
+	return go; // This will return nullptr if GameObject creation failed
 }
+
 
 void ShowAddGameObject() {
 	if (ImGui::Begin("Create Game Object"))
 	{
-		// open file dialog when user clicks this button
-		if (ImGui::Button("open file dialog"))
-			fileDialog.Open();
+		static char gameObjectName[128];
+
+		if (ImGui::BeginTabBar("TabBar"))
+		{
+			if (ImGui::BeginTabItem("Create"))
+			{
+				// open file dialog when user clicks this button
+				if (ImGui::Button("open file obj"))
+					fileDialog.Open();
+
+				ImGui::EndTabItem();
+			}
+			if (ImGui::BeginTabItem("Prefab"))
+			{
+				if (ImGui::Button("Cube"))
+				{
+					CreateGameObjectWithModel("cube.obj");
+				}
+				if (ImGui::Button("Sphere"))
+				{
+					CreateGameObjectWithModel("sphere.obj");
+				}
+
+				if (ImGui::Button("Capsule"))
+				{
+					CreateGameObjectWithModel("capsule.obj");
+				}
+				if (ImGui::Button("Plane"))
+				{
+					CreateGameObjectWithModel("plane.obj");
+				}
+
+				if (ImGui::Button("Cylinder"))
+				{
+					CreateGameObjectWithModel("cylinder.obj");
+				}
+				if (ImGui::Button("Miku"))
+				{
+					CreateGameObjectWithModel("miku.obj");
+				}
+
+
+				ImGui::EndTabItem();
+			}
+			ImGui::EndTabBar();
+		}
 	}
 	ImGui::End();
 
@@ -472,18 +496,20 @@ void ShowAddGameObject() {
 
 	if (fileDialog.HasSelected())
 	{
+
 		std::cout << "Selected filename" << fileDialog.GetSelected().string() << std::endl;
+		CreateGameObjectWithModel(fileDialog.GetSelected().string());
 		fileDialog.ClearSelected();
 	}
 	ImGui::Separator();
-
 }
+
 
 
 
 void ShowConsoleWindow()
 {
-	// Commencer une nouvelle fen?tre ImGui
+	// Commencer une nouvelle fenêtre ImGui
 	ImGui::Begin("Console");
 
 	// Parcourir la liste des messages de la console
@@ -493,65 +519,33 @@ void ShowConsoleWindow()
 		ImGui::TextUnformatted(message.c_str());
 	}
 
-	// Terminer la fen?tre ImGui
+	// Terminer la fenêtre ImGui
 	ImGui::End();
 }
 
 
-//void RenderSceneHierarchy() {
-//	// Start the ImGui window
-//	ImGui::Begin("Scene Hierarchy");
-//
-//	// Iterate through your game objects/entities and create tree nodes
-//	for (const auto& gameObjectPtr : Scene::GetAllGameObjects()) {
-//		// Dereference the pointer to get the actual GameObject
-//		const auto& gameObject = *gameObjectPtr;
-//
-//		// Create a tree node with the name of the entity
-//		// Assuming GetName() is a method of GameObject that returns a string
-//		if (ImGui::TreeNode(gameObject->GetName().c_str())) {
-//			// If the tree node is open, you can list components or children here
-//			// For each component or child, you can make them selectable
-//			// Assuming GetComponents() is a method of GameObject that returns a list of Component pointers
-//			for (const auto& componentPtr : gameObject.GetComponents()) {
-//				// Dereference the pointer to get the actual Component
-//				const auto& component = *componentPtr;
-//				// Assuming GetName() and IsSelected() are methods of Component
-//				// GetName() returns a string and IsSelected() returns a bool
-//				ImGui::Selectable(component.GetName().c_str(), component.IsSelected());
-//			}
-//
-//			// Don't forget to call TreePop!
-//			ImGui::TreePop();
-//		}
-//	}
-//
-//	ImGui::End();
-//}
 
 void RenderToolbar() {
 	// Assuming toolbarHeight is set to your desired height for the toolbar
-	float toolbarHeight = 24.0f;
-	ImGuiViewport* viewport = ImGui::GetMainViewport();
-	ImGui::SetNextWindowPos(ImVec2(viewport->WorkPos.x, viewport->WorkPos.y));
-	ImGui::SetNextWindowSize(ImVec2(viewport->WorkSize.x, toolbarHeight));
+
 
 	// We don't want the toolbar window to be moveable or have any framing
-	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoMove;
+	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoScrollWithMouse;
 
 	ImGui::Begin("##Toolbar", nullptr, window_flags);
 
 	// Left-aligned buttons
 	if (ImGui::Button("Play")) {
-		// Trigger play action
+		std::cout << "Play" << std::endl;
+		engine->GetEngineState()->StartRunTime();
 	}
 	ImGui::SameLine();
 	if (ImGui::Button("Pause")) {
-		// Trigger pause action
+		engine->GetEngineState()->PauseRunTime();
 	}
 	ImGui::SameLine();
 	if (ImGui::Button("Stop")) {
-		// Trigger stop action
+		engine->GetEngineState()->ExitRunTime();
 	}
 
 	// Calculate the size needed to center the next set of buttons
@@ -563,26 +557,102 @@ void RenderToolbar() {
 		ImGui::SameLine(spacing);
 	}
 
-	// Center-aligned buttons
-	for (int i = 0; i < 3; ++i) {
-		if (i > 0) ImGui::SameLine();
-		if (ImGui::Button("Centered Button")) {
-			// Trigger action for this button
-		}
+	if (ImGui::Button("Save"))
+	{
+		engine->manager->GetManager<SceneManager>()->Save();
 	}
 
-	ImGui::SameLine();
-	if (ImGui::Button("Save")) {
-		// Trigger play action
-	}
-	ImGui::SameLine();
-	if (ImGui::Button("move")) {
-		// Trigger pause action
-	}
-	ImGui::SameLine();
-	if (ImGui::Button("")) {
-		// Trigger stop action
-	}
+	// Center-aligned buttons
+	//for (int i = 0; i < 3; ++i) {
+	//	if (i > 0) ImGui::SameLine();
+	//	if (ImGui::Button("Centered Button")) {
+	//		// Trigger action for this button
+	//	}
+	//}
+
+
 
 	ImGui::End();
+}
+
+
+// Ajoutez un paramètre Scene à la fonction ShowHierarchy
+static void ShowHierarchy()
+{
+	SceneManager* sceneManager = Manager::GetInstance()->GetManager<SceneManager>();
+	Scene& scene = *sceneManager->GetCurrentScene();
+
+	// Utilisez la fonction GetAllGameObjects() pour obtenir tous les GameObjects
+	std::vector<GameObject*> allGameObjects = scene.GetAllGameObjects();
+	// Dans votre boucle de rendu ImGui
+	ImGui::Begin("Hierarchie de la scene");
+	{
+		// Affichez une liste de tous les GameObjects
+		for (GameObject* gameobject : allGameObjects)
+		{
+			std::string temp = gameobject->name + "_" + std::to_string(gameobject->id);
+			if (ImGui::Selectable(temp.c_str()))
+			{
+				// Si l'utilisateur clique sur un GameObject, stockez une référence à ce GameObject
+				selectedGameObject = gameobject;
+			}
+		}
+	}
+	ImGui::End();
+
+
+	// Si un GameObject a été sélectionné, affichez ses informations dans une fenêtre ImGui
+	if (selectedGameObject != nullptr)
+	{
+		std::string temp = selectedGameObject->name + "_" + std::to_string(selectedGameObject->id);
+		static int selectedComponent = 0;
+		ImGui::Begin("Inspector");
+
+		// Affichez le nom du GameObject
+		ImGui::Text("Nom: %s", temp.c_str());
+		ImGui::Separator();
+
+		// Obtenez le Transform du GameObject
+		Transform* transform = selectedGameObject->GetComponent<Transform>();
+
+		// Créez des contrôles de glissement pour la position, la rotation et l'échelle
+		float position[3] = { transform->GetPosition().x, transform->GetPosition().y, transform->GetPosition().z };
+		glm::vec3 rotation = transform->GetRotation();
+		glm::vec3 scale = transform->GetScale();
+		std::string name = selectedGameObject->name;
+		std::cout << position << std::endl;
+
+
+
+		if (ImGui::DragFloat3("Positon", &position[0]))
+		{
+			// Si l'utilisateur modifie la position, mettez à jour le Transform
+			transform->SetPosition(glm::vec3(position[0], position[1], position[2]));
+		}
+
+		if (ImGui::DragFloat3("Rotation", &rotation.x))
+		{
+			// Si l'utilisateur modifie la rotation, mettez à jour le Transform
+			transform->SetRotation(rotation.x, rotation.y, rotation.z);
+		}
+
+		if (ImGui::DragFloat3("Scale", &scale.x, 0.1f, 0.1f, 10.0f))
+		{
+			// Si l'utilisateur modifie l'échelle, mettez à jour le Transform
+			transform->SetScale(scale);
+		}
+
+		if (ImGui::Button("Delete"))
+		{
+			selectedGameObject->Delete();
+			sceneManager->gameObjectPool.Free(selectedGameObject);
+			selectedGameObject = nullptr;
+		}
+
+
+		ImGui::End();
+
+
+	}
+
 }

@@ -18,7 +18,7 @@ public:
 * Represents the currently active scene.
 */
 	Scene* currentScene;
-
+	int id; // ID du GO
 	/**
 	* @brief Vector containing pointers to Component objects.
 	* Represents the components attached to the GameObject.
@@ -33,6 +33,8 @@ public:
 	* @param copying Specifies if the GameObject is being copied. Default is false.
 	*/
 	GameObject(std::string name_ = "GO", bool PrefabLoading = false, Prefab* prefab = nullptr, bool copying = false);
+
+	~GameObject();
 
 	/**
 	* @brief Vector representing the origin point of the GameObject.
@@ -57,21 +59,21 @@ public:
 	* This function is called at the beginning.
 	* Override this function to perform initialization tasks.
 	*/
-	virtual void Init() {}; // Est appelé au début
+	void Init() {}; // Est appelé au début
 
 	/**
 	* @brief Starts the GameObject.
 	* This function is called at the first frame.
 	* Override this function to perform start-up tasks.
 	*/
-	virtual void Start() {}; // Est appelé à la première frame
+	void Start(){}; // Est appelé à la première frame
 
 	/**
 	* @brief Updates the GameObject.
 	* This function is called at each frame.
 	* Override this function to perform update tasks.
 	*/
-	virtual void Update() {}; // Est appelé à chaque frame
+	void Update(); // Est appelé à chaque frame
 
 	/**
 	* @brief Gets the ID of the GameObject.
@@ -222,7 +224,7 @@ public:
 	* @param go Pointer to the GameObject to delete.
 	* Represents deleting a GameObject and freeing its memory.
 	*/
-	static void Delete(GameObject* go);
+	void Delete();
 
 
 private:
@@ -230,7 +232,7 @@ private:
 	* @brief ID of the GameObject.
 	* Represents the unique identifier assigned to the GameObject.
 	*/
-	int id; // ID du GO
+
 
 	/**
 	* @brief List of child GameObjects.

@@ -54,7 +54,7 @@ public:
 
 	/**
 	* @brief Adds a model to the collection.
-	* @param mesh Pointer to the ModelComponent to be added.
+	* @param ModelComponent* Pointer to the ModelComponent to be added.
 	* @return void
 	*/
 	void AddModel(ModelComponent* mesh) {
@@ -63,7 +63,7 @@ public:
 
 	/**
 	* @brief Retrieves a model by its name.
-	* @param name The name of the model to retrieve.
+	* @param std::string The name of the model to retrieve.
 	* @return Pointer to the ModelComponent if found, otherwise nullptr.
 	*/
 	ModelComponent* GetModel(std::string name) {
@@ -77,8 +77,8 @@ public:
 
 	/**
 	* @brief Sets the model of a GameObject.
-	* @param modelName The name of the model to set.
-	* @param go Pointer to the GameObject.
+	* @param std::string The name of the model to set.
+	* @param GameObject* Pointer to the GameObject.
 	* @return void
 	*/
 	void SetModel(std::string modelName, GameObject* go);
@@ -88,7 +88,7 @@ public:
 
 	/**
 	* @brief Loads a model from a file.
-	* @param fileName The name of the file to load the model from.
+	* @param std::string The name of the file to load the model from.
 	* @return void
 	*/
 	void LoadModel(std::string fileName);

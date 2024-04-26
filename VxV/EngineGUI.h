@@ -7,4 +7,5 @@ public:
 	void initImgui(GLFWwindow* window);
 	void UpdateGui();
 	void RenderGui();
+	void DestroyGui();
 };

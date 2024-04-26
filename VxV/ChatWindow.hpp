@@ -13,6 +13,8 @@
 
 #pragma comment(lib, "Ws2_32.lib")
 
+
+
 struct ChatWindow {
     std::string username;
     std::deque<std::string> messages;

@@ -1,12 +1,12 @@
 #pragma once
 
 #include "APIopenGL.hpp"
+#include "EngineGUI.h"
 #include "ModelManager.h"
 #include "PrefabManager.h"
 #include "InputManager.h"
 #include "SceneManager.h"
 #include "EngineState.h"
-#include "EngineGUI.h"
 #include <iostream>
 
 
@@ -101,6 +101,11 @@ public:
 	EngineState::BootingState GetBootingState()
 	{
 		return m_engineState->GetBootingState();
+	}
+
+	void UpdateGameObjectList() 
+	{
+		m_goList = m_sceneManager->GetCurrentScene()->GetAllGameObjects();
 	}
 
 	double getLastTime()

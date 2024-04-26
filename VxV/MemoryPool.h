@@ -5,7 +5,7 @@
 #include "GameObject.h"
 
 /**
-* @breif MemoryPool class that uses a specific strategy to allocate and deallocate memory
+* @brief MemoryPool class that uses a specific strategy to allocate and deallocate memory
 * @param T - type of object to allocate memory for
 * @param Strategy - strategy to use for memory allocation and deallocation
 */
@@ -20,7 +20,7 @@ public:
 	}
 
 	/**
-	* @breif Allocates memory for an object of type T
+	* @brief Allocates memory for an object of type T
 	* @param args - arguments to pass to the constructor of the object
 	*/
 	template<typename... Args>
@@ -34,7 +34,7 @@ public:
 	}
 
 	/**
-	* @breif Deallocates memory for a specific object
+	* @brief Deallocates memory for a specific object
 	* @param p - pointer to the object to deallocate
 	*/
 	void Free(void* p)
@@ -43,7 +43,7 @@ public:
 	}
 
 	/**
-	* @breif Deallocates memory for all objects in the pool
+	* @brief Deallocates memory for all objects in the pool
 	*/
 	void FreeAll()
 	{
@@ -52,7 +52,7 @@ public:
 };
 
 /**
-* @breif specific MemoryPool class for GameObjects
+* @brief specific MemoryPool class for GameObjects
 * @param Strategy - strategy to use for memory allocation and deallocation
 */
 template<class Strategy> class MemoryPool<GameObject, Strategy>
@@ -118,7 +118,6 @@ public:
 		for (size_type i = 0; i < N; i++)
 		{
 			m_state[i] = false;
-			std::cout<< "Memory Chunk " << i << " is free" << std::endl;
 		}
 	}
 
@@ -132,11 +131,23 @@ public:
 			if (!m_state[i])
 			{
 				m_state[i] = true;
+				std::cout << "Allocating memory at memoru chunk" << i << std::endl;
+
 				return &m_buffer[sizeof(T) * i];
 			}
 		}
-		ResizePool();
-		return &m_buffer[sizeof(T) * old_size];
+		ResizePool(); 
+		return &m_buffer[sizeof(T) * 1];
+		//for (size_type i = 0; i < N; i++)
+		//{
+		//	if (!m_state[i])
+		//	{
+		//		m_state[i] = true;
+		//		std::cout << "Allocating memory at memoru chunk" << i << std::endl;
+
+		//		return &m_buffer[sizeof(T) * i];
+		//	}
+		//}
 	}
 
 	void Deallocate(void* p)
@@ -164,8 +175,8 @@ public:
 	void ResizePool()
 	{
 		std::cout << "Resizing Pool" << std::endl;
-		size_type i = m_buffer.size() * 2;
-		m_buffer.resize(i);
+		size_type i = N * 2;
+		m_buffer.resize(i * sizeof(T));
 		m_state.resize(m_state.size() * 2);
 	}
 };

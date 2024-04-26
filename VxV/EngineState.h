@@ -16,9 +16,9 @@ public:
 	};
 
 	enum class ActiveState {
-		Edition,
-		RunTime,
-		Pause
+		Edition = 0,
+		RunTime = 1,
+		Pause = 2
 	};
 private:
 	BootingState m_bootingState;
@@ -32,7 +32,7 @@ public:
 	}
 	EngineState() {
 		m_bootingState = BootingState::Edition;
-		m_state = ActiveState::RunTime;
+		m_state = ActiveState::Edition;
 	}
 	~EngineState() {
 		delete m_instance;

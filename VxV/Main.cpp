@@ -6,7 +6,6 @@ const float FRAME_TIME = 1.0f / DESIRED_FPS;
 
 int main()
 {
-
 	Engine::GetInstance()->InitEngine();
 	
 	return 0;

@@ -73,15 +73,7 @@ public:
 	* @param id The ID of the GameObject to remove.
 	* Represents removing a GameObject from the scene by its ID.
 	*/
-	void RemoveGameObject(int id) {
-		for (int i = 0; i < allGameObjects.size(); i++)
-		{
-			if (allGameObjects[i]->GetId() == id) {
-				delete(allGameObjects[i]);
-				break;
-			}
-		}
-	}
+	void RemoveGameObject(int id);
 
 
 	/**
