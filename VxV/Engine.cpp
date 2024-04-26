@@ -107,20 +107,8 @@ void Engine::Startup(EngineGUI* _gui, APIopenGL* _apiGraphic) {
 	_apiGraphic->setLightColor(glm::vec3(1, 1, 1));
 	_apiGraphic->setLightPower(80.0f);
 
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO();
-	(void)io;
-	// Load the font
-	ImFont* font = io.Fonts->AddFontFromFileTTF("monocraft.ttf", 17);
-
-	// Check if the font has been loaded correctly
-	if (font == nullptr)
-	{
-		std::cerr << "Erreur lors du chargement de la police." << std::endl;
-	}
-	ImGui_ImplGlfw_InitForOpenGL(_apiGraphic->getWindow(), true);
-	ImGui_ImplOpenGL3_Init("#version 330");
+	_gui->initImgui(_apiGraphic->getWindow());
+	
 }
 
 void Engine::CheckCloseWindow(APIopenGL* _apiGraphic, Engine* _engine)
