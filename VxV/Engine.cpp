@@ -57,8 +57,6 @@ void Engine::Update()
 			PlayUpdate();
 		}
 
-		m_gui->UpdateGui();
-		m_gui->RenderGui();
 		UpdateGameObjectList();
 
 		if (m_goList.size() > 0)
@@ -72,6 +70,8 @@ void Engine::Update()
 				}
 			}
 		}
+		m_gui->UpdateGui();
+		m_gui->RenderGui();
 		m_apiGraphic->unbindArrays();
 		m_apiGraphic->swapBuffers();
 		glfwPollEvents();
@@ -142,12 +142,7 @@ void Engine::ApiDrawLoopSetup(APIopenGL* _apiGraphic)
 		if (light != nullptr)
 		{
 			numLights++;
-			glm::vec3 lightPos = go->GetComponent<Transform>()->GetPosition();
-			glm::vec3 lightColor = go->GetComponent<Light>()->GetColor();
-			float lightPower = go->GetComponent<Light>()->GetPower();
-			glUniform3f(glGetUniformLocation(_apiGraphic->getProgramID(), ("LightPosition_worldspace[" + std::to_string(numLights) + "]").c_str()), lightPos.x, lightPos.y, lightPos.z);
-			glUniform3f(glGetUniformLocation(_apiGraphic->getProgramID(), ("LightColor[" + std::to_string(numLights) + "]").c_str()), lightColor.x, lightColor.y, lightColor.z);
-			glUniform1f(glGetUniformLocation(_apiGraphic->getProgramID(), ("LightPower[" + std::to_string(numLights) + "]").c_str()), lightPower);
+			_apiGraphic->setupLights(go, numLights);
 		}
 	}
 	glUniform1i(glGetUniformLocation(_apiGraphic->getProgramID(), "NumLights"), numLights);
