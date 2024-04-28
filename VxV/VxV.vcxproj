@@ -134,7 +134,9 @@ copy "$(ProjectDir)SimpleFragmentShader.VALORANT" "$(TargetDir)"
 
 copy "$(ProjectDir)SimpleVertexShader.MIKU" "$(TargetDir)"
 
-copy "$(ProjectDir)monocraft.ttf" "$(TargetDir)"</Command>
+copy "$(ProjectDir)monocraft.ttf" "$(TargetDir)"
+
+copy "$(ProjectDir)imgui.ini" "$(TargetDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -163,7 +165,9 @@ copy "$(ProjectDir)SimpleFragmentShader.VALORANT" "$(TargetDir)"
 
 copy "$(ProjectDir)SimpleVertexShader.MIKU" "$(TargetDir)"
 
-copy "$(ProjectDir)monocraft.ttf" "$(TargetDir)"</Command>
+copy "$(ProjectDir)monocraft.ttf" "$(TargetDir)"
+
+copy "$(ProjectDir)imgui.ini" "$(TargetDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
