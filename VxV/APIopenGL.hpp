@@ -1,6 +1,8 @@
 #pragma once
 #include "loadingShader.hpp"
 #include "GraphicAPI.hpp"
+#include "Transform.h"
+#include "Light.h"
 
 class APIopenGL : public GraphicAPI
 {
@@ -93,6 +95,16 @@ public :
 	void useShader() override
 	{
 		glUseProgram(programID);
+	}
+
+	void setupLights(GameObject* go, int numLights)
+	{
+		glm::vec3 lightPos = go->GetComponent<Transform>()->GetPosition();
+		glm::vec3 lightColor = go->GetComponent<Light>()->GetColor();
+		float lightPower = go->GetComponent<Light>()->GetPower();
+		glUniform3f(glGetUniformLocation(programID, ("LightPosition_worldspace[" + std::to_string(numLights) + "]").c_str()), lightPos.x, lightPos.y, lightPos.z);
+		glUniform3f(glGetUniformLocation(programID, ("LightColor[" + std::to_string(numLights) + "]").c_str()), lightColor.x, lightColor.y, lightColor.z);
+		glUniform1f(glGetUniformLocation(programID, ("LightPower[" + std::to_string(numLights) + "]").c_str()), lightPower);
 	}
 
 	/*void setLightColor(glm::vec3 _lightColor) {
