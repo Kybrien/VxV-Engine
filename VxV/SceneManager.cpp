@@ -14,11 +14,11 @@ SceneManager::SceneManager(Manager* manager) {
 	manager->AddManager<SceneManager>(this);
 
 
-	//Rechercher les scenes
+	// Search for existing scenes
 	SearchFile<SceneManager>(fileDirection, extention, this);
 
 	
-	// Ajouter une scene s'il n'en existe pas déjà
+	// Add a scene if none exist
 	if (scenes.empty()) {
 		new Scene();
 	}
@@ -45,19 +45,16 @@ void SceneManager::Save() {
 			go->Save(sceneJson);
 		}
 
-		// Conversion de l'objet JSON en une chaîne JSON formatée
+		// Convert the JSON object to a formatted JSON string
 		std::string jsonString = Json::writeString(builder, sceneJson);
 
 		outputFile << jsonString << std::endl << std::endl;
 
-
-
-
 		outputFile.close();
-		std::cout << "Les données ont été écrites dans le fichier " + fileDirection + " avec succès." << std::endl;
+		std::cout << "Data has been successfully written in " + fileDirection + "." << std::endl;
 	}
 	else {
-		std::cerr << "Erreur lors de l'ouverture du fichier." << std::endl;
+		std::cerr << "Error while opening the file." << std::endl;
 	}
 
 }
@@ -70,7 +67,7 @@ void SceneManager::Save() {
 
 void SceneManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
 
-	// Conversion de wstring en string
+	// Convert wstring to string
 	std::string fileDirection;
 	for (wchar_t wc : wFileDirection) {
 		fileDirection.push_back(static_cast<char>(wc));
@@ -82,7 +79,7 @@ void SceneManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
 
 	if (file.is_open()) {
 
-		// Vérification que le fichier est bien une save de scene
+		// Check if the file is a scene save
 		std::string line;
 		std::getline(file, line);
 
@@ -94,28 +91,28 @@ void SceneManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
 
 			if (line == "SceneSaveFile") {
 
-				// Lecture du contenu du fichier dans une chaîne de caractères
+				// Read the file content into a string
 				std::string jsonString((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
 
-				// Fermeture du fichier
+				// Close the file
 				file.close();
 
-				// Analyse de la chaîne JSON
+				// Analyse the JSON string
 				Json::Value sceneJson;
 				Json::Reader reader;
 				if (!reader.parse(jsonString, sceneJson)) {
 					std::cerr << "Erreur lors de l'analyse du JSON : " << reader.getFormattedErrorMessages() << std::endl;
 				}
 				else {
-					// Accéder aux données JSON
-					// Création de la scene
+					// Access the JSON data
+					// Create the scene
 					Scene* scene = new Scene;
 					currentScene = scene;
 
-					// Recupération des données de la scene
+					// Get the scene name
 					scene->name = sceneJson["Name"].asString();
 
-					// Récupération des données des GameObjects
+					// Get the GameObjects datas
 					for (const Json::Value gameObjectJson : sceneJson["GameObjects"])
 					{
 						GameObject::Load(gameObjectJson);
@@ -125,11 +122,11 @@ void SceneManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
 		}
 		catch (const std::exception e) {
 
-			std::cerr << "Erreur lors de la lecture du fichier : " + fileDirection << std::endl;
+			std::cerr << "Error when reading the file : " + fileDirection << std::endl;
 		}
 	}
 	else {
-		std::cerr << "Erreur lors de l'ouverture du fichier ! : " + fileDirection << std::endl;
+		std::cerr << "Error when opening the file : " + fileDirection << std::endl;
 	}
 
 }
