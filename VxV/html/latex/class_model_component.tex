@@ -9,7 +9,7 @@
 \item 
 std\+::string \mbox{\hyperlink{class_model_component_a2e15b3927b1ad7f2921dee2ae6d95a4b}{file\+Name}}
 \item 
-int \mbox{\hyperlink{class_model_component_a7c91a876876d5d2fdbd006e88126efb2}{number\+Used}} = 0
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} \mbox{\hyperlink{class_model_component_a7c91a876876d5d2fdbd006e88126efb2}{number\+Used}} = 0
 \item 
 tinyobj\+::attrib\+\_\+t \mbox{\hyperlink{class_model_component_a96d0786446f62f63b76088a735e34450}{attributes}}
 \item 
@@ -17,15 +17,15 @@ std\+::vector$<$ tinyobj\+::shape\+\_\+t $>$ \mbox{\hyperlink{class_model_compon
 \item 
 std\+::vector$<$ tinyobj\+::material\+\_\+t $>$ \mbox{\hyperlink{class_model_component_a8ed0bcb5ba86ae1268ed7a7354390bfe}{materials}}
 \item 
-GLuint \mbox{\hyperlink{class_model_component_ac3ff01acb99cd9abb7aa3d4ed4895c42}{vertexbuffer}}
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{GLuint}} \mbox{\hyperlink{class_model_component_ac3ff01acb99cd9abb7aa3d4ed4895c42}{vertexbuffer}}
 \item 
-GLuint \mbox{\hyperlink{class_model_component_a657c12be368ac5d96b5bd61db1b4f922}{indexbuffer}}
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{GLuint}} \mbox{\hyperlink{class_model_component_a657c12be368ac5d96b5bd61db1b4f922}{indexbuffer}}
 \item 
-std\+::vector$<$ GLuint $>$ \mbox{\hyperlink{class_model_component_a241a64a98e71d189f8632312f09edb00}{texture\+IDs}}
+std\+::vector$<$ \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{GLuint}} $>$ \mbox{\hyperlink{class_model_component_a241a64a98e71d189f8632312f09edb00}{texture\+IDs}}
 \item 
-std\+::unordered\+\_\+map$<$ std\+::pair$<$ GLuint, int $>$, std\+::vector$<$ \mbox{\hyperlink{class_vertex}{Vertex}} $>$, \mbox{\hyperlink{structpair__hash}{pair\+\_\+hash}} $>$ \mbox{\hyperlink{class_model_component_ae43f1825e14882c06b42056ca7d940bb}{vertex\+Buffers}}
+std\+::unordered\+\_\+map$<$ std\+::pair$<$ \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{GLuint}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} $>$, std\+::vector$<$ \mbox{\hyperlink{class_vertex}{Vertex}} $>$, \mbox{\hyperlink{structpair__hash}{pair\+\_\+hash}} $>$ \mbox{\hyperlink{class_model_component_ae43f1825e14882c06b42056ca7d940bb}{vertex\+Buffers}}
 \item 
-std\+::unordered\+\_\+map$<$ std\+::pair$<$ GLuint, int $>$, GLuint, \mbox{\hyperlink{structpair__hash}{pair\+\_\+hash}} $>$ \mbox{\hyperlink{class_model_component_a0340f899c34d1afc8208c45546e93be3}{vertex\+Buffer\+IDs}}
+std\+::unordered\+\_\+map$<$ std\+::pair$<$ \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{GLuint}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} $>$, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{GLuint}}, \mbox{\hyperlink{structpair__hash}{pair\+\_\+hash}} $>$ \mbox{\hyperlink{class_model_component_a0340f899c34d1afc8208c45546e93be3}{vertex\+Buffer\+IDs}}
 \item 
 glm\+::mat4 \mbox{\hyperlink{class_model_component_a664cd7dacfbceee5a624fbaa212a542c}{transform}}
 \end{DoxyCompactItemize}
@@ -48,7 +48,7 @@ glm\+::mat4 \mbox{\hyperlink{class_model_component_a664cd7dacfbceee5a624fbaa212a
 \index{ModelComponent@{ModelComponent}!indexbuffer@{indexbuffer}}
 \index{indexbuffer@{indexbuffer}!ModelComponent@{ModelComponent}}
 \doxysubsubsection{\texorpdfstring{indexbuffer}{indexbuffer}}
-{\footnotesize\ttfamily GLuint Model\+Component\+::indexbuffer}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{GLuint}} Model\+Component\+::indexbuffer}
 
 \Hypertarget{class_model_component_a8ed0bcb5ba86ae1268ed7a7354390bfe}\label{class_model_component_a8ed0bcb5ba86ae1268ed7a7354390bfe} 
 \index{ModelComponent@{ModelComponent}!materials@{materials}}
@@ -60,7 +60,7 @@ glm\+::mat4 \mbox{\hyperlink{class_model_component_a664cd7dacfbceee5a624fbaa212a
 \index{ModelComponent@{ModelComponent}!numberUsed@{numberUsed}}
 \index{numberUsed@{numberUsed}!ModelComponent@{ModelComponent}}
 \doxysubsubsection{\texorpdfstring{numberUsed}{numberUsed}}
-{\footnotesize\ttfamily int Model\+Component\+::number\+Used = 0}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} Model\+Component\+::number\+Used = 0}
 
 \Hypertarget{class_model_component_ac72f8a233b46191306a2ef944dc5d039}\label{class_model_component_ac72f8a233b46191306a2ef944dc5d039} 
 \index{ModelComponent@{ModelComponent}!shapes@{shapes}}
@@ -72,7 +72,7 @@ glm\+::mat4 \mbox{\hyperlink{class_model_component_a664cd7dacfbceee5a624fbaa212a
 \index{ModelComponent@{ModelComponent}!textureIDs@{textureIDs}}
 \index{textureIDs@{textureIDs}!ModelComponent@{ModelComponent}}
 \doxysubsubsection{\texorpdfstring{textureIDs}{textureIDs}}
-{\footnotesize\ttfamily std\+::vector$<$GLuint$>$ Model\+Component\+::texture\+IDs}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{GLuint}}$>$ Model\+Component\+::texture\+IDs}
 
 \Hypertarget{class_model_component_a664cd7dacfbceee5a624fbaa212a542c}\label{class_model_component_a664cd7dacfbceee5a624fbaa212a542c} 
 \index{ModelComponent@{ModelComponent}!transform@{transform}}
@@ -84,19 +84,19 @@ glm\+::mat4 \mbox{\hyperlink{class_model_component_a664cd7dacfbceee5a624fbaa212a
 \index{ModelComponent@{ModelComponent}!vertexbuffer@{vertexbuffer}}
 \index{vertexbuffer@{vertexbuffer}!ModelComponent@{ModelComponent}}
 \doxysubsubsection{\texorpdfstring{vertexbuffer}{vertexbuffer}}
-{\footnotesize\ttfamily GLuint Model\+Component\+::vertexbuffer}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{GLuint}} Model\+Component\+::vertexbuffer}
 
 \Hypertarget{class_model_component_a0340f899c34d1afc8208c45546e93be3}\label{class_model_component_a0340f899c34d1afc8208c45546e93be3} 
 \index{ModelComponent@{ModelComponent}!vertexBufferIDs@{vertexBufferIDs}}
 \index{vertexBufferIDs@{vertexBufferIDs}!ModelComponent@{ModelComponent}}
 \doxysubsubsection{\texorpdfstring{vertexBufferIDs}{vertexBufferIDs}}
-{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::pair$<$GLuint, int$>$, GLuint, \mbox{\hyperlink{structpair__hash}{pair\+\_\+hash}}$>$ Model\+Component\+::vertex\+Buffer\+IDs}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::pair$<$\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{GLuint}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}}$>$, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{GLuint}}, \mbox{\hyperlink{structpair__hash}{pair\+\_\+hash}}$>$ Model\+Component\+::vertex\+Buffer\+IDs}
 
 \Hypertarget{class_model_component_ae43f1825e14882c06b42056ca7d940bb}\label{class_model_component_ae43f1825e14882c06b42056ca7d940bb} 
 \index{ModelComponent@{ModelComponent}!vertexBuffers@{vertexBuffers}}
 \index{vertexBuffers@{vertexBuffers}!ModelComponent@{ModelComponent}}
 \doxysubsubsection{\texorpdfstring{vertexBuffers}{vertexBuffers}}
-{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::pair$<$GLuint, int$>$, std\+::vector$<$\mbox{\hyperlink{class_vertex}{Vertex}}$>$, \mbox{\hyperlink{structpair__hash}{pair\+\_\+hash}}$>$ Model\+Component\+::vertex\+Buffers}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::pair$<$\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{GLuint}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}}$>$, std\+::vector$<$\mbox{\hyperlink{class_vertex}{Vertex}}$>$, \mbox{\hyperlink{structpair__hash}{pair\+\_\+hash}}$>$ Model\+Component\+::vertex\+Buffers}
 
 
 

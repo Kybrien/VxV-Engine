@@ -2,6 +2,11 @@
 \hypertarget{class_engine_state}{}\label{class_engine_state}\index{EngineState@{EngineState}}
 
 
+Represents the state of the engine, including booting and active states.  
+
+
+
+
 {\ttfamily \#include $<$Engine\+State.\+h$>$}
 
 \doxysubsubsection*{Public Types}
@@ -18,56 +23,63 @@ enum class \mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccce
 , \mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea7b7ecb39b9e110c2a31409a1672bad23}{Stopping}}
 , \mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccceac23e2b09ebe6bf4cb5e2a9abe85c0be2}{Stopped}}
  \}
-\item 
+\begin{DoxyCompactList}\small\item\em Enum representing the different booting states of the engine. \end{DoxyCompactList}\item 
 enum class \mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57e}{Active\+State}} \{ \mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57ea226c03c443192cffffa4a924b4ccffde}{Edition}} = 0
 , \mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57eac59e0d57d6768caab6d70b180aac50d7}{Run\+Time}} = 1
 , \mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57ea105b296a83f9c105355403f3332af50f}{Pause}} = 2
  \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Enum representing the active states of the engine. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_engine_state_a199788a4679df1d89e4477f401763bf6}{Engine\+State}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_engine_state}{Engine\+State} class. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_engine_state_a43ea8ebca3f2c9a0afec63322c761f83}{\texorpdfstring{$\sim$}{\string~}\+Engine\+State}} ()
-\item 
-void \mbox{\hyperlink{class_engine_state_a38b5ab12fb22c3883c949937b6c5ebfe}{Start\+Booting}} ()
-\item 
-void \mbox{\hyperlink{class_engine_state_a13c0740f02c8fb8a21da1fc2747d1298}{Ready\+Booting}} ()
-\item 
-void \mbox{\hyperlink{class_engine_state_aff78b9441d4b87c88b75c0e89c80378a}{Start\+Running}} ()
-\item 
-void \mbox{\hyperlink{class_engine_state_a20b6970d5dce3c3f94a73be55954735a}{Running}} ()
-\item 
-void \mbox{\hyperlink{class_engine_state_aad2d43745875152d4abc2802e5dace9c}{Ask\+To\+Stop}} ()
-\item 
-void \mbox{\hyperlink{class_engine_state_ad472cdf70771d2543188c67a7695699d}{Stopping}} ()
-\item 
-void \mbox{\hyperlink{class_engine_state_ae1e581d4d977d24f0762d481dae20b15}{Stopped}} ()
-\item 
-void \mbox{\hyperlink{class_engine_state_ade7c2e7483844dc24c057c3b13f017c5}{Start\+Run\+Time}} ()
-\item 
-void \mbox{\hyperlink{class_engine_state_a98c347c07c7a158c0ca3095d721eafc7}{Exit\+Run\+Time}} ()
-\item 
-void \mbox{\hyperlink{class_engine_state_a829816938841a68620b8457835f9dd24}{Pause\+Run\+Time}} ()
-\item 
-\mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57e}{Active\+State}} const \mbox{\hyperlink{class_engine_state_af520b26a4892763a8e74bdf04727d2f2}{Get\+Active\+State}} ()
-\item 
-\mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccce}{Booting\+State}} const \mbox{\hyperlink{class_engine_state_a30c0bec19b15f3a3af87352edf4df284}{Get\+Booting\+State}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_engine_state}{Engine\+State} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_engine_state_a38b5ab12fb22c3883c949937b6c5ebfe}{Start\+Booting}} ()
+\begin{DoxyCompactList}\small\item\em Sets the booting state to Initializing. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_engine_state_a13c0740f02c8fb8a21da1fc2747d1298}{Ready\+Booting}} ()
+\begin{DoxyCompactList}\small\item\em Sets the booting state to Ready. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_engine_state_aff78b9441d4b87c88b75c0e89c80378a}{Start\+Running}} ()
+\begin{DoxyCompactList}\small\item\em Sets the booting state to Starting. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_engine_state_a20b6970d5dce3c3f94a73be55954735a}{Running}} ()
+\begin{DoxyCompactList}\small\item\em Sets the booting state to Running. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_engine_state_aad2d43745875152d4abc2802e5dace9c}{Ask\+To\+Stop}} ()
+\begin{DoxyCompactList}\small\item\em Sets the booting state to Askto\+Stop. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_engine_state_ad472cdf70771d2543188c67a7695699d}{Stopping}} ()
+\begin{DoxyCompactList}\small\item\em Sets the booting state to Stopping. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_engine_state_ae1e581d4d977d24f0762d481dae20b15}{Stopped}} ()
+\begin{DoxyCompactList}\small\item\em Sets the booting state to Stopped. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_engine_state_ade7c2e7483844dc24c057c3b13f017c5}{Start\+Run\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Sets the active state to Run\+Time. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_engine_state_a98c347c07c7a158c0ca3095d721eafc7}{Exit\+Run\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Sets the active state to Edition. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_engine_state_a829816938841a68620b8457835f9dd24}{Pause\+Run\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Sets the active state to Pause. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57e}{Active\+State}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{const}} \mbox{\hyperlink{class_engine_state_af520b26a4892763a8e74bdf04727d2f2}{Get\+Active\+State}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current active state of the engine. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccce}{Booting\+State}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{const}} \mbox{\hyperlink{class_engine_state_a30c0bec19b15f3a3af87352edf4df284}{Get\+Booting\+State}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current booting state of the engine. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{class_engine_state}{Engine\+State}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_engine_state_a5a0389c26fb5e9ff860c12b81fd2c9e2}{Get\+Instance}} ()
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{static}} \mbox{\hyperlink{class_engine_state}{Engine\+State}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_engine_state_a5a0389c26fb5e9ff860c12b81fd2c9e2}{Get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Gets the singleton instance of the \doxylink{class_engine_state}{Engine\+State} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Represents the state of the engine, including booting and active states. 
 
 \doxysubsection{Member Enumeration Documentation}
 \Hypertarget{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57e}\label{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57e} 
 \index{EngineState@{EngineState}!ActiveState@{ActiveState}}
 \index{ActiveState@{ActiveState}!EngineState@{EngineState}}
 \doxysubsubsection{\texorpdfstring{ActiveState}{ActiveState}}
-{\footnotesize\ttfamily enum class \mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57e}{Engine\+State\+::\+Active\+State}}\hspace{0.3cm}{\ttfamily [strong]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{enum}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{class}} \mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57e}{Engine\+State\+::\+Active\+State}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enum representing the active states of the engine. 
 
 \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{Edition@{Edition}!EngineState@{EngineState}}\index{EngineState@{EngineState}!Edition@{Edition}}}\Hypertarget{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57ea226c03c443192cffffa4a924b4ccffde}\label{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57ea226c03c443192cffffa4a924b4ccffde} 
@@ -87,7 +99,11 @@ Pause&\\
 \index{EngineState@{EngineState}!BootingState@{BootingState}}
 \index{BootingState@{BootingState}!EngineState@{EngineState}}
 \doxysubsubsection{\texorpdfstring{BootingState}{BootingState}}
-{\footnotesize\ttfamily enum class \mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccce}{Engine\+State\+::\+Booting\+State}}\hspace{0.3cm}{\ttfamily [strong]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{enum}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{class}} \mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccce}{Engine\+State\+::\+Booting\+State}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enum representing the different booting states of the engine. 
 
 \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{Edition@{Edition}!EngineState@{EngineState}}\index{EngineState@{EngineState}!Edition@{Edition}}}\Hypertarget{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea226c03c443192cffffa4a924b4ccffde}\label{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6cccea226c03c443192cffffa4a924b4ccffde} 
@@ -132,6 +148,10 @@ Stopped&\\
 \doxysubsubsection{\texorpdfstring{EngineState()}{EngineState()}}
 {\footnotesize\ttfamily Engine\+State\+::\+Engine\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Constructor for the \doxylink{class_engine_state}{Engine\+State} class. 
+
 \Hypertarget{class_engine_state_a43ea8ebca3f2c9a0afec63322c761f83}\label{class_engine_state_a43ea8ebca3f2c9a0afec63322c761f83} 
 \index{EngineState@{EngineState}!````~EngineState@{\texorpdfstring{$\sim$}{\string~}EngineState}}
 \index{````~EngineState@{\texorpdfstring{$\sim$}{\string~}EngineState}!EngineState@{EngineState}}
@@ -140,84 +160,149 @@ Stopped&\\
 
 
 
+Destructor for the \doxylink{class_engine_state}{Engine\+State} class. 
+
+
+
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_engine_state_aad2d43745875152d4abc2802e5dace9c}\label{class_engine_state_aad2d43745875152d4abc2802e5dace9c} 
 \index{EngineState@{EngineState}!AskToStop@{AskToStop}}
 \index{AskToStop@{AskToStop}!EngineState@{EngineState}}
 \doxysubsubsection{\texorpdfstring{AskToStop()}{AskToStop()}}
-{\footnotesize\ttfamily void Engine\+State\+::\+Ask\+To\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Engine\+State\+::\+Ask\+To\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the booting state to Askto\+Stop. 
 
 \Hypertarget{class_engine_state_a98c347c07c7a158c0ca3095d721eafc7}\label{class_engine_state_a98c347c07c7a158c0ca3095d721eafc7} 
 \index{EngineState@{EngineState}!ExitRunTime@{ExitRunTime}}
 \index{ExitRunTime@{ExitRunTime}!EngineState@{EngineState}}
 \doxysubsubsection{\texorpdfstring{ExitRunTime()}{ExitRunTime()}}
-{\footnotesize\ttfamily void Engine\+State\+::\+Exit\+Run\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Engine\+State\+::\+Exit\+Run\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the active state to Edition. 
 
 \Hypertarget{class_engine_state_af520b26a4892763a8e74bdf04727d2f2}\label{class_engine_state_af520b26a4892763a8e74bdf04727d2f2} 
 \index{EngineState@{EngineState}!GetActiveState@{GetActiveState}}
 \index{GetActiveState@{GetActiveState}!EngineState@{EngineState}}
 \doxysubsubsection{\texorpdfstring{GetActiveState()}{GetActiveState()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57e}{Active\+State}} const Engine\+State\+::\+Get\+Active\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engine_state_a59a7e1f0d64a835cf2cbe3634b54c57e}{Active\+State}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{const}} Engine\+State\+::\+Get\+Active\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Gets the current active state of the engine. 
+
+\begin{DoxyReturn}{Returns}
+The current active state. 
+\end{DoxyReturn}
 \Hypertarget{class_engine_state_a30c0bec19b15f3a3af87352edf4df284}\label{class_engine_state_a30c0bec19b15f3a3af87352edf4df284} 
 \index{EngineState@{EngineState}!GetBootingState@{GetBootingState}}
 \index{GetBootingState@{GetBootingState}!EngineState@{EngineState}}
 \doxysubsubsection{\texorpdfstring{GetBootingState()}{GetBootingState()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccce}{Booting\+State}} const Engine\+State\+::\+Get\+Booting\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engine_state_a4a9b0715fa542e4fbf67fdaaf9c6ccce}{Booting\+State}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{const}} Engine\+State\+::\+Get\+Booting\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Gets the current booting state of the engine. 
+
+\begin{DoxyReturn}{Returns}
+The current booting state. 
+\end{DoxyReturn}
 \Hypertarget{class_engine_state_a5a0389c26fb5e9ff860c12b81fd2c9e2}\label{class_engine_state_a5a0389c26fb5e9ff860c12b81fd2c9e2} 
 \index{EngineState@{EngineState}!GetInstance@{GetInstance}}
 \index{GetInstance@{GetInstance}!EngineState@{EngineState}}
 \doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
-{\footnotesize\ttfamily static \mbox{\hyperlink{class_engine_state}{Engine\+State}} \texorpdfstring{$\ast$}{*} Engine\+State\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{static}} \mbox{\hyperlink{class_engine_state}{Engine\+State}} \texorpdfstring{$\ast$}{*} Engine\+State\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
+
+
+Gets the singleton instance of the \doxylink{class_engine_state}{Engine\+State} class. 
+
+\begin{DoxyReturn}{Returns}
+The singleton instance of \doxylink{class_engine_state}{Engine\+State}. 
+\end{DoxyReturn}
 \Hypertarget{class_engine_state_a829816938841a68620b8457835f9dd24}\label{class_engine_state_a829816938841a68620b8457835f9dd24} 
 \index{EngineState@{EngineState}!PauseRunTime@{PauseRunTime}}
 \index{PauseRunTime@{PauseRunTime}!EngineState@{EngineState}}
 \doxysubsubsection{\texorpdfstring{PauseRunTime()}{PauseRunTime()}}
-{\footnotesize\ttfamily void Engine\+State\+::\+Pause\+Run\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Engine\+State\+::\+Pause\+Run\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the active state to Pause. 
 
 \Hypertarget{class_engine_state_a13c0740f02c8fb8a21da1fc2747d1298}\label{class_engine_state_a13c0740f02c8fb8a21da1fc2747d1298} 
 \index{EngineState@{EngineState}!ReadyBooting@{ReadyBooting}}
 \index{ReadyBooting@{ReadyBooting}!EngineState@{EngineState}}
 \doxysubsubsection{\texorpdfstring{ReadyBooting()}{ReadyBooting()}}
-{\footnotesize\ttfamily void Engine\+State\+::\+Ready\+Booting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Engine\+State\+::\+Ready\+Booting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the booting state to Ready. 
 
 \Hypertarget{class_engine_state_a20b6970d5dce3c3f94a73be55954735a}\label{class_engine_state_a20b6970d5dce3c3f94a73be55954735a} 
 \index{EngineState@{EngineState}!Running@{Running}}
 \index{Running@{Running}!EngineState@{EngineState}}
 \doxysubsubsection{\texorpdfstring{Running()}{Running()}}
-{\footnotesize\ttfamily void Engine\+State\+::\+Running (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Engine\+State\+::\+Running (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the booting state to Running. 
 
 \Hypertarget{class_engine_state_a38b5ab12fb22c3883c949937b6c5ebfe}\label{class_engine_state_a38b5ab12fb22c3883c949937b6c5ebfe} 
 \index{EngineState@{EngineState}!StartBooting@{StartBooting}}
 \index{StartBooting@{StartBooting}!EngineState@{EngineState}}
 \doxysubsubsection{\texorpdfstring{StartBooting()}{StartBooting()}}
-{\footnotesize\ttfamily void Engine\+State\+::\+Start\+Booting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Engine\+State\+::\+Start\+Booting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the booting state to Initializing. 
 
 \Hypertarget{class_engine_state_aff78b9441d4b87c88b75c0e89c80378a}\label{class_engine_state_aff78b9441d4b87c88b75c0e89c80378a} 
 \index{EngineState@{EngineState}!StartRunning@{StartRunning}}
 \index{StartRunning@{StartRunning}!EngineState@{EngineState}}
 \doxysubsubsection{\texorpdfstring{StartRunning()}{StartRunning()}}
-{\footnotesize\ttfamily void Engine\+State\+::\+Start\+Running (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Engine\+State\+::\+Start\+Running (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the booting state to Starting. 
 
 \Hypertarget{class_engine_state_ade7c2e7483844dc24c057c3b13f017c5}\label{class_engine_state_ade7c2e7483844dc24c057c3b13f017c5} 
 \index{EngineState@{EngineState}!StartRunTime@{StartRunTime}}
 \index{StartRunTime@{StartRunTime}!EngineState@{EngineState}}
 \doxysubsubsection{\texorpdfstring{StartRunTime()}{StartRunTime()}}
-{\footnotesize\ttfamily void Engine\+State\+::\+Start\+Run\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Engine\+State\+::\+Start\+Run\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the active state to Run\+Time. 
 
 \Hypertarget{class_engine_state_ae1e581d4d977d24f0762d481dae20b15}\label{class_engine_state_ae1e581d4d977d24f0762d481dae20b15} 
 \index{EngineState@{EngineState}!Stopped@{Stopped}}
 \index{Stopped@{Stopped}!EngineState@{EngineState}}
 \doxysubsubsection{\texorpdfstring{Stopped()}{Stopped()}}
-{\footnotesize\ttfamily void Engine\+State\+::\+Stopped (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Engine\+State\+::\+Stopped (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the booting state to Stopped. 
 
 \Hypertarget{class_engine_state_ad472cdf70771d2543188c67a7695699d}\label{class_engine_state_ad472cdf70771d2543188c67a7695699d} 
 \index{EngineState@{EngineState}!Stopping@{Stopping}}
 \index{Stopping@{Stopping}!EngineState@{EngineState}}
 \doxysubsubsection{\texorpdfstring{Stopping()}{Stopping()}}
-{\footnotesize\ttfamily void Engine\+State\+::\+Stopping (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Engine\+State\+::\+Stopping (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the booting state to Stopping. 
 
 
 

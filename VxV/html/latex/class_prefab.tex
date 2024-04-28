@@ -7,14 +7,14 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_prefab_a0bac39721cf021fe1707fe171db6b36a}{Prefab}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go, std\+::string \mbox{\hyperlink{class_prefab_a7e0a7c6fdfb28a154a275168ef3eec99}{name}}="{}Prefab\+Sample"{})
+\mbox{\hyperlink{class_prefab_a0bac39721cf021fe1707fe171db6b36a}{Prefab}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{go}}, std\+::string \mbox{\hyperlink{class_prefab_a7e0a7c6fdfb28a154a275168ef3eec99}{name}}="{}Prefab\+Sample"{})
 \begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_prefab}{Prefab} object with optional parameters. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_prefab_a38f14c8a1f5ff6d8c61efaca62091fed}{get\+Game\+Object}} ()
 \begin{DoxyCompactList}\small\item\em Retrieves the \doxylink{class_game_object}{Game\+Object} associated with the \doxylink{class_prefab}{Prefab}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_prefab_af85dfd3f800c277d66118355ba31311e}{Copy}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go\+To\+Fill, \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go\+To\+Copy)
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{static}} \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_prefab_af85dfd3f800c277d66118355ba31311e}{Copy}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{go\+To\+Fill}}, \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{go\+To\+Copy}})
 \begin{DoxyCompactList}\small\item\em Creates a copy of the provided \doxylink{class_game_object}{Game\+Object} and fills it with data from another \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -54,6 +54,8 @@ Constructs a \doxylink{class_prefab}{Prefab} object with optional parameters.
 
 Creates a copy of the provided \doxylink{class_game_object}{Game\+Object} and fills it with data from another \doxylink{class_game_object}{Game\+Object}. 
 
+Copy the game object and all its children and components.
+
 
 \begin{DoxyParams}{Parameters}
 {\em go\+To\+Fill} & Pointer to the \doxylink{class_game_object}{Game\+Object} to fill with data. \\
@@ -62,7 +64,17 @@ Creates a copy of the provided \doxylink{class_game_object}{Game\+Object} and fi
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Pointer to the filled \doxylink{class_game_object}{Game\+Object} copy. Represents creating a copy of a \doxylink{class_game_object}{Game\+Object} and filling it with data from another \doxylink{class_game_object}{Game\+Object}. 
+Pointer to the filled \doxylink{class_game_object}{Game\+Object} copy. Represents creating a copy of a \doxylink{class_game_object}{Game\+Object} and filling it with data from another \doxylink{class_game_object}{Game\+Object}.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em go\+To\+Fill} & The game object to fill with the copy \\
+\hline
+{\em go\+To\+Copy} & The game object to copy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The game object filled with the copy 
 \end{DoxyReturn}
 \Hypertarget{class_prefab_a38f14c8a1f5ff6d8c61efaca62091fed}\label{class_prefab_a38f14c8a1f5ff6d8c61efaca62091fed} 
 \index{Prefab@{Prefab}!getGameObject@{getGameObject}}

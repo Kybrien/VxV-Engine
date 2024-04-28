@@ -7,19 +7,19 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_game_object_af0c049fcca8f16b4eda2e24ce27961f3}{Game\+Object}} (std\+::string name\+\_\+="{}GO"{}, bool Prefab\+Loading=false, \mbox{\hyperlink{class_prefab}{Prefab}} \texorpdfstring{$\ast$}{*}prefab=nullptr, bool copying=false)
+\mbox{\hyperlink{class_game_object_af0c049fcca8f16b4eda2e24ce27961f3}{Game\+Object}} (std\+::string \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{name\+\_\+}}="{}GO"{}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{bool}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{Prefab\+Loading}}=\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{false}}, \mbox{\hyperlink{class_prefab}{Prefab}} \texorpdfstring{$\ast$}{*}prefab=\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{nullptr}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{bool}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{copying}}=\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{false}})
 \begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_game_object}{Game\+Object} object with optional parameters. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_game_object_ab82dfdb656f9051c0587e6593b2dda97}{\texorpdfstring{$\sim$}{\string~}\+Game\+Object}} ()
 \item 
-void \mbox{\hyperlink{class_game_object_aa70012636f8b4c1e84d8344bf5f3480a}{Init}} ()
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_game_object_aa70012636f8b4c1e84d8344bf5f3480a}{Init}} ()
 \begin{DoxyCompactList}\small\item\em Initializes the \doxylink{class_game_object}{Game\+Object}. This function is called at the beginning. Override this function to perform initialization tasks. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_game_object_aa27714b4172ebff2f7cddcf63b325ac7}{Start}} ()
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_game_object_aa27714b4172ebff2f7cddcf63b325ac7}{Start}} ()
 \begin{DoxyCompactList}\small\item\em Starts the \doxylink{class_game_object}{Game\+Object}. This function is called at the first frame. Override this function to perform start-\/up tasks. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_game_object_a1bd14aa169f501f94f1721943d716535}{Update}} ()
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_game_object_a1bd14aa169f501f94f1721943d716535}{Update}} ()
 \begin{DoxyCompactList}\small\item\em Updates the \doxylink{class_game_object}{Game\+Object}. This function is called at each frame. Override this function to perform update tasks. \end{DoxyCompactList}\item 
-const int \mbox{\hyperlink{class_game_object_a97db8a4b760faea4a772aae3d69212eb}{Get\+Id}} ()
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{const}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} \mbox{\hyperlink{class_game_object_a97db8a4b760faea4a772aae3d69212eb}{Get\+Id}} ()
 \begin{DoxyCompactList}\small\item\em Gets the ID of the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_game_object_a51e1b37b51bd3241ccc715f0ede9c2f4}{Set\+Id}} (int id\+\_\+)
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_game_object_a51e1b37b51bd3241ccc715f0ede9c2f4}{Set\+Id}} (\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{id\+\_\+}})
 \begin{DoxyCompactList}\small\item\em Sets the ID of the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_game_object_a4cc2f753f74eca0c6a8b70f433bec773}{Get\+Child\+By\+Name}} (std\+::string \mbox{\hyperlink{class_game_object_af542b33c8de269343e22c5629e6b66c0}{name}})
 \begin{DoxyCompactList}\small\item\em Retrieves a child \doxylink{class_game_object}{Game\+Object} by its name. \end{DoxyCompactList}\item 
@@ -29,45 +29,47 @@ std\+::vector$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstr
 \begin{DoxyCompactList}\small\item\em Retrieves all child Game\+Objects of the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_game_object_ab8cd34f35a40f8c303d38a61a1c4cbed}{Get\+Parent}} ()
 \begin{DoxyCompactList}\small\item\em Retrieves the parent \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_game_object_a99f4295a43d790542088b8acfbc964b6}{Save}} (Json\+::\+Value \&root)
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_game_object_a99f4295a43d790542088b8acfbc964b6}{Save}} (Json\+::\+Value \&\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{root}})
 \begin{DoxyCompactList}\small\item\em Saves the \doxylink{class_game_object}{Game\+Object} to JSON data. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_game_object_a15d6c2beb85dc141d61047db2db79b37}{Add\+Child}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go)
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_game_object_a15d6c2beb85dc141d61047db2db79b37}{Add\+Child}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{go}})
 \begin{DoxyCompactList}\small\item\em Adds a child \doxylink{class_game_object}{Game\+Object} to the current \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_game_object_ae6c54a1764b44863f009a2983a3ce65a}{Add\+Parent}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go)
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_game_object_ae6c54a1764b44863f009a2983a3ce65a}{Add\+Parent}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{go}})
 \begin{DoxyCompactList}\small\item\em Sets the parent \doxylink{class_game_object}{Game\+Object} for the current \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{class_game_object_a8126ec1f89a3fe25932c72ed01965187}{get\+Prefab\+Name}} ()
 \begin{DoxyCompactList}\small\item\em Retrieves the name of the prefab associated with the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_game_object_a500073b6993842951c6098b7eadf3bde}{Set\+Prefab}} (\mbox{\hyperlink{class_prefab}{Prefab}} \texorpdfstring{$\ast$}{*}prefab\+\_\+)
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_game_object_a500073b6993842951c6098b7eadf3bde}{Set\+Prefab}} (\mbox{\hyperlink{class_prefab}{Prefab}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{prefab\+\_\+}})
 \begin{DoxyCompactList}\small\item\em Sets the prefab associated with the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_prefab}{Prefab}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_game_object_afcabc902c85be249c5ee175172f808af}{Get\+Prefab}} ()
 \begin{DoxyCompactList}\small\item\em Retrieves the prefab associated with the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_game_object_aa2775b50581c1f9d290b5428815b131f}{Remove\+Child}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go\+Child)
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_game_object_aa2775b50581c1f9d290b5428815b131f}{Remove\+Child}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{go\+Child}})
 \begin{DoxyCompactList}\small\item\em Removes a child \doxylink{class_game_object}{Game\+Object} from the current \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_game_object_a5ba3b458e6bee6ea5aedd5c8cdeabf18}{Get\+Component}} ()
+{\footnotesize template$<$\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{typename}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} $>$ }\\\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_game_object_a5ba3b458e6bee6ea5aedd5c8cdeabf18}{Get\+Component}} ()
 \begin{DoxyCompactList}\small\item\em Retrieves a component of type T attached to the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_game_object_a83b5aa2871b1e564aba800f94944d7fa}{Add\+Component}} ()
+{\footnotesize template$<$\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{typename}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} $>$ }\\\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_game_object_a83b5aa2871b1e564aba800f94944d7fa}{Add\+Component}} ()
 \begin{DoxyCompactList}\small\item\em Adds a component of type T to the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_game_object_a2efa82d6c00842f432826bd9769ffc17}{Load\+Component}} (Json\+::\+Value comp\+Json, \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}parent\+Go)
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_game_object_a6de86477e37962bcd4738b09c1c706aa}{Add\+Component}} (\mbox{\hyperlink{class_component}{Component}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{component}})
+\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_game_object_a2efa82d6c00842f432826bd9769ffc17}{Load\+Component}} (Json\+::\+Value \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{comp\+Json}}, \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{parent\+Go}})
 \begin{DoxyCompactList}\small\item\em Loads a component from JSON data and attaches it to the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_game_object_a322beae90ff8c484e0c52da2c8b4a2a5}{Delete}} ()
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_game_object_a322beae90ff8c484e0c52da2c8b4a2a5}{Delete}} ()
 \begin{DoxyCompactList}\small\item\em Deletes a \doxylink{class_game_object}{Game\+Object} and frees its memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static void \mbox{\hyperlink{class_game_object_a623d7145313610b8623d62ba9afb4e7f}{Load}} (Json\+::\+Value root, \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go\+Parent=nullptr, bool Prefab\+Loading=false)
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{static}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_game_object_a623d7145313610b8623d62ba9afb4e7f}{Load}} (Json\+::\+Value \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{root}}, \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{go\+Parent}}=\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{nullptr}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{bool}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{Prefab\+Loading}}=\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{false}})
 \begin{DoxyCompactList}\small\item\em Loads a \doxylink{class_game_object}{Game\+Object} from JSON data. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_scene}{Scene}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_game_object_aa14787da7ac7d6f0dda76f0ddbdfc471}{current\+Scene}}
 \begin{DoxyCompactList}\small\item\em Pointer to the current \doxylink{class_scene}{Scene}. Represents the currently active scene. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{class_game_object_a98291c60da12d9036e1ad24cfebcf6b3}{id}}
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} \mbox{\hyperlink{class_game_object_a98291c60da12d9036e1ad24cfebcf6b3}{id}}
 \item 
 std\+::vector$<$ \mbox{\hyperlink{class_component}{Component}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_game_object_aac1acad42a3837282d3abf7df8eb34a7}{components}}
 \begin{DoxyCompactList}\small\item\em Vector containing pointers to \doxylink{class_component}{Component} objects. Represents the components attached to the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_game_object_a0f9b752b014e8177d21c988550544914}{origin}}
 \begin{DoxyCompactList}\small\item\em Vector representing the origin point of the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{class_game_object_a667ec2490aca8934928e9d51adc92ff2}{is\+Child}} = false
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{bool}} \mbox{\hyperlink{class_game_object_a667ec2490aca8934928e9d51adc92ff2}{is\+Child}} = \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{false}}
 \begin{DoxyCompactList}\small\item\em Indicates if the \doxylink{class_game_object}{Game\+Object} is a child of another \doxylink{class_game_object}{Game\+Object}. Default is false. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{class_game_object_af542b33c8de269343e22c5629e6b66c0}{name}}
 \begin{DoxyCompactList}\small\item\em Name of the \doxylink{class_game_object}{Game\+Object}. Represents the name assigned to the \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -78,7 +80,7 @@ std\+::string \mbox{\hyperlink{class_game_object_af542b33c8de269343e22c5629e6b66
 \index{GameObject@{GameObject}!GameObject@{GameObject}}
 \index{GameObject@{GameObject}!GameObject@{GameObject}}
 \doxysubsubsection{\texorpdfstring{GameObject()}{GameObject()}}
-{\footnotesize\ttfamily Game\+Object\+::\+Game\+Object (\begin{DoxyParamCaption}\item[{std\+::string}]{name\+\_\+ = {\ttfamily "{}GO"{}},  }\item[{bool}]{Prefab\+Loading = {\ttfamily false},  }\item[{\mbox{\hyperlink{class_prefab}{Prefab}} \texorpdfstring{$\ast$}{*}}]{prefab = {\ttfamily nullptr},  }\item[{bool}]{copying = {\ttfamily false} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Game\+Object\+::\+Game\+Object (\begin{DoxyParamCaption}\item[{std\+::string}]{name\+\_\+ = {\ttfamily "{}GO"{}},  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{bool}}}]{Prefab\+Loading = {\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{false}}},  }\item[{\mbox{\hyperlink{class_prefab}{Prefab}} \texorpdfstring{$\ast$}{*}}]{prefab = {\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{nullptr}}},  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{bool}}}]{copying = {\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{false}}} }\end{DoxyParamCaption})}
 
 
 
@@ -108,7 +110,7 @@ Constructs a \doxylink{class_game_object}{Game\+Object} object with optional par
 \index{GameObject@{GameObject}!AddChild@{AddChild}}
 \index{AddChild@{AddChild}!GameObject@{GameObject}}
 \doxysubsubsection{\texorpdfstring{AddChild()}{AddChild()}}
-{\footnotesize\ttfamily void Game\+Object\+::\+Add\+Child (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Game\+Object\+::\+Add\+Child (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go }\end{DoxyParamCaption})}
 
 
 
@@ -122,9 +124,9 @@ Adds a child \doxylink{class_game_object}{Game\+Object} to the current \doxylink
 \Hypertarget{class_game_object_a83b5aa2871b1e564aba800f94944d7fa}\label{class_game_object_a83b5aa2871b1e564aba800f94944d7fa} 
 \index{GameObject@{GameObject}!AddComponent@{AddComponent}}
 \index{AddComponent@{AddComponent}!GameObject@{GameObject}}
-\doxysubsubsection{\texorpdfstring{AddComponent()}{AddComponent()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
-void Game\+Object\+::\+Add\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{AddComponent()}{AddComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{typename}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} $>$ \\
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Game\+Object\+::\+Add\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -142,11 +144,17 @@ The type T must be a descendant of \doxylink{class_component}{Component}.
 {\em std\+::invalid\+\_\+argument} & if T is not a descendant of \doxylink{class_component}{Component}. Represents adding a new component of type T to the \doxylink{class_game_object}{Game\+Object}. \\
 \hline
 \end{DoxyExceptions}
+\Hypertarget{class_game_object_a6de86477e37962bcd4738b09c1c706aa}\label{class_game_object_a6de86477e37962bcd4738b09c1c706aa} 
+\index{GameObject@{GameObject}!AddComponent@{AddComponent}}
+\index{AddComponent@{AddComponent}!GameObject@{GameObject}}
+\doxysubsubsection{\texorpdfstring{AddComponent()}{AddComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Game\+Object\+::\+Add\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_component}{Component}} \texorpdfstring{$\ast$}{*}}]{component }\end{DoxyParamCaption})}
+
 \Hypertarget{class_game_object_ae6c54a1764b44863f009a2983a3ce65a}\label{class_game_object_ae6c54a1764b44863f009a2983a3ce65a} 
 \index{GameObject@{GameObject}!AddParent@{AddParent}}
 \index{AddParent@{AddParent}!GameObject@{GameObject}}
 \doxysubsubsection{\texorpdfstring{AddParent()}{AddParent()}}
-{\footnotesize\ttfamily void Game\+Object\+::\+Add\+Parent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Game\+Object\+::\+Add\+Parent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -161,7 +169,7 @@ Sets the parent \doxylink{class_game_object}{Game\+Object} for the current \doxy
 \index{GameObject@{GameObject}!Delete@{Delete}}
 \index{Delete@{Delete}!GameObject@{GameObject}}
 \doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}
-{\footnotesize\ttfamily void Game\+Object\+::\+Delete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Game\+Object\+::\+Delete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -207,8 +215,8 @@ A vector containing pointers to all child Game\+Objects. Represents retrieving a
 \index{GameObject@{GameObject}!GetComponent@{GetComponent}}
 \index{GetComponent@{GetComponent}!GameObject@{GameObject}}
 \doxysubsubsection{\texorpdfstring{GetComponent()}{GetComponent()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
-T \texorpdfstring{$\ast$}{*} Game\+Object\+::\+Get\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{typename}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} $>$ \\
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} \texorpdfstring{$\ast$}{*} Game\+Object\+::\+Get\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -247,7 +255,7 @@ A vector containing pointers to all \doxylink{class_component}{Component} object
 \index{GameObject@{GameObject}!GetId@{GetId}}
 \index{GetId@{GetId}!GameObject@{GameObject}}
 \doxysubsubsection{\texorpdfstring{GetId()}{GetId()}}
-{\footnotesize\ttfamily const int Game\+Object\+::\+Get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{const}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} Game\+Object\+::\+Get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -299,7 +307,7 @@ The name of the prefab associated with the \doxylink{class_game_object}{Game\+Ob
 \index{GameObject@{GameObject}!Init@{Init}}
 \index{Init@{Init}!GameObject@{GameObject}}
 \doxysubsubsection{\texorpdfstring{Init()}{Init()}}
-{\footnotesize\ttfamily void Game\+Object\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Game\+Object\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -309,7 +317,7 @@ Initializes the \doxylink{class_game_object}{Game\+Object}. This function is cal
 \index{GameObject@{GameObject}!Load@{Load}}
 \index{Load@{Load}!GameObject@{GameObject}}
 \doxysubsubsection{\texorpdfstring{Load()}{Load()}}
-{\footnotesize\ttfamily void Game\+Object\+::\+Load (\begin{DoxyParamCaption}\item[{Json\+::\+Value}]{root,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go\+Parent = {\ttfamily nullptr},  }\item[{bool}]{Prefab\+Loading = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Game\+Object\+::\+Load (\begin{DoxyParamCaption}\item[{Json\+::\+Value}]{root,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go\+Parent = {\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{nullptr}}},  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{bool}}}]{Prefab\+Loading = {\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{false}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -328,7 +336,7 @@ Loads a \doxylink{class_game_object}{Game\+Object} from JSON data.
 \index{GameObject@{GameObject}!LoadComponent@{LoadComponent}}
 \index{LoadComponent@{LoadComponent}!GameObject@{GameObject}}
 \doxysubsubsection{\texorpdfstring{LoadComponent()}{LoadComponent()}}
-{\footnotesize\ttfamily void Game\+Object\+::\+Load\+Component (\begin{DoxyParamCaption}\item[{Json\+::\+Value}]{comp\+Json,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{parent\+Go }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Game\+Object\+::\+Load\+Component (\begin{DoxyParamCaption}\item[{Json\+::\+Value}]{comp\+Json,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{parent\+Go }\end{DoxyParamCaption})}
 
 
 
@@ -345,7 +353,7 @@ Loads a component from JSON data and attaches it to the \doxylink{class_game_obj
 \index{GameObject@{GameObject}!RemoveChild@{RemoveChild}}
 \index{RemoveChild@{RemoveChild}!GameObject@{GameObject}}
 \doxysubsubsection{\texorpdfstring{RemoveChild()}{RemoveChild()}}
-{\footnotesize\ttfamily void Game\+Object\+::\+Remove\+Child (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go\+Child }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Game\+Object\+::\+Remove\+Child (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go\+Child }\end{DoxyParamCaption})}
 
 
 
@@ -360,7 +368,7 @@ Removes a child \doxylink{class_game_object}{Game\+Object} from the current \dox
 \index{GameObject@{GameObject}!Save@{Save}}
 \index{Save@{Save}!GameObject@{GameObject}}
 \doxysubsubsection{\texorpdfstring{Save()}{Save()}}
-{\footnotesize\ttfamily void Game\+Object\+::\+Save (\begin{DoxyParamCaption}\item[{Json\+::\+Value \&}]{root }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Game\+Object\+::\+Save (\begin{DoxyParamCaption}\item[{Json\+::\+Value \&}]{root }\end{DoxyParamCaption})}
 
 
 
@@ -375,7 +383,7 @@ Saves the \doxylink{class_game_object}{Game\+Object} to JSON data.
 \index{GameObject@{GameObject}!SetId@{SetId}}
 \index{SetId@{SetId}!GameObject@{GameObject}}
 \doxysubsubsection{\texorpdfstring{SetId()}{SetId()}}
-{\footnotesize\ttfamily void Game\+Object\+::\+Set\+Id (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Game\+Object\+::\+Set\+Id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}}}]{id\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -390,7 +398,7 @@ Sets the ID of the \doxylink{class_game_object}{Game\+Object}.
 \index{GameObject@{GameObject}!SetPrefab@{SetPrefab}}
 \index{SetPrefab@{SetPrefab}!GameObject@{GameObject}}
 \doxysubsubsection{\texorpdfstring{SetPrefab()}{SetPrefab()}}
-{\footnotesize\ttfamily void Game\+Object\+::\+Set\+Prefab (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_prefab}{Prefab}} \texorpdfstring{$\ast$}{*}}]{prefab\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Game\+Object\+::\+Set\+Prefab (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_prefab}{Prefab}} \texorpdfstring{$\ast$}{*}}]{prefab\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -405,7 +413,7 @@ Sets the prefab associated with the \doxylink{class_game_object}{Game\+Object}.
 \index{GameObject@{GameObject}!Start@{Start}}
 \index{Start@{Start}!GameObject@{GameObject}}
 \doxysubsubsection{\texorpdfstring{Start()}{Start()}}
-{\footnotesize\ttfamily void Game\+Object\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Game\+Object\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -415,7 +423,7 @@ Starts the \doxylink{class_game_object}{Game\+Object}. This function is called a
 \index{GameObject@{GameObject}!Update@{Update}}
 \index{Update@{Update}!GameObject@{GameObject}}
 \doxysubsubsection{\texorpdfstring{Update()}{Update()}}
-{\footnotesize\ttfamily void Game\+Object\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Game\+Object\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -448,13 +456,13 @@ Pointer to the current \doxylink{class_scene}{Scene}. Represents the currently a
 \index{GameObject@{GameObject}!id@{id}}
 \index{id@{id}!GameObject@{GameObject}}
 \doxysubsubsection{\texorpdfstring{id}{id}}
-{\footnotesize\ttfamily int Game\+Object\+::id}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} Game\+Object\+::id}
 
 \Hypertarget{class_game_object_a667ec2490aca8934928e9d51adc92ff2}\label{class_game_object_a667ec2490aca8934928e9d51adc92ff2} 
 \index{GameObject@{GameObject}!isChild@{isChild}}
 \index{isChild@{isChild}!GameObject@{GameObject}}
 \doxysubsubsection{\texorpdfstring{isChild}{isChild}}
-{\footnotesize\ttfamily bool Game\+Object\+::is\+Child = false}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{bool}} Game\+Object\+::is\+Child = \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{false}}}
 
 
 

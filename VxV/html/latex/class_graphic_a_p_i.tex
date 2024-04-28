@@ -13,33 +13,33 @@ Inheritance diagram for Graphic\+API\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-virtual \mbox{\hyperlink{class_graphic_a_p_i_a74ba2d1eefe2cac3a155a8a7853f8105}{\texorpdfstring{$\sim$}{\string~}\+Graphic\+API}} ()=default
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{class_graphic_a_p_i_a74ba2d1eefe2cac3a155a8a7853f8105}{\texorpdfstring{$\sim$}{\string~}\+Graphic\+API}} ()=\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{default}}
 \item 
-virtual void \mbox{\hyperlink{class_graphic_a_p_i_aedfef351795d9d9cd2fed11189e35f8e}{initialize}} ()=0
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_graphic_a_p_i_aedfef351795d9d9cd2fed11189e35f8e}{initialize}} ()=0
 \begin{DoxyCompactList}\small\item\em Initialize the graphic API. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{class_graphic_a_p_i_a91ab3a55eea70664dd07bec9c1647df5}{cleanup\+Model}} (\mbox{\hyperlink{class_model}{Model}} \texorpdfstring{$\ast$}{*}\+\_\+model)=0
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_graphic_a_p_i_a91ab3a55eea70664dd07bec9c1647df5}{cleanup\+Model}} (\mbox{\hyperlink{class_model}{Model}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+model}})=0
 \begin{DoxyCompactList}\small\item\em Clean up the model. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{class_graphic_a_p_i_a651cddb01ba764f53ac6c1b51ca56d9b}{set\+Window\+Size}} (int \+\_\+width, int \+\_\+height)=0
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_graphic_a_p_i_a651cddb01ba764f53ac6c1b51ca56d9b}{set\+Window\+Size}} (\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+width}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+height}})=0
 \begin{DoxyCompactList}\small\item\em Set the window size. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{class_graphic_a_p_i_a67db4716f2a794dae7cc1c0f889287d6}{terminate}} ()=0
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_graphic_a_p_i_a67db4716f2a794dae7cc1c0f889287d6}{terminate}} ()=0
 \begin{DoxyCompactList}\small\item\em Terminate the graphic API. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{class_graphic_a_p_i_a9cf67461a8b48ae1893f081103a3e0e7}{set\+Background\+Color}} (float \+\_\+red, float \+\_\+green, float \+\_\+blue, float \+\_\+alpha)=0
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_graphic_a_p_i_a9cf67461a8b48ae1893f081103a3e0e7}{set\+Background\+Color}} (\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+red}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+green}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+blue}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+alpha}})=0
 \begin{DoxyCompactList}\small\item\em Set the background color. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{class_graphic_a_p_i_a569b2f397b979a316d087071b574b110}{set\+Camera}} (float \+\_\+fov, float \+\_\+ratio\+Width, float \+\_\+ratio\+Height, float \+\_\+near, float \+\_\+far, int \+\_\+camera\+PositionX, int \+\_\+camera\+PositionY, int \+\_\+camera\+PositionZ, int \+\_\+camera\+TargetX, int \+\_\+camera\+TargetY, int \+\_\+camera\+TargetZ, int \+\_\+up\+VectorX, int \+\_\+up\+VectorY, int \+\_\+up\+VectorZ)=0
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_graphic_a_p_i_a569b2f397b979a316d087071b574b110}{set\+Camera}} (\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+fov}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+ratio\+Width}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+ratio\+Height}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+near}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+far}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+camera\+PositionX}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+camera\+PositionY}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+camera\+PositionZ}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+camera\+TargetX}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+camera\+TargetY}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+camera\+TargetZ}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+up\+VectorX}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+up\+VectorY}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+up\+VectorZ}})=0
 \begin{DoxyCompactList}\small\item\em Set the camera. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{class_graphic_a_p_i_a2c1a681228099ebca7ccc5f189450f4a}{set\+Shaders}} (const char \texorpdfstring{$\ast$}{*}\+\_\+vertex\+Shader\+Path, const char \texorpdfstring{$\ast$}{*}\+\_\+fragment\+Shader\+Path)=0
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_graphic_a_p_i_a2c1a681228099ebca7ccc5f189450f4a}{set\+Shaders}} (\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{const}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{char}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+vertex\+Shader\+Path}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{const}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{char}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+fragment\+Shader\+Path}})=0
 \begin{DoxyCompactList}\small\item\em Set the shaders. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{class_graphic_a_p_i_a0212d1bd9b82ab8f360d2943f4f66282}{drawing\+Model}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\+\_\+game\+Object)=0
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_graphic_a_p_i_a0212d1bd9b82ab8f360d2943f4f66282}{drawing\+Model}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+game\+Object}})=0
 \begin{DoxyCompactList}\small\item\em Drawing the model. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{class_graphic_a_p_i_ad4622fee849a6e5ec0e099078337ed84}{set\+Handles}} ()=0
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_graphic_a_p_i_ad4622fee849a6e5ec0e099078337ed84}{set\+Handles}} ()=0
 \begin{DoxyCompactList}\small\item\em Set the handles. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{class_graphic_a_p_i_a13ebf86578c5fdc83f469b6993a7a719}{clear\+Screen}} ()=0
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_graphic_a_p_i_a13ebf86578c5fdc83f469b6993a7a719}{clear\+Screen}} ()=0
 \begin{DoxyCompactList}\small\item\em Clear the screen. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{class_graphic_a_p_i_a0a6eddcfd9975e8bf87dff2f70356808}{swap\+Buffers}} ()=0
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_graphic_a_p_i_a0a6eddcfd9975e8bf87dff2f70356808}{swap\+Buffers}} ()=0
 \begin{DoxyCompactList}\small\item\em Swap the buffers. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{class_graphic_a_p_i_acd96c3bdc2a98dc61f8cc185ded7b42f}{unbind\+Arrays}} ()=0
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_graphic_a_p_i_acd96c3bdc2a98dc61f8cc185ded7b42f}{unbind\+Arrays}} ()=0
 \begin{DoxyCompactList}\small\item\em Unbind the arrays. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{class_graphic_a_p_i_a413cfcdd5a5bc52d79612d0fcd0647bc}{use\+Shader}} ()=0
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_graphic_a_p_i_a413cfcdd5a5bc52d79612d0fcd0647bc}{use\+Shader}} ()=0
 \begin{DoxyCompactList}\small\item\em Use the shader. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -48,7 +48,7 @@ virtual void \mbox{\hyperlink{class_graphic_a_p_i_a413cfcdd5a5bc52d79612d0fcd064
 \index{GraphicAPI@{GraphicAPI}!````~GraphicAPI@{\texorpdfstring{$\sim$}{\string~}GraphicAPI}}
 \index{````~GraphicAPI@{\texorpdfstring{$\sim$}{\string~}GraphicAPI}!GraphicAPI@{GraphicAPI}}
 \doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}GraphicAPI()}{\string~GraphicAPI()}}
-{\footnotesize\ttfamily virtual Graphic\+API\+::\texorpdfstring{$\sim$}{\string~}\+Graphic\+API (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} Graphic\+API\+::\texorpdfstring{$\sim$}{\string~}\+Graphic\+API (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
 
 
 
@@ -57,7 +57,7 @@ virtual void \mbox{\hyperlink{class_graphic_a_p_i_a413cfcdd5a5bc52d79612d0fcd064
 \index{GraphicAPI@{GraphicAPI}!cleanupModel@{cleanupModel}}
 \index{cleanupModel@{cleanupModel}!GraphicAPI@{GraphicAPI}}
 \doxysubsubsection{\texorpdfstring{cleanupModel()}{cleanupModel()}}
-{\footnotesize\ttfamily virtual void Graphic\+API\+::cleanup\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model}{Model}} \texorpdfstring{$\ast$}{*}}]{\+\_\+model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Graphic\+API\+::cleanup\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model}{Model}} \texorpdfstring{$\ast$}{*}}]{\+\_\+model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -71,7 +71,7 @@ Implemented in \mbox{\hyperlink{class_a_p_iopen_g_l_a3c87e770bfec9026cbb64088f60
 \index{GraphicAPI@{GraphicAPI}!clearScreen@{clearScreen}}
 \index{clearScreen@{clearScreen}!GraphicAPI@{GraphicAPI}}
 \doxysubsubsection{\texorpdfstring{clearScreen()}{clearScreen()}}
-{\footnotesize\ttfamily virtual void Graphic\+API\+::clear\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Graphic\+API\+::clear\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -85,7 +85,7 @@ Implemented in \mbox{\hyperlink{class_a_p_iopen_g_l_af9b108e44fc395c00557f8d3f6d
 \index{GraphicAPI@{GraphicAPI}!drawingModel@{drawingModel}}
 \index{drawingModel@{drawingModel}!GraphicAPI@{GraphicAPI}}
 \doxysubsubsection{\texorpdfstring{drawingModel()}{drawingModel()}}
-{\footnotesize\ttfamily virtual void Graphic\+API\+::drawing\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+game\+Object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Graphic\+API\+::drawing\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+game\+Object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -104,7 +104,7 @@ Implemented in \mbox{\hyperlink{class_a_p_iopen_g_l_a7d6c121cad1ced038ce23878335
 \index{GraphicAPI@{GraphicAPI}!initialize@{initialize}}
 \index{initialize@{initialize}!GraphicAPI@{GraphicAPI}}
 \doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
-{\footnotesize\ttfamily virtual void Graphic\+API\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Graphic\+API\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -118,7 +118,7 @@ Implemented in \mbox{\hyperlink{class_a_p_iopen_g_l_a02046426cfccac064f319812cce
 \index{GraphicAPI@{GraphicAPI}!setBackgroundColor@{setBackgroundColor}}
 \index{setBackgroundColor@{setBackgroundColor}!GraphicAPI@{GraphicAPI}}
 \doxysubsubsection{\texorpdfstring{setBackgroundColor()}{setBackgroundColor()}}
-{\footnotesize\ttfamily virtual void Graphic\+API\+::set\+Background\+Color (\begin{DoxyParamCaption}\item[{float}]{\+\_\+red,  }\item[{float}]{\+\_\+green,  }\item[{float}]{\+\_\+blue,  }\item[{float}]{\+\_\+alpha }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Graphic\+API\+::set\+Background\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}}}]{\+\_\+red,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}}}]{\+\_\+green,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}}}]{\+\_\+blue,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}}}]{\+\_\+alpha }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -132,7 +132,7 @@ Implemented in \mbox{\hyperlink{class_a_p_iopen_g_l_aab3c4b3ad3e5ef7f141a917b613
 \index{GraphicAPI@{GraphicAPI}!setCamera@{setCamera}}
 \index{setCamera@{setCamera}!GraphicAPI@{GraphicAPI}}
 \doxysubsubsection{\texorpdfstring{setCamera()}{setCamera()}}
-{\footnotesize\ttfamily virtual void Graphic\+API\+::set\+Camera (\begin{DoxyParamCaption}\item[{float}]{\+\_\+fov,  }\item[{float}]{\+\_\+ratio\+Width,  }\item[{float}]{\+\_\+ratio\+Height,  }\item[{float}]{\+\_\+near,  }\item[{float}]{\+\_\+far,  }\item[{int}]{\+\_\+camera\+PositionX,  }\item[{int}]{\+\_\+camera\+PositionY,  }\item[{int}]{\+\_\+camera\+PositionZ,  }\item[{int}]{\+\_\+camera\+TargetX,  }\item[{int}]{\+\_\+camera\+TargetY,  }\item[{int}]{\+\_\+camera\+TargetZ,  }\item[{int}]{\+\_\+up\+VectorX,  }\item[{int}]{\+\_\+up\+VectorY,  }\item[{int}]{\+\_\+up\+VectorZ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Graphic\+API\+::set\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}}}]{\+\_\+fov,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}}}]{\+\_\+ratio\+Width,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}}}]{\+\_\+ratio\+Height,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}}}]{\+\_\+near,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}}}]{\+\_\+far,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}}}]{\+\_\+camera\+PositionX,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}}}]{\+\_\+camera\+PositionY,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}}}]{\+\_\+camera\+PositionZ,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}}}]{\+\_\+camera\+TargetX,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}}}]{\+\_\+camera\+TargetY,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}}}]{\+\_\+camera\+TargetZ,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}}}]{\+\_\+up\+VectorX,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}}}]{\+\_\+up\+VectorY,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}}}]{\+\_\+up\+VectorZ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -177,7 +177,7 @@ Implemented in \mbox{\hyperlink{class_a_p_iopen_g_l_a9468da0d0ffe35901cee9c38168
 \index{GraphicAPI@{GraphicAPI}!setHandles@{setHandles}}
 \index{setHandles@{setHandles}!GraphicAPI@{GraphicAPI}}
 \doxysubsubsection{\texorpdfstring{setHandles()}{setHandles()}}
-{\footnotesize\ttfamily virtual void Graphic\+API\+::set\+Handles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Graphic\+API\+::set\+Handles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -191,7 +191,7 @@ Implemented in \mbox{\hyperlink{class_a_p_iopen_g_l_aa7c61392b99602ee7c8811d2aec
 \index{GraphicAPI@{GraphicAPI}!setShaders@{setShaders}}
 \index{setShaders@{setShaders}!GraphicAPI@{GraphicAPI}}
 \doxysubsubsection{\texorpdfstring{setShaders()}{setShaders()}}
-{\footnotesize\ttfamily virtual void Graphic\+API\+::set\+Shaders (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{\+\_\+vertex\+Shader\+Path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{\+\_\+fragment\+Shader\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Graphic\+API\+::set\+Shaders (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{const}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{char}} \texorpdfstring{$\ast$}{*}}]{\+\_\+vertex\+Shader\+Path,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{const}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{char}} \texorpdfstring{$\ast$}{*}}]{\+\_\+fragment\+Shader\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -212,7 +212,7 @@ Implemented in \mbox{\hyperlink{class_a_p_iopen_g_l_a07b3d697a16b9a2d0088eb6586b
 \index{GraphicAPI@{GraphicAPI}!setWindowSize@{setWindowSize}}
 \index{setWindowSize@{setWindowSize}!GraphicAPI@{GraphicAPI}}
 \doxysubsubsection{\texorpdfstring{setWindowSize()}{setWindowSize()}}
-{\footnotesize\ttfamily virtual void Graphic\+API\+::set\+Window\+Size (\begin{DoxyParamCaption}\item[{int}]{\+\_\+width,  }\item[{int}]{\+\_\+height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Graphic\+API\+::set\+Window\+Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}}}]{\+\_\+width,  }\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}}}]{\+\_\+height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -226,7 +226,7 @@ Implemented in \mbox{\hyperlink{class_a_p_iopen_g_l_a6e0bfa4c94eaa1f61aebf3c7dd4
 \index{GraphicAPI@{GraphicAPI}!swapBuffers@{swapBuffers}}
 \index{swapBuffers@{swapBuffers}!GraphicAPI@{GraphicAPI}}
 \doxysubsubsection{\texorpdfstring{swapBuffers()}{swapBuffers()}}
-{\footnotesize\ttfamily virtual void Graphic\+API\+::swap\+Buffers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Graphic\+API\+::swap\+Buffers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -240,7 +240,7 @@ Implemented in \mbox{\hyperlink{class_a_p_iopen_g_l_ae361ed8ccaf4ad6888fa6ce5f1e
 \index{GraphicAPI@{GraphicAPI}!terminate@{terminate}}
 \index{terminate@{terminate}!GraphicAPI@{GraphicAPI}}
 \doxysubsubsection{\texorpdfstring{terminate()}{terminate()}}
-{\footnotesize\ttfamily virtual void Graphic\+API\+::terminate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Graphic\+API\+::terminate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -254,7 +254,7 @@ Implemented in \mbox{\hyperlink{class_a_p_iopen_g_l_a3e56bbf553339811b71866ae4d8
 \index{GraphicAPI@{GraphicAPI}!unbindArrays@{unbindArrays}}
 \index{unbindArrays@{unbindArrays}!GraphicAPI@{GraphicAPI}}
 \doxysubsubsection{\texorpdfstring{unbindArrays()}{unbindArrays()}}
-{\footnotesize\ttfamily virtual void Graphic\+API\+::unbind\+Arrays (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Graphic\+API\+::unbind\+Arrays (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -268,7 +268,7 @@ Implemented in \mbox{\hyperlink{class_a_p_iopen_g_l_af92852955c6a5e9920e94f73a36
 \index{GraphicAPI@{GraphicAPI}!useShader@{useShader}}
 \index{useShader@{useShader}!GraphicAPI@{GraphicAPI}}
 \doxysubsubsection{\texorpdfstring{useShader()}{useShader()}}
-{\footnotesize\ttfamily virtual void Graphic\+API\+::use\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Graphic\+API\+::use\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 

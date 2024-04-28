@@ -12,18 +12,18 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_memory_pool_a81562e65d5b85a7615f60b44d4461252}{Memory\+Pool}} (int size=0)
+\mbox{\hyperlink{class_memory_pool_a81562e65d5b85a7615f60b44d4461252}{Memory\+Pool}} (\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{size}}=0)
 \item 
-{\footnotesize template$<$typename... Args$>$ }\\T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_memory_pool_a78298262e0a5d2661533fe5f56ed5cbf}{Alloc}} (Args... args)
+{\footnotesize template$<$typename... Args$>$ }\\\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_memory_pool_a78298262e0a5d2661533fe5f56ed5cbf}{Alloc}} (Args... \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{args}})
 \begin{DoxyCompactList}\small\item\em Allocates memory for an object of type T. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_memory_pool_ab9267708cc7a7801d0e1467cf01ca5e9}{Free}} (void \texorpdfstring{$\ast$}{*}p)
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_memory_pool_ab9267708cc7a7801d0e1467cf01ca5e9}{Free}} (\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{p}})
 \begin{DoxyCompactList}\small\item\em Deallocates memory for a specific object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_memory_pool_ab2031dbba508e46248b28ae9d678f7ae}{Free\+All}} ()
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_memory_pool_ab2031dbba508e46248b28ae9d678f7ae}{Free\+All}} ()
 \begin{DoxyCompactList}\small\item\em Deallocates memory for all objects in the pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\subsubsection*{template$<$typename T, class Strategy$>$\newline
+\subsubsection*{template$<$\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{typename}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{class}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{Strategy}}$>$\newline
 class Memory\+Pool$<$ T, Strategy $>$}
 \doxylink{class_memory_pool}{Memory\+Pool} class that uses a specific strategy to allocate and deallocate memory. 
 
@@ -41,8 +41,8 @@ class Memory\+Pool$<$ T, Strategy $>$}
 \index{MemoryPool$<$ T, Strategy $>$@{MemoryPool$<$ T, Strategy $>$}!MemoryPool@{MemoryPool}}
 \index{MemoryPool@{MemoryPool}!MemoryPool$<$ T, Strategy $>$@{MemoryPool$<$ T, Strategy $>$}}
 \doxysubsubsection{\texorpdfstring{MemoryPool()}{MemoryPool()}}
-{\footnotesize\ttfamily template$<$typename T , class Strategy $>$ \\
-\mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$ T, Strategy $>$\mbox{\hyperlink{class_memory_pool}{\+::\+Memory\+Pool}} (\begin{DoxyParamCaption}\item[{int}]{size = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{typename}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} , \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{class}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{Strategy}} $>$ \\
+\mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$ \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{Strategy}} $>$\mbox{\hyperlink{class_memory_pool}{\+::\+Memory\+Pool}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{int}}}]{size = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -51,9 +51,9 @@ class Memory\+Pool$<$ T, Strategy $>$}
 \index{MemoryPool$<$ T, Strategy $>$@{MemoryPool$<$ T, Strategy $>$}!Alloc@{Alloc}}
 \index{Alloc@{Alloc}!MemoryPool$<$ T, Strategy $>$@{MemoryPool$<$ T, Strategy $>$}}
 \doxysubsubsection{\texorpdfstring{Alloc()}{Alloc()}}
-{\footnotesize\ttfamily template$<$typename T , class Strategy $>$ \\
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{typename}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} , \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{class}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{Strategy}} $>$ \\
 template$<$typename... Args$>$ \\
-T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$ T, Strategy $>$\+::\+Alloc (\begin{DoxyParamCaption}\item[{Args...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$ \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{Strategy}} $>$\+::\+Alloc (\begin{DoxyParamCaption}\item[{Args...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -68,8 +68,8 @@ Allocates memory for an object of type T.
 \index{MemoryPool$<$ T, Strategy $>$@{MemoryPool$<$ T, Strategy $>$}!Free@{Free}}
 \index{Free@{Free}!MemoryPool$<$ T, Strategy $>$@{MemoryPool$<$ T, Strategy $>$}}
 \doxysubsubsection{\texorpdfstring{Free()}{Free()}}
-{\footnotesize\ttfamily template$<$typename T , class Strategy $>$ \\
-void \mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$ T, Strategy $>$\+::\+Free (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{typename}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} , \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{class}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{Strategy}} $>$ \\
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$ \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{Strategy}} $>$\+::\+Free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -84,8 +84,8 @@ Deallocates memory for a specific object.
 \index{MemoryPool$<$ T, Strategy $>$@{MemoryPool$<$ T, Strategy $>$}!FreeAll@{FreeAll}}
 \index{FreeAll@{FreeAll}!MemoryPool$<$ T, Strategy $>$@{MemoryPool$<$ T, Strategy $>$}}
 \doxysubsubsection{\texorpdfstring{FreeAll()}{FreeAll()}}
-{\footnotesize\ttfamily template$<$typename T , class Strategy $>$ \\
-void \mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$ T, Strategy $>$\+::\+Free\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{typename}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} , \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{class}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{Strategy}} $>$ \\
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_memory_pool}{Memory\+Pool}}$<$ \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}}, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{Strategy}} $>$\+::\+Free\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

@@ -16,243 +16,241 @@
 \DoxyCodeLine{00013\ }
 \DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ comment(lib,\ "{}Ws2\_32.lib"{})}}
 \DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_chat_window}{ChatWindow}}\ \{}
-\DoxyCodeLine{00019\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_chat_window_a68d666bcf564bf6cada8bb611d84687a}{username}};}
-\DoxyCodeLine{00020\ \ \ \ \ std::deque<std::string>\ \mbox{\hyperlink{struct_chat_window_a5a272447bf42965540ff3ebed35c891b}{messages}};}
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}{inputBuf}}[256];}
-\DoxyCodeLine{00022\ \ \ \ \ SOCKET\ \mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}};}
-\DoxyCodeLine{00023\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_chat_window_a1d237353d4e536634f37c8656f790652}{serverIP}}\ =\ \textcolor{stringliteral}{"{}Your\ Ipv4\ Adress"{}};\ \ \textcolor{comment}{//\ Adresse\ IP\ par\ défaut}}
-\DoxyCodeLine{00024\ \ \ \ \ std::thread\ \mbox{\hyperlink{struct_chat_window_a0efb4cb862c9ad5a5077dca8672f6252}{receiveThread}};}
-\DoxyCodeLine{00025\ \ \ \ \ std::mutex\ \mbox{\hyperlink{struct_chat_window_a946c78671452ee5868364dddfde70b2c}{mutex}};}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_chat_window_aafeff939f24d2a6c27e359a3c8574b45}{isConnected}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_chat_window_a1c142f9cbda0db3416e6609339d37bba}{ipAddressBuf}}[256];}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{struct_chat_window_aaec154a727645e9567c7be013e4713aa}{ChatWindow}}()\ \{}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ memset(\mbox{\hyperlink{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}{inputBuf}},\ 0,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}{inputBuf}}));}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ memset(\mbox{\hyperlink{struct_chat_window_a1c142f9cbda0db3416e6609339d37bba}{ipAddressBuf}},\ 0,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_chat_window_a1c142f9cbda0db3416e6609339d37bba}{ipAddressBuf}}));}
-\DoxyCodeLine{00032\ \ \ \ \ \}}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a100c64a78603b3c65026acfd0b64ad19}{\string~ChatWindow}}()\ \{}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a103b36a7797b8c201f4bb1632d57b03d}{closeNetwork}}();}
-\DoxyCodeLine{00036\ \ \ \ \ \}}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_chat_window_a5a3e386d219e62d3b674506ed26ca8ab}{get\_local\_ip\_address}}()\ \{}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ WSADATA\ wsaData;}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ result\ =\ WSAStartup(MAKEWORD(2,\ 2),\ \&wsaData);}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result\ !=\ 0)\ \{}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}WSAStartup\ failed:\ "{}}\ <<\ result\ <<\ std::endl;}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_chat_window}{ChatWindow}}\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_chat_window_a68d666bcf564bf6cada8bb611d84687a}{username}};}
+\DoxyCodeLine{00022\ \ \ \ \ std::deque<std::string>\ \mbox{\hyperlink{struct_chat_window_a5a272447bf42965540ff3ebed35c891b}{messages}};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}{inputBuf}}[256];}
+\DoxyCodeLine{00024\ \ \ \ \ SOCKET\ \mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}};}
+\DoxyCodeLine{00025\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_chat_window_a1d237353d4e536634f37c8656f790652}{serverIP}}\ =\ \textcolor{stringliteral}{"{}Your\ Ipv4\ Adress"{}};\ \ \textcolor{comment}{//\ Default\ IPV4\ address}}
+\DoxyCodeLine{00026\ \ \ \ \ std::thread\ \mbox{\hyperlink{struct_chat_window_a0efb4cb862c9ad5a5077dca8672f6252}{receiveThread}};}
+\DoxyCodeLine{00027\ \ \ \ \ std::mutex\ \mbox{\hyperlink{struct_chat_window_a946c78671452ee5868364dddfde70b2c}{mutex}};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_chat_window_aafeff939f24d2a6c27e359a3c8574b45}{isConnected}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_chat_window_a1c142f9cbda0db3416e6609339d37bba}{ipAddressBuf}}[256];}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{struct_chat_window_aaec154a727645e9567c7be013e4713aa}{ChatWindow}}()\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ memset(\mbox{\hyperlink{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}{inputBuf}},\ 0,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}{inputBuf}}));}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ memset(\mbox{\hyperlink{struct_chat_window_a1c142f9cbda0db3416e6609339d37bba}{ipAddressBuf}},\ 0,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_chat_window_a1c142f9cbda0db3416e6609339d37bba}{ipAddressBuf}}));}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a100c64a78603b3c65026acfd0b64ad19}{\string~ChatWindow}}()\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a103b36a7797b8c201f4bb1632d57b03d}{closeNetwork}}();}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
 \DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ hostname[NI\_MAXHOST];}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ result\ =\ gethostname(hostname,\ NI\_MAXHOST);}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result\ !=\ 0)\ \{}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error\ getting\ hostname:\ "{}}\ <<\ WSAGetLastError()\ <<\ std::endl;}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ WSACleanup();}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }addrinfo*\ info\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }addrinfo\ hints;}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ memset(\&hints,\ 0,\ \textcolor{keyword}{sizeof}(hints));}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ hints.ai\_family\ =\ AF\_INET;\ \ \textcolor{comment}{//\ Use\ IPv4}}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ hints.ai\_socktype\ =\ SOCK\_STREAM;}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ hints.ai\_protocol\ =\ IPPROTO\_TCP;}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ result\ =\ getaddrinfo(hostname,\ \textcolor{keyword}{nullptr},\ \&hints,\ \&info);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00052\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_chat_window_a5a3e386d219e62d3b674506ed26ca8ab}{get\_local\_ip\_address}}()\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ WSADATA\ wsaData;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ result\ =\ WSAStartup(MAKEWORD(2,\ 2),\ \&wsaData);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result\ !=\ 0)\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}WSAStartup\ failed:\ "{}}\ <<\ result\ <<\ std::endl;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ hostname[NI\_MAXHOST];}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ result\ =\ gethostname(hostname,\ NI\_MAXHOST);}
 \DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result\ !=\ 0)\ \{}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error\ getting\ address\ info:\ "{}}\ <<\ result\ <<\ std::endl;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error\ getting\ hostname:\ "{}}\ <<\ WSAGetLastError()\ <<\ std::endl;}
 \DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ WSACleanup();}
 \DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
 \DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00067\ }
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ ip[INET\_ADDRSTRLEN];}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ inet\_ntop(AF\_INET,\ \&((\textcolor{keyword}{struct}\ sockaddr\_in*)info-\/>ai\_addr)-\/>sin\_addr,\ ip,\ INET\_ADDRSTRLEN);}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ freeaddrinfo(info);}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ WSACleanup();}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::string(ip);}
-\DoxyCodeLine{00075\ \ \ \ \ \}}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_a9560014dfacf94e9bfd6698fd47ec36e}{startServer}}()\ \{}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ system(\textcolor{stringliteral}{"{}start\ Server.exe"{}});}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Obtenez\ l'adresse\ IP\ locale\ après le\ démarrage\ du\ serveur}}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ std::string\ ipAddress\ =\ \mbox{\hyperlink{struct_chat_window_a5a3e386d219e62d3b674506ed26ca8ab}{get\_local\_ip\_address}}();}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copiez\ l'adresse\ IP\ dans\ le\ tampon\ de\ l'adresse\ IP\ en\ utilisant\ strcpy\_s}}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ strcpy\_s(\mbox{\hyperlink{struct_chat_window_a1c142f9cbda0db3416e6609339d37bba}{ipAddressBuf}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_chat_window_a1c142f9cbda0db3416e6609339d37bba}{ipAddressBuf}}),\ ipAddress.c\_str());}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Afficher\ l'adresse\ IP\ locale\ dans\ la\ console\ (pour\ le\ débogage)}}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Local\ IP\ Address:\ "{}}\ <<\ ipAddress\ <<\ std::endl;}
-\DoxyCodeLine{00085\ \ \ \ \ \}}
-\DoxyCodeLine{00086\ }
-\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_a8bd321bf529754a246aa5e910cfd5978}{setupConnection}}(\textcolor{keyword}{const}\ std::string\&\ user,\ \textcolor{keyword}{const}\ std::string\&\ ip)\ \{}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a68d666bcf564bf6cada8bb611d84687a}{username}}\ =\ user;}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a1d237353d4e536634f37c8656f790652}{serverIP}}\ =\ ip;}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_af7dc07c0cd28a2f35016ca4a5fc837c8}{initNetwork}}();}
-\DoxyCodeLine{00091\ \ \ \ \ \}}
-\DoxyCodeLine{00092\ }
-\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_af7dc07c0cd28a2f35016ca4a5fc837c8}{initNetwork}}()\ \{}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ WSADATA\ wsaData;}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ result\ =\ WSAStartup(MAKEWORD(2,\ 2),\ \&wsaData);}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result\ !=\ 0)\ \{}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(\textcolor{stringliteral}{"{}Winsock\ initialization\ failed."{}});}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00100\ }
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}}\ =\ socket(AF\_INET,\ SOCK\_STREAM,\ IPPROTO\_TCP);}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}}\ ==\ INVALID\_SOCKET)\ \{}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ WSACleanup();}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(\textcolor{stringliteral}{"{}Socket\ creation\ failed."{}});}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00107\ }
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ sockaddr\_in\ serverAddr;}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ serverAddr.sin\_family\ =\ AF\_INET;}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ serverAddr.sin\_port\ =\ htons(12345);}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ inet\_pton(AF\_INET,\ \mbox{\hyperlink{struct_chat_window_a1d237353d4e536634f37c8656f790652}{serverIP}}.c\_str(),\ \&serverAddr.sin\_addr);}
-\DoxyCodeLine{00112\ }
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (connect(\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}},\ (SOCKADDR*)\&serverAddr,\ \textcolor{keyword}{sizeof}(serverAddr))\ ==\ SOCKET\_ERROR)\ \{}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ closesocket(\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}});}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ WSACleanup();}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(\textcolor{stringliteral}{"{}Connection\ failed."{}});}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ send(\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}},\ \mbox{\hyperlink{struct_chat_window_a68d666bcf564bf6cada8bb611d84687a}{username}}.c\_str(),\ \mbox{\hyperlink{struct_chat_window_a68d666bcf564bf6cada8bb611d84687a}{username}}.length(),\ 0);\ \textcolor{comment}{//\ Send\ username\ right\ after\ connecting}}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a0efb4cb862c9ad5a5077dca8672f6252}{receiveThread}}\ =\ std::thread(\&\mbox{\hyperlink{struct_chat_window_ad9ee393852c6d0738aa1465c4e61d41c}{ChatWindow::receiveMessages}},\ \textcolor{keyword}{this});}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a0efb4cb862c9ad5a5077dca8672f6252}{receiveThread}}.detach();\ \ \textcolor{comment}{//\ It's\ detached\ to\ prevent\ blocking.}}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_aafeff939f24d2a6c27e359a3c8574b45}{isConnected}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ send(\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}},\ \mbox{\hyperlink{struct_chat_window_a68d666bcf564bf6cada8bb611d84687a}{username}}.c\_str(),\ \mbox{\hyperlink{struct_chat_window_a68d666bcf564bf6cada8bb611d84687a}{username}}.length(),\ 0);}
-\DoxyCodeLine{00124\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }addrinfo*\ info\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }addrinfo\ hints;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ memset(\&hints,\ 0,\ \textcolor{keyword}{sizeof}(hints));}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ hints.ai\_family\ =\ AF\_INET;\ \ \textcolor{comment}{//\ Use\ IPv4}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ hints.ai\_socktype\ =\ SOCK\_STREAM;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ hints.ai\_protocol\ =\ IPPROTO\_TCP;}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ result\ =\ getaddrinfo(hostname,\ \textcolor{keyword}{nullptr},\ \&hints,\ \&info);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result\ !=\ 0)\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error\ getting\ address\ info:\ "{}}\ <<\ result\ <<\ std::endl;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ WSACleanup();}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ ip[INET\_ADDRSTRLEN];}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ inet\_ntop(AF\_INET,\ \&((\textcolor{keyword}{struct}\ sockaddr\_in*)info-\/>ai\_addr)-\/>sin\_addr,\ ip,\ INET\_ADDRSTRLEN);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ freeaddrinfo(info);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ WSACleanup();}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::string(ip);}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_a9560014dfacf94e9bfd6698fd47ec36e}{startServer}}()\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ system(\textcolor{stringliteral}{"{}start\ Server.exe"{}});}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ local\ IP\ address\ after\ the\ server\ starts}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ std::string\ ipAddress\ =\ \mbox{\hyperlink{struct_chat_window_a5a3e386d219e62d3b674506ed26ca8ab}{get\_local\_ip\_address}}();}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copy\ the\ IP\ address\ into\ the\ IP\ address\ buffer\ using\ strcpy\_s}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ strcpy\_s(\mbox{\hyperlink{struct_chat_window_a1c142f9cbda0db3416e6609339d37bba}{ipAddressBuf}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_chat_window_a1c142f9cbda0db3416e6609339d37bba}{ipAddressBuf}}),\ ipAddress.c\_str());}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Show\ the\ IP\ address\ in\ the\ console\ (for\ debugging)}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Local\ IP\ Address:\ "{}}\ <<\ ipAddress\ <<\ std::endl;}
+\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_a8bd321bf529754a246aa5e910cfd5978}{setupConnection}}(\textcolor{keyword}{const}\ std::string\&\ user,\ \textcolor{keyword}{const}\ std::string\&\ ip)\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a68d666bcf564bf6cada8bb611d84687a}{username}}\ =\ user;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a1d237353d4e536634f37c8656f790652}{serverIP}}\ =\ ip;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_af7dc07c0cd28a2f35016ca4a5fc837c8}{initNetwork}}();}
+\DoxyCodeLine{00113\ \ \ \ \ \}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_af7dc07c0cd28a2f35016ca4a5fc837c8}{initNetwork}}()\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ WSADATA\ wsaData;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ result\ =\ WSAStartup(MAKEWORD(2,\ 2),\ \&wsaData);}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result\ !=\ 0)\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(\textcolor{stringliteral}{"{}Winsock\ initialization\ failed."{}});}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00125\ }
-\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_a103b36a7797b8c201f4bb1632d57b03d}{closeNetwork}}()\ \{}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}}\ !=\ INVALID\_SOCKET)\ \{}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ closesocket(\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}});}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ WSACleanup();}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{struct_chat_window_a0efb4cb862c9ad5a5077dca8672f6252}{receiveThread}}.joinable())\ \{}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a0efb4cb862c9ad5a5077dca8672f6252}{receiveThread}}.join();}
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00134\ \ \ \ \ \}}
-\DoxyCodeLine{00135\ }
-\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_ad9ee393852c6d0738aa1465c4e61d41c}{receiveMessages}}()\ \{}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[1024];}
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bytesReceived\ =\ recv(\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}},\ buffer,\ \textcolor{keyword}{sizeof}(buffer)\ -\/\ 1,\ 0);}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bytesReceived\ >\ 0)\ \{}
-\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer[bytesReceived]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(std::string(buffer));}
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bytesReceived\ ==\ 0)\ \{}
-\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(\textcolor{stringliteral}{"{}Connection\ closed\ by\ server."{}});}
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(\textcolor{stringliteral}{"{}Error\ receiving\ message."{}});}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00154\ \ \ \ \ \}}
-\DoxyCodeLine{00155\ }
-\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(\textcolor{keyword}{const}\ std::string\&\ message)\ \{}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{struct_chat_window_a946c78671452ee5868364dddfde70b2c}{mutex}});}
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a5a272447bf42965540ff3ebed35c891b}{messages}}.push\_back(message);}
-\DoxyCodeLine{00159\ \ \ \ \ \}}
-\DoxyCodeLine{00160\ }
-\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_a147a8c305f0f27d2b53dad5ae84b959a}{sendMessage}}(\textcolor{keyword}{const}\ std::string\&\ message)\ \{}
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ std::string\ fullMessage\ =\ message;}
-\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bytesSent\ =\ send(\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}},\ fullMessage.c\_str(),\ fullMessage.length(),\ 0);}
-\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bytesSent\ ==\ SOCKET\_ERROR)\ \{}
-\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(\textcolor{stringliteral}{"{}Error\ sending\ message:\ "{}}\ +\ std::to\_string(WSAGetLastError()));}
-\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(\textcolor{stringliteral}{"{}You:\ "{}}\ +\ message);}
-\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00170\ \ \ \ \ \}}
-\DoxyCodeLine{00171\ }
-\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_a7a350c4fa0d85fcf85d2c09ce48160e4}{DrawLogin}}()\ \{}
-\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}\ usernameBuf[256]\ =\ \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}\ serverIPBuf[256]\ =\ \textcolor{stringliteral}{"{}Your\ Ipv4\ Adress"{}};}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ showIPAddress\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00176\ }
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Login"{}});}
-\DoxyCodeLine{00178\ }
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ ImGui::InputText(\textcolor{stringliteral}{"{}Username"{}},\ usernameBuf,\ \textcolor{keyword}{sizeof}(usernameBuf));}
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ ImGui::InputText(\textcolor{stringliteral}{"{}Server\ IP"{}},\ serverIPBuf,\ \textcolor{keyword}{sizeof}(serverIPBuf));}
-\DoxyCodeLine{00181\ }
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ ImGui::PushID(1);\ \textcolor{comment}{//\ Pour\ éviter\ les\ conflits\ d'ID}}
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Host"{}}))\ \{}
-\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a9560014dfacf94e9bfd6698fd47ec36e}{startServer}}();}
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ showIPAddress\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ ImGui::PopID();}
-\DoxyCodeLine{00188\ }
-\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (showIPAddress)\ \{}
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::SameLine();}
-\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Host\ IP:\ \%s"{}},\ \mbox{\hyperlink{struct_chat_window_a1c142f9cbda0db3416e6609339d37bba}{ipAddressBuf}});}
-\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00193\ }
-\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Connect"{}}))\ \{}
-\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a8bd321bf529754a246aa5e910cfd5978}{setupConnection}}(std::string(usernameBuf),\ std::string(serverIPBuf));}
-\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{struct_chat_window_aafeff939f24d2a6c27e359a3c8574b45}{isConnected}})\ \{}
-\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ connexion\ a\ réussi,\ préparer\ l'interface\ pour\ le\ chat}}
-\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memset(usernameBuf,\ 0,\ \textcolor{keyword}{sizeof}(usernameBuf));\ \ \textcolor{comment}{//\ Clear\ buffers\ after\ successful\ login}}
-\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memset(serverIPBuf,\ 0,\ \textcolor{keyword}{sizeof}(serverIPBuf));}
-\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::End();}
-\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00204\ }
-\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ ImGui::End();}
-\DoxyCodeLine{00206\ \ \ \ \ \}}
-\DoxyCodeLine{00207\ }
-\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_a772615a7152b3e769cddd831cb9f1963}{disconnect}}()\ \{}
-\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{struct_chat_window_aafeff939f24d2a6c27e359a3c8574b45}{isConnected}})\ \{}
-\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a103b36a7797b8c201f4bb1632d57b03d}{closeNetwork}}();}
-\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_aafeff939f24d2a6c27e359a3c8574b45}{isConnected}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00213\ \ \ \ \ \}}
-\DoxyCodeLine{00214\ }
-\DoxyCodeLine{00215\ }
-\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_a1cf658fe7db33fac0f7554ef00ee7695}{Draw}}()\ \{}
-\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{struct_chat_window_aafeff939f24d2a6c27e359a3c8574b45}{isConnected}})\ \{}
-\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a7a350c4fa0d85fcf85d2c09ce48160e4}{DrawLogin}}();}
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Chat"{}});}
-\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginChild(\textcolor{stringliteral}{"{}ScrollingRegion"{}},\ ImVec2(0,\ -\/ImGui::GetFrameHeightWithSpacing()),\ \textcolor{keyword}{false},\ ImGuiWindowFlags\_HorizontalScrollbar))\ \{}
-\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ message\ :\ \mbox{\hyperlink{struct_chat_window_a5a272447bf42965540ff3ebed35c891b}{messages}})\ \{}
-\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::TextUnformatted(message.c\_str());}
-\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::GetScrollY()\ >=\ ImGui::GetScrollMaxY())\ \{}
-\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::SetScrollHereY(1.0f);}
-\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::EndChild();}
-\DoxyCodeLine{00231\ }
-\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ reclaim\_focus\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::InputText(\textcolor{stringliteral}{"{}Input"{}},\ \mbox{\hyperlink{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}{inputBuf}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}{inputBuf}}),\ ImGuiInputTextFlags\_EnterReturnsTrue))\ \{}
-\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ message\ =\ \mbox{\hyperlink{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}{inputBuf}};}
-\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!message.empty())\ \{}
-\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a147a8c305f0f27d2b53dad5ae84b959a}{sendMessage}}(message);}
-\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reclaim\_focus\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memset(\mbox{\hyperlink{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}{inputBuf}},\ 0,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}{inputBuf}}));}
-\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (reclaim\_focus)\ \{}
-\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::SetKeyboardFocusHere(-\/1);}
-\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00244\ }
-\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Disconnect"{}}))\ \{}
-\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a772615a7152b3e769cddd831cb9f1963}{disconnect}}();}
-\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00248\ }
-\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::End();}
-\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00251\ \ \ \ \ \}}
-\DoxyCodeLine{00252\ }
-\DoxyCodeLine{00253\ \};}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}}\ =\ socket(AF\_INET,\ SOCK\_STREAM,\ IPPROTO\_TCP);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}}\ ==\ INVALID\_SOCKET)\ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ WSACleanup();}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(\textcolor{stringliteral}{"{}Socket\ creation\ failed."{}});}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ sockaddr\_in\ serverAddr;}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ serverAddr.sin\_family\ =\ AF\_INET;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ serverAddr.sin\_port\ =\ htons(12345);}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ inet\_pton(AF\_INET,\ \mbox{\hyperlink{struct_chat_window_a1d237353d4e536634f37c8656f790652}{serverIP}}.c\_str(),\ \&serverAddr.sin\_addr);}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (connect(\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}},\ (SOCKADDR*)\&serverAddr,\ \textcolor{keyword}{sizeof}(serverAddr))\ ==\ SOCKET\_ERROR)\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ closesocket(\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}});}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ WSACleanup();}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(\textcolor{stringliteral}{"{}Connection\ failed."{}});}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ send(\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}},\ \mbox{\hyperlink{struct_chat_window_a68d666bcf564bf6cada8bb611d84687a}{username}}.c\_str(),\ \mbox{\hyperlink{struct_chat_window_a68d666bcf564bf6cada8bb611d84687a}{username}}.length(),\ 0);\ \textcolor{comment}{//\ Send\ username\ right\ after\ connecting}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a0efb4cb862c9ad5a5077dca8672f6252}{receiveThread}}\ =\ std::thread(\&\mbox{\hyperlink{struct_chat_window_ad9ee393852c6d0738aa1465c4e61d41c}{ChatWindow::receiveMessages}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a0efb4cb862c9ad5a5077dca8672f6252}{receiveThread}}.detach();\ \ \textcolor{comment}{//\ It's\ detached\ to\ prevent\ blocking.}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_aafeff939f24d2a6c27e359a3c8574b45}{isConnected}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ send(\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}},\ \mbox{\hyperlink{struct_chat_window_a68d666bcf564bf6cada8bb611d84687a}{username}}.c\_str(),\ \mbox{\hyperlink{struct_chat_window_a68d666bcf564bf6cada8bb611d84687a}{username}}.length(),\ 0);}
+\DoxyCodeLine{00149\ \ \ \ \ \}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_a103b36a7797b8c201f4bb1632d57b03d}{closeNetwork}}()\ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}}\ !=\ INVALID\_SOCKET)\ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ closesocket(\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}});}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ WSACleanup();}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{struct_chat_window_a0efb4cb862c9ad5a5077dca8672f6252}{receiveThread}}.joinable())\ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a0efb4cb862c9ad5a5077dca8672f6252}{receiveThread}}.join();}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \ \ \ \ \}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_ad9ee393852c6d0738aa1465c4e61d41c}{receiveMessages}}()\ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[1024];}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bytesReceived\ =\ recv(\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}},\ buffer,\ \textcolor{keyword}{sizeof}(buffer)\ -\/\ 1,\ 0);}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bytesReceived\ >\ 0)\ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer[bytesReceived]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(std::string(buffer));}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bytesReceived\ ==\ 0)\ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(\textcolor{stringliteral}{"{}Connection\ closed\ by\ server."{}});}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(\textcolor{stringliteral}{"{}Error\ receiving\ message."{}});}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00185\ \ \ \ \ \}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(\textcolor{keyword}{const}\ std::string\&\ message)\ \{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{struct_chat_window_a946c78671452ee5868364dddfde70b2c}{mutex}});}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a5a272447bf42965540ff3ebed35c891b}{messages}}.push\_back(message);}
+\DoxyCodeLine{00194\ \ \ \ \ \}}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_a147a8c305f0f27d2b53dad5ae84b959a}{sendMessage}}(\textcolor{keyword}{const}\ std::string\&\ message)\ \{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ std::string\ fullMessage\ =\ message;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bytesSent\ =\ send(\mbox{\hyperlink{struct_chat_window_a8a5655fac7fd7dbc2726206cc84b7bdc}{clientSocket}},\ fullMessage.c\_str(),\ fullMessage.length(),\ 0);}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bytesSent\ ==\ SOCKET\_ERROR)\ \{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(\textcolor{stringliteral}{"{}Error\ sending\ message:\ "{}}\ +\ std::to\_string(WSAGetLastError()));}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a992bdc5df7b0994406693d6ca40714be}{addMessage}}(\textcolor{stringliteral}{"{}You:\ "{}}\ +\ message);}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00209\ \ \ \ \ \}}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_a7a350c4fa0d85fcf85d2c09ce48160e4}{DrawLogin}}()\ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}\ usernameBuf[256]\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}\ serverIPBuf[256]\ =\ \textcolor{stringliteral}{"{}Your\ Ipv4\ Adress"{}};}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ showIPAddress\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Login"{}});}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ ImGui::InputText(\textcolor{stringliteral}{"{}Username"{}},\ usernameBuf,\ \textcolor{keyword}{sizeof}(usernameBuf));}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ ImGui::InputText(\textcolor{stringliteral}{"{}Server\ IP"{}},\ serverIPBuf,\ \textcolor{keyword}{sizeof}(serverIPBuf));}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ ImGui::PushID(1);\ \textcolor{comment}{//\ To\ avoid\ ID\ conflicts}}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Host"{}}))\ \{}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a9560014dfacf94e9bfd6698fd47ec36e}{startServer}}();}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ showIPAddress\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ ImGui::PopID();}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (showIPAddress)\ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::SameLine();}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Host\ IP:\ \%s"{}},\ \mbox{\hyperlink{struct_chat_window_a1c142f9cbda0db3416e6609339d37bba}{ipAddressBuf}});}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Connect"{}}))\ \{}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a8bd321bf529754a246aa5e910cfd5978}{setupConnection}}(std::string(usernameBuf),\ std::string(serverIPBuf));}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{struct_chat_window_aafeff939f24d2a6c27e359a3c8574b45}{isConnected}})\ \{}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Successfully\ connected,\ so\ clear\ the\ buffers}}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memset(usernameBuf,\ 0,\ \textcolor{keyword}{sizeof}(usernameBuf));\ \ \textcolor{comment}{//\ Clear\ buffers\ after\ successful\ login}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memset(serverIPBuf,\ 0,\ \textcolor{keyword}{sizeof}(serverIPBuf));}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00248\ \ \ \ \ \}}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_a772615a7152b3e769cddd831cb9f1963}{disconnect}}()\ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{struct_chat_window_aafeff939f24d2a6c27e359a3c8574b45}{isConnected}})\ \{}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a103b36a7797b8c201f4bb1632d57b03d}{closeNetwork}}();}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_aafeff939f24d2a6c27e359a3c8574b45}{isConnected}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00258\ \ \ \ \ \}}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00263\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_chat_window_a1cf658fe7db33fac0f7554ef00ee7695}{Draw}}()\ \{}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{struct_chat_window_aafeff939f24d2a6c27e359a3c8574b45}{isConnected}})\ \{}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a7a350c4fa0d85fcf85d2c09ce48160e4}{DrawLogin}}();}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Chat"{}});}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::BeginChild(\textcolor{stringliteral}{"{}ScrollingRegion"{}},\ ImVec2(0,\ -\/ImGui::GetFrameHeightWithSpacing()),\ \textcolor{keyword}{false},\ ImGuiWindowFlags\_HorizontalScrollbar))\ \{}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ message\ :\ \mbox{\hyperlink{struct_chat_window_a5a272447bf42965540ff3ebed35c891b}{messages}})\ \{}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::TextUnformatted(message.c\_str());}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::GetScrollY()\ >=\ ImGui::GetScrollMaxY())\ \{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::SetScrollHereY(1.0f);}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::EndChild();}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ reclaim\_focus\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::InputText(\textcolor{stringliteral}{"{}Input"{}},\ \mbox{\hyperlink{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}{inputBuf}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}{inputBuf}}),\ ImGuiInputTextFlags\_EnterReturnsTrue))\ \{}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ message\ =\ \mbox{\hyperlink{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}{inputBuf}};}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!message.empty())\ \{}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a147a8c305f0f27d2b53dad5ae84b959a}{sendMessage}}(message);}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reclaim\_focus\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memset(\mbox{\hyperlink{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}{inputBuf}},\ 0,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_chat_window_a5990c1413d12e4e8df5a119cdcb8f258}{inputBuf}}));}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (reclaim\_focus)\ \{}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::SetKeyboardFocusHere(-\/1);}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Disconnect"{}}))\ \{}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chat_window_a772615a7152b3e769cddd831cb9f1963}{disconnect}}();}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00298\ \ \ \ \ \}}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00300\ \};}
 
 \end{DoxyCode}

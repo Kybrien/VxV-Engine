@@ -1,0 +1,214 @@
+\doxysection{Light Class Reference}
+\hypertarget{class_light}{}\label{class_light}\index{Light@{Light}}
+
+
+{\ttfamily \#include $<$Light.\+h$>$}
+
+Inheritance diagram for Light\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_light}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_light_aba544d0d836932b4fdd29c9cbe90b1b8}{Light}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}game\+Object)
+\begin{DoxyCompactList}\small\item\em Instanciate a component \doxylink{class_light}{Light}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_light_aeb5df09a25a32f19fdffa761268ba24f}{Light}} ()
+\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_light_afc649cdfce383399f3bd209924374ba4}{Load}} (Json\+::\+Value \&\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{comp\+Json}}, \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{Parent\+GO}}) \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{override}}
+\begin{DoxyCompactList}\small\item\em Load the component from a Json Object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_light_ab01e53b6813df3e40f9959b58c59b9d0}{Save}} (Json\+::\+Value \&\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{comp\+Json}}) \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{override}}
+\begin{DoxyCompactList}\small\item\em Save the component in a Json Object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_light_abb9c0e4bda4312bd1fd520d48b4f7638}{Copy}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{go\+To\+Fill}}) \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{override}}
+\begin{DoxyCompactList}\small\item\em Copy the value of a component to another game\+Object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_light_ac2f5b67bbfffe4102e6abbe2d0335c00}{Set\+Color}} (glm\+::vec3 \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+color}})
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_light_a1e932002262c3abb251911b48b306bfe}{Get\+Color}} ()
+\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_light_a6dfae0d1747ba5e5b4f8860da2b20d32}{Set\+Power}} (\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\+\_\+power}})
+\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}} \mbox{\hyperlink{class_light_a22d65826c51e2e891f3bd85ee5606d3c}{Get\+Power}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_component_ae527ef1a4d1be744d50e2676a6c4f5f6}{Component}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{go}})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_component}{Component} object and links it to a \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_component_a8775db6d1a2c1afc2e77cd3c8f39da6f}{Component}} ()
+\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_component_ae26f4d08f6a55499e30a1f700a4c08b7}{Get\+Linked\+Game\+Object}} () \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{const}}
+\begin{DoxyCompactList}\small\item\em Retrieves the linked \doxylink{class_game_object}{Game\+Object} of the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}} \mbox{\hyperlink{class_light_a6c4c401141c4cdb3b9b9b3bab7dd6fbb}{power}} = 80.\+0f
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_light_a91d73d70b4bd4beb402c0f16dab19a25}{color}} = glm\+::vec3(1.\+0f, 1.\+0f, 1.\+0f)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_component_a46343549452bda5ee9752f7a9bc15efb}{name}}
+\item 
+\mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Type}} \mbox{\hyperlink{class_component_a18de93d5a176aa3cd6dc6724788dfacb}{type}}
+\begin{DoxyCompactList}\small\item\em Type of the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Type}} \{ \newline
+\mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94}{Unknown}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059}{Transform}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a090cc807df7587ff4441c31ee17f24fc}{Model}}
+, \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51}{Script\+Component}}
+, \newline
+\mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a825d87013c634fbf3ecf5f8928c8990a}{Light}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration representing different types of components. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_component}{Component}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_component_ae82678b1f50e36ccba0a8775f12036c3}{linked\+Game\+Object}}
+\begin{DoxyCompactList}\small\item\em Pointer to the \doxylink{class_game_object}{Game\+Object} linked to the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_light_aba544d0d836932b4fdd29c9cbe90b1b8}\label{class_light_aba544d0d836932b4fdd29c9cbe90b1b8} 
+\index{Light@{Light}!Light@{Light}}
+\index{Light@{Light}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{Light()}{Light()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Light\+::\+Light (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{game\+Object }\end{DoxyParamCaption})}
+
+
+
+Instanciate a component \doxylink{class_light}{Light}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & reference to the linked \doxylink{class_game_object}{Game\+Object} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_light_aeb5df09a25a32f19fdffa761268ba24f}\label{class_light_aeb5df09a25a32f19fdffa761268ba24f} 
+\index{Light@{Light}!Light@{Light}}
+\index{Light@{Light}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{Light()}{Light()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Light\+::\+Light (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_light_abb9c0e4bda4312bd1fd520d48b4f7638}\label{class_light_abb9c0e4bda4312bd1fd520d48b4f7638} 
+\index{Light@{Light}!Copy@{Copy}}
+\index{Copy@{Copy}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{Copy()}{Copy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Light\+::\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go\+To\+Fill }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Copy the value of a component to another game\+Object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & reference to the \doxylink{class_game_object}{Game\+Object} to fill \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_component_ad70a279b1453b27839c0fc6e9f3a0b08}{Component}}.
+
+\Hypertarget{class_light_a1e932002262c3abb251911b48b306bfe}\label{class_light_a1e932002262c3abb251911b48b306bfe} 
+\index{Light@{Light}!GetColor@{GetColor}}
+\index{GetColor@{GetColor}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{GetColor()}{GetColor()}}
+{\footnotesize\ttfamily glm\+::vec3 Light\+::\+Get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{class_light_a22d65826c51e2e891f3bd85ee5606d3c}\label{class_light_a22d65826c51e2e891f3bd85ee5606d3c} 
+\index{Light@{Light}!GetPower@{GetPower}}
+\index{GetPower@{GetPower}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{GetPower()}{GetPower()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}} Light\+::\+Get\+Power (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{class_light_afc649cdfce383399f3bd209924374ba4}\label{class_light_afc649cdfce383399f3bd209924374ba4} 
+\index{Light@{Light}!Load@{Load}}
+\index{Load@{Load}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Light\+::\+Load (\begin{DoxyParamCaption}\item[{Json\+::\+Value \&}]{comp\+Json,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{Parent\+GO }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Load the component from a Json Object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & Json Value used by the lib jsoncpp to save the data \\
+\hline
+{\em A} & reference to the parent \doxylink{class_game_object}{Game\+Object} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_component_ac6833433134e649053b0fe16f60dfd98}{Component}}.
+
+\Hypertarget{class_light_ab01e53b6813df3e40f9959b58c59b9d0}\label{class_light_ab01e53b6813df3e40f9959b58c59b9d0} 
+\index{Light@{Light}!Save@{Save}}
+\index{Save@{Save}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Light\+::\+Save (\begin{DoxyParamCaption}\item[{Json\+::\+Value \&}]{comp\+Json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Save the component in a Json Object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & Json Value used by the lib jsoncpp to save the data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_component_a78f3311bb53ce9b6d095e95021df681a}{Component}}.
+
+\Hypertarget{class_light_ac2f5b67bbfffe4102e6abbe2d0335c00}\label{class_light_ac2f5b67bbfffe4102e6abbe2d0335c00} 
+\index{Light@{Light}!SetColor@{SetColor}}
+\index{SetColor@{SetColor}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{SetColor()}{SetColor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Light\+::\+Set\+Color (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+color }\end{DoxyParamCaption})}
+
+\Hypertarget{class_light_a6dfae0d1747ba5e5b4f8860da2b20d32}\label{class_light_a6dfae0d1747ba5e5b4f8860da2b20d32} 
+\index{Light@{Light}!SetPower@{SetPower}}
+\index{SetPower@{SetPower}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{SetPower()}{SetPower()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Light\+::\+Set\+Power (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}}}]{\+\_\+power }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_light_a91d73d70b4bd4beb402c0f16dab19a25}\label{class_light_a91d73d70b4bd4beb402c0f16dab19a25} 
+\index{Light@{Light}!color@{color}}
+\index{color@{color}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{color}{color}}
+{\footnotesize\ttfamily glm\+::vec3 Light\+::color = glm\+::vec3(1.\+0f, 1.\+0f, 1.\+0f)}
+
+\Hypertarget{class_light_a6c4c401141c4cdb3b9b9b3bab7dd6fbb}\label{class_light_a6c4c401141c4cdb3b9b9b3bab7dd6fbb} 
+\index{Light@{Light}!power@{power}}
+\index{power@{power}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{power}{power}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{float}} Light\+::power = 80.\+0f}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_light_8h}{Light.\+h}}\item 
+\mbox{\hyperlink{_light_8cpp}{Light.\+cpp}}\end{DoxyCompactItemize}

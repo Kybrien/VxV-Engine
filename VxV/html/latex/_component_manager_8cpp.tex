@@ -1,0 +1,29 @@
+\doxysection{Component\+Manager.\+cpp File Reference}
+\hypertarget{_component_manager_8cpp}{}\label{_component_manager_8cpp}\index{ComponentManager.cpp@{ComponentManager.cpp}}
+{\ttfamily \#include "{}Component\+Manager.\+hpp"{}}\newline
+{\ttfamily \#include "{}Transform.\+h"{}}\newline
+{\ttfamily \#include "{}Light.\+h"{}}\newline
+{\ttfamily \#include "{}Model.\+h"{}}\newline
+{\ttfamily \#include "{}Scripting\+Component.\+h"{}}\newline
+{\ttfamily \#include "{}Component.\+h"{}}\newline
+{\ttfamily \#include "{}Game\+Object.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_component_manager_8cpp_ad1fe50138d4132eab8b40c7173f670c1}{DECLARE\+\_\+\+COMPONENT}}(\+\_\+type)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_component_manager_8cpp_ad1fe50138d4132eab8b40c7173f670c1}\label{_component_manager_8cpp_ad1fe50138d4132eab8b40c7173f670c1} 
+\index{ComponentManager.cpp@{ComponentManager.cpp}!DECLARE\_COMPONENT@{DECLARE\_COMPONENT}}
+\index{DECLARE\_COMPONENT@{DECLARE\_COMPONENT}!ComponentManager.cpp@{ComponentManager.cpp}}
+\doxysubsubsection{\texorpdfstring{DECLARE\_COMPONENT}{DECLARE\_COMPONENT}}
+{\footnotesize\ttfamily \#define DECLARE\+\_\+\+COMPONENT(\begin{DoxyParamCaption}\item[{}]{\+\_\+type }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ComponentMap[\#\_type]\ =\ \&\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{createInstance<\_type>}};\ \(\backslash\)}
+\DoxyCodeLine{componentList.push\_back(\#\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{\_type}});}
+
+\end{DoxyCode}

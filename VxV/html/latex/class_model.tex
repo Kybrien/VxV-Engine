@@ -13,37 +13,46 @@ Inheritance diagram for Model\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_model_a2d677c3a8cab1f392779bf65ec50d06e}{Model}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go)
+\mbox{\hyperlink{class_model_a2d677c3a8cab1f392779bf65ec50d06e}{Model}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{go}})
 \begin{DoxyCompactList}\small\item\em Instanciate a component \doxylink{class_model}{Model}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_model_ae3d3f59dbf7e11e24680a68bbe120ae6}{Save}} (Json\+::\+Value \&comp\+Json) override
+\mbox{\hyperlink{class_model_ae3b375de5f6df4faf74a95d64748e048}{Model}} ()
+\item 
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_model_ae3d3f59dbf7e11e24680a68bbe120ae6}{Save}} (Json\+::\+Value \&\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{comp\+Json}}) \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{override}}
 \begin{DoxyCompactList}\small\item\em Save the component in a Json Object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_model_a60883d5a7f23665d725dc9e10f1f1251}{Load}} (Json\+::\+Value \&comp\+Json, \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}Parent\+GO) override
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_model_a60883d5a7f23665d725dc9e10f1f1251}{Load}} (Json\+::\+Value \&\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{comp\+Json}}, \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{Parent\+GO}}) \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{override}}
 \begin{DoxyCompactList}\small\item\em Load the component from a Json Object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_model_a71d5bba83fbb2cf0b73ddca0d6e9573b}{Copy}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go\+To\+Fill) override
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_model_a71d5bba83fbb2cf0b73ddca0d6e9573b}{Copy}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{go\+To\+Fill}}) \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{override}}
 \begin{DoxyCompactList}\small\item\em Copy the value of a component to another game\+Object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_model_ac1d2b7fdde64308f8020d635785e9e11}{Set\+Model}} (std\+::string model\+Name)
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_model_ac1d2b7fdde64308f8020d635785e9e11}{Set\+Model}} (std\+::string \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{model\+Name}})
 \begin{DoxyCompactList}\small\item\em Assign the 3d model to the component, searching the name in the model manager. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*}\& \mbox{\hyperlink{class_model_a7fc7bffa99f6b49b6270d4819c08543e}{Get\+Model}} ()
 \begin{DoxyCompactList}\small\item\em Get the model assigned to the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_component}{Component}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_component_ae527ef1a4d1be744d50e2676a6c4f5f6}{Component}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go)
+\mbox{\hyperlink{class_component_ae527ef1a4d1be744d50e2676a6c4f5f6}{Component}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{go}})
 \begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_component}{Component} object and links it to a \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_component_ae26f4d08f6a55499e30a1f700a4c08b7}{Get\+Linked\+Game\+Object}} () const
+\mbox{\hyperlink{class_component_a8775db6d1a2c1afc2e77cd3c8f39da6f}{Component}} ()
+\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_component_ae26f4d08f6a55499e30a1f700a4c08b7}{Get\+Linked\+Game\+Object}} () \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{const}}
 \begin{DoxyCompactList}\small\item\em Retrieves the linked \doxylink{class_game_object}{Game\+Object} of the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_component}{Component}}}
 \begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Type}} \{ \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94}{Unknown}}
+enum \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Type}} \{ \newline
+\mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a392092c69e7017a340f7b11867f23a94}{Unknown}}
 , \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4aa377868c367f3e6f36f2618cdfe0f059}{Transform}}
 , \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a090cc807df7587ff4441c31ee17f24fc}{Model}}
 , \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4af45be8cab627f5817ef11025506d2e51}{Script\+Component}}
+, \newline
+\mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4a825d87013c634fbf3ecf5f8928c8990a}{Light}}
  \}
 \begin{DoxyCompactList}\small\item\em Enumeration representing different types of components. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_component}{Component}}}
 \begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_component_a46343549452bda5ee9752f7a9bc15efb}{name}}
 \item 
 \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Type}} \mbox{\hyperlink{class_component_a18de93d5a176aa3cd6dc6724788dfacb}{type}}
 \begin{DoxyCompactList}\small\item\em Type of the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -58,7 +67,7 @@ enum \mbox{\hyperlink{class_component_afd50861fbf83f7ff7777a5e6dd7b7ca4}{Type}} 
 \Hypertarget{class_model_a2d677c3a8cab1f392779bf65ec50d06e}\label{class_model_a2d677c3a8cab1f392779bf65ec50d06e} 
 \index{Model@{Model}!Model@{Model}}
 \index{Model@{Model}!Model@{Model}}
-\doxysubsubsection{\texorpdfstring{Model()}{Model()}}
+\doxysubsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Model\+::\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go }\end{DoxyParamCaption})}
 
 
@@ -70,6 +79,12 @@ Instanciate a component \doxylink{class_model}{Model}.
 {\em A} & reference to the linked \doxylink{class_game_object}{Game\+Object} \\
 \hline
 \end{DoxyParams}
+\Hypertarget{class_model_ae3b375de5f6df4faf74a95d64748e048}\label{class_model_ae3b375de5f6df4faf74a95d64748e048} 
+\index{Model@{Model}!Model@{Model}}
+\index{Model@{Model}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Model\+::\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 
 
 \doxysubsection{Member Function Documentation}
@@ -77,7 +92,7 @@ Instanciate a component \doxylink{class_model}{Model}.
 \index{Model@{Model}!Copy@{Copy}}
 \index{Copy@{Copy}!Model@{Model}}
 \doxysubsubsection{\texorpdfstring{Copy()}{Copy()}}
-{\footnotesize\ttfamily void Model\+::\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go\+To\+Fill }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Model\+::\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go\+To\+Fill }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -112,7 +127,7 @@ Model\+Component\texorpdfstring{$\ast$}{*}\&
 \index{Model@{Model}!Load@{Load}}
 \index{Load@{Load}!Model@{Model}}
 \doxysubsubsection{\texorpdfstring{Load()}{Load()}}
-{\footnotesize\ttfamily void Model\+::\+Load (\begin{DoxyParamCaption}\item[{Json\+::\+Value \&}]{comp\+Json,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{Parent\+GO }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Model\+::\+Load (\begin{DoxyParamCaption}\item[{Json\+::\+Value \&}]{comp\+Json,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{Parent\+GO }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -136,7 +151,7 @@ Implements \mbox{\hyperlink{class_component_ac6833433134e649053b0fe16f60dfd98}{C
 \index{Model@{Model}!Save@{Save}}
 \index{Save@{Save}!Model@{Model}}
 \doxysubsubsection{\texorpdfstring{Save()}{Save()}}
-{\footnotesize\ttfamily void Model\+::\+Save (\begin{DoxyParamCaption}\item[{Json\+::\+Value \&}]{comp\+Json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Model\+::\+Save (\begin{DoxyParamCaption}\item[{Json\+::\+Value \&}]{comp\+Json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -158,7 +173,7 @@ Implements \mbox{\hyperlink{class_component_a78f3311bb53ce9b6d095e95021df681a}{C
 \index{Model@{Model}!SetModel@{SetModel}}
 \index{SetModel@{SetModel}!Model@{Model}}
 \doxysubsubsection{\texorpdfstring{SetModel()}{SetModel()}}
-{\footnotesize\ttfamily void Model\+::\+Set\+Model (\begin{DoxyParamCaption}\item[{std\+::string}]{model\+Name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Model\+::\+Set\+Model (\begin{DoxyParamCaption}\item[{std\+::string}]{model\+Name }\end{DoxyParamCaption})}
 
 
 

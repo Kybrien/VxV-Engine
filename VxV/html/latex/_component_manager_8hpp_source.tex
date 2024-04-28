@@ -1,0 +1,48 @@
+\doxysection{Component\+Manager.\+hpp}
+\hypertarget{_component_manager_8hpp_source}{}\label{_component_manager_8hpp_source}\mbox{\hyperlink{_component_manager_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_component}{Component}};}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_object}{GameObject}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ std::vector<std::string>\ \mbox{\hyperlink{_component_manager_8hpp_a4395f356e04bcd350ae3d1f0d16275d9}{Victor}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>\ \mbox{\hyperlink{class_component}{Component}}*\ \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{createInstance}}()\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ T;\ \}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_component_manager}{ComponentManager}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_component_manager_addccd94a0556362431571f1f749a1afe}{ComponentManager}}();}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_component_manager}{ComponentManager}}*\ \mbox{\hyperlink{class_component_manager_a1d47615a512c700ae68418f2d307cc03}{GetInstance}}()}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_Instance\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ m\_Instance\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_component_manager_addccd94a0556362431571f1f749a1afe}{ComponentManager}}();}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_Instance;}
+\DoxyCodeLine{00024\ \ \ \ \ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{_component_manager_8hpp_a4395f356e04bcd350ae3d1f0d16275d9}{Victor}}\ \mbox{\hyperlink{class_component_manager_af719d3fd6a88293200a9d40286c59166}{GetComponentNameList}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00027\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ componentList;}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_component}{Component}}*\ \mbox{\hyperlink{class_component_manager_a06f94ac8ebaa39d480cd783a37661f44}{createComponent}}(std::string\ type);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_component_manager}{ComponentManager}}*\ m\_Instance;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{_component_manager_8hpp_a4395f356e04bcd350ae3d1f0d16275d9}{Victor}}\ componentList;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{typedef}\ std::map<std::string,\ \mbox{\hyperlink{class_component}{Component}}*\ (*)()>\ map\_type;}
+\DoxyCodeLine{00041\ \ \ \ \ map\_type\ ComponentMap;}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ }
+
+\end{DoxyCode}

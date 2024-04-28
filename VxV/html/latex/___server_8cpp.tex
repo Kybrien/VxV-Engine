@@ -14,11 +14,11 @@ struct \mbox{\hyperlink{struct_client_info}{Client\+Info}}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{___server_8cpp_afb89c86eb39efaa4a8c8941e8f38203b}{handle\+Client\+Disconnection}} (SOCKET client\+Socket, const std\+::string \&nickname)
-\item 
+\begin{DoxyCompactList}\small\item\em Handles client disconnection. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{___server_8cpp_abd2e7d690a5870eb381fed79b79343b2}{handle\+Client}} (SOCKET client\+Socket)
-\item 
+\begin{DoxyCompactList}\small\item\em Handles a connected client. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{___server_8cpp_a8a5f2fe4c65117dd55ea9e572a394165}{init\+Serv}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Initializes the chat server. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -35,18 +35,51 @@ std\+::vector$<$ \mbox{\hyperlink{struct_client_info}{Client\+Info}} $>$ \mbox{\
 \doxysubsubsection{\texorpdfstring{handleClient()}{handleClient()}}
 {\footnotesize\ttfamily void handle\+Client (\begin{DoxyParamCaption}\item[{SOCKET}]{client\+Socket }\end{DoxyParamCaption})}
 
+
+
+Handles a connected client. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em client\+Socket} & The socket of the client. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \Hypertarget{___server_8cpp_afb89c86eb39efaa4a8c8941e8f38203b}\label{___server_8cpp_afb89c86eb39efaa4a8c8941e8f38203b} 
 \index{\_Server.cpp@{\_Server.cpp}!handleClientDisconnection@{handleClientDisconnection}}
 \index{handleClientDisconnection@{handleClientDisconnection}!\_Server.cpp@{\_Server.cpp}}
 \doxysubsubsection{\texorpdfstring{handleClientDisconnection()}{handleClientDisconnection()}}
 {\footnotesize\ttfamily void handle\+Client\+Disconnection (\begin{DoxyParamCaption}\item[{SOCKET}]{client\+Socket,  }\item[{const std\+::string \&}]{nickname }\end{DoxyParamCaption})}
 
+
+
+Handles client disconnection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em client\+Socket} & The socket of the client to disconnect. \\
+\hline
+{\em nickname} & The nickname of the client. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \Hypertarget{___server_8cpp_a8a5f2fe4c65117dd55ea9e572a394165}\label{___server_8cpp_a8a5f2fe4c65117dd55ea9e572a394165} 
 \index{\_Server.cpp@{\_Server.cpp}!initServ@{initServ}}
 \index{initServ@{initServ}!\_Server.cpp@{\_Server.cpp}}
 \doxysubsubsection{\texorpdfstring{initServ()}{initServ()}}
 {\footnotesize\ttfamily int init\+Serv (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Initializes the chat server. 
+
+\begin{DoxyReturn}{Returns}
+0 if initialization is successful, otherwise an error code. 
+\end{DoxyReturn}
 
 
 \doxysubsection{Variable Documentation}

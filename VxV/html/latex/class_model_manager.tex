@@ -19,44 +19,44 @@ std\+::vector$<$ \mbox{\hyperlink{class_model_component}{Model\+Component}} \tex
 \begin{DoxyCompactList}\small\item\em Retrieve a vector of \doxylink{class_model_component}{Model\+Component} pointers. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ \mbox{\hyperlink{class_model_manager_a0388c7384ddc679353cea13493a9d45e}{Get\+All\+Model\+Properties}} ()
 \begin{DoxyCompactList}\small\item\em Retrieves all model properties. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_model_manager_aaf127042d5d4e6dae2c91ef5391b8950}{Add\+Model}} (\mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*}mesh)
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_model_manager_aaf127042d5d4e6dae2c91ef5391b8950}{Add\+Model}} (\mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{mesh}})
 \begin{DoxyCompactList}\small\item\em Adds a model to the collection. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_model_manager_a284ae813017e9f86e4a6d36db3bab85d}{Get\+Model}} (std\+::string name)
 \begin{DoxyCompactList}\small\item\em Retrieves a model by its name. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_model_manager_a6984e13bcc05946e0c1fba912076ae16}{Set\+Model}} (std\+::string model\+Name, \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}go)
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_model_manager_a6984e13bcc05946e0c1fba912076ae16}{Set\+Model}} (std\+::string \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{model\+Name}}, \mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{go}})
 \begin{DoxyCompactList}\small\item\em Sets the model of a \doxylink{class_game_object}{Game\+Object}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_model_manager_af279c8092298ca1f3058166dc6d4c041}{Load}} (std\+::wstring w\+File\+Direction, std\+::wstring w\+File\+Name) override
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_model_manager_af279c8092298ca1f3058166dc6d4c041}{Load}} (std\+::wstring \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{w\+File\+Direction}}, std\+::wstring \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{w\+File\+Name}}) \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{override}}
 \begin{DoxyCompactList}\small\item\em Loads data associated with the object from the specified file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_model_manager_a5f9f79c888c30367018f48678ef23dbf}{Load\+Model}} (std\+::string file\+Name)
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_model_manager_a5f9f79c888c30367018f48678ef23dbf}{Load\+Model}} (std\+::string file\+Name)
 \begin{DoxyCompactList}\small\item\em Loads a model from a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_manager}{Manager}}}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$typename T $>$ }\\T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_a2569efa6dd78f87cc0b64086043cc4ca}{Get\+Manager}} ()
+{\footnotesize template$<$\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{typename}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} $>$ }\\\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_a2569efa6dd78f87cc0b64086043cc4ca}{Get\+Manager}} ()
 \begin{DoxyCompactList}\small\item\em Retrieves the manager of type T. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_manager_a200a7092507e1769240452e88996127b}{Init}} ()
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_manager_a200a7092507e1769240452e88996127b}{Init}} ()
 \begin{DoxyCompactList}\small\item\em Initializes the \doxylink{class_manager}{Manager}. Represents initializing the \doxylink{class_manager}{Manager}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_manager_a037a7066aa1ba886bafe691ef3f6f98c}{Stop}} ()
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_manager_a037a7066aa1ba886bafe691ef3f6f98c}{Stop}} ()
 \begin{DoxyCompactList}\small\item\em Stops the \doxylink{class_manager}{Manager}. Represents stopping the \doxylink{class_manager}{Manager} and deleting all pointers. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_manager_ab6bfbb7862710ba6c42634f7ea521994}{Add\+Manager}} (T \texorpdfstring{$\ast$}{*}manager)
+{\footnotesize template$<$\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{typename}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} $>$ }\\\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_manager_ab6bfbb7862710ba6c42634f7ea521994}{Add\+Manager}} (\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} \texorpdfstring{$\ast$}{*}manager)
 \begin{DoxyCompactList}\small\item\em Adds a manager to the \doxylink{class_manager}{Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_manager}{Manager}}}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_abf52d7d532c05607cc23c687f23e6b67}{Get\+Instance}} ()
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{static}} \mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_abf52d7d532c05607cc23c687f23e6b67}{Get\+Instance}} ()
 \begin{DoxyCompactList}\small\item\em Retrieves the singleton instance of the \doxylink{class_manager}{Manager} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_manager}{Manager}}}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_manager_a066ee0e0faa861515f582e510a722804}{Search\+File}} (std\+::string file\+Direction, std\+::string extension, T \texorpdfstring{$\ast$}{*}manager)
+{\footnotesize template$<$\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{typename}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} $>$ }\\\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_manager_a066ee0e0faa861515f582e510a722804}{Search\+File}} (std\+::string file\+Direction, std\+::string extension, \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{T}} \texorpdfstring{$\ast$}{*}manager)
 \begin{DoxyCompactList}\small\item\em Searches for files with a specific extension in a given directory and processes them using the specified manager. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{class_manager_aa66c5cc0be93116d3901ce317b2332fb}{Save}} ()
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{virtual}} \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} \mbox{\hyperlink{class_manager_aa66c5cc0be93116d3901ce317b2332fb}{Save}} ()
 \begin{DoxyCompactList}\small\item\em Saves data associated with the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_manager}{Manager}}}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_ac80f5ee151565f111593921bac645ad7}{instance}} = nullptr
+\mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{static}} \mbox{\hyperlink{class_manager}{Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_manager_ac80f5ee151565f111593921bac645ad7}{instance}} = \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{nullptr}}
 \begin{DoxyCompactList}\small\item\em Pointer to the singleton instance of the \doxylink{class_manager}{Manager} class. Represents the singleton instance of the \doxylink{class_manager}{Manager} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -83,7 +83,7 @@ Construct a \doxylink{class_model_manager}{Model\+Manager} instance.
 \index{ModelManager@{ModelManager}!AddModel@{AddModel}}
 \index{AddModel@{AddModel}!ModelManager@{ModelManager}}
 \doxysubsubsection{\texorpdfstring{AddModel()}{AddModel()}}
-{\footnotesize\ttfamily void Model\+Manager\+::\+Add\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*}}]{mesh }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Model\+Manager\+::\+Add\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_component}{Model\+Component}} \texorpdfstring{$\ast$}{*}}]{mesh }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -145,7 +145,7 @@ A vector containing pointers to \doxylink{class_model_component}{Model\+Componen
 \index{ModelManager@{ModelManager}!Load@{Load}}
 \index{Load@{Load}!ModelManager@{ModelManager}}
 \doxysubsubsection{\texorpdfstring{Load()}{Load()}}
-{\footnotesize\ttfamily void Model\+Manager\+::\+Load (\begin{DoxyParamCaption}\item[{std\+::wstring}]{w\+File\+Direction,  }\item[{std\+::wstring}]{w\+File\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Model\+Manager\+::\+Load (\begin{DoxyParamCaption}\item[{std\+::wstring}]{w\+File\+Direction,  }\item[{std\+::wstring}]{w\+File\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -166,7 +166,7 @@ Reimplemented from \mbox{\hyperlink{class_manager_a1ca627323200c3ac1c6da0d3c510f
 \index{ModelManager@{ModelManager}!LoadModel@{LoadModel}}
 \index{LoadModel@{LoadModel}!ModelManager@{ModelManager}}
 \doxysubsubsection{\texorpdfstring{LoadModel()}{LoadModel()}}
-{\footnotesize\ttfamily void Model\+Manager\+::\+Load\+Model (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Model\+Manager\+::\+Load\+Model (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
 
 
 
@@ -184,7 +184,7 @@ void
 \index{ModelManager@{ModelManager}!SetModel@{SetModel}}
 \index{SetModel@{SetModel}!ModelManager@{ModelManager}}
 \doxysubsubsection{\texorpdfstring{SetModel()}{SetModel()}}
-{\footnotesize\ttfamily void Model\+Manager\+::\+Set\+Model (\begin{DoxyParamCaption}\item[{std\+::string}]{model\+Name,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{_component_manager_8hpp_ace959baca4428a668537cbb184519d49}{void}} Model\+Manager\+::\+Set\+Model (\begin{DoxyParamCaption}\item[{std\+::string}]{model\+Name,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{go }\end{DoxyParamCaption})}
 
 
 
