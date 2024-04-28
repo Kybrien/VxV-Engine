@@ -1,7 +1,7 @@
 #include "Prefab.h"
-#include"PrefabManager.h"
+#include "PrefabManager.h"
 #include <GLM/glm.hpp>
-
+#include "Component.h"
 #include "Debug.h"
 
 
@@ -18,7 +18,13 @@ Prefab::Prefab(GameObject* go, std::string name) {
 
 
 
-// Copier le go du prefab sur un go
+/**
+* @brief Copy the game object and all its children and components
+* @param goToFill The game object to fill with the copy
+* @param goToCopy The game object to copy
+* @return The game object filled with the copy
+
+*/
 GameObject* Prefab::Copy(GameObject* goToFill, GameObject* goToCopy) {
 	goToFill->currentScene = goToCopy->currentScene;
 

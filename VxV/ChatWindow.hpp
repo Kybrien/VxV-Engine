@@ -22,7 +22,7 @@ struct ChatWindow {
     std::deque<std::string> messages;
     char inputBuf[256];
     SOCKET clientSocket;
-    std::string serverIP = "Your Ipv4 Adress";  // Adresse IP par défaut
+    std::string serverIP = "Your Ipv4 Adress";  // Default IPV4 address
     std::thread receiveThread;
     std::mutex mutex;
     bool isConnected = false;
@@ -93,11 +93,11 @@ struct ChatWindow {
     */
     void startServer() {
         system("start Server.exe");
-        // Obtenez l'adresse IP locale après le démarrage du serveur
+        // Get the local IP address after the server starts
         std::string ipAddress = get_local_ip_address();
-        // Copiez l'adresse IP dans le tampon de l'adresse IP en utilisant strcpy_s
+        // Copy the IP address into the IP address buffer using strcpy_s
         strcpy_s(ipAddressBuf, sizeof(ipAddressBuf), ipAddress.c_str());
-        // Afficher l'adresse IP locale dans la console (pour le débogage)
+        // Show the IP address in the console (for debugging)
         std::cout << "Local IP Address: " << ipAddress << std::endl;
     }
 
@@ -221,7 +221,7 @@ struct ChatWindow {
         ImGui::InputText("Username", usernameBuf, sizeof(usernameBuf));
         ImGui::InputText("Server IP", serverIPBuf, sizeof(serverIPBuf));
 
-        ImGui::PushID(1); // Pour éviter les conflits d'ID
+        ImGui::PushID(1); // To avoid ID conflicts
         if (ImGui::Button("Host")) {
             startServer();
             showIPAddress = true;
@@ -236,7 +236,7 @@ struct ChatWindow {
         if (ImGui::Button("Connect")) {
             setupConnection(std::string(usernameBuf), std::string(serverIPBuf));
             if (isConnected) {
-                // La connexion a réussi, préparer l'interface pour le chat
+                // Successfully connected, so clear the buffers
                 memset(usernameBuf, 0, sizeof(usernameBuf));  // Clear buffers after successful login
                 memset(serverIPBuf, 0, sizeof(serverIPBuf));
                 ImGui::End();

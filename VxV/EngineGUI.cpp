@@ -46,7 +46,7 @@ void EngineGUI::UpdateGui()
 
 
 	chatWindow.Draw();
-	ImGui::ShowDemoWindow();
+	//ImGui::ShowDemoWindow();
 	MainMenuBar();
 	ShowInfo();
 	RenderToolbar();

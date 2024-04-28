@@ -14,20 +14,8 @@ void Engine::InitEngine() {
 
 	Startup(m_gui, m_apiGraphic);
 	manager = Manager::GetInstance();
-	// init les managers
 	manager->Init();
 	m_sceneManager = manager->GetManager<SceneManager>();
-
-
-	GameObject* go = m_sceneManager->gameObjectPool.CreateGoFromPool();
-	go->AddComponent<Light>();
-	go->GetComponent<Transform>()->SetPosition(glm::vec3(2.0f, 0.0f, 0.0f));
-	go->GetComponent<Light>()->SetColor(glm::vec3(1.0f, 0.0f, 0.0f));
-
-	GameObject* go2 = m_sceneManager->gameObjectPool.CreateGoFromPool();
-	go2->AddComponent<Light>();
-	go2->GetComponent<Transform>()->SetPosition(glm::vec3(-2.0f, 0.0f, 0.0f));
-	go2->GetComponent<Light>()->SetColor(glm::vec3(0.0f, 1.0f, 0.0f));
 
 	m_engineState->ReadyBooting();
 	Start();

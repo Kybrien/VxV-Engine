@@ -79,6 +79,12 @@ static void ShowExampleMenuFile()
 	if (ImGui::MenuItem("Quit", "Alt+F4")) { exit(0); }
 }
 
+
+/**
+* @brief Show the main menu bar
+* @details This function will show the main menu bar
+* @return void
+*/
 static void MainMenuBar()
 {
 	if (ImGui::BeginMainMenuBar())
@@ -120,15 +126,13 @@ static void MainMenuBar()
 		{
 			if (ImGui::BeginMenu("Controls"))
 			{
-				// Affichez le texte d'aide
-				ImGui::Text("Utilisez ZQSD et EA pour deplacer la cam.");
-				ImGui::Text("Utilisez Shift pour deplacer plus vite");
+				ImGui::Text("Use ZQSD/WASD to move the camera while holding mouse right click.");
+				ImGui::Text("Hold Shift to move faster");
 				ImGui::EndMenu();
 			}
 
 			if (ImGui::BeginMenu("About"))
 			{
-				// Affichez le texte d'information
 				ImGui::Text("This engine was created by:");
 				ImGui::Text(" VxV Group");
 				ImGui::EndMenu();
@@ -141,299 +145,192 @@ static void MainMenuBar()
 	}
 }
 
+/**
+* @brief Show information about the engine
+*/
 static void ShowInfo() {
-	// Cr?ez une nouvelle fen?tre ImGui
-	ImGui::Begin("Informations", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Obtenez le nombre de FPS
+	ImGui::Begin("Informations", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize |
+		ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 	float fps = ImGui::GetIO().Framerate;
-
-	// Affichez le nombre de FPS
 	ImGui::Text("FPS: %.1f", fps);
-
-	// Obtenez la position de la souris
 	ImVec2 mousePos = ImGui::GetIO().MousePos;
-
-	// Affichez la position de la souris
-	ImGui::Text("Position de la souris: (%.1f, %.1f)", mousePos.x, mousePos.y);
-
-	// Terminez la fen?tre
+	ImGui::Text("Mouse cursor position: (%.1f, %.1f)", mousePos.x, mousePos.y);
 	ImGui::End();
 }
 
 void ShowError(const std::string& message)
 {
-	// Cr?ez une nouvelle fen?tre ImGui
-	ImGui::Begin("Erreur", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Affichez le message d'erreur
+	ImGui::Begin("Error", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize |
+		ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 	ImGui::Text(message.c_str());
-
-	// Terminez la fen?tre
 	ImGui::End();
 }
 
 void ShowSuccess(const std::string& message)
 {
-	// Cr?ez une nouvelle fen?tre ImGui
-	ImGui::Begin("Succ?s", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Affichez le message de succ?s
+	ImGui::Begin("Success", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize |
+		ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 	ImGui::Text(message.c_str());
-
-	// Terminez la fen?tre
 	ImGui::End();
 }
 
 void ShowWarning(const std::string& message)
 {
-	// Cr?ez une nouvelle fen?tre ImGui
-	ImGui::Begin("Avertissement", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Affichez le message d'avertissement
+	ImGui::Begin("Warning", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize |
+		ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 	ImGui::Text(message.c_str());
-
-	// Terminez la fen?tre
 	ImGui::End();
 }
 
 void ShowConfirmation(const std::string& message, bool& show)
 {
-	// Cr?ez une nouvelle fen?tre ImGui
-	ImGui::Begin("Confirmation", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Affichez le message de confirmation
+	ImGui::Begin("Confirmation", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize |
+		ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 	ImGui::Text(message.c_str());
-
-	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer"))
+	if (ImGui::Button("Confirm"))
 	{
 		show = false;
 	}
-
-	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler"))
+	if (ImGui::Button("Cancel"))
 	{
 		show = false;
 	}
-
-	// Terminez la fen?tre
 	ImGui::End();
 }
 
 void ShowInputInt(const std::string& message, int& input, bool& show)
 {
-	// Cr?ez une nouvelle fen?tre ImGui
-	ImGui::Begin("Entr?e", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Affichez le message d'entr?e
+	ImGui::Begin("Input", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize |
+		ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 	ImGui::Text(message.c_str());
-
-	// Ajoutez un champ de texte pour l'entr?e
 	ImGui::InputInt("", &input);
-
-	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer"))
+	if (ImGui::Button("Confirm"))
 	{
 		show = false;
 	}
-
-	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler"))
+	if (ImGui::Button("Cancel"))
 	{
 		show = false;
 	}
-
-	// Terminez la fen?tre
 	ImGui::End();
 }
 
 void ShowInputFloat(const std::string& message, float& input, bool& show)
 {
-	// Cr?ez une nouvelle fen?tre ImGui
-	ImGui::Begin("Entr?e", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Affichez le message d'entr?e
+	ImGui::Begin("Input", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize |
+		ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 	ImGui::Text(message.c_str());
-
-	// Ajoutez un champ de texte pour l'entr?e
 	ImGui::InputFloat("", &input);
-
-	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer"))
+	if (ImGui::Button("Confirm"))
 	{
 		show = false;
 	}
-
-	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler"))
+	if (ImGui::Button("Canel"))
 	{
 		show = false;
 	}
-
-	// Terminez la fen?tre
 	ImGui::End();
 }
 
 void ShowInputDouble(const std::string& message, double& input, bool& show)
 {
-	// Cr?ez une nouvelle fen?tre ImGui
-	ImGui::Begin("Entr?e", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Affichez le message d'entr?e
+	ImGui::Begin("Input", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize |
+		ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 	ImGui::Text(message.c_str());
-
-	// Ajoutez un champ de texte pour l'entr?e
 	ImGui::InputDouble("", &input);
-
-	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer"))
+	if (ImGui::Button("Confirm"))
 	{
 		show = false;
 	}
-
-	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler"))
+	if (ImGui::Button("Cancel"))
 	{
 		show = false;
 	}
-
-	// Terminez la fen?tre
 	ImGui::End();
 }
 
 void ShowInputVec2(const std::string& message, glm::vec2& input, bool& show)
 {
-	// Cr?ez une nouvelle fen?tre ImGui
-	ImGui::Begin("Entr?e", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Affichez le message d'entr?e
+	ImGui::Begin("Input", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize |
+		ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 	ImGui::Text(message.c_str());
-
-	// Ajoutez un champ de texte pour l'entr?e
 	ImGui::InputFloat2("", &input.x);
-
-	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer"))
+	if (ImGui::Button("Confirm"))
 	{
 		show = false;
 	}
-
-	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler"))
+	if (ImGui::Button("Cancel"))
 	{
 		show = false;
 	}
-
-	// Terminez la fen?tre
 	ImGui::End();
 }
 
 void ShowInputVec3(const std::string& message, glm::vec3& input, bool& show)
 {
-	// Cr?ez une nouvelle fen?tre ImGui
-	ImGui::Begin("Entr?e", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Affichez le message d'entr?e
+	ImGui::Begin("Input", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize |
+		ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 	ImGui::Text(message.c_str());
-
-	// Ajoutez un champ de texte pour l'entr?e
 	ImGui::InputFloat3("", &input.x);
-
-	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer"))
+	if (ImGui::Button("Confirm"))
 	{
 		show = false;
 	}
-
-	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler"))
+	if (ImGui::Button("Cancel"))
 	{
 		show = false;
 	}
-
-	// Terminez la fen?tre
 	ImGui::End();
 }
 
 void ShowInputVec4(const std::string& message, glm::vec4& input, bool& show)
 {
-	// Cr?ez une nouvelle fen?tre ImGui
-	ImGui::Begin("Entr?e", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Affichez le message d'entr?e
+	ImGui::Begin("Input", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize |
+		ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 	ImGui::Text(message.c_str());
-
-	// Ajoutez un champ de texte pour l'entr?e
 	ImGui::InputFloat4("", &input.x);
-
-	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer"))
+	if (ImGui::Button("Confirm"))
 	{
 		show = false;
 	}
-
-	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler"))
+	if (ImGui::Button("Cancel"))
 	{
 		show = false;
 	}
-
-	// Terminez la fen?tre
 	ImGui::End();
 }
 
 void ShowInputColor(const std::string& message, glm::vec4& input, bool& show)
 {
-	// Cr?ez une nouvelle fen?tre ImGui
-	ImGui::Begin("Entr?e", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Affichez le message d'entr?e
+	ImGui::Begin("Input", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize |
+		ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 	ImGui::Text(message.c_str());
-
-	// Ajoutez un champ de texte pour l'entr?e
 	ImGui::ColorEdit4("", &input.x);
-
-	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer"))
+	if (ImGui::Button("Confirm"))
 	{
 		show = false;
 	}
-
-	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler"))
+	if (ImGui::Button("Cancel"))
 	{
 		show = false;
 	}
-
-	// Terminez la fen?tre
 	ImGui::End();
 }
 
 void ShowInputBool(const std::string& message, bool& input, bool& show)
 {
-	// Cr?ez une nouvelle fen?tre ImGui
-	ImGui::Begin("Entr?e", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
-
-	// Affichez le message d'entr?e
+	ImGui::Begin("Input", &show, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize |
+		ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav);
 	ImGui::Text(message.c_str());
-
-	// Ajoutez un champ de texte pour l'entr?e
 	ImGui::Checkbox("", &input);
-
-	// Ajoutez un bouton pour confirmer
-	if (ImGui::Button("Confirmer"))
+	if (ImGui::Button("Confirm"))
 	{
 		show = false;
 	}
-
-	// Ajoutez un bouton pour annuler
-	if (ImGui::Button("Annuler"))
+	if (ImGui::Button("Cancel"))
 	{
 		show = false;
 	}
-
-	// Terminez la fen?tre
 	ImGui::End();
 }
 
@@ -452,11 +349,11 @@ GameObject* CreateGameObjectWithModel(const std::string& modelName) {
 			modelComponent->SetModel(modelName);
 		}
 		else {
-			std::cout << "Could not add Model component to GameObject" << std::endl;
+			std::cout << "Could not add Model component to GameObject." << std::endl;
 		}
 	}
 	else {
-		std::cout << "Could not create GameObject" << std::endl;
+		std::cout << "Could not create GameObject." << std::endl;
 	}
 
 	return go; // This will return nullptr if GameObject creation failed
@@ -490,7 +387,7 @@ void ShowAddGameObject() {
 
 				// open file dialog when user clicks this button
 				fileDialog.SetTypeFilters({ ".obj" });
-				if (ImGui::Button("open file obj"))
+				if (ImGui::Button("Open file obj"))
 				{
 					fileState = FileState::LoadFile;
 					fileDialog.Open();
@@ -553,21 +450,13 @@ void ShowAddGameObject() {
 }
 
 
-
-
 void ShowConsoleWindow()
 {
-	// Commencer une nouvelle fen�tre ImGui
 	ImGui::Begin("Console");
-
-	// Parcourir la liste des messages de la console
 	for (const std::string& message : consoleMessages)
 	{
-		// Afficher le message
 		ImGui::TextUnformatted(message.c_str());
 	}
-
-	// Terminer la fen�tre ImGui
 	ImGui::End();
 }
 
@@ -575,7 +464,6 @@ void ShowConsoleWindow()
 
 void RenderToolbar() {
 	// Assuming toolbarHeight is set to your desired height for the toolbar
-
 
 	// We don't want the toolbar window to be moveable or have any framing
 	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoScrollWithMouse;
@@ -623,25 +511,19 @@ void RenderToolbar() {
 	ImGui::End();
 }
 
-
-// Ajoutez un param�tre Scene � la fonction ShowHierarchy
 static void ShowHierarchy()
 {
 	SceneManager* sceneManager = Manager::GetInstance()->GetManager<SceneManager>();
 	Scene& scene = *sceneManager->GetCurrentScene();
 
-	// Utilisez la fonction GetAllGameObjects() pour obtenir tous les GameObjects
 	std::vector<GameObject*> allGameObjects = scene.GetAllGameObjects();
-	// Dans votre boucle de rendu ImGui
-	ImGui::Begin("Hierarchie de la scene");
+	ImGui::Begin("Scene hierarchy");
 	{
-		// Affichez une liste de tous les GameObjects
 		for (GameObject* gameobject : allGameObjects)
 		{
 			std::string temp = gameobject->name + "_" + std::to_string(gameobject->id);
 			if (ImGui::Selectable(temp.c_str()))
 			{
-				// Si l'utilisateur clique sur un GameObject, stockez une r�f�rence � ce GameObject
 				selectedGameObject = gameobject;
 			}
 		}
@@ -649,24 +531,20 @@ static void ShowHierarchy()
 	ImGui::End();
 
 
-	// Si un GameObject a �t� s�lectionn�, affichez ses informations dans une fen�tre ImGui
 	if (selectedGameObject != nullptr)
 	{
 		std::string temp = selectedGameObject->name + "_" + std::to_string(selectedGameObject->id);
 		static int selectedComponent = 0;
 		ImGui::Begin("Inspector");
 
-		// Affichez le nom du GameObject
-		ImGui::Text("Nom: %s", temp.c_str());
+		ImGui::Text("Name: %s", temp.c_str());
 		ImGui::Separator();
 
-		// Obtenez le Transform du GameObject
 		Transform* transform = selectedGameObject->GetComponent<Transform>();
 		Model* modelComponent = selectedGameObject->GetComponent<Model>();
 		ScriptingComponent* scriptComponent = selectedGameObject->GetComponent<ScriptingComponent>();
 		Light* light = selectedGameObject->GetComponent<Light>();
 
-		// Cr�ez des contr�les de glissement pour la position, la rotation et l'�chelle
 		float position[3] = { transform->GetPosition().x, transform->GetPosition().y, transform->GetPosition().z };
 		glm::vec3 rotation = transform->GetRotation();
 		glm::vec3 scale = transform->GetScale();
@@ -674,21 +552,18 @@ static void ShowHierarchy()
 
 
 
-		if (ImGui::DragFloat3("Positon", &position[0]))
+		if (ImGui::DragFloat3("Position", &position[0]))
 		{
-			// Si l'utilisateur modifie la position, mettez � jour le Transform
 			transform->SetPosition(glm::vec3(position[0], position[1], position[2]));
 		}
 
 		if (ImGui::DragFloat3("Rotation", &rotation.x))
 		{
-			// Si l'utilisateur modifie la rotation, mettez � jour le Transform
 			transform->SetRotation(rotation.x, rotation.y, rotation.z);
 		}
 
 		if (ImGui::DragFloat3("Scale", &scale.x, 0.1f, 0.1f, 10.0f))
 		{
-			// Si l'utilisateur modifie l'�chelle, mettez � jour le Transform
 			transform->SetScale(scale);
 		}
 		if (ImGui::BeginCombo("Add Component", ComponentManager::GetInstance()->GetComponentNameList()[0].c_str()))
@@ -698,7 +573,7 @@ static void ShowHierarchy()
 				bool is_selected = false;
 				if (ImGui::Selectable(compo.c_str(), is_selected))
 				{
-					std::cout << "Component " << compo << " Added" << std::endl;
+					std::cout << "Component " << compo << " Added." << std::endl;
 					selectedGameObject->AddComponent(ComponentManager::GetInstance()->createComponent(compo));
 				}
 			}
@@ -718,7 +593,7 @@ static void ShowHierarchy()
 
 		ImGui::Text("Script");
 		// Ajoutez un bouton pour ajouter un script
-		if (ImGui::Button("Ajouter un script"))
+		if (ImGui::Button("Add script"))
 		{
 		//// Ajoutez un bouton pour ajouter un script
 		//if (ImGui::Button("Ajouter un script"))
@@ -733,17 +608,14 @@ static void ShowHierarchy()
 
 		if (light != nullptr)
 		{
-			// Ajoutez des contr�les de couleur et de puissance pour la lumi�re
 			glm::vec3 color = light->GetColor();
 			float power = light->GetPower();
-			if (ImGui::ColorEdit3("Couleur", &color.x))
+			if (ImGui::ColorEdit3("Color", &color.x))
 			{
-				// Si l'utilisateur modifie la couleur, mettez � jour la lumi�re
 				light->SetColor(color);
 			}
-			if (ImGui::DragFloat("Puissance", &power, 0.1f, 0.0f, 100.0f))
+			if (ImGui::DragFloat("Power", &power, 0.1f, 0.0f, 100.0f))
 			{
-				// Si l'utilisateur modifie la puissance, mettez � jour la lumi�re
 				light->SetPower(power);
 			}
 		}
@@ -765,16 +637,15 @@ static void ShowHierarchy()
 
 
 
-			// Ajoutez un ScriptingComponent au GameObject
 			if (scriptComponent == nullptr) {
 				selectedGameObject->AddComponent<ScriptingComponent>();
 				scriptComponent = selectedGameObject->GetComponent<ScriptingComponent>();
-				std::cout << "ScriptingComponent added" << std::endl;
+				std::cout << "ScriptingComponent added." << std::endl;
 			}
 			
 			
 		}
-		// Ajoutez un champ d'entrée pour modifier le script
+		// Add an input field to add a script
 		static char scriptName[128] = "";
 		static char sName[128] = "";
 
@@ -782,35 +653,28 @@ static void ShowHierarchy()
 		{
 			if (ImGui::Button("ScriptName"))
 			{
-
 				std::string sName = scriptName;
-	
-				
-
 
 			}
-			
 		}
-		if (ImGui::Button("add ScriptName"))
+		if (ImGui::Button("Add ScriptName"))
 		{
 			Script* script = ScriptManager::NewScript(sName);
 
 			scriptComponent->AddScript(script);
 		}
 
-		// Vous pouvez �galement d�finir le script ici si vous le souhaitez
+		// You can also set the script here if you want
 		// scriptComponent->SetScript(...);
 		ImGui::Separator();
 		ImGui::Text("Model");
 
-		if (ImGui::Button("Changer le mod�le"))
+		if (ImGui::Button("Change model"))
 		{
-			// Ouvrez un dialogue de s�lection de fichier
 			fileState = FileState::ChangeModel;
 			fileDialog.Open();
 		}
 
-		// Si un fichier a �t� s�lectionn�, mettez � jour le mod�le du GameObject
 		if (fileDialog.HasSelected() && fileState == FileState::ChangeModel)
 		{
 			std::filesystem::path filePath(fileDialog.GetSelected().string());
@@ -819,7 +683,6 @@ static void ShowHierarchy()
 			fileDialog.ClearSelected();
 		}
 
-		// Ajoutez un bouton pour supprimer le GameObject
 		if (ImGui::Button("Reset Model"))
 		{
 			modelComponent->SetModel("cube");
