@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <GLM/glm.hpp>
+#include <iostream>
 
 #include "GameObject.h"
 

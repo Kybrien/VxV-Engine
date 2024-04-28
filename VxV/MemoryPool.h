@@ -123,7 +123,7 @@ public:
 
 	void* Allocate()
 	{
-		size_type old_size = m_buffer.size();
+		size_type old_size = N;
 		// search linearily through the array to find an unused
 		// memory chunk, take it and mark it occupied
 		for (size_type i = 0; i < N; i++)
@@ -136,18 +136,8 @@ public:
 				return &m_buffer[sizeof(T) * i];
 			}
 		}
-		ResizePool(); 
-		return &m_buffer[sizeof(T) * 1];
-		//for (size_type i = 0; i < N; i++)
-		//{
-		//	if (!m_state[i])
-		//	{
-		//		m_state[i] = true;
-		//		std::cout << "Allocating memory at memoru chunk" << i << std::endl;
-
-		//		return &m_buffer[sizeof(T) * i];
-		//	}
-		//}
+		ResizePool();
+		Allocate();
 	}
 
 	void Deallocate(void* p)
@@ -175,8 +165,8 @@ public:
 	void ResizePool()
 	{
 		std::cout << "Resizing Pool" << std::endl;
-		size_type i = N * 2;
-		m_buffer.resize(i * sizeof(T));
+		N = 2 * N;
+		m_buffer.resize(2 * m_buffer.size());
 		m_state.resize(m_state.size() * 2);
 	}
 };

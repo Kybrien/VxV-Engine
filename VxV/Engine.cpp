@@ -58,8 +58,8 @@ void Engine::Update()
 			}
 		}
 		m_gui->UpdateGui();
-		m_gui->RenderGui();
 		UpdateGameObjectList();
+		m_gui->RenderGui();
 		m_apiGraphic->unbindArrays();
 		m_apiGraphic->swapBuffers();
 		glfwPollEvents();

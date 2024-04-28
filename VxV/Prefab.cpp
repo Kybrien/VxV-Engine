@@ -38,7 +38,7 @@ GameObject* Prefab::Copy(GameObject* goToFill, GameObject* goToCopy) {
 		Copy(newGO, child);
 	}
 
-	for (auto comp : goToCopy->GetComponents()) {
+	for (Component* comp : goToCopy->GetComponents()) {
 		comp->Copy(goToFill);
 	}
 

@@ -679,13 +679,13 @@ static void ShowHierarchy()
 			}
 			fileDialog.Display();
 
-			if (fileDialog.HasSelected() && fileState == FileState::ChangeModel)
-			{
-				std::filesystem::path filePath(fileDialog.GetSelected().string());
-				std::cout << "Selected filename: " << filePath.stem().string() << std::endl;
-				modelComponent->SetModel(filePath.stem().string());
-				fileDialog.ClearSelected();
-			}
+		// Si un fichier a �t� s�lectionn�, mettez � jour le mod�le du GameObject
+		if (fileDialog.HasSelected() && fileState == FileState::ChangeModel)
+		{
+			std::filesystem::path filePath(fileDialog.GetSelected().string());
+			modelComponent->SetModel(filePath.stem().string());
+			fileDialog.ClearSelected();
+		}
 
 			if (ImGui::Button("Reset Model"))
 			{
