@@ -581,7 +581,7 @@ static void ShowHierarchy()
 		}
 
 
-		if (ImGui::Button("Delete"))
+		if (ImGui::Button("Delete GameObject"))
 		{
 			selectedGameObject->Delete();
 			sceneManager->gameObjectPool.Free(selectedGameObject);
@@ -667,28 +667,33 @@ static void ShowHierarchy()
 
 		// You can also set the script here if you want
 		// scriptComponent->SetScript(...);
-		ImGui::Separator();
-		ImGui::Text("Model");
-
-		if (ImGui::Button("Change model"))
+		if (modelComponent != nullptr)
 		{
-			fileState = FileState::ChangeModel;
-			fileDialog.Open();
-		}
+			ImGui::Separator();
+			ImGui::Text("Model");
 
-		if (fileDialog.HasSelected() && fileState == FileState::ChangeModel)
-		{
-			std::filesystem::path filePath(fileDialog.GetSelected().string());
-			std::cout << "Selected filename: " << filePath.stem().string() << std::endl;
-			modelComponent->SetModel(filePath.stem().string());
-			fileDialog.ClearSelected();
-		}
+			if (ImGui::Button("Change model"))
+			{
+				fileState = FileState::ChangeModel;
+				fileDialog.Open();
+			}
+			fileDialog.Display();
 
-		if (ImGui::Button("Reset Model"))
-		{
-			modelComponent->SetModel("cube");
+			if (fileDialog.HasSelected() && fileState == FileState::ChangeModel)
+			{
+				std::filesystem::path filePath(fileDialog.GetSelected().string());
+				std::cout << "Selected filename: " << filePath.stem().string() << std::endl;
+				modelComponent->SetModel(filePath.stem().string());
+				fileDialog.ClearSelected();
+			}
 
+			if (ImGui::Button("Reset Model"))
+			{
+				modelComponent->SetModel("cube");
+
+			}
 		}
+		
 		ImGui::End();
 	}
 

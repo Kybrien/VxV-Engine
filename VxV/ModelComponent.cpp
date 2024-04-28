@@ -185,7 +185,8 @@ void cleanup(GLFWwindow* window, ModelComponent& model)
 	}
 }
 
-void finishProgram(GLuint programID, GLuint VertexArrayID, GLuint& TextureID, GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID)
+void finishProgram(GLuint programID, GLuint VertexArrayID, GLuint& TextureID, GLuint& MaterialAmbientColorID,
+	GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID)
 {
 	glDeleteProgram(programID);
 	glDeleteVertexArrays(1, &VertexArrayID);

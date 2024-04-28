@@ -182,6 +182,14 @@ void setupVertexAttributes();
 void setupBuffers(GLuint& vertexbuffer, const std::vector<Vertex>& vertices, GLuint& indexbuffer, const std::vector<unsigned int>& indices);
 
 /**
+ * @brief Cleanup the window and the object.
+ * @param GLFWwindow* window
+ * @param ModelComponent& reference to the object
+ * @return void
+ */
+void cleanup(GLFWwindow* window, ModelComponent& object);
+
+/**
  * @brief Delete and clean all the handles of our render program.
  * @param GLFWwindow* window
  * @param std::vector<ModelComponent>& reference to the models
@@ -197,16 +205,8 @@ void setupBuffers(GLuint& vertexbuffer, const std::vector<Vertex>& vertices, GLu
  * @param GLuint& reference to the model matrix ID
  * @return void
  */
-void cleanup(GLFWwindow* window, ModelComponent& object);
-
-/**
- * @brief Load the shaders from the given file paths.
- * @param const char* vertex_file_path
- * @param const char* fragment_file_path
- * @return GLuint returns the program ID
- * 
- */
-void finishProgram(GLuint programID, GLuint VertexArrayID, GLuint& TextureID, GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID);
+void finishProgram(GLuint programID, GLuint VertexArrayID, GLuint& TextureID, GLuint& MaterialAmbientColorID,
+ GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID);
 
 /**
 * @brief Load the Model from the given filename and store the data in the model.
@@ -275,15 +275,6 @@ void copyModelAndAdd(const ModelComponent& model, std::vector<ModelComponent>& m
 * @return void
 */
 void setupHandlesForUniforms(GLuint& programID, GLuint& TextureID, GLuint& MaterialAmbientColorID, GLuint& MaterialDiffuseColorID, GLuint& MaterialSpecularColorID, GLuint& MatrixID, GLuint& ViewMatrixID, GLuint& ModelMatrixID);
-
-/**
-* @brief Setup the handles for the light of the shader program.
-* @param programID reference to the program ID
-* @param LightID reference to the light ID
-* @param LightColorID reference to the light color ID
-* @param LightPowerID reference to the light power ID
-*/
-void setupLightHandles(GLuint& programID, GLuint& LightID, GLuint& LightColorID, GLuint& LightPowerID);
 
 /**
 * @brief Draw the model to the screen.
