@@ -131,7 +131,7 @@ public:
 			if (!m_state[i])
 			{
 				m_state[i] = true;
-				std::cout << "Allocating memory at memoru chunk" << i << std::endl;
+				std::cout << "Allocating memory at memory chunk :" << i << std::endl;
 
 				return &m_buffer[sizeof(T) * i];
 			}
