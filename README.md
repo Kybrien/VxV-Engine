@@ -4,16 +4,23 @@
 [Henri T.](https://github.com/46Yuu) | [Hugo R.](https://github.com/Hroycode) | [Victor L.](https://github.com/Draknut) | [Yanaël C.](https://github.com/Dranemo) | [Melvin G.](https://github.com/Mguellaff) | [Gwendal A.](https://github.com/LiLPray) | [Adrien P.](https://github.com/Kybrien)
 ***
 #### ❓ What is VxV ?
-VxV is a homemade OpenGL engine we've been working on since 5 weeks.   
+VxV is a homemade OpenGL engine we worked on for 5 weeks.   
 It only has an educational purpose (for now at least) and it's the best way for us to understand properly HOW does a game engine work.   
 ***
 #### 💬 How to use ?
-You first need to compile the file _Server.cpp and place the .exe in the source folder. You can then compile the Engine and it will be ready to go.   
+1) You first need to rename the initServ function in `_Server.cpp` to main.
+2) Go to `Main.cpp` and comment out the whole main.
+3) Compile the solution and go to the `x64/Release folder.`
+4) Rename the `VxV.exe` to `Server.exe`.
+5) Go back to `Main.cpp` and `"CTRL+Z"` all your changes.
+6) Same for `_Server.cpp`.
+7) Compile the solution.
+8) Launch `VxV.exe`.
 
 ***
 #### ⚠️ Note
-We are still working on this project so the releases are not perfect and you may encounter issues or bugs while using it :)   
-👇🏼 If you are interested in the extern libraries we used it's just down below   
+This project is not completed so the releases are not perfect and you may encounter issues or bugs while using it :)   
+👇🏼 If you are interested in the extern libraries we used, it's just down below   
 ***
 ### External Libraries :   
 *Overall documentation with [Doxygen](https://www.doxygen.nl)*   
