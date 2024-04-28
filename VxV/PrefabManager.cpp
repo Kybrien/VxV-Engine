@@ -11,7 +11,7 @@ std::string PrefabManager::extention = ".prefab";
 PrefabManager::PrefabManager(Manager* manager) {
 	manager->AddManager<PrefabManager>(this);
 
-	//Rechercher les prefab
+	// Search for all prefab files
 	SearchFile<PrefabManager>(fileDirection, extention, this);
 }
 
@@ -24,32 +24,25 @@ void PrefabManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
 
 	std::ifstream file(fileDirection);
 
-
-
 	if (file.is_open()) {
 
-		// V�rification que le fichier est bien une save de scene
+		// Check if the file is a prefab file
 		std::string line;
 		std::getline(file, line);
-
-
-
-
 
 		try {
 
 			if (line == "PrefabSaveFile") {
-				// Lecture du contenu du fichier dans une cha�ne de caract�res
+				// Read the file content into a string
 				std::string jsonString((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
 
-				// Fermeture du fichier
 				file.close();
 
-				// Analyse de la chaine JSON
+				// Analyse of the JSON string
 				Json::Value PrefabJson;
 				Json::Reader reader;
 				if (!reader.parse(jsonString, PrefabJson)) {
-					std::cerr << "Erreur lors de l'analyse du JSON : " << reader.getFormattedErrorMessages() << std::endl;
+					std::cerr << "Error while analysing the JSON file : " << reader.getFormattedErrorMessages() << std::endl;
 				}
 				else {
 					GameObject* go = new GameObject("", true);
@@ -69,7 +62,7 @@ void PrefabManager::Load(std::wstring wFileDirection, std::wstring wFileName) {
 		}
 		catch (const std::exception e) {
 
-			std::cerr << "Erreur lors de la lecture du fichier : " + fileDirection << std::endl;
+			std::cerr << "Error while reading the file : " + fileDirection << std::endl;
 		}
 	}
 
@@ -92,19 +85,16 @@ void PrefabManager::Save() {
 
 			prefab->getGameObject()->Save(PrefabJson);
 
-			// Conversion de l'objet JSON en une cha�ne JSON format�e
+			// Convert the JSON object into a formatted JSON string
 			std::string jsonString = Json::writeString(builder, PrefabJson);
 
 			outputFile << jsonString << std::endl << std::endl;
 
-
-
-
 			outputFile.close();
-			std::cout << "Les donn�es ont �t� �crites dans le fichier " + fileDirection + " avec succ�s." << std::endl;
+			std::cout << "Data has been successfully written in the file: " + fileDirection + "." << std::endl;
 		}
 		else {
-			std::cerr << "Erreur lors de l'ouverture du fichier." << std::endl;
+			std::cerr << "Error while opening the file: " + fileDirection + "." << std::endl;
 		}
 	}
 }

@@ -51,7 +51,7 @@ void SceneManager::Save() {
 		outputFile << jsonString << std::endl << std::endl;
 
 		outputFile.close();
-		std::cout << "Data has been successfully written in " + fileDirection + "." << std::endl;
+		std::cout << "Data has been successfully written in the file:" + fileDirection + "." << std::endl;
 	}
 	else {
 		std::cerr << "Error while opening the file." << std::endl;
