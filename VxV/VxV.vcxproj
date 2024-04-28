@@ -130,11 +130,11 @@
     <PostBuildEvent>
       <Command>xcopy /E /I /Y "$(ProjectDir)Files" "$(TargetDir)Files"
 
-copy $(ProjectDir)SimpleFragmentShader.VALORANT $(TargetDir)
+copy "$(ProjectDir)SimpleFragmentShader.VALORANT" "$(TargetDir)"
 
-copy $(ProjectDir)SimpleVertexShader.MIKU $(TargetDir)
+copy "$(ProjectDir)SimpleVertexShader.MIKU" "$(TargetDir)"
 
-copy $(ProjectDir)monocraft.ttf $(TargetDir)</Command>
+copy "$(ProjectDir)monocraft.ttf" "$(TargetDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -159,11 +159,11 @@ copy $(ProjectDir)monocraft.ttf $(TargetDir)</Command>
     <PostBuildEvent>
       <Command>xcopy /E /I /Y "$(ProjectDir)Files" "$(TargetDir)Files"
 
-copy $(ProjectDir)SimpleFragmentShader.VALORANT $(TargetDir)
+copy "$(ProjectDir)SimpleFragmentShader.VALORANT" "$(TargetDir)"
 
-copy $(ProjectDir)SimpleVertexShader.MIKU $(TargetDir)
+copy "$(ProjectDir)SimpleVertexShader.MIKU" "$(TargetDir)"
 
-copy $(ProjectDir)monocraft.ttf $(TargetDir)</Command>
+copy "$(ProjectDir)monocraft.ttf" "$(TargetDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
