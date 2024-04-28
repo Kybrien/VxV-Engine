@@ -588,21 +588,6 @@ static void ShowHierarchy()
 			selectedGameObject = nullptr;
 		}
 
-
-		ImGui::Separator();
-
-		ImGui::Text("Script");
-		// Ajoutez un bouton pour ajouter un script
-		if (ImGui::Button("Add script"))
-		{
-		//// Ajoutez un bouton pour ajouter un script
-		//if (ImGui::Button("Ajouter un script"))
-		//{
-		//	// Ajoutez un ScriptingComponent au GameObject
-		//	ScriptingComponent* scriptComponent = selectedGameObject->AddComponent<ScriptingComponent>();
-		//	// Vous pouvez �galement d�finir le script ici si vous le souhaitez
-		//	// scriptComponent->SetScript(...);
-		//}
 		ImGui::Separator();
 		ImGui::Text("Light");
 
@@ -619,6 +604,22 @@ static void ShowHierarchy()
 				light->SetPower(power);
 			}
 		}
+
+		ImGui::Separator();
+
+		ImGui::Text("Script");
+		// Ajoutez un bouton pour ajouter un script
+		if (ImGui::Button("Add script"))
+		{
+		//// Ajoutez un bouton pour ajouter un script
+		//if (ImGui::Button("Ajouter un script"))
+		//{
+		//	// Ajoutez un ScriptingComponent au GameObject
+		//	ScriptingComponent* scriptComponent = selectedGameObject->AddComponent<ScriptingComponent>();
+		//	// Vous pouvez �galement d�finir le script ici si vous le souhaitez
+		//	// scriptComponent->SetScript(...);
+		//}
+
 		//else
 		//{
 		//	// Ajoutez un bouton pour ajouter une lumi�re
