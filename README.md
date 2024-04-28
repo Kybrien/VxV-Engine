@@ -34,3 +34,5 @@ For the 3D objects importation we chose [tinyObj](https://github.com/tinyobjload
 We then needed a Json reader/writer for managing our saves. Thanks to [jsonCPP](https://github.com/open-source-parsers/jsoncpp) we got all of that quite easily :
 > JsonCpp is a C++ library that allows manipulating JSON values, including serialization and deserialization to and from strings.
 > It can also preserve existing comment in unserialization/serialization steps, making it a convenient format to store user input files.   
+
+For the UI of our engine, we finally decided to use [imGUI](https://github.com/ocornut/imgui)  
