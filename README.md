@@ -42,4 +42,7 @@ We then needed a Json reader/writer for managing our saves. Thanks to [jsonCPP](
 > JsonCpp is a C++ library that allows manipulating JSON values, including serialization and deserialization to and from strings.
 > It can also preserve existing comment in unserialization/serialization steps, making it a convenient format to store user input files.   
 
-For the UI of our engine, we finally decided to use [imGUI](https://github.com/ocornut/imgui)  
+For the UI of our engine, we finally decided to use [imGUI](https://github.com/ocornut/imgui)   
+
+### SAMPLE :    
+![Screenshot](Images/VxV_Sample.png)
